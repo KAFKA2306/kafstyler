@@ -22,9 +22,8 @@ function Load-State {
         return @{ processed = @() }
     }
     try {
-        $s = Get-Content -Raw -Path $statePath | ConvertFrom-Json -AsHashtable
-        if (-not $s.ContainsKey('processed')) { $s.processed = @() }
-        return $s
+        $obj = Get-Content -Raw -Path $statePath | ConvertFrom-Json
+        return @{ processed = @($obj.processed) }
     }
     catch {
         Write-BridgeLog "state load failed: $($_.Exception.Message)"
@@ -82,11 +81,12 @@ function Run-CodexTask([string]$TaskId, $Spec) {
     New-Item -ItemType Directory -Force -Path $taskDir | Out-Null
     $lastMessage = Join-Path $taskDir 'last-message.txt'
     $events = Join-Path $taskDir 'events.jsonl'
+    $promptText = [string]$Spec.prompt
 
     Write-BridgeLog "task=$TaskId cwd=$cwd starting"
     Push-Location $cwd
     try {
-        & codex exec --json --output-last-message $lastMessage ([string]$Spec.prompt) 2>&1 |
+        $promptText | & codex exec --json --output-last-message $lastMessage - 2>&1 |
             Tee-Object -FilePath $events | Out-Null
         $exitCode = $LASTEXITCODE
     }
@@ -133,22 +133,29 @@ Write-BridgeLog "daemon started repo=$Repo issue=$Issue poll=${PollSeconds}s"
 while ($true) {
     try {
         $state = Load-State
-        $processed = [Collections.Generic.HashSet[string]]::new([string[]]@($state.processed))
-        $commentsJson = & gh api "repos/$Repo/issues/$Issue/comments?per_page=100"
+        $processed = New-Object 'System.Collections.Generic.HashSet[string]'
+        foreach ($id in @($state.processed)) {
+            if ($null -ne $id) { [void]$processed.Add([string]$id) }
+        }
+
+        $pagesJson = & gh api "repos/$Repo/issues/$Issue/comments?per_page=100" --paginate --slurp
         if ($LASTEXITCODE -ne 0) { throw "gh api comments failed: $LASTEXITCODE" }
-        $comments = @($commentsJson | ConvertFrom-Json)
+        $pages = @($pagesJson | ConvertFrom-Json)
+        $comments = @()
+        foreach ($page in $pages) { $comments += @($page) }
 
         foreach ($comment in ($comments | Sort-Object id)) {
             $body = [string]$comment.body
-            $pattern = '(?s)<!--\s*codex-bridge:v1\s+role=controller\s+task=(?<task>[A-Za-z0-9._:-]+)\s*-->\s*.*?```json\s*(?<json>\{.*?\})\s*```'
-            $m = [regex]::Match($body, $pattern)
-            if (-not $m.Success) { continue }
+            $header = [regex]::Match($body, '<!--\s*codex-bridge:v1\s+role=controller\s+task=(?<task>[A-Za-z0-9._:-]+)\s*-->')
+            if (-not $header.Success) { continue }
+            $jsonBlock = [regex]::Match($body, '(?s)```json\s*(?<json>.*?)\s*```')
+            if (-not $jsonBlock.Success) { continue }
 
-            $taskId = $m.Groups['task'].Value
+            $taskId = $header.Groups['task'].Value
             if ($processed.Contains($taskId)) { continue }
 
             try {
-                $spec = $m.Groups['json'].Value | ConvertFrom-Json
+                $spec = $jsonBlock.Groups['json'].Value | ConvertFrom-Json
                 Run-CodexTask -TaskId $taskId -Spec $spec
             }
             catch {
