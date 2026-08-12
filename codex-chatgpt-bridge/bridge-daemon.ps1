@@ -246,16 +246,29 @@ function Resolve-TaskPolicy($Spec, [string]$Cwd) {
         throw 'allow_push=true requires allow_network=true.'
     }
 
+    # Keep Codex shell/filesystem permissions separate from Unity MCP side-effect
+    # authorization. Unity save/reimport must never widen the local shell sandbox.
     $policy['workspace_write'] =
         ($policy.allowed_paths.Count -gt 0) -or
         $policy.allow_commit -or
-        $policy.allow_push -or
-        $policy.allow_unity_save -or
-        $policy.allow_reimport
+        $policy.allow_push
 
     if ($policy.workspace_write -and $policy.allowed_paths.Count -eq 0) {
         $policy.allowed_paths = @($Cwd)
     }
+
+    # The stable legacy App Server policy documents networkAccess on workspaceWrite,
+    # not on readOnly. Fail closed instead of silently pretending a read-only,
+    # network-enabled shell policy exists.
+    if ($policy.allow_network -and -not $policy.workspace_write) {
+        throw 'allow_network=true is not supported for a shell-read-only v2 task. Declare an explicit narrow allowed_paths root, or keep allow_network=false.'
+    }
+
+    $policy['require_git_unchanged'] = -not (
+        $policy.workspace_write -or
+        $policy.allow_unity_save -or
+        $policy.allow_reimport
+    )
 
     return $policy
 }
@@ -270,7 +283,8 @@ Hard contract:
 - Do not diagnose, redesign, recommend, refactor, broaden scope, or choose the next step.
 - If additional judgment is required, stop and return only the facts gathered so far.
 - Do not modify files outside the permitted roots.
-- Do not commit, push, use network access, save Unity state, or trigger reimport unless the policy explicitly allows it.
+- Do not commit, push, use shell network access, save Unity state, or trigger reimport unless the policy explicitly allows it.
+- Unity MCP save/reimport authorization does not grant local shell filesystem write access.
 - Do not clean, reset, discard, or overwrite pre-existing dirty working-tree changes.
 - Return factual execution evidence. Do not claim the overall problem is solved; ChatGPT is the controller and decides that.
 
@@ -354,9 +368,32 @@ function Read-AppMessage {
             continue
         }
 
-        # Server-initiated requests must always receive a response. This bridge has no
-        # interactive user surface; unsupported prompts are rejected instead of hanging.
+        # Server-initiated requests must always receive a response. This execution-only
+        # bridge has no interactive approval surface, so known permission/elicitation
+        # requests are explicitly denied and unknown requests fail closed.
         if ($message.PSObject.Properties['id'] -and $message.PSObject.Properties['method']) {
+            $serverMethod = [string]$message.method
+            if ($serverMethod -eq 'mcpServer/elicitation/request') {
+                Write-AppMessage ([ordered]@{
+                    id = $message.id
+                    result = [ordered]@{
+                        action = 'decline'
+                        content = $null
+                    }
+                })
+                continue
+            }
+            if ($serverMethod -eq 'item/permissions/requestApproval') {
+                Write-AppMessage ([ordered]@{
+                    id = $message.id
+                    result = [ordered]@{
+                        scope = 'turn'
+                        permissions = [ordered]@{}
+                    }
+                })
+                continue
+            }
+
             Write-AppMessage ([ordered]@{
                 id = $message.id
                 error = [ordered]@{
@@ -681,7 +718,7 @@ function Run-Task([string]$TaskId, $Spec, [long]$StatusCommentId) {
         $run = Invoke-AppServerTask -TaskId $TaskId -Spec $Spec -Cwd $cwd -Policy $policy
         $after = Get-GitEvidence $cwd
 
-        if (-not $policy.workspace_write) {
+        if ($policy.require_git_unchanged) {
             $beforeStatus = @($before.status) -join "`n"
             $afterStatus = @($after.status) -join "`n"
             if ($before.head -ne $after.head -or $beforeStatus -ne $afterStatus) {
