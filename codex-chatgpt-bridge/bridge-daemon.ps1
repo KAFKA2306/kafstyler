@@ -117,20 +117,21 @@ function Run-CodexTask([string]$TaskId, $Spec) {
         finished_at = (Get-Date).ToUniversalTime().ToString('o')
     } | ConvertTo-Json -Depth 6
 
-    $body = @"
-<!-- codex-bridge:v1 role=worker task=$TaskId -->
-## Codex result `$TaskId`
+    $fence = '```'
+    $bodyLines = @(
+        "<!-- codex-bridge:v1 role=worker task=$TaskId -->",
+        "## Codex result $TaskId",
+        '',
+        ($fence + 'json'),
+        $payload,
+        $fence,
+        '',
+        '### Final message',
+        '',
+        $text
+    )
 
-```json
-$payload
-```
-
-### Final message
-
-$text
-"@
-
-    Post-Comment $body
+    Post-Comment ($bodyLines -join "`n")
     Write-BridgeLog "task=$TaskId exit=$exitCode posted"
 }
 
@@ -172,7 +173,13 @@ while ($true) {
             catch {
                 $err = $_.Exception.Message
                 Write-BridgeLog "task=$taskId failed: $err"
-                Post-Comment "<!-- codex-bridge:v1 role=worker task=$taskId -->`n## Codex bridge error ``$taskId```n`n$err"
+                $errorLines = @(
+                    "<!-- codex-bridge:v1 role=worker task=$taskId -->",
+                    "## Codex bridge error $taskId",
+                    '',
+                    $err
+                )
+                Post-Comment ($errorLines -join "`n")
             }
             finally {
                 [void]$processed.Add($taskId)
