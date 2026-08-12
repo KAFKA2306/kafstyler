@@ -101,13 +101,32 @@ Rules:
 - `required_mcp_servers` must match names already configured in normal Codex configuration. The bridge does not synthesize per-task MCP definitions.
 - `allowed_paths` are existing writable directory roots and must remain under `cwd`.
 - all permission-like flags default to `false`.
+- `allow_commit=true` or `allow_push=true` enables local workspace-write; if no narrower `allowed_paths` are declared, the writable root becomes `cwd`.
 - `allow_push=true` requires `allow_network=true`.
-- when no write capability is requested, the turn uses a read-only sandbox policy.
-- when writes are requested, the turn uses `workspaceWrite` with the declared writable roots and requested network policy.
-- approval policy is `never`; a request that cannot execute inside the declared sandbox/policy fails rather than opening an interactive approval prompt.
+- `allow_network` means **Codex local shell network access**, not the network behavior of an external MCP server.
+- stable v2 does not invent a read-only+network legacy sandbox shape. Therefore `allow_network=true` is rejected unless local workspace-write is also explicitly enabled.
+- `allow_unity_save` and `allow_reimport` authorize only those Unity-side effects in the execution-worker contract. They do **not** widen the Codex local shell/filesystem sandbox.
+- when no local write capability is requested, the turn uses a `readOnly` sandbox policy.
+- when local writes are requested, the turn uses `workspaceWrite` with the declared writable roots and requested shell-network policy.
+- approval policy is `never`; the bridge has no interactive approval UI.
+- known App Server MCP elicitations are explicitly declined, permission-escalation requests receive an empty granted permission set, and unknown server-initiated requests fail closed.
 - pre-existing dirty worktrees are never cleaned or reset.
 
-For Unity, `allow_unity_save` and `allow_reimport` are also injected into the execution-only worker contract because Unity MCP actions are mediated by the Unity process, not only by shell filesystem writes.
+### Permission boundary
+
+The system has two distinct side-effect domains and v2 intentionally keeps them separate:
+
+```text
+Codex shell / filesystem
+  └─ sandboxPolicy: readOnly | workspaceWrite
+
+Configured MCP server (for example Unity MCP)
+  └─ external tool process with its own behavior + bridge worker contract
+```
+
+A Codex filesystem sandbox cannot by itself prove that an external MCP server is read-only. For that reason the bridge never describes `allow_unity_save` or `allow_reimport` as sandbox guarantees. They are explicit controller authorizations passed into the execution-only contract, while App Server MCP/tool events are retained as evidence for ChatGPT review.
+
+If an MCP server asks the App Server client for interactive structured input or tool approval through `mcpServer/elicitation/request`, this non-interactive bridge returns `decline`. If the built-in permission tool requests more filesystem/network permissions, v2 grants none.
 
 ## Worker evidence
 
@@ -126,7 +145,7 @@ The terminal status payload includes bounded evidence:
 
 Raw reasoning is not copied to GitHub.
 
-For read-only tasks, the bridge also compares before/after Git HEAD and status. Any change makes the task fail.
+For tasks with no local write and no Unity save/reimport authorization, the bridge also compares before/after Git HEAD and status. Any change makes the task fail.
 
 ## App Server lifecycle
 
