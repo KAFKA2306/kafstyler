@@ -1,139 +1,224 @@
-# ChatGPT ↔ Codex CLI Autonomous Bridge
+# ChatGPT ↔ Codex App Server Bridge v2
 
-## Purpose
+ChatGPT を controller、ローカル Codex を Windows / Unity 実行 worker として接続するための private bridge。
 
-ChatGPT からローカルの OpenAI Codex CLI にタスクを渡し、Codex の最終結果を ChatGPT が自律的に受け取って次の判断へ進めるための bridge。
-
-現在の ChatGPT Plus では custom MCP developer mode が公式提供対象ではないため、Plus で成立する正準線として **private GitHub Issue queue** を使う。
+## Canonical architecture
 
 ```text
 ChatGPT
-  │ GitHub connector: controller task
+  │ GitHub connector: v2 controller task
   ▼
-private GitHub Issue #1
-  │ official gh CLI
+private GitHub Issue #3
+  │ incremental queue fetch
   ▼
-Windows bridge daemon
-  │ official codex exec
+thin Windows bridge
+  │ one long-lived stdio child process
   ▼
-Codex CLI
-  │ final response + exit code + git evidence
+codex app-server
+  │ thread/start (ephemeral) → turn/start → turn/completed
+  │ normal Codex config.toml / MCP configuration
   ▼
-private GitHub Issue #1
-  │ ChatGPT hourly condition watch
+configured MCP servers (Unity MCP etc.)
   ▼
-ChatGPT verifies → next Codex task or user notification
+one worker/status comment updated in place
+  ▼
+ChatGPT verifies evidence and decides the next step
 ```
 
-## Components
+This deliberately does **not** run `codex exec --ignore-user-config`. The bridge starts `codex app-server --stdio` without disabling the user's normal Codex configuration layers, then asks App Server for the configured MCP server list before a task that declares `required_mcp_servers`.
 
-- OpenAI Codex CLI: https://github.com/openai/codex
-- GitHub CLI: https://cli.github.com/
-- Queue: `KAFKA2306/basic_prompts` private Issue #1
-- ChatGPT GitHub connector
-- ChatGPT automation `Codex Bridge Loop`
+OpenAI documents `codex app-server` as the interface used for rich Codex clients such as the VS Code extension. Its stdio transport is newline-delimited JSON, the connection must be initialized once, and the normal lifecycle is `thread/start` → `turn/start` → streamed events → `turn/completed`.
 
-No custom webhook server is required. No API token is committed to the repository.
+Official upstream:
 
-## Install once on Windows
+- Codex App Server: https://github.com/openai/codex/blob/main/codex-rs/app-server/README.md
+- OpenAI Codex repository: https://github.com/openai/codex
+- ChatGPT developer mode / MCP apps: https://help.openai.com/en/articles/12584461
+- Apps in ChatGPT: https://help.openai.com/en/articles/11487775-connectors-in
+
+## Why v2 replaced v1
+
+v1 proved this path:
+
+```text
+ChatGPT → GitHub → Windows daemon → Codex → GitHub
+```
+
+It also proved that Codex could reach `D:\3d\unity\project\avatars2509`.
+
+But v1 launched a fresh process per task with:
+
+```text
+codex exec --ignore-user-config --disable apps --disable plugins ...
+```
+
+That made it the wrong transport for tasks whose purpose is to use MCP servers from the normal Codex configuration. A successful `BRIDGE_OK` only proved the transport loop; it did not prove `Codex → Unity MCP → Unity`.
+
+v2 removes that architecture rather than adding more one-off MCP injection logic.
+
+## Task state machine
+
+```text
+QUEUED
+  ↓
+CLAIMED
+  ↓
+RUNNING
+  ├─→ SUCCEEDED
+  ├─→ FAILED
+  └─→ BLOCKED
+```
+
+`SUCCEEDED` means the App Server turn completed. It is **not** an automatic claim that the higher-level problem is solved. ChatGPT reviews the final message, MCP/tool evidence, and Git evidence before deciding the next task or completion.
+
+Each task gets one worker/status comment. The bridge updates that same comment from `CLAIMED` to `RUNNING` to the terminal state, rather than appending a new comment for every transition.
+
+## Controller protocol
+
+````md
+<!-- codex-bridge:v2 role=controller task=<unique-id> -->
+
+```json
+{
+  "cwd": "D:\\absolute\\repo",
+  "prompt": "Exact execution task",
+  "mode": "execute_only",
+  "required_mcp_servers": ["unityMCP"],
+  "allowed_paths": ["D:\\absolute\\repo\\Assets"],
+  "allow_commit": false,
+  "allow_push": false,
+  "allow_network": false,
+  "allow_unity_save": false,
+  "allow_reimport": false
+}
+```
+````
+
+Rules:
+
+- `cwd` and `prompt` are required.
+- `mode` is currently fixed to `execute_only`.
+- `required_mcp_servers` must match names already configured in normal Codex configuration. The bridge does not synthesize per-task MCP definitions.
+- `allowed_paths` are existing writable directory roots and must remain under `cwd`.
+- all permission-like flags default to `false`.
+- `allow_push=true` requires `allow_network=true`.
+- when no write capability is requested, the turn uses a read-only sandbox policy.
+- when writes are requested, the turn uses `workspaceWrite` with the declared writable roots and requested network policy.
+- approval policy is `never`; a request that cannot execute inside the declared sandbox/policy fails rather than opening an interactive approval prompt.
+- pre-existing dirty worktrees are never cleaned or reset.
+
+For Unity, `allow_unity_save` and `allow_reimport` are also injected into the execution-only worker contract because Unity MCP actions are mediated by the Unity process, not only by shell filesystem writes.
+
+## Worker evidence
+
+The terminal status payload includes bounded evidence:
+
+- `cwd`
+- App Server PID
+- App Server thread / turn ids
+- turn status and error
+- required and configured MCP server names
+- observed MCP startup status
+- command / file-change / MCP-tool operation summaries from App Server items
+- App Server warnings
+- Git branch / HEAD / diff stat / bounded porcelain status before and after
+- final Codex agent message
+
+Raw reasoning is not copied to GitHub.
+
+For read-only tasks, the bridge also compares before/after Git HEAD and status. Any change makes the task fail.
+
+## App Server lifecycle
+
+The daemon starts one long-lived:
+
+```powershell
+codex app-server --stdio
+```
+
+It performs the required `initialize` → `initialized` handshake once per process.
+
+For every task it:
+
+1. calls `config/mcpServer/reload`;
+2. calls `mcpServerStatus/list` and checks every requested MCP server name;
+3. starts a fresh **ephemeral** thread with `thread/start`;
+4. checks MCP visibility again in that thread;
+5. starts the turn with `turn/start`;
+6. consumes item / MCP-startup events;
+7. waits for `turn/completed`;
+8. updates the existing GitHub worker comment.
+
+Ephemeral threads avoid leaving rollout files for bridge jobs while retaining the App Server process and normal Codex config/MCP behavior.
+
+If the bridge itself dies while a task is active, the supervisor restarts it. On startup, the interrupted task is marked `BLOCKED` and is **not replayed automatically**, avoiding duplicate side effects.
+
+## Queue behavior
+
+The v2 queue is:
+
+- `KAFKA2306/basic_prompts` private Issue #3
+- https://github.com/KAFKA2306/basic_prompts/issues/3
+
+The daemon no longer reloads the entire historical comment stream on every poll. It fetches comments incrementally using `since`, with a small overlap and `last_comment_id` deduplication.
+
+## Install / migrate on Windows
 
 Prerequisites:
 
 ```powershell
 codex --version
+codex app-server --help
 gh --version
 gh auth status
 ```
 
-Then clone this private repo and run the installer:
+Clone the current private repository and run:
 
 ```powershell
-$dst = Join-Path $env:TEMP 'basic_prompts-codex-bridge'
+$dst = Join-Path $env:TEMP 'basic_prompts-codex-bridge-v2'
 Remove-Item $dst -Recurse -Force -ErrorAction SilentlyContinue
 gh repo clone KAFKA2306/basic_prompts $dst
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$dst\codex-chatgpt-bridge\install.ps1"
 ```
 
-The installer:
+The installer intentionally migrates destructively inside the bridge's own runtime directory only:
 
-1. verifies `codex`, `gh`, GitHub authentication, and private Issue access;
-2. copies the daemon and supervisor to `%LOCALAPPDATA%\OpenAI\CodexChatGPTBridge`;
-3. registers a Windows logon Scheduled Task;
-4. starts the supervised daemon immediately;
-5. creates a temporary local Git repository;
-6. queues a no-write smoke test through Issue #1.
+1. verifies `gh`, authentication, Codex, and `codex app-server`;
+2. verifies access to private v2 queue Issue #3;
+3. stops the existing scheduled task;
+4. deletes `%LOCALAPPDATA%\OpenAI\CodexChatGPTBridge` so v1 daemon/state/log/task/smoke remnants do not survive;
+5. copies only the v2 daemon and supervisor;
+6. recreates the logon scheduled task;
+7. starts v2 and requires App Server handshake evidence in `health.json`;
+8. queues a disposable read-only `BRIDGE_V2_OK` smoke task.
 
-Expected end-to-end worker result:
+The disposable smoke Git repository is removed by the daemon after its terminal status.
 
-```text
-BRIDGE_OK
-```
+The installer does **not** delete or reset user repositories.
 
-with `exit_code: 0`.
+## Unity MCP E2E acceptance
 
-## Queue protocol
-
-### ChatGPT → Codex
-
-```md
-<!-- codex-bridge:v1 role=controller task=<unique-task-id> -->
-
-```json
-{"cwd":"D:\\absolute\\repo","prompt":"Precise Codex task"}
-```
-```
-
-### Codex → ChatGPT
-
-```md
-<!-- codex-bridge:v1 role=worker task=<same-task-id> -->
-```
-
-The worker response includes:
-
-- Codex exit code
-- absolute `cwd`
-- Git repository root when available
-- `HEAD` SHA when available
-- bounded `git status --porcelain=v1`
-- Codex final message from `--output-last-message`
-
-Raw `--json` event output remains local under the bridge runtime directory.
-
-## Runtime behavior
-
-- daemon polls the private Issue every 30 seconds;
-- processed task IDs are persisted locally and capped to the latest 1000 IDs;
-- GitHub comments are fetched with official `gh api --paginate --slurp`;
-- Codex prompt is passed through stdin to avoid Windows command-line length limits;
-- supervisor restarts the daemon if it exits;
-- Windows Scheduled Task starts the supervisor at user logon.
-
-## Security boundary
-
-- queue repository is private;
-- GitHub authentication stays in the official GitHub CLI credential store;
-- Codex authentication files and API keys are never copied into Issue comments;
-- raw Codex JSONL stays on the local machine;
-- bridge posts only final text plus bounded execution/Git evidence;
-- high-risk or irreversible follow-up actions remain subject to ChatGPT-side approval rules.
-
-## Direct MCP upgrade path
-
-OpenAI's direct architecture is:
+Transport smoke alone is insufficient. v2 is considered fully proven for the Unity use case only after a controller task with `required_mcp_servers` set to the actual configured Unity MCP server name produces evidence of:
 
 ```text
-ChatGPT custom MCP app
-  ↕ OpenAI Secure MCP Tunnel
-openai/tunnel-client
-  ↕ stdio
-codex mcp-server
+ChatGPT
+→ GitHub v2 queue
+→ bridge v2
+→ codex app-server
+→ configured Unity MCP
+→ Unity
+→ turn/completed
+→ GitHub terminal status
+→ ChatGPT verification
 ```
 
-Use that path when the ChatGPT workspace has custom MCP developer mode. OpenAI currently documents that capability for Business and Enterprise/Edu web workspaces, not Plus.
+The Unity probe should be read-only first. No Unity save/reimport is allowed until that probe succeeds.
 
-Upstream references:
+## Direct MCP future path
 
-- https://developers.openai.com/codex/mcp-server
-- https://developers.openai.com/api/docs/guides/secure-mcp-tunnels
-- https://github.com/openai/tunnel-client
+OpenAI's current developer-mode documentation says full custom MCP/developer mode is available on ChatGPT Business and Enterprise/Edu web workspaces, while the broader Apps documentation notes that app availability can vary by plan, workspace, role, surface, and region. For that reason this repository does not assume that a direct custom MCP transport is guaranteed for the current account.
+
+Where a supported ChatGPT custom MCP surface is available, local MCP is not connected directly; OpenAI documents Secure MCP Tunnel for MCP servers on a developer machine or private network. At that point the GitHub queue/Windows bridge can be retired in favor of the supported direct path.
+
+Do not maintain a second local "codex-chatgpt-mcp" implementation in this repository. The direct path belongs in current upstream OpenAI onboarding, not in a parallel homemade bootstrap.
