@@ -86,10 +86,9 @@ function Run-CodexTask([string]$TaskId, $Spec) {
     Write-BridgeLog "task=$TaskId cwd=$cwd starting"
     Push-Location $cwd
     try {
-        # Bridge runs are intentionally isolated from $CODEX_HOME/config.toml.
-        # Authentication still uses CODEX_HOME, while user-level MCP servers and
-        # other global config cannot make the autonomous bridge fail at startup.
-        $promptText | & codex exec --ignore-user-config --json --output-last-message $lastMessage - 2>&1 |
+        # Bridge runs are isolated from user config and connector/plugin layers.
+        # Normal interactive Codex behavior is not modified.
+        $promptText | & codex exec --ignore-user-config --disable apps --disable plugins --json --output-last-message $lastMessage - 2>&1 |
             Tee-Object -FilePath $events | Out-Null
         $exitCode = $LASTEXITCODE
     }
