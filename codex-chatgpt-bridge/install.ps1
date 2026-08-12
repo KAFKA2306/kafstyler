@@ -69,6 +69,16 @@ if (-not (Test-Path (Join-Path $smokeRepo '.git'))) {
     if ($LASTEXITCODE -ne 0) { throw 'git init for smoke test failed.' }
 }
 
+# Codex expects a normal Git worktree with a resolvable HEAD. Keep this
+# completely local to the bridge runtime and do not modify the user's repos.
+& git -C $smokeRepo rev-parse --verify HEAD 2>$null | Out-Null
+if ($LASTEXITCODE -ne 0) {
+    & git -C $smokeRepo config user.name 'Codex ChatGPT Bridge' | Out-Null
+    & git -C $smokeRepo config user.email 'codex-chatgpt-bridge@localhost' | Out-Null
+    & git -C $smokeRepo commit --allow-empty -m 'Initialize bridge smoke repo' | Out-Null
+    if ($LASTEXITCODE -ne 0) { throw 'Failed to create initial smoke repo commit.' }
+}
+
 $taskId = 'smoke-' + (Get-Date -Format 'yyyyMMdd-HHmmss')
 $spec = [ordered]@{
     cwd = $smokeRepo
