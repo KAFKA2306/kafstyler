@@ -75,15 +75,16 @@ $spec = [ordered]@{
     prompt = 'This is an end-to-end transport smoke test. Do not create, modify, or delete any files. Reply with exactly: BRIDGE_OK'
 } | ConvertTo-Json -Compress
 
-$body = @"
-<!-- codex-bridge:v1 role=controller task=$taskId -->
-## Bridge smoke test `$taskId`
-
-```json
-$spec
-```
-"@
-Post-QueueComment $body
+$fence = '```'
+$bodyLines = @(
+    "<!-- codex-bridge:v1 role=controller task=$taskId -->",
+    "## Bridge smoke test $taskId",
+    '',
+    ($fence + 'json'),
+    $spec,
+    $fence
+)
+Post-QueueComment ($bodyLines -join "`n")
 
 Write-Host ''
 Write-Host 'Installed and smoke test queued.'
