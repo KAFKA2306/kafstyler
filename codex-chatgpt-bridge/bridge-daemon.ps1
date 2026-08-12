@@ -122,7 +122,8 @@ function Get-CodexMcpArgs($Spec) {
 
         $commandValue = ConvertTo-TomlLiteral $pythonExe
         $serverValue = ConvertTo-TomlLiteral $serverPath
-        $enabledTools = '["search_music","create_playlist","add_video_to_playlist","list_my_playlists","list_playlist_items"]'
+        $enabledTools = '["search_music","create_playlist","add_video_to_playlist","list_my_playlists","list_playlist_items"]'.Replace('\"', '"')
+        $approvalMode = 'mcp_servers.youtube_music.default_tools_approval_mode="approve"'.Replace('\"', '"')
 
         $args += @(
             '--config', "mcp_servers.youtube_music.command=$commandValue",
@@ -130,7 +131,7 @@ function Get-CodexMcpArgs($Spec) {
             '--config', 'mcp_servers.youtube_music.enabled=true',
             '--config', 'mcp_servers.youtube_music.required=true',
             '--config', "mcp_servers.youtube_music.enabled_tools=$enabledTools",
-            '--config', 'mcp_servers.youtube_music.default_tools_approval_mode="approve"'
+            '--config', $approvalMode
         )
     }
 
