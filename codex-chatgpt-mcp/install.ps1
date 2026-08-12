@@ -34,11 +34,13 @@ $root = Join-Path $env:LOCALAPPDATA 'OpenAI\CodexChatGPTMcp'
 New-Item -ItemType Directory -Force -Path $root | Out-Null
 $tunnelClient = Join-Path $root 'tunnel-client.exe'
 $keyFile = Join-Path $root 'runtime-key.dpapi'
-$startScript = Join-Path $PSScriptRoot 'start.ps1'
+$sourceStartScript = Join-Path $PSScriptRoot 'start.ps1'
+$installedStartScript = Join-Path $root 'start.ps1'
 
-if (-not (Test-Path $startScript)) {
-    throw "start.ps1 must be next to install.ps1: $startScript"
+if (-not (Test-Path $sourceStartScript)) {
+    throw "start.ps1 must be next to install.ps1: $sourceStartScript"
 }
+Copy-Item -Path $sourceStartScript -Destination $installedStartScript -Force
 
 Write-Host '[2/7] Acquire OpenAI OSS tunnel-client latest release'
 $headers = @{ 'User-Agent' = 'KAFKA2306-codex-chatgpt-mcp-bootstrap' }
@@ -109,7 +111,7 @@ finally {
 }
 
 Write-Host '[6/7] Register tunnel daemon at Windows logon'
-$taskCommand = "powershell.exe -NoProfile -ExecutionPolicy Bypass -File `"$startScript`" -ProfileName `"$ProfileName`""
+$taskCommand = "powershell.exe -NoProfile -ExecutionPolicy Bypass -File `"$installedStartScript`" -ProfileName `"$ProfileName`""
 & schtasks.exe /Create /F /SC ONLOGON /TN $TaskName /TR $taskCommand /RL LIMITED | Out-Host
 if ($LASTEXITCODE -ne 0) {
     throw "schtasks /Create failed with exit code $LASTEXITCODE"
