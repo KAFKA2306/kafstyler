@@ -4,7 +4,7 @@
 
 ChatGPT からローカルの OpenAI Codex CLI にタスクを渡し、Codex の最終結果を ChatGPT が自律的に受け取って次の判断へ進めるための bridge。
 
-現在の ChatGPT Plus では custom MCP developer mode が公式提供対象ではないため、Plus で成立する正準線として **private GitHub Issue queue** を使う。
+現在の ChatGPT web はローカル Codex の `config.toml` を直接読み込まないため、private GitHub Issue queue をローカル実行への正準線として使う。
 
 ```text
 ChatGPT
@@ -20,7 +20,7 @@ Codex CLI
   │ final response + exit code + git evidence
   ▼
 private GitHub Issue #1
-  │ ChatGPT hourly condition watch
+  │ ChatGPT condition watch / explicit verification
   ▼
 ChatGPT verifies → next Codex task or user notification
 ```
@@ -31,7 +31,7 @@ ChatGPT verifies → next Codex task or user notification
 - GitHub CLI: https://cli.github.com/
 - Queue: `KAFKA2306/basic_prompts` private Issue #1
 - ChatGPT GitHub connector
-- ChatGPT automation `Codex Bridge Loop`
+- Optional local MCP adapters explicitly allowlisted by the bridge
 
 No custom webhook server is required. No API token is committed to the repository.
 
@@ -75,6 +75,8 @@ with `exit_code: 0`.
 
 ### ChatGPT → Codex
 
+Normal isolated task:
+
 ```md
 <!-- codex-bridge:v1 role=controller task=<unique-task-id> -->
 
@@ -82,6 +84,18 @@ with `exit_code: 0`.
 {"cwd":"D:\\absolute\\repo","prompt":"Precise Codex task"}
 ```
 ```
+
+An allowlisted local MCP is opt-in per task. For YouTube Music:
+
+```json
+{
+  "cwd":"D:\\absolute\\repo",
+  "mcp":["youtube_music"],
+  "prompt":"Create the requested private playlist and return its YouTube Music URL."
+}
+```
+
+Unknown MCP names are rejected. The bridge currently allowlists only `youtube_music`.
 
 ### Codex → ChatGPT
 
@@ -93,6 +107,7 @@ The worker response includes:
 
 - Codex exit code
 - absolute `cwd`
+- MCP names explicitly enabled for the task
 - Git repository root when available
 - `HEAD` SHA when available
 - bounded `git status --porcelain=v1`
@@ -107,7 +122,9 @@ Raw `--json` event output remains local under the bridge runtime directory.
 - GitHub comments are fetched with official `gh api --paginate --slurp`;
 - Codex prompt is passed through stdin to avoid Windows command-line length limits;
 - supervisor restarts the daemon if it exits;
-- Windows Scheduled Task starts the supervisor at user logon.
+- Windows Scheduled Task starts the supervisor at user logon;
+- every run keeps `--ignore-user-config`, `--disable apps`, and `--disable plugins`;
+- an explicitly requested allowlisted MCP is injected only through one-off `--config` overrides.
 
 ## Security boundary
 
@@ -115,25 +132,18 @@ Raw `--json` event output remains local under the bridge runtime directory.
 - GitHub authentication stays in the official GitHub CLI credential store;
 - Codex authentication files and API keys are never copied into Issue comments;
 - raw Codex JSONL stays on the local machine;
+- user Codex config, apps, and plugins stay disabled for bridge runs;
+- local MCPs are deny-by-default and opt-in per queue task;
+- `youtube_music` requires its local OAuth token to exist before a bridge task can enable it;
 - bridge posts only final text plus bounded execution/Git evidence;
 - high-risk or irreversible follow-up actions remain subject to ChatGPT-side approval rules.
 
-## Direct MCP upgrade path
+## Direct MCP path
 
-OpenAI's direct architecture is:
-
-```text
-ChatGPT custom MCP app
-  ↕ OpenAI Secure MCP Tunnel
-openai/tunnel-client
-  ↕ stdio
-codex mcp-server
-```
-
-Use that path when the ChatGPT workspace has custom MCP developer mode. OpenAI currently documents that capability for Business and Enterprise/Edu web workspaces, not Plus.
+OpenAI documents local MCP support for the ChatGPT desktop app, Codex CLI, and the Codex IDE extension on the same Codex host. ChatGPT web does not read local Codex configuration. For hosted web use, MCP-backed tools are supplied through installed plugins rather than the local `config.toml`.
 
 Upstream references:
 
-- https://developers.openai.com/codex/mcp-server
-- https://developers.openai.com/api/docs/guides/secure-mcp-tunnels
-- https://github.com/openai/tunnel-client
+- https://learn.chatgpt.com/docs/extend/mcp?surface=cli
+- https://learn.chatgpt.com/docs/config-file/config-advanced
+- https://github.com/openai/codex
