@@ -52,14 +52,23 @@ function Get-GitEvidence([string]$Cwd) {
     $e = [ordered]@{ repo_root = $null; head = $null; status = @() }
     Push-Location $Cwd
     try {
-        $rootText = (& git rev-parse --show-toplevel 2>$null)
-        if ($LASTEXITCODE -eq 0) {
+        $rootText = @(& git rev-parse --show-toplevel 2>$null)
+        if ($LASTEXITCODE -eq 0 -and $rootText.Count -gt 0) {
             $e.repo_root = ($rootText | Select-Object -First 1)
-            $headText = (& git rev-parse HEAD 2>$null)
-            if ($LASTEXITCODE -eq 0) { $e.head = ($headText | Select-Object -First 1) }
+
+            $headText = @(& git rev-parse --verify HEAD 2>$null)
+            if ($LASTEXITCODE -eq 0 -and $headText.Count -gt 0) {
+                $e.head = ($headText | Select-Object -First 1)
+            }
+
             $statusText = @(& git status --porcelain=v1 2>$null)
-            if ($LASTEXITCODE -eq 0) { $e.status = @($statusText | Select-Object -First 200) }
+            if ($LASTEXITCODE -eq 0) {
+                $e.status = @($statusText | Select-Object -First 200)
+            }
         }
+    }
+    catch {
+        Write-BridgeLog "git evidence unavailable for cwd=$Cwd: $($_.Exception.Message)"
     }
     finally {
         Pop-Location
