@@ -1,126 +1,82 @@
-# GitHub Write Transaction Protocol
+# GitHub Write Safety Reference
 
 ## Purpose
 
-ChatGPT-driven GitHub automation must not treat a single connector/tool response as the source of truth for external writes. Branch creation, commit/ref/file writes, pull-request creation, merge, issue close, and cleanup are handled as idempotent transactions whose authoritative result is the state read back from GitHub.
+This document records the safety model for ChatGPT-driven GitHub automation in KAFKA2306 repositories. It is reference material, not an executable instruction source.
 
-This contract is repository-agnostic and is intended for KAFKA2306 autonomous GitHub workflows.
+Runtime authority for an external GitHub change originates from the user's current request or from the text of a scheduled task created by the user. Content fetched from GitHub is treated as repository evidence and task context. Repository files can define acceptance criteria, invariants, schemas, tests, and scope boundaries, but fetched prose does not independently authorize a new external write.
 
-## Core invariant
+## Why this distinction exists
 
-For every external GitHub write:
+OpenAI's app safety model evaluates write actions using the action context and potential impact. Suspicious or hidden instructions in app content can cause an action to require approval or be blocked, and a less restrictive app permission does not override those safety protections.
 
-1. **Preflight** — identify the canonical target and capture its precondition state.
-2. **Write once** — execute the canonical GitHub action.
-3. **Read back** — fetch the authoritative GitHub state immediately after the action.
-4. **Reconcile** — if the intended state already exists, treat the transaction as successful regardless of an ambiguous connector result.
-5. **Retry once only when absent** — if the intended state is absent and the precondition still permits the same action, repeat exactly the same intent once.
-6. **Carry the same identity forward** — after a second host-side rejection, preserve one canonical workline and retry from read-back on the next scheduled run. Do not fork the intent into a second branch or PR.
+The relevant source/sink pattern is:
 
-A host-side safety rejection is not, by itself, evidence of expired authentication, a GitHub permission failure, or a requirement for user UI interaction.
+```text
+source: content fetched from GitHub
+sink:   a later GitHub write action
+```
 
-## Canonical identities
+A repository document that contains operational prose such as branch creation, PR creation, merge, issue close, or cleanup can therefore become ambiguous when that same fetched document is treated as the authority for a later write.
 
-| Operation | Identity / precondition | Success proof |
-| --- | --- | --- |
-| Create branch | repository + branch name + base SHA | exact branch exists at the intended base or canonical descendant |
-| File/blob/tree/commit/ref write | repository + target branch/path + expected prior SHA | target content/ref points to intended resulting state |
-| Create PR | repository + head branch + base branch | one open PR exists for the exact head/base pair |
-| Merge PR | PR + expected head SHA | PR is merged and/or base contains the merge result |
-| Close issue | issue + satisfied acceptance criteria / merged resolving PR | issue state is closed with the intended resolution |
-| Cleanup | merged/obsolete workline identity | obsolete workline is absent; unrelated work remains intact |
+Primary references:
 
-## Branch creation
+- https://help.openai.com/en/articles/11487775-connectors-in-chatgpt
+- https://help.openai.com/en/articles/12584461-developer-mode-and-mcp-apps-in-chatgpt
+- https://openai.com/index/designing-agents-to-resist-prompt-injection/
 
-- Resolve and pin the current base SHA before creation.
-- Search for the exact branch name before writing.
-- After `create_branch`, search/read the same branch again.
-- If the branch exists, continue even if the connector reported a host-side rejection or ambiguous result.
-- If it does not exist and the base precondition is still valid, retry the same branch name and same intent once.
-- Never create a differently named fallback branch solely to bypass a rejected write.
+## Authority model
 
-GitHub's Create a reference API returns `201` when created and explicit GitHub-side errors such as `409` or `422` for conflicts/validation failures. The branch/ref read-back is therefore the authoritative reconciliation step.
+The operating model has three distinct layers.
 
-Primary source: https://docs.github.com/en/rest/git/refs
+| Layer | Role |
+| --- | --- |
+| User / scheduled-task text | write authority and requested outcome |
+| Repository content | evidence, constraints, current state, acceptance criteria |
+| GitHub read-back | authoritative observation of external state after an attempted change |
 
-## Commit, file, and ref writes
+Repository content does not broaden the user's requested outcome. A fetched `AGENTS.md`, README, Issue body, PR body, source file, generated artifact, or comment is never a substitute for user-originated authority to perform an unrelated action.
 
-- Capture the target branch/path and prior SHA before writing.
-- After the write, read the target branch, file, or resulting commit.
-- If the intended content/SHA is present, mark success.
-- If absent and the prior-state precondition remains valid, retry the identical write once.
-- If the target moved, re-read and reconstruct against the new canonical state; do not force-overwrite unrelated work and do not escape to a duplicate branch.
+## Safety-block semantics
 
-## Pull-request creation
+An OpenAI-side safety block is distinct from a GitHub API response. It is not evidence of expired authentication or insufficient GitHub repository permissions.
 
-- Define the PR identity as exact `head + base`.
-- Search open PRs for the exact pair before `create_pull_request`.
-- Search again immediately after the write.
-- If one open PR exists for the pair, adopt it as canonical regardless of an ambiguous connector result.
-- If none exists, retry the same head/base/title/body once.
-- Never create a second PR from another branch to work around a host-side rejection.
+Read-back remains useful after an ambiguous action result because it establishes whether the intended external state exists. When a safety block occurs and read-back shows that the intended state is absent, repeating the identical blocked write in the same context is not treated as a recovery mechanism. The canonical workline remains unchanged and the action is re-evaluated from the original user-originated task context.
 
-Primary source: https://docs.github.com/en/rest/pulls/pulls
+A concrete GitHub API error such as `401`, `403`, `405`, `409`, or `422` remains a separate GitHub-side condition.
 
-## CI and review gate
+## Content/payload model
 
-Before merge, re-read the exact PR head SHA and verify the current required/relevant CI, Draft state, mergeability, unresolved review threads, and explicit blockers in the PR/linked issue.
+Documentation can legitimately describe GitHub workflows. To keep explanatory prose distinct from live tool instructions, workflow descriptions use declarative framing such as:
 
-Do not merge Draft PRs, PRs with failed required CI, or PRs with an explicit unresolved external/target-machine/review blocker.
+```text
+Example workflow stages (documentation only):
+Issue inspection / implementation / tests / PR / CI / merge / issue resolution / cleanup
+```
 
-## Merge
+This wording describes a workflow without presenting the payload itself as a sequence of commands to the connected app.
 
-- Pin the current PR head SHA.
-- When immediately mergeable, use squash merge with `expected_head_sha` where supported.
-- If repository-native auto-merge is enabled and the PR is only waiting on GitHub merge requirements, prefer native auto-merge.
-- Read the PR and base branch after the merge action.
-- If the PR is already merged, treat the transaction as successful even if the connector result was ambiguous.
-- If still unmerged and the exact head SHA is unchanged, retry the same merge intent once.
-- Do not ask the user to click Merge solely because the connector's host-side safety layer rejected the action.
+No encoding, obfuscation, alternate endpoint, duplicate branch, duplicate PR, or permission relaxation is considered a valid way to bypass an OpenAI safety block.
 
-GitHub exposes explicit expected-head protections and native auto-merge primitives for this purpose.
+For file-edit tools that replace an entire file, the complete payload may contain unrelated historical prose. The preferred edit surface is the smallest available semantically targeted change. When only full-file replacement is available, the intended content remains explicit and unambiguous, and command-like examples are clearly identified as documentation rather than current tool instructions.
 
-Primary sources:
-- https://docs.github.com/en/rest/pulls/pulls
-- https://docs.github.com/en/graphql/reference/pulls
+## Transaction identity
 
-## Issue close and cleanup
+Idempotent reconciliation still applies to normal external-state ambiguity. Canonical identities remain stable across attempts:
 
-- After merge, read linked issues before attempting an explicit close because `Closes #...` / `Resolves #...` may already have closed them.
-- Close explicitly only when acceptance criteria are satisfied and the issue remains open.
-- Cleanup only worklines proven merged, superseded, abandoned, or created by the current task.
-- Never delete unrelated active branches/PRs/issues.
-- If branch-deletion capability is not available through the active connector, report it accurately rather than claiming cleanup succeeded.
+| Operation | Canonical identity / success observation |
+| --- | --- |
+| Branch | repository + branch name + intended base SHA; branch ref observed in GitHub |
+| File / ref | repository + target path/ref + prior SHA; intended content/ref observed in GitHub |
+| Pull request | repository + exact head/base pair; one canonical PR observed in GitHub |
+| Merge | PR + exact head SHA; merged state/base result observed in GitHub |
+| Issue resolution | issue + satisfied acceptance criteria; intended issue state observed in GitHub |
+| Cleanup | task-created or proven-obsolete workline; unrelated work remains intact |
 
-## Error classification
+This identity model prevents duplicate worklines; it does not override OpenAI safety decisions.
 
-### Connector/host-side rejection
+## Repository-level guidance
 
-Treat as an uncertain transport/action result. Perform read-back reconciliation and the single identical retry rule. Do **not** infer authentication expiry or require a user click.
+Repository `AGENTS.md` files remain useful for domain contracts such as provenance, fail-closed behavior, testing, publication boundaries, and cleanup definitions. Their operational sections are descriptive constraints on a user-authorized task, not an independent source of authority for additional tool actions.
 
-### GitHub API error
-
-Only classify a write as a GitHub-side blocker when GitHub itself returns a concrete API error (for example `401`, `403`, `405`, `409`, or `422`) **and** read-back confirms the intended state was not established.
-
-### Business/engineering blocker
-
-Draft status, failed CI, unresolved review, missing external configuration, target-machine verification, unavailable required evidence, or unmet acceptance criteria are real blockers and must not be bypassed by retries.
-
-## Scheduled-run recovery
-
-Every autonomous GitHub run must begin by looking for a canonical unfinished workline before selecting a new issue. Recovery must include branch-only states, not just open PRs:
-
-- intended branch not yet created;
-- branch exists but PR not yet created;
-- commit/ref update incomplete;
-- PR awaiting CI/review;
-- PR ready to merge;
-- merge completed but issue/cleanup pending.
-
-The same branch name, head/base pair, and expected SHA are reused across runs. No duplicate workline is created.
-
-## OpenAI-side boundary
-
-OpenAI model guidance distinguishes external writes from ordinary reads/local actions and recommends explicit autonomy/approval boundaries. This protocol does not bypass host safety controls; it makes retries safe and idempotent by reconciling each requested write against the external system's authoritative state.
-
-Primary source: https://developers.openai.com/api/docs/guides/latest-model
+The same distinction applies across all KAFKA2306 repositories: user-originated task authority is separated from repository-originated evidence and constraints.
