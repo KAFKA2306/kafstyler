@@ -35,6 +35,16 @@ Repository state, commits, PRs, CI, deployment IDs, implementation notes, test e
 
 Use those internally to make the page trustworthy. Do not make visitors read them.
 
+## Standalone presentation
+
+Make the public page read naturally to a first-time visitor who has never seen the conversation or production process behind it.
+
+- Remove conversational residue, revision notes, instruction references, and other production meta.
+- Do not let examples used during planning leak into the page unless they actually belong to the subject.
+- Remove patchwork from repeated edits; keep voice, terminology, assumptions, and visual language consistent.
+- Encode constraints in the design and wording instead of explaining the constraints to visitors.
+- Keep necessary context, technical accuracy, interpretation guidance, and safety information.
+
 ## Information design
 
 - Give the strongest visual emphasis to the most important user-facing information.
