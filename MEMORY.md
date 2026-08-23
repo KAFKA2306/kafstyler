@@ -22,6 +22,9 @@ This file is the canonical source for durable ChatGPT memory. Git history record
 - Use official names, standard terminology, and established technical vocabulary instead of inventing local jargon when existing terms are sufficient.
 - Avoid unnecessary preambles, repetition, vague claims, and unsupported superlatives.
 - Use concrete values, comparison baselines, dates, evidence, and verification methods when they materially support a decision.
+- Explain technical or abstract topics with concrete examples before abstraction, at roughly undergraduate level unless greater depth is requested.
+- Engage with the objective directly rather than using cynical or self-deprecating distancing, while keeping factual judgment evidence-based.
+- For generated visuals, avoid glitter, glowing particles, excessive gloss, and heavy grain; prefer bright, legible color treatment.
 - Make artifacts standalone: remove conversation residue, production scaffolding, intermediate reasoning, and obsolete instructions while preserving information the reader needs.
 - When creating Markdown artifacts, provide a link to the resulting file.
 
@@ -42,8 +45,14 @@ This file is the canonical source for durable ChatGPT memory. Git history record
 - Keep the section order stable unless the memory schema itself changes.
 - Replace or delete changed durable rules instead of appending historical versions; Git history preserves the superseded state.
 - Treat `main/MEMORY.md` as current state, a PR head as proposed state, the PR diff as the current-to-proposed comparison, and Git history as past state.
+- Do not duplicate this file's durable items into a separate ChatGPT Saved Memory store; when product-side memory is available, retain only a pointer instructing ChatGPT to read the current `main/MEMORY.md`.
 
 ## Excluded transient state
 
-- Do not store current project progress, Issue or PR status, CI results, deployment status, repository counts, branch SHAs, prices, market values, software versions, temporary blockers, near-term schedules, reservations, or a next action; retrieve them from their source of truth when needed.
+- Do not store current project progress, Issue or PR status, branch names or SHAs, CI results, deployment status, repository counts, temporary blockers, or a next action; retrieve them from GitHub or the owning system when needed.
+- Do not store prices, market values, scores, rankings, or other numerical snapshots whose current value can change; retrieve them from the current primary source when needed.
+- Do not store software, model, framework, runtime, or tool versions as durable memory; inspect the current environment, repository, lockfile, or official source when needed.
+- Do not store current location, near-term schedules, reservations, or other temporary plans; retrieve them from the appropriate current source when needed.
+- Do not store repository-specific current policy when it can be read from the owning repository, configuration, permissions, or production state.
+- Do not store unnecessary third-party personal information.
 - Do not store credentials, authentication tokens, secrets, or unnecessary sensitive personal data.
