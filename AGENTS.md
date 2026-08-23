@@ -19,16 +19,11 @@ This repository is private. Keep development, verification, release, and cleanup
 
 ## ChatGPT Memory
 
-- `MEMORY.md` is the only canonical file for durable ChatGPT memory in this repository.
-- `CHATGPT_MEMORY_PROMPT.md` is the only canonical paste-ready prompt for auditing ChatGPT-side memory against `main/MEMORY.md`; keep memory values in `MEMORY.md`, not duplicated in the prompt.
-- Keep only durable preferences, operating principles, stable constraints, and source-of-truth routing in `MEMORY.md`.
-- Keep one durable memory item per top-level bullet and preserve the canonical section order so Git diffs isolate semantic changes.
-- Treat `main/MEMORY.md` as current state, a PR head as proposed state, the PR diff as the current-to-proposed comparison, and Git history as past state.
-- For memory-changing PRs, classify semantic changes as `ADD`, `REPLACE`, `DELETE`, or `MOVE-OUT`; use `MOVE-OUT` when mutable state leaves memory and returns to its source of truth.
-- Do not append historical current-state snapshots. Replace or delete changed durable rules; Git history preserves superseded versions.
-- Do not store current Issue/PR/CI/deployment state, prices, versions, temporary progress, short-lived schedules, credentials, or secrets in `MEMORY.md`.
-- Treat ChatGPT Saved Memory as a derived cache, not an authority. Do not automatically import conversationally inferred memory back into `MEMORY.md`.
-- Validate memory changes with `python scripts/validate_memory.py` and `python -m unittest tests.test_memory_contract` before treating them as ready.
+- `MEMORY.md` is the only canonical durable memory; `CHATGPT_MEMORY_PROMPT.md` only tells ChatGPT how to audit/sync it and must not duplicate its values.
+- Use `main/MEMORY.md` as current state, PR diff as proposed change, and Git history as past state; keep one durable item per bullet and replace/delete instead of appending old states.
+- Keep mutable current state, credentials, secrets, and unnecessary sensitive data out of memory; retrieve current values from their owning source.
+- Treat ChatGPT Saved Memory as a derived cache; if editable, keep only a pointer to current `main/MEMORY.md` rather than duplicating durable items.
+- Verify memory changes with `python -m unittest tests.test_memory_contract -v`.
 
 ## Verification
 
