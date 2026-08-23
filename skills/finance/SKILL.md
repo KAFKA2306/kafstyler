@@ -1,92 +1,67 @@
 ---
 name: finance
-description: Turn finance questions, market data, research ideas, and repository work into verified evidence and decisions. Use for financial research, datasets, models, backtests, portfolio analysis, finance repositories, and finance-wide routing.
+description: Use when a finance task must end in a decision. Convert a market, research, data, model, or repository question into current reproducible evidence and a clear keep, reject, revise, or unknown decision.
 ---
 
 # Finance
 
-Turn a finance question into a decision supported by current, reproducible evidence.
+## Problem this skill solves
 
-## Every run
+Finance work often stops at **data collected**, **model built**, or **CI passed**. Those are intermediate states, not answers.
 
-1. State the decision or claim being tested.
-2. Read the current primary source, canonical dataset/repository, relevant code, and latest output before reasoning from old context.
-3. Use one canonical authority per fact, dataset, or model output. Reuse the owning repository instead of creating a duplicate collector, ledger, cache, or view.
-4. Measure the thing that matters directly. Do not treat implementation, CI, a proxy metric, or a model score as economic evidence when P&L, risk, coverage, freshness, or another direct outcome can be measured.
-5. Test with real data when available. Record the universe, period, point-in-time rules, benchmark, costs, assumptions, and exact revision.
-6. Compare against a simple baseline or ablation. For strategies, prefer out-of-sample or walk-forward evidence and include transaction costs and borrowing costs when relevant.
-7. Decide from the measured result: keep, reject, revise, or unknown. Never fill missing evidence with a financial claim.
-8. Verify the final repository/data/public state. Merge and release are separate; green CI alone is not release evidence.
+This skill exists to answer one question:
 
-## Evidence rules
+**What should we believe or decide, given the best current evidence?**
 
-Prefer, in order:
+## Workflow
 
-1. official filings, exchanges, regulators, central banks, statistical agencies, issuer IR, and official APIs;
-2. canonical raw snapshots with provenance and hashes;
-3. reproducible normalized/derived data;
-4. secondary sources only when primary evidence is unavailable or for context.
+1. **Define the decision.** State the claim or choice in one sentence. Make it falsifiable when possible.
+2. **Find the authority.** Read the current primary source and canonical dataset/repository/output. Keep one authority per fact, dataset, or model result.
+3. **Measure directly.** Use real data when available. Record the universe, period, point-in-time rules, benchmark, costs, assumptions, and exact revision.
+4. **Challenge the result.** Compare against a simple baseline or ablation. Prefer OOS or walk-forward evidence. Test important alternative explanations instead of speculating.
+5. **Decide.** Return **keep**, **reject**, **revise**, or **unknown** from measured evidence. Missing evidence stays unknown.
+6. **Verify the delivered state.** Read back the persisted artifact, dataset, model output, or public surface. Merge and release are separate.
 
-Keep observed fact, estimate, guidance, forecast, hypothesis, and interpretation separate.
-
-Preserve source URL, observation/effective date, retrieval time, unit, scope, entity identity, and revision/hash when they affect reproducibility.
-
-Do not convert missing, stale, unavailable, or unverified data into zero or current values.
-
-## Strategy and model validation
+## Investment and model claims
 
 Implementation is not validation.
 
-For empirical investment claims, report the direct outcomes that matter, as applicable:
+When relevant, report:
 
 - universe and selection rule;
 - train / validation / OOS periods;
 - point-in-time and survivorship controls;
-- cumulative and annualized return;
+- cumulative or annualized return;
 - Sharpe or another declared risk-adjusted metric;
 - maximum drawdown;
-- benchmark beta/correlation when relevant;
+- benchmark beta or correlation;
 - turnover, gross/net exposure, and concentration;
 - transaction, spread, slippage, and borrow assumptions;
 - baseline or ablation comparison;
-- sensitivity to important choices such as universe size, costs, dates, or seed.
+- sensitivity to choices that could explain the result.
 
-A larger universe is not automatically better. If universe size could explain the result, test it directly rather than speculate.
+If universe size could explain the outcome, test universe size directly. If costs could explain it, sweep costs. If a negative OOS result rejects the hypothesis cleanly, the experiment is complete.
 
-Do not describe a strategy as validated when the measured OOS result rejects it. A negative result that cleanly rejects a hypothesis is a completed experiment.
+## Evidence
 
-## Repository ownership
+Prefer official filings, exchanges, regulators, central banks, statistical agencies, issuer IR, and official APIs. Then use canonical raw snapshots with provenance, reproducible derived data, and only then secondary sources for context.
 
-Source-data semantics belong to the repository that owns that domain. `investor2` may integrate evidence and decisions across domains, but should not become a duplicate source authority.
+Keep observed facts, estimates, guidance, forecasts, hypotheses, and interpretation separate. Never turn missing, stale, unavailable, or unverified data into a current financial fact.
 
-Shared storage, cache, authentication, or transport infrastructure must stay generic. Do not move dataset-specific freshness, validation, or release authority into an unrelated repository merely because it holds credentials or storage access.
+## Repository boundary
 
-Delete superseded collectors, fallbacks, compatibility paths, duplicated outputs, stale workflows, and obsolete docs once the canonical replacement is verified. Preserve historical reproducibility through Git history and immutable evidence, not live legacy paths.
+Source-data semantics belong to the repository that owns the domain. `investor2` integrates evidence and decisions across domains; it should not duplicate source authority.
 
-When a repository has a dedicated Repo Agent, leave ordinary implementation there. Cross-repository routing should resolve ownership, duplication, dependency, and release boundaries rather than duplicate the implementation workline.
+Shared storage, authentication, cache, and transport must remain generic. Dataset-specific collection, validation, freshness, and release decisions stay with the dataset owner.
 
-## Merge and release
+When a repository has a dedicated Repo Agent, leave ordinary implementation there. Cross-repository work should resolve ownership, duplication, dependencies, and release boundaries.
 
-A bounded repository change may merge when the reviewed revision is correct, deterministic checks pass, and its data/model/provenance contract is preserved.
-
-Release is complete only when the merged revision and the real output surface are directly verified. For data, read back the published artifact/manifest and verify identity/hash/freshness as applicable. For public views, verify the deployed page. For research, verify the persisted empirical artifact and recompute the reported result when practical.
-
-Never infer `released` from `merged`, and never mark a correct merged implementation as failed only because a later live-source condition is blocked.
+Delete superseded collectors, fallbacks, compatibility paths, duplicate outputs, stale workflows, and obsolete docs after the canonical replacement is verified.
 
 ## Safety
 
-Never execute trades, transfers, borrowing, account changes, or credential changes unless the user explicitly requests an allowed action through an appropriate authorized tool.
+Never invent prices, returns, holdings, financial statements, or market events. Never execute trades, transfers, borrowing, or account changes unless explicitly requested through an appropriate authorized tool.
 
-Never invent prices, returns, holdings, financial statements, source observations, or market events.
+## Output
 
-## Report
-
-Keep the final answer decision-oriented:
-
-- what was tested or changed;
-- the strongest current evidence;
-- the measured economic result;
-- what remains unknown or blocked;
-- the canonical owner of the next action.
-
-Use plots and tables when they make the measured result easier to judge, not as decoration.
+Lead with the decision, then show the strongest evidence, measured economic result, remaining uncertainty, and canonical owner of the next action. Use a plot or table when it makes the result easier to judge.
