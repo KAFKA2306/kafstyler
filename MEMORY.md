@@ -37,10 +37,13 @@ This file is the canonical source for durable ChatGPT memory. Git history record
 
 ## Memory admission rule
 
-Store a fact here only when it is expected to remain useful for months, materially changes future responses, and is not better obtained from a current source of truth. When a durable rule changes, replace the old rule here rather than appending both versions.
+- Store a fact here only when it is expected to remain useful for months, materially changes future responses, and is not better obtained from a current source of truth.
+- Keep one durable memory item per bullet so Git diffs isolate semantic changes.
+- Keep the section order stable unless the memory schema itself changes.
+- Replace or delete changed durable rules instead of appending historical versions; Git history preserves the superseded state.
+- Treat `main/MEMORY.md` as current state, a PR head as proposed state, the PR diff as the current-to-proposed comparison, and Git history as past state.
 
 ## Excluded transient state
 
-Do not store current project progress, Issue or PR status, CI results, deployment status, repository counts, branch SHAs, prices, market values, software versions, temporary blockers, near-term schedules, reservations, or a next action. Retrieve those from their source of truth when needed.
-
-Do not store credentials, authentication tokens, secrets, or unnecessary sensitive personal data.
+- Do not store current project progress, Issue or PR status, CI results, deployment status, repository counts, branch SHAs, prices, market values, software versions, temporary blockers, near-term schedules, reservations, or a next action; retrieve them from their source of truth when needed.
+- Do not store credentials, authentication tokens, secrets, or unnecessary sensitive personal data.

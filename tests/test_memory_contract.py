@@ -5,6 +5,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 MEMORY = ROOT / "MEMORY.md"
+PROMPT = ROOT / "CHATGPT_MEMORY_PROMPT.md"
 VALIDATOR = ROOT / "scripts" / "validate_memory.py"
 
 spec = spec_from_file_location("validate_memory", VALIDATOR)
@@ -47,6 +48,38 @@ class MemoryContractTest(unittest.TestCase):
         injected = base.replace(bullet, f"{bullet}\n{bullet}")
         errors = validate_memory.validate(injected)
         self.assertTrue(any("duplicate memory bullet" in error for error in errors))
+
+    def test_section_order_is_fixed(self):
+        base = MEMORY.read_text(encoding="utf-8")
+        reordered = base.replace(
+            "## Operating principles",
+            "## Temporary section\n\n- Invalid schema.\n\n## Operating principles",
+        )
+        errors = validate_memory.validate(reordered)
+        self.assertTrue(any("section order/schema mismatch" in error for error in errors))
+
+    def test_section_prose_is_rejected_to_keep_diffs_atomic(self):
+        base = MEMORY.read_text(encoding="utf-8")
+        injected = base.replace(
+            "## Memory admission rule\n",
+            "## Memory admission rule\n\nThis paragraph makes semantic diffs noisy.\n",
+        )
+        errors = validate_memory.validate(injected)
+        self.assertTrue(any("atomic top-level bullet" in error for error in errors))
+
+    def test_chatgpt_audit_prompt_is_canonical_and_actionable(self):
+        prompt = PROMPT.read_text(encoding="utf-8")
+        for required in (
+            "KAFKA2306/basic_prompts",
+            "main ブランチにある MEMORY.md",
+            "KEEP:",
+            "ADD:",
+            "REPLACE:",
+            "DELETE:",
+            "MOVE-OUT:",
+            "私が「実行」と明示した後にだけ",
+        ):
+            self.assertIn(required, prompt)
 
 
 if __name__ == "__main__":

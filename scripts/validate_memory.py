@@ -45,16 +45,21 @@ def validate(text: str) -> list[str]:
     lines = text.splitlines()
     sections = _section_for_line(lines)
 
-    for heading in REQUIRED_HEADINGS:
-        if heading not in lines:
-            errors.append(f"missing required heading: {heading}")
+    actual_headings = [line for line in lines if line.startswith("## ")]
+    if actual_headings != list(REQUIRED_HEADINGS):
+        errors.append(
+            "section order/schema mismatch: expected " + " -> ".join(REQUIRED_HEADINGS)
+        )
 
     seen_bullets: dict[str, int] = {}
     for number, (line, section) in enumerate(zip(lines, sections), start=1):
         stripped = line.strip()
 
-        if stripped.startswith("- "):
-            normalized = re.sub(r"\s+", " ", stripped.casefold())
+        if section is not None and stripped and not line.startswith("## ") and not line.startswith("- "):
+            errors.append(f"line {number}: section content must be one atomic top-level bullet")
+
+        if line.startswith("- "):
+            normalized = re.sub(r"\s+", " ", line.casefold())
             if normalized in seen_bullets:
                 errors.append(
                     f"line {number}: duplicate memory bullet; first seen on line {seen_bullets[normalized]}"
