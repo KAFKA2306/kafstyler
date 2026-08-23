@@ -1,6 +1,10 @@
 # basic_prompts
 
-Private repository for reusable prompts, agent instructions, and durable ChatGPT memory.
+Private repository for reusable prompts, agent instructions, durable ChatGPT memory, and Agent Skills.
+
+## Skills
+
+- [`skills/pages/SKILL.md`](skills/pages/SKILL.md): improve GitHub Pages and other public static web surfaces with simple, evidence-first, production-verified changes.
 
 ## ChatGPT memory
 
