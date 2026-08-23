@@ -17,6 +17,15 @@ This repository is private. Keep development, verification, release, and cleanup
 - Keep one canonical branch/PR for one outcome. Do not create duplicates to work around a rejected write.
 - If a host-side safety system rejects a GitHub write, re-fetch current state and retry the exact canonical action once. If rejected again, preserve the single canonical workline and report the blocker.
 
+## ChatGPT Memory
+
+- `MEMORY.md` is the only canonical file for durable ChatGPT memory in this repository.
+- Keep only durable preferences, operating principles, stable constraints, and source-of-truth routing in `MEMORY.md`.
+- Do not append historical current-state snapshots. Replace changed durable rules; Git history preserves superseded versions.
+- Do not store current Issue/PR/CI/deployment state, prices, versions, temporary progress, short-lived schedules, credentials, or secrets in `MEMORY.md`.
+- Treat ChatGPT Saved Memory as a derived cache, not an authority. Do not automatically import conversationally inferred memory back into `MEMORY.md`.
+- Validate memory changes with `python scripts/validate_memory.py` and `python -m unittest tests.test_memory_contract` before treating them as ready.
+
 ## Verification
 
 - Derive verification commands from the repository's current README, package/build files, and executable configuration rather than inventing CI-only checks.
