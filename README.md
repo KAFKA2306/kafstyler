@@ -6,6 +6,7 @@ Private repository for reusable prompts, agent instructions, durable ChatGPT mem
 
 - [`skills/finance/SKILL.md`](skills/finance/SKILL.md): turn finance questions, datasets, models, and repository work into current, reproducible evidence and decisions.
 - [`skills/pages/SKILL.md`](skills/pages/SKILL.md): improve GitHub Pages and other public static web surfaces with simple, evidence-first, production-verified changes.
+- [`skills/research-data/SKILL.md`](skills/research-data/SKILL.md): turn research questions and source material into trustworthy, reusable data and evidence-backed results with minimal complexity.
 
 ## ChatGPT memory
 
