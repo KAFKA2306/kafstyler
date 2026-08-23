@@ -6,8 +6,9 @@ Private repository for reusable prompts, agent instructions, durable ChatGPT mem
 
 - [`skills/finance/SKILL.md`](skills/finance/SKILL.md): turn a finance question into a verified keep / reject / revise / unknown decision.
 - [`skills/games/SKILL.md`](skills/games/SKILL.md): improve game and board-game products with edition-safe rules, player value, revenue awareness, and production verification.
-- [`skills/pages/SKILL.md`](skills/pages/SKILL.md): improve GitHub Pages and other public static web surfaces with simple, evidence-first, production-verified changes.
+- [`skills/pages/SKILL.md`](skills/pages/SKILL.md): design public Pages around what visitors actually want to understand or do.
 - [`skills/research-data/SKILL.md`](skills/research-data/SKILL.md): turn research questions and source material into trustworthy, reusable data and evidence-backed results with minimal complexity.
+- [`skills/sanitize-artifacts/SKILL.md`](skills/sanitize-artifacts/SKILL.md): turn iterative or conversation-shaped drafts into clean standalone deliverables.
 - [`skills/vr-3d/SKILL.md`](skills/vr-3d/SKILL.md): build VR/3D/spatial assets, tools, and experiences around reusable artifacts, real consumer evidence, distribution, and revenue.
 
 ## ChatGPT memory
