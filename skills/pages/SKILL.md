@@ -1,48 +1,74 @@
 ---
 name: pages
-description: Build and improve GitHub Pages and other public web surfaces with clear information hierarchy, canonical data, minimal implementation, and production verification.
+description: Design and improve public web pages around what visitors actually want to understand or do. Use for GitHub Pages, dashboards, explainers, data products, landing pages, and other public web surfaces.
 ---
 
 # Pages
 
-Make the public page answer its main user question as quickly and reliably as possible.
+The page is the product, not a window into its engineering process.
 
-## Workflow
+A visitor should understand the subject itself and complete the intended task without knowing the repository, implementation, CI, deployment, commits, or development history.
 
-1. Read the current repository, canonical data/API, implementation, and live page.
-2. Find the single highest-value user-facing weakness.
-3. Make the smallest coherent change that fixes it.
-4. Reuse or delete before adding code, dependencies, services, or duplicate data.
-5. Run the existing checks and verify the deployed production surface.
-6. Report the observable before → after result. CI or merge alone is not completion.
+## Every run
 
-## Page rules
+1. Identify the visitor and the one main question or task that brought them here.
+2. Open the live page and inspect the real content/data it represents.
+3. Find the largest obstacle to understanding or action.
+4. Make the smallest coherent improvement to content, hierarchy, interaction, or presentation.
+5. Verify the public user journey on the live page when deployment is part of the task.
 
-- Put the most important verified state or result first.
-- Show meaningful change or context when it helps interpretation; never manufacture activity.
-- Separate observed facts from estimates, forecasts, plans, and interpretation.
-- Keep source, scope, units, definitions, and as-of time visible near important claims.
-- Render canonical repository data or APIs; do not create another manually maintained truth.
-- Treat missing, stale, partial, loading, empty, and error states explicitly.
-- Prefer semantic HTML, native controls, readable typography, spacing, and simple layouts.
-- Keep keyboard navigation, focus, contrast, touch targets, mobile reflow, and reduced motion usable.
-- Use charts only when they communicate a comparison or trend better than text or a table.
-- Avoid decorative dashboard clutter, repeated cards, unnecessary gradients, motion, frameworks, analytics, and dependencies.
+## What the page should show
+
+Lead with the subject matter.
+
+- What is this?
+- What is important now?
+- What should I notice, compare, decide, or do?
+- What context is necessary to understand it?
+- Where can I verify an important claim?
+
+Use history or change only when it is history or change in the subject the visitor cares about. Do not surface engineering history as user content.
+
+## Keep engineering behind the page
+
+Repository state, commits, PRs, CI, deployment IDs, implementation notes, test evidence, framework choices, and refactoring history are internal verification material unless the page itself is explicitly about software operations.
+
+Use those internally to make the page trustworthy. Do not make visitors read them.
+
+## Information design
+
+- Give the strongest visual emphasis to the most important user-facing information.
+- Prefer a clear narrative and visual hierarchy over a collection of equal cards.
+- Put explanation next to the thing it explains.
+- Use charts, maps, tables, images, or interaction only when they make the subject easier to understand.
+- Make important comparisons visually immediate.
+- Keep labels and language concrete; remove internal jargon that visitors do not need.
+- Reveal detail progressively instead of showing everything at once.
+- Preserve useful state in URLs when sharing or returning to a view matters.
+
+## Evidence and data
+
+- Use canonical data and primary evidence where available.
+- Separate observed facts from estimates, forecasts, plans, marketing claims, and interpretation.
+- Show source, scope, unit, definition, and as-of information where they affect meaning.
+- Never turn missing, unknown, stale, or unverified data into zero or current data.
+- Do not create a second manually maintained truth just for the page.
+
+## Web quality
+
+- Prefer semantic HTML and native browser behavior.
+- Make mobile, keyboard, focus, contrast, touch targets, loading, empty, error, and reduced-motion states work.
+- Prefer fewer dependencies, less JavaScript, and simpler layouts when they deliver the same result.
+- Avoid decorative dashboard clutter, repeated cards, gratuitous gradients, animation, and generic AI-looking composition.
 
 ## Decision rule
 
-Prefer the option that:
+Prefer the change that lets a first-time visitor understand the subject or complete the task sooner, with less ambiguity and less interface.
 
-1. answers the primary question sooner;
-2. uses more direct evidence;
-3. removes more ambiguity;
-4. needs less code and maintenance;
-5. is easier to verify in production.
-
-Every run should leave the page more useful or simpler than before.
+If a change mainly explains how the page was built rather than what the visitor came to learn or do, do not put it on the page.
 
 ## Done
 
-When deployment is part of the task, completion requires production verification of the relevant user journey and data. A local render, PR, merge, or green CI is not enough.
+Done means the intended visitor can use the public page successfully and the important information is correct and understandable.
 
-Use established upstream guidance such as WCAG or platform documentation when deeper detail is needed instead of expanding this Skill with local rules.
+Implementation, merge, CI, and deployment are means of verification, not the user-facing outcome.
