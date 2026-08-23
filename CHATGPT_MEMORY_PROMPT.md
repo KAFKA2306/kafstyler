@@ -1,39 +1,16 @@
-# ChatGPT Memory Audit Prompt
+KAFKA2306/basic_prompts の main/MEMORY.md を GitHub から実際に読み、durable ChatGPT memory の唯一の正準として扱ってください。
 
-Paste the prompt below into ChatGPT when you want to audit or refresh its durable memory against the canonical GitHub state.
+現在参照できる ChatGPT 側の長期ユーザー情報と比較し、各項目を次に分類してください。
+- KEEP: MEMORY.md と整合する durable item
+- ADD: MEMORY.md に追加する価値がある durable item
+- REPLACE: 既存 durable item の更新
+- DELETE: 不要・重複・終了済み・不適切な item
+- MOVE-OUT: 現在値なので source of truth から都度取得すべき item
 
-```text
-KAFKA2306/basic_prompts の main ブランチにある MEMORY.md を GitHub から実際に読み、これを durable ChatGPT memory の唯一の正準として扱ってください。
+PR / Issue / branch / SHA / CI / deployment / project進捗 / blocker / next action / 価格 / score / ranking / version / current location / 短期予定 / 予約などの mutable state は durable memory に残さないでください。
 
-目的は、ChatGPT が保持・参照している長期ユーザー情報を、現在の MEMORY.md と比較し、古い現在値・一時的 snapshot・重複・競合を除去しやすい状態にすることです。
+まず監査だけを行い、MEMORY.md を基準に ADD / REPLACE / DELETE / MOVE-OUT の具体的な差分を示してください。REPLACE は可能なら `- old` / `+ new` で示してください。
 
-まず監査だけを行い、変更はまだ実行しないでください。
+現在値を外部 source で確認できる場合は memory で断定せず、正準 source を確認してください。ChatGPT Saved Memory 全件を直接読めない場合は、見えていない項目を推測して存在すると断定しないでください。
 
-各項目を次のいずれかに分類してください。
-- KEEP: MEMORY.md と整合し、今後も長期保持する価値がある。
-- ADD: ChatGPT 側にある安定情報で、MEMORY.md に追加する価値がある。
-- REPLACE: durable rule / preference が更新されており、MEMORY.md の既存項目を置換すべき。
-- DELETE: 不要、重複、終了済み、または長期 memory として不適切。
-- MOVE-OUT: 現在値なので memory には保存せず、GitHub / Calendar / Gmail / Web / production / actual file などの source of truth から都度取得すべき。
-
-特に、次は durable memory として残さないでください。
-- PR / Issue / branch / SHA / CI / deployment / repository count
-- project progress / temporary blocker / next action
-- price / market value / score / ranking / numerical snapshot
-- software / model / framework / runtime / tool version
-- current location / short-term schedule / reservation / temporary plan
-- repo-specific current policy that can be read from the owning repository or actual permissions
-- unnecessary third-party personal information
-
-比較結果は、現在の MEMORY.md を基準に、ADD / REPLACE / DELETE / MOVE-OUT ごとに具体的な差分候補を示してください。REPLACE は可能な限り `- old` / `+ new` の形で示してください。
-
-事実が現在も有効か外部 source で確認できるものは、memory を根拠に現在値を断定せず、必要なら正準 source を確認してください。
-
-ChatGPT 内部の Saved Memory 全件を直接列挙・変更できない場合は、できる範囲を明示し、見えていない memory を推測して存在すると断定しないでください。
-
-監査結果の最後に、MEMORY.md の変更案と ChatGPT 側で削除・更新すべき候補を分けて提示してください。
-
-私が「実行」と明示した場合は、利用可能な機能の範囲で監査結果を実行してください。その際、ChatGPT 側の Saved Memory を編集できるなら、MEMORY.md の内容を複製せず、current main/MEMORY.md を読むための pointer だけを残してください。直接編集できない場合は、編集したと主張せず、GitHub 側で実行できた変更と product-side の未実行部分を明確に分けてください。
-```
-
-`MEMORY.md` contains the durable state. This file contains only the reusable audit/sync instruction and must not duplicate the durable memory values.
+私が「実行」と明示した後だけ変更してください。GitHub 側は MEMORY.md を更新し、ChatGPT Saved Memory を編集できる場合は durable items を複製せず current main/MEMORY.md を読むための pointer だけを残してください。実行できなかった変更は完了と主張せず明示してください。
