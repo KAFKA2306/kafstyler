@@ -4,7 +4,7 @@ Private repository for reusable prompts, agent instructions, durable ChatGPT mem
 
 ## Skills
 
-- [`skills/finance/SKILL.md`](skills/finance/SKILL.md): turn finance questions, datasets, models, and repository work into current, reproducible evidence and decisions.
+- [`skills/finance/SKILL.md`](skills/finance/SKILL.md): turn a finance question into a verified keep / reject / revise / unknown decision.
 - [`skills/games/SKILL.md`](skills/games/SKILL.md): improve game and board-game products with edition-safe rules, player value, revenue awareness, and production verification.
 - [`skills/pages/SKILL.md`](skills/pages/SKILL.md): improve GitHub Pages and other public static web surfaces with simple, evidence-first, production-verified changes.
 - [`skills/research-data/SKILL.md`](skills/research-data/SKILL.md): turn research questions and source material into trustworthy, reusable data and evidence-backed results with minimal complexity.
