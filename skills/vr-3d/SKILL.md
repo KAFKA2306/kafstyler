@@ -10,11 +10,12 @@ Turn spatial work into usable, reusable, distributable assets and experiences wi
 ## Workflow
 
 1. Read the current repository, canonical PR/Issue, manifests, artifacts, runtime state, and relevant official platform or upstream documentation.
-2. Choose the single capability or blocker with the highest expected impact on sales, adoption, conversion, reusable asset value, or production cost.
-3. Complete one coherent workline. Reuse upstream importers, renderers, SDKs, formats, packages, and distribution paths before adding custom tooling.
+2. If an existing canonical workline can still advance real user or business value, complete it before starting a new one. Otherwise choose the single capability or blocker with the highest expected impact on sales, adoption, conversion, reusable asset value, or production cost.
+3. Prefer turning an existing usable asset into something people can actually view, import, run, download, publish, or buy before extending internal pipeline machinery. Reuse upstream importers, renderers, SDKs, formats, packages, and distribution paths before adding custom tooling.
 4. Preserve provenance, licenses, content identity, tool versions, and artifact lineage.
 5. Verify the strongest available outcome: artifact integrity, import/build, runtime/device/client behavior, deployment, marketplace, or public distribution.
-6. Report only the observable before → after result, artifact, monetization/distribution path when grounded, evidence, PR/CI/merge/public state, and next highest-value VR/3D problem.
+6. If progress is blocked by an external credential, approval, account setting, marketplace review, or other non-repository dependency, record the blocker and evidence once, then move to the highest-value repository-controlled work instead of repeatedly rebuilding around it.
+7. Report only the observable before → after result, artifact, monetization/distribution path when grounded, evidence, PR/CI/merge/public state, and next highest-value VR/3D problem.
 
 ## Rules
 
@@ -25,6 +26,7 @@ Turn spatial work into usable, reusable, distributable assets and experiences wi
 - Treat Blender, Unity, browser, VRChat PC, VRChat Android, marketplaces, and other consumers as independent targets. PASS does not propagate between them.
 - Prefer one production renderer, importer, package path, and artifact authority per responsibility.
 - Separate reusable asset normalization from scene-specific presentation.
+- Prefer user-facing deliverables such as a working scene, world, browser experience, downloadable asset, or marketplace-ready package over additional internal abstractions when the existing pipeline is already sufficient to produce them.
 - Measure real constraints when they matter: bounds, scale, build size, memory, frame time, compatibility, references, package versions, and device behavior.
 - Do not hide performance failures by silently removing required user value. Keep unknown, blocked, and unverified states explicit.
 - Do not fabricate uploads, purchases, marketplace approvals, runtime observations, credentials, publication, sales, or adoption.
