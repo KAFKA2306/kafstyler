@@ -17,6 +17,10 @@ This repository is private. Keep development, verification, release, and cleanup
 - Keep one canonical branch/PR for one outcome. Do not create duplicates to work around a rejected write.
 - If a host-side safety system rejects a GitHub write, re-fetch current state and retry the exact canonical action once. If rejected again, preserve the single canonical workline and report the blocker.
 
+## Artifact final pass
+
+For any finished artifact, make it stand alone for its intended audience. Remove prompt/conversation history, revision commentary, tool scaffolding, incidental examples, and other production meta unless the reader needs it to understand, trust, use, or verify the result. Unify terminology, assumptions, structure, and voice rather than preserving seams from iterative editing.
+
 ## ChatGPT Memory
 
 - `MEMORY.md` is the only canonical durable memory; `CHATGPT_MEMORY_PROMPT.md` only tells ChatGPT how to audit/sync it and must not duplicate its values.
