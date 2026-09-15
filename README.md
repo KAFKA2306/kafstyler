@@ -1,6 +1,12 @@
 # basic_prompts
 
-Private repository for reusable prompts, agent instructions, durable ChatGPT memory, and Agent Skills.
+Private compatibility repository for legacy/lightweight prompts, repository-local agent instructions, durable ChatGPT memory, and existing Agent Skills.
+
+## Ownership boundary
+
+New reusable prompts and formal reusable artifacts are registered in `KAFKA2306/prompt-vault`, not here. Raw facts, episodes, lessons, failures, and corrections belong in `KAFKA2306/graphiti`; do not copy Graphiti raw knowledge into this repository.
+
+`prompt-boundary.json` is the machine-readable inventory and routing contract for what remains here. It distinguishes retained compatibility content from content that belongs in Prompt Vault or Graphiti. Secrets and private source material must never be promoted to a public surface.
 
 ## Skills
 
@@ -11,12 +17,12 @@ Private repository for reusable prompts, agent instructions, durable ChatGPT mem
 - [`skills/research-data/SKILL.md`](skills/research-data/SKILL.md): research/data work where source identity, provenance, deduplication, reproducibility, and baseline comparison matter.
 - [`skills/vr-3d/SKILL.md`](skills/vr-3d/SKILL.md): VR/3D/spatial work with artifact lineage, consumer-target verification, distribution, and runtime constraints.
 
-Generic repository, verification, and artifact-finalization rules belong in `AGENTS.md`; Skills should contain domain-specific decision rules.
+Generic repository, verification, and artifact-finalization rules belong in `AGENTS.md`; Skills contain existing domain-specific decision rules. Do not add a new reusable prompt here merely because a Skill references it.
 
 ## ChatGPT memory
 
 - `MEMORY.md`: canonical durable state. `main` = current, PR diff = proposed change, Git history = past.
-- `CHATGPT_MEMORY_PROMPT.md`: paste-ready prompt for auditing/syncing ChatGPT against `main/MEMORY.md`.
+- `CHATGPT_MEMORY_PROMPT.md`: repository-local compatibility helper for auditing/syncing ChatGPT against `main/MEMORY.md`; it is not the standard registration location for new reusable prompts.
 
 Edit memory through a PR, review the semantic diff, then run:
 
