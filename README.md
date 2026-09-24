@@ -25,3 +25,10 @@ python -m unittest tests.test_memory_contract -v
 ```
 
 Mutable state stays in its source of truth, not in memory.
+
+
+## Autonomy contract
+
+Repeated operating instructions are encoded once in [`policies/autonomy_contract.json`](policies/autonomy_contract.json) and enforced with [`tools/autonomy_contract.py`](tools/autonomy_contract.py).
+
+The CLI can compile a profile-specific agent prompt, initialize a machine-auditable run ledger, reject unsupported completion claims, and return the next incomplete gate. See [`docs/autonomy_contract.md`](docs/autonomy_contract.md).
