@@ -2,6 +2,14 @@
 
 This repository is private. Keep development, verification, release, and cleanup operable with zero mandatory GitHub-hosted Actions spend.
 
+## Knowledge and Prompt Ownership
+
+- `prompt-boundary.json` is the machine-readable routing/inventory contract for content retained in this repository.
+- Register new reusable prompts and formal reusable artifacts in `KAFKA2306/prompt-vault`; do not make `basic_prompts` a second current prompt authority.
+- Store raw facts, episodes, lessons, failures, and corrections in `KAFKA2306/graphiti`; do not copy Graphiti raw knowledge into this repository.
+- Existing content marked `remain` in `prompt-boundary.json` is retained only for its stated repository-local compatibility role.
+- Never promote secrets or private source material to a public repository or artifact.
+
 ## Zero-Cost Rule
 
 - Do not add or require GitHub-hosted runners (`ubuntu-latest`, `windows-latest`, `macos-latest`, or equivalent) unless the user explicitly changes the cost contract.

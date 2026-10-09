@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "newPromptAuthority": "KAFKA2306/prompt-vault",
+  "knowledgeAuthority": "KAFKA2306/graphiti",
+  "repositoryRole": "legacy-lightweight-compatibility",
+  "rules": {
+    "newReusablePrompt": "prompt-vault",
+    "rawFactEpisodeLesson": "graphiti",
+    "graphitiRawDataAllowed": false,
+    "secretOrPrivatePromotionAllowed": false
+  },
+  "inventory": [
+    {
+      "path": "CHATGPT_MEMORY_PROMPT.md",
+      "kind": "legacy-prompt",
+      "disposition": "remain",
+      "reason": "Repository-local compatibility helper for auditing MEMORY.md; it is not a general reusable prompt authority."
+    },
+    {
+      "path": "MEMORY.md",
+      "kind": "durable-memory",
+      "disposition": "remain",
+      "reason": "Existing private durable-memory authority; not a Prompt Vault prompt and not Graphiti raw episode storage."
+    },
+    {
+      "path": "skills/",
+      "kind": "domain-skills",
+      "disposition": "remain",
+      "reason": "Repository-local domain decision rules retained for compatibility; new reusable prompts/artifacts belong in Prompt Vault."
+    }
+  ]
+}
