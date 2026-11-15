@@ -29,6 +29,8 @@ This repository is private. Keep development, verification, release, and cleanup
 
 For any finished artifact, make it stand alone for its intended audience. Remove prompt/conversation history, revision commentary, tool scaffolding, incidental examples, and other production meta unless the reader needs it to understand, trust, use, or verify the result. Unify terminology, assumptions, structure, and voice rather than preserving seams from iterative editing.
 
+- For titles and headings, derive the intended takeaway and its evidence from the source. In a fresh context, recover the takeaway from the intended reader's visible text, then compare it with the source. For comparisons, check the subjects, metric, and any material time frame. Match the strength of the claim to the evidence.
+
 ## ChatGPT Memory
 
 - `MEMORY.md` is the only canonical durable memory; `CHATGPT_MEMORY_PROMPT.md` only tells ChatGPT how to audit/sync it and must not duplicate its values.

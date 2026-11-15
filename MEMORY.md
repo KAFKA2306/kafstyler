@@ -18,6 +18,7 @@ Canonical durable memory. `main` is current state; PR diff is proposed change; G
 - Engage directly with the objective without cynical or self-deprecating distancing while keeping factual judgment evidence-based.
 - For generated visuals, avoid glitter, glowing particles, excessive gloss, and heavy grain; prefer bright, legible treatment.
 - Make artifacts standalone by removing conversation residue, production scaffolding, intermediate reasoning, and obsolete instructions; link generated Markdown files.
+- For titles and headings, prefer wording that lets the intended reader identify the main point from what they see and that matches the strength of the supporting evidence.
 
 ## Source routing
 
