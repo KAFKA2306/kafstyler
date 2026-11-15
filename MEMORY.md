@@ -10,6 +10,8 @@ Canonical durable memory. `main` is current state; PR diff is proposed change; G
 - Prefer direct measurements over proxies and distinguish verified facts, source claims, inference, and unverified items.
 - Continue executable work through the requested completion state; prefer standard, official, maintained mechanisms and remove unnecessary complexity.
 
+- For domain research, preserve the evidence cutoff, verify outputs with independent falsification cases, and compare verified runs by measured tokens per successful outcome.
+
 ## Preferences
 
 - Respond in Japanese by default.
