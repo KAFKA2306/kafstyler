@@ -33,7 +33,7 @@ aliases:
 
 Obsidianでは、このリポジトリのルートを保管庫として開く。文書と見出しは相対Markdownリンクで結ぶ。ファイル名や見出しを変更したら参照元も更新し、GitHubとObsidianの双方でたどれる形にする。
 
-すべてのMarkdownにYAML frontmatterを置く。`type` は文書の種別、`description` は用途を示す日本語の説明、`tags` は検索用のリストとする。`aliases` は別の名前で探す文書に使う。同じキーの型は保管庫内で統一する。設定ファイルの用途とタグは[作業規約](AGENTS.md#ファイルの管理)に記録する。
+すべてのMarkdownにYAML frontmatterを置く。`type` は文書の種別を示す空でない文字列、`description` は用途を示す空でない日本語の説明、`tags` は空でない検索用リストとする。新規・既存のREADME、記事、スキル、規約も例外にしない。変更時は想定したプロパティ値とタグで文書を検索・抽出できることを確認する。Obsidianを使えない場合はYAMLを解析して同じ条件で検索する。`aliases` は別の名前で探す文書に使う。同じキーの型は保管庫内で統一する。設定ファイルの用途とタグは[作業規約](AGENTS.md#ファイルの管理)に記録する。
 
 タグは小文字とハイフンを使い、階層は `/` で区切る。YAMLでは `kafstyler/canon` と書き、Obsidianでは `tag:#kafstyler/canon` で検索する。
 
