@@ -65,6 +65,13 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [評価と比較](skills/benchmark/SKILL.md) · [自律開発](skills/deliver/SKILL.md) · [データ設計](skills/schema/SKILL.md) · [反証レビュー](skills/scrutiny/SKILL.md) · [文章の推敲](skills/humanizer/SKILL.md) · [目標設定](skills/charter/SKILL.md) · [不要なファイル・コード・文章の削除](skills/prune/SKILL.md)
 
+### 読者から記事を設計する
+
+- [英国国家統計局・Designing content to meet user needs](https://service-manual.ons.gov.uk/content/writing-for-users/user-needs)（公式編集ガイド）。読者が何をしたいかを根拠から把握し、何ができれば記事がその用事に応えたといえるかを執筆前に決める。
+- [Nielsen Norman Group・The Layer-Cake Pattern of Scanning Content on the Web](https://www.nngroup.com/articles/layer-cake-pattern-scanning/)（視線計測の研究報告）。見出しを拾い読みして必要な本文を探す行動を踏まえ、見出しだけでも答えの場所を見つけられるかを確かめる。
+
+[文章の推敲](skills/humanizer/SKILL.md#記事を読者から設計する)
+
 ## エージェントとハーネス
 
 ### スキルの執筆
