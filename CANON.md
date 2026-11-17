@@ -42,6 +42,7 @@ Obsidianに置くMarkdownノートでは、ファイル先頭のYAMLにプロパ
 | <a name="canon-mcp-tools"></a>[Model Context Protocol・Tools](https://modelcontextprotocol.io/specification/latest/server/tools) | 標準仕様 | MCPツールの発見、入力スキーマ、呼び出しと結果 | [自律開発](commands/autonomous-development.md) |
 | <a name="canon-openai-harness-engineering"></a>[OpenAI・Harness engineering](https://openai.com/index/harness-engineering/) | 公式技術記事 | エージェントがたどれるリポジトリ構成と検証 | [自律開発](commands/autonomous-development.md) · [自動評価](commands/automated-evaluation.md) |
 | <a name="canon-anthropic-long-running-harness"></a>[Anthropic・Effective harnesses for long-running agents](https://www.anthropic.com/research/effective-harnesses-for-long-running-agents) | 公式技術記事 | 長時間作業の引き継ぎと成果の確認 | [自律開発](commands/autonomous-development.md) · [自動評価](commands/automated-evaluation.md) |
+| <a name="canon-openai-fde"></a>[OpenAI・現場で成果を届けるエンジニアリング（What FDE means at OpenAI）](https://openai.com/index/forward-deployed-engineering-means/) | 開発元の実践記事 | 利用者の成果から入り、実際の利用環境で改善を確かめる。 | [目標設定](commands/outcome-design.md) · [自律開発](commands/autonomous-development.md) |
 
 ## AIエンジニアリングの書籍
 
@@ -72,6 +73,8 @@ Obsidianに置くMarkdownノートでは、ファイル先頭のYAMLにプロパ
 | --- | --- | --- | --- |
 | <a name="canon-obsidian-properties"></a>[Obsidian・Properties](https://obsidian.md/help/properties) | 公式ドキュメント | ファイル先頭のYAML、プロパティの名前と型 | [データ設計](commands/data-design.md) |
 | <a name="canon-obsidian-tags"></a>[Obsidian・Tags](https://obsidian.md/help/tags) | 公式ドキュメント | タグのリスト、階層、検索 | [データ設計](commands/data-design.md) |
+| <a name="canon-obsidian-vault"></a>[Obsidian・保管庫の作成](https://obsidian.md/help/vault) | 公式文書 | 既存フォルダを保管庫として開く。 | [データ設計](commands/data-design.md) |
+| <a name="canon-obsidian-links"></a>[Obsidian・内部リンク](https://obsidian.md/help/links) | 公式文書 | ノートと見出しを相対Markdownリンクで結ぶ。 | [データ設計](commands/data-design.md) |
 
 ## CLI・開発・インフラ
 
@@ -128,3 +131,12 @@ Obsidianに置くMarkdownノートでは、ファイル先頭のYAMLにプロパ
 | --- | --- | --- | --- |
 | <a name="canon-kafka-zenn"></a>[かふかのZenn記事一覧](https://zenn.dev/kafka2306?tab=articles) | 記事一覧 | 掲載される公開記事をすべて含む。作業に関係する記事を一覧から参照する。 | [自動評価](commands/automated-evaluation.md) · [自律開発](commands/autonomous-development.md) · [データ設計](commands/data-design.md) · [対立仮説](commands/devils-advocate.md) · [文書校正](commands/editorial.md) · [目標設定](commands/outcome-design.md) · [AIスロップ削除](commands/remove-ai-slop.md) |
 | <a name="canon-kafka-ai-complexity"></a>[かふか「なぜAIに任せるほど、あなたのコードは複雑になるのか」](https://zenn.dev/kafka2306/articles/2026-08-16-ai-added-decision-cost-audit) | 記事 | 分岐や状態の重複を見つけ、統合や削除の優先順位を決める。 | [AIスロップ削除](commands/remove-ai-slop.md) |
+| <a name="canon-kafka-issue-development"></a>[AIに同じ指示を繰り返すのをやめた。Issue駆動開発という最小運用](https://zenn.dev/kafka2306/articles/issue-driven-development) | 記事 | 終わった変更の経緯をIssueに残し、現在の仕様として必要な記述を正本に集約する。 | [AIスロップ削除](commands/remove-ai-slop.md) |
+| <a name="canon-kafka-crash-development"></a>[AIを「過保護」にするな。スタックトレースを聖典とする開発規律 "Crash-Driven Development"](https://zenn.dev/kafka2306/articles/11cd731eebded1) | 記事 | 障害の原因を隠す広すぎる例外捕捉やフォールバックを見直し、根本原因を観測できる形にする。 | [AIスロップ削除](commands/remove-ai-slop.md) |
+
+## ISUCONのハーネス
+
+| 資料 | 種別 | 用途・留意点 | 対応コマンド |
+| --- | --- | --- | --- |
+| <a name="canon-isucon-preparation"></a>[ISUCON2026 で優勝しました（準備編）](https://zenn.dev/luvtechno/articles/isucon2026-preparation) | 当事者の実践記録 | 素の構成を先に測り、追加した知識や道具の効果を同じ課題で比較する。 | [自動評価](commands/automated-evaluation.md) · [自律開発](commands/autonomous-development.md) |
+| <a name="canon-isucon-harness"></a>[fukabori.fm 第142回「ISUCON2026で優勝する方法 w/ kawasy」](https://fukabori.fm/episode/142) | 当事者インタビュー | 長時間の自律実行、競技用ハーネスを小さくした経緯、計測と停止の判断を参照する。 | [自律開発](commands/autonomous-development.md) · [自動評価](commands/automated-evaluation.md) |

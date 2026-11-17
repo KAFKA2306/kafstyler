@@ -6,7 +6,11 @@ description: "不要な文章、フォルダ、ファイル、スクリプト、
 
 任意の出力で人が読む文章には[imozの執筆・推敲ルール](../CANON.md#canon-humanizer-ja)を適用する。[出力の共通基準](../MISSION.md#mission-output-style)
 
-実装の整理に着手する前に、かふかのZenn記事[「なぜAIに任せるほど、あなたのコードは複雑になるのか」](https://zenn.dev/kafka2306/articles/2026-08-16-ai-added-decision-cost-audit)を読む。変更前後で、同じ判断を繰り返す分岐、同じ事実を別々に持つ状態、処理を渡すだけの中間層を確認し、フォルダの統合やファイルの削除に反映する。[聖典台帳の該当項目](../CANON.md#canon-kafka-ai-complexity)
+着手前に、かふかのZenn記事を3本読み、対象に当てはまる整理基準を選ぶ。
+
+- [なぜAIに任せるほど、あなたのコードは複雑になるのか](https://zenn.dev/kafka2306/articles/2026-08-16-ai-added-decision-cost-audit) 重複する指示・検証・状態・分岐を洗い出し、削除後も機能・正しさ・必要な証拠が揃うかを確かめる。 [聖典台帳](../CANON.md#canon-kafka-ai-complexity)
+- [AIに同じ指示を繰り返すのをやめた。Issue駆動開発という最小運用](https://zenn.dev/kafka2306/articles/issue-driven-development) 終わった変更の経緯をIssueに残し、現在の仕様として必要な記述を正本に集約する。 [聖典台帳](../CANON.md#canon-kafka-issue-development)
+- [AIを「過保護」にするな。スタックトレースを聖典とする開発規律 "Crash-Driven Development"](https://zenn.dev/kafka2306/articles/11cd731eebded1) 障害の原因を隠す広すぎる例外捕捉やフォールバックを見直し、根本原因を観測できる形にする。 [聖典台帳](../CANON.md#canon-kafka-crash-development)
 
 1. 利用者が普段使う入口を特定し、ファイル、フォルダ、コードの参照元と実際の呼び出し元を確認する。
 2. 同じ役割のフォルダを既存の管理先に統合する。未使用ファイル、空のフォルダ、重複したMarkdown、実行されないコード、処理を素通しするだけのPython・TypeScriptのラッパーを削除する。一つのプログラムに一つの仕事を持たせ、必要に応じて標準入出力でつなぐ。[評価結果](automated-evaluation.md)から置換済みの手順を割り出す。

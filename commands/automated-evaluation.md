@@ -34,3 +34,5 @@ description: "再実行できる条件で基準と候補を比較し、合格条
 - [Manning・Agent Engineering](../CANON.md#canon-manning-agent-engineering)
 - [かふかのZenn記事一覧](../CANON.md#canon-kafka-zenn)
 - [imoz・日本語の文章編集ガイド](../CANON.md#canon-humanizer-ja)
+- [ISUCON2026 で優勝しました（準備編）](../CANON.md#canon-isucon-preparation)
+- [fukabori.fm 第142回「ISUCON2026で優勝する方法 w/ kawasy」](../CANON.md#canon-isucon-harness)

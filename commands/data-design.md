@@ -37,3 +37,5 @@ description: "エンティティ、オントロジー、メタデータ、台帳
 - [Obsidian・Tags](../CANON.md#canon-obsidian-tags)
 - [かふかのZenn記事一覧](../CANON.md#canon-kafka-zenn)
 - [imoz・日本語の文章編集ガイド](../CANON.md#canon-humanizer-ja)
+- [Obsidian・保管庫の作成](../CANON.md#canon-obsidian-vault)
+- [Obsidian・内部リンク](../CANON.md#canon-obsidian-links)

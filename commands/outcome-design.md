@@ -22,3 +22,4 @@ description: "利用者の完成場面、観測できる合格条件、使う道
 - [登大遊・論理的思考の放棄](../CANON.md#canon-nobori-design)
 - [かふかのZenn記事一覧](../CANON.md#canon-kafka-zenn)
 - [imoz・日本語の文章編集ガイド](../CANON.md#canon-humanizer-ja)
+- [OpenAI・現場で成果を届けるエンジニアリング（What FDE means at OpenAI）](../CANON.md#canon-openai-fde)

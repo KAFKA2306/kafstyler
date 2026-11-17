@@ -57,3 +57,6 @@ description: "許可された変更を実装し、実際の利用経路で確か
 - [Manning・Agent Engineering](../CANON.md#canon-manning-agent-engineering)
 - [かふかのZenn記事一覧](../CANON.md#canon-kafka-zenn)
 - [imoz・日本語の文章編集ガイド](../CANON.md#canon-humanizer-ja)
+- [ISUCON2026 で優勝しました（準備編）](../CANON.md#canon-isucon-preparation)
+- [fukabori.fm 第142回「ISUCON2026で優勝する方法 w/ kawasy」](../CANON.md#canon-isucon-harness)
+- [OpenAI・現場で成果を届けるエンジニアリング（What FDE means at OpenAI）](../CANON.md#canon-openai-fde)
