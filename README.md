@@ -66,6 +66,8 @@ Claude Codeでは `/kafstyler:<名前>` を使います。自律開発は [公�
 | [`deliver`](skills/deliver/SKILL.md) | 変更を実装し、利用者の入口から確かめる |
 | [`prune`](skills/prune/SKILL.md) | 重複や不要なファイル、コード、文章を削る |
 
+全スキルで、目標や成果物の前提を [`scrutiny`](skills/scrutiny/SKILL.md) で確かめます。重大な欠陥が見つかれば、元の作業で修正や再確認に使います。[連携手順](AGENTS.md#コマンドの連携)
+
 定期タスクなどプラグインを使えない環境では、[作業規約](AGENTS.md#全作業への適用と自己改善)に従い、正本の版を固定して必要なスキルのMarkdownを使います。
 
 ## Unity・VRChat制作での適用
