@@ -45,6 +45,14 @@ claude --plugin-dir . --append-system-prompt-file AGENTS.md
 - [`/kafstyler:test`](commands/test.md) 同じ条件で採点し、合否と差を再現できるようにする。
 - [`/kafstyler:build`](commands/build.md) 変更を実装し、実際の利用経路で検証して届ける。
 
+## Unity・VRChat制作での適用
+
+汎用Unityは `CoplayDev/unity-mcp`、VRChat Worldsは `swax/UnityMCP-VRC`、VRChat Avatarsは `lighfu/unity-agent` を使用します。制作の共通規約は [AGENTS.md](AGENTS.md#unityvrchatの共通適用と自律改善) です。
+
+Claude Codeでは、このリポジトリをプラグインとして読み込み、同時に `AGENTS.md` を指示として渡します（上記「プラグインの使い方」参照）。対象のUnity MCP・Agentは各リポジトリの公式手順で別途接続してください。Kafstylerは外部ツールの代替ではなく、目標設定、実装、検証、手順の自己修正を共通化します。
+
+実作業で規約の不足を発見した場合は、失敗を再現してKafstylerの該当箇所を修正し、同じ操作で確かめてから `main` にコミットします。Unity EditorやVRChat SDKで未検証の作業を完了扱いにしません。
+
 ## 外部スキルとテンプレート
 
 ### Googleのフロントエンド設計スキル
