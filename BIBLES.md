@@ -302,6 +302,12 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [自律開発](skills/deliver/SKILL.md)
 
+### comfyuiのワークフロー選定
+
+[ComfyUI Workflow選定と採用の基準](https://github.com/KAFKA2306/comfyui-workflows-factory/blob/main/docs/knowledge/best-workflows.md)（制作の選定基準）。8領域の第一候補、代替、原典、採用前に確かめる条件
+
+[自律開発](skills/deliver/SKILL.md)
+
 ### comfyuiのテンプレート
 
 [ComfyUI・Workflow Templatesの使い方](https://docs.comfy.org/interface/features/template)（公式手順）。テンプレートの選び方と実行
