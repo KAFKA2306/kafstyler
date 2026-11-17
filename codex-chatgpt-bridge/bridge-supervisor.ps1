@@ -1,5 +1,5 @@
 param(
-    [string]$Repo = 'KAFKA2306/basic_prompts',
+    [string]$Repo = 'KAFKA2306/kafstyler',
     [int]$Issue = 3,
     [int]$PollSeconds = 10
 )

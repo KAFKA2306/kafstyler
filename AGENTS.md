@@ -5,7 +5,7 @@ This repository is private. Keep development, verification, release, and cleanup
 ## Knowledge and Prompt Ownership
 
 - The Claude Code plugin owns the recurring work procedures under `commands/`. `.claude-plugin/plugin.json` declares the plugin identity.
-- Register new reusable prompts and formal reusable artifacts in `KAFKA2306/prompt-vault`; do not make `basic_prompts` a second current prompt authority.
+- Register new reusable prompts and formal reusable artifacts in `KAFKA2306/prompt-vault`; do not make `kafstyler` a second current prompt authority.
 - Store raw facts, episodes, lessons, failures, and corrections in `KAFKA2306/graphiti`; do not copy Graphiti raw knowledge into this repository.
 - Read [MISSION.md](MISSION.md) for skill scope, update procedure, and primary reference links.
 - Never promote secrets or private source material to a public repository or artifact.
@@ -41,6 +41,8 @@ For any finished artifact, make it stand alone for its intended audience. Remove
 
 ## Verification
 
+- Reuse an existing check first. Add workflows, CI jobs, tests, scripts, or hooks only to catch a concrete failure that current checks cannot catch or when the platform requires them.
+- During cleanup, count existing automation and aim to halve it where a direct check still proves the relevant behavior. Keep enforced checks and security checks that address a concrete risk.
 - Derive verification commands from the repository's current README, package/build files, and executable configuration rather than inventing CI-only checks.
 - Record exactly which checks ran and their results. A check that did not run is not PASS.
 - Merge only when the requested contract is provable without depending on paid hosted CI.
