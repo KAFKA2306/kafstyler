@@ -72,6 +72,13 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [文章の推敲](skills/humanizer/SKILL.md#記事を読者から設計する)
 
+### 成果物の根拠と読みやすさ
+
+- [MaryCache・imozuru](https://github.com/MaryCache/imozuru)（公式リポジトリ）。分野の用語、文献、引用をたどり、判断を支える原文の場所を調べる。
+- [nanaism・yomiyasu](https://github.com/nanaism/yomiyasu)（公式リポジトリ）。主張と条件を保ち、人が読む日本語を推敲する。
+
+[成果物の確認手順](AGENTS.md#成果物の各要素を根拠と照合する) · [導入手順](README.md#成果物の根拠調査と推敲) · [反証レビュー](skills/scrutiny/SKILL.md#成果物の理由を確かめる)
+
 ## エージェントとハーネス
 
 ### スキルの執筆

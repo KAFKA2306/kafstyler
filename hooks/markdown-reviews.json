@@ -1,137 +1,137 @@
 {
-  "compared_to": "9900e3589b4cc4330c3799cca115c5649cfbe112",
-  "rules": "e5e42bf71757673e2386c93a4ac840fc7e1af96608414a155f49aaa93daa1ebf",
+  "compared_to": "d7d5701bb0db6e1f0bd4b75746d6cd2739ff8ae5",
+  "rules": "a3b42c9609acc3c066722c864c1066dc95efbdcc2f58fb56307bfce8f5f9555a",
   "documents": {
     "AGENTS.md": {
-      "sha256": "0fefd732c793a3684e0fa93c0ad017c850f77f43493e4dad9c4115fa85d04e26",
+      "sha256": "b034ea45b6194a04d2e0b9b410a0646db28627e58e7936b56dcfcfc0429f4747",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "現行版と候補版でYAMLと内部リンクを照合した。参照は58件から60件に増え、両版でリンク切れは0件。両クライアントの着手・提出前の出力に台帳の要件が届くことも比較した。"},
-        "charter": {"status": "pass", "evidence": "成果を届ける依頼では着手時に作業の記録があり、提出前に成果と検証結果を台帳から読み戻せることを合格条件にした。"},
-        "deliver": {"status": "pass", "evidence": "Claude Code・Codex共通のquality.shで着手時の登録と提出前の読み戻しを案内する。プラグインを使えない環境も同じAGENTS.mdを読む。"},
-        "humanizer": {"status": "pass", "evidence": "「作業台帳」に、着手時、再開・再試行時、提出前の操作を順に置いた。台帳を書けないときに何を進められるかも明記した。"},
-        "prune": {"status": "pass", "evidence": "既存の台帳や同じ役割のIssue・作業記録を再利用する。委譲先は親の記録を使い、手順は共通規約の一か所に置いた。"},
-        "schema": {"status": "pass", "evidence": "作業の識別子を再開・再試行で引き継ぐ。成果と検証結果を追記し、質問の状態を保持できる場合は同じ正本を使う。"},
-        "scrutiny": {"status": "pass", "evidence": "成果だけができて台帳を読み戻せない場合は完了扱いにならない。保存できるまで依頼の残りを止める誤読も、許可された作業を進める条文で防いだ。"}
+        "benchmark": {"status": "pass", "evidence": "同じ抽出方法で内部Markdownリンク51→54件を確認し、候補の未解決リンクは0件。"},
+        "charter": {"status": "pass", "evidence": "根拠を集める段階と理由を確認する段階を分け、読者が要素の役割と成立条件を確認できるようにした。"},
+        "deliver": {"status": "pass", "evidence": "SessionStartで新しい共通手順が届くことを、Claude Code用とCodex用の既存フックで確認した。"},
+        "humanizer": {"status": "pass", "evidence": "新しい見出しの下で、根拠、理由文、推敲、反証の順に読める。"},
+        "prune": {"status": "pass", "evidence": "共通手順をここに置き、同じ理由と原典の調査結果を再利用する。"},
+        "schema": {"status": "pass", "evidence": "要素・理由・原典を既存の作業台帳で結び、同じ理由を共有する場合も対象箇所をすべて示す。"},
+        "scrutiny": {"status": "pass", "evidence": "根拠不足でレビュー済みになる場合と、必要な外部スキルを使えない場合を調べ、未確認にする条件を照合した。"}
       }
     },
     "BIBLES.md": {
-      "sha256": "c5a51b67b76b34d95233bba10ec20b9f673d9e0a399dc868440f9923f0f72473",
+      "sha256": "92a3e8b1755df9ed05b9feee3fbfbe578cbc05e4a2212b9901ca10875e6731ca",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手前と変更後で内部リンク各145件に到達し、YAMLメタデータを確認した。"},
-        "charter": {"status": "pass", "evidence": "スキルの担当者が知りたい分野から、一次資料と実際の使い方の両方を選べることを確認条件にした。"},
-        "deliver": {"status": "pass", "evidence": "pruneから「AIが増やす判断箇所」「Issue駆動開発」「失敗原因が見える実装」へ移動し、各項目からZenn原典を開いた。"},
-        "humanizer": {"status": "pass", "evidence": "「AIエンジニアリングの書籍」が章と最初の小見出しで重なっていた。小見出しを「AI Engineering（Chip Huyen）」に改め、拾い読みで書籍を区別できるようにした。"},
-        "prune": {"status": "pass", "evidence": "pruneの前提3本のURLを本書に集約した。本文に引くリンクがこの台帳を経由するので、資料を入れ替える際の編集箇所が減る。"},
-        "schema": {"status": "pass", "evidence": "「聖典台帳」は一次資料・用途・対応スキルの正本と確認した。案件単位の作業や質問の状態をここに記録する規約はなく、読者が探す資料の粒度を保った。"},
-        "scrutiny": {"status": "pass", "evidence": "文章の原典が各工程の報告を求める箇所を確認した。推敲の工程は保ち、内部の採否と照合結果はhumanizerで作業記録に置くため、原典の登録は維持した。"}
+        "benchmark": {"status": "pass", "evidence": "同じ抽出方法で内部Markdownリンク141→144件を確認し、候補の未解決リンクは0件。"},
+        "charter": {"status": "pass", "evidence": "両スキルの役割を見分け、開発元の原典を開けることを確認した。"},
+        "deliver": {"status": "pass", "evidence": "新しい節から共通手順、導入手順、反証レビューの見出しを開けた。"},
+        "humanizer": {"status": "pass", "evidence": "見出しと2つの項目から、原典を調べる作業と日本語を推敲する作業を判別できる。"},
+        "prune": {"status": "pass", "evidence": "上流の仕様と導入コマンドを転記せず、役割と参照先を残した。"},
+        "schema": {"status": "pass", "evidence": "一次資料台帳に公式URLと用途を各1件登録し、手順は規約、導入方法はREADMEにつないだ。"},
+        "scrutiny": {"status": "pass", "evidence": "公式文書でimozuruは調査、yomiyasuは原意を保つ推敲を担当することを照合した。"}
       }
     },
     "MISSION.md": {
       "sha256": "db032a25ef55fafe545c807a3eef58cb1f99733c2332cd8bda4f7eab7a2e4d90",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "同じ文書を基準に、自律文書整備の冒頭で読者側の合格条件を拾えるか、既存の見出し・リンク・メタデータが保たれるかを照合した。候補で読者側の合格条件を明記し、既存の参照先の差分は0件。"},
-        "charter": {"status": "pass", "evidence": "自律文書整備の冒頭で、初見の読者が見出しと冒頭から要点をつかみ、手順を読む場合に次の操作が分かることを完了条件にした。"},
-        "deliver": {"status": "pass", "evidence": "READMEのミッションの案内から自律文書整備を開き、文章の推敲に進む経路を照合した。提出時の既存の共通基準へも到達できる。"},
-        "humanizer": {"status": "pass", "evidence": "冒頭で要点が伝わる状態を平易な表現で示した。次の操作を書く条件を手順に限定し、根拠をたどる後段の文との重複を外した。"},
-        "prune": {"status": "pass", "evidence": "新しい章、スキル、確認コマンドの追加を避け、自律文書整備の冒頭二文で目的と条件を示した。"},
-        "schema": {"status": "pass", "evidence": "目的はミッション、推敲手順はhumanizer、適用結果は既存記録に置いた。frontmatterと参照先は変更前後で一致した。"},
-        "scrutiny": {"status": "pass", "evidence": "独立レビューで報告や台帳にも次の操作を求める誤読を指摘された。手順がある場合に限定し、出力の共通基準が求める根拠と成立条件も照合した。"}
+        "benchmark": {"status": "pass", "evidence": "文書は着手版と同一。候補の内部Markdownリンク25件を開けた。"},
+        "charter": {"status": "pass", "evidence": "自律文書整備で、成果物の読者が根拠と適用先にたどり着ける目的を確認した。"},
+        "deliver": {"status": "pass", "evidence": "出力の共通基準から反証、推敲、作業規約の現行手順に進めた。"},
+        "humanizer": {"status": "pass", "evidence": "出力の共通基準から文章の推敲を開き、新しい共通手順までたどれた。"},
+        "prune": {"status": "pass", "evidence": "外部スキルの使い方をミッションへ複製する必要がないことを確認した。"},
+        "schema": {"status": "pass", "evidence": "ミッション、共通規約、一次資料台帳の正本を既存リンクで照合した。"},
+        "scrutiny": {"status": "pass", "evidence": "見出しを読めることに加え、観測可能な結果を普段の入口で確かめる既存の条件を確認した。"}
       }
     },
     "README.md": {
-      "sha256": "09bd41bd6b52ad3defb655026e1347317ca928b48ac614656218736a624dc2ff",
+      "sha256": "1ce76faa2142e6c74d0349457317fe73b0832b2b5882e44cdd186393dad6ea44",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "GitHubの検索結果と記載した70件の名前に差や重複がなく、8分野の内訳が一致した。38例に成果と依頼文があり、READMEをGitHub形式で描画して内部リンク41件を照合した。"},
-        "charter": {"status": "pass", "evidence": "導入後の読者が目的の成果から依頼文を選び、確認する対象と操作を指定できることを合格条件にした。VRChatイベントとKaggleでは、公開画面と最終順位に到達する条件を置いた。"},
-        "deliver": {"status": "pass", "evidence": "READMEの冒頭から成果の一覧を開き、8分野の見出しと各表にたどれることを描画結果で確認した。作業台帳のリンクは現行の規約の該当節につながる。"},
-        "humanizer": {"status": "pass", "evidence": "見出しは読み手が選ぶ成果を表す「成果から使い方を選ぶ」とし、依頼文を動作と確認対象から書いた。衣装の対象を「対応アバター」と明記し、一般の対応機器と区別した。"},
-        "prune": {"status": "pass", "evidence": "各分野で共通の導入や検証の手順を繰り返さず、既存の導入手順と作業台帳へつないだ。70件の名前は折り畳み一か所に置いた。"},
-        "schema": {"status": "pass", "evidence": "リポジトリ名をキーに公開日時条件と主要用途を確認し、1件を1分野に計上した。記事、開催回、商品の数は別の単位と出典を明記した。"},
-        "scrutiny": {"status": "pass", "evidence": "非アーカイブでも開発を停止したaboutkafkaを確認し、活動中の件数ではなくプッシュ条件で得たリポジトリ数と記した。開催回922件とゲーム55件は対象データのコミットに固定し、Kaggleはローカル評価と公式結果を分けた。"}
+        "benchmark": {"status": "pass", "evidence": "内部Markdownリンク25→26件を確認し、候補の未解決リンクは0件。"},
+        "charter": {"status": "pass", "evidence": "両スキルを導入した読者が、新しいセッションで名前を選べることを操作の完了条件にした。"},
+        "deliver": {"status": "pass", "evidence": "追加したリンク先を実際に開き、2つの導入コマンドをそれぞれの公式READMEと照合した。"},
+        "humanizer": {"status": "pass", "evidence": "新しい見出し直下に得られる結果、次に導入コマンドと操作確認を置いた。"},
+        "prune": {"status": "pass", "evidence": "根拠の照合と反証の手順は共通規約を参照し、導入に必要な2つのコマンドを残した。"},
+        "schema": {"status": "pass", "evidence": "依存するスキル名と配布元を公式リポジトリと照合し、作業の条件は規約に示した。"},
+        "scrutiny": {"status": "pass", "evidence": "Kafstylerの導入後に外部スキルを別に選べるか確認する案内がある。実クライアントでの導入は未確認。"}
       }
     },
     "skills/benchmark/SKILL.md": {
       "sha256": "1c83bd12bfa7e5d8833b10691242e9db8b78642f5b5ff78a7761cb1655011503",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手前と変更後で内部リンク各32件に到達し、YAMLメタデータを確認した。"},
-        "charter": {"status": "pass", "evidence": "担当者が検証前に母数と境界事例を決め、提出時に再実行できる数値で合否を伝えられることを確認した。"},
-        "deliver": {"status": "pass", "evidence": "「評価と比較」の手順から「成功基準と評価」を開き、戻って新規文書と旧版の記録を通常の検証入口で試した。"},
-        "humanizer": {"status": "pass", "evidence": "手順5の動詞を「記録する」にそろえ、測定値、合否、未確認を渡す後段との違いを明確にした。"},
-        "prune": {"status": "pass", "evidence": "3D生成とデータ品質の参照には別々の測定用途がある。今回の検査基準は既存の合格条件と成否記録を使い、別の採点基準の正本は作らなかった。"},
-        "schema": {"status": "pass", "evidence": "測定条件と結果は評価の記録として維持し、その参照先を作業台帳に残せる。測定の各行を作業の識別子と混同する手順はない。"},
-        "scrutiny": {"status": "pass", "evidence": "記録だけに未確認を残して報告が合格と読める案を退けた。必須項目が未確認なら全体を合格にしない条件と、判断に影響する未確認を報告する共通規約を照合した。"}
+        "benchmark": {"status": "pass", "evidence": "着手版と候補は同一で内部リンク32件に到達。Anthropicの評価設計を参照した。"},
+        "charter": {"status": "pass", "evidence": "普段の入口から候補を測り、版と採否の根拠を返せることを確認した。"},
+        "deliver": {"status": "pass", "evidence": "3項から測定の入口、2項から判断をレビューする手順を開けた。"},
+        "humanizer": {"status": "pass", "evidence": "見出しと番号から、測定条件の設定、実測、結果記録の順を追えた。"},
+        "prune": {"status": "pass", "evidence": "外部スキルの使い方を共通規約へ任せ、評価手順に繰り返しがないことを確認した。"},
+        "schema": {"status": "pass", "evidence": "YAMLの5項目を確認し、測定条件は本書、理由を根拠と照合する手順は共通規約が管理する。"},
+        "scrutiny": {"status": "pass", "evidence": "依存スキルを実行できない例で、測定結果だけでは全体の合格にならないことを5項と共通規約で照合した。"}
       }
     },
     "skills/charter/SKILL.md": {
       "sha256": "e38acb9da524ad9422f4d4665afc6296563c076261c4fa141a21cb576f279a54",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手前と変更後で内部リンク各17件に到達し、YAMLメタデータを確認した。"},
-        "charter": {"status": "pass", "evidence": "本体保守の完成場面を、担当者が漏れた文書やスキルを表示から特定して、補った版で合格を再現できる状態とした。"},
-        "deliver": {"status": "pass", "evidence": "「成果物の確認と手順の改善」から既存の更新手順をたどり、本体の共通規約と既存フックを修正した。"},
-        "humanizer": {"status": "pass", "evidence": "反証レビューへの引き継ぎ文の句点直後の空白を除き、完成場面・合格条件・道具の語彙を本文内で確認した。"},
-        "prune": {"status": "pass", "evidence": "手順の改善を起点にする節の既存の役割を保った。全件点検から同じ節へ戻るたびにもう一度全件を回す案は、親が一度実行すれば不要。"},
-        "schema": {"status": "pass", "evidence": "「成果物の確認と手順の改善」にある再現入力、期待と実際の差、使用版を記録の設計に使った。文書とスキルの識別はGit上のパスに従った。"},
-        "scrutiny": {"status": "pass", "evidence": "目的と合格条件を決める通常の入口を確認した。依頼受付のフックで共通規約も同時に案内されるため、目標設定の後に台帳へ登録できる。"}
+        "benchmark": {"status": "pass", "evidence": "着手版と候補は同一で、同じ方法で内部リンク17件に到達した。"},
+        "charter": {"status": "pass", "evidence": "利用者が普段使う入口、観測できる完了条件、使う道具を決める目的を確認した。"},
+        "deliver": {"status": "pass", "evidence": "共通規約から反証、成果物の確認から評価と推敲のリンクを開けた。"},
+        "humanizer": {"status": "pass", "evidence": "目標設定と成果物の確認・手順改善の節から、着手時と提出時を見分けられた。"},
+        "prune": {"status": "pass", "evidence": "目標案と実物を反証する箇所は発動の段階が異なり、共通手順は再掲していない。"},
+        "schema": {"status": "pass", "evidence": "YAMLの5項目を確認し、案件の合格条件は本書、成果物の理由の確認は共通規約からたどれる。"},
+        "scrutiny": {"status": "pass", "evidence": "目標だけを決める時点で完成物の理由を要求する読み方を検討し、成果物がある依頼で後段に接続することを確かめた。"}
       }
     },
     "skills/deliver/SKILL.md": {
       "sha256": "c19c5167de449a22b5817809d7377628155382a5107087d67753e6ee7907234d",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手前と変更後で内部リンク各68件に到達し、YAMLメタデータを確認した。"},
-        "charter": {"status": "pass", "evidence": "実装・復旧時に普段の入口で合否を確認する条件を読み直した。共通規約がその結果を台帳へ追記するため、スキルの合格条件と矛盾しない。"},
-        "deliver": {"status": "pass", "evidence": "文書が指定する既存の検証入口を使い、ClaudeとCodexのマニフェストから同じフックを起動して出力を照合した。"},
-        "humanizer": {"status": "pass", "evidence": "手順6の句点直後の空白を除いた。配布前に渡す変更後の実物、入口、合格条件、検証結果を読み直した。"},
-        "prune": {"status": "pass", "evidence": "実装と検証の手順5は既存の入口の再利用を指示する。新しいCIや別の検証スクリプトを作らず既存のcheck.pyを延ばした。"},
-        "schema": {"status": "pass", "evidence": "依頼・対象版・確認結果を配布前レビューへ渡す順序を確認し、記録の対象版と各スキルの観測を別の項目に置いた。"},
-        "scrutiny": {"status": "pass", "evidence": "解除に失敗した繰り返し実行では、ジョブIDと解除操作が利用者の行動を変えるため、共通規約の報告対象になることを確かめた。"}
+        "benchmark": {"status": "pass", "evidence": "着手版と候補は同一で、同じ方法で内部リンク68件に到達した。"},
+        "charter": {"status": "pass", "evidence": "普段の入口で変更が働き、その根拠を返せることを合格条件とした。"},
+        "deliver": {"status": "pass", "evidence": "6項から共通規約の理由レビューへ到達した。Claude CodeのCronListとCronDeleteは公式仕様で確認した。"},
+        "humanizer": {"status": "pass", "evidence": "ループの連携と実装・検証の節から、環境と実行する順序を読み取れた。"},
+        "prune": {"status": "pass", "evidence": "3項の方式の反証と6項の配布前の反証は別の段階で必要と確認した。"},
+        "schema": {"status": "pass", "evidence": "YAMLの5項目を確認し、発動と配布は本書、理由の記録と照合は共通規約にある。"},
+        "scrutiny": {"status": "pass", "evidence": "反復時の二重登録と、依存スキル未実行時の配布完了を、6項と共通規約に照らして検討した。"}
       }
     },
     "skills/humanizer/SKILL.md": {
-      "sha256": "ab375d466637e9455a86ea299d6e22bfce84315cbb1cba9ede648dddb3674c39",
+      "sha256": "0ad4c645c0c77ee613092c152864e9074ab76c5027809755ee88c6e63095ae6b",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手前と変更後で内部リンク各11件に到達し、YAMLメタデータを確認した。"},
-        "charter": {"status": "pass", "evidence": "記事担当が読者の用事を決め、見出しだけで必要な答えの場所を指せる状態を確認条件にした。"},
-        "deliver": {"status": "pass", "evidence": "「原典2本」からBIBLES.mdへ進み、ONSの読者調査とNN/Gの見出しの視線計測を開いた。"},
-        "humanizer": {"status": "pass", "evidence": "推敲結果の明細を置く作業記録の指示を再確認した。既存の記録を台帳として再利用できるため、書く内容や報告の順序を改める必要はない。"},
-        "prune": {"status": "pass", "evidence": "記事の読者に関する原典の説明は聖典台帳に保ち、本文には流用可能な3手順がある。前提の転載は不要と判断した。"},
-        "schema": {"status": "pass", "evidence": "「記事を読者から設計する」は根拠のある読者像と想定を区別する。読者を調べる一次資料はBIBLES.mdの同名項目にある。"},
-        "scrutiny": {"status": "pass", "evidence": "本番の導入手順を試せなかった例では、利用者が手順に頼れるかを左右するため報告に残る。タイトルの全候補と却下理由は記録から確認できる。"}
+        "benchmark": {"status": "pass", "evidence": "着手版と候補の内部リンクは各11件。候補の見出しとメタデータを照合した。"},
+        "charter": {"status": "pass", "evidence": "初めて読む人が本文を推敲し、理由文と日本語の説明をレビューに渡す順を確かめた。"},
+        "deliver": {"status": "pass", "evidence": "両クライアント用フックの依頼受付にhumanizerとyomiyasuが届く。文書から共通手順と反証に進めた。"},
+        "humanizer": {"status": "pass", "evidence": "3項ではyomiyasuで推敲してから、原典と照合した稿を通読する順を明記した。"},
+        "prune": {"status": "pass", "evidence": "外部依存の共通手順は規約を参照し、こちらは文章を渡し、推敲して確認する操作に絞った。"},
+        "schema": {"status": "pass", "evidence": "YAMLの名前・種別・タグと、台帳、原典、推敲前後の版への参照を確認した。"},
+        "scrutiny": {"status": "pass", "evidence": "推敲で数値や成立条件が変わった稿を、原典と推敲前後の比較で差し戻すことを照合した。"}
       }
     },
     "skills/prune/SKILL.md": {
       "sha256": "8500b18d5dc4bee9be3ed8c9be0e66ad1e93daabbc9ce79dc9a716372ecc2fb7",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手前と変更後で内部リンク各21件に到達し、YAMLメタデータを確認した。"},
-        "charter": {"status": "pass", "evidence": "整理担当が削除候補を選び、残した入口を削除前と同じ入力で試せることを確認条件にした。"},
-        "deliver": {"status": "pass", "evidence": "記事名リンクを聖典台帳の該当見出しへ向け、3本とも改稿後の文書から公開記事まで移動した。"},
-        "humanizer": {"status": "pass", "evidence": "手順5で、削除パス、件数、確認結果、保留理由を記録することを明記した。"},
-        "prune": {"status": "pass", "evidence": "削除したパスや判断理由を残す手順と新規約を照合した。同じ役割の作業記録を台帳に使えば、削除の結果を重ねて書かずに済む。"},
-        "schema": {"status": "pass", "evidence": "削除の判断に必要な候補のパス、参照元、根拠、残す入口は本文で指定し、参考記事の公開URLはBIBLES.mdで一元管理する。"},
-        "scrutiny": {"status": "pass", "evidence": "調査や提案だけを求められた場合は候補と根拠が成果物になる。冒頭の成果物要件を保ち、実際の削除で得た明細は手順5の作業記録で確認できる。"}
+        "benchmark": {"status": "pass", "evidence": "着手版と候補は同一で、同じ方法で内部リンク21件に到達した。"},
+        "charter": {"status": "pass", "evidence": "不要箇所を削ったあとも普段の入口で使えることを合格条件とした。"},
+        "deliver": {"status": "pass", "evidence": "2項の評価、3項の反証、4項の推敲のリンクを開けた。"},
+        "humanizer": {"status": "pass", "evidence": "見出しと1〜5項から、候補選び、参照の確認、削除後の検証を追えた。"},
+        "prune": {"status": "pass", "evidence": "指定のZenn原典を開き、重複削除、Issueへの経緯の移管、失敗を隠す処理の判断を照合した。候補文書に削除対象は0件。"},
+        "schema": {"status": "pass", "evidence": "YAMLの5項目を確認し、削除の判断と理由が作業台帳からたどれる。"},
+        "scrutiny": {"status": "pass", "evidence": "一見使われていない参照について、動的に呼ばれる場合、公開パス、未確認のまま保留する条件を3項で照合した。"}
       }
     },
     "skills/schema/SKILL.md": {
       "sha256": "0d5fd4d1c9e44566a25f6dad42913c84482154a3a1a4214cc2bb8e37c71db8f3",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "現行版と候補版で内部リンク26件と27件を照合し、両版で切れは0件。模擬案件では調査メモの質問0件、週次集計の再実行後の質問1件と回答後の再開を読み戻した。"},
-        "charter": {"status": "pass", "evidence": "回答不要の案件でも開始時に正本を開け、今回の質問が0件と確認できることを合格条件にした。"},
-        "deliver": {"status": "pass", "evidence": "作業規約の「作業台帳」と本節を相互にリンクした。質問が0件の場合も初期化と読み戻しを完了条件に加えた。"},
-        "humanizer": {"status": "pass", "evidence": "着手時の台帳の確保と、回答が必要になった時点の質問登録を別の手順に置いた。0件の確認は今回の作業で絞る。"},
-        "prune": {"status": "pass", "evidence": "作業台帳で質問IDと状態を管理できるケースは同じ正本を使う。質問0件の場合のダミー行も不要になった。"},
-        "schema": {"status": "pass", "evidence": "対象と判断内容の組で一件を識別する条件を保ち、台帳が存在して質問行が0件の場合と、台帳を開けない場合を区別した。"},
-        "scrutiny": {"status": "pass", "evidence": "別案件の未回答が残るときも、今回の作業だけを照会すれば質問0件を判定できる。再実行では同じ行を更新し、回答に依存しない工程を先に終える。"}
+        "benchmark": {"status": "pass", "evidence": "着手版と候補は同一で、内部リンク27件と候補の見出し、メタデータを照合した。"},
+        "charter": {"status": "pass", "evidence": "本人の回答が要る工程を待つ間、すでに進められる工程が分かることを確認した。"},
+        "deliver": {"status": "pass", "evidence": "両ホストの受付からschema、本文から作業台帳とscrutinyの参照先を開いた。"},
+        "humanizer": {"status": "pass", "evidence": "3項から、回答を待つ工程とその間に進める工程を読み分けられる。"},
+        "prune": {"status": "pass", "evidence": "同じ台帳を使える場合の再利用と、再実行時に同じ質問を1件にまとめる操作を確認した。"},
+        "schema": {"status": "pass", "evidence": "質問ID、対象、判断の重複確認、および既存台帳を再利用する条件を照合した。"},
+        "scrutiny": {"status": "pass", "evidence": "質問0件と、必須回答1件の例で、それぞれ作業を進める条件と止める条件を照合した。"}
       }
     },
     "skills/scrutiny/SKILL.md": {
-      "sha256": "1d8b6b4e4f25a59eb89eb609894b39e9022fa495cf7da124e72164c39c83da0f",
+      "sha256": "a157d8b2a5710fc81318b9502db5fe7677c6905bb556f99d22a906ff88c8d364",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手前と変更後で内部リンク各15件に到達し、YAMLメタデータを確認した。"},
-        "charter": {"status": "pass", "evidence": "反証担当が成立を疑う前提と、結果を分ける観測を指定できることを確認した。"},
-        "deliver": {"status": "pass", "evidence": "「共通の連携手順」から実行中のスキルへの再入防止を確認し、本体を点検する親に全件の起動を限定した。"},
-        "humanizer": {"status": "pass", "evidence": "冒頭の「反証する主張」と手順5の「発生条件、実際の根拠か正確な再現手順、影響」の関係は、指摘の書き方まで読めるため保った。"},
-        "prune": {"status": "pass", "evidence": "対立仮説を立てる手順と指摘を書く手順は別の結果を出す。既存のbenchmarkへの受け渡しを利用し、比較の手順は重複させなかった。"},
-        "schema": {"status": "pass", "evidence": "指摘は発生条件、根拠、影響と確認手順を持つ。記録では各文書の指摘と判断をevidenceに置き、passと未解決の状態を別に持つ。"},
-        "scrutiny": {"status": "pass", "evidence": "根拠と影響を呼び出し元へ返す手順を再確認した。委譲で別台帳が増える経路は、親の記録へ結果を返す共通規約で閉じる。"}
+        "benchmark": {"status": "pass", "evidence": "着手版と候補の内部リンク15→16件と各見出し、メタデータを照合した。"},
+        "charter": {"status": "pass", "evidence": "理由が原典の条件と実際の利用場面に合うかを、要素ごとに確認できるようにした。"},
+        "deliver": {"status": "pass", "evidence": "両クライアント用の受付にscrutinyと外部スキル名が届くことを確認し、共通手順から理由を調べる節に進めた。"},
+        "humanizer": {"status": "pass", "evidence": "新しい見出し直下に必要な入力を置き、確認と返す結果を続けた。"},
+        "prune": {"status": "pass", "evidence": "共通の進め方は規約を参照し、理由文を反証する操作と判定を記した。"},
+        "schema": {"status": "pass", "evidence": "対象の版、理由、原典の箇所、推敲結果を受け取り、欠けた場合の判定を明記した。"},
+        "scrutiny": {"status": "pass", "evidence": "公開原報の木粉排出量90%超を作業者のばく露や自社設備の数値に広げた説明を、原報の試験条件から差し戻した。"}
       }
     }
   }

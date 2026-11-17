@@ -216,6 +216,19 @@ Claude Codeでは `/kafstyler:<名前>` を使います。自律開発は [公�
 
 ## 外部スキルとテンプレート
 
+### 成果物の根拠調査と推敲
+
+成果物の各要素について、必要な分野の知識を imozuru で原文まで調べ、採用理由を一文で記録します。yomiyasu で理由文と日本語の説明を整えたあと、反証レビューで理由と根拠が実際の利用場面に合うかを確かめます。作業台帳から該当箇所と根拠を確認できます。[成果物の確認手順](AGENTS.md#成果物の各要素を根拠と照合する)
+
+Claude Code または Codex で、使うクライアントに両スキルを導入します。導入後は新しいセッションで `imozuru` と `yomiyasu` を選べることを確かめます。
+
+```sh
+npx skills add MaryCache/imozuru
+npx skills add nanaism/yomiyasu
+```
+
+[imozuruの導入手順](https://github.com/MaryCache/imozuru) · [yomiyasuの導入手順](https://github.com/nanaism/yomiyasu)
+
 ### Googleのフロントエンド設計スキル
 
 KAFKA2306のWeb UIでは、先に[かふかのデザインパターン](BIBLES.md#かふかのデザインパターン)から操作の順番と共通部品を確認します。設計案の検討には、自律開発コマンドからGoogle Gemini DemoLabを使います。Claude Codeでの導入手順は次のとおりです。
