@@ -8,10 +8,10 @@
 
 ```sh
 claude plugin validate .
-claude --plugin-dir .
+claude --plugin-dir . --append-system-prompt-file AGENTS.md
 ```
 
-2行目でプラグインを読み込みます。Claude Codeで `/kafstyler:data-design` などのコマンドを選びます。
+2行目でプラグインと[作業規約](AGENTS.md)を読み込みます。Claude Codeで `/kafstyler:data-design` などのコマンドを選びます。
 
 ### 目標設定
 
@@ -57,4 +57,3 @@ ComfyUIの `Workflow → Browse Workflow Templates` で用途に合うテンプ�
 - [MISSION.md](MISSION.md) ミッションと更新手順を確認できます。
 - [聖典台帳](CANON.md) 分野別の一次資料と対応コマンドをたどれます。
 - [AGENTS.md](AGENTS.md) 単一ブランチでの作業、逐次コミット、出力の共通ルールを確認できます。
-- [Claude Codeのプロジェクト指示](.claude/CLAUDE.md) 外部のツールとスキルを採用する条件を確認できます。
