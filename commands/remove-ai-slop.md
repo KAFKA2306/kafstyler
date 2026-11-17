@@ -10,3 +10,9 @@ description: Delete filler, duplicated instructions, invented labels, and unsupp
 4. Compare the result with the original purpose. Read the final artifact through its normal entry point and check that needed information and paths still work.
 
 Deliver the cleaned artifact and the few deletions that matter to its readers or maintainers.
+
+## References
+
+- [Anthropic・Agent Skills執筆ガイド](../MISSION.md#canon-anthropic-skill-authoring)
+- [imoz・日本語の文章編集ガイド](../MISSION.md#canon-humanizer-ja)
+- [かふかのZenn記事一覧](../MISSION.md#canon-kafka-zenn)

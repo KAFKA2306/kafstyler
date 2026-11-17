@@ -11,3 +11,24 @@ description: Carry an authorized change through implementation, verification, an
 5. Use the project's normal delivery path. For GitHub work, review the diff, complete authorized PR and merge work, confirm main, and clean up the finished branch.
 
 Deliver the working change, concrete evidence, and the next action only when a real blocker remains.
+
+## References
+
+- [Anthropic・Agent Skills執筆ガイド](../MISSION.md#canon-anthropic-skill-authoring)
+- [Anthropic・Claude Code Skills](../MISSION.md#canon-claude-code-skills)
+- [Anthropic・Claude Codeプラグインの作成](../MISSION.md#canon-claude-plugin-creation)
+- [Anthropic・プラグインの構成要素](../MISSION.md#canon-claude-plugin-components)
+- [Anthropic・プラグインマニフェスト仕様](../MISSION.md#canon-claude-plugin-manifest)
+- [Anthropic・Claude Codeの実践ガイド](../MISSION.md#canon-claude-code-practices)
+- [Pydantic・検証の公式ドキュメント](../MISSION.md#canon-pydantic)
+- [Astral・uv](../MISSION.md#canon-astral-uv)
+- [Astral・Ruff](../MISSION.md#canon-astral-ruff)
+- [Astral・ty](../MISSION.md#canon-astral-ty)
+- [Google Gemini・DemoLabのフロントエンド設計スキル](../MISSION.md#canon-google-demolab)
+- [ComfyUI・公式ドキュメント](../MISSION.md#canon-comfyui-docs)
+- [ComfyUI・Workflow Templatesの使い方](../MISSION.md#canon-comfyui-workflow-templates)
+- [ComfyUI・公式テンプレートの正本](../MISSION.md#canon-comfyui-template-source)
+- [ComfyUI・Workflow JSON仕様原本](../MISSION.md#canon-comfyui-workflow-json)
+- [Pulumi・Infrastructure as Code](../MISSION.md#canon-pulumi-iac)
+- [Pulumi・変更の事前確認（pulumi preview）](../MISSION.md#canon-pulumi-preview)
+- [かふかのZenn記事一覧](../MISSION.md#canon-kafka-zenn)

@@ -8,4 +8,10 @@ description: Define an observable goal, acceptance check, and tools. Use for 目
 2. Inspect the current artifact through that entry point. Identify the one obstacle with the strongest effect on the result.
 3. State the exact observation that marks success and choose the existing tools that can act on or verify it.
 
-Deliver the completion scene, the check, and the tools. See the goal-setting article in [MISSION.md](../MISSION.md).
+Deliver the completion scene, the check, and the tools.
+
+## References
+
+- [Anthropic・Claude Codeの実践ガイド](../MISSION.md#canon-claude-code-practices)
+- [登大遊・論理的思考の放棄](../MISSION.md#canon-nobori-design)
+- [かふかのZenn記事一覧](../MISSION.md#canon-kafka-zenn)
