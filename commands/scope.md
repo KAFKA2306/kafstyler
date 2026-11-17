@@ -3,7 +3,7 @@ type: "command"
 description: "利用者の完成場面、観測できる合格条件、使う道具を決める。目標設定、完成形、成功条件の設計に使う。"
 tags:
   - kafstyler/command
-  - kafstyler/command/goal
+  - kafstyler/command/scope
 aliases:
   - "目標設定"
   - "目標"

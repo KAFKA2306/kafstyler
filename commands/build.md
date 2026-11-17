@@ -13,7 +13,7 @@ aliases:
 
 任意の出力で人が読む文章には[imozの執筆・推敲ルール](../BIBLES.md#imozの日本語編集)を適用する。[出力の共通基準](../MISSION.md#出力の共通基準)
 
-1. プロジェクトの現状、利用者が使う入口、合格条件を確認する。目標が曖昧なら[目標設定](goal.md)を使う。進行中のIssueやPRがあればその作業を引き継ぐ。
+1. プロジェクトの現状、利用者が使う入口、合格条件を確認する。目標が曖昧なら[目標設定](scope.md)を使う。進行中のIssueやPRがあればその作業を引き継ぐ。
 2. 実際の障害を確認し、役割を終えた経路や重複を除く。標準の道具と公式APIを使い、依頼に必要な変更単位を選ぶ。フロントエンドでは、プロジェクトのデザイン規則に従い、利用できる場合は `demolab:gemini-frontend-design` を使う。[DemoLabの公式手順](https://github.com/google-gemini/demolab#claude-code)
 3. 手法を置き換える場合は、現行と外部候補を同じ入力で[自動評価](test.md)する。合格条件を満たし、品質や運用工数が改善し、保守と検証の根拠がある候補を採用する。通常の入口から確認した後に[旧実装を整理する](clean.md)。
 4. ComfyUIでは `Workflow → Browse Workflow Templates` から[公式テンプレート](https://github.com/Comfy-Org/workflow_templates)を選び、元の版と必要モデルを記録する。実際の環境で出力を確かめる。[Unity・VRChat制作](../BIBLES.md#ユニティとvrchatの制作ツール)では用途に合うツールを選び、対象プロジェクトで確かめる。シェルでは一つのコマンドに一つの仕事を任せ、標準入出力でつなぐ。

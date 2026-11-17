@@ -3,7 +3,7 @@ type: "command"
 description: "論文・文献・Webを先に調べ、置き換え候補と現行の致命的な欠陥を検証する。悪魔の代弁者、反証、重大欠陥レビューに使う。"
 tags:
   - kafstyler/command
-  - kafstyler/command/review
+  - kafstyler/command/critique
 aliases:
   - "致命的な欠陥のレビュー"
   - "反証"

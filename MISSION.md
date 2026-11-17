@@ -16,7 +16,7 @@ aliases:
 
 現行の出力と変更候補を同じ条件で評価し、品質が上がる変更や手間が減る変更を実装する。変更前後の数値と、削除できた旧手順を確認できるようにする。
 
-[自動評価](commands/test.md)・[対立仮説](commands/review.md)・[自律開発](commands/build.md)・[AIスロップ削除](commands/clean.md)
+[自動評価](commands/test.md)・[対立仮説](commands/critique.md)・[自律開発](commands/build.md)・[AIスロップ削除](commands/clean.md)
 
 ## 自律文書整備
 
@@ -28,7 +28,7 @@ aliases:
 
 利用者が普段の入口で何をできるようになるかを定める。作ったものをその入口から実行し、期待した出力と確認結果を届ける。
 
-[目標設定](commands/goal.md)・[自律開発](commands/build.md)・[自動評価](commands/test.md)
+[目標設定](commands/scope.md)・[自律開発](commands/build.md)・[自動評価](commands/test.md)
 
 ## 出力の共通基準
 

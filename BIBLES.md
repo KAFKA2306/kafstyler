@@ -28,25 +28,25 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [登大遊・論理的思考の放棄](https://softether.hatenadiary.org/entry/20070324/p1)（原典）。完成時の利用場面と最初の違和感
 
-[目標設定](commands/goal.md)
+[目標設定](commands/scope.md)
 
 ### claude-codeの実践
 
 [Anthropic・Claude Codeの実践ガイド](https://code.claude.com/docs/en/best-practices)（公式ガイド）。依頼の範囲、検証、作業の進め方
 
-[目標設定](commands/goal.md) · [自律開発](commands/build.md)
+[目標設定](commands/scope.md) · [自律開発](commands/build.md)
 
 ### 成功基準と評価
 
 [Anthropic・成功基準と評価の設計](https://platform.claude.com/docs/en/test-and-evaluate/develop-tests)（公式ガイド）。成功条件、テストケース、採点方法
 
-[自動評価](commands/test.md) · [対立仮説](commands/review.md)
+[自動評価](commands/test.md) · [対立仮説](commands/critique.md)
 
 ### imozの日本語編集
 
 [imoz・日本語の文章編集ガイド](https://imoz.jp/humanizer.ja.txt)（編集ガイド）。任意の出力に含まれる人向け文章の執筆と校正
 
-[自動評価](commands/test.md) · [自律開発](commands/build.md) · [データ設計](commands/data.md) · [致命的な欠陥のレビュー](commands/review.md) · [文書校正](commands/edit.md) · [目標設定](commands/goal.md) · [AIスロップ削除](commands/clean.md)
+[自動評価](commands/test.md) · [自律開発](commands/build.md) · [データ設計](commands/data.md) · [致命的な欠陥のレビュー](commands/critique.md) · [文書校正](commands/edit.md) · [目標設定](commands/scope.md) · [AIスロップ削除](commands/clean.md)
 
 ## エージェントとハーネス
 
@@ -61,6 +61,12 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 [Anthropic・Claude Code Skills](https://code.claude.com/docs/en/skills)（公式仕様）。スキルの配置と呼び出し
 
 [自律開発](commands/build.md)
+
+### Claude Codeのコマンド一覧
+
+[Anthropic・Claude Codeのコマンド一覧](https://code.claude.com/docs/en/commands#all-commands)（公式リファレンス）。組み込みコマンド、同梱スキル、ワークフロー、別名との名前の重複を確かめる。
+
+[作業規約](AGENTS.md#ファイルの管理)
 
 ### プラグインの作成
 
@@ -120,7 +126,7 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [OpenAI・現場で成果を届けるエンジニアリング（What FDE means at OpenAI）](https://openai.com/index/forward-deployed-engineering-means/)（開発元の実践記事）。利用者の成果から入り、実際の利用環境で改善を確かめる。
 
-[目標設定](commands/goal.md) · [自律開発](commands/build.md)
+[目標設定](commands/scope.md) · [自律開発](commands/build.md)
 
 ## AIエンジニアリングの書籍
 
@@ -396,7 +402,7 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [かふかのZenn記事一覧](https://zenn.dev/kafka2306?tab=articles)（記事一覧）。掲載される公開記事をすべて含む。作業に関係する記事を一覧から参照する。
 
-[自動評価](commands/test.md) · [自律開発](commands/build.md) · [データ設計](commands/data.md) · [対立仮説](commands/review.md) · [文書校正](commands/edit.md) · [目標設定](commands/goal.md) · [AIスロップ削除](commands/clean.md)
+[自動評価](commands/test.md) · [自律開発](commands/build.md) · [データ設計](commands/data.md) · [対立仮説](commands/critique.md) · [文書校正](commands/edit.md) · [目標設定](commands/scope.md) · [AIスロップ削除](commands/clean.md)
 
 ### aiが増やす判断箇所
 

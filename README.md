@@ -25,7 +25,7 @@ claude --plugin-dir . --append-system-prompt-file AGENTS.md
 
 ### 目標設定
 
-- [`/kafstyler:goal`](commands/goal.md) 利用者ができるようになることと、完了を確かめる操作を決める。
+- [`/kafstyler:scope`](commands/scope.md) 利用者ができるようになることと、完了を確かめる操作を決める。
 
 ### 文書校正
 
@@ -41,7 +41,7 @@ claude --plugin-dir . --append-system-prompt-file AGENTS.md
 
 ### 評価と自律開発
 
-- [`/kafstyler:review`](commands/review.md) 中核の前提を反証し、致命的な欠陥を根拠と影響つきで指摘する。
+- [`/kafstyler:critique`](commands/critique.md) 中核の前提を反証し、致命的な欠陥を根拠と影響つきで指摘する。
 - [`/kafstyler:test`](commands/test.md) 同じ条件で採点し、合否と差を再現できるようにする。
 - [`/kafstyler:build`](commands/build.md) 変更を実装し、実際の利用経路で検証して届ける。
 
