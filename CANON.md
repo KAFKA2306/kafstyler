@@ -127,3 +127,4 @@ Obsidianに置くMarkdownノートでは、ファイル先頭のYAMLにプロパ
 | 資料 | 種別 | 用途・留意点 | 対応コマンド |
 | --- | --- | --- | --- |
 | <a name="canon-kafka-zenn"></a>[かふかのZenn記事一覧](https://zenn.dev/kafka2306?tab=articles) | 記事一覧 | 掲載される公開記事をすべて含む。作業に関係する記事を一覧から参照する。 | [自動評価](commands/automated-evaluation.md) · [自律開発](commands/autonomous-development.md) · [データ設計](commands/data-design.md) · [対立仮説](commands/devils-advocate.md) · [文書校正](commands/editorial.md) · [目標設定](commands/outcome-design.md) · [AIスロップ削除](commands/remove-ai-slop.md) |
+| <a name="canon-kafka-ai-complexity"></a>[かふか「なぜAIに任せるほど、あなたのコードは複雑になるのか」](https://zenn.dev/kafka2306/articles/2026-08-16-ai-added-decision-cost-audit) | 記事 | 分岐や状態の重複を見つけ、統合や削除の優先順位を決める。 | [AIスロップ削除](commands/remove-ai-slop.md) |
