@@ -1,5 +1,5 @@
 {
-  "compared_to": "1b24d6e706832452e182d3f58e4db03007dcaef6",
+  "compared_to": "8203e370f0753db96f1cbdf927a2dc5aed64d921",
   "rules": "e67ad031033a6d4d07b361a8e89112f4141686745ac7bbcadfe558701f3a8f16",
   "documents": {
     "AGENTS.md": {
@@ -39,15 +39,15 @@
       }
     },
     "README.md": {
-      "sha256": "a727bb65fa2a9f6cfb195092e8b1428512ef99baed9a7441743a21d545afabd0",
+      "sha256": "09bd41bd6b52ad3defb655026e1347317ca928b48ac614656218736a624dc2ff",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "内部リンク24件に到達した。作業ツリーとステージ済みの内容が違う入力で、--stagedがコミット対象を判定することを確認した。"},
-        "charter": {"status": "pass", "evidence": "ローカル版を試す保守担当が、どのコマンドを実行し、どこを読み直すと適用漏れを解決できるかまで分かることを確認条件にした。"},
-        "deliver": {"status": "pass", "evidence": "記載したpython3 hooks/check.pyと--stagedをリポジトリのルートで実行し、77件の適用記録が対象の版と一致することを確かめた。"},
-        "humanizer": {"status": "pass", "evidence": "作業中の記録不足とコミットする版の照合を、実行する段階が分かる文にした。コマンド名は実装と同じ表記にした。"},
-        "prune": {"status": "pass", "evidence": "導入手順の直後に同じチェックを再掲する案を外した。実行コマンドは本体保守ですでに使う入口に集約した。"},
-        "schema": {"status": "pass", "evidence": "READMEには導入と検証の入口を置き、適用記録と文書別の運用規約をそれぞれJSONとAGENTS.mdに参照させた。"},
-        "scrutiny": {"status": "pass", "evidence": "「依頼を送って使う」から共通規約を開き、着手時に必要な台帳の節をたどれることを確かめた。フックの案内と相互に矛盾する操作はない。"}
+        "benchmark": {"status": "pass", "evidence": "GitHubの検索結果と記載した70件の名前に差や重複がなく、8分野の内訳が一致した。38例に成果と依頼文があり、READMEをGitHub形式で描画して内部リンク41件を照合した。"},
+        "charter": {"status": "pass", "evidence": "導入後の読者が目的の成果から依頼文を選び、確認する対象と操作を指定できることを合格条件にした。VRChatイベントとKaggleでは、公開画面と最終順位に到達する条件を置いた。"},
+        "deliver": {"status": "pass", "evidence": "READMEの冒頭から成果の一覧を開き、8分野の見出しと各表にたどれることを描画結果で確認した。作業台帳のリンクは現行の規約の該当節につながる。"},
+        "humanizer": {"status": "pass", "evidence": "見出しは読み手が選ぶ成果を表す「成果から使い方を選ぶ」とし、依頼文を動作と確認対象から書いた。衣装の対象を「対応アバター」と明記し、一般の対応機器と区別した。"},
+        "prune": {"status": "pass", "evidence": "各分野で共通の導入や検証の手順を繰り返さず、既存の導入手順と作業台帳へつないだ。70件の名前は折り畳み一か所に置いた。"},
+        "schema": {"status": "pass", "evidence": "リポジトリ名をキーに公開日時条件と主要用途を確認し、1件を1分野に計上した。記事、開催回、商品の数は別の単位と出典を明記した。"},
+        "scrutiny": {"status": "pass", "evidence": "非アーカイブでも開発を停止したaboutkafkaを確認し、活動中の件数ではなくプッシュ条件で得たリポジトリ数と記した。開催回922件とゲーム55件は対象データのコミットに固定し、Kaggleはローカル評価と公式結果を分けた。"}
       }
     },
     "skills/benchmark/SKILL.md": {
