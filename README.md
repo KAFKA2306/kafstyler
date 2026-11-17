@@ -1,6 +1,6 @@
 # Kafstyler
 
-定型作業を進めるためのClaude Codeプラグインです。非公開のChatGPT記憶と、WindowsでCodexを実行するためのブリッジも管理します。
+定型作業を進めるためのClaude Codeプラグインです。
 
 ## プラグインの使い方
 
@@ -58,5 +58,3 @@ ComfyUIの `Workflow → Browse Workflow Templates` で用途に合うテンプ�
 - [聖典台帳](CANON.md) 分野別の一次資料と対応コマンドをたどれます。
 - [AGENTS.md](AGENTS.md) 単一ブランチでの作業、逐次コミット、出力の共通ルールを確認できます。
 - [Claude Codeのプロジェクト指示](.claude/CLAUDE.md) 外部のツールとスキルを採用する条件を確認できます。
-- [MEMORY.md](MEMORY.md) 長期記憶の正本です。[監査と同期の手順](AGENTS.md#chatgpt-memory)
-- [ChatGPT–Codex bridge](codex-chatgpt-bridge/README.md) Windowsでの導入、依頼の形式、実行結果の確認方法を扱います。
