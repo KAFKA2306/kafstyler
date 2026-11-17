@@ -57,5 +57,5 @@ ComfyUIの `Workflow → Browse Workflow Templates` で用途に合うテンプ�
 - [MISSION.md](MISSION.md) covers the update process, inventory, and reference links.
 - [AGENTS.md](AGENTS.md) covers repository work and ownership.
 - [Claude Code project instructions](.claude/CLAUDE.md) record when to adopt better upstream tools and skills.
-- [MEMORY.md](MEMORY.md) holds durable memory. Use [CHATGPT_MEMORY_PROMPT.md](CHATGPT_MEMORY_PROMPT.md) for explicit memory review and synchronization.
+- [MEMORY.md](MEMORY.md) holds durable memory. See [記憶の監査と同期](AGENTS.md#chatgpt-memory).
 - [ChatGPT–Codex bridge](codex-chatgpt-bridge/README.md) covers Windows installation, the controller protocol, and status.

@@ -1,60 +1,55 @@
-# Private Repository Agent Contract
+# Kafstylerの作業規約
 
-This repository is private. Keep development, verification, release, and cleanup operable with zero mandatory GitHub-hosted Actions spend.
+この非公開リポジトリは、GitHubホストランナーの費用を前提とせずに開発、検証、配布、整理を進める。
 
-## Knowledge and Prompt Ownership
+## 知識とプロンプトの管理
 
-- The Claude Code plugin owns the recurring work procedures under `commands/`. `.claude-plugin/plugin.json` declares the plugin identity.
-- Register new reusable prompts and formal reusable artifacts in `KAFKA2306/prompt-vault`; do not make `kafstyler` a second current prompt authority.
-- Store raw facts, episodes, lessons, failures, and corrections in `KAFKA2306/graphiti`; do not copy Graphiti raw knowledge into this repository.
-- Read [MISSION.md](MISSION.md) for skill scope, update procedure, and primary reference links.
-- Never promote secrets or private source material to a public repository or artifact.
+- 定型作業の手順は `commands/`、プラグインの識別情報は `.claude-plugin/plugin.json` に置く。適用範囲、更新手順、一次資料は [MISSION.md](MISSION.md) を参照する。
+- 新しい再利用プロンプトと正式な再利用成果物は `KAFKA2306/prompt-vault` に登録する。
+- 事実の原記録、出来事、教訓、失敗、訂正は `KAFKA2306/graphiti` を正本とする。
+- 秘密情報や非公開の原資料は、許可された非公開の場所で扱う。
 
-## Zero-Cost Rule
+## 費用
 
-- Do not add or require GitHub-hosted runners (`ubuntu-latest`, `windows-latest`, `macos-latest`, or equivalent) unless the user explicitly changes the cost contract.
-- Run tests, lint, builds, data checks, and artifact generation locally or in the active agent environment using the repository's actual toolchain.
-- A GitHub Actions Billing/spending-limit failure is an infrastructure condition, not source-code test evidence. Do not retry a billing-blocked hosted workflow as the normal recovery route.
-- If self-hosted Actions are ever introduced, document the runner host, security boundary, and availability; self-hosting must not become an implicit completion dependency.
+- GitHubホストランナーの追加と必須化には、利用者による費用条件の明示的な変更が必要。
+- 実際の開発環境のツールを使ってテスト、lint、ビルド、データ検証、成果物生成を実行する。
+- GitHub Actionsの利用上限や請求エラーは実行環境の問題として記録する。ソースの合否は実際に実行できた確認から判断する。
+- セルフホストランナーを導入する場合は、実行ホスト、権限境界、稼働条件を記録する。
 
-## Git / PR / Cleanup
+## ブランチとコミット
 
-- Use GitHub API/connector operations for Issue, PR, commit, merge, and repository-state work where available; these do not require a GitHub-hosted runner.
-- Do not create a workflow solely to merge, close, or delete a branch.
-- Prefer GitHub's native `Automatically delete head branches` setting for merged PR cleanup; otherwise use an available API/UI deletion path.
-- Keep one canonical branch/PR for one outcome. Do not create duplicates to work around a rejected write.
-- If a host-side safety system rejects a GitHub write, re-fetch current state and retry the exact canonical action once. If rejected again, preserve the single canonical workline and report the blocker.
+- ブランチは `main` 一本とし、作業は同じチェックアウトで進める。作業ブランチや `git worktree` による別の作業ツリーは作成しない。
+- 独立して確認できる変更単位ごとに検証し、`main` に順次コミットする。反映直前に先端を確認し、他の変更が先に入った場合は差分を取り直す。
+- GitHubでの操作は、利用できる公式インターフェースを使う。保護機構に拒否された場合は、現在の状態を読み直して同じ操作を一度だけ再試行し、再度拒否された場合は該当操作と理由を記録する。
 
-## Artifact final pass
+## 出力と成果物
 
-For any finished artifact, make it stand alone for its intended audience. Remove prompt/conversation history, revision commentary, tool scaffolding, incidental examples, and other production meta unless the reader needs it to understand, trust, use, or verify the result. Unify terminology, assumptions, structure, and voice rather than preserving seams from iterative editing.
+- 任意の出力で人が読む文章を日本語で書き、回答、文書、PR本文、生成コードのコメントや説明文を[imozの日本語執筆・推敲ルール](https://imoz.jp/humanizer.ja.txt)に沿って校正する。読者に必要な結論、根拠、成立条件を示し、確認済みの事実、推定、未確認事項を区別する。
+- コード、API、構造化出力では既定の識別子、キー、列挙値、形式を使い、人向けの説明文を校正する。
+- 成果物を単体で読める形に整える。会話や制作の途中経過は、読者が内容を理解し、使い、検証するのに役立つものを残す。
+- 見出しは対象読者が要点を読み取れる表現にする。比較の対象、指標、時点を確かめ、資料に見合う強さで述べる。
 
-- For titles and headings, derive the intended takeaway and its evidence from the source. In a fresh context, recover the takeaway from the intended reader's visible text, then compare it with the source. For comparisons, check the subjects, metric, and any material time frame. Match the strength of the claim to the evidence.
+<a name="chatgpt-memory"></a>
 
-## ChatGPT Memory
+## 記憶の監査と同期
 
-- `MEMORY.md` is the only canonical durable memory; `CHATGPT_MEMORY_PROMPT.md` only tells ChatGPT how to audit/sync it and must not duplicate its values.
-- Use `main/MEMORY.md` as current state, PR diff as proposed change, and Git history as past state; keep one durable item per bullet and replace/delete instead of appending old states.
-- Keep mutable current state, credentials, secrets, and unnecessary sensitive data out of memory; retrieve current values from their owning source.
-- Treat ChatGPT Saved Memory as a derived cache; if editable, keep only a pointer to current `main/MEMORY.md` rather than duplicating durable items.
-- Review memory diffs against the current headings, remove duplicate or transient entries, and read back the saved edition.
+- 長期記憶の正本は `main/MEMORY.md` とする。参照できる長期ユーザー情報と照合する。提案はPRの差分、過去の状態はGit履歴で確認できる。
+- 監査では `KEEP`（整合）、`ADD`（長期情報の追加）、`REPLACE`（更新）、`DELETE`（不要・重複・終了済み）、`MOVE-OUT`（外部に正本がある現在値）に分類し、編集前に差分を示す。現在値は該当する正本で確認する。
+- ユーザーが「実行」と明示した範囲で変更し、実行できなかった変更を明記する。
+- ChatGPT側の保存メモリを編集できる場合は、現在の `main/MEMORY.md` への案内を保持する。
+- 現在値、資格情報、秘密情報、不要な機微情報は各情報の管理先で扱う。長期記憶の変更では一項目を一つの箇条書きにまとめ、重複と一時的な記述を除き、コミットした版を読み戻す。
 
-## Verification
+## 検証と完了
 
-- Reuse an existing check first. Add workflows, CI jobs, tests, scripts, or hooks only to catch a concrete failure that current checks cannot catch or when the platform requires them.
-- During cleanup, count existing automation and aim to halve it where a direct check still proves the relevant behavior. Keep enforced checks and security checks that address a concrete risk.
-- Derive verification commands from the repository's current README, package/build files, and executable configuration rather than inventing CI-only checks.
-- Record exactly which checks ran and their results. A check that did not run is not PASS.
-- Merge only when the requested contract is provable without depending on paid hosted CI.
+- 既存の確認手段を優先する。ワークフロー、CI、テスト、スクリプト、フックを加える場合は、検出できる具体的な失敗かプラットフォーム要件を示す。
+- 自動化・検証を整理するときは件数を数え、実際の動作を証明できる範囲で半減を目安にする。強制される検証や、具体的なリスクを抑えるセキュリティ検証を維持する。
+- README、パッケージ、ビルドファイル、設定に従い、既定の検証コマンドを使う。実行した確認と結果を記録し、未実行の確認は未確認として扱う。
+- 完了前に該当するソース、検証結果、`main` の反映、ブランチの状態を確かめる。
 
-## Completion
+## 依頼の解釈
 
-Before reporting completion, verify relevant source state, applicable checks, PR/main state, and cleanup. Do not treat billing-gated hosted CI as a completion requirement for this private repository.
-
-## Outcome-first task interpretation (Altitude / Depth / Range / Speed)
-
-- **Altitude:** Interpret a task as a verifiable user outcome, not only the named intermediate step. Infer the smallest justified acceptance criteria from the request and current repository state; do not silently expand scope or override explicit instructions.
-- **Depth:** Use primary/current evidence and real domain tools and methods. Verify the actual postcondition independently of agent self-report, preferably on the exact changed revision or target runtime.
-- **Range:** Combine code, data, tests, runtime/UI, and domain expertise when that materially improves the outcome, while respecting canonical owners and avoiding duplicate systems.
-- **Speed:** Complete authorized read-only and reversible work through implementation, focused checks, and read-back without unnecessary approval loops. Bound retries and stop at the proven outcome.
-- These principles never bypass repository-specific security, privacy, permission, publication, spending, destructive-action, or release boundaries. State verified results and any remaining `UNVERIFIED` layers.
+- **目的:** 利用者が確認できる結果として依頼を捉え、依頼と現状から根拠のある最小の合格条件を定める。
+- **根拠:** 現在の一次資料と分野の道具を使い、実行結果を対象の版や実環境で確かめる。
+- **範囲:** 正本と責任範囲を踏まえ、結果の改善に効くコード、データ、テスト、実環境、分野知識を組み合わせる。
+- **進行:** 許可された読み取りと可逆な作業を、実装、必要な検証、読み戻しまで進める。再試行は必要な回数に絞り、確認できた到達点を報告する。
+- セキュリティ、プライバシー、権限、公開、費用、不可逆操作、配布はリポジトリの条件に従う。確認済みと未確認を明記する。
