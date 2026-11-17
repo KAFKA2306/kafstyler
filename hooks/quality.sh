@@ -31,6 +31,7 @@ case "$1" in
     fi
     ;;
   start)
+    printf '使用中のKafstylerの場所は %s。\n' "$plugin_root"
     if [ "$host" = codex ]; then
       printf '以下で指定するKafstylerのスキルは %s/skills/ にある。対象の SKILL.md を読み、その手順を今回の依頼で実行する。\n' "$plugin_root"
     else
@@ -38,12 +39,14 @@ case "$1" in
     fi
     cat <<'EOF'
 今回の依頼にKafstylerを適用する。作業前に kafstyler:charter を使い、普段の利用経路、合格条件、品質を上げる指標を決める。同じ依頼で実行済みなら結果を使う。依頼に合うスキルを実行し、成果物は提出前に kafstyler:benchmark、人向けの文書は kafstyler:humanizer で確かめる。短い会話は必要な確認をその場で行う。判明した不合格は許可範囲で直し、同じ条件で再評価する。
+Kafstyler本体を変更する場合は、チェックアウトの AGENTS.md を開き、「Kafstyler本体の変更」に従って作業前の版と変更案を同じ合格条件で比べる。
 EOF
     ;;
   review)
     # Stop が続行したターンでは、もう一度再開させない。
     if grep -qE '(^|[,{])[[:space:]]*"stop_hook_active"[[:space:]]*:[[:space:]]*false[[:space:]]*[,}]'; then
       context='Kafstylerの提出前確認。ユーザーが依頼した範囲と中断指示を守る。短い会話は回答を見直して終える。成果物は実物と合格条件を照合し、証拠が足りなければ kafstyler:benchmark を使い、普段の入口から確認する。人向けの成果物は kafstyler:humanizer でタイトル、見出し、用語を一つずつ見直し、読者に必要な根拠と手順を確かめる。成果物の重大な欠陥を kafstyler:scrutiny で確かめる。同じ対象・版・前提で実施済みの検証は使い、欠陥を直した箇所は同じ入力で再評価する。変更前や現行案と比べて観測できた改善を示し、合否と未確認事項を区別する。Kafstylerの手順に再現できる漏れがあれば kafstyler:charter の改善手順を使ってから元の依頼に戻る。根拠のある未達を解消できる間は作業を続け、制約で止まる場合は未達の項目と再開条件を示す。'
+      context="$context Kafstyler本体を変更した場合は、チェックアウトで python3 hooks/check.py を実行し、変更案を読み込んだセッションで影響する操作を試す。実際に確認できた版と結果を報告する。"
       if [ "$host" = codex ]; then
         printf '{"decision":"block","reason":"%s"}\n' "$context"
       else

@@ -50,7 +50,14 @@ codex plugin add kafstyler@kafstyler
 - Claude Codeでは `claude plugin update kafstyler@kafka-agent-tools` で更新し、新しいセッションを開始するか `/reload-plugins` を実行します。今後の改善版を自動取得するには、`/plugin` の Marketplaces で `kafka-agent-tools` の自動更新を有効にします。[Anthropicの更新手順](https://code.claude.com/docs/en/discover-plugins#keep-plugins-updated)
 - Codexでは `codex plugin marketplace upgrade kafstyler` で配布元を更新し、`codex plugin add kafstyler@kafstyler` を実行して新しいセッションを開始します。[Codexのプラグインコマンド](https://learn.chatgpt.com/docs/developer-commands#codex-plugin)
 
-公開前は、Claude Codeで `claude plugin validate .` を実行し、別のプロジェクトで `claude --plugin-dir /path/to/kafstyler` を起動します。Codexでは `codex plugin marketplace add /path/to/kafstyler` で作業中の配布元を登録し、導入とフック承認を試します。
+### 作業中の版で試す
+
+Kafstyler本体を変更したら、リポジトリのルートで `python3 hooks/check.py` を実行します。両プラグインの設定からフックを起動し、規約の読み込み、依頼の受付、委譲先への引き継ぎ、提出前の確認が一度で止まることを確かめます。
+
+- Claude Codeでは `claude plugin validate .` を実行し、`claude --plugin-dir "$PWD"` で作業中の版を起動します。別プロジェクトで試すときも、`--plugin-dir` にKafstylerのチェックアウトの絶対パスを渡します。
+- Codexでは検証用の `CODEX_HOME` を用意し、`codex plugin marketplace add "$PWD"` と `codex plugin add kafstyler@kafstyler` を実行します。プラグインは導入時点のコピーを使います。変更後に試し直す場合は、検証用の環境で `codex plugin remove kafstyler@kafstyler` を実行してから再導入します。新しいセッションの `/hooks` で検証する版のフックを確認・承認します。[ローカル配布元の仕様](https://developers.openai.com/plugins/build/plugins#how-local-marketplaces-work)
+
+両クライアントで普段と同じように依頼を送り、作業中の版でスキルが使われ、提出前の確認で見つけた不足が修正されるかを確かめます。[本体の変更手順](AGENTS.md#kafstyler本体の変更)
 
 ## スキル
 
