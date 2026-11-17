@@ -35,6 +35,9 @@
 - [Kimball Group・ファクトの粒度](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/grain/)
 - [W3C・PROV-O 来歴の標準](https://www.w3.org/TR/prov-o/)
 - [W3C・DCAT 3 データカタログの標準](https://www.w3.org/TR/vocab-dcat-3/)
+- [dbt Developer Hub・dbtの概要](https://docs.getdbt.com/docs/introduction)
+- [dbt・ソースと来歴](https://docs.getdbt.com/docs/build/sources)
+- [dbt・データ品質テスト](https://docs.getdbt.com/docs/build/data-tests)
 
 ### 実装と制作
 
