@@ -3,6 +3,7 @@
 import json
 import os
 from pathlib import Path
+import re
 import subprocess
 import sys
 
@@ -35,6 +36,12 @@ def check(root, host):
     manifest = json.loads((root / f".{host}-plugin/plugin.json").read_text(encoding="utf-8"))
     hooks = manifest["hooks"] if host == "claude" else manifest["hooks"]["hooks"]
     policy = (root / "AGENTS.md").read_text(encoding="utf-8").rstrip("\n")
+    expected_skills = set(re.findall(r"\]\(skills/([^/\s()]+)/SKILL\.md[)#]", policy))
+    packaged_skills = {path.parent.name for path in (root / "skills").glob("*/SKILL.md")}
+    if expected_skills != packaged_skills:
+        missing = ", ".join(sorted(expected_skills - packaged_skills)) or "なし"
+        unlisted = ", ".join(sorted(packaged_skills - expected_skills)) or "なし"
+        raise ValueError(f"作業規約と配布スキルが一致しない（配布漏れ {missing}、規約への記載漏れ {unlisted}）。")
     session = run_hook(root, hooks, host, "SessionStart", source="startup")
     delegated = json.loads(run_hook(root, hooks, host, "SubagentStart", agent_type="general-purpose"))
     prompt = run_hook(root, hooks, host, "UserPromptSubmit", prompt="READMEの起動手順を確かめて")
@@ -50,7 +57,6 @@ def check(root, host):
         stop_continues = stop["decision"] == "block"
         review_context = stop["reason"]
 
-    expected_skills = {path.parent.name for path in (root / "skills").glob("*/SKILL.md")}
     contexts = (prompt, child_context["additionalContext"], review_context)
     all_routes_delivered = bool(expected_skills) and all(
         {line.split()[1].removeprefix("kafstyler:") for line in context.splitlines()
