@@ -23,7 +23,9 @@ claude plugin validate .
 claude --plugin-dir . --append-system-prompt-file AGENTS.md
 ```
 
-2行目でプラグインと[作業規約](AGENTS.md)を読み込みます。Claude Codeで `/kafstyler:data` などのコマンドを選びます。手順は `skills/<name>/SKILL.md` にあります。
+2行目でプラグインと[作業規約](AGENTS.md)を読み込みます。別のプロジェクトでは、そのプロジェクトのルートで `claude --plugin-dir /path/to/kafstyler` を実行します。
+
+プラグインが有効な間は、依頼ごとに目標設定と必要なコマンドの利用を促します。たとえば「台帳の構造を設計して」と入力すると、目標設定とデータ設計を使う流れになります。特定の手順を指定するときは、`/kafstyler:data` のように直接呼べます。作業中に見つけた手順の漏れは、正本で修正してから同じ操作で確認します。[全作業への適用と自己改善](AGENTS.md#全作業への適用と自己改善)
 
 ### 目標設定
 

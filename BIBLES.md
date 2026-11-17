@@ -68,6 +68,12 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [作業規約](AGENTS.md#ファイルの管理)
 
+### Claude Codeの依頼受付フック
+
+[Anthropic・UserPromptSubmit](https://code.claude.com/docs/en/hooks#userpromptsubmit)（公式仕様）。依頼送信時に作業規約を適用するためのフック。
+
+[作業規約](AGENTS.md#全作業への適用と自己改善)
+
 ### プラグインの作成
 
 [Anthropic・Claude Codeプラグインの作成](https://code.claude.com/docs/en/plugins/create)（公式ガイド）。プラグインの作成と検証
