@@ -68,7 +68,9 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [作業規約](AGENTS.md#ファイルの管理)
 
-### Claude Codeの依頼受付フック
+### Claude Codeのフック
+
+[Anthropic・SessionStart](https://code.claude.com/docs/en/hooks#sessionstart)・[Anthropic・SubagentStart](https://code.claude.com/docs/en/hooks#subagentstart)（公式仕様）。セッションと委譲先に規約を渡す。
 
 [Anthropic・UserPromptSubmit](https://code.claude.com/docs/en/hooks#userpromptsubmit)（公式仕様）。依頼送信時に作業規約を適用するためのフック。
 

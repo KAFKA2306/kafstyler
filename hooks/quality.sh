@@ -1,6 +1,28 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 case "$1" in
+  session|subagent)
+    policy_path="$CLAUDE_PLUGIN_ROOT/AGENTS.md"
+    policy=$(cat "$policy_path") || exit 1
+    location="規約の場所は $policy_path。相対リンクはこのファイルを基準にたどる。全文が届いていなければ、このファイルを読む。"
+
+    if [ "$1" = session ]; then
+      printf '%s\n%s\n\n%s\n' \
+        'このセッションにKafstylerの作業規約を適用する。Kafstyler本体の保守規約は本体を変更するときに適用する。' \
+        "$location" "$policy"
+    else
+      # SubagentStart の追加指示は JSON で渡す。
+      context=$(printf '%s\n%s\n\n%s' \
+        '委譲された作業にKafstylerの作業規約を適用する。親から受け取った合格条件を使い、確認した結果と見つけた漏れを親に返す。' \
+        "$location" "$policy")
+      context=${context//\\/\\\\}
+      context=${context//\"/\\\"}
+      context=${context//$'\n'/\\n}
+      context=${context//$'\r'/\\r}
+      context=${context//$'\t'/\\t}
+      printf '{"hookSpecificOutput":{"hookEventName":"SubagentStart","additionalContext":"%s"}}\n' "$context"
+    fi
+    ;;
   start)
     cat <<'EOF'
 今回の依頼にKafstylerを適用する。作業前に Skill で kafstyler:charter を呼び、普段の利用経路、合格条件、品質を上げる指標を決める。同じ依頼で実行済みなら結果を使う。依頼に合うスキルを実行し、成果物は提出前に kafstyler:benchmark、人向けの文書は kafstyler:humanizer で確かめる。短い会話は必要な確認をその場で行う。判明した不合格は許可範囲で直し、同じ条件で再評価する。
