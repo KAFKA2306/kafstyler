@@ -1,6 +1,6 @@
 {
-  "compared_to": "8203e370f0753db96f1cbdf927a2dc5aed64d921",
-  "rules": "e67ad031033a6d4d07b361a8e89112f4141686745ac7bbcadfe558701f3a8f16",
+  "compared_to": "9900e3589b4cc4330c3799cca115c5649cfbe112",
+  "rules": "e5e42bf71757673e2386c93a4ac840fc7e1af96608414a155f49aaa93daa1ebf",
   "documents": {
     "AGENTS.md": {
       "sha256": "0fefd732c793a3684e0fa93c0ad017c850f77f43493e4dad9c4115fa85d04e26",
@@ -27,15 +27,15 @@
       }
     },
     "MISSION.md": {
-      "sha256": "daf630c01162d6df4e4fc7a07bb85f6f7256e32945951a68f74f9ac32a2f4518",
+      "sha256": "db032a25ef55fafe545c807a3eef58cb1f99733c2332cd8bda4f7eab7a2e4d90",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手前と変更後で内部リンク各26件に到達し、YAMLメタデータを確認した。"},
-        "charter": {"status": "pass", "evidence": "保守担当が、外部の成果物と同様にKafstyler自身の文書も対象だと読み取り、適用と確認の手順へ進めることを確認条件にした。"},
-        "deliver": {"status": "pass", "evidence": "「出力の共通基準」から、結果、根拠、未確認の扱いを定めた「出力と成果物」へ到達した。"},
-        "humanizer": {"status": "pass", "evidence": "「自律文書整備」の直後に本体への適用を示し、更新手順の「履歴から辿れる」を他の節と同じ「たどれる」にそろえた。"},
-        "prune": {"status": "pass", "evidence": "「自律文書整備」にある台帳の更新を共通規約と照合した。ミッションには更新の目的を書き、着手時の作業台帳の手順はAGENTS.mdで一元管理する。"},
-        "schema": {"status": "pass", "evidence": "本書はミッションと更新の流れを管理し、文書別の実行手順はAGENTS.md、結果は適用記録へつないだ。"},
-        "scrutiny": {"status": "pass", "evidence": "一般の自律開発に全Markdownの運用負担を持ち込む読み方を点検した。追加文の主語はKafstyler自身の文書で、リンク先にも本体の保守と明記した。"}
+        "benchmark": {"status": "pass", "evidence": "同じ文書を基準に、自律文書整備の冒頭で読者側の合格条件を拾えるか、既存の見出し・リンク・メタデータが保たれるかを照合した。候補で読者側の合格条件を明記し、既存の参照先の差分は0件。"},
+        "charter": {"status": "pass", "evidence": "自律文書整備の冒頭で、初見の読者が見出しと冒頭から要点をつかみ、手順を読む場合に次の操作が分かることを完了条件にした。"},
+        "deliver": {"status": "pass", "evidence": "READMEのミッションの案内から自律文書整備を開き、文章の推敲に進む経路を照合した。提出時の既存の共通基準へも到達できる。"},
+        "humanizer": {"status": "pass", "evidence": "冒頭で要点が伝わる状態を平易な表現で示した。次の操作を書く条件を手順に限定し、根拠をたどる後段の文との重複を外した。"},
+        "prune": {"status": "pass", "evidence": "新しい章、スキル、確認コマンドの追加を避け、自律文書整備の冒頭二文で目的と条件を示した。"},
+        "schema": {"status": "pass", "evidence": "目的はミッション、推敲手順はhumanizer、適用結果は既存記録に置いた。frontmatterと参照先は変更前後で一致した。"},
+        "scrutiny": {"status": "pass", "evidence": "独立レビューで報告や台帳にも次の操作を求める誤読を指摘された。手順がある場合に限定し、出力の共通基準が求める根拠と成立条件も照合した。"}
       }
     },
     "README.md": {
