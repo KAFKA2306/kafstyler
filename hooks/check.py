@@ -1,11 +1,94 @@
-"""両クライアントのマニフェストから共通フックを起動して確かめる。"""
+"""共通フックと、全Markdownへのスキル適用記録を確かめる。"""
 
+import argparse
+import hashlib
 import json
 import os
 from pathlib import Path
 import re
 import subprocess
 import sys
+
+
+REVIEW_PATH = Path("hooks/markdown-reviews.json")
+SHARED_RULES = ("AGENTS.md", "BIBLES.md", "MISSION.md")
+MARKDOWN_SUFFIXES = {".md", ".markdown", ".mdown", ".mkd"}
+
+
+def markdown_inventory(root):
+    output = subprocess.check_output(
+        ["git", "ls-files", "--cached", "--others", "--exclude-standard", "--full-name", "-z"],
+        cwd=root,
+    )
+    documents = {}
+    skills = {}
+    for name in sorted(set(os.fsdecode(output).split("\0"))):
+        path = Path(name)
+        candidate = root / path
+        if path.suffix.lower() not in MARKDOWN_SUFFIXES or not candidate.exists():
+            continue
+        if not candidate.is_file() or not candidate.resolve().is_relative_to(root):
+            raise ValueError(f"リポジトリ内のMarkdownを読めない。{name}")
+        content = candidate.read_text(encoding="utf-8")
+        documents[name] = hashlib.sha256(content.encode("utf-8")).hexdigest()
+        if path.match("skills/*/SKILL.md") and len(path.parts) == 3:
+            skills[path.parent.name] = documents[name]
+
+    if not skills:
+        raise ValueError("監査する skills/*/SKILL.md がない。")
+    definitions = {"共通規約": {name: documents[name] for name in SHARED_RULES}, "スキル": skills}
+    rules = hashlib.sha256(json.dumps(definitions, sort_keys=True).encode("utf-8")).hexdigest()
+    return {"rules": rules, "skills": sorted(skills), "documents": documents}
+
+
+def unique_fields(pairs):
+    fields = {}
+    for key, value in pairs:
+        if key in fields:
+            raise ValueError(f"適用記録に同じキーがある。{key}")
+        fields[key] = value
+    return fields
+
+
+def check_markdown(root, inventory):
+    review = json.loads((root / REVIEW_PATH).read_text(encoding="utf-8"), object_pairs_hook=unique_fields)
+    documents = review["documents"]
+    if not isinstance(documents, dict):
+        raise ValueError("適用記録の documents は文書パスをキーにしたオブジェクトにする。")
+    skills = set(inventory["skills"])
+    errors = []
+    if review.get("rules") != inventory["rules"]:
+        errors.append("規約またはスキルが変わった。現行版で全Markdownを確認する。")
+    for path, digest in inventory["documents"].items():
+        entry = documents.get(path, {})
+        if not isinstance(entry, dict) or not isinstance(entry.get("results", {}), dict):
+            errors.append(f"{path} の適用記録の形式が違う。")
+            continue
+        results = entry.get("results", {})
+        if path not in documents:
+            errors.append(f"{path} に全スキルの適用記録がない。")
+            continue
+        if entry.get("sha256") != digest:
+            errors.append(f"{path} が変わった。現行版で全スキルを使う。")
+        for skill in sorted(skills - results.keys()):
+            errors.append(f"{path} に {skill} の適用記録がない。")
+        for skill, result in results.items():
+            if skill not in skills:
+                errors.append(f"{path} に存在しないスキル {skill} の記録がある。")
+                continue
+            if (not isinstance(result, dict) or result.get("status") != "pass"
+                    or not isinstance(result.get("evidence"), str) or not result["evidence"].strip()):
+                errors.append(f"{path} の {skill} に根拠のある合格記録がない。")
+
+    for path in sorted(documents.keys() - inventory["documents"].keys()):
+        errors.append(f"存在しないMarkdown {path} の適用記録がある。")
+    for error in errors:
+        print(f"Markdown 不合格 {error}")
+    if errors:
+        return False
+    count = len(documents)
+    print(f"Markdown 合格 {count}文書 × {len(skills)}スキル = {count * len(skills)}件の適用記録")
+    return True
 
 
 def run_hook(root, hooks, host, event, **fields):
@@ -73,11 +156,15 @@ def check(root, host):
         "依頼受付で対象版と目標設定が示される": (
             f"使用中のKafstylerの場所は {root}。" in prompt and "kafstyler:charter" in prompt
         ),
-        "提出前に必須スキルの実行結果と完了条件が照合される": (
+        "提出前に実行結果と完了条件の照合を促す": (
             stop_continues and "kafstyler:scrutiny" in review_context
             and "実行結果、根拠を照合" in review_context
             and "完了扱いにしない" in review_context
             and "python3 hooks/check.py" in review_context
+        ),
+        "本体の依頼受付で全Markdownへの適用を案内し、提出前に版と記録を照合する": (
+            "--markdown-inventory" in prompt and "全スキル" in prompt
+            and "本体のMarkdown適用記録の照合結果" in review_context
         ),
         "依頼受付・委譲・提出前に全スキルの発動条件が届く": all_routes_delivered,
         "提出前の確認は一度で止まる": resumed == {},
@@ -85,8 +172,23 @@ def check(root, host):
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=__doc__)
+    modes = parser.add_mutually_exclusive_group()
+    modes.add_argument("--markdown-inventory", action="store_true", help="文書とスキルの現行版を出力する")
+    modes.add_argument("--markdown-only", action="store_true", help="Markdownの適用記録だけを照合する")
+    args = parser.parse_args()
     root = Path.cwd()
-    passed = True
+    try:
+        inventory = markdown_inventory(root)
+        if args.markdown_inventory:
+            print(json.dumps(inventory, ensure_ascii=False, indent=2))
+            sys.exit(0)
+        passed = check_markdown(root, inventory)
+    except (AttributeError, KeyError, OSError, TypeError, ValueError, subprocess.CalledProcessError) as error:
+        print(f"Markdown 不合格 {error}")
+        passed = False
+    if args.markdown_only or args.markdown_inventory:
+        sys.exit(0 if passed else 1)
     for host in ("claude", "codex"):
         try:
             results = check(root, host)

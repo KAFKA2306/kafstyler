@@ -29,6 +29,14 @@ skill_routes() {
   ' "$plugin_root"/skills/*/SKILL.md
 }
 
+kafstyler_checkout() {
+  local checkout
+  checkout=$(git rev-parse --show-toplevel 2>/dev/null) || return
+  [ -f "$checkout/.agents/plugins/marketplace.json" ] &&
+    grep -qE '"name"[[:space:]]*:[[:space:]]*"kafstyler"' "$checkout/.codex-plugin/plugin.json" 2>/dev/null &&
+    printf '%s\n' "$checkout"
+}
+
 json_string() {
   local value=$1
   value=${value//\\/\\\\}
@@ -67,6 +75,9 @@ case "$1" in
 コミットは毎回、同梱の AGENTS.md の「ブランチとコミット」に従う。コミットだけの依頼や GitHub API で作成する場合も、作成直前に同じ手順を適用する。
 Kafstyler本体を変更する場合は、着手前の main のコミットを記録し、その版の AGENTS.md と該当スキルを使う。「Kafstyler本体の変更」に従って、作業前の版と変更案を同じ合格条件で比べる。
 PROMPT
+    if checkout=$(kafstyler_checkout); then
+      printf '%s\n' '本体を保守するときは、ルートで python3 hooks/check.py --markdown-inventory を実行し、全Markdownに全スキルを使う。見つけた漏れを直し、文書とスキルの組ごとの結果を記録する。子や個々のスキルは全件確認を起動し直さない。'
+    fi
     ;;
   review)
     # Stop が続行したターンでは、もう一度再開させない。
@@ -79,6 +90,12 @@ Kafstyler本体を変更した場合は、変更案に対して着手前の版�
 $routes
 PROMPT
 )
+      if checkout=$(kafstyler_checkout); then
+        if ! result=$(cd "$checkout" && python3 "$plugin_root/hooks/check.py" --markdown-only 2>&1); then
+          result=$(printf '%s\n%s' "$result" '本体の保守作業では、不足するスキルを現行版に適用して記録を直し、検証をやり直す。未確認が残る場合は完了扱いにしない。')
+        fi
+        context=$(printf '%s\n\n%s\n%s' "$context" '本体のMarkdown適用記録の照合結果' "$result")
+      fi
       if [ "$host" = codex ]; then
         printf '{"decision":"block","reason":%s}\n' "$(json_string "$context")"
       else

@@ -66,6 +66,8 @@ Kafstyler本体の作業を始める前に、リポジトリのルートで `bas
 
 両プラグインの設定からフックを起動し、作業規約にあるスキルが配布され、依頼の受付、委譲、提出前の確認で案内されることを確かめます。
 
+本体の全Markdownに全スキルを使い、文書ごとの結果を [適用記録](hooks/markdown-reviews.json) に残します。同じ検証コマンドが、文書やスキルを追加した際の記録漏れと、変更前の版に対する古い記録を検出します。[適用と記録の手順](AGENTS.md#全markdownに全スキルを使う)
+
 - Claude Codeでは `claude plugin validate .` を実行し、`claude --plugin-dir "$PWD"` で作業中の版を起動します。別プロジェクトで試すときも、`--plugin-dir` にKafstylerのチェックアウトの絶対パスを渡します。
 - Codexでは検証用の `CODEX_HOME` を用意し、`codex plugin marketplace add "$PWD"` と `codex plugin add kafstyler@kafstyler` を実行します。プラグインは導入時点のコピーを使います。変更後に試し直す場合は、検証用の環境で `codex plugin remove kafstyler@kafstyler` を実行してから再導入します。新しいセッションの `/hooks` で検証する版のフックを確認・承認します。[ローカル配布元の仕様](https://developers.openai.com/plugins/build/plugins#how-local-marketplaces-work)
 

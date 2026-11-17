@@ -33,7 +33,7 @@ aliases:
 
 Obsidianでは、このリポジトリのルートを保管庫として開く。文書と見出しは相対Markdownリンクで結ぶ。ファイル名や見出しを変更したら参照元も更新し、GitHubとObsidianの双方でたどれる形にする。
 
-すべてのMarkdownにYAMLのfrontmatterを置く。 `type` は文書の種別、 `description` は用途を示す日本語の説明、 `tags` は検索用のリストとする。 `aliases` は別の名前で探す文書に使う。同じキーの型は保管庫内で統一する。設定ファイルの用途とタグは[作業規約](AGENTS.md#ファイルの管理)に記録する。
+すべてのMarkdownにYAML frontmatterを置く。`type` は文書の種別、`description` は用途を示す日本語の説明、`tags` は検索用のリストとする。`aliases` は別の名前で探す文書に使う。同じキーの型は保管庫内で統一する。設定ファイルの用途とタグは[作業規約](AGENTS.md#ファイルの管理)に記録する。
 
 タグは小文字とハイフンを使い、階層は `/` で区切る。YAMLでは `kafstyler/canon` と書き、Obsidianでは `tag:#kafstyler/canon` で検索する。
 
@@ -179,7 +179,7 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 ## AIエンジニアリングの書籍
 
-### AIエンジニアリングの書籍
+### AI Engineering（Chip Huyen）
 
 [Chip Huyen・AI Engineering](https://www.oreilly.com/library/view/ai-engineering/9781098166298/)（書籍）。基盤モデルを使うアプリケーションの設計と評価
 

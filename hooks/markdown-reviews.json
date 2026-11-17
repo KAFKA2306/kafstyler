@@ -1,0 +1,138 @@
+{
+  "compared_to": "261ceb90ded3e8962265aeb9eb173b387c2b235f",
+  "rules": "2e087f2fd5e5099b1368bcda8ccd67a1178e56b798bc2cf24965b8a79d089dd9",
+  "documents": {
+    "AGENTS.md": {
+      "sha256": "43fc5ca5f13a8768ba0fe13cdb07136965909ab5548e1baefa613b63b961c61b",
+      "results": {
+        "benchmark": {"status": "pass", "evidence": "現行と候補のYAML frontmatterを解析できた。通常の作業規約からたどれる内部リンクは56件から58件に増え、全件到達した。"},
+        "charter": {"status": "pass", "evidence": "保守担当が対象の文書・スキル・古い記録を特定し、修正後に検証を通せることを完成条件にした。手順への入口は「Kafstyler本体の変更」の直後。"},
+        "deliver": {"status": "pass", "evidence": "規約と記録を結び、既存のpython3 hooks/check.pyで記録を照合する。両マニフェストの依頼受付と提出前確認にもつないだ。"},
+        "humanizer": {"status": "pass", "evidence": "新見出しを「全Markdownに全スキルを使う」とし、対象、各スキルの判断、記録、再実行の順に並べた。"},
+        "prune": {"status": "pass", "evidence": "各スキルの詳しい実行手順は各SKILL.mdに置く。7スキルの対象別一覧を別ファイルに手書きする案は、Gitとスキルフォルダから列挙できるため採らなかった。"},
+        "schema": {"status": "pass", "evidence": "作業規約の正本を本書に保ち、適用記録は文書パスとスキル名を一意の組とした。文書ハッシュと規約・スキルのハッシュを照合する。"},
+        "scrutiny": {"status": "pass", "evidence": "全件点検からscrutinyやbenchmarkを呼んだ先で全件点検に戻る反例がある。親だけが点検を起動し、既存の実行中スキルの再呼び出し防止を使う。"}
+      }
+    },
+    "BIBLES.md": {
+      "sha256": "c5a51b67b76b34d95233bba10ec20b9f673d9e0a399dc868440f9923f0f72473",
+      "results": {
+        "benchmark": {"status": "pass", "evidence": "現行と候補を同じ内部リンク検査にかけ、どちらも145件が到達した。YAML frontmatterも両版で解析できた。"},
+        "charter": {"status": "pass", "evidence": "スキルの担当者が知りたい分野から、一次資料と実際の使い方の両方を選べることを確認条件にした。"},
+        "deliver": {"status": "pass", "evidence": "pruneから「AIが増やす判断箇所」「Issue駆動開発」「失敗原因が見える実装」へ移動し、各項目からZenn原典を開いた。"},
+        "humanizer": {"status": "pass", "evidence": "「AIエンジニアリングの書籍」が章と最初の小見出しで重なっていた。小見出しを「AI Engineering（Chip Huyen）」に改め、拾い読みで書籍を区別できるようにした。"},
+        "prune": {"status": "pass", "evidence": "pruneの前提3本のURLを本書に集約した。本文に引くリンクがこの台帳を経由するので、資料を入れ替える際の編集箇所が減る。"},
+        "schema": {"status": "pass", "evidence": "「ノートの管理」のtype・description・tags・aliasesを実物11件のfrontmatterと照合し、資料項目には一次URL・種別・用途・対応スキルを維持した。"},
+        "scrutiny": {"status": "pass", "evidence": "書籍の小見出しの変更で外からのナビゲーションを壊す反例を調べた。グループ見出しは同じアンカーで、旧小見出しの重複アンカーへの内部参照は0件だった。"}
+      }
+    },
+    "MISSION.md": {
+      "sha256": "daf630c01162d6df4e4fc7a07bb85f6f7256e32945951a68f74f9ac32a2f4518",
+      "results": {
+        "benchmark": {"status": "pass", "evidence": "現行と候補を同じ内部リンク検査にかけ、25件から26件に増えた参照はすべて到達した。"},
+        "charter": {"status": "pass", "evidence": "保守担当が、外部の成果物と同様にKafstyler自身の文書も対象だと読み取り、適用と確認の手順へ進めることを確認条件にした。"},
+        "deliver": {"status": "pass", "evidence": "「自律文書整備」からAGENTS.mdの全件手順を開き、そこから適用記録の正本と検証コマンドに到達した。"},
+        "humanizer": {"status": "pass", "evidence": "「自律文書整備」の直後に本体への適用を示し、更新手順の「履歴から辿れる」を他の節と同じ「たどれる」にそろえた。"},
+        "prune": {"status": "pass", "evidence": "全件点検の各手順をミッションに転記せず、適用範囲を一文で示して正本へつないだ。"},
+        "schema": {"status": "pass", "evidence": "本書はミッションと更新の流れを管理し、文書別の実行手順はAGENTS.md、結果は適用記録へつないだ。"},
+        "scrutiny": {"status": "pass", "evidence": "一般の自律開発に全Markdownの運用負担を持ち込む読み方を点検した。追加文の主語はKafstyler自身の文書で、リンク先にも本体の保守と明記した。"}
+      }
+    },
+    "README.md": {
+      "sha256": "830f45534c04803ae0e8912f0488a2cf7b744e80427e486d627b518e41d7ed35",
+      "results": {
+        "benchmark": {"status": "pass", "evidence": "現行と候補を同じ内部リンク検査にかけ、22件から24件に増えた参照はすべて到達した。"},
+        "charter": {"status": "pass", "evidence": "ローカル版を試す保守担当が、どのコマンドを実行し、どこを読み直すと適用漏れを解決できるかまで分かることを確認条件にした。"},
+        "deliver": {"status": "pass", "evidence": "「作業中の版で試す」のpython3 hooks/check.pyをルートで実行し、両マニフェスト経由のフックと適用記録の結果が表示されることを確かめた。"},
+        "humanizer": {"status": "pass", "evidence": "「作業中の版で試す」に既存のコマンドが検出する追加文書・追加スキル・古い記録を示し、検査される範囲を具体化した。"},
+        "prune": {"status": "pass", "evidence": "導入手順の直後に同じチェックを再掲する案を外した。実行コマンドは本体保守ですでに使う入口に集約した。"},
+        "schema": {"status": "pass", "evidence": "READMEには導入と検証の入口を置き、適用記録と文書別の運用規約をそれぞれJSONとAGENTS.mdに参照させた。"},
+        "scrutiny": {"status": "pass", "evidence": "マニフェストのフック照合と記録の照合は別の段落に置いた。全スキルの実処理がCLI検証によって自動実行されるという誤読を抑えた。"}
+      }
+    },
+    "skills/benchmark/SKILL.md": {
+      "sha256": "f9ba330edc800c0a248d9528c4510b5eee3852d1b4fd0af834acafe098f2f347",
+      "results": {
+        "benchmark": {"status": "pass", "evidence": "前後で内部リンク32件が到達した。負例は既知の欠陥を落とす基準として扱い、実行コード0は正常例に限ることを測った。"},
+        "charter": {"status": "pass", "evidence": "担当者が検証前に母数と境界事例を決め、提出時に再実行できる数値で合否を伝えられることを確認した。"},
+        "deliver": {"status": "pass", "evidence": "「評価と比較」の手順から「成功基準と評価」を開き、戻って新規文書と旧版の記録を通常の検証入口で試した。"},
+        "humanizer": {"status": "pass", "evidence": "手順2の呼び出し後に混じっていた空白を除き、休止なしに次の「指標、合格条件、比較条件」へ読めるようにした。"},
+        "prune": {"status": "pass", "evidence": "3D生成とデータ品質の参照には別々の測定用途がある。今回の検査基準は既存の合格条件と成否記録を使い、別の採点基準の正本は作らなかった。"},
+        "schema": {"status": "pass", "evidence": "評価の一件は指標・入力・測定方法・単位・合格条件で決まる。記録では文書×スキルを粒度にし、件数の分母を自動列挙した。"},
+        "scrutiny": {"status": "pass", "evidence": "旧検査はMarkdownが増えても合格するため、合否条件に未記録文書と古い記録を落とすケースを加えた。"}
+      }
+    },
+    "skills/charter/SKILL.md": {
+      "sha256": "e38acb9da524ad9422f4d4665afc6296563c076261c4fa141a21cb576f279a54",
+      "results": {
+        "benchmark": {"status": "pass", "evidence": "現行と候補の内部リンク17件が到達した。本体の検証コマンドで新規文書を入れたときに旧版と候補の終了コードを比較した。"},
+        "charter": {"status": "pass", "evidence": "本体保守の完成場面を、担当者が漏れた文書やスキルを表示から特定して、補った版で合格を再現できる状態とした。"},
+        "deliver": {"status": "pass", "evidence": "「成果物の確認と手順の改善」から既存の更新手順をたどり、本体の共通規約と既存フックを修正した。"},
+        "humanizer": {"status": "pass", "evidence": "反証レビューへの引き継ぎ文の句点直後の空白を除き、完成場面・合格条件・道具の語彙を本文内で確認した。"},
+        "prune": {"status": "pass", "evidence": "手順の改善を起点にする節の既存の役割を保った。全件点検から同じ節へ戻るたびにもう一度全件を回す案は、親が一度実行すれば不要。"},
+        "schema": {"status": "pass", "evidence": "「成果物の確認と手順の改善」にある再現入力、期待と実際の差、使用版を記録の設計に使った。文書とスキルの識別はGit上のパスに従った。"},
+        "scrutiny": {"status": "pass", "evidence": "「全件を確認した」という申告だけでも完了できる現行の条件を反証し、対象の文書とルールの版を値で照合する条件を加えた。"}
+      }
+    },
+    "skills/deliver/SKILL.md": {
+      "sha256": "c19c5167de449a22b5817809d7377628155382a5107087d67753e6ee7907234d",
+      "results": {
+        "benchmark": {"status": "pass", "evidence": "現行と候補の内部リンク68件が到達した。Claude Codeのloop実セッションはこの文書の内部リンク測定に含めていない。"},
+        "charter": {"status": "pass", "evidence": "保守担当が変更の目的、実行入口、配布前に必要な確認を選べることを確認した。Claude Codeの公式loopの操作は冒頭の独立節にある。"},
+        "deliver": {"status": "pass", "evidence": "文書が指定する既存の検証入口を使い、ClaudeとCodexのマニフェストから同じフックを起動して出力を照合した。"},
+        "humanizer": {"status": "pass", "evidence": "手順6の句点直後の空白を除いた。配布前に渡す変更後の実物、入口、合格条件、検証結果を読み直した。"},
+        "prune": {"status": "pass", "evidence": "実装と検証の手順5は既存の入口の再利用を指示する。新しいCIや別の検証スクリプトを作らず既存のcheck.pyを延ばした。"},
+        "schema": {"status": "pass", "evidence": "依頼・対象版・確認結果を配布前レビューへ渡す順序を確認し、記録の対象版と各スキルの観測を別の項目に置いた。"},
+        "scrutiny": {"status": "pass", "evidence": "Claude Codeでのloop登録と解除を現行文書と公式リンクで照合した。実行できないクライアント上の動作を、共通フック検査の合格から推定しない。"}
+      }
+    },
+    "skills/humanizer/SKILL.md": {
+      "sha256": "2b4ce2b7f37471dbd92563175554e2434722326f23f35701491ab1edc89485da",
+      "results": {
+        "benchmark": {"status": "pass", "evidence": "現行と候補の内部リンク11件が到達した。節見出しだけを並べた読み方でも、記事設計と提出前確認の位置を特定できた。"},
+        "charter": {"status": "pass", "evidence": "記事担当が読者の用事を決め、見出しだけで必要な答えの場所を指せる状態を確認条件にした。"},
+        "deliver": {"status": "pass", "evidence": "「原典2本」からBIBLES.mdへ進み、ONSの読者調査とNN/Gの見出しの視線計測を開いた。"},
+        "humanizer": {"status": "pass", "evidence": "「記事を読者から設計する」「タイトル・見出し・用語の見直し」「本文の推敲と提出前の確認」の順で目的、文の構造、照合をたどれるため見出しを維持した。"},
+        "prune": {"status": "pass", "evidence": "記事の読者に関する原典の説明は聖典台帳に保ち、本文には流用可能な3手順がある。前提の転載は不要と判断した。"},
+        "schema": {"status": "pass", "evidence": "「記事を読者から設計する」は根拠のある読者像と想定を区別する。読者を調べる一次資料はBIBLES.mdの同名項目にある。"},
+        "scrutiny": {"status": "pass", "evidence": "見出しで答えを探せても本文が用事に応えない場合を確認した。手順3は本文から判断や行動を可能にする箇所の提示も求める。"}
+      }
+    },
+    "skills/prune/SKILL.md": {
+      "sha256": "7a498b77b7e1358228de377382745f81abbd7fa9372f8f69dde3c219891f7e46",
+      "results": {
+        "benchmark": {"status": "pass", "evidence": "現行と候補に同じリンク検査を実施し、内部21件は両版で到達した。候補の3件は台帳経由で同じ原典を開けた。"},
+        "charter": {"status": "pass", "evidence": "整理担当が削除候補を選び、残した入口を削除前と同じ入力で試せることを確認条件にした。"},
+        "deliver": {"status": "pass", "evidence": "記事名リンクを聖典台帳の該当見出しへ向け、3本とも改稿後の文書から公開記事まで移動した。"},
+        "humanizer": {"status": "pass", "evidence": "着手前に読む記事3本のタイトルと使う目的を残し、「聖典台帳」という同じ補足ラベルの反復を除いた。"},
+        "prune": {"status": "pass", "evidence": "同じ記事を指す直リンクと台帳リンクの並記を3件解消した。台帳は各記事の用途と参照元を管理する既存の正本。"},
+        "schema": {"status": "pass", "evidence": "削除の判断に必要な候補のパス、参照元、根拠、残す入口は本文で指定し、参考記事の公開URLはBIBLES.mdで一元管理する。"},
+        "scrutiny": {"status": "pass", "evidence": "台帳への集約で着手前に記事を開けなくなる場合を調べた。3つのアンカーから既存の公開原典に到達した。"}
+      }
+    },
+    "skills/schema/SKILL.md": {
+      "sha256": "0bf26287b4cc42fcfb445a9c1db71851d8ae7fad7d0612191c091fb183410233",
+      "results": {
+        "benchmark": {"status": "pass", "evidence": "現行と候補の内部リンク26件が到達した。同一キーの記録と未記録の組を通常の照合で拒否した。"},
+        "charter": {"status": "pass", "evidence": "担当者が正本と利用側を見つけ、同じ対象の重複記録と取りこぼしを区別できることを確認した。"},
+        "deliver": {"status": "pass", "evidence": "正本を一つ選ぶ手順を適用し、markdown-reviews.jsonを作業規約と検証コマンドから参照した。"},
+        "humanizer": {"status": "pass", "evidence": "手順8の句点直後の空白2か所を除き、契約の反証と移行の手順を同じ段落の順序で読んだ。"},
+        "prune": {"status": "pass", "evidence": "質問台帳の節は、人の判断を待つ場面と再開条件の正本として機能する。Markdownの適用記録に質問の状態を重複して持たせなかった。"},
+        "schema": {"status": "pass", "evidence": "実データの文書1件とスキル1件を1結果にした。JSONの同一キーを拒否し、未知のパスとスキルを取り除く前に検出する。"},
+        "scrutiny": {"status": "pass", "evidence": "JSONの重複キーが先の記録を無言で上書きする場合と、スキル追加時に古い記録を再利用する場合を確認し、両方を不合格条件にした。"}
+      }
+    },
+    "skills/scrutiny/SKILL.md": {
+      "sha256": "1d8b6b4e4f25a59eb89eb609894b39e9022fa495cf7da124e72164c39c83da0f",
+      "results": {
+        "benchmark": {"status": "pass", "evidence": "現行と候補の内部リンク15件が到達した。本文の改変という反例を使い、古い記録が合格しないことを比較した。"},
+        "charter": {"status": "pass", "evidence": "反証担当が成立を疑う前提と、結果を分ける観測を指定できることを確認した。"},
+        "deliver": {"status": "pass", "evidence": "「共通の連携手順」から実行中のスキルへの再入防止を確認し、本体を点検する親に全件の起動を限定した。"},
+        "humanizer": {"status": "pass", "evidence": "冒頭の「反証する主張」と手順5の「発生条件、実際の根拠か正確な再現手順、影響」の関係は、指摘の書き方まで読めるため保った。"},
+        "prune": {"status": "pass", "evidence": "対立仮説を立てる手順と指摘を書く手順は別の結果を出す。既存のbenchmarkへの受け渡しを利用し、比較の手順は重複させなかった。"},
+        "schema": {"status": "pass", "evidence": "指摘は発生条件、根拠、影響と確認手順を持つ。記録では各文書の指摘と判断をevidenceに置き、passと未解決の状態を別に持つ。"},
+        "scrutiny": {"status": "pass", "evidence": "benchmarkとscrutinyの相互呼び出しは、実行中のスタックと、反例を呼び出し元に返す手順4で停止できることを確認した。"}
+      }
+    }
+  }
+}
