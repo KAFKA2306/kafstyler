@@ -39,7 +39,7 @@ codex plugin add kafstyler@kafstyler
 
 「READMEを初めて読む人が、手順どおりに起動できるように整えて」のように依頼します。
 
-セッションを始めるときや子エージェントに作業を委譲するときは、プラグインが同梱の[作業規約](AGENTS.md)を読み込みます。
+プラグインは、依頼を受け取るたびに各スキルの発動条件をエージェントへ渡します。スキル名を書かなくても、作業の段階ごとに該当するスキルを使うよう指示します。たとえば「台帳の列を統一し、移行後に旧ファイルを整理して」では、設計前に `schema`、移行後の削除前に `prune` を使います。委譲先にも同じ発動条件と[作業規約](AGENTS.md#コマンドの連携)を渡します。
 
 1. 普段の入口、成功と分かる結果、改善の比較基準を決めます。
 2. 文書では、見出しから必要な手順を見つけ、記載どおりに操作できるかを確かめます。コードやデータでは、現物を同じ入力と合格条件で評価します。
@@ -57,7 +57,7 @@ Kafstyler本体を変更したら、リポジトリのルートで `python3 hook
 - Claude Codeでは `claude plugin validate .` を実行し、`claude --plugin-dir "$PWD"` で作業中の版を起動します。別プロジェクトで試すときも、`--plugin-dir` にKafstylerのチェックアウトの絶対パスを渡します。
 - Codexでは検証用の `CODEX_HOME` を用意し、`codex plugin marketplace add "$PWD"` と `codex plugin add kafstyler@kafstyler` を実行します。プラグインは導入時点のコピーを使います。変更後に試し直す場合は、検証用の環境で `codex plugin remove kafstyler@kafstyler` を実行してから再導入します。新しいセッションの `/hooks` で検証する版のフックを確認・承認します。[ローカル配布元の仕様](https://developers.openai.com/plugins/build/plugins#how-local-marketplaces-work)
 
-両クライアントで普段と同じように依頼を送り、作業中の版でスキルが使われ、提出前の確認で見つけた不足が修正されるかを確かめます。[本体の変更手順](AGENTS.md#kafstyler本体の変更)
+両クライアントでスキル名を含まない依頼を送り、該当するスキルが実行されたことを呼び出し履歴または `SKILL.md` の読み込みから確認します。提出前の確認で不足が見つかった場合は、修正まで確かめます。[本体の変更手順](AGENTS.md#kafstyler本体の変更)
 
 ## スキル
 

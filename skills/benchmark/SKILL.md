@@ -1,7 +1,7 @@
 ---
 name: benchmark
 type: "skill"
-description: "外部資料を先に調べ、再実行できる条件で基準と候補を比較し、合格条件を確かめる。自動評価、回帰評価、採点に使う。"
+description: "成果物の提出、変更前後の比較、回帰の確認、採点では必ず使う。外部資料を調べて測定条件を先に決め、提出前に実物を同じ条件で測る。"
 tags:
   - kafstyler/skill
   - kafstyler/skill/benchmark

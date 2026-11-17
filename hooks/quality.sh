@@ -3,9 +3,43 @@
 host=${2:-claude}
 if [ "$host" = codex ]; then
   plugin_root=$PLUGIN_ROOT
+  skill_call="Codexでは次の各スキルの SKILL.md を $plugin_root/skills/ 以下から読み、手順を実行する。"
 else
   plugin_root=$CLAUDE_PLUGIN_ROOT
+  skill_call='Claude Codeでは次のスキルを Skill ツールで呼び、対象と作業範囲を渡す。'
 fi
+
+skill_routes() {
+  printf '%s\n' \
+    '依頼の本文と、作業中に判明した工程を各スキルの発動条件と照合する。条件を満たしたスキルはすべて、指定された段階で使う。名前が書かれていない自然な依頼にも適用する。明示指定されたスキルは必ず使い、短い会話は必要な確認をその場で行う。' \
+    "$skill_call"
+  awk '
+    FNR == 1 {
+      count = split(FILENAME, parts, "/")
+      name = parts[count - 1]
+      frontmatter = ($0 == "---")
+      next
+    }
+    frontmatter && /^---$/ { frontmatter = 0 }
+    frontmatter && /^description: "[^"]+"$/ {
+      sub(/^description: "/, "")
+      sub(/"$/, "")
+      printf "- kafstyler:%s — %s\n", name, $0
+    }
+  ' "$plugin_root"/skills/*/SKILL.md
+}
+
+json_string() {
+  local value=$1
+  value=${value//\\/\\\\}
+  value=${value//\"/\\\"}
+  value=${value//$'\n'/\\n}
+  value=${value//$'\r'/\\r}
+  value=${value//$'\t'/\\t}
+  value=${value//$'\b'/\\b}
+  value=${value//$'\f'/\\f}
+  printf '"%s"' "$value"
+}
 
 case "$1" in
   session|subagent)
@@ -18,39 +52,36 @@ case "$1" in
         'このセッションにKafstylerの作業規約を適用する。Kafstyler本体の保守規約は本体を変更するときに適用する。' \
         "$location" "$policy"
     else
-      # SubagentStart の追加指示は JSON で渡す。
-      context=$(printf '%s\n%s\n\n%s' \
+      routes=$(skill_routes) || exit 1
+      context=$(printf '%s\n%s\n\n%s\n\n%s' \
         '委譲された作業にKafstylerの作業規約を適用する。親から受け取った合格条件を使い、確認した結果と見つけた漏れを親に返す。' \
-        "$location" "$policy")
-      context=${context//\\/\\\\}
-      context=${context//\"/\\\"}
-      context=${context//$'\n'/\\n}
-      context=${context//$'\r'/\\r}
-      context=${context//$'\t'/\\t}
-      printf '{"hookSpecificOutput":{"hookEventName":"SubagentStart","additionalContext":"%s"}}\n' "$context"
+        "$routes" "$location" "$policy")
+      printf '{"hookSpecificOutput":{"hookEventName":"SubagentStart","additionalContext":%s}}\n' "$(json_string "$context")"
     fi
     ;;
   start)
     printf '使用中のKafstylerの場所は %s。\n' "$plugin_root"
-    if [ "$host" = codex ]; then
-      printf '以下で指定するKafstylerのスキルは %s/skills/ にある。対象の SKILL.md を読み、その手順を今回の依頼で実行する。\n' "$plugin_root"
-    else
-      printf '%s\n' 'KafstylerのスキルはClaude Codeの Skill ツールで呼び出す。'
-    fi
-    cat <<'EOF'
-今回の依頼にKafstylerを適用する。作業前に kafstyler:charter を使い、普段の利用経路、合格条件、品質を上げる指標を決める。同じ依頼で実行済みなら結果を使う。依頼に合うスキルを実行し、成果物は提出前に kafstyler:benchmark、人向けの文書は kafstyler:humanizer で確かめる。短い会話は必要な確認をその場で行う。判明した不合格は許可範囲で直し、同じ条件で再評価する。
+    skill_routes || exit 1
+    cat <<'PROMPT'
+成果を届ける依頼では、着手前に kafstyler:charter で利用経路と合格条件を決め、ほかの該当スキルを使う段階を確認する。同じ対象・版・前提で実行済みの結果は使い、実行中のスキルへの再帰呼び出しを避ける。依頼や許可の範囲を守る。
 Kafstyler本体を変更する場合は、チェックアウトの AGENTS.md を開き、「Kafstyler本体の変更」に従って作業前の版と変更案を同じ合格条件で比べる。
-EOF
+PROMPT
     ;;
   review)
     # Stop が続行したターンでは、もう一度再開させない。
-    if grep -qE '(^|[,{])[[:space:]]*"stop_hook_active"[[:space:]]*:[[:space:]]*false[[:space:]]*[,}]'; then
-      context='Kafstylerの提出前確認。ユーザーが依頼した範囲と中断指示を守る。短い会話は回答を見直して終える。成果物は実物と合格条件を照合し、証拠が足りなければ kafstyler:benchmark を使い、普段の入口から確認する。人向けの成果物は kafstyler:humanizer でタイトル、見出し、用語を一つずつ見直し、読者に必要な根拠と手順を確かめる。成果物の重大な欠陥を kafstyler:scrutiny で確かめる。同じ対象・版・前提で実施済みの検証は使い、欠陥を直した箇所は同じ入力で再評価する。変更前や現行案と比べて観測できた改善を示し、合否と未確認事項を区別する。Kafstylerの手順に再現できる漏れがあれば kafstyler:charter の改善手順を使ってから元の依頼に戻る。根拠のある未達を解消できる間は作業を続け、制約で止まる場合は未達の項目と再開条件を示す。'
-      context="$context Kafstyler本体を変更した場合は、チェックアウトで python3 hooks/check.py を実行し、変更案を読み込んだセッションで影響する操作を試す。実際に確認できた版と結果を報告する。"
+    if grep -qE '(^|[,{])[[:space:]]*"stop_hook_active"[[:space:]]*:[[:space:]]*false[[:space:]]*([,}]|$)'; then
+      routes=$(skill_routes) || exit 1
+      context=$(cat <<PROMPT
+Kafstylerの提出前確認。ユーザーが依頼した範囲と中断指示を守る。短い会話は回答を見直して終える。成果物は、着手時と作業中に当てはまったスキルの実行結果を確かめる。漏れがあれば該当スキルを今使い、見つけた不合格を直す。同じ対象・版・前提で実施済みの結果は使い、修正の影響を受けた箇所を同じ条件で再評価する。合否、観測できた改善、未確認事項を示す。Kafstylerの手順に再現できる漏れがあれば kafstyler:charter の改善手順を使う。制約で止まる場合は未達の項目と再開条件を示す。
+Kafstyler本体を変更した場合は、チェックアウトで python3 hooks/check.py を実行し、変更案を読み込んだセッションで影響する操作を試す。実際に確認できた版と結果を報告する。
+
+$routes
+PROMPT
+)
       if [ "$host" = codex ]; then
-        printf '{"decision":"block","reason":"%s"}\n' "$context"
+        printf '{"decision":"block","reason":%s}\n' "$(json_string "$context")"
       else
-        printf '{"hookSpecificOutput":{"hookEventName":"Stop","additionalContext":"%s"}}\n' "$context"
+        printf '{"hookSpecificOutput":{"hookEventName":"Stop","additionalContext":%s}}\n' "$(json_string "$context")"
       fi
     else
       printf '{}\n'

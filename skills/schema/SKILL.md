@@ -1,7 +1,7 @@
 ---
 name: schema
 type: "skill"
-description: "データ構造、保存形式、入出力契約の新設・変更・統合に使う。エンティティ、オントロジー、メタデータ、台帳、マスター、スタースキーマ、dbtの定義を設計し、同じデータの正本を一つにする。"
+description: "データ構造、保存形式、APIの入出力、DB、CSV、台帳、マスター、メタデータ、オントロジー、スタースキーマ、dbtの定義を新設・変更・統合するとき、設計前に必ず使う。識別子、粒度と正本を決める。"
 tags:
   - kafstyler/skill
   - kafstyler/skill/schema

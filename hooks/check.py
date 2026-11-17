@@ -50,6 +50,14 @@ def check(root, host):
         stop_continues = stop["decision"] == "block"
         review_context = stop["reason"]
 
+    expected_skills = {path.parent.name for path in (root / "skills").glob("*/SKILL.md")}
+    contexts = (prompt, child_context["additionalContext"], review_context)
+    all_routes_delivered = bool(expected_skills) and all(
+        {line.split()[1].removeprefix("kafstyler:") for line in context.splitlines()
+         if line.startswith("- kafstyler:")} == expected_skills
+        for context in contexts
+    )
+
     return {
         "セッションに対象版の規約が届く": policy in session and str(root / "AGENTS.md") in session,
         "委譲先に同じ規約が届く": (
@@ -63,6 +71,7 @@ def check(root, host):
             stop_continues and "kafstyler:scrutiny" in review_context
             and "python3 hooks/check.py" in review_context
         ),
+        "依頼受付・委譲・提出前に全スキルの発動条件が届く": all_routes_delivered,
         "提出前の確認は一度で止まる": resumed == {},
     }
 

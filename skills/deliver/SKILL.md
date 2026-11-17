@@ -1,7 +1,7 @@
 ---
 name: deliver
 type: "skill"
-description: "Claude Code公式の /loop と連携し、許可された変更を実装して実際の利用経路で確かめる。自律開発、実装、作業手順の簡素化に使う。"
+description: "機能追加、バグ修正、障害復旧、移行など、実際の変更を届ける依頼の着手時に必ず使う。実装から利用者の入口での検証まで進める。Claude Codeでは公式の /loop と連携する。"
 tags:
   - kafstyler/skill
   - kafstyler/skill/deliver

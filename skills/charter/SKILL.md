@@ -1,7 +1,7 @@
 ---
 name: charter
 type: "skill"
-description: "利用者の完成場面、観測できる合格条件、使う道具を決める。目標設定、完成形、成功条件の設計に使う。"
+description: "実装・調査・制作・運用など、成果を届ける依頼の着手前に必ず使う。利用者が普段の入口で何をできれば完了か、観測できる合格条件と使う道具を決める。"
 tags:
   - kafstyler/skill
   - kafstyler/skill/charter

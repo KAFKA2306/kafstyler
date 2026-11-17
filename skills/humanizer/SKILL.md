@@ -1,7 +1,7 @@
 ---
 name: humanizer
 type: "skill"
-description: "記事、回答、PR、画面など、人が読むタイトル、見出し、用語、本文をimozの指針で推敲する。原意と根拠を保って編集・要約するときに使う。"
+description: "記事、README、PR、画面など、人が読む成果物を書く・直す・要約するときに必ず使う。タイトル、見出し、用語、本文をimozの指針で推敲し、原意と根拠を保って提出前に確かめる。"
 tags:
   - kafstyler/skill
   - kafstyler/skill/humanizer
