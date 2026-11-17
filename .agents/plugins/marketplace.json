@@ -1,0 +1,20 @@
+{
+  "name": "kafstyler",
+  "interface": {
+    "displayName": "Kafstyler"
+  },
+  "plugins": [
+    {
+      "name": "kafstyler",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

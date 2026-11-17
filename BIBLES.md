@@ -84,6 +84,15 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [自律開発](skills/deliver/SKILL.md)
 
+### Codexのプラグインとフック
+
+- [OpenAI・プラグインの構成](https://developers.openai.com/plugins/build/plugins)（公式仕様）。Codexのマニフェスト、同梱スキル、フックを定義する。
+- [OpenAI・Codexのフック](https://learn.chatgpt.com/docs/hooks)（公式仕様）。フックの承認、各イベントの入力と出力、続行条件を確認する。
+- [OpenAI・Codexのプラグインコマンド](https://learn.chatgpt.com/docs/developer-commands#codex-plugin)（公式リファレンス）。配布元の登録、インストール、更新に使う。
+- [OpenAI・スキルの作成と実行](https://learn.chatgpt.com/docs/build-skills)（公式ガイド）。同梱したスキルの検出と利用方法を確認する。
+
+[作業規約](AGENTS.md#全作業への適用と自己改善)・[導入手順](README.md#codex)
+
 ### プラグインの構成
 
 [Anthropic・プラグインの構成要素](https://code.claude.com/docs/en/plugins/components)（公式仕様）。コマンドやスキルの構成

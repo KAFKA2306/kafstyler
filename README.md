@@ -10,9 +10,11 @@ aliases:
 
 # Kafstyler
 
-Kafstylerは、Claude Codeで目標設定、成果物の評価、修正と再評価を回すプラグインです。普段の依頼を送ると動きます。使い方や評価に共通の漏れが見つかれば、再現してKafstyler自体の改善につなげます。
+Kafstylerは、Claude CodeとCodexで目標設定、成果物の評価、修正と再評価を回すプラグインです。普段の依頼を送ると動きます。使い方や評価に共通の漏れが見つかれば、再現してKafstyler自体の改善につなげます。
 
 ## プラグインの使い方
+
+### Claude Code
 
 Claude Code 2.1.292以降で、ターミナルから次のコマンドを実行します。WindowsではWSLかGit Bashを使います。[配布元](https://github.com/KAFKA2306/agent-resources/blob/main/.claude-plugin/marketplace.json)
 
@@ -20,7 +22,22 @@ Claude Code 2.1.292以降で、ターミナルから次のコマンドを実行�
 claude plugin install kafstyler --marketplace KAFKA2306/agent-resources --scope user
 ```
 
-対象プロジェクトで `claude` を起動し、「READMEを初めて読む人が、手順どおりに起動できるように整えて」のように依頼します。
+対象プロジェクトで `claude` を起動します。
+
+### Codex
+
+ターミナルで配布元を追加し、プラグインを導入します。WindowsではWSLで実行します。
+
+```sh
+codex plugin marketplace add KAFKA2306/kafstyler
+codex plugin add kafstyler@kafstyler
+```
+
+対象プロジェクトで `codex` を起動し、`/hooks` でKafstylerのフックを確認・承認します。承認前もスキルは手動で選べます。更新後に再確認が表示されたら同じ操作を行います。[Codexのフック承認](https://learn.chatgpt.com/docs/hooks#review-and-trust-hooks)
+
+### 普段の依頼から使う
+
+「READMEを初めて読む人が、手順どおりに起動できるように整えて」のように依頼します。
 
 セッションを始めるときや子エージェントに作業を委譲するときは、プラグインが同梱の[作業規約](AGENTS.md)を読み込みます。
 
@@ -30,23 +47,26 @@ claude plugin install kafstyler --marketplace KAFKA2306/agent-resources --scope 
 
 ### 更新と開発時の確認
 
-導入済みの版は `claude plugin update kafstyler@kafka-agent-tools` で更新できます。すぐ使うには新しいセッションを開始するか、`/reload-plugins` を実行します。今後の改善版を自動取得するには、`/plugin` の Marketplaces で `kafka-agent-tools` の自動更新を有効にします。[Anthropicの更新手順](https://code.claude.com/docs/en/discover-plugins#keep-plugins-updated)
+- Claude Codeでは `claude plugin update kafstyler@kafka-agent-tools` で更新し、新しいセッションを開始するか `/reload-plugins` を実行します。今後の改善版を自動取得するには、`/plugin` の Marketplaces で `kafka-agent-tools` の自動更新を有効にします。[Anthropicの更新手順](https://code.claude.com/docs/en/discover-plugins#keep-plugins-updated)
+- Codexでは `codex plugin marketplace upgrade kafstyler` で配布元を更新し、`codex plugin add kafstyler@kafstyler` を実行して新しいセッションを開始します。[Codexのプラグインコマンド](https://learn.chatgpt.com/docs/developer-commands#codex-plugin)
 
-変更を公開前に試す場合は、Kafstylerのルートで `claude plugin validate .` を実行します。別のプロジェクトで `claude --plugin-dir /path/to/kafstyler` を起動し、普段の依頼を送ります。
+公開前は、Claude Codeで `claude plugin validate .` を実行し、別のプロジェクトで `claude --plugin-dir /path/to/kafstyler` を起動します。Codexでは `codex plugin marketplace add /path/to/kafstyler` で作業中の配布元を登録し、導入とフック承認を試します。
 
 ## スキル
 
-| 直接呼び出すとき | 用途 |
-| --- | --- |
-| [`/kafstyler:charter`](skills/charter/SKILL.md) | 完成場面と合格条件を定める |
-| [`/kafstyler:humanizer`](skills/humanizer/SKILL.md) | 文書を校正し、手順と根拠を確かめる |
-| [`/kafstyler:schema`](skills/schema/SKILL.md) | 台帳、マスター、集計モデルを設計する |
-| [`/kafstyler:scrutiny`](skills/scrutiny/SKILL.md) | 前提を疑い、重大な欠陥を根拠と影響で示す |
-| [`/kafstyler:benchmark`](skills/benchmark/SKILL.md) | 実物の合否と改善幅を同じ条件で測る |
-| [`/kafstyler:deliver`](skills/deliver/SKILL.md) | 変更を実装し、利用者の入口から確かめる |
-| [`/kafstyler:prune`](skills/prune/SKILL.md) | 重複や不要なファイル、コード、文章を削る |
+Claude Codeでは `/kafstyler:<名前>` を使います。Codexでは `$` を入力してKafstylerのスキルを選びます。
 
-ChatGPTの定期タスクとCodexでは、[作業規約](AGENTS.md#全作業への適用と自己改善)に従い、正本の版を固定して必要なスキルのMarkdownを使います。
+| スキル | 用途 |
+| --- | --- |
+| [`charter`](skills/charter/SKILL.md) | 完成場面と合格条件を定める |
+| [`humanizer`](skills/humanizer/SKILL.md) | 文書を校正し、手順と根拠を確かめる |
+| [`schema`](skills/schema/SKILL.md) | 台帳、マスター、集計モデルを設計する |
+| [`scrutiny`](skills/scrutiny/SKILL.md) | 前提を疑い、重大な欠陥を根拠と影響で示す |
+| [`benchmark`](skills/benchmark/SKILL.md) | 実物の合否と改善幅を同じ条件で測る |
+| [`deliver`](skills/deliver/SKILL.md) | 変更を実装し、利用者の入口から確かめる |
+| [`prune`](skills/prune/SKILL.md) | 重複や不要なファイル、コード、文章を削る |
+
+定期タスクなどプラグインを使えない環境では、[作業規約](AGENTS.md#全作業への適用と自己改善)に従い、正本の版を固定して必要なスキルのMarkdownを使います。
 
 ## Unity・VRChat制作での適用
 

@@ -1,6 +1,6 @@
 ---
 type: "policy"
-description: "Claude Codeプラグインの構成、ミッション、聖典、単一ブランチ、出力、検証の作業規約。"
+description: "Claude CodeとCodexに配布するプラグインの構成、ミッション、聖典、単一ブランチ、出力、検証の作業規約。"
 tags:
   - kafstyler/policy
   - kafstyler/maintenance
@@ -10,7 +10,7 @@ aliases:
 
 # Kafstylerの作業規約
 
-Kafstylerは、開発・調査・制作・運用でAIエージェントが課題を見極め、使える成果を届け、その結果から文書と手順を改善するClaude Codeプラグイン。リポジトリ名とプラグイン名は `kafstyler` とし、構成とマニフェストは[Anthropicの公式仕様](BIBLES.md#プラグインの構成)に従う。
+Kafstylerは、開発・調査・制作・運用でAIエージェントが課題を見極め、使える成果を届け、その結果から文書と手順を改善するClaude CodeとCodexのプラグイン。リポジトリ名とプラグイン名は `kafstyler` とし、構成とマニフェストは[Anthropic](BIBLES.md#プラグインの構成)と[OpenAI](BIBLES.md#codexのプラグインとフック)の仕様に従う。
 
 ## 依頼の解釈
 
@@ -22,7 +22,7 @@ Kafstylerは、開発・調査・制作・運用でAIエージェントが課題
 
 ## 知識とプロンプトの管理
 
-- 共通の作業規約の正本は `AGENTS.md` とする。`skills/<name>/SKILL.md` には他と異なる判断、入出力、完了条件を置き、共通規約は参照する。プラグインの識別情報は `.claude-plugin/plugin.json` に置く。Claude Codeへの読み込みは[READMEの手順](README.md#プラグインの使い方)に従う。
+- 共通の作業規約の正本は `AGENTS.md` とする。`skills/<name>/SKILL.md` には他と異なる判断、入出力、完了条件を置き、共通規約は参照する。Claude CodeとCodexは同じスキル、規約、フックのスクリプトを使う。[導入手順](README.md#プラグインの使い方)
 - 新しい再利用プロンプトと正式な再利用成果物は `KAFKA2306/prompt-vault` に登録する。
 - 事実の原記録、出来事、教訓、失敗、訂正は `KAFKA2306/graphiti` を正本とする。
 - 秘密情報、非公開の原資料とChatGPT記憶、会話の原文や検索抜粋は、許可された非公開の場所で扱う。
@@ -51,7 +51,7 @@ AIスロップ削除では、着手前にかふかの次のZenn記事を読む�
 
 ## コマンドの連携
 
-- 別コマンドの手順が必要な箇所では、Claude Codeの `Skill` ツールを使い、`skill` に `kafstyler:<名前>` を指定する。呼び出し条件を本文に書き、`args` に対象、必要な入力、期待する結果、依頼の範囲を渡す。呼び出した手順を実行し、その結果を元の作業に反映する。[Claude Codeのスキル仕様](BIBLES.md#claude-codeのスキル)
+- スキルの本文に呼び出し条件を書き、対象、入力、期待する結果、依頼の範囲を次の手順に渡す。Claude Codeでは `Skill` の `skill` に `kafstyler:<名前>` を指定して `args` を渡す。Codexでは同梱の `skills/<名前>/SKILL.md` を読み、受け取った条件で実行する。結果を元の作業に反映する。[Claude Codeのスキル仕様](BIBLES.md#claude-codeのスキル)・[Codexのスキル仕様](BIBLES.md#codexのプラグインとフック)
 - 呼び出しを追加・更新したら、元のコマンドに戻る循環がないことを確かめる。同じ対象・目的で実施済みの確認は結果を使う。呼び出せなかった場合は、理由と未確認の項目を示す。
 
 ## 聖典台帳
@@ -76,6 +76,8 @@ AIスロップ削除では、着手前にかふかの次のZenn記事を読む�
 | ファイル | 種別 | 用途 | 検索タグ |
 | --- | --- | --- | --- |
 | [plugin.json](.claude-plugin/plugin.json) | プラグイン設定 | Claude Codeが読むプラグイン名、版、説明 | `kafstyler/plugin` |
+| [plugin.json](.codex-plugin/plugin.json) | プラグイン設定 | Codexが読むプラグイン名、版、スキル、フック | `kafstyler/plugin` |
+| [marketplace.json](.agents/plugins/marketplace.json) | 配布設定 | Codexから本体を取得する入口 | `kafstyler/plugin` |
 | [quality.sh](hooks/quality.sh) | フック | セッションと委譲先に規約を渡し、依頼受付と提出前の確認を行う | `kafstyler/plugin` |
 
 ## 外部実装の採用
@@ -106,11 +108,11 @@ AIスロップ削除では、着手前にかふかの次のZenn記事を読む�
 ## 全作業への適用と自己改善
 
 - Kafstyler自身の規約、ミッション、聖典、README、全スキル、設定、フック、配布にも適用する。本体を変更するときは `charter` で合格条件を決め、必要なスキルを使う。変更箇所から影響する呼び出し、参照元、配布先まで[更新手順](MISSION.md#更新手順)で確かめる。
-- Claude Codeでは `SessionStart` と `SubagentStart` が同梱の作業規約を読み込む。子エージェントは受け取った合格条件を使い、確認した結果と見つけた漏れを親に返す。
-- Claude Codeでは、有効なプラグインが `UserPromptSubmit` で [`kafstyler:charter`](skills/charter/SKILL.md) を促し、初回の `Stop` で評価と修正の機会を一度追加する。短い会話は回答を見直す。成果物では実物を評価し、直せる不合格は修正して同じ入力で再評価する。手順の漏れは [`charter` の改善手順](skills/charter/SKILL.md#成果物の確認と手順の改善) で扱う。[Claude Codeのフック仕様](BIBLES.md#claude-codeのフック)
+- Claude CodeとCodexでは `SessionStart` と `SubagentStart` が同梱の作業規約を読み込む。子エージェントは受け取った合格条件を使い、確認した結果と見つけた漏れを親に返す。
+- `UserPromptSubmit` で [`charter`](skills/charter/SKILL.md) を使い、初回の `Stop` で評価と修正の機会を一度追加する。成果物を評価し、直せる不合格は修正して同じ入力で再評価する。手順の漏れは [`charter` の改善手順](skills/charter/SKILL.md#成果物の確認と手順の改善) で扱う。Codexでフックを実行するには `/hooks` での承認が必要。[Claude Codeのフック仕様](BIBLES.md#claude-codeのフック)・[Codexのフック仕様](BIBLES.md#codexのプラグインとフック)
 - 導入と配布の合格条件は、別プロジェクトで配布版を有効にし、親と委譲先が同じ規約を受け取り、普段の依頼から `charter` と該当スキルが実行され、見つけた漏れが自己改善の手順につながること。新しい版を配布先から取得し、対象端末の同じ操作で確かめる。[導入手順](README.md#プラグインの使い方)
 - 対話、開発、調査、執筆、データ設計、Kaggleなどの実験、制作、運用、定期タスクでは、作業を始める前に `charter` で利用者の完成場面と合格条件を定める。必要なスキルを選び、各環境で認可済みの道具を使う。
-- Claude Codeでスキルを直接指定する場合は `/kafstyler:<name>` を使う。ChatGPT、Codex、定期タスクなどでは、毎回、正本の `main` のコミットSHAを確定し、そのSHAで固定した `AGENTS.md` と `skills/<name>/SKILL.md` を読む。本文の手順を実行し、作業記録がある場合は参照SHAと適用したスキル名を残す。取得や実行に失敗した場合は、失敗した操作と理由を記し、元の作業で進められる工程を続ける。
+- スキルを直接指定する場合は、Claude Codeで `/kafstyler:<名前>` を使い、Codexで `$` を入力して選ぶ。プラグインを使えない環境では、毎回、正本の `main` のコミットSHAを確定し、その版の `AGENTS.md` と `skills/<名前>/SKILL.md` を読む。作業記録がある場合は参照SHAと適用したスキル名を残す。取得や実行に失敗した場合は、失敗した操作と理由を記し、元の作業で進められる工程を続ける。
 - 適用先の文書、設定、リンク、起動手順は、その環境の入口から確認する。スキルの移動・改名時は、正本の規約・文書と、参照を持つ既知の定期タスクや連携設定を点検し、実際に使う入口で新しい参照先を読めることを確かめる。未確認の適用先は範囲と再開条件を記す。
 - 不足を見つけたら元の作業を続ける。対象に固有の不足はその対象で直し、共通手順の不足は、再現条件、利用者への影響、参照SHA、一次資料、修正案を、定期タスク間で読める認可済みの非公開記録にまとめる。同じ不足の既存記録があればそこを使う。
 - 定期タスクからのKafstyler本体の変更は、設定で担当を明記した既存の保守タスク一つが処理する。未解決の記録を毎回確認し、[更新手順](MISSION.md#更新手順)に従って現行と修正案を同じ入力で比較する。影響する入口を検証し、最小の修正を `main` に反映して、コミットと変更内容を読み戻す。反映と検証の結果を元の記録に戻す。公開内容は一般化した手順と公開情報に限る。
