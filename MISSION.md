@@ -1,66 +1,64 @@
+---
+type: "mission"
+description: "自律改善、自律文書整備、自律成果創出の目標と更新手順。"
+tags:
+  - kafstyler/mission
+  - kafstyler/maintenance
+aliases:
+  - "ミッション"
+---
+
 # ミッション
 
 普段の依頼を、他の案件でもそのまま使える短い作業手順にする。各スキルは、何を受け取り、どんな結果を返し、どう確かめるかを1ファイルに収める。
-
-<a name="mission-improvement"></a>
 
 ## 自律改善
 
 現行の出力と変更候補を同じ条件で評価し、品質が上がる変更や手間が減る変更を実装する。変更前後の数値と、削除できた旧手順を確認できるようにする。
 
-[自動評価](commands/automated-evaluation.md)・[対立仮説](commands/devils-advocate.md)・[自律開発](commands/autonomous-development.md)・[AIスロップ削除](commands/remove-ai-slop.md)
-
-<a name="mission-documentation"></a>
+[自動評価](commands/test.md)・[対立仮説](commands/review.md)・[自律開発](commands/build.md)・[AIスロップ削除](commands/clean.md)
 
 ## 自律文書整備
 
 原典を確認し、手順・記録・台帳を更新する。必要な文書をタグやリンクで見つけられ、根拠と適用先をたどれる形にする。
 
-[文書校正](commands/editorial.md)・[データ設計](commands/data-design.md)・[AIスロップ削除](commands/remove-ai-slop.md)
-
-<a name="mission-delivery"></a>
+[文書校正](commands/edit.md)・[データ設計](commands/data.md)・[AIスロップ削除](commands/clean.md)
 
 ## 自律成果創出
 
 利用者が普段の入口で何をできるようになるかを定める。作ったものをその入口から実行し、期待した出力と確認結果を届ける。
 
-[目標設定](commands/outcome-design.md)・[自律開発](commands/autonomous-development.md)・[自動評価](commands/automated-evaluation.md)
-
-<a name="mission-output-style"></a>
+[目標設定](commands/goal.md)・[自律開発](commands/build.md)・[自動評価](commands/test.md)
 
 ## 出力の共通基準
 
-任意の出力で人が読む文章を日本語で書き、[imozの原文](CANON.md#canon-humanizer-ja)に沿って整える。回答、文書、PR本文、コードのコメントや説明文で、結論、根拠、成立条件を読み取れるようにする。確認した事実、推定、未確認事項を区別して原典に照合する。既定のコード識別子、APIのキー、列挙値、出力形式を使う。
+任意の出力で人が読む文章を日本語で書き、[imozの原文](BIBLES.md#imozの日本語編集)に沿って整える。回答、文書、PR本文、コードのコメントや説明文で、結論、根拠、成立条件を読み取れるようにする。確認した事実、推定、未確認事項を区別して原典に照合する。既定のコード識別子、APIのキー、列挙値、出力形式を使う。
 
-[文書校正](commands/editorial.md)・[作業規約](AGENTS.md#出力と成果物)
+[文書校正](commands/edit.md)・[作業規約](AGENTS.md#出力と成果物)
 
 ## 更新手順
 
 1. 探す。会話、Issue、成果物から、繰り返した指示と、その指示で変わった操作や判断を拾う。会話は本人の依頼を対象にし、同じ意味の表記揺れをまとめ、同じ会話では1件と数える。Issueの件数は会話と分ける。検索期間、閲覧できた範囲、分母、未確認範囲を記録する。
 2. 採否を決める。異なる会話2件以上か本人の明示指定を起点にし、別の案件でも同じ手順を呼び出せるものを選ぶ。入力と成果物が同じ既存コマンドがあれば統合する。隣のコマンドと独立して呼ぶ場面があれば、出力の違いをREADMEで確認する。担当プロジェクト固有の手順はそのプロジェクトに置く。
-3. 書く。通常の利用場面と利用者が確認できる結果を先に決める。公式資料で用語と操作を確認し、`commands/<name>.md` の description に呼び出し条件、本文に手順と完了判定を書く。各ファイルは独立した依頼1件に対応させる。一次資料は[聖典台帳](CANON.md)に種別と用途を記録する。ハーネス、スキル、ツール連携、AIエンジニアリングでは、実装や評価に使える書籍、公式文書、原著を選び、著者・出版社・開発元のURLを登録する。資料やコマンドを変更するときは双方向のリンクも更新する。
-4. 試す。直近と別分野の依頼を1件ずつ使い、入力から出力と確認までを見直す。似たスキルを呼び分けられるかも確認する。内部リンク、公式URL、ファイル一覧、保存した版を読み戻す。Claude Codeがある環境では `claude plugin validate .` と `claude --plugin-dir . --append-system-prompt-file AGENTS.md` を実行し、変更した `/kafstyler:<name>` を確認する。対象、確認結果、未確認事項をコミットの記録や該当する作業記録に残す。
+3. 書く。通常の利用場面と利用者が確認できる結果を先に決める。公式資料で用語と操作を確認し、`commands/<name>.md` の `description` に呼び出し条件、本文に手順と完了判定を書く。各ファイルは独立した依頼1件に対応させる。スキルとコマンドの名前は[作業規約](AGENTS.md#ファイルの管理)に沿って一語にする。一次資料は[聖典台帳](BIBLES.md)に種別と用途を記録する。ハーネス、スキル、ツール連携、AIエンジニアリングでは、実装や評価に使える書籍、公式文書、原著を選び、著者・出版社・開発元のURLを登録する。資料やコマンドを変更するときは双方向のリンクも更新する。
+4. 試す。直近と別分野の依頼を1件ずつ使い、入力から出力と確認までを見直す。似たスキルを呼び分けられるかも確認する。[ノートの管理](BIBLES.md#ノートの管理)に沿って、frontmatter、タグ、相互リンク、一次資料URL、ファイル一覧、保存した版を確かめる。Claude Codeがある環境では `claude plugin validate .` と `claude --plugin-dir . --append-system-prompt-file AGENTS.md` を実行し、変更した `/kafstyler:<name>` を確認する。対象、確認結果、未確認事項をコミットの記録や該当する作業記録に残す。
 5. 整理する。後継へ移した内容と参照元を確認し、不要なファイルとリンクを同じ変更で削除する。旧版はGit履歴から辿れるようにする。逐次コミットの反映後に main の入口、一覧、ファイル数とフォルダ数を確認する。[ブランチとコミット](AGENTS.md#ブランチとコミット)
-
-<a name="mission-evaluation"></a>
 
 ## 機械的に確かめる評価指標
 
 改善や置き換えの前に、完了場面を観測できる指標を決める。指標ごとに入力、測定方法、単位と合格条件を先に定義する。現行と候補を同じ入力・環境で走らせ、再実行できるコマンドと結果を記録する。件数、出力の一致、所要時間などを機械的に測り、目視が必要な項目は判断基準を明記する。
 
-[自動評価](commands/automated-evaluation.md)・[成功基準と評価の設計](CANON.md#canon-anthropic-evaluation)
-
-<a name="mission-adopt-upstream"></a>
+[自動評価](commands/test.md)・[成功基準と評価の設計](BIBLES.md#成功基準と評価)
 
 ## 外部実装への置き換え
 
 同じ用途で外部の実装が自作より良ければ、積極的に置き換える。上流の保守と品質保証を利用し、使い方や設計の選択肢を広げる。
 
 1. 自作の機能を使う具体的な場面を選び、公式ドキュメントと外部開発者の実例から候補を探す。
-2. 現行手法を比較の基準にし、候補を[同じ条件と指標](#mission-evaluation)で測る。必要な品質、出力、上流の検証実績と保守状況、運用や移行の手間を比べる。
+2. 現行手法を比較の基準にし、候補を[同じ条件と指標](#機械的に確かめる評価指標)で測る。必要な品質、出力、上流の検証実績と保守状況、運用や移行の手間を比べる。
 3. 合格条件を満たして優れた外部手法に切り替え、通常の入口で出力を確かめる。役割を終えた旧手順、自作コード、設定を削る。
 
-[自律開発](commands/autonomous-development.md)・[AIスロップ削除](commands/remove-ai-slop.md)・[UNIX哲学の原典](CANON.md#canon-unix-philosophy)
+[自律開発](commands/build.md)・[AIスロップ削除](commands/clean.md)・[UNIX哲学の原典](BIBLES.md#unix哲学)
 
 ## 自動化の量
 
@@ -74,4 +72,4 @@ workflow、CI、tests、scripts、hooksは必要最小限の半分を目安に�
 
 ## 聖典
 
-[聖典台帳](CANON.md)で一次資料、用途、対応コマンドを確認する。
+[聖典台帳](BIBLES.md)で一次資料、用途、対応コマンドを確認する。

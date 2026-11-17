@@ -1,3 +1,13 @@
+---
+type: "guide"
+description: "Kafstylerの導入、コマンド、外部スキルと保管庫の案内。"
+tags:
+  - kafstyler/guide
+  - kafstyler/plugin
+aliases:
+  - "使い方"
+---
+
 # Kafstyler
 
 定型作業を進めるためのClaude Codeプラグインです。
@@ -11,29 +21,29 @@ claude plugin validate .
 claude --plugin-dir . --append-system-prompt-file AGENTS.md
 ```
 
-2行目でプラグインと[作業規約](AGENTS.md)を読み込みます。Claude Codeで `/kafstyler:data-design` などのコマンドを選びます。
+2行目でプラグインと[作業規約](AGENTS.md)を読み込みます。Claude Codeで `/kafstyler:data` などのコマンドを選びます。
 
 ### 目標設定
 
-- [`/kafstyler:outcome-design`](commands/outcome-design.md) 利用者ができるようになることと、完了を確かめる操作を決める。
+- [`/kafstyler:goal`](commands/goal.md) 利用者ができるようになることと、完了を確かめる操作を決める。
 
 ### 文書校正
 
-- [`/kafstyler:editorial`](commands/editorial.md) 原稿を校正するか、資料から短いブリーフを書く。
+- [`/kafstyler:edit`](commands/edit.md) 原稿を校正するか、資料から短いブリーフを書く。
 
 ### メタデータ・スキーマ設計
 
-- [`/kafstyler:data-design`](commands/data-design.md) エンティティ、台帳、マスター、集計モデルの設計を決める。
+- [`/kafstyler:data`](commands/data.md) エンティティ、台帳、マスター、集計モデルの設計を決める。
 
 ### AIスロップ削除
 
-- [`/kafstyler:remove-ai-slop`](commands/remove-ai-slop.md) 重複フォルダを統合し、不要なファイル、コード、文章を削る。
+- [`/kafstyler:clean`](commands/clean.md) 重複フォルダを統合し、不要なファイル、コード、文章を削る。
 
 ### 評価と自律開発
 
-- [`/kafstyler:devils-advocate`](commands/devils-advocate.md) 中核の前提を反証し、致命的な欠陥を根拠と影響つきで指摘する。
-- [`/kafstyler:automated-evaluation`](commands/automated-evaluation.md) 同じ条件で採点し、合否と差を再現できるようにする。
-- [`/kafstyler:autonomous-development`](commands/autonomous-development.md) 変更を実装し、実際の利用経路で検証して届ける。
+- [`/kafstyler:review`](commands/review.md) 中核の前提を反証し、致命的な欠陥を根拠と影響つきで指摘する。
+- [`/kafstyler:test`](commands/test.md) 同じ条件で採点し、合否と差を再現できるようにする。
+- [`/kafstyler:build`](commands/build.md) 変更を実装し、実際の利用経路で検証して届ける。
 
 ## 外部スキルとテンプレート
 
@@ -54,6 +64,8 @@ ComfyUIの `Workflow → Browse Workflow Templates` で用途に合うテンプ�
 
 ## 運用文書
 
+Obsidianでは[リポジトリを保管庫として開く手順](BIBLES.md#ノートの管理)を使います。
+
 - [MISSION.md](MISSION.md) ミッションと更新手順を確認できます。
-- [聖典台帳](CANON.md) 分野別の一次資料と対応コマンドをたどれます。
+- [聖典台帳](BIBLES.md) 分野別の一次資料と対応コマンドをたどれます。
 - [AGENTS.md](AGENTS.md) 単一ブランチでの作業、逐次コミット、出力の共通ルールを確認できます。

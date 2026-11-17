@@ -1,12 +1,19 @@
 ---
+type: "command"
 description: "任意の人向け出力にimozの日本語執筆・推敲ルールを適用し、原稿の校正や資料からの要約を行う。"
+tags:
+  - kafstyler/command
+  - kafstyler/command/edit
+aliases:
+  - "文書校正"
+  - "校正"
 ---
 
 # 文書校正
 
-任意の出力で人が読む文章には[imozの執筆・推敲ルール](../CANON.md#canon-humanizer-ja)を適用する。[出力の共通基準](../MISSION.md#mission-output-style)
+任意の出力で人が読む文章には[imozの執筆・推敲ルール](../BIBLES.md#imozの日本語編集)を適用する。[出力の共通基準](../MISSION.md#出力の共通基準)
 
-1. あらゆる回答、成果物、文書、PR本文、生成コードのコメントや説明文で[imozの原文](../CANON.md#canon-humanizer-ja)を参照し、読者、目的、媒体、指定範囲を確かめる。
+1. あらゆる回答、成果物、文書、PR本文、生成コードのコメントや説明文で[imozの原文](../BIBLES.md#imozの日本語編集)を参照し、読者、目的、媒体、指定範囲を確かめる。
 2. 対象全体を読み、重複、曖昧な評価、意味の切れ目を診断する。文書を編集する場合は修正箇所と方針を整理し、必要な改善を反映する。
 3. 原稿の主張、数値、条件、不確実性、出典を保つ。資料から要約するときは結論を先に示し、判断を支える根拠に一次リンクを付ける。結論に影響する未確認事項を明記する。
 4. 完成稿を原典と依頼に照合し、独立した文章として通読する。読者が使う用語と既定のコードの識別子や出力形式を保つ。
@@ -15,9 +22,9 @@ description: "任意の人向け出力にimozの日本語執筆・推敲ルー�
 
 ## 関連ミッション
 
-[自律文書整備](../MISSION.md#mission-documentation)
+[自律文書整備](../MISSION.md#自律文書整備)
 
 ## 参照資料
 
-- [imoz・日本語の文章編集ガイド](../CANON.md#canon-humanizer-ja)
-- [かふかのZenn記事一覧](../CANON.md#canon-kafka-zenn)
+- [imoz・日本語の文章編集ガイド](../BIBLES.md#imozの日本語編集)
+- [かふかのZenn記事一覧](../BIBLES.md#かふかのzenn記事一覧)
