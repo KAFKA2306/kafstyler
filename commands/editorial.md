@@ -9,4 +9,9 @@ description: Proofread Japanese prose or draft a short reader-facing brief. Use 
 3. For a brief from sources, read the scoped material, lead with the conclusion, and give the decisive points with primary links. State what could not be verified when it affects the answer.
 4. Read the result on its own. Check the conclusion, facts, and tone against the source.
 
-Return the edited text or brief. Consult the writing guide in [MISSION.md](../MISSION.md).
+Return the edited text or brief.
+
+## References
+
+- [imoz・日本語の文章編集ガイド](../MISSION.md#canon-humanizer-ja)
+- [かふかのZenn記事一覧](../MISSION.md#canon-kafka-zenn)

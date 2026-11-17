@@ -9,4 +9,8 @@ description: Measure a baseline and candidate with reproducible cases and explic
 3. Use deterministic checks for observable outcomes. For judgment calls, use a concrete rubric and check the grader against existing labeled examples where available. Repeat stochastic trials enough to show relevant spread.
 4. Report per-case results, aggregate change, cost or duration when relevant, failure reasons, and the reproduction command or source. Treat missing measurements as unverified.
 
-Use the official evaluation references in [MISSION.md](../MISSION.md).
+## References
+
+- [Anthropic・成功基準と評価の設計](../MISSION.md#canon-anthropic-evaluation)
+- [dbt・データ品質テスト](../MISSION.md#canon-dbt-data-tests)
+- [かふかのZenn記事一覧](../MISSION.md#canon-kafka-zenn)
