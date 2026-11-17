@@ -21,34 +21,12 @@
           ]
         }
       ],
-      "SubagentStart": [
-        {
-          "hooks": [
-            {
-              "type": "command",
-              "command": "bash \"$PLUGIN_ROOT/hooks/quality.sh\" subagent codex",
-              "timeout": 5
-            }
-          ]
-        }
-      ],
       "UserPromptSubmit": [
         {
           "hooks": [
             {
               "type": "command",
               "command": "bash \"$PLUGIN_ROOT/hooks/quality.sh\" start codex",
-              "timeout": 5
-            }
-          ]
-        }
-      ],
-      "Stop": [
-        {
-          "hooks": [
-            {
-              "type": "command",
-              "command": "bash \"$PLUGIN_ROOT/hooks/quality.sh\" review codex",
               "timeout": 5
             }
           ]
