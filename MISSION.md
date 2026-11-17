@@ -69,6 +69,19 @@ workflow、CI、tests、scripts、hooksは必要最小限の半分を目安に�
 - <a name="canon-pulumi-iac"></a>[Pulumi・Infrastructure as Code](https://www.pulumi.com/docs/iac/) （[自律開発](commands/autonomous-development.md)）
 - <a name="canon-pulumi-preview"></a>[Pulumi・変更の事前確認（pulumi preview）](https://www.pulumi.com/docs/iac/cli/commands/pulumi_preview/) （[自律開発](commands/autonomous-development.md)）
 
+### Tripoの公式資料と論文
+
+- <a name="canon-tripo-studio"></a>[Tripo Studio・公式ドキュメント](https://www.tripo3d.ai/product-doc) （[自律開発](commands/autonomous-development.md)）
+- <a name="canon-tripo-api"></a>[Tripo API・公式ドキュメント](https://developers.tripo3d.ai/en/docs/introduction) （[自律開発](commands/autonomous-development.md)）
+- <a name="canon-tripo-comfyui"></a>[Tripo・ComfyUIノードの公式ドキュメント](https://developers.tripo3d.ai/en/docs/comfyui-nodes) （[自律開発](commands/autonomous-development.md)）
+- <a name="canon-tripo-publications"></a>[Tripo / VAST AI・論文一覧](https://www.tripo3d.ai/research/publications) （[自律開発](commands/autonomous-development.md)、[自動評価](commands/automated-evaluation.md)）
+- <a name="canon-tripo-sr"></a>[TripoSR・単一画像からの3D復元](https://arxiv.org/abs/2403.02151) （[自動評価](commands/automated-evaluation.md)）
+- <a name="canon-tripo-sg"></a>[TripoSG・高精細な3D形状生成](https://arxiv.org/abs/2502.06608) （[自動評価](commands/automated-evaluation.md)）
+- <a name="canon-tripo-sparseflex"></a>[SparseFlex（TripoSF）・任意のトポロジーを持つ3D形状](https://arxiv.org/abs/2503.21732) （[自動評価](commands/automated-evaluation.md)）
+- <a name="canon-tripo-splat"></a>[TripoSplat・密度を制御する3Dガウシアン生成](https://arxiv.org/abs/2605.16355) （[自動評価](commands/automated-evaluation.md)）
+- <a name="canon-tripo-anigen"></a>[AniGen・アニメーション可能な3Dアセット生成](https://arxiv.org/abs/2604.08746) （[自動評価](commands/automated-evaluation.md)）
+- <a name="canon-tripo-nexus"></a>[Nexus・頂点とトポロジーを扱うメッシュ生成](https://doi.org/10.1145/3811344) （[自動評価](commands/automated-evaluation.md)）
+
 ### かふかのZenn
 
 <a name="canon-kafka-zenn"></a>[かふかのZenn記事一覧](https://zenn.dev/kafka2306?tab=articles) に掲載される公開記事はすべて聖典に含める。更新時は、その作業に関係する記事を一覧から読んで使う。 （[自動評価](commands/automated-evaluation.md)、[自律開発](commands/autonomous-development.md)、[データ設計](commands/data-design.md)、[対立仮説](commands/devils-advocate.md)、[文書校正](commands/editorial.md)、[目標設定](commands/outcome-design.md)、[AIスロップ削除](commands/remove-ai-slop.md)）
