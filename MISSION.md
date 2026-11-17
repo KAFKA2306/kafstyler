@@ -47,3 +47,5 @@
 - [Astral・ty](https://docs.astral.sh/ty/)
 - [ComfyUI・公式ドキュメント](https://docs.comfy.org/)
 - [ComfyUI・Workflow JSON仕様原本](https://github.com/Comfy-Org/docs/blob/main/specs/workflow_json.mdx)
+- [Pulumi・Infrastructure as Code](https://www.pulumi.com/docs/iac/)
+- [Pulumi・変更の事前確認（pulumi preview）](https://www.pulumi.com/docs/iac/cli/commands/pulumi_preview/)
