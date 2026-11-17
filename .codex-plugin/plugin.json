@@ -1,6 +1,6 @@
 {
   "name": "kafstyler",
-  "version": "0.5.6",
+  "version": "0.5.7",
   "description": "目標を定め、成果物を評価して直し、文書と作業手順を改善する。",
   "repository": "https://github.com/KAFKA2306/kafstyler",
   "skills": "./skills/",
