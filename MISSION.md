@@ -16,25 +16,25 @@ aliases:
 
 現行の出力と変更候補を同じ条件で評価し、品質が上がる変更や手間が減る変更を実装する。変更前後の数値と、削除できた旧手順を確認できるようにする。
 
-[自動評価](skills/benchmark/SKILL.md)・[対立仮説](skills/scrutiny/SKILL.md)・[自律開発](skills/deliver/SKILL.md)・[不要なファイル・コード・文章を削る](skills/prune/SKILL.md)
+[評価と比較](skills/benchmark/SKILL.md)・[反証レビュー](skills/scrutiny/SKILL.md)・[自律開発](skills/deliver/SKILL.md)・[不要なファイル・コード・文章の削除](skills/prune/SKILL.md)
 
 ## 自律文書整備
 
 原典を確認し、手順・記録・台帳を更新する。必要な文書をタグやリンクで見つけられ、根拠と適用先をたどれる形にする。
 
-[文書校正](skills/humanizer/SKILL.md)・[データ設計](skills/schema/SKILL.md)・[不要なファイル・コード・文章を削る](skills/prune/SKILL.md)
+[文章の推敲](skills/humanizer/SKILL.md)・[データ設計](skills/schema/SKILL.md)・[不要なファイル・コード・文章の削除](skills/prune/SKILL.md)
 
 ## 自律成果創出
 
 利用者が普段の入口で何をできるようになるかを定める。作ったものをその入口から実行し、期待した出力と確認結果を届ける。
 
-[目標設定](skills/charter/SKILL.md)・[自律開発](skills/deliver/SKILL.md)・[自動評価](skills/benchmark/SKILL.md)
+[目標設定](skills/charter/SKILL.md)・[自律開発](skills/deliver/SKILL.md)・[評価と比較](skills/benchmark/SKILL.md)
 
 ## 出力の共通基準
 
 任意の出力で人が読む文章を日本語で書き、[imozの原文](BIBLES.md#imozの日本語編集)に沿って整える。回答、文書、PR本文、コードのコメントや説明文で、結論、根拠、成立条件を読み取れるようにする。確認した事実、推定、未確認事項を区別して原典に照合する。既定のコード識別子、APIのキー、列挙値、出力形式を使う。
 
-[文書校正](skills/humanizer/SKILL.md)・[作業規約](AGENTS.md#出力と成果物)
+[文章の推敲](skills/humanizer/SKILL.md)・[作業規約](AGENTS.md#出力と成果物)
 
 ## 更新手順
 
@@ -48,7 +48,7 @@ aliases:
 
 改善や置き換えの前に、完了場面を観測できる指標を決める。指標ごとに入力、測定方法、単位と合格条件を先に定義する。現行と候補を同じ入力・環境で走らせ、再実行できるコマンドと結果を記録する。件数、出力の一致、所要時間などを機械的に測り、目視が必要な項目は判断基準を明記する。
 
-[自動評価](skills/benchmark/SKILL.md)・[成功基準と評価の設計](BIBLES.md#成功基準と評価)
+[評価と比較](skills/benchmark/SKILL.md)・[成功基準と評価の設計](BIBLES.md#成功基準と評価)
 
 ## 外部実装への置き換え
 
@@ -58,12 +58,12 @@ aliases:
 2. 現行手法を比較の基準にし、候補を[同じ条件と指標](#機械的に確かめる評価指標)で測る。必要な品質、出力、上流の検証実績と保守状況、運用や移行の手間を比べる。
 3. 合格条件を満たして優れた外部手法に切り替え、通常の入口で出力を確かめる。役割を終えた旧手順、自作コード、設定を削る。
 
-[自律開発](skills/deliver/SKILL.md)・[不要なファイル・コード・文章を削る](skills/prune/SKILL.md)・[UNIX哲学の原典](BIBLES.md#unix哲学)
+[自律開発](skills/deliver/SKILL.md)・[不要なファイル・コード・文章の削除](skills/prune/SKILL.md)・[UNIX哲学の原典](BIBLES.md#unix哲学)
 
-## 自動化の量
+## 自動化を追加する条件
 
 workflow、CI、tests、scripts、hooksは必要最小限の半分を目安にする。過剰なチェックで日常作業を止めた経験を踏まえ、まず既存の実行入口と検証を使う。追加する場合は、防ぐ具体的な失敗か、減らせる手作業を示す。
 
-## 聖典
+## 聖典台帳
 
 [聖典台帳](BIBLES.md)で一次資料、用途、対応コマンドを確認する。
