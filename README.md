@@ -10,67 +10,48 @@ aliases:
 
 # Kafstyler
 
-開発・調査・制作・運用で、AIエージェントが課題を見極め、使える成果を届けるためのClaude Codeプラグインです。
-
-利用者が普段の操作で何をできるようになれば完了かを先に決めます。その状態から逆算して合格条件を定め、一次資料をもとに設計や手法の前提を見直します。成果物は実際の利用経路で検証し、その結果を文書の整備や、次の案件で使うスキルと道具の改善に生かします。
+Kafstylerは、Claude Codeで目標設定、成果物の評価、修正と再評価を回すプラグインです。普段の依頼を送ると動きます。使い方や評価に共通の漏れが見つかれば、再現してKafstyler自体の改善につなげます。
 
 ## プラグインの使い方
 
-リポジトリのルートで次を実行します。
+Claude Codeを使えるターミナルで、[配布元](https://github.com/KAFKA2306/agent-resources/blob/main/.claude-plugin/marketplace.json)を登録し、ユーザー範囲にインストールします。WindowsではWSLかGit Bashを使います。
 
 ```sh
-claude plugin validate .
-claude --plugin-dir . --append-system-prompt-file AGENTS.md
+claude plugin marketplace add KAFKA2306/agent-resources
+claude plugin install kafstyler@kafka-agent-tools --scope user
 ```
 
-2行目でプラグインと[作業規約](AGENTS.md)を読み込みます。別のプロジェクトでは、そのプロジェクトのルートで `claude --plugin-dir /path/to/kafstyler` を実行します。
+対象プロジェクトで `claude` を起動し、「READMEを初めて読む人が、手順どおりに起動できるように整えて」のように依頼します。
 
-プラグインが有効な間は、依頼ごとに目標設定と必要なコマンドの利用を促します。たとえば「台帳の構造を設計して」と入力すると、目標設定とデータ設計を使う流れになります。特定の手順を指定するときは、`/kafstyler:schema` のように直接呼べます。作業中に見つけた手順の漏れは、正本で修正してから同じ操作で確認します。[全作業への適用と自己改善](AGENTS.md#全作業への適用と自己改善)
+1. 普段の入口、成功と分かる結果、改善の比較基準を決めます。
+2. 文書では必要な手順が見つかり、記載どおりに操作できるかを確かめます。コードやデータでは、現物を同じ入力と合格条件で評価します。
+3. 提出前に再確認が一度起動します。欠陥を直し、同じ条件で合否と改善幅を確かめます。Kafstylerの手順に原因があれば、再現して、正本に書き込める範囲で直します。[評価と自己改善の手順](skills/charter/SKILL.md#成果物の確認と手順の改善)
 
-すべてのプロジェクトで使う場合は、Claude Codeで既存の[配布先](https://github.com/KAFKA2306/agent-resources/blob/main/.claude-plugin/marketplace.json)を追加し、ユーザー範囲でインストールします。
+### 更新と開発時の確認
 
-```text
-/plugin marketplace add KAFKA2306/agent-resources
-/plugin install kafstyler@kafka-agent-tools
-```
+導入済みの版は `claude plugin update kafstyler@kafka-agent-tools` で更新できます。すぐ使うには新しいセッションを開始するか、`/reload-plugins` を実行します。今後の改善版を自動取得するには、`/plugin` の Marketplaces で `kafka-agent-tools` の自動更新を有効にします。[Anthropicの更新手順](https://code.claude.com/docs/en/discover-plugins#keep-plugins-updated)
 
-ユーザー範囲を選んでから別のプロジェクトを開き、普段の依頼で `charter` が適用されることを確かめます。配布先の自動更新を有効にすると改善版を受け取れます。[インストールと更新の公式手順](https://code.claude.com/docs/en/discover-plugins)
+変更を公開前に試す場合は、Kafstylerのルートで `claude plugin validate .` を実行します。別のプロジェクトで `claude --plugin-dir /path/to/kafstyler` を起動し、普段の依頼を送ります。
 
-### 目標設定
+## スキル
 
-- [`/kafstyler:charter`](skills/charter/SKILL.md) 利用者ができるようになることと、完了を確かめる操作を決める。
+| 直接呼び出すとき | 用途 |
+| --- | --- |
+| [`/kafstyler:charter`](skills/charter/SKILL.md) | 完成場面と合格条件を定める |
+| [`/kafstyler:humanizer`](skills/humanizer/SKILL.md) | 文書を校正し、手順と根拠を確かめる |
+| [`/kafstyler:schema`](skills/schema/SKILL.md) | 台帳、マスター、集計モデルを設計する |
+| [`/kafstyler:scrutiny`](skills/scrutiny/SKILL.md) | 前提を疑い、重大な欠陥を根拠と影響で示す |
+| [`/kafstyler:benchmark`](skills/benchmark/SKILL.md) | 実物の合否と改善幅を同じ条件で測る |
+| [`/kafstyler:deliver`](skills/deliver/SKILL.md) | 変更を実装し、利用者の入口から確かめる |
+| [`/kafstyler:prune`](skills/prune/SKILL.md) | 重複や不要なファイル、コード、文章を削る |
 
-### 文書校正
-
-- [`/kafstyler:humanizer`](skills/humanizer/SKILL.md) 原稿を校正するか、資料から短いブリーフを書く。
-
-### メタデータ・スキーマ設計
-
-- [`/kafstyler:schema`](skills/schema/SKILL.md) エンティティ、台帳、マスター、集計モデルの設計を決める。
-
-### AIスロップ削除
-
-- [`/kafstyler:prune`](skills/prune/SKILL.md) 重複フォルダを統合し、不要なファイル、コード、文章を削る。
-
-### 評価と自律開発
-
-- [`/kafstyler:scrutiny`](skills/scrutiny/SKILL.md) 中核の前提が崩れる条件を調べ、確認できた致命的な欠陥を根拠と影響つきで指摘する。
-- [`/kafstyler:benchmark`](skills/benchmark/SKILL.md) 同じ条件で採点し、合否と差を再現できるようにする。
-- [`/kafstyler:deliver`](skills/deliver/SKILL.md) 変更を実装し、実際の利用経路で検証して届ける。
-
-ChatGPTの定期タスクとCodexでは、[作業規約](AGENTS.md#全作業への適用と自己改善)と該当するコマンドのMarkdownを読み、実行環境の道具で手順を使います。
+ChatGPTの定期タスクとCodexでは、[作業規約](AGENTS.md#全作業への適用と自己改善)に従い、正本の版を固定して必要なスキルのMarkdownを使います。
 
 ## Unity・VRChat制作での適用
 
 汎用Unityは `CoplayDev/unity-mcp`、VRChat Worldsは `swax/UnityMCP-VRC`、VRChat Avatarsは `lighfu/unity-agent` を使用します。制作の共通規約は [AGENTS.md](AGENTS.md#全作業への適用と自己改善) です。
 
-Claude Codeでは、このリポジトリをプラグインとして読み込み、同時に `AGENTS.md` を指示として渡します（上記「プラグインの使い方」参照）。対象のUnity MCP・Agentは各リポジトリの公式手順で別途接続してください。Kafstylerで目標設定、実装、検証、手順の改善を共通化します。
-
-実作業で規約の不足を発見した場合は、[共通の改善手順](AGENTS.md#全作業への適用と自己改善)に沿って失敗の再現から進めます。Unity EditorやVRChat SDKで未検証の作業を完了扱いにしません。
-
-## コマンドの連携
-
-たとえば `/kafstyler:deliver` で合格条件が曖昧なら目標設定を呼び、外部の手法に置き換えるときは自動評価を呼びます。自動評価の結果を確認してから採否を決め、移行後に旧実装の整理を呼びます。データ設計や反証レビューからも、実データや反例を渡して自動評価を実行します。[連携の規約](AGENTS.md#コマンドの連携)
+対象のUnity MCP・Agentは各リポジトリの公式手順で接続します。評価は利用者が使うUnity EditorやVRChat SDKで行います。
 
 ## 外部スキルとテンプレート
 

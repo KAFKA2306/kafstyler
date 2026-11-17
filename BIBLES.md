@@ -72,6 +72,8 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [Anthropic・UserPromptSubmit](https://code.claude.com/docs/en/hooks#userpromptsubmit)（公式仕様）。依頼送信時に作業規約を適用するためのフック。
 
+[Anthropic・Stop](https://code.claude.com/docs/en/hooks#stop-decision-control)（公式仕様）。提出前の確認を挟み、同じターンの再起動を避けるためのフック。
+
 [作業規約](AGENTS.md#全作業への適用と自己改善)
 
 ### プラグインの作成

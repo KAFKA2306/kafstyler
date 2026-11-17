@@ -1,6 +1,6 @@
 {
   "name": "kafstyler",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "AIエージェントが開発・調査・制作・運用で目標を定め、成果を検証して届け、文書や手法を自律的に改善する。",
   "hooks": {
     "UserPromptSubmit": [
@@ -8,7 +8,21 @@
         "hooks": [
           {
             "type": "command",
-            "command": "echo 'この依頼にKafstylerを適用する。最初にSkillでkafstyler:charterを実行し、実行済みならその結果を使う。対象・合格条件を確認し、必要なkafstylerコマンドをSkillで呼ぶ。実際の作業で手順・呼び出し・検証に漏れを見つけたら、その実害を再現し、許可された範囲でKAFKA2306/kafstylerの正本を最小限修正する。同じ操作で再検証し、元の依頼を完了する。正本を修正できない場合は再現条件と修正案を伝える。人向けの出力はimozの指針に従う。'"
+            "shell": "bash",
+            "command": "sh \"$CLAUDE_PLUGIN_ROOT/hooks/quality.sh\" start",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "bash",
+            "command": "sh \"$CLAUDE_PLUGIN_ROOT/hooks/quality.sh\" review",
+            "timeout": 5
           }
         ]
       }
