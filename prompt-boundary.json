@@ -23,10 +23,10 @@
       "reason": "Existing private durable-memory authority; not a Prompt Vault prompt and not Graphiti raw episode storage."
     },
     {
-      "path": "skills/",
-      "kind": "domain-skills",
+      "path": ".claude/commands/",
+      "kind": "reusable-skills",
       "disposition": "remain",
-      "reason": "Repository-local domain decision rules retained for compatibility; new reusable prompts/artifacts belong in Prompt Vault."
+      "reason": "Single-file work procedures selected and maintained using MISSION.md."
     }
   ]
 }
