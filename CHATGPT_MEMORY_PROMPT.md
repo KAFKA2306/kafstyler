@@ -1,4 +1,4 @@
-KAFKA2306/basic_prompts の main/MEMORY.md を GitHub から実際に読み、durable ChatGPT memory の唯一の正準として扱ってください。
+KAFKA2306/kafstyler の main/MEMORY.md を GitHub から実際に読み、durable ChatGPT memory の唯一の正準として扱ってください。
 
 現在参照できる ChatGPT 側の長期ユーザー情報と比較し、各項目を次に分類してください。
 - KEEP: MEMORY.md と整合する durable item

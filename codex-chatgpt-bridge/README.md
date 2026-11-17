@@ -176,8 +176,8 @@ If the bridge itself dies while a task is active, the supervisor restarts it. On
 
 The v2 queue is:
 
-- `KAFKA2306/basic_prompts` private Issue #3
-- https://github.com/KAFKA2306/basic_prompts/issues/3
+- `KAFKA2306/kafstyler` private Issue #3
+- https://github.com/KAFKA2306/kafstyler/issues/3
 
 The daemon no longer reloads the entire historical comment stream on every poll. It fetches comments incrementally using `since`, with a small overlap and `last_comment_id` deduplication.
 
@@ -195,9 +195,9 @@ gh auth status
 Clone the current private repository and run:
 
 ```powershell
-$dst = Join-Path $env:TEMP 'basic_prompts-codex-bridge-v2'
+$dst = Join-Path $env:TEMP 'kafstyler-codex-bridge-v2'
 Remove-Item $dst -Recurse -Force -ErrorAction SilentlyContinue
-gh repo clone KAFKA2306/basic_prompts $dst
+gh repo clone KAFKA2306/kafstyler $dst
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$dst\codex-chatgpt-bridge\install.ps1"
 ```
 

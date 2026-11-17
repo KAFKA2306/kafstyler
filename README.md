@@ -1,4 +1,4 @@
-# basic_prompts
+# Kafstyler
 
 Claude Code plugin for recurring work. The repository also holds private ChatGPT memory and the Windows execution bridge.
 
@@ -11,16 +11,16 @@ claude plugin validate .
 claude --plugin-dir .
 ```
 
-The second command loads the plugin for the session. In Claude Code, choose a command such as `/basic-prompts:star-schema`.
+The second command loads the plugin for the session. In Claude Code, choose a command such as `/kafstyler:star-schema`.
 
-- [`/basic-prompts:canonical-ledger`](commands/canonical-ledger.md)
-- [`/basic-prompts:star-schema`](commands/star-schema.md)
-- [`/basic-prompts:metadata-design`](commands/metadata-design.md)
-- [`/basic-prompts:devils-advocate`](commands/devils-advocate.md)
-- [`/basic-prompts:outcome-design`](commands/outcome-design.md)
-- [`/basic-prompts:humanize`](commands/humanize.md)
-- [`/basic-prompts:brief`](commands/brief.md)
-- [`/basic-prompts:simplify-workflow`](commands/simplify-workflow.md)
+- [`/kafstyler:canonical-ledger`](commands/canonical-ledger.md)
+- [`/kafstyler:star-schema`](commands/star-schema.md)
+- [`/kafstyler:metadata-design`](commands/metadata-design.md)
+- [`/kafstyler:devils-advocate`](commands/devils-advocate.md)
+- [`/kafstyler:outcome-design`](commands/outcome-design.md)
+- [`/kafstyler:humanize`](commands/humanize.md)
+- [`/kafstyler:brief`](commands/brief.md)
+- [`/kafstyler:simplify-workflow`](commands/simplify-workflow.md)
 
 ## Repository guides
 
