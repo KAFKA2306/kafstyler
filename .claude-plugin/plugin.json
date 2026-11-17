@@ -26,30 +26,6 @@
           }
         ]
       }
-    ],
-    "SubagentStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "shell": "bash",
-            "command": "bash \"$CLAUDE_PLUGIN_ROOT/hooks/quality.sh\" subagent",
-            "timeout": 5
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "shell": "bash",
-            "command": "bash \"$CLAUDE_PLUGIN_ROOT/hooks/quality.sh\" review",
-            "timeout": 5
-          }
-        ]
-      }
     ]
   }
 }
