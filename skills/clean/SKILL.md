@@ -35,3 +35,6 @@ aliases:
 - [imoz・日本語の文章編集ガイド](../../BIBLES.md#imozの日本語編集)
 - [McIlroy・Pinson・Tague「UNIX Time-Sharing System: Foreword」（1978）](../../BIBLES.md#unix哲学)
 - [かふかのZenn記事一覧](../../BIBLES.md#かふかのzenn記事一覧)
+- [エージェント向けのフォルダ整理](../../BIBLES.md#エージェント向けのフォルダ整理)
+- [astralのpython開発基盤](../../BIBLES.md#astralのpython開発基盤)
+- [taskで共通の実行手順を作る](../../BIBLES.md#taskで共通の実行手順を作る)

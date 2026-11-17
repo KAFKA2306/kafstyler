@@ -400,7 +400,7 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 ### かふかのzenn記事一覧
 
-[かふかのZenn記事一覧](https://zenn.dev/kafka2306?tab=articles)（記事一覧）。掲載される公開記事をすべて含む。作業に関係する記事を一覧から参照する。
+[かふかのZenn記事一覧](https://zenn.dev/kafka2306?tab=articles)（記事一覧）。2026年11月17日に[公式RSS](https://zenn.dev/kafka2306/feed?all=1)と[公開記事一覧API](https://zenn.dev/api/articles?username=kafka2306&order=latest&count=100)を照合し、25件の題名とURLが一致した。一覧APIの次ページはない。
 
 [自動評価](skills/test/SKILL.md) · [自律開発](skills/build/SKILL.md) · [データ設計](skills/data/SKILL.md) · [対立仮説](skills/critique/SKILL.md) · [文書校正](skills/edit/SKILL.md) · [目標設定](skills/scope/SKILL.md) · [AIスロップ削除](skills/clean/SKILL.md)
 
@@ -414,13 +414,145 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [AIに同じ指示を繰り返すのをやめた。Issue駆動開発という最小運用](https://zenn.dev/kafka2306/articles/issue-driven-development)（記事）。終わった変更の経緯をIssueに残し、現在の仕様として必要な記述を正本に集約する。
 
-[AIスロップ削除](skills/clean/SKILL.md)
+[AIスロップ削除](skills/clean/SKILL.md) · [自律開発](skills/build/SKILL.md)
 
 ### 失敗原因が見える実装
 
 [AIを「過保護」にするな。スタックトレースを聖典とする開発規律 "Crash-Driven Development"](https://zenn.dev/kafka2306/articles/11cd731eebded1)（記事）。障害の原因を隠す広すぎる例外捕捉やフォールバックを見直し、根本原因を観測できる形にする。
 
 [AIスロップ削除](skills/clean/SKILL.md)
+
+### ムチォの体験設計
+
+[AIキャラクターは、賢いほど面白いのか？――ムチォがひっくり返した「知能」の価値](https://zenn.dev/kafka2306/articles/2026-08-15-ai-character-intelligence-muchio)（記事）。AIの性能と利用者がキャラクターに求める体験を切り分け、評価対象を定める。
+
+[目標設定](skills/scope/SKILL.md) · [反証レビュー](skills/critique/SKILL.md)
+
+### 個人開発の次の一件
+
+[個人開発が123個になって分かった。ChatGPTに任せるべきはコードより「次の1件」だった](https://zenn.dev/kafka2306/articles/chatgpt-multiproject-autonomy)（記事）。複数プロジェクトから次の変更を選び、利用者に届いたかを確認する。
+
+[目標設定](skills/scope/SKILL.md) · [自律開発](skills/build/SKILL.md)
+
+### 自動テストの合格条件
+
+[Claude Codeにテストを全部任せるなら、先に「合格条件」を固定する](https://zenn.dev/kafka2306/articles/2026-08-15-hook-runner-is-not-policy)（記事）。実装に着手する前に、期待出力と合否条件を固定する。
+
+[自動評価](skills/test/SKILL.md) · [自律開発](skills/build/SKILL.md)
+
+### 外部実装の互換性と判定根拠
+
+[OSSが動いた。でもその判定はまだ使えない。「動く」と「使ってよい」を4状態に分ける](https://zenn.dev/kafka2306/articles/2026-08-14-05-compatibility-is-not-validation)（記事）。動作・入力条件・証拠を別々に確かめ、判定に使える範囲を定める。
+
+[自動評価](skills/test/SKILL.md) · [反証レビュー](skills/critique/SKILL.md)
+
+### 成果物を仕事の証拠にする
+
+[人は他人を『何を任せられるか』で圧縮する——成果物が仕事の証拠になるまで](https://zenn.dev/kafka2306/articles/2026-08-13-02-how-people-compress-a-person)（記事）。担当できる課題と得られる結果を成果物で示す。
+
+[目標設定](skills/scope/SKILL.md) · [文書校正](skills/edit/SKILL.md)
+
+### 透かしの検証可能性
+
+[AIの文章に「透かし」があると言われたら、誰がそれを証明できるのか](https://zenn.dev/kafka2306/articles/claude-watermark-secret-key-detection)（記事）。検証主体と公開根拠を確かめ、一次資料で前提を見直す。
+
+[反証レビュー](skills/critique/SKILL.md)
+
+### ai検索向けの一次情報
+
+[AI検索最適化（GEO/AEO）運用指針](https://zenn.dev/kafka2306/articles/6dd453d941b99f)（記事）。公開物の一次情報、機械可読性、施策の検証条件を確認する。
+
+[文書校正](skills/edit/SKILL.md) · [反証レビュー](skills/critique/SKILL.md)
+
+### 目的別の情報収集サイト
+
+[AI活用してそうな情報サイトのクオリティがすごい](https://zenn.dev/kafka2306/articles/1436dad81ab3ac)（記事）。調べたい項目から企業史、財務、IRなどの候補を探し、原典へたどる。
+
+[反証レビュー](skills/critique/SKILL.md)
+
+### 継続検証による技術監査
+
+[Adaptive Survivable Verification System (ASVS) に基づく技術監査フレームワーク](https://zenn.dev/kafka2306/articles/5c3c93f798da3f)（記事）。実行時の変化を観測し、検証で用いる証拠を定める。
+
+[自動評価](skills/test/SKILL.md) · [反証レビュー](skills/critique/SKILL.md)
+
+### 完了を裏づける証拠
+
+[AIの“やったふり”とハルシネーションを暴くゼロトラスト・コントラクト](https://zenn.dev/kafka2306/articles/77e6af7be1d527)（記事）。完了報告を実行結果や再現できる証拠と照らす。
+
+[自動評価](skills/test/SKILL.md) · [反証レビュー](skills/critique/SKILL.md)
+
+### エージェント向けのフォルダ整理
+
+[AIエージェントのためのディレクトリ管理指針 — モデルを邪魔しない構造設計](https://zenn.dev/kafka2306/articles/5c21f4d010baeb)（記事）。指示や過去の生成物を仕分け、作業に使う情報へ短く到達できる配置にする。
+
+[AIスロップ削除](skills/clean/SKILL.md)
+
+### windowsでのgemini-cli導入
+
+[WindowsでDocker×Gemini CLI×everything-claude-code Skillsを一気に動かす](https://zenn.dev/kafka2306/articles/cd6f21d4a26bdd)（記事）。WindowsでDocker、Gemini CLI、スキルを組み合わせる手順を参照する。
+
+[自律開発](skills/build/SKILL.md)
+
+### エージェント向け運用基盤
+
+[AIエージェントのためのインフラ：agent-resources (agr) の設計思想](https://zenn.dev/kafka2306/articles/9f9997babac335)（記事）。機能を個別プロジェクトに持たせるか、共通ツールを使うかの判断材料にする。
+
+[自律開発](skills/build/SKILL.md)
+
+### 市場研究から執行までの設計
+
+[自律型エージェント・アルファ探索＆執行システム「AAARTS」：市場に適応し続ける「自律型知能」](https://zenn.dev/kafka2306/articles/c599b0556555a7)（記事）。探索、検証、執行を分け、各段階の入力と成否の根拠を整理する。
+
+[データ設計](skills/data/SKILL.md) · [反証レビュー](skills/critique/SKILL.md)
+
+### astralのpython開発基盤
+
+[Astral ツールチェーンで作る 2026 年の Python 開発基盤：uv から次世代型チェッカー ty まで](https://zenn.dev/kafka2306/articles/2005501fe91754)（記事）。Pythonの依存管理、型検査、静的解析を既存ツールに委ねる方法を参照する。
+
+[AIスロップ削除](skills/clean/SKILL.md) · [自律開発](skills/build/SKILL.md)
+
+### steamvrの起動障害
+
+[【SteamVR】PicoConnect削除後に起動しない・HMD未検出になる時の修復手順](https://zenn.dev/kafka2306/articles/a25478878eeaab)（記事）。起動と機器認識が止まった操作を切り分け、復旧後に同じ経路を試す。
+
+[自律開発](skills/build/SKILL.md) · [自動評価](skills/test/SKILL.md)
+
+### wsl2でのantigravity導入
+
+[WSL2でLinuxネイティブ版Antigravityを正しく動かす](https://zenn.dev/kafka2306/articles/09834f9c98002d)（記事）。Windows版とLinux版の実行ファイルを区別し、起動元を確かめる。
+
+[自律開発](skills/build/SKILL.md)
+
+### taskで共通の実行手順を作る
+
+[開発者とAIのための「共通の作法」をつくる Task](https://zenn.dev/kafka2306/articles/215f0d6521e498)（記事）。手順を書き写す箇所を減らし、Taskfileで人とAIが同じ入口を使う。
+
+[AIスロップ削除](skills/clean/SKILL.md) · [自律開発](skills/build/SKILL.md)
+
+### windowsとwslの自動化
+
+[Windows × WSL 自動化の正解](https://zenn.dev/kafka2306/articles/18fe96f422c920)（記事）。実行ユーザー、パス、起動元が変わる境界で自動化を確認する。
+
+[自律開発](skills/build/SKILL.md) · [自動評価](skills/test/SKILL.md)
+
+### アプリの責任範囲を分ける
+
+[アプリ設計の正体 ― なぜ分ける？なぜ面倒？を直観で理解する](https://zenn.dev/kafka2306/articles/3536e2f7c67656)（記事）。UI、データの流れ、インフラごとに責任範囲を明確にする。
+
+[データ設計](skills/data/SKILL.md) · [自律開発](skills/build/SKILL.md)
+
+### 応用情報の略語と用途
+
+[応用情報の略語問題](https://zenn.dev/kafka2306/articles/a991574ccef77e)（記事）。略語を正式名称と用途に対応づけて用語を確認する。
+
+[データ設計](skills/data/SKILL.md) · [文書校正](skills/edit/SKILL.md)
+
+### wsl2でのunity-hub導入
+
+[WSL2でUnity Hubをインストールする方法](https://zenn.dev/kafka2306/articles/5ef689985e9aee)（記事）。WSL2でUnity Hubとエディターを用意する際の手順を参照する。
+
+[自律開発](skills/build/SKILL.md)
 
 ## ISUCONのハーネス
 
