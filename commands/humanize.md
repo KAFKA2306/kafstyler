@@ -9,4 +9,4 @@ description: Rewrite Japanese user-facing prose while preserving its meaning and
 3. Keep source links, uncertainty, times, and quantities attached to the claims they support. Match the author's tone and keep domain terminology where precision depends on it.
 4. Read the final text on its own. Check that a new reader can recover the intended conclusion and that factual meaning still matches the source.
 
-Use the Japanese writing guide in [MISSION.md](../../MISSION.md). For editing requests, return the revised text.
+Use the Japanese writing guide in [MISSION.md](../MISSION.md). For editing requests, return the revised text.

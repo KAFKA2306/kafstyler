@@ -9,4 +9,4 @@ description: Design or reconcile one authoritative ledger for records, status, v
 3. Upsert repeat inputs by the source key. Preserve current state and revisions. Derive catalogs, dashboards, and exports from the ledger.
 4. Reconcile a real sample and report source counts, accepted and rejected rows, duplicates, and unresolved records with reasons. Verify that rerunning a sample leaves counts and keys consistent.
 
-Deliver the authoritative location, row key, write/read paths, and reconciliation result. Use the Foundry and PROV-O references in [MISSION.md](../../MISSION.md).
+Deliver the authoritative location, row key, write/read paths, and reconciliation result. Use the Foundry and PROV-O references in [MISSION.md](../MISSION.md).

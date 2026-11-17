@@ -4,7 +4,7 @@ This repository is private. Keep development, verification, release, and cleanup
 
 ## Knowledge and Prompt Ownership
 
-- `prompt-boundary.json` is the machine-readable routing/inventory contract for content retained in this repository.
+- The Claude Code plugin owns the recurring work procedures under `commands/`. `.claude-plugin/plugin.json` declares the plugin identity.
 - Register new reusable prompts and formal reusable artifacts in `KAFKA2306/prompt-vault`; do not make `basic_prompts` a second current prompt authority.
 - Store raw facts, episodes, lessons, failures, and corrections in `KAFKA2306/graphiti`; do not copy Graphiti raw knowledge into this repository.
 - Read [MISSION.md](MISSION.md) for skill scope, update procedure, and primary reference links.

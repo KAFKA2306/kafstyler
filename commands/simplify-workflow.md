@@ -9,4 +9,4 @@ description: Reduce files, folders, code, dependencies, or manual steps while co
 3. Prefer the ecosystem's ordinary CLI and supported formats. Use Pydantic for validated Python boundaries, uv for environment and dependency execution, and Astral/ComfyUI tools where the task matches. Keep commands or configuration only when they save work.
 4. Carry the authorized change through the existing workflow. Run the smallest relevant real check, inspect the actual diff, and confirm the final revision or output. Compare the original and final counts using the same method.
 
-Read official tool manuals from [MISSION.md](../../MISSION.md).
+Read official tool manuals from [MISSION.md](../MISSION.md).

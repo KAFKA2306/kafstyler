@@ -10,4 +10,4 @@ description: Design useful metadata, provenance, or an object model for datasets
 4. Keep observed, inferred, generated, missing, and current states distinct. Draw the lineage from primary inputs to canonical records to derived outputs. Use an existing schema or Pydantic at input boundaries where required.
 5. Try one real artifact and one incomplete or conflicting record. Verify lookup, source trace, required-field behavior, and equivalence against the baseline when making comparative claims.
 
-Deliver the field dictionary, a real sample, provenance, and the validation result. Consult [MISSION.md](../../MISSION.md) for IOF, Foundry, W3C, and tool documentation.
+Deliver the field dictionary, a real sample, provenance, and the validation result. Consult [MISSION.md](../MISSION.md) for IOF, Foundry, W3C, and tool documentation.
