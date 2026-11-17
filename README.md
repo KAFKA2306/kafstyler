@@ -246,7 +246,7 @@ KAFKA2306のWeb UIでは、先に[かふかのデザインパターン](BIBLES.m
 
 ## ミッション・聖典・作業規約
 
-Obsidianでは[リポジトリを保管庫として開く手順](BIBLES.md#ノートの管理)を使います。
+すべてのMarkdownに `type`、日本語の `description`、検索用の `tags` を含むYAML frontmatterを付けます。変更後は想定したプロパティとタグで文書を検索できることを確認します。Obsidianでは[保管庫と検索の規約](BIBLES.md#ノートの管理)を使い、利用できない環境ではYAMLを解析して確認します。
 
 - [MISSION.md](MISSION.md) ミッションと更新手順を確認できます。
 - [聖典台帳](BIBLES.md) 分野別の一次資料と対応コマンドをたどれます。
