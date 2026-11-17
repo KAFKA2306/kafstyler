@@ -9,4 +9,4 @@ description: Design a dimensional model from actual questions and an existing so
 3. Keep facts of different grains separate. Reuse conformed dimensions where there is a demonstrated common identity. Document unknown keys, late arrivals, and how corrections are reflected.
 4. Check source-to-fact totals, unique grain, orphan keys, and a representative query for join fan-out. Map existing data and backfill only the requested history.
 
-Deliver a grain statement, the schema and join keys, and a query with its reconciliation result. Use the Kimball and Microsoft references in [MISSION.md](../../MISSION.md).
+Deliver a grain statement, the schema and join keys, and a query with its reconciliation result. Use the Kimball and Microsoft references in [MISSION.md](../MISSION.md).

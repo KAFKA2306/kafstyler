@@ -1,25 +1,30 @@
 # basic_prompts
 
-Private repository for reusable work instructions, ChatGPT memory, and the existing local execution bridge.
+Claude Code plugin for recurring work. The repository also holds private ChatGPT memory and the Windows execution bridge.
 
-- [MISSION.md](MISSION.md) covers how to update the skills, how the first inventory was counted, and which official references to use.
-- [AGENTS.md](AGENTS.md) defines repository work and verification.
-- [prompt-boundary.json](prompt-boundary.json) maps repository ownership. Register general prompt artifacts in `KAFKA2306/prompt-vault`. Keep raw knowledge and corrections with `KAFKA2306/graphiti`.
+## Use the plugin
 
-## Skills
+From this repository's root, run:
 
-Claude Code supports these single-file skills in `.claude/commands/`. Run the command named below or open its procedure.
+```sh
+claude plugin validate .
+claude --plugin-dir .
+```
 
-- [`/canonical-ledger`](.claude/commands/canonical-ledger.md)
-- [`/star-schema`](.claude/commands/star-schema.md)
-- [`/metadata-design`](.claude/commands/metadata-design.md)
-- [`/devils-advocate`](.claude/commands/devils-advocate.md)
-- [`/outcome-design`](.claude/commands/outcome-design.md)
-- [`/humanize`](.claude/commands/humanize.md)
-- [`/brief`](.claude/commands/brief.md)
-- [`/simplify-workflow`](.claude/commands/simplify-workflow.md)
+The second command loads the plugin for the session. In Claude Code, choose a command such as `/basic-prompts:star-schema`.
 
-## Existing entry points
+- [`/basic-prompts:canonical-ledger`](commands/canonical-ledger.md)
+- [`/basic-prompts:star-schema`](commands/star-schema.md)
+- [`/basic-prompts:metadata-design`](commands/metadata-design.md)
+- [`/basic-prompts:devils-advocate`](commands/devils-advocate.md)
+- [`/basic-prompts:outcome-design`](commands/outcome-design.md)
+- [`/basic-prompts:humanize`](commands/humanize.md)
+- [`/basic-prompts:brief`](commands/brief.md)
+- [`/basic-prompts:simplify-workflow`](commands/simplify-workflow.md)
 
+## Repository guides
+
+- [MISSION.md](MISSION.md) covers the update process, inventory, and reference links.
+- [AGENTS.md](AGENTS.md) covers repository work and ownership.
 - [MEMORY.md](MEMORY.md) holds durable memory. Use [CHATGPT_MEMORY_PROMPT.md](CHATGPT_MEMORY_PROMPT.md) for explicit memory review and synchronization.
-- [ChatGPT–Codex bridge](codex-chatgpt-bridge/README.md) covers the existing Windows installation, controller protocol, and status.
+- [ChatGPT–Codex bridge](codex-chatgpt-bridge/README.md) covers Windows installation, the controller protocol, and status.
