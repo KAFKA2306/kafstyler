@@ -1,17 +1,23 @@
 ---
-description: Proofread Japanese prose or draft a short reader-facing brief. Use for 文書校正, humanize, 自然な日本語, 全体ブリーフ, or brief.
+description: "任意の人向け出力にimozの日本語執筆・推敲ルールを適用し、原稿の校正や資料からの要約を行う。"
 ---
 
-# Editorial
+# 文書校正
 
-1. Identify the audience, purpose, and requested format.
-2. For an existing draft, correct wording, sentence order, and terminology without changing the author's claims. Preserve figures, conditions, uncertainty, and sources.
-3. For a brief from sources, read the scoped material, lead with the conclusion, and give the decisive points with primary links. State what could not be verified when it affects the answer.
-4. Read the result on its own. Check the conclusion, facts, and tone against the source.
+任意の出力で人が読む文章には[imozの執筆・推敲ルール](../CANON.md#canon-humanizer-ja)を適用する。[出力の共通基準](../MISSION.md#mission-output-style)
 
-Return the edited text or brief.
+1. あらゆる回答、成果物、文書、PR本文、生成コードのコメントや説明文で[imozの原文](../CANON.md#canon-humanizer-ja)を参照し、読者、目的、媒体、指定範囲を確かめる。
+2. 対象全体を読み、重複、曖昧な評価、意味の切れ目を診断する。文書を編集する場合は修正箇所と方針を整理し、必要な改善を反映する。
+3. 原稿の主張、数値、条件、不確実性、出典を保つ。資料から要約するときは結論を先に示し、判断を支える根拠に一次リンクを付ける。結論に影響する未確認事項を明記する。
+4. 完成稿を原典と依頼に照合し、独立した文章として通読する。読者が使う用語と既定のコードの識別子や出力形式を保つ。
 
-## References
+校正文かブリーフを返す。読者向けの本文には内容と根拠を置き、作業経過の報告は利用者への応答で扱う。
 
-- [imoz・日本語の文章編集ガイド](../MISSION.md#canon-humanizer-ja)
-- [かふかのZenn記事一覧](../MISSION.md#canon-kafka-zenn)
+## 関連ミッション
+
+[自律文書整備](../MISSION.md#mission-documentation)
+
+## 参照資料
+
+- [imoz・日本語の文章編集ガイド](../CANON.md#canon-humanizer-ja)
+- [かふかのZenn記事一覧](../CANON.md#canon-kafka-zenn)

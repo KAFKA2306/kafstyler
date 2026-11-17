@@ -1,17 +1,23 @@
 ---
-description: Test a decision or claim against the strongest credible alternative. Use for devil's advocate, 悪魔の代弁者, 反証, 視点を変える, or a skeptical persona.
+description: "提案、主張、実装、手順の致命的な欠陥を探す。悪魔の代弁者、反証、重大欠陥レビューに使う。"
 ---
 
-# Devils Advocate
+# 致命的な欠陥のレビュー
 
-1. State the original claim, decisive assumptions, and what observation would change the decision.
-2. Build the strongest alternative from the same evidence and base rates. Identify the independent mechanisms when they can move differently, such as demand and financing.
-3. Compare both explanations against an observation they predict differently. Check primary sources when available and mark missing evidence and unresolved assumptions.
-4. Revise the decision or confidence only as far as the observation supports. Name the smallest next check when uncertainty could change the action.
+任意の出力で人が読む文章には[imozの執筆・推敲ルール](../CANON.md#canon-humanizer-ja)を適用する。[出力の共通基準](../MISSION.md#mission-output-style)
 
-Deliver the two claims, the discriminating observation, and the updated judgment.
+1. 判断の対象、期待する結果、成立に欠かせない前提を明確にする。崩れた場合の影響が最も大きい前提や依存関係から調べる。
+2. 実物、実際の入力、一次資料を使い、利用者が普段使う経路を最初から最後まで追う。結果が変わる箇所では依存関係、権限とデータの境界、途中失敗、再試行、復旧を確認する。
+3. 同じ証拠から最も有力な対立仮説を立てる。現実に起こり得る反例か境界事例を示し、どの観測で仮説を見分けられるかを定める。再発を測れる場合は[自動評価](automated-evaluation.md)を使う。
+4. 致命的な指摘から挙げる。中核の結果が成り立たない、普段の利用経路で動作しないか安全に使えない、復旧できない重大な損失が生じる場合を含む。指摘ごとに発生条件、実際の根拠か正確な再現手順、影響、最小の修正か結論を決める確認を記す。実測していないリスクは未確認とする。
+5. 停止、修正、続行の判断と、その判断を変える根拠を示す。根拠のある致命的な指摘が0件なら、重要な確認と影響の最も大きい未確認事項を示す。
 
-## References
+## 関連ミッション
 
-- [Anthropic・成功基準と評価の設計](../MISSION.md#canon-anthropic-evaluation)
-- [かふかのZenn記事一覧](../MISSION.md#canon-kafka-zenn)
+[自律改善](../MISSION.md#mission-improvement)
+
+## 参照資料
+
+- [Anthropic・成功基準と評価の設計](../CANON.md#canon-anthropic-evaluation)
+- [かふかのZenn記事一覧](../CANON.md#canon-kafka-zenn)
+- [imoz・日本語の文章編集ガイド](../CANON.md#canon-humanizer-ja)

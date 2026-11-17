@@ -1,22 +1,66 @@
-# MISSION
+# ミッション
 
 普段の依頼を、他の案件でもそのまま使える短い作業手順にする。各スキルは、何を受け取り、どんな結果を返し、どう確かめるかを1ファイルに収める。
+
+<a name="mission-improvement"></a>
+
+## 自律改善
+
+現行の出力と変更候補を同じ条件で評価し、品質が上がる変更や手間が減る変更を実装する。変更前後の数値と、削除できた旧手順を確認できるようにする。
+
+[自動評価](commands/automated-evaluation.md)・[対立仮説](commands/devils-advocate.md)・[自律開発](commands/autonomous-development.md)・[AIスロップ削除](commands/remove-ai-slop.md)
+
+<a name="mission-documentation"></a>
+
+## 自律文書整備
+
+原典を確認し、手順・記録・台帳を更新する。必要な文書をタグやリンクで見つけられ、根拠と適用先をたどれる形にする。
+
+[文書校正](commands/editorial.md)・[データ設計](commands/data-design.md)・[AIスロップ削除](commands/remove-ai-slop.md)
+
+<a name="mission-delivery"></a>
+
+## 自律成果創出
+
+利用者が普段の入口で何をできるようになるかを定める。作ったものをその入口から実行し、期待した出力と確認結果を届ける。
+
+[目標設定](commands/outcome-design.md)・[自律開発](commands/autonomous-development.md)・[自動評価](commands/automated-evaluation.md)
+
+<a name="mission-output-style"></a>
+
+## 出力の共通基準
+
+任意の出力で人が読む文章を日本語で書き、[imozの原文](CANON.md#canon-humanizer-ja)に沿って整える。回答、文書、PR本文、コードのコメントや説明文で、結論、根拠、成立条件を読み取れるようにする。確認した事実、推定、未確認事項を区別して原典に照合する。既定のコード識別子、APIのキー、列挙値、出力形式を使う。
+
+[文書校正](commands/editorial.md)・[作業規約](AGENTS.md#出力と成果物)
 
 ## 更新手順
 
 1. 探す。会話、Issue、成果物から、繰り返した指示と、その指示で変わった操作や判断を拾う。会話は本人の依頼を対象にし、同じ意味の表記揺れをまとめ、同じ会話では1件と数える。Issueの件数は会話と分ける。検索期間、閲覧できた範囲、分母、未確認範囲を記録する。
 2. 採否を決める。異なる会話2件以上か本人の明示指定を起点にし、別の案件でも同じ手順を呼び出せるものを選ぶ。入力と成果物が同じ既存コマンドがあれば統合する。隣のコマンドと独立して呼ぶ場面があれば、出力の違いをREADMEで確認する。担当プロジェクト固有の手順はそのプロジェクトに置く。
-3. 書く。通常の利用場面と利用者が確認できる結果を先に決める。公式資料で用語と操作を確認し、`commands/<name>.md` の description に呼び出し条件、本文に手順と完了判定を書く。各ファイルは独立した依頼1件に対応させる。公式資料はこのページに収め、参照先を追加・変更するときは対応するコマンドへのリンクと、コマンド側の参照リンクを同じ変更で更新する。
-4. 試す。直近と別分野の依頼を1件ずつ使い、入力から出力と確認までを見直す。似たスキルを呼び分けられるかも確認する。内部リンク、公式URL、ファイル一覧、保存した版を読み戻す。Claude Codeがある環境では `claude plugin validate .` と `claude --plugin-dir .` を実行し、変更した `/kafstyler:<name>` を確認する。PRには対象・確認した結果・残る不明点を記録する。
-5. 整理する。後継へ移した内容と参照元を確認し、不要なファイル・リンクを同じPRで削除する。旧版はGit履歴から辿れるようにする。マージ後に main の入口、一覧、ファイル数とフォルダ数を確認する。
+3. 書く。通常の利用場面と利用者が確認できる結果を先に決める。公式資料で用語と操作を確認し、`commands/<name>.md` の description に呼び出し条件、本文に手順と完了判定を書く。各ファイルは独立した依頼1件に対応させる。一次資料は[聖典台帳](CANON.md)に種別と用途を記録する。ハーネス、スキル、ツール連携、AIエンジニアリングでは、実装や評価に使える書籍、公式文書、原著を選び、著者・出版社・開発元のURLを登録する。資料やコマンドを変更するときは双方向のリンクも更新する。
+4. 試す。直近と別分野の依頼を1件ずつ使い、入力から出力と確認までを見直す。似たスキルを呼び分けられるかも確認する。内部リンク、公式URL、ファイル一覧、保存した版を読み戻す。Claude Codeがある環境では `claude plugin validate .` と `claude --plugin-dir .` を実行し、変更した `/kafstyler:<name>` を確認する。対象、確認結果、未確認事項をコミットの記録や該当する作業記録に残す。
+5. 整理する。後継へ移した内容と参照元を確認し、不要なファイルとリンクを同じ変更で削除する。旧版はGit履歴から辿れるようにする。逐次コミットの反映後に main の入口、一覧、ファイル数とフォルダ数を確認する。[ブランチとコミット](AGENTS.md#ブランチとコミット)
+
+<a name="mission-evaluation"></a>
+
+## 機械的に確かめる評価指標
+
+改善や置き換えの前に、完了場面を観測できる指標を決める。指標ごとに入力、測定方法、単位と合格条件を先に定義する。現行と候補を同じ入力・環境で走らせ、再実行できるコマンドと結果を記録する。件数、出力の一致、所要時間などを機械的に測り、目視が必要な項目は判断基準を明記する。
+
+[自動評価](commands/automated-evaluation.md)・[成功基準と評価の設計](CANON.md#canon-anthropic-evaluation)
+
+<a name="mission-adopt-upstream"></a>
 
 ## 外部実装への置き換え
 
 同じ用途で外部の実装が自作より良ければ、積極的に置き換える。上流の保守と品質保証を利用し、使い方や設計の選択肢を広げる。
 
 1. 自作の機能を使う具体的な場面を選び、公式ドキュメントと外部開発者の実例から候補を探す。
-2. 同じ入力で使い、必要な出力、動作環境、上流の検証実績と保守状況を比べる。運用や移行の手間も確認する。
-3. 良い候補へ切り替え、通常の入口で出力を確かめる。役割を終えた自作コードや設定を削る。
+2. 現行手法を比較の基準にし、候補を[同じ条件と指標](#mission-evaluation)で測る。必要な品質、出力、上流の検証実績と保守状況、運用や移行の手間を比べる。
+3. 合格条件を満たして優れた外部手法に切り替え、通常の入口で出力を確かめる。役割を終えた旧手順、自作コード、設定を削る。
+
+[自律開発](commands/autonomous-development.md)・[AIスロップ削除](commands/remove-ai-slop.md)・[UNIX哲学の原典](CANON.md#canon-unix-philosophy)
 
 ## 自動化の量
 
@@ -30,58 +74,4 @@ workflow、CI、tests、scripts、hooksは必要最小限の半分を目安に�
 
 ## 聖典
 
-### ゴールとスキル
-
-- <a name="canon-anthropic-skill-authoring"></a>[Anthropic・Agent Skills執筆ガイド](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices) （[自律開発](commands/autonomous-development.md)、[AIスロップ削除](commands/remove-ai-slop.md)）
-- <a name="canon-claude-code-skills"></a>[Anthropic・Claude Code Skills](https://code.claude.com/docs/en/skills) （[自律開発](commands/autonomous-development.md)）
-- <a name="canon-claude-plugin-creation"></a>[Anthropic・Claude Codeプラグインの作成](https://code.claude.com/docs/en/plugins/create) （[自律開発](commands/autonomous-development.md)）
-- <a name="canon-claude-plugin-components"></a>[Anthropic・プラグインの構成要素](https://code.claude.com/docs/en/plugins/components) （[自律開発](commands/autonomous-development.md)）
-- <a name="canon-claude-plugin-manifest"></a>[Anthropic・プラグインマニフェスト仕様](https://code.claude.com/docs/en/plugins/manifest-reference) （[自律開発](commands/autonomous-development.md)）
-- <a name="canon-claude-code-practices"></a>[Anthropic・Claude Codeの実践ガイド](https://code.claude.com/docs/en/best-practices) （[目標設定](commands/outcome-design.md)、[自律開発](commands/autonomous-development.md)）
-- <a name="canon-anthropic-evaluation"></a>[Anthropic・成功基準と評価の設計](https://platform.claude.com/docs/en/test-and-evaluate/develop-tests) （[自動評価](commands/automated-evaluation.md)、[対立仮説](commands/devils-advocate.md)）
-- <a name="canon-nobori-design"></a>[登大遊・論理的思考の放棄](https://softether.hatenadiary.org/entry/20070324/p1) （[目標設定](commands/outcome-design.md)）
-- <a name="canon-humanizer-ja"></a>[imoz・日本語の文章編集ガイド](https://imoz.jp/humanizer.ja.txt) （[文書校正](commands/editorial.md)、[AIスロップ削除](commands/remove-ai-slop.md)）
-
-### 台帳・オントロジー・データ設計
-
-- <a name="canon-iof-ontology"></a>[Industrial Ontologies Foundry・IOF Ontology Portal](https://spec.industrialontologies.org/portal/) （[データ設計](commands/data-design.md)）
-- <a name="canon-foundry-ontology"></a>[Palantir Foundry・Ontology](https://www.palantir.com/docs/foundry/ontology/overview/) （[データ設計](commands/data-design.md)）
-- <a name="canon-foundry-data-lineage"></a>[Palantir Foundry・Data Lineage](https://www.palantir.com/docs/foundry/data-lineage/overview/) （[データ設計](commands/data-design.md)）
-- <a name="canon-microsoft-star-schema"></a>[Microsoft Learn・スター・スキーマ](https://learn.microsoft.com/en-us/power-bi/guidance/star-schema) （[データ設計](commands/data-design.md)）
-- <a name="canon-kimball-grain"></a>[Kimball Group・ファクトの粒度](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/grain/) （[データ設計](commands/data-design.md)）
-- <a name="canon-w3c-prov-o"></a>[W3C・PROV-O 来歴の標準](https://www.w3.org/TR/prov-o/) （[データ設計](commands/data-design.md)）
-- <a name="canon-w3c-dcat"></a>[W3C・DCAT 3 データカタログの標準](https://www.w3.org/TR/vocab-dcat-3/) （[データ設計](commands/data-design.md)）
-- <a name="canon-dbt-introduction"></a>[dbt Developer Hub・dbtの概要](https://docs.getdbt.com/docs/introduction) （[データ設計](commands/data-design.md)）
-- <a name="canon-dbt-sources"></a>[dbt・ソースと来歴](https://docs.getdbt.com/docs/build/sources) （[データ設計](commands/data-design.md)）
-- <a name="canon-dbt-data-tests"></a>[dbt・データ品質テスト](https://docs.getdbt.com/docs/build/data-tests) （[データ設計](commands/data-design.md)、[自動評価](commands/automated-evaluation.md)）
-
-### 実装と制作
-
-- <a name="canon-pydantic"></a>[Pydantic・検証の公式ドキュメント](https://pydantic.dev/docs/validation/latest/get-started/) （[データ設計](commands/data-design.md)、[自律開発](commands/autonomous-development.md)）
-- <a name="canon-astral-uv"></a>[Astral・uv](https://docs.astral.sh/uv/) （[自律開発](commands/autonomous-development.md)）
-- <a name="canon-astral-ruff"></a>[Astral・Ruff](https://docs.astral.sh/ruff/) （[自律開発](commands/autonomous-development.md)）
-- <a name="canon-astral-ty"></a>[Astral・ty](https://docs.astral.sh/ty/) （[自律開発](commands/autonomous-development.md)）
-- <a name="canon-google-demolab"></a>[Google Gemini・DemoLabのフロントエンド設計スキル](https://github.com/google-gemini/demolab#installation) （[自律開発](commands/autonomous-development.md)）
-- <a name="canon-comfyui-docs"></a>[ComfyUI・公式ドキュメント](https://docs.comfy.org/) （[自律開発](commands/autonomous-development.md)）
-- <a name="canon-comfyui-workflow-templates"></a>[ComfyUI・Workflow Templatesの使い方](https://docs.comfy.org/interface/features/template) （[自律開発](commands/autonomous-development.md)）
-- <a name="canon-comfyui-template-source"></a>[ComfyUI・公式テンプレートの正本](https://github.com/Comfy-Org/workflow_templates) （[自律開発](commands/autonomous-development.md)）
-- <a name="canon-comfyui-workflow-json"></a>[ComfyUI・Workflow JSON仕様原本](https://github.com/Comfy-Org/docs/blob/main/specs/workflow_json.mdx) （[自律開発](commands/autonomous-development.md)）
-- <a name="canon-pulumi-iac"></a>[Pulumi・Infrastructure as Code](https://www.pulumi.com/docs/iac/) （[自律開発](commands/autonomous-development.md)）
-- <a name="canon-pulumi-preview"></a>[Pulumi・変更の事前確認（pulumi preview）](https://www.pulumi.com/docs/iac/cli/commands/pulumi_preview/) （[自律開発](commands/autonomous-development.md)）
-
-### Tripoの公式資料と論文
-
-- <a name="canon-tripo-studio"></a>[Tripo Studio・公式ドキュメント](https://www.tripo3d.ai/product-doc) （[自律開発](commands/autonomous-development.md)）
-- <a name="canon-tripo-api"></a>[Tripo API・公式ドキュメント](https://developers.tripo3d.ai/en/docs/introduction) （[自律開発](commands/autonomous-development.md)）
-- <a name="canon-tripo-comfyui"></a>[Tripo・ComfyUIノードの公式ドキュメント](https://developers.tripo3d.ai/en/docs/comfyui-nodes) （[自律開発](commands/autonomous-development.md)）
-- <a name="canon-tripo-publications"></a>[Tripo / VAST AI・論文一覧](https://www.tripo3d.ai/research/publications) （[自律開発](commands/autonomous-development.md)、[自動評価](commands/automated-evaluation.md)）
-- <a name="canon-tripo-sr"></a>[TripoSR・単一画像からの3D復元](https://arxiv.org/abs/2403.02151) （[自動評価](commands/automated-evaluation.md)）
-- <a name="canon-tripo-sg"></a>[TripoSG・高精細な3D形状生成](https://arxiv.org/abs/2502.06608) （[自動評価](commands/automated-evaluation.md)）
-- <a name="canon-tripo-sparseflex"></a>[SparseFlex（TripoSF）・任意のトポロジーを持つ3D形状](https://arxiv.org/abs/2503.21732) （[自動評価](commands/automated-evaluation.md)）
-- <a name="canon-tripo-splat"></a>[TripoSplat・密度を制御する3Dガウシアン生成](https://arxiv.org/abs/2605.16355) （[自動評価](commands/automated-evaluation.md)）
-- <a name="canon-tripo-anigen"></a>[AniGen・アニメーション可能な3Dアセット生成](https://arxiv.org/abs/2604.08746) （[自動評価](commands/automated-evaluation.md)）
-- <a name="canon-tripo-nexus"></a>[Nexus・頂点とトポロジーを扱うメッシュ生成](https://doi.org/10.1145/3811344) （[自動評価](commands/automated-evaluation.md)）
-
-### かふかのZenn
-
-<a name="canon-kafka-zenn"></a>[かふかのZenn記事一覧](https://zenn.dev/kafka2306?tab=articles) に掲載される公開記事はすべて聖典に含める。更新時は、その作業に関係する記事を一覧から読んで使う。 （[自動評価](commands/automated-evaluation.md)、[自律開発](commands/autonomous-development.md)、[データ設計](commands/data-design.md)、[対立仮説](commands/devils-advocate.md)、[文書校正](commands/editorial.md)、[目標設定](commands/outcome-design.md)、[AIスロップ削除](commands/remove-ai-slop.md)）
+[聖典台帳](CANON.md)で一次資料、用途、対応コマンドを確認する。

@@ -1,17 +1,17 @@
 # Kafstyler
 
-Claude Code plugin for recurring work. The repository also holds private ChatGPT memory and the Windows execution bridge.
+定型作業を進めるためのClaude Codeプラグインです。非公開のChatGPT記憶と、WindowsでCodexを実行するためのブリッジも管理します。
 
-## Use the plugin
+## プラグインの使い方
 
-From this repository's root, run:
+リポジトリのルートで次を実行します。
 
 ```sh
 claude plugin validate .
 claude --plugin-dir .
 ```
 
-The second command loads the plugin for the session. In Claude Code, choose a command such as `/kafstyler:data-design`.
+2行目でプラグインを読み込みます。Claude Codeで `/kafstyler:data-design` などのコマンドを選びます。
 
 ### 目標設定
 
@@ -27,11 +27,11 @@ The second command loads the plugin for the session. In Claude Code, choose a co
 
 ### AIスロップ削除
 
-- [`/kafstyler:remove-ai-slop`](commands/remove-ai-slop.md) 既存の成果物から、使い道のない文章や項目を削る。
+- [`/kafstyler:remove-ai-slop`](commands/remove-ai-slop.md) 重複フォルダを統合し、不要なファイル、コード、文章を削る。
 
 ### 評価と自律開発
 
-- [`/kafstyler:devils-advocate`](commands/devils-advocate.md) 対立仮説を立て、どの事実なら判断が変わるかを示す。
+- [`/kafstyler:devils-advocate`](commands/devils-advocate.md) 中核の前提を反証し、致命的な欠陥を根拠と影響つきで指摘する。
 - [`/kafstyler:automated-evaluation`](commands/automated-evaluation.md) 同じ条件で採点し、合否と差を再現できるようにする。
 - [`/kafstyler:autonomous-development`](commands/autonomous-development.md) 変更を実装し、実際の利用経路で検証して届ける。
 
@@ -52,10 +52,11 @@ UIを設計するときは、自律開発コマンドからGoogle Gemini DemoLab
 
 ComfyUIの `Workflow → Browse Workflow Templates` で用途に合うテンプレートを開く。採用したテンプレートと必要モデルを確認し、制作環境で出力を試す。[公式テンプレートの使い方](https://docs.comfy.org/interface/features/template) · [テンプレートの正本](https://github.com/Comfy-Org/workflow_templates)
 
-## Repository guides
+## 運用文書
 
-- [MISSION.md](MISSION.md) covers the update process, inventory, and reference links.
-- [AGENTS.md](AGENTS.md) covers repository work and ownership.
-- [Claude Code project instructions](.claude/CLAUDE.md) record when to adopt better upstream tools and skills.
-- [MEMORY.md](MEMORY.md) holds durable memory. See [記憶の監査と同期](AGENTS.md#chatgpt-memory).
-- [ChatGPT–Codex bridge](codex-chatgpt-bridge/README.md) covers Windows installation, the controller protocol, and status.
+- [MISSION.md](MISSION.md) ミッションと更新手順を確認できます。
+- [聖典台帳](CANON.md) 分野別の一次資料と対応コマンドをたどれます。
+- [AGENTS.md](AGENTS.md) 単一ブランチでの作業、逐次コミット、出力の共通ルールを確認できます。
+- [Claude Codeのプロジェクト指示](.claude/CLAUDE.md) 外部のツールとスキルを採用する条件を確認できます。
+- [MEMORY.md](MEMORY.md) 長期記憶の正本です。[監査と同期の手順](AGENTS.md#chatgpt-memory)
+- [ChatGPT–Codex bridge](codex-chatgpt-bridge/README.md) Windowsでの導入、依頼の形式、実行結果の確認方法を扱います。

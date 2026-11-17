@@ -1,28 +1,39 @@
 ---
-description: Design data from entities, ontology, metadata, ledgers, masters, star schemas, and dbt. Use for メタデータ, 台帳, ledger, masters, ontology, or schema design.
+description: "エンティティ、オントロジー、メタデータ、台帳、マスター、スタースキーマ、dbtのデータ構造を設計する。"
 ---
 
-# Data Design
+# データ設計
 
-1. Identify the question or action, existing source owner, and real inputs. Define each entity's stable identity, relationships, and valid actions. Use IOF terms for industrial concepts and Foundry patterns for operational object models where relevant.
-2. Specify fields needed for retrieval, decisions, or verification. Include source ID and URL, time, schema version, units, null semantics, and provenance as relevant.
-3. For a ledger, give one row a stable key, define accepted status changes and correction history, and reconcile repeated inputs. For a master, define the entity key, authoritative attributes, and validity periods when needed.
-4. For analytics, declare what one fact row measures before designing dimensions. Keep grains distinct and check fan-out, orphan keys, and totals after joins.
-5. Where dbt is already the transformation layer, declare canonical input through `source()`, connect models with `ref()`, and use relevant uniqueness, relationship, and reconciliation checks. Trace derived outputs back to their sources.
+任意の出力で人が読む文章には[imozの執筆・推敲ルール](../CANON.md#canon-humanizer-ja)を適用する。[出力の共通基準](../MISSION.md#mission-output-style)
 
-Deliver the applicable contract and a read-back using a real record or query.
+1. 答える問い、現行データの管理者、実際の入力を確かめる。エンティティの識別子、関係、操作を定義する。産業分野の概念にはIOF、業務オブジェクトにはFoundryの設計を必要に応じて参照する。
+2. 検索、判断、検証に使う項目を選ぶ。必要に応じて出典ID、URL、時点、版、単位、欠損値の意味、来歴を持たせる。名前はプロジェクトで使われている語彙から選ぶ。
+3. 台帳は一行のキー、状態遷移、訂正履歴を定め、再入力時の照合方法を決める。マスターは識別子、正とする属性、必要に応じて有効期間を定める。
+4. 分析では最初にファクトの一行が表す粒度を定める。粒度ごとに集計し、結合後の件数増加、対応先のないキー、合計を確認する。
+5. dbtを使う場合は `source()` と `ref()` で正本と派生モデルをつなぎ、必要な一意性、関係、突合の条件を検証する。
+6. Obsidianノートには[frontmatterとタグの規約](../CANON.md#obsidian-note-metadata)を適用し、想定したプロパティやタグで探せることを確認する。
 
-## References
+設計した契約と、実際のレコードやクエリで確かめた結果を示す。
 
-- [Industrial Ontologies Foundry・IOF Ontology Portal](../MISSION.md#canon-iof-ontology)
-- [Palantir Foundry・Ontology](../MISSION.md#canon-foundry-ontology)
-- [Palantir Foundry・Data Lineage](../MISSION.md#canon-foundry-data-lineage)
-- [Microsoft Learn・スター・スキーマ](../MISSION.md#canon-microsoft-star-schema)
-- [Kimball Group・ファクトの粒度](../MISSION.md#canon-kimball-grain)
-- [W3C・PROV-O 来歴の標準](../MISSION.md#canon-w3c-prov-o)
-- [W3C・DCAT 3 データカタログの標準](../MISSION.md#canon-w3c-dcat)
-- [dbt Developer Hub・dbtの概要](../MISSION.md#canon-dbt-introduction)
-- [dbt・ソースと来歴](../MISSION.md#canon-dbt-sources)
-- [dbt・データ品質テスト](../MISSION.md#canon-dbt-data-tests)
-- [Pydantic・検証の公式ドキュメント](../MISSION.md#canon-pydantic)
-- [かふかのZenn記事一覧](../MISSION.md#canon-kafka-zenn)
+## 関連ミッション
+
+[自律文書整備](../MISSION.md#mission-documentation)
+
+## 参照資料
+
+- [Industrial Ontologies Foundry・IOF Ontology Portal](../CANON.md#canon-iof-ontology)
+- [Palantir Foundry・Ontology](../CANON.md#canon-foundry-ontology)
+- [Palantir Foundry・Data Lineage](../CANON.md#canon-foundry-data-lineage)
+- [Microsoft Learn・スター・スキーマ](../CANON.md#canon-microsoft-star-schema)
+- [Kimball Group・ファクトの粒度](../CANON.md#canon-kimball-grain)
+- [W3C・PROV-O 来歴の標準](../CANON.md#canon-w3c-prov-o)
+- [W3C・DCAT 3 データカタログの標準](../CANON.md#canon-w3c-dcat)
+- [dbt Developer Hub・dbtの概要](../CANON.md#canon-dbt-introduction)
+- [dbt・ソースと来歴](../CANON.md#canon-dbt-sources)
+- [dbt・データ品質テスト](../CANON.md#canon-dbt-data-tests)
+- [Pydantic・検証の公式ドキュメント](../CANON.md#canon-pydantic)
+- [Microsoft・General Naming Conventions](../CANON.md#canon-general-naming)
+- [Obsidian・Properties](../CANON.md#canon-obsidian-properties)
+- [Obsidian・Tags](../CANON.md#canon-obsidian-tags)
+- [かふかのZenn記事一覧](../CANON.md#canon-kafka-zenn)
+- [imoz・日本語の文章編集ガイド](../CANON.md#canon-humanizer-ja)
