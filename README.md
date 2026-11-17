@@ -14,11 +14,10 @@ Kafstylerは、Claude Codeで目標設定、成果物の評価、修正と再評
 
 ## プラグインの使い方
 
-Claude Codeを使えるターミナルで、[配布元](https://github.com/KAFKA2306/agent-resources/blob/main/.claude-plugin/marketplace.json)を登録し、ユーザー範囲にインストールします。WindowsではWSLかGit Bashを使います。
+Claude Code 2.1.292以降で、ターミナルから次のコマンドを実行します。WindowsではWSLかGit Bashを使います。[配布元](https://github.com/KAFKA2306/agent-resources/blob/main/.claude-plugin/marketplace.json)
 
 ```sh
-claude plugin marketplace add KAFKA2306/agent-resources
-claude plugin install kafstyler@kafka-agent-tools --scope user
+claude plugin install kafstyler --marketplace KAFKA2306/agent-resources --scope user
 ```
 
 対象プロジェクトで `claude` を起動し、「READMEを初めて読む人が、手順どおりに起動できるように整えて」のように依頼します。
