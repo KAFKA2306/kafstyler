@@ -21,29 +21,29 @@ claude plugin validate .
 claude --plugin-dir . --append-system-prompt-file AGENTS.md
 ```
 
-2行目でプラグインと[作業規約](AGENTS.md)を読み込みます。Claude Codeで `/kafstyler:data` などのコマンドを選びます。
+2行目でプラグインと[作業規約](AGENTS.md)を読み込みます。Claude Codeで `/kafstyler:data` などのコマンドを選びます。手順は `skills/<name>/SKILL.md` にあります。
 
 ### 目標設定
 
-- [`/kafstyler:scope`](commands/scope.md) 利用者ができるようになることと、完了を確かめる操作を決める。
+- [`/kafstyler:scope`](skills/scope/SKILL.md) 利用者ができるようになることと、完了を確かめる操作を決める。
 
 ### 文書校正
 
-- [`/kafstyler:edit`](commands/edit.md) 原稿を校正するか、資料から短いブリーフを書く。
+- [`/kafstyler:edit`](skills/edit/SKILL.md) 原稿を校正するか、資料から短いブリーフを書く。
 
 ### メタデータ・スキーマ設計
 
-- [`/kafstyler:data`](commands/data.md) エンティティ、台帳、マスター、集計モデルの設計を決める。
+- [`/kafstyler:data`](skills/data/SKILL.md) エンティティ、台帳、マスター、集計モデルの設計を決める。
 
 ### AIスロップ削除
 
-- [`/kafstyler:clean`](commands/clean.md) 重複フォルダを統合し、不要なファイル、コード、文章を削る。
+- [`/kafstyler:clean`](skills/clean/SKILL.md) 重複フォルダを統合し、不要なファイル、コード、文章を削る。
 
 ### 評価と自律開発
 
-- [`/kafstyler:critique`](commands/critique.md) 中核の前提を反証し、致命的な欠陥を根拠と影響つきで指摘する。
-- [`/kafstyler:test`](commands/test.md) 同じ条件で採点し、合否と差を再現できるようにする。
-- [`/kafstyler:build`](commands/build.md) 変更を実装し、実際の利用経路で検証して届ける。
+- [`/kafstyler:critique`](skills/critique/SKILL.md) 中核の前提を反証し、致命的な欠陥を根拠と影響つきで指摘する。
+- [`/kafstyler:test`](skills/test/SKILL.md) 同じ条件で採点し、合否と差を再現できるようにする。
+- [`/kafstyler:build`](skills/build/SKILL.md) 変更を実装し、実際の利用経路で検証して届ける。
 
 ChatGPTの定期タスクとCodexでは、[作業規約](AGENTS.md#全作業への適用と自己改善)と該当するコマンドのMarkdownを読み、実行環境の道具で手順を使います。
 
