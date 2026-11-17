@@ -31,4 +31,8 @@ Deliver the working change, concrete evidence, and the next action only when a r
 - [ComfyUI・Workflow JSON仕様原本](../MISSION.md#canon-comfyui-workflow-json)
 - [Pulumi・Infrastructure as Code](../MISSION.md#canon-pulumi-iac)
 - [Pulumi・変更の事前確認（pulumi preview）](../MISSION.md#canon-pulumi-preview)
+- [Tripo Studio・公式ドキュメント](../MISSION.md#canon-tripo-studio)
+- [Tripo API・公式ドキュメント](../MISSION.md#canon-tripo-api)
+- [Tripo・ComfyUIノードの公式ドキュメント](../MISSION.md#canon-tripo-comfyui)
+- [Tripo / VAST AI・論文一覧](../MISSION.md#canon-tripo-publications)
 - [かふかのZenn記事一覧](../MISSION.md#canon-kafka-zenn)

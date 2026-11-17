@@ -13,4 +13,11 @@ description: Measure a baseline and candidate with reproducible cases and explic
 
 - [Anthropic・成功基準と評価の設計](../MISSION.md#canon-anthropic-evaluation)
 - [dbt・データ品質テスト](../MISSION.md#canon-dbt-data-tests)
+- [Tripo / VAST AI・論文一覧](../MISSION.md#canon-tripo-publications)
+- [TripoSR・単一画像からの3D復元](../MISSION.md#canon-tripo-sr)
+- [TripoSG・高精細な3D形状生成](../MISSION.md#canon-tripo-sg)
+- [SparseFlex（TripoSF）・任意のトポロジーを持つ3D形状](../MISSION.md#canon-tripo-sparseflex)
+- [TripoSplat・密度を制御する3Dガウシアン生成](../MISSION.md#canon-tripo-splat)
+- [AniGen・アニメーション可能な3Dアセット生成](../MISSION.md#canon-tripo-anigen)
+- [Nexus・頂点とトポロジーを扱うメッシュ生成](../MISSION.md#canon-tripo-nexus)
 - [かふかのZenn記事一覧](../MISSION.md#canon-kafka-zenn)
