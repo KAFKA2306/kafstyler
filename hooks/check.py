@@ -88,9 +88,22 @@ def check_markdown(root, inventory, staged):
             if skill not in skills:
                 errors.append(f"{path} に存在しないスキル {skill} の記録がある。")
                 continue
-            if (not isinstance(result, dict) or result.get("status") != "pass"
-                    or not isinstance(result.get("evidence"), str) or not result["evidence"].strip()):
-                errors.append(f"{path} の {skill} に根拠のある合格記録がない。")
+            if not isinstance(result, dict):
+                errors.append(f"{path} の {skill} の適用結果がオブジェクトではない。")
+                continue
+            status = result.get("status")
+            evidence = result.get("evidence")
+            if status not in ("pass", "not_applicable", "pending"):
+                errors.append(f"{path} の {skill} に不明な適用状態 {status!r} がある。")
+                continue
+            if not isinstance(evidence, str) or not evidence.strip():
+                errors.append(f"{path} の {skill} に判断の根拠がない。")
+                continue
+            if status == "pending":
+                errors.append(f"{path} の {skill} は未確認: {evidence}")
+            elif status == "pass" and re.search(r"(?:は|が)未確認", evidence):
+                errors.append(f"{path} の {skill} は未確認事項を含むため合格の範囲を再評価する。")
+            # 適用外は実行済みのpassと区別する。理由の真偽は人が確認する。
 
     for path in sorted(documents.keys() - inventory["documents"].keys()):
         errors.append(f"存在しないMarkdown {path} の適用記録がある。")
