@@ -99,15 +99,15 @@
       }
     },
     "skills/prune/SKILL.md": {
-      "sha256": "cbe6ec0e7ee0fee6ba4d446d3414f70cba887871e953a8d68640b527ca3089d8",
+      "sha256": "f5979bd0fd3c5a7a6b85d37583a7b98117169f156fa5fd483411ff2a99af2465",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "現行のGit一覧で無視対象と空ディレクトリが漏れ、候補の直下列挙で隠し・未追跡を含む13項目を確認した。"},
+        "benchmark": {"status": "pass", "evidence": "サブディレクトリからルートを特定し、無視対象・空ディレクトリ・名前に改行を含むファイルを含め、直下の5項目を一度ずつ列挙した。"},
         "charter": {"status": "pass", "evidence": "範囲指定なしで直下を調べ、候補の根拠を確かめてから削り、残した入口の同じ入力を検証する順を確認した。"},
-        "deliver": {"status": "pass", "evidence": "両クライアントの受付フックが新しい発動条件を表示し、Codexでローカル配布版0.5.22の定義を読み戻した。"},
-        "humanizer": {"status": "pass", "evidence": "列挙、候補化、利用経路の確認と保留、削除、再確認の順で読めることを確認した。"},
-        "prune": {"status": "pass", "evidence": "一時Gitリポジトリで不要な5ファイルと空フォルダ2件を削り、利用経路3件の出力が前後で一致した。"},
+        "deliver": {"status": "pass", "evidence": "両クライアントの受付フックが新しい発動条件を表示し、Codexでローカル配布版0.5.23の定義を読み戻した。"},
+        "humanizer": {"status": "pass", "evidence": "4項に使われていない空のディレクトリ、5項に保留で残るGit状態の扱いを明記した。"},
+        "prune": {"status": "pass", "evidence": "一時Gitリポジトリでキャッシュ、最初から空のディレクトリ、旧ファイル2件を削り、通常入口の出力が前後で一致した。"},
         "schema": {"status": "pass", "evidence": "既存のYAMLの名前、種別、説明、タグと、候補の根拠を記す既存の作業記録を確認した。"},
-        "scrutiny": {"status": "pass", "evidence": "年次データ、用途不明のデータ、外部リンクを保持し、範囲指定時は範囲外の8ファイルが一致した。"}
+        "scrutiny": {"status": "pass", "evidence": "古くてもglobで読み込まれる入力と、用途不明で戻せない未追跡データを保持した。残った未追跡のパスと理由を記録する手順を加えた。"}
       }
     },
     "skills/schema/SKILL.md": {
