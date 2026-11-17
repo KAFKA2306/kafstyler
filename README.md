@@ -54,7 +54,7 @@ codex plugin add kafstyler@kafstyler
 
 ## スキル
 
-Claude Codeでは `/kafstyler:<名前>` を使います。Codexでは `$` を入力してKafstylerのスキルを選びます。
+Claude Codeでは `/kafstyler:<名前>` を使います。自律開発は [公式 `/loop` との連携手順](skills/deliver/SKILL.md#claude-codeの-loop-連携)に従い、`/loop 5m /kafstyler:deliver <依頼>` で始めます。Codexでは `$` を入力してKafstylerのスキルを選びます。
 
 | スキル | 用途 |
 | --- | --- |

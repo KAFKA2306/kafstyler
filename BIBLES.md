@@ -68,6 +68,12 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [作業規約](AGENTS.md#ファイルの管理)
 
+### Claude Codeのloop
+
+[Anthropic・Run prompts on a schedule](https://code.claude.com/docs/en/scheduled-tasks#run-a-prompt-repeatedly-with-loop)（公式リファレンス）。`/loop` からのスキルの定期実行、実行条件、ジョブの解除を確認する。
+
+[自律開発の連携手順](skills/deliver/SKILL.md#claude-codeの-loop-連携)
+
 ### Claude Codeのフック
 
 [Anthropic・SessionStart](https://code.claude.com/docs/en/hooks#sessionstart)・[Anthropic・SubagentStart](https://code.claude.com/docs/en/hooks#subagentstart)（公式仕様）。セッションと委譲先に規約を渡す。
