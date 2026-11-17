@@ -7,7 +7,7 @@ This repository is private. Keep development, verification, release, and cleanup
 - `prompt-boundary.json` is the machine-readable routing/inventory contract for content retained in this repository.
 - Register new reusable prompts and formal reusable artifacts in `KAFKA2306/prompt-vault`; do not make `basic_prompts` a second current prompt authority.
 - Store raw facts, episodes, lessons, failures, and corrections in `KAFKA2306/graphiti`; do not copy Graphiti raw knowledge into this repository.
-- Existing content marked `remain` in `prompt-boundary.json` is retained only for its stated repository-local compatibility role.
+- Read [MISSION.md](MISSION.md) for skill scope, update procedure, and primary reference links.
 - Never promote secrets or private source material to a public repository or artifact.
 
 ## Zero-Cost Rule
@@ -37,7 +37,7 @@ For any finished artifact, make it stand alone for its intended audience. Remove
 - Use `main/MEMORY.md` as current state, PR diff as proposed change, and Git history as past state; keep one durable item per bullet and replace/delete instead of appending old states.
 - Keep mutable current state, credentials, secrets, and unnecessary sensitive data out of memory; retrieve current values from their owning source.
 - Treat ChatGPT Saved Memory as a derived cache; if editable, keep only a pointer to current `main/MEMORY.md` rather than duplicating durable items.
-- Verify memory changes with `python -m unittest tests.test_memory_contract -v`.
+- Review memory diffs against the current headings, remove duplicate or transient entries, and read back the saved edition.
 
 ## Verification
 
@@ -47,7 +47,7 @@ For any finished artifact, make it stand alone for its intended audience. Remove
 
 ## Completion
 
-Before reporting completion, verify relevant source state, tests/builds actually executed, PR/main state, and cleanup. Do not treat billing-gated hosted CI as a completion requirement for this private repository.
+Before reporting completion, verify relevant source state, applicable checks, PR/main state, and cleanup. Do not treat billing-gated hosted CI as a completion requirement for this private repository.
 
 ## Outcome-first task interpretation (Altitude / Depth / Range / Speed)
 
