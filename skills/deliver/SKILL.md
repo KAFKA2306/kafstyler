@@ -94,5 +94,4 @@ Claude Code以外の環境や、設定・権限で公式 `/loop` が使えない
 - [wsl2でのantigravity導入](../../BIBLES.md#wsl2でのantigravity導入)
 - [taskで共通の実行手順を作る](../../BIBLES.md#taskで共通の実行手順を作る)
 - [windowsとwslの自動化](../../BIBLES.md#windowsとwslの自動化)
-- [アプリの責任範囲を分ける](../../BIBLES.md#アプリの責任範囲を分ける)
 - [wsl2でのunity-hub導入](../../BIBLES.md#wsl2でのunity-hub導入)

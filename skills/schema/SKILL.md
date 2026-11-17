@@ -66,6 +66,3 @@ aliases:
 - [imoz・日本語の文章編集ガイド](../../BIBLES.md#imozの日本語編集)
 - [Obsidian・保管庫の作成](../../BIBLES.md#obsidianの保管庫)
 - [Obsidian・内部リンク](../../BIBLES.md#obsidianの内部リンク)
-- [市場研究から執行までの設計](../../BIBLES.md#市場研究から執行までの設計)
-- [アプリの責任範囲を分ける](../../BIBLES.md#アプリの責任範囲を分ける)
-- [応用情報の略語と用途](../../BIBLES.md#応用情報の略語と用途)

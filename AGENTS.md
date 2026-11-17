@@ -66,7 +66,7 @@ AIスロップ削除では、着手前にかふかの次のZenn記事を読む�
 - データ設計と開発にはIOF、Palantir Foundry、スタースキーマ、Pydantic、Astral・uv、dbt、Pulumi、UNIX哲学の公式資料や原典を使う。命名規則の参考資料は1件に絞る。[データと命名](BIBLES.md#データオントロジー命名)・[CLI・開発・インフラ](BIBLES.md#cli開発インフラ)
 - フロントエンドではGoogle Gemini DemoLabの `/demolab:gemini-frontend-design` を自律開発から使う。ComfyUIで制作する場合は[Workflow選定と採用の基準](BIBLES.md#comfyuiのワークフロー選定)を最初に参照する。操作や連携に応じてComfyUIとTripoの公式文書、Tripoの論文を参照する。[導入と使い方](README.md#外部スキルとテンプレート)・[Tripoと3D生成](BIBLES.md#tripoと3d生成)
 - Unity・VRChatでは用途ごとに一つ選ぶ。汎用Unityは `CoplayDev/unity-mcp`、VRChatワールドは `swax/UnityMCP-VRC`、VRChatアバターはUnityAgent（`lighfu/unity-agent`）を登録する。[Unity・VRChat制作ツール](BIBLES.md#ユニティとvrchatの制作ツール)
-- [かふかのZenn公開記事](BIBLES.md#かふかのzenn記事一覧)は公開一覧と照合して個別に登録し、対応するスキルと相互に結ぶ。
+- [かふかのZenn公開記事](BIBLES.md#かふかのzenn記事一覧)は、現行スキルの判断、操作、検証に用途があるものを個別に登録する。資料の採用、入れ替え、削除は[日次の見直し手順](BIBLES.md#資料の見直し)に従う。
 
 ## ファイルの管理
 

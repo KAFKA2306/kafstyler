@@ -12,6 +12,12 @@ aliases:
 
 各項目の一次資料を開き、下のコマンドから適用手順を確認できる。[台帳の更新手順](MISSION.md#更新手順)・[評価指標](MISSION.md#機械的に確かめる評価指標)・[外部手法への置き換え](MISSION.md#外部実装への置き換え)
 
+## 資料の見直し
+
+1. 日次の保守タスクで、資料を掲載している分野を掲載順に一日一つずつ見直す。現行スキルで判断、操作、検証に使う資料を確かめ、公式資料の改訂や直近の作業で足りなかった根拠から候補を探す。
+2. 候補の一次資料を開き、同じ作業で現行資料と比べる。判断や手順が具体的に改善するなら入れ替え、既存資料で扱えない用途があれば追加する。用途が重複する資料、公式の後継がある旧資料、現行の用途を示せない個別事例は整理する。公開日や参照回数だけで採否を決めない。改善を確かめられない日は現状を維持する。
+3. 変更する場合は、一次URL、用途、対応スキルを台帳に記し、参照元と参照先を同じコミットで更新する。必須の仕様や手順を引き続き確認でき、リンク切れがないことを確かめる。採否の理由は作業記録に残し、台帳には現在使う資料を載せる。
+
 ## ノートの管理
 
 Obsidianでは、このリポジトリのルートを保管庫として開く。文書と見出しは相対Markdownリンクで結ぶ。ファイル名や見出しを変更したら参照元も更新し、GitHubとObsidianの双方でたどれる形にする。
@@ -431,7 +437,7 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 ### かふかのzenn記事一覧
 
-[かふかのZenn記事一覧](https://zenn.dev/kafka2306?tab=articles)（記事一覧）。2026年11月17日に[公式RSS](https://zenn.dev/kafka2306/feed?all=1)と[公開記事一覧API](https://zenn.dev/api/articles?username=kafka2306&order=latest&count=100)を照合し、25件の題名とURLが一致した。一覧APIの次ページはない。
+[かふかのZenn記事一覧](https://zenn.dev/kafka2306?tab=articles)（記事一覧）。対象の作業に近い記事を探す。
 
 [自動評価](skills/benchmark/SKILL.md) · [自律開発](skills/deliver/SKILL.md) · [データ設計](skills/schema/SKILL.md) · [対立仮説](skills/scrutiny/SKILL.md) · [文書校正](skills/humanizer/SKILL.md) · [目標設定](skills/charter/SKILL.md) · [AIスロップ削除](skills/prune/SKILL.md)
 
@@ -452,12 +458,6 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 [AIを「過保護」にするな。スタックトレースを聖典とする開発規律 "Crash-Driven Development"](https://zenn.dev/kafka2306/articles/11cd731eebded1)（記事）。障害の原因を隠す広すぎる例外捕捉やフォールバックを見直し、根本原因を観測できる形にする。
 
 [AIスロップ削除](skills/prune/SKILL.md)
-
-### ムチォの体験設計
-
-[AIキャラクターは、賢いほど面白いのか？――ムチォがひっくり返した「知能」の価値](https://zenn.dev/kafka2306/articles/2026-08-15-ai-character-intelligence-muchio)（記事）。AIの性能と利用者がキャラクターに求める体験を切り分け、評価対象を定める。
-
-[目標設定](skills/charter/SKILL.md) · [反証レビュー](skills/scrutiny/SKILL.md)
 
 ### 個人開発の次の一件
 
@@ -531,12 +531,6 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [自律開発](skills/deliver/SKILL.md)
 
-### 市場研究から執行までの設計
-
-[自律型エージェント・アルファ探索＆執行システム「AAARTS」：市場に適応し続ける「自律型知能」](https://zenn.dev/kafka2306/articles/c599b0556555a7)（記事）。探索、検証、執行を分け、各段階の入力と成否の根拠を整理する。
-
-[データ設計](skills/schema/SKILL.md) · [反証レビュー](skills/scrutiny/SKILL.md)
-
 ### astralのpython開発基盤
 
 [Astral ツールチェーンで作る 2026 年の Python 開発基盤：uv から次世代型チェッカー ty まで](https://zenn.dev/kafka2306/articles/2005501fe91754)（記事）。Pythonの依存管理、型検査、静的解析を既存ツールに委ねる方法を参照する。
@@ -566,18 +560,6 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 [Windows × WSL 自動化の正解](https://zenn.dev/kafka2306/articles/18fe96f422c920)（記事）。実行ユーザー、パス、起動元が変わる境界で自動化を確認する。
 
 [自律開発](skills/deliver/SKILL.md) · [自動評価](skills/benchmark/SKILL.md)
-
-### アプリの責任範囲を分ける
-
-[アプリ設計の正体 ― なぜ分ける？なぜ面倒？を直観で理解する](https://zenn.dev/kafka2306/articles/3536e2f7c67656)（記事）。UI、データの流れ、インフラごとに責任範囲を明確にする。
-
-[データ設計](skills/schema/SKILL.md) · [自律開発](skills/deliver/SKILL.md)
-
-### 応用情報の略語と用途
-
-[応用情報の略語問題](https://zenn.dev/kafka2306/articles/a991574ccef77e)（記事）。略語を正式名称と用途に対応づけて用語を確認する。
-
-[データ設計](skills/schema/SKILL.md) · [文書校正](skills/humanizer/SKILL.md)
 
 ### wsl2でのunity-hub導入
 
