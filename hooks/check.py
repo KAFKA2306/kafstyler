@@ -67,8 +67,10 @@ def check(root, host):
         "依頼受付で対象版と目標設定が示される": (
             f"使用中のKafstylerの場所は {root}。" in prompt and "kafstyler:charter" in prompt
         ),
-        "提出前に反証レビューと本体の検証が指示される": (
+        "提出前に必須スキルの実行結果と完了条件が照合される": (
             stop_continues and "kafstyler:scrutiny" in review_context
+            and "実行結果、根拠を照合" in review_context
+            and "完了扱いにしない" in review_context
             and "python3 hooks/check.py" in review_context
         ),
         "依頼受付・委譲・提出前に全スキルの発動条件が届く": all_routes_delivered,

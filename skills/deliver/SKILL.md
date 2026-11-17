@@ -1,7 +1,7 @@
 ---
 name: deliver
 type: "skill"
-description: "機能追加、バグ修正、障害復旧、移行など、実際の変更を届ける依頼の着手時に必ず使う。実装から利用者の入口での検証まで進める。Claude Codeでは公式の /loop と連携する。"
+description: "機能実装、不具合修正、移行、障害復旧、配布、起動手順を試して直す依頼では、変更を始める前に必ず使う。利用者の入口から結果を確かめる。Claude Codeでは公式の /loop と連携する。"
 tags:
   - kafstyler/skill
   - kafstyler/skill/deliver

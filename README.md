@@ -57,7 +57,7 @@ Kafstyler本体を変更したら、リポジトリのルートで `python3 hook
 - Claude Codeでは `claude plugin validate .` を実行し、`claude --plugin-dir "$PWD"` で作業中の版を起動します。別プロジェクトで試すときも、`--plugin-dir` にKafstylerのチェックアウトの絶対パスを渡します。
 - Codexでは検証用の `CODEX_HOME` を用意し、`codex plugin marketplace add "$PWD"` と `codex plugin add kafstyler@kafstyler` を実行します。プラグインは導入時点のコピーを使います。変更後に試し直す場合は、検証用の環境で `codex plugin remove kafstyler@kafstyler` を実行してから再導入します。新しいセッションの `/hooks` で検証する版のフックを確認・承認します。[ローカル配布元の仕様](https://developers.openai.com/plugins/build/plugins#how-local-marketplaces-work)
 
-両クライアントでスキル名を含まない依頼を送り、該当するスキルが実行されたことを呼び出し履歴または `SKILL.md` の読み込みから確認します。提出前の確認で不足が見つかった場合は、修正まで確かめます。[本体の変更手順](AGENTS.md#kafstyler本体の変更)
+両クライアントでスキル名を含まない依頼を送り、スキルを使った時点を呼び出し履歴や `SKILL.md` の読み込みから確認します。手順の実行結果と成果物も照合します。提出前に漏れが見つかった場合は、該当する手順を実行し、その結果が影響する工程をやり直したことまで確かめます。[本体の変更手順](AGENTS.md#kafstyler本体の変更)
 
 ## スキル
 
