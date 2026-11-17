@@ -26,7 +26,7 @@ aliases:
 | --- | --- | --- |
 | 利用者の操作の順番 | 確認して行動する、比較して決める、調査してから行動する、実行して結果を確認する、の中から実際の操作に合う順番を選ぶ。[操作パターンの実装](https://github.com/KAFKA2306/design/blob/main/registry/ui/product/journey.ts) | [目標設定](skills/charter/SKILL.md)・[自律開発](skills/deliver/SKILL.md) |
 | 判断に必要な情報と文言 | 利用者が結論、理由、根拠、次の操作を見つけられるようにする。実績、予測、仮説、未確認を表示まで区別する。[共通の判断パネル](https://github.com/KAFKA2306/design/blob/main/registry/ui/product/decision.tsx)・[コンテンツのスキーマ](https://github.com/KAFKA2306/design/blob/main/artifacts/content.schema.json) | [データ設計](skills/schema/SKILL.md)・[文書校正](skills/humanizer/SKILL.md) |
-| 部品と見た目の正本 | 共通の部品とトークンを使い、同期後の状態を検証する。利用側で同じ値や部品を独立して維持する箇所は、置き換え後に整理する。[設計・同期の手順](https://github.com/KAFKA2306/design/blob/main/skills/frontend-design/SKILL.md#workflow)・[共通トークン](https://github.com/KAFKA2306/design/blob/main/tokens/foundation.tokens.json) | [自律開発](skills/deliver/SKILL.md)・[AIスロップ削除](skills/prune/SKILL.md) |
+| 部品と見た目の正本 | 共通の部品とトークンを使い、同期後の状態を検証する。利用側で同じ値や部品を独立して維持する箇所は、置き換え後に整理する。[設計・同期の手順](https://github.com/KAFKA2306/design/blob/main/skills/frontend-design/SKILL.md#workflow)・[共通トークン](https://github.com/KAFKA2306/design/blob/main/tokens/foundation.tokens.json) | [自律開発](skills/deliver/SKILL.md)・[不要なファイル・コード・文章を削る](skills/prune/SKILL.md) |
 | 操作と状態の検証 | 実際に描画された画面で、通常時、読み込み中、空、エラー、利用不可、該当する未確認を区別し、キーボード、タッチ、狭い画面で必要な操作を確かめる。[設計と検証の基準](https://github.com/KAFKA2306/design#current-design-contract) | [反証レビュー](skills/scrutiny/SKILL.md)・[自動評価](skills/benchmark/SKILL.md) |
 
 ## ノートの管理
@@ -63,7 +63,7 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [imoz・日本語の文章編集ガイド](https://imoz.jp/humanizer.ja.txt)（編集ガイド）。任意の出力に含まれる人向け文章の執筆と校正
 
-[自動評価](skills/benchmark/SKILL.md) · [自律開発](skills/deliver/SKILL.md) · [データ設計](skills/schema/SKILL.md) · [致命的な欠陥のレビュー](skills/scrutiny/SKILL.md) · [文書校正](skills/humanizer/SKILL.md) · [目標設定](skills/charter/SKILL.md) · [AIスロップ削除](skills/prune/SKILL.md)
+[自動評価](skills/benchmark/SKILL.md) · [自律開発](skills/deliver/SKILL.md) · [データ設計](skills/schema/SKILL.md) · [致命的な欠陥のレビュー](skills/scrutiny/SKILL.md) · [文書校正](skills/humanizer/SKILL.md) · [目標設定](skills/charter/SKILL.md) · [不要なファイル・コード・文章を削る](skills/prune/SKILL.md)
 
 ## エージェントとハーネス
 
@@ -71,7 +71,7 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [Anthropic・Agent Skills執筆ガイド](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices)（公式ガイド）。スキルの記述、検証、手直し
 
-[自律開発](skills/deliver/SKILL.md) · [AIスロップ削除](skills/prune/SKILL.md)
+[自律開発](skills/deliver/SKILL.md) · [不要なファイル・コード・文章を削る](skills/prune/SKILL.md)
 
 ### claude-codeのスキル
 
@@ -284,7 +284,7 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [McIlroy・Pinson・Tague「UNIX Time-Sharing System: Foreword」（1978）](https://doi.org/10.1002/j.1538-7305.1978.tb02135.x)（原典）。一つのプログラムに一つの仕事を任せ、入出力でつなぐ
 
-[自律開発](skills/deliver/SKILL.md) · [AIスロップ削除](skills/prune/SKILL.md)
+[自律開発](skills/deliver/SKILL.md) · [不要なファイル・コード・文章を削る](skills/prune/SKILL.md)
 
 ### pydanticのデータ検証
 
@@ -450,25 +450,25 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [かふかのZenn記事一覧](https://zenn.dev/kafka2306?tab=articles)（記事一覧）。対象の作業に近い記事を探す。
 
-[自動評価](skills/benchmark/SKILL.md) · [自律開発](skills/deliver/SKILL.md) · [データ設計](skills/schema/SKILL.md) · [対立仮説](skills/scrutiny/SKILL.md) · [文書校正](skills/humanizer/SKILL.md) · [目標設定](skills/charter/SKILL.md) · [AIスロップ削除](skills/prune/SKILL.md)
+[自動評価](skills/benchmark/SKILL.md) · [自律開発](skills/deliver/SKILL.md) · [データ設計](skills/schema/SKILL.md) · [対立仮説](skills/scrutiny/SKILL.md) · [文書校正](skills/humanizer/SKILL.md) · [目標設定](skills/charter/SKILL.md) · [不要なファイル・コード・文章を削る](skills/prune/SKILL.md)
 
 ### aiが増やす判断箇所
 
 [かふか「なぜAIに任せるほど、あなたのコードは複雑になるのか」](https://zenn.dev/kafka2306/articles/2026-08-16-ai-added-decision-cost-audit)（記事）。分岐や状態の重複を見つけ、統合や削除の優先順位を決める。
 
-[AIスロップ削除](skills/prune/SKILL.md)
+[不要なファイル・コード・文章を削る](skills/prune/SKILL.md)
 
 ### issue駆動開発
 
 [AIに同じ指示を繰り返すのをやめた。Issue駆動開発という最小運用](https://zenn.dev/kafka2306/articles/issue-driven-development)（記事）。終わった変更の経緯をIssueに残し、現在の仕様として必要な記述を正本に集約する。
 
-[AIスロップ削除](skills/prune/SKILL.md) · [自律開発](skills/deliver/SKILL.md)
+[不要なファイル・コード・文章を削る](skills/prune/SKILL.md) · [自律開発](skills/deliver/SKILL.md)
 
 ### 失敗原因が見える実装
 
 [AIを「過保護」にするな。スタックトレースを聖典とする開発規律 "Crash-Driven Development"](https://zenn.dev/kafka2306/articles/11cd731eebded1)（記事）。障害の原因を隠す広すぎる例外捕捉やフォールバックを見直し、根本原因を観測できる形にする。
 
-[AIスロップ削除](skills/prune/SKILL.md)
+[不要なファイル・コード・文章を削る](skills/prune/SKILL.md)
 
 ### 個人開発の次の一件
 
@@ -528,7 +528,7 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [AIエージェントのためのディレクトリ管理指針 — モデルを邪魔しない構造設計](https://zenn.dev/kafka2306/articles/5c21f4d010baeb)（記事）。指示や過去の生成物を仕分け、作業に使う情報へ短く到達できる配置にする。
 
-[AIスロップ削除](skills/prune/SKILL.md)
+[不要なファイル・コード・文章を削る](skills/prune/SKILL.md)
 
 ### windowsでのgemini-cli導入
 
@@ -546,7 +546,7 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [Astral ツールチェーンで作る 2026 年の Python 開発基盤：uv から次世代型チェッカー ty まで](https://zenn.dev/kafka2306/articles/2005501fe91754)（記事）。Pythonの依存管理、型検査、静的解析を既存ツールに委ねる方法を参照する。
 
-[AIスロップ削除](skills/prune/SKILL.md) · [自律開発](skills/deliver/SKILL.md)
+[不要なファイル・コード・文章を削る](skills/prune/SKILL.md) · [自律開発](skills/deliver/SKILL.md)
 
 ### steamvrの起動障害
 
@@ -564,7 +564,7 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [開発者とAIのための「共通の作法」をつくる Task](https://zenn.dev/kafka2306/articles/215f0d6521e498)（記事）。手順を書き写す箇所を減らし、Taskfileで人とAIが同じ入口を使う。
 
-[AIスロップ削除](skills/prune/SKILL.md) · [自律開発](skills/deliver/SKILL.md)
+[不要なファイル・コード・文章を削る](skills/prune/SKILL.md) · [自律開発](skills/deliver/SKILL.md)
 
 ### windowsとwslの自動化
 

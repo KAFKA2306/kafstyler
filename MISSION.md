@@ -16,13 +16,13 @@ aliases:
 
 現行の出力と変更候補を同じ条件で評価し、品質が上がる変更や手間が減る変更を実装する。変更前後の数値と、削除できた旧手順を確認できるようにする。
 
-[自動評価](skills/benchmark/SKILL.md)・[対立仮説](skills/scrutiny/SKILL.md)・[自律開発](skills/deliver/SKILL.md)・[AIスロップ削除](skills/prune/SKILL.md)
+[自動評価](skills/benchmark/SKILL.md)・[対立仮説](skills/scrutiny/SKILL.md)・[自律開発](skills/deliver/SKILL.md)・[不要なファイル・コード・文章を削る](skills/prune/SKILL.md)
 
 ## 自律文書整備
 
 原典を確認し、手順・記録・台帳を更新する。必要な文書をタグやリンクで見つけられ、根拠と適用先をたどれる形にする。
 
-[文書校正](skills/humanizer/SKILL.md)・[データ設計](skills/schema/SKILL.md)・[AIスロップ削除](skills/prune/SKILL.md)
+[文書校正](skills/humanizer/SKILL.md)・[データ設計](skills/schema/SKILL.md)・[不要なファイル・コード・文章を削る](skills/prune/SKILL.md)
 
 ## 自律成果創出
 
@@ -58,7 +58,7 @@ aliases:
 2. 現行手法を比較の基準にし、候補を[同じ条件と指標](#機械的に確かめる評価指標)で測る。必要な品質、出力、上流の検証実績と保守状況、運用や移行の手間を比べる。
 3. 合格条件を満たして優れた外部手法に切り替え、通常の入口で出力を確かめる。役割を終えた旧手順、自作コード、設定を削る。
 
-[自律開発](skills/deliver/SKILL.md)・[AIスロップ削除](skills/prune/SKILL.md)・[UNIX哲学の原典](BIBLES.md#unix哲学)
+[自律開発](skills/deliver/SKILL.md)・[不要なファイル・コード・文章を削る](skills/prune/SKILL.md)・[UNIX哲学の原典](BIBLES.md#unix哲学)
 
 ## 自動化の量
 
