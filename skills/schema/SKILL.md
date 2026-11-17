@@ -1,10 +1,10 @@
 ---
-name: data
+name: schema
 type: "skill"
 description: "エンティティ、オントロジー、メタデータ、台帳、マスター、スタースキーマ、dbtのデータ構造を設計する。"
 tags:
   - kafstyler/skill
-  - kafstyler/skill/data
+  - kafstyler/skill/schema
 aliases:
   - "データ設計"
   - "台帳設計"
@@ -21,7 +21,7 @@ aliases:
 5. dbtを使う場合は `source()` と `ref()` で正本と派生モデルをつなぎ、必要な一意性、関係、突合の条件を検証する。
 6. Obsidianノートには[frontmatterとタグの規約](../../BIBLES.md#ノートの管理)を適用し、想定したプロパティやタグで探せることを確認する。
 
-設計を実データで検証できる場合は、Claude Codeの `Skill` ツールで [`kafstyler:test`](../test/SKILL.md) を呼ぶ。`args` にデータの場所、設計した契約、確認する一意性や参照整合性、期待件数を渡し、結果を設計に反映する。
+設計を実データで検証できる場合は、Claude Codeの `Skill` ツールで [`kafstyler:benchmark`](../benchmark/SKILL.md) を呼ぶ。`args` にデータの場所、設計した契約、確認する一意性や参照整合性、期待件数を渡し、結果を設計に反映する。
 
 設計した契約と、実際のレコードやクエリで確かめた結果を示す。
 

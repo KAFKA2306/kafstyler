@@ -1,10 +1,10 @@
 ---
-name: edit
+name: humanizer
 type: "skill"
 description: "任意の人向け出力にimozの日本語執筆・推敲ルールを適用し、原稿の校正や資料からの要約を行う。"
 tags:
   - kafstyler/skill
-  - kafstyler/skill/edit
+  - kafstyler/skill/humanizer
 aliases:
   - "文書校正"
   - "校正"

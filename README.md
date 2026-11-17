@@ -25,7 +25,7 @@ claude --plugin-dir . --append-system-prompt-file AGENTS.md
 
 2行目でプラグインと[作業規約](AGENTS.md)を読み込みます。別のプロジェクトでは、そのプロジェクトのルートで `claude --plugin-dir /path/to/kafstyler` を実行します。
 
-プラグインが有効な間は、依頼ごとに目標設定と必要なコマンドの利用を促します。たとえば「台帳の構造を設計して」と入力すると、目標設定とデータ設計を使う流れになります。特定の手順を指定するときは、`/kafstyler:data` のように直接呼べます。作業中に見つけた手順の漏れは、正本で修正してから同じ操作で確認します。[全作業への適用と自己改善](AGENTS.md#全作業への適用と自己改善)
+プラグインが有効な間は、依頼ごとに目標設定と必要なコマンドの利用を促します。たとえば「台帳の構造を設計して」と入力すると、目標設定とデータ設計を使う流れになります。特定の手順を指定するときは、`/kafstyler:schema` のように直接呼べます。作業中に見つけた手順の漏れは、正本で修正してから同じ操作で確認します。[全作業への適用と自己改善](AGENTS.md#全作業への適用と自己改善)
 
 すべてのプロジェクトで使う場合は、Claude Codeで既存の[配布先](https://github.com/KAFKA2306/agent-resources/blob/main/.claude-plugin/marketplace.json)を追加し、ユーザー範囲でインストールします。
 
@@ -34,29 +34,29 @@ claude --plugin-dir . --append-system-prompt-file AGENTS.md
 /plugin install kafstyler@kafka-agent-tools
 ```
 
-ユーザー範囲を選んでから別のプロジェクトを開き、普段の依頼で `scope` が適用されることを確かめます。配布先の自動更新を有効にすると改善版を受け取れます。[インストールと更新の公式手順](https://code.claude.com/docs/en/discover-plugins)
+ユーザー範囲を選んでから別のプロジェクトを開き、普段の依頼で `charter` が適用されることを確かめます。配布先の自動更新を有効にすると改善版を受け取れます。[インストールと更新の公式手順](https://code.claude.com/docs/en/discover-plugins)
 
 ### 目標設定
 
-- [`/kafstyler:scope`](skills/scope/SKILL.md) 利用者ができるようになることと、完了を確かめる操作を決める。
+- [`/kafstyler:charter`](skills/charter/SKILL.md) 利用者ができるようになることと、完了を確かめる操作を決める。
 
 ### 文書校正
 
-- [`/kafstyler:edit`](skills/edit/SKILL.md) 原稿を校正するか、資料から短いブリーフを書く。
+- [`/kafstyler:humanizer`](skills/humanizer/SKILL.md) 原稿を校正するか、資料から短いブリーフを書く。
 
 ### メタデータ・スキーマ設計
 
-- [`/kafstyler:data`](skills/data/SKILL.md) エンティティ、台帳、マスター、集計モデルの設計を決める。
+- [`/kafstyler:schema`](skills/schema/SKILL.md) エンティティ、台帳、マスター、集計モデルの設計を決める。
 
 ### AIスロップ削除
 
-- [`/kafstyler:clean`](skills/clean/SKILL.md) 重複フォルダを統合し、不要なファイル、コード、文章を削る。
+- [`/kafstyler:prune`](skills/prune/SKILL.md) 重複フォルダを統合し、不要なファイル、コード、文章を削る。
 
 ### 評価と自律開発
 
-- [`/kafstyler:critique`](skills/critique/SKILL.md) 中核の前提を反証し、致命的な欠陥を根拠と影響つきで指摘する。
-- [`/kafstyler:test`](skills/test/SKILL.md) 同じ条件で採点し、合否と差を再現できるようにする。
-- [`/kafstyler:build`](skills/build/SKILL.md) 変更を実装し、実際の利用経路で検証して届ける。
+- [`/kafstyler:scrutiny`](skills/scrutiny/SKILL.md) 中核の前提が崩れる条件を調べ、確認できた致命的な欠陥を根拠と影響つきで指摘する。
+- [`/kafstyler:benchmark`](skills/benchmark/SKILL.md) 同じ条件で採点し、合否と差を再現できるようにする。
+- [`/kafstyler:deliver`](skills/deliver/SKILL.md) 変更を実装し、実際の利用経路で検証して届ける。
 
 ChatGPTの定期タスクとCodexでは、[作業規約](AGENTS.md#全作業への適用と自己改善)と該当するコマンドのMarkdownを読み、実行環境の道具で手順を使います。
 
@@ -70,7 +70,7 @@ Claude Codeでは、このリポジトリをプラグインとして読み込み
 
 ## コマンドの連携
 
-たとえば `/kafstyler:build` で合格条件が曖昧なら目標設定を呼び、外部の手法に置き換えるときは自動評価を呼びます。自動評価の結果を確認してから採否を決め、移行後に旧実装の整理を呼びます。データ設計や反証レビューからも、実データや反例を渡して自動評価を実行します。[連携の規約](AGENTS.md#コマンドの連携)
+たとえば `/kafstyler:deliver` で合格条件が曖昧なら目標設定を呼び、外部の手法に置き換えるときは自動評価を呼びます。自動評価の結果を確認してから採否を決め、移行後に旧実装の整理を呼びます。データ設計や反証レビューからも、実データや反例を渡して自動評価を実行します。[連携の規約](AGENTS.md#コマンドの連携)
 
 ## 外部スキルとテンプレート
 
