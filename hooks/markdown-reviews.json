@@ -1,17 +1,17 @@
 {
-  "compared_to": "a66d57022e7ae876942c170d9d4b342990406cc4",
-  "rules": "2021033a71ad0306ea79d17b56e15cf484c38bac0dfbf7068b70cc9494c17bdc",
+  "compared_to": "48807cfaf6a63fc92ec7849aeb362f377ceb4f6b",
+  "rules": "09b5d51ed7a700a671f9d92459de377fe412725c4a58d7c4223068907c89cebf",
   "documents": {
     "AGENTS.md": {
-      "sha256": "4c5d6ff5da4db33bdb147c2ad108366dc1c81cf6b2136c215988fb19c63a23a1",
+      "sha256": "1e46c78e3b50affea5439cee9b0fd8d71cf7dc654256204c28e9ea59ea986bc4",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手前と変更後で内部リンク各58件に到達し、YAMLメタデータを確認した。"},
+        "benchmark": {"status": "pass", "evidence": "frontmatterと内部リンク58件を照合。作業ツリーから消えたステージ済み文書は旧版が見落とし、候補版の--stagedは記録漏れを検出した。"},
         "charter": {"status": "pass", "evidence": "利用者が報告だけで結果、根拠、必要な次の判断を把握でき、手順や明細は作業記録から確認できることを条件とした。"},
-        "deliver": {"status": "pass", "evidence": "「出力と成果物」を更新し、両クライアントのStopで同節を参照し、版と結果の明細を作業記録へ残すことを確かめた。"},
+        "deliver": {"status": "pass", "evidence": "文書と記録をステージして--stagedを実行し、コミット対象の組み合わせと版を照合した。作業中の確認には両マニフェストが使う既存の実行入口を残した。"},
         "humanizer": {"status": "pass", "evidence": "「本質」を結果、根拠、判断に影響する未確認や次の操作と具体化し、ひな型の見出しを要求する表現を除いた。"},
         "prune": {"status": "pass", "evidence": "提出前のフックから版と結果を毎回報告する指示を取り除いた。報告の詳しさを決める規約は本文の一か所に集約した。"},
         "schema": {"status": "pass", "evidence": "報告、依頼された成果物、作業記録の用途を確認し、既存の記録項目と配置を使った。"},
-        "scrutiny": {"status": "pass", "evidence": "文書の推敲では完成稿と根拠を伝え、未確認操作は利用に影響する場合だけ示す。障害調査で復旧未確認なら、止まった操作と再開条件を残す。両例で作業明細を省いても判断できるか読み直した。"}
+        "scrutiny": {"status": "pass", "evidence": "ステージ済みの新規文書を作業ツリーだけから消すと従来の検査が合格する反例を確認し、コミット前の照合がその反例を検出することを確かめた。"}
       }
     },
     "BIBLES.md": {
@@ -39,12 +39,12 @@
       }
     },
     "README.md": {
-      "sha256": "830f45534c04803ae0e8912f0488a2cf7b744e80427e486d627b518e41d7ed35",
+      "sha256": "a727bb65fa2a9f6cfb195092e8b1428512ef99baed9a7441743a21d545afabd0",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手前と変更後で内部リンク各24件に到達し、YAMLメタデータを確認した。"},
+        "benchmark": {"status": "pass", "evidence": "内部リンク24件に到達した。作業ツリーとステージ済みの内容が違う入力で、--stagedがコミット対象を判定することを確認した。"},
         "charter": {"status": "pass", "evidence": "ローカル版を試す保守担当が、どのコマンドを実行し、どこを読み直すと適用漏れを解決できるかまで分かることを確認条件にした。"},
-        "deliver": {"status": "pass", "evidence": "「ミッション・聖典・作業規約」から改定した作業規約を開き、「作業中の版で試す」の既存コマンドで両クライアントのフックを確認した。"},
-        "humanizer": {"status": "pass", "evidence": "「作業中の版で試す」に既存のコマンドが検出する追加文書・追加スキル・古い記録を示し、検査される範囲を具体化した。"},
+        "deliver": {"status": "pass", "evidence": "記載したpython3 hooks/check.pyと--stagedをリポジトリのルートで実行し、77件の適用記録が対象の版と一致することを確かめた。"},
+        "humanizer": {"status": "pass", "evidence": "作業中の記録不足とコミットする版の照合を、実行する段階が分かる文にした。コマンド名は実装と同じ表記にした。"},
         "prune": {"status": "pass", "evidence": "導入手順の直後に同じチェックを再掲する案を外した。実行コマンドは本体保守ですでに使う入口に集約した。"},
         "schema": {"status": "pass", "evidence": "READMEには導入と検証の入口を置き、適用記録と文書別の運用規約をそれぞれJSONとAGENTS.mdに参照させた。"},
         "scrutiny": {"status": "pass", "evidence": "マニフェストのフック照合と記録の照合は別の段落に置いた。全スキルの実処理がCLI検証によって自動実行されるという誤読を抑えた。"}

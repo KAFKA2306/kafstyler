@@ -12,24 +12,36 @@ import sys
 
 REVIEW_PATH = Path("hooks/markdown-reviews.json")
 SHARED_RULES = ("AGENTS.md", "BIBLES.md", "MISSION.md")
-MARKDOWN_SUFFIXES = {".md", ".markdown", ".mdown", ".mkd"}
+MARKDOWN_SUFFIXES = {
+    ".md", ".livemd", ".markdown", ".mdown", ".mdwn", ".mdx", ".mkd", ".mkdn",
+    ".mkdown", ".ronn", ".scd", ".workbook",
+}
 
 
-def markdown_inventory(root):
-    output = subprocess.check_output(
-        ["git", "ls-files", "--cached", "--others", "--exclude-standard", "--full-name", "-z"],
-        cwd=root,
-    )
+def read_markdown_input(root, path, staged):
+    if staged:
+        content = subprocess.check_output(["git", "show", f":{path.as_posix()}"], cwd=root)
+        return content.decode("utf-8").replace("\r\n", "\n").replace("\r", "\n")
+    candidate = root / path
+    if not candidate.is_file() or not candidate.resolve().is_relative_to(root):
+        raise ValueError(f"リポジトリ内のファイルを読めない。{path}")
+    return candidate.read_text(encoding="utf-8")
+
+
+def markdown_inventory(root, staged):
+    args = ["git", "ls-files", "--cached", "--full-name", "-z"]
+    if not staged:
+        args.extend(("--others", "--exclude-standard"))
+    output = subprocess.check_output(args, cwd=root)
     documents = {}
     skills = {}
     for name in sorted(set(os.fsdecode(output).split("\0"))):
         path = Path(name)
-        candidate = root / path
-        if path.suffix.lower() not in MARKDOWN_SUFFIXES or not candidate.exists():
+        if path.suffix.lower() not in MARKDOWN_SUFFIXES and path.name != "contents.lr":
             continue
-        if not candidate.is_file() or not candidate.resolve().is_relative_to(root):
-            raise ValueError(f"リポジトリ内のMarkdownを読めない。{name}")
-        content = candidate.read_text(encoding="utf-8")
+        if not staged and not (root / path).exists():
+            continue
+        content = read_markdown_input(root, path, staged)
         documents[name] = hashlib.sha256(content.encode("utf-8")).hexdigest()
         if path.match("skills/*/SKILL.md") and len(path.parts) == 3:
             skills[path.parent.name] = documents[name]
@@ -50,8 +62,8 @@ def unique_fields(pairs):
     return fields
 
 
-def check_markdown(root, inventory):
-    review = json.loads((root / REVIEW_PATH).read_text(encoding="utf-8"), object_pairs_hook=unique_fields)
+def check_markdown(root, inventory, staged):
+    review = json.loads(read_markdown_input(root, REVIEW_PATH, staged), object_pairs_hook=unique_fields)
     documents = review["documents"]
     if not isinstance(documents, dict):
         raise ValueError("適用記録の documents は文書パスをキーにしたオブジェクトにする。")
@@ -176,18 +188,19 @@ if __name__ == "__main__":
     modes = parser.add_mutually_exclusive_group()
     modes.add_argument("--markdown-inventory", action="store_true", help="文書とスキルの現行版を出力する")
     modes.add_argument("--markdown-only", action="store_true", help="Markdownの適用記録だけを照合する")
+    modes.add_argument("--staged", action="store_true", help="コミット対象のMarkdownと適用記録を照合する")
     args = parser.parse_args()
     root = Path.cwd()
     try:
-        inventory = markdown_inventory(root)
+        inventory = markdown_inventory(root, args.staged)
         if args.markdown_inventory:
             print(json.dumps(inventory, ensure_ascii=False, indent=2))
             sys.exit(0)
-        passed = check_markdown(root, inventory)
+        passed = check_markdown(root, inventory, args.staged)
     except (AttributeError, KeyError, OSError, TypeError, ValueError, subprocess.CalledProcessError) as error:
         print(f"Markdown 不合格 {error}")
         passed = False
-    if args.markdown_only or args.markdown_inventory:
+    if args.markdown_only or args.markdown_inventory or args.staged:
         sys.exit(0 if passed else 1)
     for host in ("claude", "codex"):
         try:
