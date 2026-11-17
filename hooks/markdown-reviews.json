@@ -39,15 +39,15 @@
       }
     },
     "README.md": {
-      "sha256": "1ce76faa2142e6c74d0349457317fe73b0832b2b5882e44cdd186393dad6ea44",
+      "sha256": "14ae06e8210c95de3ea2e9a4dd124f00b015b578d3e2b0eff4a48791b6b73920",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "内部Markdownリンク25→26件を確認し、候補の未解決リンクは0件。"},
-        "charter": {"status": "pass", "evidence": "両スキルを導入した読者が、新しいセッションで名前を選べることを操作の完了条件にした。"},
-        "deliver": {"status": "pass", "evidence": "追加したリンク先を実際に開き、2つの導入コマンドをそれぞれの公式READMEと照合した。"},
-        "humanizer": {"status": "pass", "evidence": "新しい見出し直下に得られる結果、次に導入コマンドと操作確認を置いた。"},
-        "prune": {"status": "pass", "evidence": "根拠の照合と反証の手順は共通規約を参照し、導入に必要な2つのコマンドを残した。"},
-        "schema": {"status": "pass", "evidence": "依存するスキル名と配布元を公式リポジトリと照合し、作業の条件は規約に示した。"},
-        "scrutiny": {"status": "pass", "evidence": "Kafstylerの導入後に外部スキルを別に選べるか確認する案内がある。実クライアントでの導入は未確認。"}
+        "benchmark": {"status": "pass", "evidence": "変更前後で同じ26件の内部Markdownリンクを取得し、全件の参照先ファイルを確認した。"},
+        "charter": {"status": "pass", "evidence": "コマンド一覧から範囲を省いたときの入口と、直下の不要物を削る結果を読み取れた。"},
+        "deliver": {"status": "pass", "evidence": "コマンド一覧からpruneの手順へ進み、Codexのローカル配布版0.5.22と作業中のSKILL.mdが一致した。"},
+        "humanizer": {"status": "pass", "evidence": "一覧の一文から対象と得られる結果を特定できた。"},
+        "prune": {"status": "pass", "evidence": "利用案内は既定範囲と結果に絞り、列挙と削除判断はリンク先の手順に置いた。"},
+        "schema": {"status": "pass", "evidence": "既存のYAMLの種別、説明、タグを読み戻し、既存分類のタグで抽出できた。"},
+        "scrutiny": {"status": "pending", "evidence": "pruneの既定範囲を手順と照合。既存の外部スキル導入は実クライアントでの確認が残る。"}
       }
     },
     "skills/benchmark/SKILL.md": {
@@ -99,15 +99,15 @@
       }
     },
     "skills/prune/SKILL.md": {
-      "sha256": "8500b18d5dc4bee9be3ed8c9be0e66ad1e93daabbc9ce79dc9a716372ecc2fb7",
+      "sha256": "cbe6ec0e7ee0fee6ba4d446d3414f70cba887871e953a8d68640b527ca3089d8",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版と候補は同一で、同じ方法で内部リンク21件に到達した。"},
-        "charter": {"status": "pass", "evidence": "不要箇所を削ったあとも普段の入口で使えることを合格条件とした。"},
-        "deliver": {"status": "pass", "evidence": "2項の評価、3項の反証、4項の推敲のリンクを開けた。"},
-        "humanizer": {"status": "pass", "evidence": "見出しと1〜5項から、候補選び、参照の確認、削除後の検証を追えた。"},
-        "prune": {"status": "pass", "evidence": "指定のZenn原典を開き、重複削除、Issueへの経緯の移管、失敗を隠す処理の判断を照合した。候補文書に削除対象は0件。"},
-        "schema": {"status": "pass", "evidence": "YAMLの5項目を確認し、削除の判断と理由が作業台帳からたどれる。"},
-        "scrutiny": {"status": "pass", "evidence": "一見使われていない参照について、動的に呼ばれる場合、公開パス、未確認のまま保留する条件を3項で照合した。"}
+        "benchmark": {"status": "pass", "evidence": "現行のGit一覧で無視対象と空ディレクトリが漏れ、候補の直下列挙で隠し・未追跡を含む13項目を確認した。"},
+        "charter": {"status": "pass", "evidence": "範囲指定なしで直下を調べ、候補の根拠を確かめてから削り、残した入口の同じ入力を検証する順を確認した。"},
+        "deliver": {"status": "pass", "evidence": "両クライアントの受付フックが新しい発動条件を表示し、Codexでローカル配布版0.5.22の定義を読み戻した。"},
+        "humanizer": {"status": "pass", "evidence": "列挙、候補化、利用経路の確認と保留、削除、再確認の順で読めることを確認した。"},
+        "prune": {"status": "pass", "evidence": "一時Gitリポジトリで不要な5ファイルと空フォルダ2件を削り、利用経路3件の出力が前後で一致した。"},
+        "schema": {"status": "pass", "evidence": "既存のYAMLの名前、種別、説明、タグと、候補の根拠を記す既存の作業記録を確認した。"},
+        "scrutiny": {"status": "pass", "evidence": "年次データ、用途不明のデータ、外部リンクを保持し、範囲指定時は範囲外の8ファイルが一致した。"}
       }
     },
     "skills/schema/SKILL.md": {

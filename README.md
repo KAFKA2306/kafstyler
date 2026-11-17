@@ -202,7 +202,7 @@ Claude Codeでは `/kafstyler:<名前>` を使います。自律開発は [公�
 | [`scrutiny`](skills/scrutiny/SKILL.md) | 前提を疑い、重大な欠陥を根拠と影響で示す |
 | [`benchmark`](skills/benchmark/SKILL.md) | 実物が合格条件を満たすか確かめ、比較する場合は同じ条件で差を測る |
 | [`deliver`](skills/deliver/SKILL.md) | 変更を実装し、利用者の入口から確かめる |
-| [`prune`](skills/prune/SKILL.md) | 参照先と動作を確かめ、不要なファイル、コード、文章を削る |
+| [`prune`](skills/prune/SKILL.md) | 範囲指定がなければプロジェクト直下を棚卸しし、不要と確認できたファイルやディレクトリを削る |
 
 全スキルで、目標や成果物の前提を [`scrutiny`](skills/scrutiny/SKILL.md) で確かめます。重大な欠陥が見つかれば、元の作業で修正や再確認に使います。[連携手順](AGENTS.md#コマンドの連携)
 
