@@ -18,6 +18,17 @@ aliases:
 2. 候補の一次資料を開き、同じ作業で現行資料と比べる。判断や手順が具体的に改善するなら入れ替え、既存資料で扱えない用途があれば追加する。用途が重複する資料、公式の後継がある旧資料、現行の用途を示せない個別事例は整理する。公開日や参照回数だけで採否を決めない。改善を確かめられない日は現状を維持する。
 3. 変更する場合は、一次URL、用途、対応スキルを台帳に記し、参照元と参照先を同じコミットで更新する。必須の仕様や手順を引き続き確認でき、リンク切れがないことを確かめる。採否の理由は作業記録に残し、台帳には現在使う資料を載せる。
 
+## かふかのデザインパターン
+
+[KAFKA2306/design](https://github.com/KAFKA2306/design) は、KAFKA2306のプロジェクトが共有するWeb UIの設計正本。共通部品、見た目、操作状態の定義は上流を読み、業務ルール、データ、公開環境は各プロジェクトの正本を使う。共有デザインを導入するときは、利用側の `design.config.json` で採用する版をコミットSHAに固定する。
+
+| 判断すること | 使うパターンとGitHubの一次資料 | 参照するスキル・コマンド |
+| --- | --- | --- |
+| 利用者の操作の順番 | 確認して行動する、比較して決める、調査してから行動する、実行して結果を確認する、の中から実際の操作に合う順番を選ぶ。[操作パターンの実装](https://github.com/KAFKA2306/design/blob/main/registry/ui/product/journey.ts) | [目標設定](skills/charter/SKILL.md)・[自律開発](skills/deliver/SKILL.md) |
+| 判断に必要な情報と文言 | 利用者が結論、理由、根拠、次の操作を見つけられるようにする。実績、予測、仮説、未確認を表示まで区別する。[共通の判断パネル](https://github.com/KAFKA2306/design/blob/main/registry/ui/product/decision.tsx)・[コンテンツのスキーマ](https://github.com/KAFKA2306/design/blob/main/artifacts/content.schema.json) | [データ設計](skills/schema/SKILL.md)・[文書校正](skills/humanizer/SKILL.md) |
+| 部品と見た目の正本 | 共通の部品とトークンを使い、同期後の状態を検証する。利用側で同じ値や部品を独立して維持する箇所は、置き換え後に整理する。[設計・同期の手順](https://github.com/KAFKA2306/design/blob/main/skills/frontend-design/SKILL.md#workflow)・[共通トークン](https://github.com/KAFKA2306/design/blob/main/tokens/foundation.tokens.json) | [自律開発](skills/deliver/SKILL.md)・[AIスロップ削除](skills/prune/SKILL.md) |
+| 操作と状態の検証 | 実際に描画された画面で、通常時、読み込み中、空、エラー、利用不可、該当する未確認を区別し、キーボード、タッチ、狭い画面で必要な操作を確かめる。[設計と検証の基準](https://github.com/KAFKA2306/design#current-design-contract) | [反証レビュー](skills/scrutiny/SKILL.md)・[自動評価](skills/benchmark/SKILL.md) |
+
 ## ノートの管理
 
 Obsidianでは、このリポジトリのルートを保管庫として開く。文書と見出しは相対Markdownリンクで結ぶ。ファイル名や見出しを変更したら参照元も更新し、GitHubとObsidianの双方でたどれる形にする。

@@ -80,7 +80,7 @@ Claude Codeでは `/kafstyler:<名前>` を使います。自律開発は [公�
 
 ### Googleのフロントエンド設計スキル
 
-UIを設計するときは、自律開発コマンドからGoogle Gemini DemoLabを使う。Claude Code内の公式導入手順は次のとおり。
+KAFKA2306のWeb UIでは、先に[かふかのデザインパターン](BIBLES.md#かふかのデザインパターン)から操作の順番と共通部品を確認します。設計案の検討には、自律開発コマンドからGoogle Gemini DemoLabを使います。Claude Codeでの導入手順は次のとおりです。
 
 ```text
 /plugin marketplace add google-gemini/demolab

@@ -64,7 +64,8 @@ AIスロップ削除では、着手前にかふかの次のZenn記事を読む�
 - 馴染みのない固有名詞や仕様の変化が速いツールが依頼の中心なら、利用者が書いた名前をそのまま含めて検索する。調査では一次URL、確認日、結論に効く版や対象範囲を記録する。データの判断は実データを使い、原資料から正本と派生データへの来歴をたどれるようにする。欠損・ゼロ・未取得を区別し、重複と鮮度を確かめ、単位、通貨、日付をそろえる。
 - 目標、文章、評価にはAnthropic公式文書、登大遊「論理的思考の放棄」、imozの指針を使う。ハーネス、スキル、ツール連携、AIエンジニアリングでは、開発元の公式文書、原著、実装や評価に使える書籍を選ぶ。DeepSeek Harness公式文書、OpenAIのForward Deployed Engineering、ISUCON 2026の優勝者による準備編、fukabori.fm第142回を登録する。[目標・文章・評価](BIBLES.md#目標文章評価)・[エージェントとハーネス](BIBLES.md#エージェントとハーネス)・[書籍](BIBLES.md#aiエンジニアリングの書籍)・[ISUCON](BIBLES.md#isuconのハーネス)
 - データ設計と開発にはIOF、Palantir Foundry、スタースキーマ、Pydantic、Astral・uv、dbt、Pulumi、UNIX哲学の公式資料や原典を使う。命名規則の参考資料は1件に絞る。[データと命名](BIBLES.md#データオントロジー命名)・[CLI・開発・インフラ](BIBLES.md#cli開発インフラ)
-- フロントエンドではGoogle Gemini DemoLabの `/demolab:gemini-frontend-design` を自律開発から使う。ComfyUIで制作する場合は[Workflow選定と採用の基準](BIBLES.md#comfyuiのワークフロー選定)を最初に参照する。操作や連携に応じてComfyUIとTripoの公式文書、Tripoの論文を参照する。[導入と使い方](README.md#外部スキルとテンプレート)・[Tripoと3D生成](BIBLES.md#tripoと3d生成)
+- KAFKA2306のWeb UIを設計、導入、変更するときは、各スキルの担当工程で[かふかのデザインパターン](BIBLES.md#かふかのデザインパターン)の該当する一次資料を開いて判断に使う。設計案の検討にはGoogle Gemini DemoLabの `/demolab:gemini-frontend-design` を自律開発から使い、採用する案を対象プロジェクトと共有デザインの正本に照合する。
+- ComfyUIで制作する場合は[Workflow選定と採用の基準](BIBLES.md#comfyuiのワークフロー選定)を最初に参照する。操作や連携に応じてComfyUIとTripoの公式文書、Tripoの論文を参照する。[導入と使い方](README.md#外部スキルとテンプレート)・[Tripoと3D生成](BIBLES.md#tripoと3d生成)
 - Unity・VRChatでは用途ごとに一つ選ぶ。汎用Unityは `CoplayDev/unity-mcp`、VRChatワールドは `swax/UnityMCP-VRC`、VRChatアバターはUnityAgent（`lighfu/unity-agent`）を登録する。[Unity・VRChat制作ツール](BIBLES.md#ユニティとvrchatの制作ツール)
 - [かふかのZenn公開記事](BIBLES.md#かふかのzenn記事一覧)は、現行スキルの判断、操作、検証に用途があるものを個別に登録する。資料の採用、入れ替え、削除は[日次の見直し手順](BIBLES.md#資料の見直し)に従う。
 
