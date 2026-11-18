@@ -15,15 +15,15 @@
       }
     },
     "BIBLES.md": {
-      "sha256": "92a3e8b1755df9ed05b9feee3fbfbe578cbc05e4a2212b9901ca10875e6731ca",
+      "sha256": "ce127c940f7bd9cb68a3b6dbfaead31407c5a2a3e1ce5b7e7424fc67a246ee78",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "同じ抽出方法で内部Markdownリンク141→144件を確認し、候補の未解決リンクは0件。"},
-        "charter": {"status": "pass", "evidence": "両スキルの役割を見分け、開発元の原典を開けることを確認した。"},
-        "deliver": {"status": "pass", "evidence": "新しい節から共通手順、導入手順、反証レビューの見出しを開けた。"},
-        "humanizer": {"status": "pass", "evidence": "見出しと2つの項目から、原典を調べる作業と日本語を推敲する作業を判別できる。"},
-        "prune": {"status": "pass", "evidence": "上流の仕様と導入コマンドを転記せず、役割と参照先を残した。"},
-        "schema": {"status": "pass", "evidence": "一次資料台帳に公式URLと用途を各1件登録し、手順は規約、導入方法はREADMEにつないだ。"},
-        "scrutiny": {"status": "pass", "evidence": "公式文書でimozuruは調査、yomiyasuは原意を保つ推敲を担当することを照合した。"}
+        "benchmark": {"status": "pass", "evidence": "追加した4リンクを照合。変更前に無かった画面評価手順への直接リンクが、評価と比較で参照する節から開ける。"},
+        "charter": {"status": "pass", "evidence": "初見で用途が伝わるかと、目標だけで作業が完了するかを独立した評価項目にした。"},
+        "deliver": {"status": "pass", "evidence": "変更箇所の相対リンク2件とdesignの手順の実ファイル、GOV.UKのテスト手順を照合。"},
+        "humanizer": {"status": "pass", "evidence": "用途が分からない場合の判断と、修正後の合格条件を具体的に書き分けた。"},
+        "prune": {"status": "pass", "evidence": "画面評価の記入例・部品・検証条件はdesignの同じ手順を参照し、台帳へ複製していない。"},
+        "schema": {"status": "pass", "evidence": "一次資料の種別と用途を成功基準の節に登録。既存のtype、description、tagsをYAMLとして読み戻した。"},
+        "scrutiny": {"status": "pass", "evidence": "GOV.UK原文の「目標を与え、完了方法を示唆しない」を照合。用途未確定でも観察できた範囲を返せる。"}
       }
     },
     "MISSION.md": {

@@ -22,12 +22,13 @@ aliases:
 
 [KAFKA2306/design](https://github.com/KAFKA2306/design) は、KAFKA2306のプロジェクトが共有するWeb UIの設計正本。共通部品、見た目、操作状態の定義は上流を読み、業務ルール、データ、公開環境は各プロジェクトの正本を使う。共有デザインを導入するときは、利用側の `design.config.json` で採用する版をコミットSHAに固定する。
 
-| 判断すること | 使うパターンとGitHubの一次資料 | 参照するスキル・コマンド |
+| 判断すること | 使うパターンと一次資料 | 参照するスキル・コマンド |
 | --- | --- | --- |
 | 利用者の操作の順番 | 確認して行動する、比較して決める、調査してから行動する、実行して結果を確認する、の中から実際の操作に合う順番を選ぶ。[操作パターンの実装](https://github.com/KAFKA2306/design/blob/main/registry/ui/product/journey.ts) | [目標設定](skills/charter/SKILL.md)・[自律開発](skills/deliver/SKILL.md) |
 | 判断に必要な情報と文言 | 利用者が結論、理由、根拠、次の操作を見つけられるようにする。実績、予測、仮説、未確認を表示まで区別する。[共通の判断パネル](https://github.com/KAFKA2306/design/blob/main/registry/ui/product/decision.tsx)・[コンテンツのスキーマ](https://github.com/KAFKA2306/design/blob/main/artifacts/content.schema.json) | [データ設計](skills/schema/SKILL.md)・[文章の推敲](skills/humanizer/SKILL.md) |
 | 部品と見た目の正本 | 共通の部品とトークンを使い、同期後の状態を検証する。利用側で同じ値や部品を独立して維持する箇所は、置き換え後に整理する。[設計・同期の手順](https://github.com/KAFKA2306/design/blob/main/skills/frontend-design/SKILL.md#workflow)・[共通トークン](https://github.com/KAFKA2306/design/blob/main/tokens/foundation.tokens.json) | [自律開発](skills/deliver/SKILL.md)・[不要なファイル・コード・文章の削除](skills/prune/SKILL.md) |
 | 操作と状態の検証 | 実際に描画された画面で、通常時、読み込み中、空、エラー、利用不可、該当する未確認を区別し、キーボード、タッチ、狭い画面で必要な操作を確かめる。[設計と検証の基準](https://github.com/KAFKA2306/design#current-design-contract) | [反証レビュー](skills/scrutiny/SKILL.md)・[評価と比較](skills/benchmark/SKILL.md) |
+| 初見の用途と作業の完了 | 普段の入口で、用途が伝わるかと、目標だけで作業を完了できるかを確かめる。画面や操作を見直すときは[画面評価の手順と記入例](https://github.com/KAFKA2306/design/blob/main/docs/frontend-review.md)を使う。 | [評価と比較](skills/benchmark/SKILL.md)・[目標設定](skills/charter/SKILL.md) |
 
 ## ノートの管理
 
@@ -56,6 +57,8 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 ### 成功基準と評価
 
 [Anthropic・成功基準と評価の設計](https://platform.claude.com/docs/en/test-and-evaluate/develop-tests)（公式ガイド）。成功条件、テストケース、採点方法
+
+[GOV.UK・利用者テスト](https://www.gov.uk/service-manual/user-research/using-moderated-usability-testing)（公式手引き）。文書、ツール、画面の用途が分かりづらいときは、普段の入口で初見の理解と作業の完了をそれぞれ確かめる。利用者には目標を伝え、手順は伏せる。評価では、対象の版、止まった箇所、観察した事実、利用者への影響、修正後の合格条件を返す。用途を確認できない場合は未確定とし、試せた範囲を伝える。
 
 [評価と比較](skills/benchmark/SKILL.md) · [反証レビュー](skills/scrutiny/SKILL.md)
 
