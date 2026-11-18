@@ -36,9 +36,19 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 すべてのMarkdownにYAML frontmatterを置く。`type` は文書の種別を示す空でない文字列、`description` は用途を示す空でない日本語の説明、`tags` は空でない検索用リストとする。新規・既存のREADME、記事、スキル、規約も例外にしない。変更時は想定したプロパティ値とタグで文書を検索・抽出できることを確認する。Obsidianを使えない場合はYAMLを解析して同じ条件で検索する。`aliases` は別の名前で探す文書に使う。同じキーの型は保管庫内で統一する。設定ファイルの用途とタグは[作業規約](AGENTS.md#ファイルの管理)に記録する。
 
-タグは小文字とハイフンを使い、階層は `/` で区切る。YAMLでは `kafstyler/canon` と書き、Obsidianでは `tag:#kafstyler/canon` で検索する。
+タグは小文字とハイフンを使い、階層は `/` で区切る。YAMLでは `kafstyler/canon` と書く。Obsidianでは `[type:reference] tag:#kafstyler/canon` で種別とタグを組み合わせて検索する。
 
-[保管庫](#obsidianの保管庫)・[内部リンク](#obsidianの内部リンク)・[プロパティ](#obsidianのプロパティ)・[タグ](#obsidianのタグ)・[データ設計](skills/schema/SKILL.md)
+[保管庫](#obsidianの保管庫)・[内部リンク](#obsidianの内部リンク)・[プロパティ](#obsidianのプロパティ)・[タグ](#obsidianのタグ)・[検索](#obsidianの検索)・[データ設計](skills/schema/SKILL.md)
+
+### 文書監査と移行
+
+| 一次資料 | 手順で使う判断 |
+| --- | --- |
+| [英国政府デジタルサービス・Transition content to GOV.UK](https://www.gov.uk/guidance/govuk-transition-guidance-for-agencies#audit-your-content)（公式ガイド） | 利用状況、古さ、重複を調べ、利用者に必要な内容から移行を進める。旧URLを棚卸しし、移行先か保管先を記録する。 |
+| [Diátaxis・Diátaxis as a guide to work](https://diataxis.fr/how-to-use-diataxis/)（設計原典） | 読者がその文書で果たす用事を確かめ、説明、資料、手順、学習の役割に沿って一件ずつ改稿する。 |
+| [Zenn・Zenn CLIで記事・本を管理する方法](https://zenn.dev/zenn/articles/zenn-cli-guide)（公式ガイド） | 記事種別の `type`、`topics`、`published` と、公開先が使うファイル名を確認する。 |
+
+[台帳とObsidian Vaultで文書を整理する](skills/schema/SKILL.md#台帳とobsidian-vaultで文書を整理する)
 
 ## 目標・文章・評価
 
@@ -369,6 +379,12 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 [Obsidian・内部リンク](https://obsidian.md/help/links)（公式文書）。ノートと見出しを相対Markdownリンクで結ぶ。
 
 [データ設計](skills/schema/SKILL.md)
+
+### Obsidianの検索
+
+[Obsidian・Search](https://obsidian.md/help/Plugins/Search#Search%20properties)（公式文書）。プロパティの値とタグで検索し、想定した文書が結果に出ることを確かめる。
+
+[台帳とObsidian Vaultで文書を整理する](skills/schema/SKILL.md#台帳とobsidian-vaultで文書を整理する)
 
 ## CLI・開発・インフラ
 

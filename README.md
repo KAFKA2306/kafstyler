@@ -199,7 +199,7 @@ Claude Codeでは `/kafstyler:<名前>` を使います。たとえば、単発�
 | --- | --- |
 | [`charter`](skills/charter/SKILL.md) | 利用者ができるようになることと合格条件を定める |
 | [`humanizer`](skills/humanizer/SKILL.md) | タイトル、見出し、用語、本文を推敲し、根拠を確かめる |
-| [`schema`](skills/schema/SKILL.md) | 台帳、マスター、集計モデルを設計する |
+| [`schema`](skills/schema/SKILL.md) | Markdownのfrontmatterを整え、散在する文書を台帳とObsidian Vaultで整理する。台帳、マスター、集計モデルも設計する |
 | [`scrutiny`](skills/scrutiny/SKILL.md) | 前提を疑い、重大な欠陥を根拠と影響で示す |
 | [`benchmark`](skills/benchmark/SKILL.md) | 実物が合格条件を満たすか確かめ、比較する場合は同じ条件で差を測る |
 | [`deliver`](skills/deliver/SKILL.md) | 変更を実装し、利用者の入口から確かめる |
@@ -248,6 +248,8 @@ KAFKA2306のWeb UIでは、先に[かふかのデザインパターン](BIBLES.m
 ## ミッション・聖典・作業規約
 
 すべてのMarkdownに `type`、日本語の `description`、検索用の `tags` を含むYAML frontmatterを付けます。変更後は想定したプロパティとタグで文書を検索できることを確認します。Obsidianでは[保管庫と検索の規約](BIBLES.md#ノートの管理)を使い、利用できない環境ではYAMLを解析して確認します。
+
+文書が散らばっている場合は「このフォルダの手順書を棚卸しして。現行の手順は一か所にまとめ、旧版の場所と統合先を台帳に残して。Obsidianからタグで探せるようにして」と対象を添えて依頼できます。[台帳とObsidian Vaultで文書を整理する](skills/schema/SKILL.md#台帳とobsidian-vaultで文書を整理する)
 
 - [MISSION.md](MISSION.md) ミッションと更新手順を確認できます。
 - [聖典台帳](BIBLES.md) 分野別の一次資料と対応コマンドをたどれます。

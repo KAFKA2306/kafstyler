@@ -1,6 +1,6 @@
 {
-  "compared_to": "1d808fcc2c36d22a62390ed7e6ffac47f1a09950",
-  "rules": "d29295ff74aca7a89871b6315b1aae98c531f1782b8264ef47031ba5b7422af7",
+  "compared_to": "f688992f2d55eab0d9b061c24a6a5f94da615a77",
+  "rules": "2c802c1ccc201843e70d6ba93e2a7c0966532d08b257170684c23604894b7321",
   "documents": {
     "AGENTS.md": {
       "sha256": "cf447f2043afce3d12be6af4895f2dac66a88d58cd7bc0e9d167c25bcc448cd3",
@@ -15,15 +15,15 @@
       }
     },
     "BIBLES.md": {
-      "sha256": "d70a6aa9b1a327c3d63baf974cbca60bdde8cb0e10885655b4976038ba5c0af1",
+      "sha256": "4d07886b3c6d34a61035e8f467a1b0bb301c8d92d614f1180bce7e54da545f17",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "公式URLの重複を除き、設計に使う資料と3つの適用先のリンクを読み戻した。"},
-        "charter": {"status": "pass", "evidence": "運用者が起動、再開、評価の設計判断に英語一次資料を使えるようにした。"},
-        "deliver": {"status": "pass", "evidence": "技術記事、事例、現行の起動仕様から deliver、schema、benchmark にたどった。"},
-        "humanizer": {"status": "pass", "evidence": "製品名を維持し、各資料の用途を読者が決めることの形で揃えた。"},
-        "prune": {"status": "pass", "evidence": "既存の2本のハーネス記事と /loop の公式資料は、既存の項目にリンクしてURLの重複を避けた。"},
-        "schema": {"status": "pass", "evidence": "YAMLの種別、説明、タグを読み込み、kafstyler/canonで聖典台帳を一件取得した。"},
-        "scrutiny": {"status": "pass", "evidence": "クラウド定期起動とローカルの反復、受付イベントと成果の確認を公式仕様で照合した。"}
+        "benchmark": {"status": "pass", "evidence": "前後の差分から変更した相対リンクを抽出し、宛先ファイルと見出しを検証した。種別とタグの組でBIBLES.mdが一件見つかった。"},
+        "charter": {"status": "pass", "evidence": "台帳、本文改稿、公開先、検索の各判断から対応する一次資料へ進めることを確認した。"},
+        "deliver": {"status": "pass", "evidence": "ノートの管理から検索、文書監査からschemaの棚卸し手順への参照を解決した。"},
+        "humanizer": {"status": "pass", "evidence": "資料の説明を読者が取る操作にそろえ、実行できる検索式をノートの管理に置いた。"},
+        "prune": {"status": "pass", "evidence": "既存のObsidianプロパティ・タグ・リンクの解説を参照し、監査と移行の出典は一つの一覧で案内した。"},
+        "schema": {"status": "pass", "evidence": "YAMLの種別とタグを読み、検索項目の型と結果を照合した。移行の判断と実行手順は相互リンクで結んだ。"},
+        "scrutiny": {"status": "pass", "evidence": "GDSの監査と旧URLの対応、Diátaxisの段階的な改稿、Zennの項目、Obsidianの検索式をそれぞれ原典と照合した。"}
       }
     },
     "MISSION.md": {
@@ -39,15 +39,15 @@
       }
     },
     "README.md": {
-      "sha256": "5b6e0e50ea3b5e20bffcd20e9fa7c436d10b0e71bf879186098a6b7131713033",
+      "sha256": "cf2c3bbe42583f88509a94a8135dfde6c585eb0340c7b402402f6873efc34135",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "同じ単発修正の例で、旧版の /loop と候補版の直接実行を読み比べた。"},
-        "charter": {"status": "pass", "evidence": "単発修正、短時間の見守り、端末停止中の定期処理で、利用者が入口を選べることを手順上確認した。"},
-        "deliver": {"status": "pass", "evidence": "使い方から deliver の実行方式の表を開けることを確認した。"},
-        "humanizer": {"status": "pass", "evidence": "直接呼び出す例と、実行方法を選ぶときの参照を分け、使い方の段落で確認できるようにした。"},
-        "prune": {"status": "pass", "evidence": "従来の /loop を必須とする案内を除き、反復を選ぶ場合は deliver の手順に移動した。"},
-        "schema": {"status": "pass", "evidence": "YAMLの種別、説明、タグを読み戻し、運用の状態記録は既存の schema にたどれる。"},
-        "scrutiny": {"status": "pending", "evidence": "単発修正にも /loop が必要になる旧文を直した。着手前から記録されていた prune 関連の外部スキル導入は別途実クライアントで確認する。"}
+        "benchmark": {"status": "pass", "evidence": "新しい依頼例から移行手順の見出しに到達し、Markdownとしての種別、説明、タグも取得した。"},
+        "charter": {"status": "pass", "evidence": "依頼例で対象フォルダ、現行手順、旧版の記録、タグ検索という完了場面を読み取れることを確認した。"},
+        "deliver": {"status": "pass", "evidence": "既存のスキル一覧と文書整備の依頼例を入口として、schemaと文書の棚卸し節へのリンクを解決した。"},
+        "humanizer": {"status": "pass", "evidence": "文書整理の例文を棚卸し、台帳での確認、Vault検索の順に読み、手順の詳細は参照先に置いた。"},
+        "prune": {"status": "pass", "evidence": "台帳の項目や移行手順はREADMEに再掲せず、schemaの対応する節へ案内した。"},
+        "schema": {"status": "pass", "evidence": "READMEとschema双方のfrontmatterを解析し、スキルの用途欄と文書移行の入力・成果物の関係を照合した。"},
+        "scrutiny": {"status": "pending", "evidence": "文書整理の依頼例はスキル名なしで棚卸し節を案内できることを配布フックと相対リンクで確認した。単発修正にも /loop が必要になる旧文を直した。着手前から記録されていた prune 関連の外部スキル導入は別途実クライアントで確認する。"}
       }
     },
     "skills/benchmark/SKILL.md": {
@@ -111,15 +111,15 @@
       }
     },
     "skills/schema/SKILL.md": {
-      "sha256": "d21f7e9cf2c3fa890f4d53a6c891095e5c46c502d8756d79e8b5749716c52df1",
+      "sha256": "cd6faa010c7dfe504ce9429d07979ab33a34071172d3424dbea923aaee951f59",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "再送時に同じ作業と起動を保持して別の実行を識別できる設計になっていることを事例で照合した。 同じ公開記事と重複下書きで両版を照合し、候補の移行後は検索で正本1件、再実行で台帳1件と同じファイル内容を確認した。SQLiteの既存行も両版で保持した。"},
-        "charter": {"status": "pass", "evidence": "別セッションで、最後の成果、次の工程、処理の受付と成果確認を台帳から判断できる。 移行例ではREADMEから公開記事の見出しを開き、台帳から移行元と正本と根拠を読み戻せることを合格条件にした。"},
-        "deliver": {"status": "pass", "evidence": "実行手順から状態の設計を開き、既存の質問台帳への相対リンクを確認した。 両クライアント用の受付フックから追加した発動条件を読み、Codexのローカル導入0.5.27で同じSKILL.mdを確認した。"},
-        "humanizer": {"status": "pass", "evidence": "対象と入力の版、最後に確認した成果、次の工程を続けて読めるよう整理した。 追加節を通読し、移行の依頼を受けたときに調査、台帳、移行、読み戻しの順が分かるよう整えた。"},
-        "prune": {"status": "pass", "evidence": "既存の作業・質問台帳を使い、専用ファイルや保存形式は加えていない。 重複下書きから固有の情報を公開記事へ移し、固定パスとREADMEの入口を保った。"},
-        "schema": {"status": "pass", "evidence": "作業、起動、実行、外部操作のキーを確認し、起動時刻と時間帯の関係、成果確認と質問台帳の関係を記した。 本体のYAMLを11件読み、模擬公開記事の独自キー6項目の値と型、正本への相対リンク、台帳のキーを照合した。"},
-        "scrutiny": {"status": "pass", "evidence": "同じイベントを再送し実行IDだけが変わる場合に、外部への操作を同じキーで照合できるか点検した。 固定公開パスがある記事とDBだけの依頼を試し、記事の移行で公開契約を保ち、DBでは台帳やVault設定が増えないことを確認した。"}
+        "benchmark": {"status": "pass", "evidence": "旧CANON.mdを含む試行で台帳4行、正本の検索結果1件、リンク7件、再実行の差分なしを確認した。"},
+        "charter": {"status": "pass", "evidence": "散在した文書の整理を頼み、普段の入口か台帳から正本と該当見出しを見つけられることを確認条件にした。"},
+        "deliver": {"status": "pass", "evidence": "Claude CodeとCodexの依頼受付用フックから新しい発動条件を取得し、既存のスキル参照先を確認した。"},
+        "humanizer": {"status": "pass", "evidence": "手順を棚卸し、台帳登録、本文とリンクの更新、検証の順で読み、正本を選ぶ条件を先頭に置いた。"},
+        "prune": {"status": "pass", "evidence": "既存Vaultと台帳を使い、目次も兼ねられること、旧文書の削除は利用経路を確認してpruneにつなぐことを照合した。"},
+        "schema": {"status": "pass", "evidence": "移行元一件を一行にし、試行で三行が同じ正本を指し、一件が確認待ちになった。実記事の既存YAML六項目と本文を保持した。"},
+        "scrutiny": {"status": "pass", "evidence": "旧見出し、統合元にしかない記述、根拠が欠ける文書、Vault外の配布項目を反例にし、試行でリンク、保持項目、保留の区別を確認した。"}
       }
     },
     "skills/scrutiny/SKILL.md": {
