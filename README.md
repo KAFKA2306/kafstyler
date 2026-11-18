@@ -191,7 +191,9 @@ Studio Kafkaの配布物は[MeshSyncPro](https://booth.pm/ja/items/6905506)と[B
 
 ## スキル
 
-Claude Codeでは `/kafstyler:<名前>` を使います。自律開発は [公式 `/loop` との連携手順](skills/deliver/SKILL.md#claude-codeの-loop-連携)に従い、`/loop 5m /kafstyler:deliver <依頼>` で始めます。Codexでは `$` を入力してKafstylerのスキルを選びます。
+Claude Codeでは `/kafstyler:<名前>` を使います。たとえば、単発の修正は `/kafstyler:deliver <依頼>` で始めます。Codexでは `$` を入力してKafstylerのスキルを選びます。
+
+配布の反映を短時間見守る場合や、端末を閉じても定時に処理したい場合は、[常駐エージェントと定期実行](skills/deliver/SKILL.md#常駐エージェントと定期実行)から使う入口を選びます。
 
 | スキル | 用途 |
 | --- | --- |
