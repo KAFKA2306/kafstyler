@@ -39,15 +39,15 @@
       }
     },
     "README.md": {
-      "sha256": "14ae06e8210c95de3ea2e9a4dd124f00b015b578d3e2b0eff4a48791b6b73920",
+      "sha256": "2bbbf04640d0c5f737c45eaaeba4959b1cf98e07ce1b612707018cef391f0f3f",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "変更前後で同じ26件の内部Markdownリンクを取得し、全件の参照先ファイルを確認した。"},
-        "charter": {"status": "pass", "evidence": "コマンド一覧から範囲を省いたときの入口と、直下の不要物を削る結果を読み取れた。"},
-        "deliver": {"status": "pass", "evidence": "コマンド一覧からpruneの手順へ進み、Codexのローカル配布版0.5.22と作業中のSKILL.mdが一致した。"},
-        "humanizer": {"status": "pass", "evidence": "一覧の一文から対象と得られる結果を特定できた。"},
-        "prune": {"status": "pass", "evidence": "利用案内は既定範囲と結果に絞り、列挙と削除判断はリンク先の手順に置いた。"},
-        "schema": {"status": "pass", "evidence": "既存のYAMLの種別、説明、タグを読み戻し、既存分類のタグで抽出できた。"},
-        "scrutiny": {"status": "pending", "evidence": "pruneの既定範囲を手順と照合。既存の外部スキル導入は実クライアントでの確認が残る。"}
+        "benchmark": {"status": "pass", "evidence": "公開ブラウザーの2例で、答えと根拠を得た場合と、操作成功後も判断材料が不足する場合を照合した。"},
+        "charter": {"status": "pass", "evidence": "依頼例に対象URL、初めて使う人、知りたい実績と、照合する出典がそろうことを確認した。"},
+        "deliver": {"status": "pass", "evidence": "READMEの依頼例からdesignの画面評価ガイドへたどり、観察結果から修正指示を作れることを確認した。"},
+        "humanizer": {"status": "pass", "evidence": "依頼例を調べる情報、観察結果、修正後の合格条件の順に整理した。"},
+        "prune": {"status": "pass", "evidence": "READMEは使い方の一例に絞り、評価の手順と実例はdesignの既存ガイドへつないだ。"},
+        "schema": {"status": "pass", "evidence": "READMEのYAMLの種別、説明、タグで検索でき、比較の判定には既存の画面評価の記入欄を使う。"},
+        "scrutiny": {"status": "pending", "evidence": "比較画面に到達しても判断材料が欠ける反例を照合した。既存のprune関連の外部スキル導入は実クライアントでの確認が残る。"}
       }
     },
     "skills/benchmark/SKILL.md": {
