@@ -84,6 +84,19 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 ## エージェントとハーネス
 
+### Claude Agent SDK
+
+[Anthropic・Agent SDK overview](https://code.claude.com/docs/en/agent-sdk)（公式ガイド）。実行場所と必要な機能に応じて方式を選ぶ。
+
+| やりたいこと | 選ぶ方式 |
+| --- | --- |
+| 自分で運用するPython・TypeScriptアプリにClaude Codeのツール、エージェントループ、セッションを組み込む | Claude Agent SDK |
+| 端末で対話して開発する、または単発の処理を実行する | Claude Code CLI |
+| Claude APIを直接呼び、ツール処理をアプリ側で組み立てる | Client SDK |
+| Anthropicが運用するエージェントの実行基盤をAPIから使う | Claude Managed Agents |
+
+[プラグインの読み込み](https://code.claude.com/docs/en/agent-sdk/plugins)・[ツールの権限設定](https://code.claude.com/docs/en/agent-sdk/permissions)（公式仕様）。[導入と確認](skills/deliver/SKILL.md#claude-agent-sdkでの実装)
+
 ### スキルの執筆
 
 [Anthropic・Agent Skills執筆ガイド](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices)（公式ガイド）。スキルの記述、検証、手直し

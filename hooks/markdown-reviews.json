@@ -15,15 +15,15 @@
       }
     },
     "BIBLES.md": {
-      "sha256": "ce127c940f7bd9cb68a3b6dbfaead31407c5a2a3e1ce5b7e7424fc67a246ee78",
+      "sha256": "6c2e74b9084510b4d173fa16564122fd5a486788ee37f688e1f8dc59908b3726",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "追加した4リンクを照合。変更前に無かった画面評価手順への直接リンクが、評価と比較で参照する節から開ける。"},
-        "charter": {"status": "pass", "evidence": "初見で用途が伝わるかと、目標だけで作業が完了するかを独立した評価項目にした。"},
-        "deliver": {"status": "pass", "evidence": "変更箇所の相対リンク2件とdesignの手順の実ファイル、GOV.UKのテスト手順を照合。"},
-        "humanizer": {"status": "pass", "evidence": "用途が分からない場合の判断と、修正後の合格条件を具体的に書き分けた。"},
-        "prune": {"status": "pass", "evidence": "画面評価の記入例・部品・検証条件はdesignの同じ手順を参照し、台帳へ複製していない。"},
-        "schema": {"status": "pass", "evidence": "一次資料の種別と用途を成功基準の節に登録。既存のtype、description、tagsをYAMLとして読み戻した。"},
-        "scrutiny": {"status": "pass", "evidence": "GOV.UK原文の「目標を与え、完了方法を示唆しない」を照合。用途未確定でも観察できた範囲を返せる。"}
+        "benchmark": {"status": "pass", "evidence": "同じ見出し抽出でAgent SDKの案内が0節から1節になり、新規リンク4件の参照先を照合した。"},
+        "charter": {"status": "pass", "evidence": "運用する場所と組み込む機能から、実装者が4方式のいずれかを選べることを確認した。"},
+        "deliver": {"status": "pass", "evidence": "公式の概要、プラグイン、権限の3ページを開き、自律開発の導入手順への相対リンクを解決した。"},
+        "humanizer": {"status": "pass", "evidence": "表の各行を実装者がやりたいことと選ぶ方式でそろえ、公式資料と意味を照合した。"},
+        "prune": {"status": "pass", "evidence": "4方式の比較はこの節に置き、導入側から参照した。SDK固有の実装例は公式資料でたどれる。"},
+        "schema": {"status": "pass", "evidence": "YAMLのtype、description、tagsを読み戻し、公式資料の種別、用途、対応手順を照合した。"},
+        "scrutiny": {"status": "pass", "evidence": "自分のPythonプロセスでの実行とAnthropicの実行基盤の利用を境界事例にし、公式Overviewの区別と照合した。"}
       }
     },
     "MISSION.md": {
@@ -75,15 +75,15 @@
       }
     },
     "skills/deliver/SKILL.md": {
-      "sha256": "c19c5167de449a22b5817809d7377628155382a5107087d67753e6ee7907234d",
+      "sha256": "b0135b07c41edf4ccf99894cc37dbfcf2078fa7e6b6027cf8b50675bce209a5d",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版と候補は同一で、同じ方法で内部リンク68件に到達した。"},
-        "charter": {"status": "pass", "evidence": "普段の入口で変更が働き、その根拠を返せることを合格条件とした。"},
-        "deliver": {"status": "pass", "evidence": "6項から共通規約の理由レビューへ到達した。Claude CodeのCronListとCronDeleteは公式仕様で確認した。"},
-        "humanizer": {"status": "pass", "evidence": "ループの連携と実装・検証の節から、環境と実行する順序を読み取れた。"},
-        "prune": {"status": "pass", "evidence": "3項の方式の反証と6項の配布前の反証は別の段階で必要と確認した。"},
-        "schema": {"status": "pass", "evidence": "YAMLの5項目を確認し、発動と配布は本書、理由の記録と照合は共通規約にある。"},
-        "scrutiny": {"status": "pass", "evidence": "反復時の二重登録と、依存スキル未実行時の配布完了を、6項と共通規約に照らして検討した。"}
+        "benchmark": {"status": "pass", "evidence": "現行と候補の文書を比較し、SDKの導入節が0節から1節になり、方式の比較への相対リンクが解決した。"},
+        "charter": {"status": "pass", "evidence": "SDK利用者がアプリ起動時の読み込み、通常依頼の完了、禁止操作の拒否を観測できる手順にした。"},
+        "deliver": {"status": "pass", "evidence": "実行方式の比較へのリンクを解決し、配布マニフェストのkafstyler名と同梱スキルの名前を照合した。"},
+        "humanizer": {"status": "pass", "evidence": "方式を選ぶ、ルートを渡す、起動時に確認する、実行を試す、の順に読めることを確認した。"},
+        "prune": {"status": "pass", "evidence": "方式の比較をBIBLES.mdに参照し、SDKサンプルとプラグイン設定の重複がないことを差分で確認した。"},
+        "schema": {"status": "pass", "evidence": "YAMLのtype、description、tagsを読み戻し、SDKのinitで確認するpluginsとskillsを公式仕様と突き合わせた。"},
+        "scrutiny": {"status": "pass", "evidence": "存在しないプラグインパスで処理が続く例と、allowed_toolsにない操作が許可され得る例を公式仕様で照合した。"}
       }
     },
     "skills/humanizer/SKILL.md": {
