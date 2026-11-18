@@ -46,6 +46,18 @@ Claudeで動くエージェントを実装する場合は、[実行方式の比�
 
 起動時の `init` メッセージで、`plugins` に `kafstyler`、`skills` に使う `kafstyler:<名前>` があることを確かめる。`allowed_tools`（TypeScriptでは `allowedTools`）はツールを事前承認する。禁止するツールや操作は `disallowed_tools`（`disallowedTools`）などで設定する。アプリの入口から、通常の依頼が完了し、禁止した操作が拒否されることを確かめる。
 
+## Antigravity CLIでレビューする
+
+別のエージェントから Antigravity CLI にレビューを頼む場合は、[配布版の導入](../../README.md#antigravity-cli)と[公式仕様](../../BIBLES.md#antigravity-cliの配布と実行)を確認する。ジョブを実行する環境とユーザーで認証し、`agy models` で使えるモデルIDを確かめる。レビュー対象、求める指摘と根拠、変更してよい範囲を依頼に含める。入力は、その認証先に送る許可がある資料に絞る。
+
+秘密のないディレクトリで、Neonを指定した一往復を確かめる例。
+
+```sh
+agy -p "文字列 antigravity を逆順にし、結果だけ返して。" --model gemini-4-neon-high --output-format json --print-timeout 5m
+```
+
+疎通の合格条件は終了コード `0`、JSONの `status` が `SUCCESS`、`response` が `ytivargitna`。実作業では標準エラーも保持する。承認が必要なツール操作がヘッドレス実行で拒否されても、終了コード `0` で続く場合がある。必要な操作が行われたことを確認し、指摘を対象の行や実際の操作結果と突き合わせる。
+
 ## 実装と検証
 
 1. プロジェクトの現状、利用者が使う入口、合格条件を確認する。目標が曖昧なら、[`kafstyler:charter`](../charter/SKILL.md) を呼ぶ。依頼、現在の入口、観測できた問題を渡し、完成場面と合格条件を実装に使う。進行中のIssueやPRがあればその作業を引き継ぐ。データ構造の設計が必要なら、[`kafstyler:schema`](../schema/SKILL.md) を呼ぶ。答える問い、実データの例、変更範囲を渡し、結果を実装に使う。作業を分けるときは、各単位の担当、成果物、合格条件を決める。人間による認証が必要な場合は、事前確認を済ませ、必要な操作と再開条件を伝える。

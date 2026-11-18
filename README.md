@@ -10,7 +10,7 @@ aliases:
 
 # Kafstyler
 
-Kafstylerは、Claude CodeとCodexのAIエージェントが、開発・調査・制作・運用で何をもって完了とするかを決め、成果物を検証して届けるためのプラグインです。文章の推敲やデータ設計など、作業に応じてスキルを組み合わせます。複数の仕事に共通する手順の漏れが見つかれば、再現してKafstyler自体を直します。
+Kafstylerは、Claude Code、Codex、Antigravity CLIのAIエージェントが、開発・調査・制作・運用で何をもって完了とするかを決め、成果物を検証して届けるためのプラグインです。文章の推敲やデータ設計など、作業に応じてスキルを組み合わせます。複数の仕事に共通する手順の漏れが見つかれば、再現してKafstyler自体を直します。
 
 [成果から使い方を選ぶ](#成果から使い方を選ぶ)では、活動ごとに、何を作り、どこで確かめるかを指定する依頼例を紹介します。
 
@@ -37,11 +37,42 @@ codex plugin add kafstyler@kafstyler
 
 対象プロジェクトで `codex` を起動し、`/hooks` でKafstylerのフックを確認・承認します。承認前もスキルは手動で選べます。更新後に再確認が表示されたら同じ操作を行います。[Codexのフック承認](https://learn.chatgpt.com/docs/hooks#review-and-trust-hooks)
 
+### Antigravity CLI
+
+使う端末に[Googleの公式手順](https://antigravity.google/docs/getting-started?tab=cli)で `agy` を導入します。WindowsとWSLの両方で使う場合は、それぞれのシェルで実行ファイルと `agy --version` を確認します。
+
+WindowsのPowerShellでは次を実行します。既定の導入先は `%LOCALAPPDATA%\agy\bin` です。
+
+```powershell
+Get-Command agy -All
+agy --version
+```
+
+WSLのBashでは次を実行します。Linuxの既定の実行ファイルは `~/.local/bin/agy` です。ユーザー単位で導入した場合は、実行ユーザーが導入先を所有し、書き込めることを確認します。
+
+```bash
+type -a agy
+agy --version
+id -un
+agy_bin=$(type -P agy) && agy_bin=$(realpath -- "$agy_bin") &&
+  stat -Lc '%U %A %n' -- "$agy_bin" "$(dirname -- "$agy_bin")" &&
+  test -w "$(dirname -- "$agy_bin")" && echo '導入先に書き込み可能'
+```
+
+使うシェルで配布版を導入します。一覧に `kafstyler` が有効と表示され、7スキルが登録されたことを確かめます。対象プロジェクトで `agy` を起動すると `/charter` や `/deliver` からスキルを呼べます。
+
+```sh
+agy plugin install https://github.com/KAFKA2306/kafstyler
+agy plugin list --json
+```
+
+モデルを指定したヘッドレスのレビューは[自律開発の手順](skills/deliver/SKILL.md#antigravity-cliでレビューする)を、仕様は[聖典台帳](BIBLES.md#antigravity-cliの配布と実行)を参照します。
+
 ### 依頼を送って使う
 
 「READMEを初めて読む人が、手順どおりに起動できるように整えて」のように依頼します。
 
-プラグインは、依頼を受け取るたびに各スキルの発動条件をエージェントへ渡します。スキル名を書かなくても、作業の段階ごとに該当するスキルを使うよう指示します。たとえば「台帳の列を統一し、移行後に旧ファイルを整理して」では、設計前に `schema`、移行後の削除前に `prune` を使います。委譲先にも同じ発動条件と[作業規約](AGENTS.md#コマンドの連携)を渡します。
+プラグインは、各スキルの発動条件をエージェントへ渡します。スキル名を書かなくても、作業の段階ごとに該当するスキルを使うよう指示します。たとえば「台帳の列を統一し、移行後に旧ファイルを整理して」では、設計前に `schema`、移行後の削除前に `prune` を使います。委譲先にも同じ発動条件と[作業規約](AGENTS.md#コマンドの連携)を渡します。
 
 エージェントがコミットするときは、毎回、記録する差分と検証結果を照合し、作成後にSHAと差分を確認します。コミットだけを頼んだ場合にも適用します。[コミットの手順](AGENTS.md#ブランチとコミット)
 
@@ -71,8 +102,9 @@ python3 hooks/check.py
 
 - Claude Codeでは `claude plugin validate .` を実行し、`claude --plugin-dir "$PWD"` で作業中の版を起動します。別プロジェクトで試すときも、`--plugin-dir` にKafstylerのチェックアウトの絶対パスを渡します。
 - Codexでは検証用の `CODEX_HOME` を用意し、`codex plugin marketplace add "$PWD"` と `codex plugin add kafstyler@kafstyler` を実行します。プラグインは導入時点のコピーを使います。変更後に試し直す場合は、検証用の環境で `codex plugin remove kafstyler@kafstyler` を実行してから再導入します。新しいセッションの `/hooks` で検証する版のフックを確認・承認します。[ローカル配布元の仕様](https://developers.openai.com/plugins/build/plugins#how-local-marketplaces-work)
+- Antigravity CLIでは `agy plugin validate --json .` で候補版を検査します。検証環境で `agy plugin install .` と `agy plugin list --json` を実行し、候補の版、7スキル、常時有効なルールを確認します。マルチツール構成に関する既知の警告は[公式の判定手順](https://antigravity.google/docs/build-plugins/#warnings-in-multi-tool-repositories)で見分けます。
 
-両クライアントでスキル名を含まない依頼を送り、スキルを使った時点を呼び出し履歴や `SKILL.md` の読み込みから確認します。手順の実行結果と成果物も照合します。提出前に漏れが見つかった場合は、該当する手順を実行し、その結果が影響する工程をやり直したことまで確かめます。[本体の変更手順](AGENTS.md#kafstyler本体の変更)
+変更が影響するクライアントでスキル名を含まない依頼を送り、スキルを使った時点を呼び出し履歴や `SKILL.md` の読み込みから確認します。手順の実行結果と成果物も照合します。提出前に漏れが見つかった場合は、該当する手順を実行し、その結果が影響する工程をやり直したことまで確かめます。[本体の変更手順](AGENTS.md#kafstyler本体の変更)
 
 ## 成果から使い方を選ぶ
 
@@ -191,7 +223,7 @@ Studio Kafkaの配布物は[MeshSyncPro](https://booth.pm/ja/items/6905506)と[B
 
 ## スキル
 
-Claude Codeでは `/kafstyler:<名前>` を使います。たとえば、単発の修正は `/kafstyler:deliver <依頼>` で始めます。Codexでは `$` を入力してKafstylerのスキルを選びます。
+Claude Codeでは `/kafstyler:<名前>`、Codexでは `$` からKafstylerのスキルを選び、Antigravity CLIでは `/<名前>` を使います。
 
 配布の反映を短時間見守る場合や、端末を閉じても定時に処理したい場合は、[常駐エージェントと定期実行](skills/deliver/SKILL.md#常駐エージェントと定期実行)から使う入口を選びます。
 
