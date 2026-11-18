@@ -51,15 +51,15 @@
       }
     },
     "skills/benchmark/SKILL.md": {
-      "sha256": "1c83bd12bfa7e5d8833b10691242e9db8b78642f5b5ff78a7761cb1655011503",
+      "sha256": "b9ce5d1beedee486edbe569cb2371314c236f9e196c4dc919be4235e5135e514",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版と候補は同一で内部リンク32件に到達。Anthropicの評価設計を参照した。"},
-        "charter": {"status": "pass", "evidence": "普段の入口から候補を測り、版と採否の根拠を返せることを確認した。"},
-        "deliver": {"status": "pass", "evidence": "3項から測定の入口、2項から判断をレビューする手順を開けた。"},
-        "humanizer": {"status": "pass", "evidence": "見出しと番号から、測定条件の設定、実測、結果記録の順を追えた。"},
-        "prune": {"status": "pass", "evidence": "外部スキルの使い方を共通規約へ任せ、評価手順に繰り返しがないことを確認した。"},
-        "schema": {"status": "pass", "evidence": "YAMLの5項目を確認し、測定条件は本書、理由を根拠と照合する手順は共通規約が管理する。"},
-        "scrutiny": {"status": "pass", "evidence": "依存スキルを実行できない例で、測定結果だけでは全体の合格にならないことを5項と共通規約で照合した。"}
+        "benchmark": {"status": "pass", "evidence": "比較場面の同一条件の再試行と、新しい基準の設計で調査の要否を分けた。GOV.UKの使いやすさの測定とPlaywrightの公式手順を照合。"},
+        "charter": {"status": "pass", "evidence": "評価を担当する人が、用事・合格条件・測定方法から資料の再利用を判断できる。"},
+        "deliver": {"status": "pass", "evidence": "designの評価手順とボドゲのミカタの既存Issueに、比較の入口と修正後の合格条件を記録した。"},
+        "humanizer": {"status": "pass", "evidence": "既定の調査手順に続けて、同じ条件の再試行で調査結果を引き継ぐ条件を示した。"},
+        "prune": {"status": "pass", "evidence": "同じ条件で再試行するときの資料の再調査を除き、測定と合否判定は後続の項に置いた。"},
+        "schema": {"status": "pass", "evidence": "YAMLの値と既存のリンク先を照合し、記録のキーと形式を保持した。"},
+        "scrutiny": {"status": "pass", "evidence": "比較画面で必要な情報が欠ける例を確認した。合格条件や参照仕様が変わる場合は、影響する論点を調べ直す。"}
       }
     },
     "skills/charter/SKILL.md": {
