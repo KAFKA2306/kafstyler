@@ -123,11 +123,9 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 ### Claude Codeのフック
 
-[Anthropic・SessionStart](https://code.claude.com/docs/en/hooks#sessionstart)・[Anthropic・SubagentStart](https://code.claude.com/docs/en/hooks#subagentstart)（公式仕様）。セッションと委譲先に規約を渡す。
+[Anthropic・SessionStart](https://code.claude.com/docs/en/hooks#sessionstart)（公式仕様）。起動時に規約を渡す。
 
-[Anthropic・UserPromptSubmit](https://code.claude.com/docs/en/hooks#userpromptsubmit)（公式仕様）。依頼送信時に作業規約を適用するためのフック。
-
-[Anthropic・Stop](https://code.claude.com/docs/en/hooks#stop-decision-control)（公式仕様）。提出前の確認を挟み、同じターンの再起動を避けるためのフック。
+[Anthropic・UserPromptSubmit](https://code.claude.com/docs/en/hooks#userpromptsubmit)（公式仕様）。依頼受付時にスキルの発動条件を渡す。
 
 [作業規約](AGENTS.md#全作業への適用と自己改善)
 

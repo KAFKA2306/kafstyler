@@ -37,35 +37,14 @@ kafstyler_checkout() {
     printf '%s\n' "$checkout"
 }
 
-json_string() {
-  local value=$1
-  value=${value//\\/\\\\}
-  value=${value//\"/\\\"}
-  value=${value//$'\n'/\\n}
-  value=${value//$'\r'/\\r}
-  value=${value//$'\t'/\\t}
-  value=${value//$'\b'/\\b}
-  value=${value//$'\f'/\\f}
-  printf '"%s"' "$value"
-}
-
 case "$1" in
-  session|subagent)
+  session)
     policy_path="$plugin_root/AGENTS.md"
     policy=$(cat "$policy_path") || exit 1
-    location="規約の場所は $policy_path。相対リンクはこのファイルを基準にたどる。全文が届いていなければ、このファイルを読む。"
-
-    if [ "$1" = session ]; then
-      printf '%s\n%s\n\n%s\n' \
-        'このセッションにKafstylerの作業規約を適用する。Kafstyler本体の保守規約は本体を変更するときに適用する。' \
-        "$location" "$policy"
-    else
-      routes=$(skill_routes) || exit 1
-      context=$(printf '%s\n%s\n\n%s\n\n%s' \
-        '委譲された作業にKafstylerの作業規約を適用する。親から受け取った合格条件を使い、確認した結果と見つけた漏れを親に返す。' \
-        "$routes" "$location" "$policy")
-      printf '{"hookSpecificOutput":{"hookEventName":"SubagentStart","additionalContext":%s}}\n' "$(json_string "$context")"
-    fi
+    printf '%s\n%s\n\n%s\n' \
+      'このセッションにKafstylerの作業規約を適用する。Kafstyler本体の保守規約は本体を変更するときに適用する。' \
+      "規約の場所は $policy_path。相対リンクはこのファイルを基準にたどる。全文が届いていなければ、このファイルを読む。" \
+      "$policy"
     ;;
   start)
     printf '使用中のKafstylerの場所は %s。\n' "$plugin_root"
@@ -78,33 +57,6 @@ Kafstyler本体を変更する場合は、着手前の main のコミットを�
 PROMPT
     if checkout=$(kafstyler_checkout); then
       printf '%s\n' '本体を保守するときは、ルートで python3 hooks/check.py --markdown-inventory を実行し、全Markdownに全スキルを使う。見つけた漏れを直し、文書とスキルの組ごとの結果を記録する。子や個々のスキルは全件確認を起動し直さない。'
-    fi
-    ;;
-  review)
-    # Stop が続行したターンでは、もう一度再開させない。
-    if grep -qE '(^|[,{])[[:space:]]*"stop_hook_active"[[:space:]]*:[[:space:]]*false[[:space:]]*([,}]|$)'; then
-      routes=$(skill_routes) || exit 1
-      context=$(cat <<PROMPT
-Kafstylerの提出前確認。ユーザーの依頼範囲と中断指示を守る。短いやりとりは回答を見直して終える。利用者への報告は同梱の AGENTS.md の「出力と成果物」に従う。着手時と途中で必須になったスキルごとに、対象の版、実行結果、根拠を照合する。指定された段階を過ぎて漏れを見つけたらそのスキルを実行し、影響する設計、変更、検証をやり直す。未実行、実行失敗、未確認は記録し、許可範囲で不足を解消しながら他の工程を進める。Kafstylerの手順に再現できる漏れがあれば kafstyler:charter の改善手順を使う。
-成果を届ける依頼では、AGENTS.md の「作業台帳」に従い、結果を記録して読み戻す。記録に失敗した場合も成果物の作業を続け、失敗を報告する。
-Kafstyler本体を変更した場合は、変更案に対して着手前の版の検査と python3 hooks/check.py を実行する。変更案を読み込んだセッションで影響する操作を試し、確認した版と結果を作業記録に残す。
-
-$routes
-PROMPT
-)
-      if checkout=$(kafstyler_checkout); then
-        if ! result=$(cd "$checkout" && python3 "$plugin_root/hooks/check.py" --markdown-only 2>&1); then
-          result=$(printf '%s\n%s' "$result" '本体の保守作業では、不足するスキルを現行版に適用して記録を直し、検証をやり直す。未確認は記録して進められる工程を続ける。')
-        fi
-        context=$(printf '%s\n\n%s\n%s' "$context" '本体のMarkdown適用記録の照合結果' "$result")
-      fi
-      if [ "$host" = codex ]; then
-        printf '{"decision":"block","reason":%s}\n' "$(json_string "$context")"
-      else
-        printf '{"hookSpecificOutput":{"hookEventName":"Stop","additionalContext":%s}}\n' "$(json_string "$context")"
-      fi
-    else
-      printf '{}\n'
     fi
     ;;
 esac

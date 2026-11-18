@@ -151,48 +151,24 @@ def check(root, host):
         unlisted = ", ".join(sorted(packaged_skills - expected_skills)) or "なし"
         raise ValueError(f"作業規約と配布スキルが一致しない（配布漏れ {missing}、規約への記載漏れ {unlisted}）。")
     session = run_hook(root, hooks, host, "SessionStart", source="startup")
-    delegated = json.loads(run_hook(root, hooks, host, "SubagentStart", agent_type="general-purpose"))
     prompt = run_hook(root, hooks, host, "UserPromptSubmit", prompt="READMEの起動手順を確かめて")
-    stop = json.loads(run_hook(root, hooks, host, "Stop", stop_hook_active=False))
-    resumed = json.loads(run_hook(root, hooks, host, "Stop", stop_hook_active=True))
-
-    child_context = delegated["hookSpecificOutput"]
-    if host == "claude":
-        review = stop["hookSpecificOutput"]
-        stop_continues = review["hookEventName"] == "Stop"
-        review_context = review["additionalContext"]
-    else:
-        stop_continues = stop["decision"] == "block"
-        review_context = stop["reason"]
-
-    contexts = (prompt, child_context["additionalContext"], review_context)
-    all_routes_delivered = bool(expected_skills) and all(
-        {line.split()[1].removeprefix("kafstyler:") for line in context.splitlines()
-         if line.startswith("- kafstyler:")} == expected_skills
-        for context in contexts
-    )
+    skill_routes = {
+        line.split()[1].removeprefix("kafstyler:")
+        for line in prompt.splitlines()
+        if line.startswith("- kafstyler:")
+    }
 
     return {
+        "配布フックは起動時と依頼受付の2件": set(hooks) == {"SessionStart", "UserPromptSubmit"},
         "セッションに対象版の規約が届く": policy in session and str(root / "AGENTS.md") in session,
-        "委譲先に同じ規約が届く": (
-            child_context["hookEventName"] == "SubagentStart"
-            and policy in child_context["additionalContext"]
-        ),
         "依頼受付で対象版と目標設定が示される": (
-            f"使用中のKafstylerの場所は {root}。" in prompt and "kafstyler:charter" in prompt
+            f"使用中のKafstylerの場所は {root}。" in prompt
+            and "着手前に kafstyler:charter" in prompt
         ),
-        "提出前に実行結果と完了条件の照合を促す": (
-            stop_continues and "kafstyler:scrutiny" in review_context
-            and "実行結果、根拠を照合" in review_context
-            and "完了扱いにしない" in review_context
-            and "python3 hooks/check.py" in review_context
+        "依頼受付で全スキルの発動条件が届く": bool(expected_skills) and skill_routes == expected_skills,
+        "本体の依頼受付で全Markdownへの適用と記録を案内する": (
+            "--markdown-inventory" in prompt and "全スキル" in prompt and "結果を記録する" in prompt
         ),
-        "本体の依頼受付で全Markdownへの適用を案内し、提出前に版と記録を照合する": (
-            "--markdown-inventory" in prompt and "全スキル" in prompt
-            and "本体のMarkdown適用記録の照合結果" in review_context
-        ),
-        "依頼受付・委譲・提出前に全スキルの発動条件が届く": all_routes_delivered,
-        "提出前の確認は一度で止まる": resumed == {},
     }
 
 

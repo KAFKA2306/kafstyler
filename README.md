@@ -47,7 +47,7 @@ codex plugin add kafstyler@kafstyler
 
 1. 普段の入口、成功と分かる結果、改善の比較基準を決めます。
 2. 文書では、見出しから必要な手順を見つけ、記載どおりに操作できるかを確かめます。コードやデータでは、現物を同じ入力と合格条件で評価します。
-3. 提出前に再確認が一度起動します。欠陥を直し、同じ条件で合否と改善幅を確かめます。Kafstylerの手順に原因があれば、再現して、正本に書き込める範囲で直します。[評価と自己改善の手順](skills/charter/SKILL.md#成果物の確認と手順の改善)
+3. エージェントは提出前に成果物とスキルの実行結果を確認します。欠陥を直したら同じ条件で再評価します。[評価と自己改善の手順](skills/charter/SKILL.md#成果物の確認と手順の改善)
 
 ### プラグインの更新と検証
 
@@ -61,12 +61,11 @@ codex plugin add kafstyler@kafstyler
 Kafstyler本体の作業を始める前に、リポジトリのルートで `base=$(git rev-parse main)` を実行し、着手前のコミットを記録します。変更後は同じルートで、着手前の検査と候補版の検査をどちらも候補版にかけます。
 
 ```bash
-(set -o pipefail
- git show "${base}:hooks/check.py" | python3 -) &&
-  python3 hooks/check.py
+(set -o pipefail; git show "${base}:hooks/check.py" | python3 -)
+python3 hooks/check.py
 ```
 
-両プラグインの設定からフックを起動し、作業規約にあるスキルが配布され、依頼の受付、委譲、提出前の確認で案内されることを確かめます。
+検査は両プラグインの設定からフックを実行します。起動時に規約が渡り、依頼受付時に配布スキルの発動条件が渡ることを確かめます。
 
 本体の全Markdownに全スキルを使い、文書ごとの結果を [適用記録](hooks/markdown-reviews.json) に残します。検証で記録の不足や古い版を検出します。変更をステージしたら、`python3 hooks/check.py --staged` でコミットする版を確かめます。[適用と記録の手順](AGENTS.md#全markdownに全スキルを使う)
 
