@@ -44,9 +44,9 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 ### 登大遊の論理的思考
 
-[登大遊・論理的思考の放棄](https://softether.hatenadiary.org/entry/20070324/p1)（原典）。完成時の利用場面と最初の違和感
+[登大遊・論理的思考の放棄](https://softether.hatenadiary.org/entry/20070324/p1)（原典）。完成時の利用場面を先に思い描く。整理では、完成像と現状の差から候補を見つけ、普段の入口で変更の結果を確かめる。
 
-[目標設定](skills/charter/SKILL.md)
+[目標設定](skills/charter/SKILL.md)・[不要なファイル・コード・文章の削除](skills/prune/SKILL.md)
 
 ### Claude Codeの実践
 

@@ -99,15 +99,15 @@
       }
     },
     "skills/prune/SKILL.md": {
-      "sha256": "f5979bd0fd3c5a7a6b85d37583a7b98117169f156fa5fd483411ff2a99af2465",
+      "sha256": "280a821c86791b418478ded43556b31eae36ef00b56d13410e8a29cc3a2dfa6e",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "サブディレクトリからルートを特定し、無視対象・空ディレクトリ・名前に改行を含むファイルを含め、直下の5項目を一度ずつ列挙した。"},
-        "charter": {"status": "pass", "evidence": "範囲指定なしで直下を調べ、候補の根拠を確かめてから削り、残した入口の同じ入力を検証する順を確認した。"},
-        "deliver": {"status": "pass", "evidence": "両クライアントの受付フックが新しい発動条件を表示し、Codexでローカル配布版0.5.23の定義を読み戻した。"},
-        "humanizer": {"status": "pass", "evidence": "4項に使われていない空のディレクトリ、5項に保留で残るGit状態の扱いを明記した。"},
-        "prune": {"status": "pass", "evidence": "一時Gitリポジトリでキャッシュ、最初から空のディレクトリ、旧ファイル2件を削り、通常入口の出力が前後で一致した。"},
-        "schema": {"status": "pass", "evidence": "既存のYAMLの名前、種別、説明、タグと、候補の根拠を記す既存の作業記録を確認した。"},
-        "scrutiny": {"status": "pass", "evidence": "古くてもglobで読み込まれる入力と、用途不明で戻せない未追跡データを保持した。残った未追跡のパスと理由を記録する手順を加えた。"}
+        "benchmark": {"status": "pass", "evidence": "セットアップと月次公開の2例を変更前後の手順で別々に実行し、どちらも終了0、通常入口の出力は各例で一致した。"},
+        "charter": {"status": "pass", "evidence": "1項を使い、セットアップの完了表示と月次公開の見出し・件数を、候補を調べる前に必要な結果として定めた。"},
+        "deliver": {"status": "pass", "evidence": "両クライアント用の配布フックを検査し、Codexに導入した0.5.25に同じスキル本文と聖典台帳があることを照合した。"},
+        "humanizer": {"status": "pass", "evidence": "1項を通読し、完成像、現状の確認、候補の発見の順が読め、候補の採否は3項をたどれることを確認した。"},
+        "prune": {"status": "pass", "evidence": "セットアップの重複段落と月次公開の旧下書きを削り、前者は案内のコマンドを、後者は公開のコマンドを同じ入力で再実行した。"},
+        "schema": {"status": "pass", "evidence": "YAMLを読み戻し、種別、説明、検索タグでpruneを抽出した。聖典台帳から本文へ、本文の1項から原典の登録箇所へたどれた。"},
+        "scrutiny": {"status": "pass", "evidence": "参照文字列のない月次公開テンプレートは、実行時にglobで読み込まれることを確かめて保持した。"}
       }
     },
     "skills/schema/SKILL.md": {
