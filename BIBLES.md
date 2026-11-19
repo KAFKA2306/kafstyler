@@ -12,6 +12,11 @@ generated:
 sources:
   - id: okf-v03-spec
     resource: https://github.com/open-knowledge-format/open-knowledge-format/blob/527e81aff55992be21507e97004286789126f88c/SPEC.md
+  - id: anthropic-hooks
+    resource: https://code.claude.com/docs/en/hooks
+verified:
+  - by: openai/chatgpt
+    at: "2026-11-19T09:51:58Z"
 ---
 
 # 聖典台帳
@@ -167,14 +172,15 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 ### Claude Codeのフック
 
-[Anthropic・Hooks reference](https://code.claude.com/docs/en/hooks)（公式リファレンス）。Claude Codeのフックを設計・検証するときの正本。各イベントの発火条件、入力と出力のJSON、終了コードと判定制御、設定場所、`matcher` を確認する（2026年11月19日確認）。
+[Anthropic・Hooks reference](https://code.claude.com/docs/en/hooks)（公式リファレンス、2026年11月19日確認）。[設定場所](https://code.claude.com/docs/en/hooks#hook-locations)、[matcher](https://code.claude.com/docs/en/hooks#matcher-patterns)、[イベント別の発火条件・入出力・判定制御](https://code.claude.com/docs/en/hooks#hook-events)を確認する。[^anthropic-hooks]
 
-- 設定を置く前に、ユーザー、プロジェクト、プラグインなどの適用範囲を確認する。`matcher` が照合する値はイベントごとに確認する。例えば `PreToolUse` の `Bash` はツール名に一致し、`Stop` では `matcher` が無視される。[設定場所](https://code.claude.com/docs/en/hooks#hook-locations)・[matcherの書き方](https://code.claude.com/docs/en/hooks#matcher-patterns)
-- Kafstylerは [SessionStart](https://code.claude.com/docs/en/hooks#sessionstart) で規約を渡し、[UserPromptSubmit](https://code.claude.com/docs/en/hooks#userpromptsubmit) で依頼受付時にスキルの発動条件を渡す。
-- ツール実行前の遮断には `PreToolUse` を使う。対象の操作を `tool_input` から判定し、遮断時は `hookSpecificOutput` に `permissionDecision: "deny"` を返す。コマンドフックで対象外の操作は出力せず終了コード `0` を返し、通常の権限判定に渡す。起動失敗やタイムアウトでも遮断する `onFailure: "block"` は、Claude Code v2.1.295以降の同期 `command`・`http` フックで使える。[実行前の判定](https://code.claude.com/docs/en/hooks#pretooluse-decision-control)・[フックが失敗した場合の遮断](https://code.claude.com/docs/en/hooks#block-the-action-when-a-hook-fails)
-- 応答終了時の自動チェックには `Stop` を使う。やり直せる不合格なら `decision: "block"` と `reason` で作業を続けさせる。`stop_hook_active` や直前の結果を確認し、同じ条件で再実行が続くのを防ぐ。[発火条件と入力](https://code.claude.com/docs/en/hooks#stop)・[終了時の判定](https://code.claude.com/docs/en/hooks#stop-decision-control)
+- Kafstylerで使うイベントは [SessionStart](https://code.claude.com/docs/en/hooks#sessionstart) と [UserPromptSubmit](https://code.claude.com/docs/en/hooks#userpromptsubmit)。[作業規約](AGENTS.md#全作業への適用と自己改善)
+- ツール実行前の遮断は [PreToolUse](https://code.claude.com/docs/en/hooks#pretooluse-decision-control)。起動失敗やタイムアウト時も遮断する場合は [onFailureの適用条件](https://code.claude.com/docs/en/hooks#block-the-action-when-a-hook-fails) を参照する。
+- 応答終了時の自動チェックは [Stop](https://code.claude.com/docs/en/hooks#stop)。作業を続ける条件と、再実行を打ち切る条件を決める。
 
-[作業規約](AGENTS.md#全作業への適用と自己改善)・[作業中の版で試す](README.md#作業中の版で試す)・[発火の確認](https://code.claude.com/docs/en/hooks#debug-hooks)
+[作業中の版で試す](README.md#作業中の版で試す)・[発火の確認](https://code.claude.com/docs/en/hooks#debug-hooks)
+
+[^anthropic-hooks]: Hooks referenceの「Configuration」「Hook events」「Debug hooks」。
 
 ### プラグインの作成
 
