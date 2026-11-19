@@ -1,5 +1,5 @@
 {
-  "compared_to": "25134e2d5183594bd6c86912d73c14f582fa397d",
+  "compared_to": "ec9a48094f677916e3c6dfe178837aae27bf58af",
   "rules": "cce5a59681f2e46ebc8d463946d99294d48cedb1d34eae60855b55bec6298eff",
   "documents": {
     "AGENTS.md": {
@@ -39,15 +39,15 @@
       }
     },
     "README.md": {
-      "sha256": "c0da2ebf91d5a08bb0e9b278b49529d85cc818acfc8e6927ffefc51dfef22d39",
+      "sha256": "af0748c73e70fff428c1d4258a96a352ee5b3a61ccc5acaff432cc878e417e23",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版と候補版を同じリンク検査に通した。全13文書の相対リンクは555件から564件で、両版とも不達0件。READMEの外部URLは同一。"},
-        "charter": {"status": "pass", "evidence": "大規模プロジェクトの担当者が、設計・再現・更新の具体例と最初の依頼文を、冒頭からたどれることを合格条件にした。"},
-        "deliver": {"status": "pass", "evidence": "冒頭から適用例、依頼文、導入先を開いた。適用例からデータと画面の設計、評価、再開と資料更新の既存手順へのリンクを解決した。"},
-        "humanizer": {"status": "pass", "evidence": "大規模開発で読者が使える手順と、週次公開サービスの例を冒頭に置いた。yomiyasuのlint・diffと最終稿のハッシュ照合を実行した（20261119T103235Z-5acb9c26）。"},
-        "prune": {"status": "pass", "evidence": "従来の紹介文を具体例に置き換え、追加説明を冒頭に重ねず、設計から導入までを既存の参照先へつないだ。"},
-        "schema": {"status": "pass", "evidence": "利用例と導入という文書の役割をdescriptionに反映し、種別・タグと既存リンクを保持した。OKF厳格検査で警告0件。"},
-        "scrutiny": {"status": "pass", "evidence": "設計の分担、同じ入力での比較、日次の資料見直しを規約・スキル・聖典に照合した。週次公開サービスを導入実績として読まないよう仮定の例とし、最新仕様の採用は現行版との比較手順で説明した。"}
+        "benchmark": {"status": "pass", "evidence": "着手版と候補版で相対参照を同条件で検査した。564件から566件に増え、両版とも不達0件。README外部URLは一致。"},
+        "charter": {"status": "pass", "evidence": "大規模な開発の適用例から、7スキルそれぞれの判断、成果物、引き継ぎ先を特定できることを合格条件にした。"},
+        "deliver": {"status": "pass", "evidence": "大規模開発の適用例、スキルの呼び出し方、表から全7スキルの実ファイルにたどれた。"},
+        "humanizer": {"status": "pass", "evidence": "抽象的な用途一覧を公開物と再実行の証拠に結び付けた。yomiyasuのlint・diffと最終稿照合を実行した（20261119T103548Z-26175e11）。"},
+        "prune": {"status": "pass", "evidence": "旧用途表を一つの成果物事例に統合し、既存のスキル見出しとリンク先から新しい表にたどれることを確認した。"},
+        "schema": {"status": "pass", "evidence": "READMEの種別とタグを維持し、表を7行と3列で読み取れ、名前と参照先が実際のスキル一覧と一致することを確認した。OKF厳格検査で警告0件。"},
+        "scrutiny": {"status": "pass", "evidence": "画面だけ更新してCSVを見落とす例を、反証から比較条件の追加、修正、公開先の再確認につないだ。表の責任範囲を現行の7スキルに照合し、推敲で変わった意味を見直した。"}
       }
     },
     "index.md": {
