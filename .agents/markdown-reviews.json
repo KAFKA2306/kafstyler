@@ -1,5 +1,5 @@
 {
-  "compared_to": "678c95e0053a0b6a971b54e36b93dc301e4f3f61",
+  "compared_to": "b0157d969aa6ea2e073426d454a727781423a5fa",
   "sources": {
     "成功基準と自動採点": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
     "エージェント評価と判定例": "https://www.anthropic.com/research/demystifying-evals-for-ai-agents",
@@ -13,7 +13,7 @@
     "Kafstylerの作業記録": "https://github.com/KAFKA2306/kafstyler/issues/38",
     "フォルダ統合の作業記録": "https://github.com/KAFKA2306/kafstyler/issues/50"
   },
-  "rules": "a9c74a995e249313f2861be59bc1bb96d975069cd1a655387f06aea32b2d6cb1",
+  "rules": "1f7967085d783526eac269d20430031fb9f77759db58fec07bbacd23e7b4de0f",
   "documents": {
     "AGENTS.md": {
       "sha256": "8da0a2ecd230436458fe604109977ecca727959c264d2bc48ea3865eacd28a06",
@@ -40,15 +40,15 @@
       }
     },
     "MISSION.md": {
-      "sha256": "9447b66e105772d03e2736e3c4dfbb22298f0a7d48c5695aa5dbedd1ef845b25",
+      "sha256": "b589b947fd04706e10b699d57b5a138d3d75a8a41d955c3f6174479c1b18cfd1",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "相対参照は前後28件で切れ0件。設計着手と品質判定の条件をbenchmark本文と照合した。"},
-        "charter": {"status": "pass", "evidence": "利用者の用事が済む観測を基準にし、設計前の評価へ渡すことを確認した。"},
-        "deliver": {"status": "pass", "evidence": "評価指標節からbenchmarkと成功基準の記述に到達した。"},
-        "humanizer": {"status": "pass", "evidence": "本文を通読し、設計前に決めることと、納品前に記録する結果が一段落で分かることを確認した。"},
-        "prune": {"status": "pass", "evidence": "測定の詳細をbenchmarkに残し、ミッションには設計着手と品質判定の条件を記した。"},
-        "schema": {"status": "pass", "evidence": "YAMLの種別とタグが着手版と一致し、評価の手順と根拠への相対リンクが解決した。"},
-        "scrutiny": {"status": "pass", "evidence": "目視からだけでは判定できる条件が決まらない例を検討し、独立自動採点または未確認とする手順を参照した。"}
+        "benchmark": {"status": "pass", "evidence": "着手版と候補を同じ条件で照合し、参照元35件、本文の相対リンク28→24件で切れ0件。更新手順の見出しを消した試験入力は不合格になった。"},
+        "charter": {"status": "pass", "evidence": "別担当が更新ルールと再開手順を見つけられることを合格条件にし、保守担当と定期CSVの交代担当の二つの読み方で照合した。"},
+        "deliver": {"status": "pass", "evidence": "保守の読み手は更新手順からREADMEの検証入口に到達し、定期CSVの読み手は冒頭の事例からdeliverの常駐・定期実行手順に到達した。確認対象は文書と参照経路。"},
+        "humanizer": {"status": "pass", "evidence": "冒頭と各見出しを通読し、利用者の完了条件、schemaの役割、三つの使命の順に理解できるよう推敲した。集計行のキーと改定履歴の公表日を別の文で示した。"},
+        "prune": {"status": "pass", "evidence": "同じリンク検査で相対リンクを28件から24件に整理し、既存の見出し10件と7スキルへの参照を保持した。"},
+        "schema": {"status": "pass", "evidence": "OKF v0.3の公式厳格検査で13件、エラー・警告0件。mission種別とkafstyler/missionタグで1件を取得し、三つの出典から各正本に到達した。"},
+        "scrutiny": {"status": "pass", "evidence": "別担当のレビューで、改定の公表日を行のキーに混ぜる曖昧さと、必須項目が不合格でも測定できれば完了と読める曖昧さを発見した。訂正対象のキーを明記し、必須項目の合格を終了条件に直した。"}
       }
     },
     "README.md": {
@@ -234,7 +234,7 @@
       }
     },
     ".agents/markdown-reviews.json": {
-      "sha256": "9a0b6f47343e8cca1369eaeb06f6643468c96fb4c6bffa580bbf764bbe434619",
+      "sha256": "fc1b431400f47b02ef9bd39a23853586f8d0878c630a4cdd2f303de7dde40cae",
       "results": {
         "benchmark": {"status": "pass", "evidence": "追跡20件・7スキルを維持し、変更対象の記録と既知の保留2件を着手版と照合した。"},
         "charter": {"status": "pass", "evidence": "保守担当がどの版を比較し、何を自動判定したかをこの台帳で確認できることを条件にした。"},
