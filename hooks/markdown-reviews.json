@@ -1,6 +1,6 @@
 {
-  "compared_to": "dd9f50628682b0d127b10863b386c735c86e2278",
-  "rules": "80d594b171a7234bcff9a9607f1dbb68207a7a2231562c1bb0137891359c9d72",
+  "compared_to": "0c63f57416f22a89cef45fa305d59f20e59e45db",
+  "rules": "a278f9f5c4cbe3c78092f9ff4cfe0b3ce626256dcc5bd46fefb3691d3dc2d56b",
   "documents": {
     "AGENTS.md": {
       "sha256": "4e8d7439031e9485f3f1aa1054dfb48a73037f38ab1528c42222f3c640642f58",
@@ -15,15 +15,15 @@
       }
     },
     "BIBLES.md": {
-      "sha256": "464c7381a1bc7c72f41af832737b57312fee24f7104fb290d93447184afe0404",
+      "sha256": "2282d87d4028268096ad9281d19f999b2d8b033d123a9335f4aac3f339a34aa6",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版にないAntigravity CLIの配布と実行の節を候補版で見つけ、節内の相互リンクと全Markdownの内部参照を照合した。"},
-        "charter": {"status": "pass", "evidence": "導入、更新、配布、認証、ヘッドレスの判断から発行元の仕様を選べるようにした。"},
-        "deliver": {"status": "pass", "evidence": "READMEの導入とdeliverのヘッドレス手順の双方への相対リンクを解決した。"},
-        "humanizer": {"status": "pass", "evidence": "各資料群で資料名、種別、どの判断に使うかを一文で確認できる。"},
-        "prune": {"status": "pass", "evidence": "既存のWSL事例や他社の設定を再掲せず、Antigravity CLIの一次資料だけを既存のハーネス節に加えた。"},
-        "schema": {"status": "pass", "evidence": "書誌の粒度と既存の種別・タグを維持し、READMEとdeliverを適用先に結んだ。"},
-        "scrutiny": {"status": "pass", "evidence": "Googleの現行仕様でCLIの既定パス、プラグイン管理、モデル一覧、ヘッドレス判定を照合し、WSLのPATHはMicrosoft文書に照合した。"}
+        "benchmark": {"status": "pass", "evidence": "design main の画面評価ガイドを読み戻し、見た目と操作の判定に必要な節と状態別の検証基準への参照を照合した。"},
+        "charter": {"status": "pass", "evidence": "変更の対象が画面の場合、普段の入口と確認する操作から画面評価ガイドを選べることを確認した。"},
+        "deliver": {"status": "pass", "evidence": "design の統合コミットからガイドを取得し、見た目を修正前後で比べる節を開けた。"},
+        "humanizer": {"status": "pass", "evidence": "画面の評価の一行から、見た目を試す手順と入力方法ごとの要件の参照先を読み分けられる。"},
+        "prune": {"status": "pass", "evidence": "実画面を試す説明二行を一行に統合し、参照先のガイド、設計基準、三つの担当スキルを保った。"},
+        "schema": {"status": "pass", "evidence": "聖典のfrontmatterの種別とタグ、資料・用途・対応スキルの表の構成を保った。"},
+        "scrutiny": {"status": "pass", "evidence": "操作や状態の条件を失わないか現行のdesign基準と照合し、画面評価と状態・入力の二つの参照先を保った。"}
       }
     },
     "MISSION.md": {
@@ -63,15 +63,15 @@
       }
     },
     "skills/benchmark/SKILL.md": {
-      "sha256": "a61b0810537bf13b1ea0a41ed421e3c7c33012c6fbfea92318872f18179c4aeb",
+      "sha256": "145353413ab99bcd159a40eccf4cde20c26b99fa85102044c782c9fa621914e8",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "4つの失敗・境界事例ごとに、観測する結果が少なくとも一つあることを確認した。"},
-        "charter": {"status": "pass", "evidence": "評価の目的を、成功を報告できることから利用者が成果を確認できることまで具体化した。"},
-        "deliver": {"status": "pass", "evidence": "聖典から当該節へ進み、そこから実行手順と成果の正本を特定できる。"},
-        "humanizer": {"status": "pass", "evidence": "各行で入力と合格と分かる結果を分け、事例ごとに何を観測するか分かる形にした。"},
-        "prune": {"status": "pass", "evidence": "既存の合否記録を使用し、ケースと判定だけを専用節に置いた。"},
-        "schema": {"status": "pass", "evidence": "受付、成果、外部書き込み、再開後の重複をそれぞれ識別できる評価条件を照合した。"},
-        "scrutiny": {"status": "pass", "evidence": "応答消失後の再送、同時書き込み、別セッション、権限拒否で誤って成功判定する経路を点検した。"}
+        "benchmark": {"status": "pass", "evidence": "スマホ幅390で同じカタンの質問を送り、旧画面は回答を読めても出典が画面外、隔離候補は同じ回答と出典が画面内に収まると確かめた。"},
+        "charter": {"status": "pass", "evidence": "利用者が回答と出典を見られることを測定条件にし、見た目の評価を求めた時点で発動する説明にした。"},
+        "deliver": {"status": "pass", "evidence": "Codexの検証用の配布元から0.5.30を導入し、7スキルを収録することと実際に導入された本文の一致を確認した。"},
+        "humanizer": {"status": "pass", "evidence": "画面の評価の見出しから、どの変更で前後比較を行い、何を記録するかを読み取れる。"},
+        "prune": {"status": "pass", "evidence": "既存の評価手順と画面の章を一つの参照で結び、撮影手順や状態別の詳細はdesignの既存ガイドを使用した。"},
+        "schema": {"status": "pass", "evidence": "一行の発動条件とYAMLの種別・タグを解析し、前後の対象版と見た目・操作の判定を混同しない出力を照合した。"},
+        "scrutiny": {"status": "pass", "evidence": "操作が通る旧画面でも出典が画面外になる反例と、画面を比較できない場合に見た目を未確認とする条件を照合した。"}
       }
     },
     "skills/charter/SKILL.md": {
