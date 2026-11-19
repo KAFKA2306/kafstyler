@@ -1,5 +1,5 @@
 {
-  "compared_to": "e904569d602f27b12b609ed4aada235bcc13f436",
+  "compared_to": "1273333775d80c8923ebeb25416bff0358a3bae1",
   "sources": {
     "検証の原典": "https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/",
     "検証の研究": "https://arxiv.org/abs/2611.22323",
@@ -9,7 +9,7 @@
     "Gitのファイル一覧": "https://git-scm.com/docs/git-ls-files",
     "Kafstylerの作業記録": "https://github.com/KAFKA2306/kafstyler/issues/38"
   },
-  "rules": "1d8bfbfc3e383ede284062227297131b86109faf9043e3a2b8aa363bfc2506a5",
+  "rules": "43c10d18ec095ce5d3e118bfa559bb2e3de9892c8141f7202ffa27a7600e5c77",
   "documents": {
     "AGENTS.md": {
       "sha256": "c8ffe80cf371738d2a41b2ac95cedcb3e340e4e2c37a346114b8329864c0222f",
@@ -132,15 +132,15 @@
       }
     },
     "skills/prune/SKILL.md": {
-      "sha256": "557955f5418cef23b0c5d4c02e781061ff94a408b66048abb9747165a1ec167b",
+      "sha256": "08e9371f6263c8311f1c2647f5adbea97593d6943f4a50538807ace5fb9213ab",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "相対リンク26→25件、切れ0件、参照先24件を維持。schemaとの移行手順と検証結果を戻す参照を開いた。"},
-        "charter": {"status": "pass", "evidence": "保守担当が不要な候補を判断し、削除後に普段の入口を同じ入力で完了できることを条件にした。"},
-        "deliver": {"status": "pass", "evidence": "両ホストのフックで説明を読み戻し、候補本文からschemaの正本と反証レビューの手順を開いた。"},
-        "humanizer": {"status": "pass", "evidence": "候補、実際の削除、保留を読み分け、反証レビューを「観点」から対象と根拠を渡す操作に改めた。"},
-        "prune": {"status": "pass", "evidence": "指定のZenn3本と登大遊の原典の使い分けを読み、imozの重複1件だけを削除した。ファイルの削除は0件。"},
-        "schema": {"status": "pass", "evidence": "Markdown整理の前にschemaへ移行先、旧パス、参照元を渡すようにし、候補の保留と後継の識別を本文で確認した。"},
-        "scrutiny": {"status": "pass", "evidence": "一見使われていないがglobと配布が読む文書を反例にし、候補の根拠をscrutinyへ渡す手順と配布参照の確認を照合した。"}
+        "benchmark": {"status": "pass", "evidence": "同じ入力で着手版と比較し、正常な差分なし、再送・同ID更新・部分失敗、停止前照合、利用者の入口と許容時間の条件が候補から読み取れることを確認。既存の相対リンク25件を維持し、追加2件を開いた。"},
+        "charter": {"status": "pass", "evidence": "イベントの主催者が普段の入口で変更を1時間以内に一度だけ読めることを条件にして、切り替え前に遅延と重複を確認する判断を得た。"},
+        "deliver": {"status": "pass", "evidence": "Claude CodeとCodexの受付フックでpruneの発動条件を読み、本文からdeliverの常駐運用、benchmarkの定期実行、schemaの正本移行の参照を解決した。"},
+        "humanizer": {"status": "pass", "evidence": "候補を探す、コードで絞る、新旧を比べて停止する、の順に読み合わせた。差分なしは取得がすべて成功した場合と明記した。"},
+        "prune": {"status": "pass", "evidence": "重複処理・全件再読込・完了通知を既存の整理手順の3箇所に加えた。停止・再開と計測の細目は既存手順を参照し、独立した年次ハンドブックは残す判断を確認した。"},
+        "schema": {"status": "pass", "evidence": "既存の正本移行の連携を保持し、照合に使うID・更新識別子と本文を分けた。公式OKF strictでエラー・警告0、種別とタグでpruneを1件取得した。"},
+        "scrutiny": {"status": "pass", "evidence": "同IDの更新、同版再送、部分取得失敗を読み合わせ、更新の欠落・二重登録・失敗を差分なしとして扱う経路を確認した。1時間の許容遅延には取得と処理の時間も含める。"}
       }
     },
     "skills/schema/SKILL.md": {
@@ -230,7 +230,7 @@
       }
     },
     "hooks/markdown-reviews.json": {
-      "sha256": "ebe3bdc14468bf171467131822105f1b59f16185bd2ea7389f74cb78d0586243",
+      "sha256": "c752e785eafe67a66e25555a364242a9702c40df5459f7aaf5c7852824ecff22",
       "results": {
         "benchmark": {"status": "pass", "evidence": "対象は13→20件、組は91→140件。全パスに7キーが一つずつあり、意図的な保留が判定に反映された。"},
         "charter": {"status": "pass", "evidence": "保守担当が一ファイル・一スキルの判断と適用版を台帳から探せることを合格条件にした。"},
