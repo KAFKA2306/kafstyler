@@ -1,6 +1,9 @@
 {
-  "compared_to": "e6fb24843c7bd07d935ea64257eb25c53dbeae66",
+  "compared_to": "678c95e0053a0b6a971b54e36b93dc301e4f3f61",
   "sources": {
+    "成功基準と自動採点": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
+    "エージェント評価と判定例": "https://www.anthropic.com/research/demystifying-evals-for-ai-agents",
+    "画面の判定": "https://github.com/KAFKA2306/design/blob/main/docs/frontend-review.md",
     "検証の原典": "https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/",
     "検証の研究": "https://arxiv.org/abs/2611.22323",
     "系列IDの原典": "https://www.bls.gov/help/hlpforma.htm#LA",
@@ -10,18 +13,18 @@
     "Kafstylerの作業記録": "https://github.com/KAFKA2306/kafstyler/issues/38",
     "フォルダ統合の作業記録": "https://github.com/KAFKA2306/kafstyler/issues/50"
   },
-  "rules": "8824d5e41733dc7be689acf7f45178185e374391d49679581a4c79a8e7550fbc",
+  "rules": "a9c74a995e249313f2861be59bc1bb96d975069cd1a655387f06aea32b2d6cb1",
   "documents": {
     "AGENTS.md": {
-      "sha256": "fa5d95cc2c497071faa46e7f2a812da40d9237c5bce0585599d2705ec042143c",
+      "sha256": "8da0a2ecd230436458fe604109977ecca727959c264d2bc48ea3865eacd28a06",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "変更前後で相対リンクは各69件、切れ0件。起動フックが新しい規約を渡すことを両ホストで確かめた。"},
-        "charter": {"status": "pass", "evidence": "保守担当が版・対象・合否・再開条件を台帳に残せることを条件にし、作業台帳と本体の変更手順から記録先を特定した。"},
-        "deliver": {"status": "pass", "evidence": "ファイル一覧から移動した3ファイルを開き、規約に記載した一覧とステージ済みの監査コマンドを実行した。"},
-        "humanizer": {"status": "pass", "evidence": "ファイル名と用途の説明を保った。yomiyasuの変更前後比較で指摘は同じ41件だった。"},
-        "prune": {"status": "pass", "evidence": "フック本体、検証、適用記録への案内を既存のファイル一覧で更新し、旧パスを残していない。"},
-        "schema": {"status": "pass", "evidence": "検証と台帳の相対パス、Markdownの既存メタデータ、正本の配置を新しいファイル一覧に照合した。"},
-        "scrutiny": {"status": "pass", "evidence": "規約内の実行コマンドとファイル一覧の両方を照合し、旧フォルダを前提とする参照を除いた。"}
+        "benchmark": {"status": "pass", "evidence": "前後の相対リンクは69→71件、切れ0件。画面とCSVの依頼を読み合わせ、候補で設計前の評価固定を確認した。"},
+        "charter": {"status": "pass", "evidence": "利用者の完成場面と評価条件を別の手順で決め、設計前に作業台帳へ固定する経路を確認した。"},
+        "deliver": {"status": "pass", "evidence": "Claude CodeとCodex用の起動・依頼受付フックを実行し、規約と設計前の評価の案内を取得した。"},
+        "humanizer": {"status": "pass", "evidence": "連携では着手条件、完了節では品質判定の条件が分かることを通読した。"},
+        "prune": {"status": "pass", "evidence": "評価方法の詳細をbenchmarkに置き、共通規約では呼び出す段階と完了条件を示した。"},
+        "schema": {"status": "pass", "evidence": "YAMLの種別とタグを前後で照合し、作業台帳を評価条件の記録先に指定したことを確認した。"},
+        "scrutiny": {"status": "pass", "evidence": "必須判定を実行できない例で、未確認のまま完了扱いにする経路がないことをbenchmarkの提出手順と照合した。"}
       }
     },
     "BIBLES.md": {
@@ -37,27 +40,27 @@
       }
     },
     "MISSION.md": {
-      "sha256": "420c51437404d1857dcd4496218882896e0999e797c00d6c5f6ce3df600ba290",
+      "sha256": "9447b66e105772d03e2736e3c4dfbb22298f0a7d48c5695aa5dbedd1ef845b25",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "同じGitHub相当のリンク検査で前後28件・20参照先、切れ0件。3ミッションから各スキルを開いた。"},
-        "charter": {"status": "pass", "evidence": "保守担当が3ミッションから今回の目的を選び、更新と比較へ進めることを条件にして入口をたどった。"},
-        "deliver": {"status": "pass", "evidence": "文書整備からschema、更新からREADME候補版の検証に進み、Codexの配布版からMISSIONを読み戻した。"},
-        "humanizer": {"status": "pass", "evidence": "「必要最小限の半分」は必須確認の削減と読めたため、既存入口に必要な確認をまとめる指示に改稿した。yomiyasuで書式エラー0。"},
-        "prune": {"status": "pass", "evidence": "自動化の追加条件を短くし、検査の詳細はAGENTS・benchmarkの参照を利用した。3ミッションの入口を保持した。"},
-        "schema": {"status": "pass", "evidence": "OKFのmission検索で1件を取得し、規約、一次資料、評価手順の保管先を区別できることを確認した。"},
-        "scrutiny": {"status": "pass", "evidence": "必要な検証が2件という入力で半減すると必須1件を失う旧記述を反証し、候補に件数による削減指示がないことを読んだ。"}
+        "benchmark": {"status": "pass", "evidence": "相対参照は前後28件で切れ0件。設計着手と品質判定の条件をbenchmark本文と照合した。"},
+        "charter": {"status": "pass", "evidence": "利用者の用事が済む観測を基準にし、設計前の評価へ渡すことを確認した。"},
+        "deliver": {"status": "pass", "evidence": "評価指標節からbenchmarkと成功基準の記述に到達した。"},
+        "humanizer": {"status": "pass", "evidence": "本文を通読し、設計前に決めることと、納品前に記録する結果が一段落で分かることを確認した。"},
+        "prune": {"status": "pass", "evidence": "測定の詳細をbenchmarkに残し、ミッションには設計着手と品質判定の条件を記した。"},
+        "schema": {"status": "pass", "evidence": "YAMLの種別とタグが着手版と一致し、評価の手順と根拠への相対リンクが解決した。"},
+        "scrutiny": {"status": "pass", "evidence": "目視からだけでは判定できる条件が決まらない例を検討し、独立自動採点または未確認とする手順を参照した。"}
       }
     },
     "README.md": {
-      "sha256": "b3c2a24d257a204bfbe345b6e4f12f4c8470eb74063f2359f00473d22f9b7daf",
+      "sha256": "c734409c274a725cd60e5ccf96fd24070d99c6320acdcdac79df47abe5adc063",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "b8fd165と候補を同じGFM処理で比較した。19,632字から9,530字へ51.5%削減。候補のREADME内・外向きの相対リンク41件とリポジトリ内からの参照13件が解決した。 統合前後の相対リンク41件を比較し、切れ0件。"},
-        "charter": {"status": "pass", "evidence": "初見の読者が試用例、3クライアントの導入、8分野の用途へ冒頭から進めることを合格条件にし、候補の見出しとリンクをたどった。"},
-        "deliver": {"status": "pass", "evidence": "候補をGFMで描画して最初の依頼と3クライアントの入口を解決した。Codex 0.167.0-alpha.4の隔離環境でローカル配布元から有効化し、導入済みREADMEのバイト一致と7スキルを観測した。 短縮版を保ったまま新しい検査を起動し、適用記録への参照を開けることを確認した。"},
-        "humanizer": {"status": "pass", "evidence": "原稿と短縮稿を通読し、yomiyasuのlint・diffと最終稿の照合を実行した（20261119T110807Z-afedc118）。版は入力・実装・配布物を特定し、入口は利用者が確かめる画面や手順を指すため保持した。 表現は保ってパスだけを変更し、yomiyasuの指摘24件が変更前後で一致した。"},
-        "prune": {"status": "pass", "evidence": "用途紹介の重複、日付付きの70件集計と事例の列挙を削り、8分野の見出しと主な事例、配布・起動・更新・候補検証の手順を残した。文書からの参照13件を再確認した。 短縮後の同じ節に検証手順を保ち、旧パスを新しい配置に差し替えた。"},
-        "schema": {"status": "pass", "evidence": "既存frontmatterの種別・タグとschemaのOKF・Obsidian Vault・dbtの役割を照合した。公式OKF検査13件でエラーと警告が0件、guideとタグの検索でREADMEを1件取得した。 移動した台帳の相対リンクを解決し、候補版全体のOKF厳格検査もエラーと警告0件。"},
-        "scrutiny": {"status": "pass", "evidence": "短縮で導入後の操作が途切れる条件としてCodexのフック承認、Claude Codeの更新先名、WSLのagyの所有権を洗い出し、候補に確認方法が残ることを前後のコマンドと見出しで照合した。 短縮後の本文に旧パスがなく、3配布クライアントの導入手順に差分がないことを確認した。"}
+        "benchmark": {"status": "pass", "evidence": "相対参照は前後41件で切れ0件。新しい説明が設計前と提出時の両方の出力を示すことを確認した。"},
+        "charter": {"status": "pass", "evidence": "読者が事例の表から準備する評価と確認できる結果を見つけられることを条件にした。"},
+        "deliver": {"status": "pass", "evidence": "スキル一覧のbenchmarkリンクから設計前と提出前の手順を開いた。"},
+        "humanizer": {"status": "pass", "evidence": "表の評価行で、設計前に固定するものと提出時に確認するものを一行で読めることを確認した。"},
+        "prune": {"status": "pass", "evidence": "表の1行のみを変更し、評価方法の詳細は既存のリンクに集約した。"},
+        "schema": {"status": "pass", "evidence": "YAMLの種別・タグと、スキル一覧の行構造が着手版と一致した。"},
+        "scrutiny": {"status": "pass", "evidence": "旧版との比較がない初回制作も評価できることを、表の更新文言とbenchmarkの手順から確認した。"}
       }
     },
     "index.md": {
@@ -85,39 +88,39 @@
       }
     },
     "skills/benchmark/SKILL.md": {
-      "sha256": "f450d0eb391c5622b9f2c064bc36c0c23ecf8bb484d3d8bafe1b6d11b223305e",
+      "sha256": "6e106e3174043b000173392b6059b41333c69aa6c39a89b0d2ad1931dc64aa11",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "相対リンク36→35件・切れ0件。チェックが旧版で見逃した状態記録を同一入力で候補と比較した。"},
-        "charter": {"status": "pass", "evidence": "提出者が代表入力、合格条件、最後に観測する結果を決め、他の担当が再実行できることを条件にした。"},
-        "deliver": {"status": "pass", "evidence": "両ホストの依頼受付フックを実行し、benchmarkの説明がYAMLと一致して一つずつ表示された。"},
-        "humanizer": {"status": "pass", "evidence": "定期実行の表で一行の入力と観測結果が対応すること、必須項目の判定が本文で分かることを通読して確認した。"},
-        "prune": {"status": "pass", "evidence": "imozへの重複参照1件を除き、35の参照先と定期実行の4事例を維持した。"},
-        "schema": {"status": "pass", "evidence": "YAMLの固有タグと名前を解析し、指標ごとの入力・単位・条件および返却する合否を本文から抽出した。"},
-        "scrutiny": {"status": "pass", "evidence": "受付直後に失敗しても成功扱いになる例を与え、評価表が成果確認済みと区別することを照合した。"}
+        "benchmark": {"status": "pass", "evidence": "相対参照35件で切れ0件。日次CSVの試験で期待2件・合計9を合格、重複を残す3件・合計14を不合格、未実行を未確認と判定した。"},
+        "charter": {"status": "pass", "evidence": "画面とCSVで利用者の入口と期待結果を定め、合格・不合格例を固定してから設計する経路を旧版と比較した。"},
+        "deliver": {"status": "pass", "evidence": "両ホストの依頼受付フックを実行し、設計前・提出前という説明と設計前の固定を求める案内を読み戻した。"},
+        "humanizer": {"status": "pass", "evidence": "設計前の手順、提出判定、分野別の表を通読し、未確認から再開条件へたどれることを確認した。"},
+        "prune": {"status": "pass", "evidence": "分野ごとの検査は成果物に合う判定の表へ置き、事前固定と提出判定を共通手順にした。定期実行の4例を保持した。"},
+        "schema": {"status": "pass", "evidence": "YAMLの名前・タグを照合し、評価入力、合格値、評価条件の版、対象の版、証拠の記録先を確認した。"},
+        "scrutiny": {"status": "pass", "evidence": "CSVの重複と未実行を通さず、charterの反証中にbenchmarkを呼んでも評価条件を先に固定しない経路を確認した。"}
       }
     },
     "skills/charter/SKILL.md": {
-      "sha256": "b4eac293c2a464c46099076c1d9597fca7a967532c7d23a44f2ad8dd19bff99a",
+      "sha256": "0c5bb017c8bc93f7396ceab21907e44c7804c0d95746a382f19c5b5a22f01c1c",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "相対リンク18→17件、切れ0件。代表入力と最後の結果を手順から抜き出し、既存検査の基準に適用した。"},
-        "charter": {"status": "pass", "evidence": "普段の入口で最後に観測する結果と、作業の上限を初見の担当が決められることを条件にした。"},
-        "deliver": {"status": "pass", "evidence": "両ホストの受付フックで依頼時のcharter指定と、名前・YAMLの説明が届くことを確認した。"},
-        "humanizer": {"status": "pass", "evidence": "目標設定と最終確認の見出しを本文に照合し、実物を使う検証の例から「完了」を具体化できることを確認した。"},
-        "prune": {"status": "pass", "evidence": "imozの重複参照1件を削除した。benchmarkへの2参照は採否選定と提出判定で使う段階が違うため保持した。"},
-        "schema": {"status": "pass", "evidence": "YAMLのnameと親ディレクトリの一致を確かめ、完成場面・合格条件・道具の3出力が本文にあることを照合した。"},
-        "scrutiny": {"status": "pass", "evidence": "終了0だけで成果が出たと判断する誤りに対し、最後の操作と結果を先に定める手順を照合した。"}
+        "benchmark": {"status": "pass", "evidence": "相対参照は前後17件で切れ0件。画面とCSVの依頼を同じ手順で読み、両方で設計前と提出時にbenchmarkへ到達した。"},
+        "charter": {"status": "pass", "evidence": "画面の開催回とCSVの期待件数を例に、完成場面から設計に必要な評価へ進む手順を確認した。"},
+        "deliver": {"status": "pass", "evidence": "依頼受付フックからcharterをたどり、固定した評価を後続の工程と委譲先に渡す手順を開いた。"},
+        "humanizer": {"status": "pass", "evidence": "完成場面・合格条件・道具・評価の参照先の4点が本文の出力として読めることを確認した。"},
+        "prune": {"status": "pass", "evidence": "準備時と提出時の2参照を残し、それぞれ別の入口へ解決した。"},
+        "schema": {"status": "pass", "evidence": "YAMLの名前と親フォルダを照合し、提出時に対象版と評価条件の版を渡すことを確認した。"},
+        "scrutiny": {"status": "pass", "evidence": "反例の測定呼び出しが先に生じても、正式な評価の固定は目標への反証を反映した後になることを照合した。"}
       }
     },
     "skills/deliver/SKILL.md": {
-      "sha256": "9bb5a44932a63b0354e4a1c5ad4e28cdd4e2c6d13c123f98c0d3ede5b140cf1d",
+      "sha256": "20b4736b68327b72807f32e70e61e582a374777424bc615898d31dcb98db3411",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "相対リンク81→80件、切れ0件。候補の配布とフックから説明を確認し、公式仕様で初回確認の期待値を固定した。"},
-        "charter": {"status": "pass", "evidence": "運用担当が短時間の見守り、クラウド定期実行、端末での定期実行を表から選び、目標と起動条件を分けて成果を読み戻せることを条件にした。"},
-        "deliver": {"status": "pending", "evidence": "候補の配布とフックの説明を照合。Claude Codeの認証済み対話で予定ジョブを登録し、最初の予定時刻の実行と解除に至る操作は未実施。"},
-        "humanizer": {"status": "pass", "evidence": "受付、実行終了、公開先での結果を区別し、最初の予定実行での確認操作を一文ずつ記載した。yomiyasuで書式エラー0。"},
-        "prune": {"status": "pass", "evidence": "imozへの重複参照1件を除き、READMEとBIBLESからの常駐と連携の入口を保持した。"},
-        "schema": {"status": "pass", "evidence": "YAMLの固有タグを解析。起動元、状態、入力版、前回結果、保存先がschemaの再開契約に対応することを確認した。"},
-        "scrutiny": {"status": "pass", "evidence": "Claude公式では設定によって予定時刻にスラッシュ名が文字列になると確認し、ジョブIDに加えて初回の呼び出しと結果の読み戻しを追記した。"}
+        "benchmark": {"status": "pass", "evidence": "相対参照80→82件、切れ0件。日次CSVの合格・不合格・未実行を提出手順へ当てはめた。"},
+        "charter": {"status": "pass", "evidence": "設計前に固定済みの評価を確認し、置き換えでは現行と候補に同じ条件を渡す手順を読んだ。"},
+        "deliver": {"status": "pending", "evidence": "配布フックから評価準備の案内を取得した。Claude Codeの認証済み対話で予定ジョブを登録し、初回実行と解除に至る既存の確認は未実施。"},
+        "humanizer": {"status": "pass", "evidence": "実装と検証の第1項で着手、第5項で完了、第6項で配布を判断することを通読した。"},
+        "prune": {"status": "pass", "evidence": "必須検査の詳しい定義はbenchmarkに置き、既存の置き換え後にpruneを使う段階を維持した。"},
+        "schema": {"status": "pass", "evidence": "YAMLの種別とタグを照合し、候補の実装前にデータ契約を作る順序と評価結果の入力を確認した。"},
+        "scrutiny": {"status": "pass", "evidence": "検証未実行の反例では完了と配布を保留し、修正後は同じ自動判定で確かめる手順を照合した。"}
       }
     },
     "skills/humanizer/SKILL.md": {
@@ -145,15 +148,15 @@
       }
     },
     "skills/schema/SKILL.md": {
-      "sha256": "87d3d0f28b7e27d016e7752b7e4bd7d1a564fd67d5cc1fdb75d0ca9960a427f6",
+      "sha256": "c8fb6ce6b9756164f970ae01ae4e6c7326c34f6752c89bf72fbe3f44b6794f30",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "相対リンク55→54件、切れ0件。公式OKFのstrictとscanを同じ入力で実行し、0.3・13ファイル・エラー0を観測した。"},
-        "charter": {"status": "pass", "evidence": "保守担当が一件の粒度、正本、再実行時の照合を定義でき、OKF文書を検索して原典に戻れることを条件にした。"},
-        "deliver": {"status": "pass", "evidence": "両ホストでschemaの新しいOKF発動条件を読み戻し、候補が案内する公式バリデータとスキャナーを実行した。"},
-        "humanizer": {"status": "pass", "evidence": "正本、文書更新、台帳、継続、回答待ちを見出し順に読み、OKFの検索用の入力変数の説明を公式スクリプトに照合した。"},
-        "prune": {"status": "pass", "evidence": "imoz参照の重複1件を削除した。OKF仕様、生成、読み取りへの参照は別の操作に使うため保持した。"},
-        "schema": {"status": "pass", "evidence": "作業ID・イベントID・実行IDと発生時刻を本文から抽出し、公式OKFの読み取り・生成を確認し、dbtのsourceとrefで入力と派生モデルを区別した。"},
-        "scrutiny": {"status": "pass", "evidence": "保存後に応答が切れてイベントが再送される例で、実行IDが変わっても同じイベントIDで照合する条件を本文から確認した。"}
+        "benchmark": {"status": "pass", "evidence": "相対参照54件で切れ0件。CSVの元データと候補集計を同じ入力で照合し、2件・合計9を確認した。"},
+        "charter": {"status": "pass", "evidence": "データの正本と利用側の入口を先に定め、利用側が目にする件数を評価することを確認した。"},
+        "deliver": {"status": "pass", "evidence": "データの契約を確かめる節からbenchmarkへたどり、先に固定した評価の再利用を確認した。"},
+        "humanizer": {"status": "pass", "evidence": "候補の契約を渡す操作と、必須の項目を測る操作の順序を通読した。"},
+        "prune": {"status": "pass", "evidence": "データ契約の検証と評価手順をつなぐ既存の1文を更新し、独立した手順や台帳を増やさなかった。"},
+        "schema": {"status": "pass", "evidence": "YAMLの名前・種別・タグが着手版と一致。既存のdbtと元データ突合の記述を維持した。"},
+        "scrutiny": {"status": "pass", "evidence": "同一開催回の定義が必要な場合は、正本と代表行から期待値を取ってから候補の契約を決める経路を照合した。"}
       }
     },
     "skills/scrutiny/SKILL.md": {
@@ -183,75 +186,75 @@
       }
     },
     ".antigravity-plugin/plugin.json": {
-      "sha256": "2712f7471e0859cd73165b70719eb01b8669ba191c81a30fffb8dfac90271fab",
+      "sha256": "0d7ccecd04163ee2c3ba335b6b9ab40a29989fce1a29f3e10f65713963d56a1f",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "版を0.5.35から0.5.36へ更新し、agy 1.5.12の検証で7スキルと1ルールを確認した。"},
+        "benchmark": {"status": "pass", "evidence": "着手版0.5.36と候補0.5.37をJSONとして比較し、版のみ変わったことを確認した。"},
         "charter": {"status": "pass", "evidence": "agyのプラグイン一覧で版、有効状態、7スキルと1ルールが分かることを条件にした。"},
-        "deliver": {"status": "pass", "evidence": "隔離環境でagy 1.5.12のplugin installとplugin list --jsonを実行し、版0.5.36、有効、7スキル、kafstyler.mdの常時有効条件を確認した。"},
+        "deliver": {"status": "pass", "evidence": "マニフェストの0.5.37と同梱のルールから規約への参照をファイルで照合した。"},
         "humanizer": {"status": "pass", "evidence": "一覧に出るKafstylerの名称と説明を読み、目標・検証・手順改善がREADMEの説明と一致することを確認した。"},
         "prune": {"status": "pass", "evidence": "ルート直下のフォルダを統合しても、Antigravityの専用読み込み先であるrulesとマニフェストを維持した。"},
-        "schema": {"status": "pass", "evidence": "3クライアントの版を0.5.36にそろえ、agyの既存マニフェストでは版以外の項目が同じであることを照合した。"},
+        "schema": {"status": "pass", "evidence": "3クライアントのversionを0.5.37に統一し、旧版と同じJSONキーと値型であることを確認した。"},
         "scrutiny": {"status": "pass", "evidence": "agyはルートAGENTSを自動で読まないと出力した。別のrulesファイルが1件認識されることを実CLIで確認した。"}
       }
     },
     ".claude-plugin/plugin.json": {
-      "sha256": "42bc76f2eb897d78897b614e544d064b119781ca687b03deeb290172b91e2381",
+      "sha256": "c77af3159a2ad823225d3178ca78ce922651adf7d039be48a3f21264e0b07cff",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "2.1.328のvalidatorで新しいパスの2フックと7スキルを確認し、対象2リポジトリで両イベントを旧版と比較した。"},
+        "benchmark": {"status": "pass", "evidence": "着手版0.5.36と候補0.5.37をJSONとして比較し、版のみ変わったことを確認した。"},
         "charter": {"status": "pass", "evidence": "候補版をClaude Codeで開く際に、7スキルと起動・依頼受付のフック2件を検出できることを条件にした。"},
-        "deliver": {"status": "pass", "evidence": "一時配布元から0.5.36を導入し、有効状態を確認した。導入先のシェルを実行して配布版のAGENTSのパスと7スキルを読み戻した。"},
+        "deliver": {"status": "pass", "evidence": "マニフェストに記載した起動と依頼受付のコマンドを候補版で実行した。"},
         "humanizer": {"status": "pass", "evidence": "マニフェストの日本語説明を他2配布版と比較し、利用者向けの目的が同文であることを確認した。"},
         "prune": {"status": "pass", "evidence": "起動時と依頼受付の2設定が同じ .agents/quality.sh を呼ぶことを確かめた。"},
-        "schema": {"status": "pass", "evidence": "環境変数とイベント、引数、終了条件を維持し、両イベントが新しいシェルのパスを指すことを照合した。"},
+        "schema": {"status": "pass", "evidence": "3クライアントのversionを0.5.37に統一し、旧版と同じJSONキーと値型であることを確認した。"},
         "scrutiny": {"status": "pass", "evidence": "新構成に対して旧フックのコマンドを実行すると終了127になり、更新漏れの検出に使えることを確認した。"}
       }
     },
     ".codex-plugin/plugin.json": {
-      "sha256": "9007b7a9380ee512c3e0416a159c600676e8e2893bd345250a541c49239cb995",
+      "sha256": "aa0506327a69dd6f2f46cf428c0b3ebc60ad4154b0a089d9f2022b9433415920",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "候補0.5.36を導入し、実app-serverで7スキルと2フックを取得した。旧版とのイベント出力比較は実コマンドで一致した。"},
+        "benchmark": {"status": "pass", "evidence": "着手版0.5.36と候補0.5.37をJSONとして比較し、版のみ変わったことを確認した。"},
         "charter": {"status": "pass", "evidence": "導入後のCodexで版と7スキルが見え、2フックを承認対象として確認できることを条件にした。"},
-        "deliver": {"status": "pass", "evidence": "一時環境で候補を配布元に登録して導入した。app-serverで7スキルと2フック、検出エラーと警告0件を確認した。"},
+        "deliver": {"status": "pass", "evidence": "マニフェストに記載した起動と依頼受付のコマンドを候補版で実行した。"},
         "humanizer": {"status": "pass", "evidence": "displayNameとshortDescriptionを、利用者が見分ける目的と製品名が同じになるようREADMEと照合した。"},
         "prune": {"status": "pass", "evidence": "2イベントの実行先をClaudeと同じ .agents/quality.sh に集約し、Codex固有のフック設定とマーケットプレイスは維持した。"},
-        "schema": {"status": "pass", "evidence": "既存のフック宣言階層と環境変数は同じ。両コマンドのパスを新しい配置と照合した。"},
+        "schema": {"status": "pass", "evidence": "3クライアントのversionを0.5.37に統一し、旧版と同じJSONキーと値型であることを確認した。"},
         "scrutiny": {"status": "pass", "evidence": "一時環境で2フックの状態がuntrustedと返ることと、READMEに利用者の承認手順があることを確かめた。"}
       }
     },
     ".agents/check.py": {
-      "sha256": "86970f9cf93ddeca4a66cb4f0fe643fb0a3ef5067ed3a283052468c3dab01426",
+      "sha256": "e4c77bdf33a1f38b5e87eab8e9ba59d139534c454df47d4a6976b8942d4d762e",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版と候補版の既存検査はそれぞれ同じ10フック条件を確かめる。追跡ファイル数は前後とも20件。"},
-        "charter": {"status": "pass", "evidence": "保守担当が通常・全ファイル・コミット対象の各入力から、適用漏れ、版差、不合格を特定できることを条件にした。"},
-        "deliver": {"status": "pass", "evidence": "python3 .agents/check.pyの通常、一覧、ステージの入口を候補で実行し、両ホストの実フックから10項目を確認した。"},
-        "humanizer": {"status": "pass", "evidence": "CLIの状態名と対象を読み、failを「不明」から対象と根拠を示す「不合格」に改めた。"},
-        "prune": {"status": "pass", "evidence": "検査スクリプトと記録を同じ管理先へ動かした。古い場所への互換スクリプトの追加は不要と確認した。"},
-        "schema": {"status": "pass", "evidence": "監査台帳の新しいパスを設定し、documentsとfilesのキー、既存の自己ハッシュ計算を維持した。"},
-        "scrutiny": {"status": "pass", "evidence": "旧候補で得た保留2件が候補でも同じエラーとなり、移動で合否の区別が消えていないことを確かめた。"}
+        "benchmark": {"status": "pass", "evidence": "設計前の評価案内を含まない着手版の受付フックを新検査で両ホストとも不合格にし、候補では両ホストとも合格した。"},
+        "charter": {"status": "pass", "evidence": "保守担当が、依頼受付で設計前の目標設定と評価を受け取れることを合格条件にした。"},
+        "deliver": {"status": "pass", "evidence": "候補の通常コマンドでClaude CodeとCodex向けの既存10項目を実行した。"},
+        "humanizer": {"status": "pass", "evidence": "判定名に設計前の目標設定と評価を記して、欠落時の対象が出力から特定できることを確認した。"},
+        "prune": {"status": "pass", "evidence": "既存の受付チェック1箇所に条件を加え、スクリプトやフックを増やさなかった。"},
+        "schema": {"status": "pass", "evidence": "Pythonの判定結果を既存の結果辞書と終了コードの契約で返すことを差分で確認した。"},
+        "scrutiny": {"status": "pass", "evidence": "旧フックが7件の説明を返しても、設計前の評価案内を欠く場合に新条件が両ホストで落ちることを確認した。"}
       }
     },
     ".agents/markdown-reviews.json": {
-      "sha256": "540d460425c5f0527fe21bbbcf93dc1ab9133d5d802537db3de64a4b56e4d785",
+      "sha256": "9a0b6f47343e8cca1369eaeb06f6643468c96fb4c6bffa580bbf764bbe434619",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "対象は前後とも20ファイルと7スキル。移動した3件のキーを対応づけ、保留2件を引き継いだ。"},
-        "charter": {"status": "pass", "evidence": "保守担当が一ファイル・一スキルの判断と適用版を台帳から探せることを合格条件にした。"},
-        "deliver": {"status": "pass", "evidence": "Gitの追跡内容とステージ済みの台帳を通常コマンドで照合し、保留行から再開操作を参照できた。"},
-        "humanizer": {"status": "pass", "evidence": "各記録を操作、対象、観測が分かるように読み直し、認証済み操作を行っていない例をpendingで記した。"},
-        "prune": {"status": "pass", "evidence": "既存台帳を移し、移動元のキー3件を置き換えた。旧台帳や重複キーを残していない。"},
-        "schema": {"status": "pass", "evidence": "documents13件とfiles7件のキーをGitの一覧に照合した。自己ハッシュは新しい台帳パスのsha256だけ除く。"},
-        "scrutiny": {"status": "pass", "evidence": "全件とステージ済みの検査で不足・古い版・消えたパスを確認し、以前からの保留2件だけが残った。"}
+        "benchmark": {"status": "pass", "evidence": "追跡20件・7スキルを維持し、変更対象の記録と既知の保留2件を着手版と照合した。"},
+        "charter": {"status": "pass", "evidence": "保守担当がどの版を比較し、何を自動判定したかをこの台帳で確認できることを条件にした。"},
+        "deliver": {"status": "pass", "evidence": "既存の台帳に今回の版と検証結果を記録し、JSONとして読み戻した。"},
+        "humanizer": {"status": "pass", "evidence": "判定対象と試した入力、結果を簡潔に記し、過去の未確認操作を区別したことを通読した。"},
+        "prune": {"status": "pass", "evidence": "監査の正本とファイルのキーを再利用し、新しい台帳を加えなかった。"},
+        "schema": {"status": "pass", "evidence": "documents13件・files7件をGitの一覧に照合し、既存の自己ハッシュ方式で更新した。"},
+        "scrutiny": {"status": "pass", "evidence": "既存の保留2件の状態を変更せず、今回の確認と既存の実機未実施を照合した。"}
       }
     },
     ".agents/quality.sh": {
-      "sha256": "9037c78acdeed9e7238eff5c01d0e5b3e33122b033038c36f67817e0336b2bca",
+      "sha256": "fcae4825a8722a5e87c2124751b30d3d154c4bcfe6070c273633908b6f58dc76",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "2ホスト、2イベント、2リポジトリの8出力は、更新したパスと規約を差し替えると変更前とバイト一致した。"},
-        "charter": {"status": "pass", "evidence": "利用者の起動で規約、依頼受付で7つの発動条件が一つずつ出力されることを条件にした。"},
-        "deliver": {"status": "pass", "evidence": "2マニフェストの両イベントを実行した。本体だけが新しい検証コマンドを案内し、別リポジトリでも7スキルを案内した。"},
-        "humanizer": {"status": "pass", "evidence": "規約と各行の案内順を確認し、未知のphaseは利用者が入力値を特定できるメッセージにした。"},
-        "prune": {"status": "pass", "evidence": "両クライアントで使うシェルを .agents の1件にまとめ、旧ファイルを削除した。"},
-        "schema": {"status": "pass", "evidence": "同じ2種類の入力と出力を比較し、案内する検証パスだけを新しい配置に変えた。"},
-        "scrutiny": {"status": "pass", "evidence": "旧パスのコマンドが両クライアントで終了127になる対照と、候補のBash構文検査を確認した。"}
+        "benchmark": {"status": "pass", "evidence": "着手版と候補の起動・受付を確認し、候補の両ホストで設計前の評価固定の案内を取得した。"},
+        "charter": {"status": "pass", "evidence": "依頼受付で評価を固定してから設計する順序を利用者の通常の入口に渡すことを条件にした。"},
+        "deliver": {"status": "pass", "evidence": "bashの構文検査と2マニフェストの起動・受付コマンドを実行した。"},
+        "humanizer": {"status": "pass", "evidence": "受付文を読み、charterで決める内容、benchmarkで固定する内容、設計の順序を確認した。"},
+        "prune": {"status": "pass", "evidence": "2ホスト共通の受付文1行を更新し、フックやコマンドを増やさなかった。"},
+        "schema": {"status": "pass", "evidence": "既存のsession、startの引数と標準出力を維持したことを差分と実行出力で確認した。"},
+        "scrutiny": {"status": "pass", "evidence": "現行版と候補版のスキル一覧を読み、設計前の案内追加で従来の7経路が消えていないことを確認した。"}
       }
     }
   }

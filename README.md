@@ -34,7 +34,7 @@ generated:
 | [`deliver`](skills/deliver/SKILL.md) | 更新処理、検索画面、CSVと、公開先での確認結果 |
 | [`humanizer`](skills/humanizer/SKILL.md) | 読み違えにくい項目名と、更新が止まったときの案内 |
 | [`scrutiny`](skills/scrutiny/SKILL.md) | 画面だけ更新されると古いCSVを見逃す、という反例 |
-| [`benchmark`](skills/benchmark/SKILL.md) | 同じ資料で旧版と新版を比較した結果と再実行手順 |
+| [`benchmark`](skills/benchmark/SKILL.md) | 設計前に固定した自動判定と、提出する版の合否・再実行手順 |
 | [`prune`](skills/prune/SKILL.md) | 旧更新処理を削った差分と、新しい定期実行で画面・CSVが更新された記録 |
 
 事例に応じて組み合わせます。たとえば古いCSVを見逃す条件が見つかったら、それを検証に加え、修正後に公開先で確かめます。[連携手順](AGENTS.md#コマンドの連携)

@@ -200,9 +200,10 @@ def check(root, host):
     return {
         "配布フックは起動時と依頼受付の2件": set(hooks) == {"SessionStart", "UserPromptSubmit"},
         "セッションに対象版の規約が届く": policy in session and str(root / "AGENTS.md") in session,
-        "依頼受付で対象版と目標設定が示される": (
+        "依頼受付で対象版と設計前の目標設定・評価が示される": (
             f"使用中のKafstylerの場所は {root}。" in prompt
             and "着手前に kafstyler:charter" in prompt
+            and "kafstyler:benchmark で自動判定方法を固定してから設計する。" in prompt
         ),
         "依頼受付で全スキルの発動条件が一つずつ届く": (
             bool(expected_skills) and sorted(skill_routes) == sorted(expected_skills)
