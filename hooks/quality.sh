@@ -59,4 +59,8 @@ PROMPT
       printf '%s\n' '本体を保守するときは、ルートで python3 hooks/check.py --markdown-inventory を実行し、全Markdownに全スキルを使う。見つけた漏れを直し、文書とスキルの組ごとの結果を記録する。子や個々のスキルは全件確認を起動し直さない。'
     fi
     ;;
+  *)
+    printf 'Kafstylerのフックに不明な処理が指定された。%s\n' "$1" >&2
+    exit 2
+    ;;
 esac

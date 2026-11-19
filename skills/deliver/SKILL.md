@@ -11,7 +11,7 @@ aliases:
   - "常駐エージェント"
 generated:
   by: openai/chatgpt
-  at: "2026-11-19T10:44:29Z"
+  at: "2026-11-19T10:54:18Z"
 verified:
   - by: openai/chatgpt
     at: "2026-11-19T10:48:56Z"
@@ -61,7 +61,7 @@ Claude Code・Codexで `/goal` が使える場合は、`deliver` の手順、作
 /loop 5m /kafstyler:deliver 配布の反映を待つ。公開URLで指定した版を読めたら終了する
 ```
 
-1. 登録時の表示または `CronList` でジョブIDを確認する。各回は同じジョブと案件を引き継ぐ。セッションを再開したときは、台帳と実行中のジョブを照合してから監視を戻す。`/loop` が使えない場合は、現在のセッションで可能な確認を行い、見守りを継続できる範囲を伝える。
+1. 登録時の表示または `CronList` でジョブIDを確認する。最初の予定実行で `kafstyler:deliver` が呼び出され、確認対象の状態を読み戻したことを確かめる。呼び出せない場合は、スキルの利用を許可する設定を確認する。各回は同じジョブと案件を引き継ぐ。セッションを再開したときは、台帳と実行中のジョブを照合してから監視を戻す。`/loop` が使えない場合は、現在のセッションで可能な確認を行い、見守りを継続できる範囲を伝える。
 2. 合格・中止、または回答やイベントで再開する手段へ引き継いで見守りが不要になったときは、`CronDelete` で対象IDを解除し、`CronList` で確認する。解除に失敗した場合はジョブIDと解除操作を報告する。
 
 ## Claude Agent SDKでの実装
@@ -136,7 +136,6 @@ agy -p "文字列 antigravity を逆順にし、結果だけ返して。" --mode
 - [Chip Huyen・AI Engineering](../../BIBLES.md#aiエンジニアリングの書籍)
 - [Manning・Agent Engineering](../../BIBLES.md#エージェント設計の書籍)
 - [かふかのZenn記事一覧](../../BIBLES.md#かふかのzenn記事一覧)
-- [imoz・日本語の文章編集ガイド](../../BIBLES.md#imozの日本語編集)
 - [ISUCON2026 で優勝しました（準備編）](../../BIBLES.md#isuconの準備)
 - [fukabori.fm 第142回「ISUCON2026で優勝する方法 w/ kawasy」](../../BIBLES.md#isuconの優勝ハーネス)
 - [OpenAI・現場で成果を届けるエンジニアリング（What FDE means at OpenAI）](../../BIBLES.md#openaiの現場開発)

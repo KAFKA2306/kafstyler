@@ -8,7 +8,7 @@ aliases:
   - "使い方"
 generated:
   by: openai/chatgpt
-  at: "2026-11-19T10:36:52Z"
+  at: "2026-11-19T10:49:57Z"
 ---
 
 # Kafstyler
@@ -23,7 +23,7 @@ Kafstylerは、2026年の大規模プロジェクトをAIエージェントと�
 
 たとえば、複数の公表資料を取り込み、検索画面とCSVを毎週更新するサービスをつくるとします。まず、利用者が画面で数値を見つけ、元の資料と更新日を確認できることを完了条件にします。そこから、同じ正本を使ってデータ、画面、運用を組み立てます。
 
-- **同じ正本から画面とCSVをつくる。** 発行元・指標・対象期間の組で一件を識別します。数値の単位をそろえ、原資料へのリンクと改定の履歴を残します。検索画面は共通の部品を使い、画面とCSVの値は同じ正本から出します。[データ設計](skills/schema/SKILL.md) · [画面の設計基準](BIBLES.md#かふかのデザインパターン)
+- **同じ正本から画面とCSVをつくる。** 発行元・系列ID・対象期間の組で一件を識別します。系列IDは地域や季節調整の違いを区別します。数値の単位をそろえ、改定ごとに公表日と原資料へのリンクを残します。検索画面は共通の部品を使い、画面とCSVの値は同じ正本から出します。[データ設計](skills/schema/SKILL.md) · [画面の設計基準](BIBLES.md#かふかのデザインパターン)
 - **別の担当者が検証を再現できるようにする。** データと実装の版、入力、コマンド、合格条件を記録します。途中で止まっても、最後に確かめた成果と次に行う処理を読み戻せるようにします。同じイベントを再処理しても、画面とCSVで同じ行が重複しないことを確かめます。[評価と比較](skills/benchmark/SKILL.md) · [再開の記録](skills/schema/SKILL.md#定期実行と再開の記録)
 - **仕様と手順を更新する。** 公式資料でAPIやツールの変更を確認し、採用する版を固定します。データの定義や受け渡し方が変わる場合は、正本と取り込み処理を見直します。切り替え前に旧版と新版を同じ入力で試し、切り替え後に公開先の画面とCSVを確かめます。[一次資料の見直し](BIBLES.md#資料の見直し) · [更新手順](MISSION.md#更新手順)
 
@@ -147,6 +147,8 @@ python3 hooks/check.py
 検査は両プラグインの設定からフックを実行します。起動時に規約が渡り、依頼受付時に配布スキルの発動条件が渡ることを確かめます。
 
 本体の全Markdownに全スキルを使い、文書ごとの結果を [適用記録](hooks/markdown-reviews.json) に残します。検証で記録の不足や古い版を検出します。変更をステージしたら、`python3 hooks/check.py --staged` でコミットする版を確かめます。[適用と記録の手順](AGENTS.md#全markdownに全スキルを使う)
+
+配布設定、フック、台帳も含めて確認するときは、`python3 hooks/check.py --all-files` を実行します。全ファイルの一覧は `--markdown-inventory --all-files`、ステージ済みの照合は `--staged --all-files` で行います。
 
 - Claude Codeでは `claude plugin validate .` を実行し、`claude --plugin-dir "$PWD"` で作業中の版を起動します。別プロジェクトで試すときも、`--plugin-dir` にKafstylerのチェックアウトの絶対パスを渡します。
 - Codexでは検証用の `CODEX_HOME` を用意し、`codex plugin marketplace add "$PWD"` と `codex plugin add kafstyler@kafstyler` を実行します。プラグインは導入時点のコピーを使います。変更後に試し直す場合は、検証用の環境で `codex plugin remove kafstyler@kafstyler` を実行してから再導入します。新しいセッションの `/hooks` で検証する版のフックを確認・承認します。[ローカル配布元の仕様](https://developers.openai.com/plugins/build/plugins#how-local-marketplaces-work)

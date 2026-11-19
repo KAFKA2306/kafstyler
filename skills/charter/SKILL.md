@@ -41,7 +41,6 @@ aliases:
 - [Anthropic・Claude Codeの実践ガイド](../../BIBLES.md#claude-codeの実践)
 - [登大遊・論理的思考の放棄](../../BIBLES.md#登大遊の論理的思考)
 - [かふかのZenn記事一覧](../../BIBLES.md#かふかのzenn記事一覧)
-- [imoz・日本語の文章編集ガイド](../../BIBLES.md#imozの日本語編集)
 - [OpenAI・現場で成果を届けるエンジニアリング（What FDE means at OpenAI）](../../BIBLES.md#openaiの現場開発)
 - [個人開発の次の一件](../../BIBLES.md#個人開発の次の一件)
 - [成果物を仕事の証拠にする](../../BIBLES.md#成果物を仕事の証拠にする)

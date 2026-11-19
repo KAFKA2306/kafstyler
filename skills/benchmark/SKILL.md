@@ -73,7 +73,6 @@ aliases:
 - [Chip Huyen・AI Engineering](../../BIBLES.md#aiエンジニアリングの書籍)
 - [Manning・Agent Engineering](../../BIBLES.md#エージェント設計の書籍)
 - [かふかのZenn記事一覧](../../BIBLES.md#かふかのzenn記事一覧)
-- [imoz・日本語の文章編集ガイド](../../BIBLES.md#imozの日本語編集)
 - [ISUCON2026 で優勝しました（準備編）](../../BIBLES.md#isuconの準備)
 - [fukabori.fm 第142回「ISUCON2026で優勝する方法 w/ kawasy」](../../BIBLES.md#isuconの優勝ハーネス)
 - [自動テストの合格条件](../../BIBLES.md#自動テストの合格条件)

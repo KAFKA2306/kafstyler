@@ -124,7 +124,6 @@ python3 "$OKF_TOOL_ROOT/skills/okf-consume/scripts/scan.py" "$BUNDLE_ROOT" --typ
 - [Obsidian・Properties](../../BIBLES.md#obsidianのプロパティ)
 - [Obsidian・Tags](../../BIBLES.md#obsidianのタグ)
 - [かふかのZenn記事一覧](../../BIBLES.md#かふかのzenn記事一覧)
-- [imoz・日本語の文章編集ガイド](../../BIBLES.md#imozの日本語編集)
 - [Obsidian・保管庫の作成](../../BIBLES.md#obsidianの保管庫)
 - [Obsidian・内部リンク](../../BIBLES.md#obsidianの内部リンク)
 - [Obsidian・検索](../../BIBLES.md#obsidianの検索)
