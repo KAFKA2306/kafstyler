@@ -1,5 +1,5 @@
 {
-  "compared_to": "ec9a48094f677916e3c6dfe178837aae27bf58af",
+  "compared_to": "55da9f3fb056ae0789ce8102dd089008acb92ec0",
   "rules": "cce5a59681f2e46ebc8d463946d99294d48cedb1d34eae60855b55bec6298eff",
   "documents": {
     "AGENTS.md": {
@@ -39,15 +39,15 @@
       }
     },
     "README.md": {
-      "sha256": "af0748c73e70fff428c1d4258a96a352ee5b3a61ccc5acaff432cc878e417e23",
+      "sha256": "3e5e30e1b572f382bcaf020b76805524b002422c42ba0cd462d9d2ad36307bf8",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版と候補版で相対参照を同条件で検査した。564件から566件に増え、両版とも不達0件。README外部URLは一致。"},
-        "charter": {"status": "pass", "evidence": "大規模な開発の適用例から、7スキルそれぞれの判断、成果物、引き継ぎ先を特定できることを合格条件にした。"},
-        "deliver": {"status": "pass", "evidence": "大規模開発の適用例、スキルの呼び出し方、表から全7スキルの実ファイルにたどれた。"},
-        "humanizer": {"status": "pass", "evidence": "抽象的な用途一覧を公開物と再実行の証拠に結び付けた。yomiyasuのlint・diffと最終稿照合を実行した（20261119T103548Z-26175e11）。"},
-        "prune": {"status": "pass", "evidence": "旧用途表を一つの成果物事例に統合し、既存のスキル見出しとリンク先から新しい表にたどれることを確認した。"},
-        "schema": {"status": "pass", "evidence": "READMEの種別とタグを維持し、表を7行と3列で読み取れ、名前と参照先が実際のスキル一覧と一致することを確認した。OKF厳格検査で警告0件。"},
-        "scrutiny": {"status": "pass", "evidence": "画面だけ更新してCSVを見落とす例を、反証から比較条件の追加、修正、公開先の再確認につないだ。表の責任範囲を現行の7スキルに照合し、推敲で変わった意味を見直した。"}
+        "benchmark": {"status": "pass", "evidence": "着手版と候補版の見出しとリンク先を同じ方法で比較し、既存の参照先を全件維持した。追加されたschemaへのリンクを実ファイルで確認した。"},
+        "charter": {"status": "pass", "evidence": "大規模開発の設計根拠から、正本、公開物、担当の引き継ぎと再試験に必要な情報を読み取れることを合格条件にした。"},
+        "deliver": {"status": "pass", "evidence": "README冒頭からschemaの本体を開き、適用例からデータ設計・再開の記録・評価・資料の見直しへ進めることを確認した。"},
+        "humanizer": {"status": "pass", "evidence": "正本を共用する理由を、週次更新の画面とCSVで説明した。yomiyasuのlint・diffを実行し、最終稿のハッシュを照合した（20261119T103823Z-17f2cb89）。"},
+        "prune": {"status": "pass", "evidence": "追加のスキル表や工程を作らず、既存の例と7行の表にschemaの役割を反映した。"},
+        "schema": {"status": "pass", "evidence": "識別子、粒度、出典、版、正本の更新先を現行手順に照合した。READMEの種別とタグを維持し、OKF厳格検査でエラー・警告0件。"},
+        "scrutiny": {"status": "pass", "evidence": "同じイベントの再処理、原資料の改定と取り込み形式の変更を例として確認した。正本と派生先の関係、検証の順序、担当の役割を現行schemaの定義と完了条件に照合した。"}
       }
     },
     "index.md": {
