@@ -1,6 +1,6 @@
 {
   "compared_to": "e04a1bc67e8eee7681442f5f309bb073db48e8da",
-  "rules": "98cf9ff4920b105571dfd2dea2b286fafdcff3387970deda327899b51ebe37a5",
+  "rules": "6e1043e5e2fc548d54bfa96bca335a0b64c4f262a7be570bc3254d1a2fd10c07",
   "documents": {
     "AGENTS.md": {
       "sha256": "d65c16d62bd261737661e57c0c1229d066814bee1c76f3e6e48d286b76999c41",
@@ -15,15 +15,15 @@
       }
     },
     "BIBLES.md": {
-      "sha256": "eacd953c186cdd46f57b984fa4d3f3597f9c1157afe3fd6b7cbdfe3a2e916f54",
+      "sha256": "a3739bdf38b24c5e998fc7ad747a8709a9fa5b63c1f1328e2d4a143275675daa",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版と候補版の内部参照を検査し、候補で検証記事の専用節と7スキルの往復リンクを確認した。"},
-        "charter": {"status": "pass", "evidence": "検証方法を選ぶ読者が、目標・文章・評価から原典と担当スキルの操作へ進めることを確認した。"},
-        "deliver": {"status": "pass", "evidence": "一次記事を閲覧し、専用節から7スキルの本文または該当見出しを開けることを確認した。"},
-        "humanizer": {"status": "pass", "evidence": "専用節の見出しから検証を探せること、書誌・要点・適用先の順で読めることを確認した。"},
-        "prune": {"status": "pass", "evidence": "常駐エージェントの表にあった同一URLを専用節への参照に替え、一次URLが一か所にあることを確認した。"},
-        "schema": {"status": "pass", "evidence": "書誌の著者・公開日・確認日を分け、既存のfrontmatterと各スキルの相対参照を照合した。"},
-        "scrutiny": {"status": "pass", "evidence": "記事の実行検証、性質ベース、同一入力比較、差分と基準版、観測モードの記述を専用節の要約と照合した。"}
+        "benchmark": {"status": "pass", "evidence": "同じリンク検査で、公式ページへの参照が2件から10件に増え、追加アンカーがすべて公式文書に存在することを確認した。相対リンクは526件から527件で不達0件。"},
+        "charter": {"status": "pass", "evidence": "作業規約から聖典のフック節へ進み、発火条件・設定・判定制御の公式ページを開けることを入口と合格条件にした。"},
+        "deliver": {"status": "pass", "evidence": "聖典のフック節から既存の設定・検証手順をたどり、公式文書に参照先の見出しがすべてあることを確認した。"},
+        "humanizer": {"status": "pass", "evidence": "冒頭で公式仕様の用途を示し、設定範囲、既存イベント、実行前と終了時の判断を順に読めるよう推敲した。"},
+        "prune": {"status": "pass", "evidence": "既存のClaude Codeのフック節にまとめ、SessionStartとUserPromptSubmitへの参照を保った。公式ページの登録は1件。"},
+        "schema": {"status": "pass", "evidence": "12文書のtype・description・tagsをYAMLで読み戻した。聖典の変更が該当節に限られ、規約・検証手順の相対参照が解決することを確認した。"},
+        "scrutiny": {"status": "pass", "evidence": "公式仕様でStopのmatcherが無視されること、PreToolUseの無出力時の通常判定とonFailureの適用範囲、Stopの継続条件を照合した。"}
       }
     },
     "MISSION.md": {
