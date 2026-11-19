@@ -106,9 +106,9 @@ Kafstylerは、開発・調査・制作・運用でAIエージェントが課題
 | [plugin.json](.antigravity-plugin/plugin.json) | プラグイン設定 | Antigravity CLIが読むプラグイン名と版 | `kafstyler/plugin` |
 | [kafstyler.md](rules/kafstyler.md) | 配布規約 | Antigravity CLIのセッションを同梱の規約とスキルにつなぐ | `kafstyler/policy` |
 | [marketplace.json](.agents/plugins/marketplace.json) | 配布設定 | Codexから本体を取得する入口 | `kafstyler/plugin` |
-| [quality.sh](hooks/quality.sh) | フック | 起動時に規約を渡し、依頼受付時にスキルの発動条件を渡す | `kafstyler/plugin` |
-| [check.py](hooks/check.py) | 検証 | 配布フックを実行し、Markdownへの全スキルの適用記録を照合する | `kafstyler/maintenance` |
-| [markdown-reviews.json](hooks/markdown-reviews.json) | 検証記録 | 文書とスキルの組ごとに確認結果と根拠を記録する | `kafstyler/maintenance` |
+| [quality.sh](.agents/quality.sh) | フック | 起動時に規約を渡し、依頼受付時にスキルの発動条件を渡す | `kafstyler/plugin` |
+| [check.py](.agents/check.py) | 検証 | 配布フックを実行し、Markdownへの全スキルの適用記録を照合する | `kafstyler/maintenance` |
+| [markdown-reviews.json](.agents/markdown-reviews.json) | 検証記録 | 文書とスキルの組ごとに確認結果と根拠を記録する | `kafstyler/maintenance` |
 
 ## 外部実装の採用
 
@@ -166,11 +166,11 @@ Kafstylerは、開発・調査・制作・運用でAIエージェントが課題
 
 各文書で、読者が文書からできるようになることを `charter` で決める。`schema` でメタデータ、参照する正本、他の文書との関係を確認し、`humanizer` でタイトル・見出し・用語・本文を推敲する。`prune` で重複、古い記述、参照元を調べ、除いてよい箇所を削る。`scrutiny` で主張を崩す例と誤操作を探し、`benchmark` で合格条件を決めて同じ入力で測る。`deliver` で確かめた修正を入れ、文書からたどる手順やリンクを試す。文書を残す判断にも、そのスキルで確かめた事実と判断の理由を記す。新しいスキルでは、その本文の手順を文書で試し、固有の結果を記録する。
 
-文書一覧と版は `python3 hooks/check.py --markdown-inventory` で取得する。結果は [markdown-reviews.json](hooks/markdown-reviews.json) に残す。ファイルとスキルの組ごとに、確認結果（合格 `pass`、不合格 `fail`、適用外 `not_applicable`、未確認 `pending`）と、対象箇所・操作・観測結果を記す。適用外は理由を書く。ファイル・規約・スキルの版が一致する記録を再利用できる。変更の影響がある組を再実行し、結果と版を記録する。版の値だけを書き換えて適用済みとしない。
+文書一覧と版は `python3 .agents/check.py --markdown-inventory` で取得する。結果は [markdown-reviews.json](.agents/markdown-reviews.json) に残す。ファイルとスキルの組ごとに、確認結果（合格 `pass`、不合格 `fail`、適用外 `not_applicable`、未確認 `pending`）と、対象箇所・操作・観測結果を記す。適用外は理由を書く。ファイル・規約・スキルの版が一致する記録を再利用できる。変更の影響がある組を再実行し、結果と版を記録する。版の値だけを書き換えて適用済みとしない。
 
 配布設定やフックを含む全ファイルの適用を依頼された場合は、一覧の取得、候補の検査、ステージ済みの検査にそれぞれ `--all-files` を加える。Markdown以外の結果は同じ台帳の `files` に置く。台帳自身の版を計算するときは、自己参照を避けるため自身の `sha256` 欄だけを除く。
 
-全件を回すのは保守作業の親だけとする。子に渡した確認は親の記録に戻し、子やスキルの呼び出し元から全件確認を起動し直さない。提出前に `python3 hooks/check.py` を実行する。文書と記録をステージしたら、コミット直前に `python3 hooks/check.py --staged` で記録する版を照合する。組の欠落、古い版、未解決の確認は記録し、他の作業を止めずに修正する。コマンドは版と記録の不足を検出する。スキルの実行と観測は担当したエージェントが行う。
+全件を回すのは保守作業の親だけとする。子に渡した確認は親の記録に戻し、子やスキルの呼び出し元から全件確認を起動し直さない。提出前に `python3 .agents/check.py` を実行する。文書と記録をステージしたら、コミット直前に `python3 .agents/check.py --staged` で記録する版を照合する。組の欠落、古い版、未解決の確認は記録し、他の作業を止めずに修正する。コマンドは版と記録の不足を検出する。スキルの実行と観測は担当したエージェントが行う。
 
 ## 検証と完了
 

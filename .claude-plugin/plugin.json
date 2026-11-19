@@ -1,6 +1,6 @@
 {
   "name": "kafstyler",
-  "version": "0.5.35",
+  "version": "0.5.36",
   "description": "開発・調査・制作・運用でAIエージェントが目標と合格条件を定め、成果物を検証して届け、結果から作業手順を改善する。",
   "hooks": {
     "SessionStart": [
@@ -9,7 +9,7 @@
           {
             "type": "command",
             "shell": "bash",
-            "command": "bash \"$CLAUDE_PLUGIN_ROOT/hooks/quality.sh\" session",
+            "command": "bash \"$CLAUDE_PLUGIN_ROOT/.agents/quality.sh\" session",
             "timeout": 5
           }
         ]
@@ -21,7 +21,7 @@
           {
             "type": "command",
             "shell": "bash",
-            "command": "bash \"$CLAUDE_PLUGIN_ROOT/hooks/quality.sh\" start",
+            "command": "bash \"$CLAUDE_PLUGIN_ROOT/.agents/quality.sh\" start",
             "timeout": 5
           }
         ]

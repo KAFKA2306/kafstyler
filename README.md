@@ -108,11 +108,11 @@ agy plugin list --json
 着手前にリポジトリのルートで `base=$(git rev-parse main)` を実行します。変更後は、着手前と候補版の両方の検査を候補にかけます。起動時に規約が渡り、依頼受付時に7スキルの発動条件が渡ることを確認します。
 
 ```bash
-(set -o pipefail; git show "${base}:hooks/check.py" | python3 -)
-python3 hooks/check.py
+(set -o pipefail; git show "${base}:.agents/check.py" | python3 -)
+python3 .agents/check.py
 ```
 
-全Markdownに各スキルを適用し、結果を[適用記録](hooks/markdown-reviews.json)に残します。ステージ後は `python3 hooks/check.py --staged` を実行します。配布設定やフックを含める場合は `--all-files`、版の一覧には `--markdown-inventory` を使います。全ファイルの版をステージ後に照合する場合は `--staged --all-files` を指定します。[適用と記録の手順](AGENTS.md#全markdownに全スキルを使う)
+全Markdownに各スキルを適用し、結果を[適用記録](.agents/markdown-reviews.json)に残します。ステージ後は `python3 .agents/check.py --staged` を実行します。配布設定やフックを含める場合は `--all-files`、版の一覧には `--markdown-inventory` を使います。全ファイルの版をステージ後に照合する場合は `--staged --all-files` を指定します。[適用と記録の手順](AGENTS.md#全markdownに全スキルを使う)
 
 - **Claude Code**では `claude plugin validate .` と `claude --plugin-dir "$PWD"` を実行します。別プロジェクトから試すときは `--plugin-dir` にチェックアウトの絶対パスを渡します。
 - **Codex**では検証用の `CODEX_HOME` を設定し、`codex plugin marketplace add "$PWD"` と `codex plugin add kafstyler@kafstyler` を実行します。変更後は `codex plugin remove kafstyler@kafstyler` で検証用のコピーを削除し、再導入します。新しいセッションで `/hooks` を確認・承認します。[ローカル配布元の仕様](https://developers.openai.com/plugins/build/plugins#how-local-marketplaces-work)

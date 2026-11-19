@@ -56,7 +56,7 @@ case "$1" in
 Kafstyler本体を変更する場合は、着手前の main のコミットを記録し、その版の AGENTS.md と該当スキルを使う。「Kafstyler本体の変更」に従って、作業前の版と変更案を同じ合格条件で比べる。
 PROMPT
     if checkout=$(kafstyler_checkout); then
-      printf '%s\n' '本体を保守するときは、ルートで python3 hooks/check.py --markdown-inventory を実行し、全Markdownに全スキルを使う。見つけた漏れを直し、文書とスキルの組ごとの結果を記録する。子や個々のスキルは全件確認を起動し直さない。'
+      printf '%s\n' '本体を保守するときは、ルートで python3 .agents/check.py --markdown-inventory を実行し、全Markdownに全スキルを使う。見つけた漏れを直し、文書とスキルの組ごとの結果を記録する。子や個々のスキルは全件確認を起動し直さない。'
     fi
     ;;
   *)

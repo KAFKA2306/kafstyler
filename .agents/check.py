@@ -10,7 +10,7 @@ import subprocess
 import sys
 
 
-REVIEW_PATH = Path("hooks/markdown-reviews.json")
+REVIEW_PATH = Path(".agents/markdown-reviews.json")
 SHARED_RULES = ("AGENTS.md", "BIBLES.md", "MISSION.md")
 MARKDOWN_SUFFIXES = {
     ".md", ".livemd", ".markdown", ".mdown", ".mdwn", ".mdx", ".mkd", ".mkdn",
