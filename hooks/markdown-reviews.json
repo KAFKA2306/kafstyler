@@ -1,6 +1,6 @@
 {
-  "compared_to": "3c82bbb9e1d1ed1a7356da68e09aa43e3a3467b6",
-  "rules": "bf1dc2ec1e644a105eb59873b0133da336bd467ceec29849065ab7d063b268f4",
+  "compared_to": "68185c6c66606c1690f0f64f2e8c395dae64c4d1",
+  "rules": "3697ff611febc6a6acda0d446c209cdc2744e608735816cb4e05ec4f0aa91936",
   "documents": {
     "AGENTS.md": {
       "sha256": "10f378213989a436d679507a2216a6702a385e683a47e5abe8befc9aa8ec64e4",
@@ -15,15 +15,15 @@
       }
     },
     "BIBLES.md": {
-      "sha256": "77bed1d5a6bcf6c40c44e81cf07d324dd73b7d92fe15ba250c17a49167d5456d",
+      "sha256": "db276d204f3b0bd1e064854cacbca9b9340c80321870fe9a93db89c454831e12",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "旧版と候補版の起動仕様を同じ長時間作業と定期処理の条件で比較し、起動を選ぶ際に目標の継続と端末の稼働条件を判定できることを確かめた。"},
-        "charter": {"status": "pass", "evidence": "起動と再開の公式仕様から、合格条件まで一件を進める方法と、端末停止中に起動する方法の根拠に到達した。"},
-        "deliver": {"status": "pass", "evidence": "Anthropicのgoal・agent view・scheduled tasks・routines、OpenAIの長時間作業・Scheduled tasks・Codex Cloudの原文を開き、deliverとの相互リンクを確かめた。"},
-        "humanizer": {"status": "pass", "evidence": "起動と再開の節を通読し、各ターンの目標評価、ターミナル終了、PC再起動の対象を区別して読める文言に整えた。"},
-        "prune": {"status": "pass", "evidence": "公式の起動仕様を既存の表に集め、新しい資料のURLを一件ずつsourcesに置き、同じ表から参照した。"},
-        "schema": {"status": "pass", "evidence": "YAMLを解析し、追加した出典IDと脚注、生成と確認の時刻、既存タグを照合した。"},
-        "scrutiny": {"status": "pass", "evidence": "端末停止中の起動に/bgを使う反例を公式仕様と照合し、端末内の継続とクラウド起動を区別した。"}
+        "benchmark": {"status": "pass", "evidence": "公式v0.3バリデータでKafstylerを13ファイル検査しエラー・警告0件。聖典台帳は種別referenceとタグkafstyler/canonで取得できた。"},
+        "charter": {"status": "pass", "evidence": "分析担当者がschemaからdbtの入力、モデル依存、実行、テストの各公式資料を開けることを合格条件にした。"},
+        "deliver": {"status": "pass", "evidence": "dbt公式のSources、ref、data tests、buildを開き、schemaから聖典の2節へ参照できることを読んで確かめた。"},
+        "humanizer": {"status": "pass", "evidence": "dbtの参照は入力とモデル依存、検証は生成と品質条件の実行として記述し、原典の手順と照合した。"},
+        "prune": {"status": "pass", "evidence": "既存のソースとデータテストの見出しに追加資料を集め、追加した2つのURLがそれぞれ一度だけ現れることを確認した。"},
+        "schema": {"status": "pass", "evidence": "既存のYAML項目と来歴を保持し、追加したdbt資料を該当工程への参照で結んだ。公式OKF検索で台帳を取得した。"},
+        "scrutiny": {"status": "pass", "evidence": "dbt buildが依存順にモデルとテストを実行することを公式資料と実行結果で照合し、上流の重複で下流がスキップされることを確認した。"}
       }
     },
     "MISSION.md": {
@@ -135,15 +135,15 @@
       }
     },
     "skills/schema/SKILL.md": {
-      "sha256": "c2afbf3d832cfd5c463daa0be15e45db33b487ad538fcf1b61f1ea080b1060f3",
+      "sha256": "4ca2a959cad8da38737504cbb5114662fc5b3561e70bf93039533ce403f2ff24",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "同じ公式サンプルの複製で、一律のstrictではW120により終了コード1、候補のコマンドではエラー0件、意図したW120が1件、生成文書の再検索が1件だった。"},
-        "charter": {"status": "pass", "evidence": "外部バンドルを読む依頼で後継と出典に達すること、生成の依頼で検証した文書を公式検索から読み戻せることを合格条件にした。"},
-        "deliver": {"status": "pass", "evidence": "手順中のコマンドを実行し、Acme RetailからMetricとfinanceで3件を検索。複製に追加した出典つき文書1件を読み戻し、元バンドルの全ファイルのハッシュが一致した。"},
-        "humanizer": {"status": "pass", "evidence": "読み取りと生成を各一項目で示し、コマンドに必要な変数と、使わない検索条件の扱いを実行結果と照合した。"},
-        "prune": {"status": "pass", "evidence": "従来の検証コマンドを公式スキルの節に移し、公式スキャナーとバリデータを再利用した。既存の公開形式とObsidianの参照経路を確認した。"},
-        "schema": {"status": "pass", "evidence": "公式スキャナーで旧粗利定義がdeprecated、後継がstableかつhuman-reviewed、新規参照文書がunverifiedになることを確認した。既存の確認履歴は保たれた。"},
-        "scrutiny": {"status": "pass", "evidence": "候補レビューで公式スキルの呼び出し名、検索条件の省略、同じ回の自己認証を検討し、原典の手順に合わせた。公式ツール版は527e81aff55992be21507e97004286789126f88c。"}
+        "benchmark": {"status": "pass", "evidence": "DuckDBで注文3件3100円を元テーブルと日次集計の2行で突き合わせた。注文IDの重複を1件入れると一意性テストが失敗した。"},
+        "charter": {"status": "pass", "evidence": "文書担当者が同じMarkdownを種別とタグで検索し定義元を開き、分析担当者がdbtの来歴と元データから集計を再現できることを合格条件にした。"},
+        "deliver": {"status": "pass", "evidence": "サンプルでdbt buildのモデル2件とテスト4件が通り、OKF検索で指標ノートを取得し、その相対リンクからdbtモデルを開いた。"},
+        "humanizer": {"status": "pass", "evidence": "冒頭と発動条件に3ツールの役割を明記し、文書管理と分析で使う手順をそれぞれの見出しから読めることを確認した。"},
+        "prune": {"status": "pass", "evidence": "Vaultの選択と検索確認をOKFの手順に集め、文書移行と冒頭から同じ手順へ参照した。既存の公開形式への出力経路を確認した。"},
+        "schema": {"status": "pass", "evidence": "dbtのmanifestでsourceからstg_orders、daily_salesへの依存を確認した。OKFのtype、tags、sourcesとVault向け相対リンクが同じモデルを示した。"},
+        "scrutiny": {"status": "pass", "evidence": "業務データの正本と分析モデルの役割、およびOKFバンドルの外で参照する条件を原典と照合した。既存バンドルの検索と後継の解決を再実行した。"}
       }
     },
     "skills/scrutiny/SKILL.md": {

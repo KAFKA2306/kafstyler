@@ -8,7 +8,7 @@ aliases:
   - "聖典台帳"
 generated:
   by: openai/chatgpt
-  at: "2026-11-19T10:48:56Z"
+  at: "2026-11-19T10:52:17Z"
 sources:
   - id: okf-v03-spec
     resource: https://github.com/open-knowledge-format/open-knowledge-format/blob/527e81aff55992be21507e97004286789126f88c/SPEC.md
@@ -401,13 +401,13 @@ Anthropic・Hooks reference（公式リファレンス、2026年11月19日確認
 
 ### dbtのソース
 
-[dbt・ソースと来歴](https://docs.getdbt.com/docs/build/sources)（公式ドキュメント）。入力データの定義と来歴
+[dbt・ソースと来歴](https://docs.getdbt.com/docs/build/sources)と[`ref()`](https://docs.getdbt.com/reference/dbt-jinja-functions/ref)（公式ドキュメント）。入力データを宣言し、モデル間の依存を記述する。
 
 [データ設計](skills/schema/SKILL.md)
 
 ### dbtのデータテスト
 
-[dbt・データ品質テスト](https://docs.getdbt.com/docs/build/data-tests)（公式ドキュメント）。データ品質条件の検証
+[dbt・データ品質テスト](https://docs.getdbt.com/docs/build/data-tests)と[`dbt build`](https://docs.getdbt.com/reference/commands/build)（公式ドキュメント）。モデルの生成と品質条件の検証を依存順に行う。
 
 [データ設計](skills/schema/SKILL.md) · [評価と比較](skills/benchmark/SKILL.md)
 
