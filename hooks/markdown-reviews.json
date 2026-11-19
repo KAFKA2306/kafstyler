@@ -48,15 +48,15 @@
       }
     },
     "README.md": {
-      "sha256": "3e9e26f298270c8ae74f9166da579753a97364b67e509e7861c4329729056e03",
+      "sha256": "ec8cfc8bdaf771eeb76fb76cd40fe5b0e6227be2c3e6045eec507b1c8b56a931",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "1273333と候補版を同じGFM処理で比較した。見出し28件、既存リンク131箇所、7スキルの成果物表、試用・導入の手順が一致し、新しい相対リンク1件を解決した。"},
-        "charter": {"status": "pass", "evidence": "初見で長期運用を目指す個人・小規模チーム向けだと分かり、対応クライアントと一件試す入口を冒頭で見つけられることを確認した。"},
-        "deliver": {"status": "pass", "evidence": "候補をGFMで描画し、冒頭からschema、訂正例からdeliverの常駐と定期実行、冒頭の案内から試用・導入に進めることを確認した。"},
-        "humanizer": {"status": "pass", "evidence": "構想、現行の対応環境、仮定の訂正例を通読して区別した。yomiyasuのlint・diff実行後、最終稿のハッシュを照合した（20261119T105936Z-31718ada）。"},
-        "prune": {"status": "pass", "evidence": "既存の週次更新例に訂正時の引き継ぎを組み込み、スキルごとの成果物は既存の表に集約した。"},
-        "schema": {"status": "pass", "evidence": "識別子と改定の公表日を保ち、OKF・Obsidian Vault・dbtの役割を現行schemaと照合した。OKF厳格検査でエラー・警告0件、guide検索でREADMEを1件取得した。"},
-        "scrutiny": {"status": "pass", "evidence": "プラグイン単体が自動で訂正を見つけると読める箇所を点検した。週次更新サービスを構成する例とし、定期起動と公開先確認の条件はdeliverに結んだ。"}
+        "benchmark": {"status": "pass", "evidence": "b8fd165と候補を同じGFM処理で比較した。19,632字から9,530字へ51.5%削減。候補のREADME内・外向きの相対リンク41件とリポジトリ内からの参照13件が解決した。"},
+        "charter": {"status": "pass", "evidence": "初見の読者が試用例、3クライアントの導入、8分野の用途へ冒頭から進めることを合格条件にし、候補の見出しとリンクをたどった。"},
+        "deliver": {"status": "pass", "evidence": "候補をGFMで描画して最初の依頼と3クライアントの入口を解決した。Codex 0.167.0-alpha.4の隔離環境でローカル配布元から有効化し、導入済みREADMEのバイト一致と7スキルを観測した。"},
+        "humanizer": {"status": "pass", "evidence": "原稿と短縮稿を通読し、yomiyasuのlint・diffと最終稿の照合を実行した（20261119T110807Z-afedc118）。版は入力・実装・配布物を特定し、入口は利用者が確かめる画面や手順を指すため保持した。"},
+        "prune": {"status": "pass", "evidence": "用途紹介の重複、日付付きの70件集計と事例の列挙を削り、8分野の見出しと主な事例、配布・起動・更新・候補検証の手順を残した。文書からの参照13件を再確認した。"},
+        "schema": {"status": "pass", "evidence": "既存frontmatterの種別・タグとschemaのOKF・Obsidian Vault・dbtの役割を照合した。公式OKF検査13件でエラーと警告が0件、guideとタグの検索でREADMEを1件取得した。"},
+        "scrutiny": {"status": "pass", "evidence": "短縮で導入後の操作が途切れる条件としてCodexのフック承認、Claude Codeの更新先名、WSLのagyの所有権を洗い出し、候補に確認方法が残ることを前後のコマンドと見出しで照合した。"}
       }
     },
     "index.md": {
@@ -230,7 +230,7 @@
       }
     },
     "hooks/markdown-reviews.json": {
-      "sha256": "5e573397de97402acf74972b2a8140a8c9c22087256d5a44e4c5ae2d8748cb57",
+      "sha256": "dba8481530f56d90ff711af314b33fd5d722886f0470e9a287f7e83fe498b39c",
       "results": {
         "benchmark": {"status": "pass", "evidence": "対象は13→20件、組は91→140件。全パスに7キーが一つずつあり、意図的な保留が判定に反映された。"},
         "charter": {"status": "pass", "evidence": "保守担当が一ファイル・一スキルの判断と適用版を台帳から探せることを合格条件にした。"},
