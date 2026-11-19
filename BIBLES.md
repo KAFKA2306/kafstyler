@@ -63,6 +63,24 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [目標設定](skills/charter/SKILL.md) · [自律開発](skills/deliver/SKILL.md)
 
+### Claude Codeの検証
+
+[Addy Osmani・How the Claude Code team thinks about verification](https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/)（Claude Codeチームの公式技術記事、2026年11月16日公開、11月19日確認）。
+
+- 利用者の入口から実物を最後まで動かす。入力にかかわらず守る条件は性質ベースのテストで試し、挙動を保つ移行は旧版と新版に同じ入力を与えて比べる。
+- 変更前の信頼できる版から判定基準を読み、検証対象の版を固定する。安価な確認から始め、過去の障害に基づく確認は関係する差分で使う。前回の観測を次のレビューへ引き継ぐ。
+- 新しい必須チェックの候補は、まず記録だけ取って誤検知を調べる。実際の障害と安定していた変更で検証手順を評価し、再現できる見逃しを手順へ戻す。重複や不安定な判定も定期的に見直す。
+
+| スキル | 適用する工程 |
+| --- | --- |
+| [charter](skills/charter/SKILL.md) | 作業前に入口、入力、最後に観測する結果を決める |
+| [humanizer](skills/humanizer/SKILL.md#本文の推敲と提出前の確認) | 元の依頼や原典を固定し、読者の入口で推敲稿を試す |
+| [schema](skills/schema/SKILL.md#完了条件) | 読み書きの契約、旧データとの互換、再処理を確かめる |
+| [scrutiny](skills/scrutiny/SKILL.md) | 対象版と判定基準を固定し、差分から過去の失敗を選ぶ |
+| [prune](skills/prune/SKILL.md) | 削除前後に利用経路と、残した検査が拾う失敗を確かめる |
+| [benchmark](skills/benchmark/SKILL.md#検証手順の評価) | 不変条件と旧版との比較を設計し、評価手順自体の精度も測る |
+| [deliver](skills/deliver/SKILL.md#実装と検証) | 既存の検査を先に実行し、普段の入口から結果を読み戻す |
+
 ### 成功基準と評価
 
 [Anthropic・成功基準と評価の設計](https://platform.claude.com/docs/en/test-and-evaluate/develop-tests)（公式ガイド）。成功条件、テストケース、採点方法
@@ -243,7 +261,7 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 | [Building effective AI agents](https://www.anthropic.com/research/building-effective-agents)・[Building agents with the Claude Agent SDK](https://claude.com/resources/articles/building-agents-with-the-claude-agent-sdk) | 作業を観測して次の操作を選ぶ最小のループから始め、停止条件を決める。 |
 | [Harness design for long-running apps](https://www.anthropic.com/research/harness-design-long-running-apps)・[A harness for every task](https://claude.dev/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code/)・[Agent harness design: 3 patterns](https://claude.com/resources/articles/harnessing-claudes-intelligence) | 成果の条件を揃え、自己判定で失敗を見落とすときに独立した検証を使う。 |
 | [Long-running Claude for scientific computing](https://www.anthropic.com/research/long-running-claude)・[Formalizing Fermat's Last Theorem](https://www.anthropic.com/research/formalizing-fermats-last-theorem) | 長期案件を検証できる工程に分け、進捗と外部の判定結果を次の作業へ引き継ぐ。 |
-| [Building verification loops in Claude Code with skills](https://claude.com/resources/articles/building-verification-loops-in-claude-code-with-skills)・[How the Claude Code team thinks about verification](https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/)・[Demystifying evals for AI agents](https://www.anthropic.com/research/demystifying-evals-for-ai-agents) | 作業の種類に合う検証手段を使い、成果物や外部の状態を測る。 |
+| [Building verification loops in Claude Code with skills](https://claude.com/resources/articles/building-verification-loops-in-claude-code-with-skills)・[Claude Codeの検証](#claude-codeの検証)・[Demystifying evals for AI agents](https://www.anthropic.com/research/demystifying-evals-for-ai-agents) | 作業の種類に合う検証手段を使い、成果物や外部の状態を測る。 |
 | [Using a chaos loop to harden the Claude Docs launch](https://claude.dev/blog/chaos-loop-claude-docs-launch/) | 負荷をかけた環境で失敗を再現し、観測、変更、再実行を繰り返す。 |
 | [How we built our multi-agent research system](https://www.anthropic.com/research/multi-agent-research-system)・[Building a C compiler with parallel Claudes](https://www.anthropic.com/research/building-c-compiler)・[Safely scaling multi-agent teams with Claude Fable 5.2](https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2/) | 独立した仕事を並行に調べ、成果の統合と同一対象への書き込みを管理する。 |
 | [Measuring AI agent autonomy in practice](https://www.anthropic.com/research/measuring-agent-autonomy) | 稼働時間に加え、途中介入や自発停止が必要だった条件を評価する。 |
