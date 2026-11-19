@@ -150,11 +150,14 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 ### Claude Codeのフック
 
-[Anthropic・SessionStart](https://code.claude.com/docs/en/hooks#sessionstart)（公式仕様）。起動時に規約を渡す。
+[Anthropic・Hooks reference](https://code.claude.com/docs/en/hooks)（公式リファレンス）。Claude Codeのフックを設計・検証するときの正本。各イベントの発火条件、入力と出力のJSON、終了コードと判定制御、設定場所、`matcher` を確認する（2026年11月19日確認）。
 
-[Anthropic・UserPromptSubmit](https://code.claude.com/docs/en/hooks#userpromptsubmit)（公式仕様）。依頼受付時にスキルの発動条件を渡す。
+- 設定を置く前に、ユーザー、プロジェクト、プラグインなどの適用範囲を確認する。`matcher` が照合する値はイベントごとに確認する。例えば `PreToolUse` の `Bash` はツール名に一致し、`Stop` では `matcher` が無視される。[設定場所](https://code.claude.com/docs/en/hooks#hook-locations)・[matcherの書き方](https://code.claude.com/docs/en/hooks#matcher-patterns)
+- Kafstylerは [SessionStart](https://code.claude.com/docs/en/hooks#sessionstart) で規約を渡し、[UserPromptSubmit](https://code.claude.com/docs/en/hooks#userpromptsubmit) で依頼受付時にスキルの発動条件を渡す。
+- ツール実行前の遮断には `PreToolUse` を使う。対象の操作を `tool_input` から判定し、遮断時は `hookSpecificOutput` に `permissionDecision: "deny"` を返す。コマンドフックで対象外の操作は出力せず終了コード `0` を返し、通常の権限判定に渡す。起動失敗やタイムアウトでも遮断する `onFailure: "block"` は、Claude Code v2.1.295以降の同期 `command`・`http` フックで使える。[実行前の判定](https://code.claude.com/docs/en/hooks#pretooluse-decision-control)・[フックが失敗した場合の遮断](https://code.claude.com/docs/en/hooks#block-the-action-when-a-hook-fails)
+- 応答終了時の自動チェックには `Stop` を使う。やり直せる不合格なら `decision: "block"` と `reason` で作業を続けさせる。`stop_hook_active` や直前の結果を確認し、同じ条件で再実行が続くのを防ぐ。[発火条件と入力](https://code.claude.com/docs/en/hooks#stop)・[終了時の判定](https://code.claude.com/docs/en/hooks#stop-decision-control)
 
-[作業規約](AGENTS.md#全作業への適用と自己改善)
+[作業規約](AGENTS.md#全作業への適用と自己改善)・[作業中の版で試す](README.md#作業中の版で試す)・[発火の確認](https://code.claude.com/docs/en/hooks#debug-hooks)
 
 ### プラグインの作成
 
