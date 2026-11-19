@@ -6,6 +6,9 @@ tags:
   - kafstyler/maintenance
 aliases:
   - "ミッション"
+generated:
+  by: openai/chatgpt
+  at: "2026-11-19T09:43:11Z"
 ---
 
 # ミッション
@@ -22,7 +25,7 @@ aliases:
 
 成果物は、初めて読む人が見出しと冒頭で要点をつかめるように整える。手順がある場合は、次に行う操作を明記する。
 
-原典を確認し、手順・記録・台帳を更新する。すべてのMarkdownに必須のfrontmatter（`type`、日本語の`description`、空でない`tags`）を整え、想定したプロパティとタグで実際に文書を検索・抽出できることを確かめる。根拠と適用先をリンクでたどれる形にする。Kafstyler自身の文書にも[全スキルを使う手順](AGENTS.md#全markdownに全スキルを使う)を適用し、変更後の版で結果を確認する。
+原典を確認し、手順・記録・台帳を更新する。[OKFの更新手順](skills/schema/SKILL.md#okfに沿って文書を更新確認する)に沿って、プロパティとタグで文書を検索し、出典と後継文書をたどれることを確かめる。Kafstyler自身の文書にも[全スキルを使う手順](AGENTS.md#全markdownに全スキルを使う)を適用し、変更後の版で結果を確認する。
 
 [文章の推敲](skills/humanizer/SKILL.md)・[データ設計](skills/schema/SKILL.md)・[不要なファイル・コード・文章の削除](skills/prune/SKILL.md)
 

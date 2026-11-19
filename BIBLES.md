@@ -6,6 +6,12 @@ tags:
   - kafstyler/reference
 aliases:
   - "聖典台帳"
+generated:
+  by: openai/chatgpt
+  at: "2026-11-19T09:43:11Z"
+sources:
+  - id: okf-v03-spec
+    resource: https://github.com/open-knowledge-format/open-knowledge-format/blob/527e81aff55992be21507e97004286789126f88c/SPEC.md
 ---
 
 # 聖典台帳
@@ -33,11 +39,22 @@ aliases:
 
 Obsidianでは、このリポジトリのルートを保管庫として開く。文書と見出しは相対Markdownリンクで結ぶ。ファイル名や見出しを変更したら参照元も更新し、GitHubとObsidianの双方でたどれる形にする。
 
-すべてのMarkdownにYAML frontmatterを置く。`type` は文書の種別を示す空でない文字列、`description` は用途を示す空でない日本語の説明、`tags` は空でない検索用リストとする。新規・既存のREADME、記事、スキル、規約も例外にしない。変更時は想定したプロパティ値とタグで文書を検索・抽出できることを確認する。Obsidianを使えない場合はYAMLを解析して同じ条件で検索する。`aliases` は別の名前で探す文書に使う。同じキーの型は保管庫内で統一する。設定ファイルの用途とタグは[作業規約](AGENTS.md#ファイルの管理)に記録する。
+管理するMarkdownにはYAML frontmatterを置く。README、記事、スキル、規約、メモに共通して、`type` に文書の種別、`description` に用途を示す日本語の説明、`tags` に空でない検索用リストを書く。OKFの目次と変更ログには下の予約ファイル規則を使う。`aliases` は別名で探す文書に使う。同じキーの型は保管庫内でそろえる。設定ファイルの用途とタグは[作業規約](AGENTS.md#ファイルの管理)に記録する。
 
 タグは小文字とハイフンを使い、階層は `/` で区切る。YAMLでは `kafstyler/canon` と書く。Obsidianでは `[type:reference] tag:#kafstyler/canon` で種別とタグを組み合わせて検索する。
 
 [保管庫](#obsidianの保管庫)・[内部リンク](#obsidianの内部リンク)・[プロパティ](#obsidianのプロパティ)・[タグ](#obsidianのタグ)・[検索](#obsidianの検索)・[データ設計](skills/schema/SKILL.md)
+
+### Open Knowledge Format (OKF) v0.3
+
+[Google Cloud・OKF v0.3の発表](https://cloud.google.com/blog/products/data-analytics/introducing-okf-v0-3)（2026年11月18日公開）。[公式仕様](https://github.com/open-knowledge-format/open-knowledge-format/blob/main/SPEC.md)、[バリデータ](https://github.com/open-knowledge-format/open-knowledge-format/blob/main/skills/okf-generate/scripts/validate.py)、[検索スクリプト](https://github.com/open-knowledge-format/open-knowledge-format/blob/main/skills/okf-consume/scripts/scan.py)を2026年11月19日に確認した。
+
+- OKFで個々の文書に必須の項目は、空でない文字列の `type`。`description` と `tags` はKafstylerが検索のために必須とする。既存の項目と型を保ち、独自の項目を新設するときは `x-kafstyler-` で始める。[^okf-v03-spec]
+- まとまりとして交換する文書群は、ルートの `index.md` に `okf_version: "0.3"` を置く。サブディレクトリの `index.md` と、各階層の `log.md` にはfrontmatterを置かない。文書やファイルは標準のMarkdownリンクで結ぶ。相対パスは参照元のディレクトリ、先頭が `/` のパスは文書群のルートを基準にする。空白は `%20` と書く。[^okf-v03-spec]
+
+[^okf-v03-spec]: OKF v0.3公式仕様、第3〜6節と第8〜9節。
+
+[OKFに沿って文書を更新・確認する](skills/schema/SKILL.md#okfに沿って文書を更新確認する)
 
 ### 文書監査と移行
 
