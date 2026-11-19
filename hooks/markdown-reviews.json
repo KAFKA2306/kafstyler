@@ -1,6 +1,6 @@
 {
-  "compared_to": "55da9f3fb056ae0789ce8102dd089008acb92ec0",
-  "rules": "cce5a59681f2e46ebc8d463946d99294d48cedb1d34eae60855b55bec6298eff",
+  "compared_to": "0940922fabde24d94f12d25f87a45520f1f12111",
+  "rules": "94432ef9967d119194aefcd94711ab9482b1835e6e462ffdc5946721aa92b264",
   "documents": {
     "AGENTS.md": {
       "sha256": "10f378213989a436d679507a2216a6702a385e683a47e5abe8befc9aa8ec64e4",
@@ -15,15 +15,15 @@
       }
     },
     "BIBLES.md": {
-      "sha256": "05399663306d95ae5b3577ab083cd7a282bfe067b19e7713b1eadb8826b66f2f",
+      "sha256": "3070de1f2e08f5a2457d9369c00493ed0b9631c0682ef8e4d9028fb46492bb10",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版と候補版で同じリンク検査を実行し、外部URL234件と見出し114件の一致、参照切れ0件を確認した。"},
-        "charter": {"status": "pass", "evidence": "見出しから実装前の合格条件、再開時の確認、OKFの要件、Obsidianの手順を選び、出典にたどれることを合格条件にした。"},
-        "deliver": {"status": "pass", "evidence": "READMEの設計基準と資料の見直しから聖典各節を開き、関連するスキルの手順と出典の双方にたどれることを確認した。"},
-        "humanizer": {"status": "pass", "evidence": "冒頭の案内を実際のリンク先に合わせ、検証の順序と再開の動作を具体化した。yomiyasuのlint・diffと最終稿のハッシュ照合を実行した（20261119T103235Z-e7ab9bd7）。"},
-        "prune": {"status": "pass", "evidence": "統合済みの判断を重複して書き戻さず、見出しと参照先を保持した。"},
-        "schema": {"status": "pass", "evidence": "OKF v0.3の公式バリデータでエラー・警告0件。公式スキャナーの種別・タグ検索で聖典を取得した。"},
-        "scrutiny": {"status": "pass", "evidence": "OKFのtypeの適用範囲、Obsidianの既存フォルダの扱い、同じスレッドでの長時間作業の再開を一次資料に照合し、差分検査が挙げた意味の変化を見直した。"}
+        "benchmark": {"status": "pass", "evidence": "公式v0.3バリデータでKafstylerの13ファイルを検査し、エラーと警告が各0件。公式スキャナーでreferenceとkafstyler/canonを指定し、聖典台帳1件を取得した。"},
+        "charter": {"status": "pass", "evidence": "OKFの根拠を調べる担当者が、仕様、各クライアントでの導入、読み取り、生成の4つの入口を聖典の同じ節から選べることを確認した。"},
+        "deliver": {"status": "pass", "evidence": "公式リポジトリの指定版にREADMEの導入見出し、両スキルの本文と両スクリプトが存在することを確認し、聖典とschemaの参照を相互に照合した。"},
+        "humanizer": {"status": "pass", "evidence": "公開日と確認日、導入と読み書きの各リンク名、typeが必要になる文書の条件を原典と読み比べた。"},
+        "prune": {"status": "pass", "evidence": "ノートの管理にある追加項目は参照のまま保ち、公式手順へのリンクをOKFの節に集約した。"},
+        "schema": {"status": "pass", "evidence": "公式仕様の第3節と第11節から、frontmatterやtypeのないMarkdownは知識の検索対象外と確認した。既存のYAMLと出典IDはバリデータを通過した。"},
+        "scrutiny": {"status": "pass", "evidence": "typeのないREADMEを含む公式サンプルの複製で、バリデータはW120のみ、スキャナーはREADMEを対象外と判定した。"}
       }
     },
     "MISSION.md": {
@@ -135,15 +135,15 @@
       }
     },
     "skills/schema/SKILL.md": {
-      "sha256": "fdce9acb21e5a727456088c9743183401015540fba281e404df318108378195c",
+      "sha256": "c2afbf3d832cfd5c463daa0be15e45db33b487ad538fcf1b61f1ea080b1060f3",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "試験データの旧版確認、同時刻の機械確認、後日の人間確認を同じスキャナーで実行し、3種の信頼区分を観測した。"},
-        "charter": {"status": "pass", "evidence": "文書の作成・更新・移行で、タグ検索、根拠、確認履歴、後継を利用者がたどれることを合格条件にした。"},
-        "deliver": {"status": "pass", "evidence": "別フォルダからCodexで導入した候補と本文を照合し、記載の公式バリデータと検索コマンドを実行した。"},
-        "humanizer": {"status": "pass", "evidence": "5工程を通読し、タグ、出典、確認、移動、検索の順に整理した。公開用の既存項目を保つ条件も確認した。"},
-        "prune": {"status": "pass", "evidence": "台帳の棚卸しは既存節に保ち、タグと履歴と後継の管理を参照先一か所へ統合した。"},
-        "schema": {"status": "pass", "evidence": "Zenn形式の試験で既存のtitle、emoji、type、topics、publishedを保ち、typeとタグで検索できることを確かめた。"},
-        "scrutiny": {"status": "pass", "evidence": "改稿より前のhumanイベントは現行に数えず、空白を含む後継パスを解決することを試験文書で確かめた。"}
+        "benchmark": {"status": "pass", "evidence": "同じ公式サンプルの複製で、一律のstrictではW120により終了コード1、候補のコマンドではエラー0件、意図したW120が1件、生成文書の再検索が1件だった。"},
+        "charter": {"status": "pass", "evidence": "外部バンドルを読む依頼で後継と出典に達すること、生成の依頼で検証した文書を公式検索から読み戻せることを合格条件にした。"},
+        "deliver": {"status": "pass", "evidence": "手順中のコマンドを実行し、Acme RetailからMetricとfinanceで3件を検索。複製に追加した出典つき文書1件を読み戻し、元バンドルの全ファイルのハッシュが一致した。"},
+        "humanizer": {"status": "pass", "evidence": "読み取りと生成を各一項目で示し、コマンドに必要な変数と、使わない検索条件の扱いを実行結果と照合した。"},
+        "prune": {"status": "pass", "evidence": "従来の検証コマンドを公式スキルの節に移し、公式スキャナーとバリデータを再利用した。既存の公開形式とObsidianの参照経路を確認した。"},
+        "schema": {"status": "pass", "evidence": "公式スキャナーで旧粗利定義がdeprecated、後継がstableかつhuman-reviewed、新規参照文書がunverifiedになることを確認した。既存の確認履歴は保たれた。"},
+        "scrutiny": {"status": "pass", "evidence": "候補レビューで公式スキルの呼び出し名、検索条件の省略、同じ回の自己認証を検討し、原典の手順に合わせた。公式ツール版は527e81aff55992be21507e97004286789126f88c。"}
       }
     },
     "skills/scrutiny/SKILL.md": {

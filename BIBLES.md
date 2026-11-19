@@ -8,7 +8,7 @@ aliases:
   - "聖典台帳"
 generated:
   by: openai/chatgpt
-  at: "2026-11-19T10:31:18Z"
+  at: "2026-11-19T10:40:00Z"
 sources:
   - id: okf-v03-spec
     resource: https://github.com/open-knowledge-format/open-knowledge-format/blob/527e81aff55992be21507e97004286789126f88c/SPEC.md
@@ -56,14 +56,14 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 ### Open Knowledge Format (OKF) v0.3
 
-[Google Cloud・OKF v0.3の発表](https://cloud.google.com/blog/products/data-analytics/introducing-okf-v0-3)（2026年11月18日公開）。[公式仕様](https://github.com/open-knowledge-format/open-knowledge-format/blob/main/SPEC.md)、[バリデータ](https://github.com/open-knowledge-format/open-knowledge-format/blob/main/skills/okf-generate/scripts/validate.py)、[検索スクリプト](https://github.com/open-knowledge-format/open-knowledge-format/blob/main/skills/okf-consume/scripts/scan.py)を2026年11月19日に確認した。
+[Google Cloud・OKF v0.3の発表](https://cloud.google.com/blog/products/data-analytics/introducing-okf-v0-3)（2026年11月18日公開）。2026年11月19日に[公式リポジトリ](https://github.com/open-knowledge-format/open-knowledge-format)の[仕様](https://github.com/open-knowledge-format/open-knowledge-format/blob/main/SPEC.md)、[プラグインの導入手順](https://github.com/open-knowledge-format/open-knowledge-format#agent-skills)、[生成スキル](https://github.com/open-knowledge-format/open-knowledge-format/blob/main/skills/okf-generate/SKILL.md)と[バリデータ](https://github.com/open-knowledge-format/open-knowledge-format/blob/main/skills/okf-generate/scripts/validate.py)、[読み取りスキル](https://github.com/open-knowledge-format/open-knowledge-format/blob/main/skills/okf-consume/SKILL.md)と[検索スクリプト](https://github.com/open-knowledge-format/open-knowledge-format/blob/main/skills/okf-consume/scripts/scan.py)を確認した。
 
-- OKFでは、通常の文書のfrontmatterに空でない文字列の `type` を必須とする。Kafstylerの検索に必要な追加項目は[ノートの管理](#ノートの管理)を参照する。既存の項目と型を保ち、独自の項目を新設するときは `x-kafstyler-` で始める。[^okf-v03-spec]
+- OKFで知識として扱う文書には、frontmatterに空でない文字列の `type` を付ける。frontmatterや `type` を持たないMarkdownは読み取り時に対象外になる。Kafstylerの検索に必要な追加項目は[ノートの管理](#ノートの管理)を参照する。既存の項目と型を保ち、独自の項目を新設するときは `x-kafstyler-` で始める。[^okf-v03-spec]
 - まとまりとして交換する文書群は、ルートの `index.md` に `okf_version: "0.3"` を置く。サブディレクトリの `index.md` と、各階層の `log.md` にはfrontmatterを置かない。文書やファイルは標準のMarkdownリンクで結ぶ。相対パスは参照元のディレクトリ、先頭が `/` のパスは文書群のルートを基準にする。空白は `%20` と書く。[^okf-v03-spec]
 
 [^okf-v03-spec]: OKF v0.3公式仕様、第3〜6節と第8〜9節。
 
-[OKFに沿って文書を更新・確認する](skills/schema/SKILL.md#okfに沿って文書を更新確認する)
+[文書のメタデータを整える](skills/schema/SKILL.md#okfに沿って文書を更新確認する)・[公式OKFスキルを使う](skills/schema/SKILL.md#公式okfスキルを使う)
 
 ### 文書監査と移行
 
