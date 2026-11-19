@@ -1,6 +1,6 @@
 {
-  "compared_to": "68185c6c66606c1690f0f64f2e8c395dae64c4d1",
-  "rules": "3697ff611febc6a6acda0d446c209cdc2744e608735816cb4e05ec4f0aa91936",
+  "compared_to": "e41ec897de15dd29387de4272b6197e77b967891",
+  "rules": "27f9550ee0c21766d015b8b0d4a13db766fa3ded1cde8d303b16387e9074dc89",
   "documents": {
     "AGENTS.md": {
       "sha256": "10f378213989a436d679507a2216a6702a385e683a47e5abe8befc9aa8ec64e4",
@@ -123,27 +123,27 @@
       }
     },
     "skills/prune/SKILL.md": {
-      "sha256": "c2dbe8f0ccb1dc9f57e6e3ba940cd6527312b4228c53edef2f098ec7f0405646",
+      "sha256": "1f6ba3f8af649dbaee73adaeb405821087d9b0717c83f95ac7bc62531098cda4",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "旧パスと後継の試験で、旧文書を廃止扱いで残し、現行検索には後継1件だけが出ることを確認した。"},
-        "charter": {"status": "pass", "evidence": "Markdownの整理で利用者の参照が残るケースに、旧パスから後継を開く結果を置いた。"},
-        "deliver": {"status": "pass", "evidence": "削除の手順からschemaの更新節を開き、旧パスの扱いと後継参照を確認した。"},
-        "humanizer": {"status": "pass", "evidence": "冒頭を通読し、旧パスの参照が残る条件を、案内を残す処理の直前に置いた。"},
-        "prune": {"status": "pass", "evidence": "不要なファイルは削除する条件を残し、利用が残る旧パスの詳しい扱いはschemaへ寄せた。"},
-        "schema": {"status": "pass", "evidence": "元の発動条件とfrontmatterを保持し、試験でdeprecatedとsuperseded_byが現行の後継へ解決した。"},
-        "scrutiny": {"status": "pass", "evidence": "廃止文書を含む検索では旧文書と後継の2件、現行検索では後継1件と確認した。"}
+        "benchmark": {"status": "pass", "evidence": "改名前のCANON.mdと現行BIBLES.mdを複製して比較した。旧版の67 URLを保ち、2回目も対象4ファイルのSHA-256が一致した。"},
+        "charter": {"status": "pass", "evidence": "通常の目次と固定の旧URLを入口に選び、正本と出典が開き、参照の消えた複製だけを削除できることを合格条件とした。"},
+        "deliver": {"status": "pass", "evidence": "現行目次の参照を切り替え、固定の旧パスには案内を残し、参照の消えた複製だけを別の作業領域で削除した。"},
+        "humanizer": {"status": "pass", "evidence": "冒頭からMarkdown固有の細則を移し、候補の判定と整理後の確認がどの手順か分かる位置にリンクを置いた。"},
+        "prune": {"status": "pass", "evidence": "編集前に正本と残す参照を確定し、試験で旧見出しの案内1件を保ち、参照のなくなった複製1件を削除した。"},
+        "schema": {"status": "pass", "evidence": "試験の台帳2行が同じ正本を指し、公式OKF検索で正本1件を得た。候補版のfrontmatterも旧来の項目と型を保持した。"},
+        "scrutiny": {"status": "pass", "evidence": "過去の改名コミットで固定の旧見出しが開けない事例を確認し、候補手順では旧見出しから後継も開く条件を加えた。"}
       }
     },
     "skills/schema/SKILL.md": {
-      "sha256": "4ca2a959cad8da38737504cbb5114662fc5b3561e70bf93039533ce403f2ff24",
+      "sha256": "c6fa6b2081380999d1e613e11435f7fe6874fcdc42e34d0f0adaf4d9bd86ca9f",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "DuckDBで注文3件3100円を元テーブルと日次集計の2行で突き合わせた。注文IDの重複を1件入れると一意性テストが失敗した。"},
-        "charter": {"status": "pass", "evidence": "文書担当者が同じMarkdownを種別とタグで検索し定義元を開き、分析担当者がdbtの来歴と元データから集計を再現できることを合格条件にした。"},
-        "deliver": {"status": "pass", "evidence": "サンプルでdbt buildのモデル2件とテスト4件が通り、OKF検索で指標ノートを取得し、その相対リンクからdbtモデルを開いた。"},
-        "humanizer": {"status": "pass", "evidence": "冒頭と発動条件に3ツールの役割を明記し、文書管理と分析で使う手順をそれぞれの見出しから読めることを確認した。"},
-        "prune": {"status": "pass", "evidence": "Vaultの選択と検索確認をOKFの手順に集め、文書移行と冒頭から同じ手順へ参照した。既存の公開形式への出力経路を確認した。"},
-        "schema": {"status": "pass", "evidence": "dbtのmanifestでsourceからstg_orders、daily_salesへの依存を確認した。OKFのtype、tags、sourcesとVault向け相対リンクが同じモデルを示した。"},
-        "scrutiny": {"status": "pass", "evidence": "業務データの正本と分析モデルの役割、およびOKFバンドルの外で参照する条件を原典と照合した。既存バンドルの検索と後継の解決を再実行した。"}
+        "benchmark": {"status": "pass", "evidence": "DuckDBで注文3件3100円を元テーブルと日次集計の2行で突き合わせた。注文IDの重複を1件入れると一意性テストが失敗した。CSVの利用経路2種と入力3種を比較し、移行前・切替後・旧定義削除後のCLI出力6件が一致した。"},
+        "charter": {"status": "pass", "evidence": "文書担当者が同じMarkdownを種別とタグで検索し定義元を開き、分析担当者がdbtの来歴と元データから集計を再現できることを合格条件にした。正本への切替と旧定義の削除の間を通常CLIの再実行で確認し、利用経路ごとの期待出力を合格条件にした。"},
+        "deliver": {"status": "pass", "evidence": "サンプルでdbt buildのモデル2件とテスト4件が通り、OKF検索で指標ノートを取得し、その相対リンクからdbtモデルを開いた。文書とデータの移行手順から同じ整理手順を参照できることを照合し、候補の両文書と参照先を検証した。"},
+        "humanizer": {"status": "pass", "evidence": "冒頭と発動条件に3ツールの役割を明記し、文書管理と分析で使う手順をそれぞれの見出しから読めることを確認した。正本の移行と旧版の整理の見出しで担当の受け渡しを示し、既存のOKF更新節と用語をそろえた。"},
+        "prune": {"status": "pass", "evidence": "Vaultの選択と検索確認をOKFの手順に集め、文書移行と冒頭から同じ手順へ参照した。既存の公開形式への出力経路を確認した。CSVの試験で先に旧版を外すとCLIが失敗した。正本への切替後は旧定義を削除しても6入力が同じ結果を返した。"},
+        "schema": {"status": "pass", "evidence": "dbtのmanifestでsourceからstg_orders、daily_salesへの依存を確認した。OKFのtype、tags、sourcesとVault向け相対リンクが同じモデルを示した。CSVのID、出典、訂正版、欠損値を維持した。正本1件の値を変えると2経路に反映され、両経路の参照先が一致した。"},
+        "scrutiny": {"status": "pass", "evidence": "業務データの正本と分析モデルの役割、およびOKFバンドルの外で参照する条件を原典と照合した。既存バンドルの検索と後継の解決を再実行した。呼び出しが逆向きになる場合は実行中の手順に結果を返すこと、移行が依頼範囲外なら条件のみを示すことを照合した。"}
       }
     },
     "skills/scrutiny/SKILL.md": {
