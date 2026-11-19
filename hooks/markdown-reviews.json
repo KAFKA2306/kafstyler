@@ -1,6 +1,6 @@
 {
-  "compared_to": "0940922fabde24d94f12d25f87a45520f1f12111",
-  "rules": "94432ef9967d119194aefcd94711ab9482b1835e6e462ffdc5946721aa92b264",
+  "compared_to": "3c82bbb9e1d1ed1a7356da68e09aa43e3a3467b6",
+  "rules": "bf1dc2ec1e644a105eb59873b0133da336bd467ceec29849065ab7d063b268f4",
   "documents": {
     "AGENTS.md": {
       "sha256": "10f378213989a436d679507a2216a6702a385e683a47e5abe8befc9aa8ec64e4",
@@ -15,15 +15,15 @@
       }
     },
     "BIBLES.md": {
-      "sha256": "3070de1f2e08f5a2457d9369c00493ed0b9631c0682ef8e4d9028fb46492bb10",
+      "sha256": "77bed1d5a6bcf6c40c44e81cf07d324dd73b7d92fe15ba250c17a49167d5456d",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "公式v0.3バリデータでKafstylerの13ファイルを検査し、エラーと警告が各0件。公式スキャナーでreferenceとkafstyler/canonを指定し、聖典台帳1件を取得した。"},
-        "charter": {"status": "pass", "evidence": "OKFの根拠を調べる担当者が、仕様、各クライアントでの導入、読み取り、生成の4つの入口を聖典の同じ節から選べることを確認した。"},
-        "deliver": {"status": "pass", "evidence": "公式リポジトリの指定版にREADMEの導入見出し、両スキルの本文と両スクリプトが存在することを確認し、聖典とschemaの参照を相互に照合した。"},
-        "humanizer": {"status": "pass", "evidence": "公開日と確認日、導入と読み書きの各リンク名、typeが必要になる文書の条件を原典と読み比べた。"},
-        "prune": {"status": "pass", "evidence": "ノートの管理にある追加項目は参照のまま保ち、公式手順へのリンクをOKFの節に集約した。"},
-        "schema": {"status": "pass", "evidence": "公式仕様の第3節と第11節から、frontmatterやtypeのないMarkdownは知識の検索対象外と確認した。既存のYAMLと出典IDはバリデータを通過した。"},
-        "scrutiny": {"status": "pass", "evidence": "typeのないREADMEを含む公式サンプルの複製で、バリデータはW120のみ、スキャナーはREADMEを対象外と判定した。"}
+        "benchmark": {"status": "pass", "evidence": "旧版と候補版の起動仕様を同じ長時間作業と定期処理の条件で比較し、起動を選ぶ際に目標の継続と端末の稼働条件を判定できることを確かめた。"},
+        "charter": {"status": "pass", "evidence": "起動と再開の公式仕様から、合格条件まで一件を進める方法と、端末停止中に起動する方法の根拠に到達した。"},
+        "deliver": {"status": "pass", "evidence": "Anthropicのgoal・agent view・scheduled tasks・routines、OpenAIの長時間作業・Scheduled tasks・Codex Cloudの原文を開き、deliverとの相互リンクを確かめた。"},
+        "humanizer": {"status": "pass", "evidence": "起動と再開の節を通読し、各ターンの目標評価、ターミナル終了、PC再起動の対象を区別して読める文言に整えた。"},
+        "prune": {"status": "pass", "evidence": "公式の起動仕様を既存の表に集め、新しい資料のURLを一件ずつsourcesに置き、同じ表から参照した。"},
+        "schema": {"status": "pass", "evidence": "YAMLを解析し、追加した出典IDと脚注、生成と確認の時刻、既存タグを照合した。"},
+        "scrutiny": {"status": "pass", "evidence": "端末停止中の起動に/bgを使う反例を公式仕様と照合し、端末内の継続とクラウド起動を区別した。"}
       }
     },
     "MISSION.md": {
@@ -99,15 +99,15 @@
       }
     },
     "skills/deliver/SKILL.md": {
-      "sha256": "0bba8f58a2ae257f5b88ac05f714a3347a1fb20332068afc07e2462501ed01e0",
+      "sha256": "f68cbd2d8d366484a101cf3b9687186dfa2ec7bea82362c9457aa33771937c09",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "試験用CLIの通常入口で両版を実行し、終了コードが同じでも出力が変わる例を確認した。候補版のCodex導入と7スキルの配置を照合した。"},
-        "charter": {"status": "pass", "evidence": "実装と検証の手順5を読み、代表入力を与えて利用者が見る結果を読み戻すことを完了の観測として特定した。"},
-        "deliver": {"status": "pass", "evidence": "候補版をCodexのローカル配布元から導入し、0.5.31と7スキルのファイルを確認した。フックの既存検査も実行した。 別フォルダからCodexの配布版を導入し、版、規約、スキル7件、目次の読み戻しを確認した。"},
-        "humanizer": {"status": "pass", "evidence": "安価な検査、起動、読み戻しの順と、既存検査が失敗した場合に何を記録するかを通読した。"},
-        "prune": {"status": "pass", "evidence": "繰り返す起動手順を対象近くの既存文書へ置くことと、新規チェックを観測から始める条件を確認した。"},
-        "schema": {"status": "pass", "evidence": "版、停止した操作、期待値、観測を区別して記録でき、frontmatterの発動条件が着手版と一致した。"},
-        "scrutiny": {"status": "pass", "evidence": "終了コードだけでは旧データ消失を見逃すことを再現し、本文の実行と読み戻しで判定する経路を確認した。"}
+        "benchmark": {"status": "pass", "evidence": "独立した二つの読み合わせで同じ二件を比較した。Codexの長時間移行は直接実行から /goal に変わり、クラウドの再配信は両版とも公開済みCSVを読み戻して再書き込みを避けた。"},
+        "charter": {"status": "pass", "evidence": "利用者の入口で対象コミットと疎通の両方を確認し、90分の上限で再開条件を残す移行例を、起動方法の表と継続目標の手順で確認した。"},
+        "deliver": {"status": "pass", "evidence": "Codex CLIのローカル配布元から0.5.33を導入し、配置された7スキルとdeliverの本文が作業版と同一であることを確認した。"},
+        "humanizer": {"status": "pass", "evidence": "発動条件の先頭と導入で常駐の用途を示し、引き受け、再開、待機、成果確認の順に通読した。"},
+        "prune": {"status": "pass", "evidence": "普段の実装手順と既存の見出しを保持し、状態の項目定義と再開試験の一覧はschemaとbenchmarkの既存箇所を参照した。"},
+        "schema": {"status": "pass", "evidence": "YAMLで常駐の説明と別名を読み取り、作業IDとイベントIDによる再開が既存の台帳設計からたどれることを確かめた。"},
+        "scrutiny": {"status": "pass", "evidence": "応答切断後のイベント再配信を読み合わせ、公開先の指定版とCSV行が一件あれば再書き込みせず、次の同一対象の処理は先行分を照合することを確認した。"}
       }
     },
     "skills/humanizer/SKILL.md": {
