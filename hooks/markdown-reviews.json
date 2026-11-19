@@ -1,6 +1,6 @@
 {
-  "compared_to": "f6fcbd18d3ed303d03e031d664645da17f09ccd5",
-  "rules": "5c423098ee63e81539bf2696121fb4f8ac66c2ae31c8ce0f5b3031494e595654",
+  "compared_to": "25134e2d5183594bd6c86912d73c14f582fa397d",
+  "rules": "cce5a59681f2e46ebc8d463946d99294d48cedb1d34eae60855b55bec6298eff",
   "documents": {
     "AGENTS.md": {
       "sha256": "10f378213989a436d679507a2216a6702a385e683a47e5abe8befc9aa8ec64e4",
@@ -15,15 +15,15 @@
       }
     },
     "BIBLES.md": {
-      "sha256": "e16fa1dcf25beeaf85b1792196ca02508a87785f2587d06208079a0730dd9168",
+      "sha256": "05399663306d95ae5b3577ab083cd7a282bfe067b19e7713b1eadb8826b66f2f",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "同じ入力で着手前後を比較し、外部URL234件と見出し114件が一致。全13文書の相対参照は551件から555件になり、不達は両版とも0件。"},
-        "charter": {"status": "pass", "evidence": "検証の合格条件、定期起動、再開、ノート管理を既存の見出しから探し、判断の記載先と一次資料にたどれることを合格条件にした。"},
-        "deliver": {"status": "pass", "evidence": "作業規約と既存の各スキルから聖典へのリンク、聖典内の見出し間のリンク、担当手順へのリンクを解決し、公式スキャナーから聖典を取得した。"},
-        "humanizer": {"status": "pass", "evidence": "重複していた説明を共通の判断への参照に変更し、各記事の固有の用途とリンク先が文面から分かることを通読した。"},
-        "prune": {"status": "pass", "evidence": "起動方式と長時間作業の引き継ぎを繰り返す表の2行を統合し、合格条件、ハーネス、記憶、ノート管理の共通説明を既存節に集約した。"},
-        "schema": {"status": "pass", "evidence": "OKF v0.3の公式バリデータの厳格モードでエラー・警告0件。種別とタグで聖典1件を取得し、既存の出典IDと脚注を照合した。"},
-        "scrutiny": {"status": "pass", "evidence": "各方式固有の起動条件、Gitと進捗の記録、検証コマンドの共用を原典と差分で照合した。既存の全外部URLと相対参照の到達先を前後で比較した。"}
+        "benchmark": {"status": "pass", "evidence": "着手版と候補版で同じリンク検査を実行し、外部URL234件と見出し114件の一致、参照切れ0件を確認した。"},
+        "charter": {"status": "pass", "evidence": "見出しから実装前の合格条件、再開時の確認、OKFの要件、Obsidianの手順を選び、出典にたどれることを合格条件にした。"},
+        "deliver": {"status": "pass", "evidence": "READMEの設計基準と資料の見直しから聖典各節を開き、関連するスキルの手順と出典の双方にたどれることを確認した。"},
+        "humanizer": {"status": "pass", "evidence": "冒頭の案内を実際のリンク先に合わせ、検証の順序と再開の動作を具体化した。yomiyasuのlint・diffと最終稿のハッシュ照合を実行した（20261119T103235Z-e7ab9bd7）。"},
+        "prune": {"status": "pass", "evidence": "統合済みの判断を重複して書き戻さず、見出しと参照先を保持した。"},
+        "schema": {"status": "pass", "evidence": "OKF v0.3の公式バリデータでエラー・警告0件。公式スキャナーの種別・タグ検索で聖典を取得した。"},
+        "scrutiny": {"status": "pass", "evidence": "OKFのtypeの適用範囲、Obsidianの既存フォルダの扱い、同じスレッドでの長時間作業の再開を一次資料に照合し、差分検査が挙げた意味の変化を見直した。"}
       }
     },
     "MISSION.md": {
@@ -39,15 +39,15 @@
       }
     },
     "README.md": {
-      "sha256": "e1ac7d2f2572e1368d4618dc0ec33324337eb46ba476584e3932dc7bd340c3c9",
+      "sha256": "c0da2ebf91d5a08bb0e9b278b49529d85cc818acfc8e6927ffefc51dfef22d39",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "同じ公開資料と停止した週次処理で初見の経路を比較した。最初の具体的な依頼例は73行目から29行目になり、開発・運用の例は冒頭の用途から直接開ける。"},
-        "charter": {"status": "pass", "evidence": "GitHubの冒頭から、初見の読者が受け取る成果を説明し、公開資料で一件試し、自分の用途や導入手順を選べることを合格条件にした。"},
-        "deliver": {"status": "pass", "evidence": "GitHub形式でREADMEを描画し、新旧の導入コマンドと作業例が一致し、ローカル参照51件が解決することを確認した。公開資料を使う初回の依頼は、日付・出典箇所・資料にない事項を見分けられることを文面と照合した。"},
-        "humanizer": {"status": "pass", "evidence": "冒頭を読み、製品名と手順に先立って、聴き比べ、遊び方の案内、根拠を開ける比較という結果が想像できるよう推敲した。yomiyasuで文末と説明の重複を点検した。"},
-        "prune": {"status": "pass", "evidence": "古い導入前の紹介文と開発者向けの最初の依頼例を共通の入口に置き換えた。既存の事例集、導入コマンド、外部URL、既存見出し24件は比較して到達を確認した。"},
-        "schema": {"status": "pass", "evidence": "READMEのYAMLを解析し、type、tags、aliasesの保持、新しい説明と生成日時を確認した。公開資料から直接読み取れる内容と、将来の体験を述べる節を確認した。"},
-        "scrutiny": {"status": "pass", "evidence": "ツールの対応範囲を配布設定と照合し、導入前に試せるのは依頼文と分かることを確認した。将来の試作品評価と週次運用は目指す体験の見出しに置いた。別のフォルダに外部2スキルをCodex用として導入し、一覧とSKILL.mdを照合した。"}
+        "benchmark": {"status": "pass", "evidence": "着手版と候補版を同じリンク検査に通した。全13文書の相対リンクは555件から564件で、両版とも不達0件。READMEの外部URLは同一。"},
+        "charter": {"status": "pass", "evidence": "大規模プロジェクトの担当者が、設計・再現・更新の具体例と最初の依頼文を、冒頭からたどれることを合格条件にした。"},
+        "deliver": {"status": "pass", "evidence": "冒頭から適用例、依頼文、導入先を開いた。適用例からデータと画面の設計、評価、再開と資料更新の既存手順へのリンクを解決した。"},
+        "humanizer": {"status": "pass", "evidence": "大規模開発で読者が使える手順と、週次公開サービスの例を冒頭に置いた。yomiyasuのlint・diffと最終稿のハッシュ照合を実行した（20261119T103235Z-5acb9c26）。"},
+        "prune": {"status": "pass", "evidence": "従来の紹介文を具体例に置き換え、追加説明を冒頭に重ねず、設計から導入までを既存の参照先へつないだ。"},
+        "schema": {"status": "pass", "evidence": "利用例と導入という文書の役割をdescriptionに反映し、種別・タグと既存リンクを保持した。OKF厳格検査で警告0件。"},
+        "scrutiny": {"status": "pass", "evidence": "設計の分担、同じ入力での比較、日次の資料見直しを規約・スキル・聖典に照合した。週次公開サービスを導入実績として読まないよう仮定の例とし、最新仕様の採用は現行版との比較手順で説明した。"}
       }
     },
     "index.md": {

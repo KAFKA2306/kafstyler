@@ -8,7 +8,7 @@ aliases:
   - "聖典台帳"
 generated:
   by: openai/chatgpt
-  at: "2026-11-19T09:43:11Z"
+  at: "2026-11-19T10:31:18Z"
 sources:
   - id: okf-v03-spec
     resource: https://github.com/open-knowledge-format/open-knowledge-format/blob/527e81aff55992be21507e97004286789126f88c/SPEC.md
@@ -19,11 +19,13 @@ verified:
     at: "2026-11-19T09:51:58Z"
   - by: openai/chatgpt
     at: "2026-11-19T10:14:33Z"
+  - by: openai/chatgpt
+    at: "2026-11-19T10:31:18Z"
 ---
 
 # 聖典台帳
 
-各項目の一次資料を開き、下のコマンドから適用手順を確認できる。[台帳の更新手順](MISSION.md#更新手順)・[評価指標](MISSION.md#機械的に確かめる評価指標)・[外部手法への置き換え](MISSION.md#外部実装への置き換え)
+作業の分野から、設計や検証の根拠となる一次資料と、実際に使う手順を探せる。[台帳の更新手順](MISSION.md#更新手順)・[評価指標](MISSION.md#機械的に確かめる評価指標)・[外部手法への置き換え](MISSION.md#外部実装への置き換え)
 
 ## 資料の見直し
 
@@ -56,7 +58,7 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [Google Cloud・OKF v0.3の発表](https://cloud.google.com/blog/products/data-analytics/introducing-okf-v0-3)（2026年11月18日公開）。[公式仕様](https://github.com/open-knowledge-format/open-knowledge-format/blob/main/SPEC.md)、[バリデータ](https://github.com/open-knowledge-format/open-knowledge-format/blob/main/skills/okf-generate/scripts/validate.py)、[検索スクリプト](https://github.com/open-knowledge-format/open-knowledge-format/blob/main/skills/okf-consume/scripts/scan.py)を2026年11月19日に確認した。
 
-- OKFの必須項目は空でない文字列の `type`。Kafstylerの検索に必要な追加項目は[ノートの管理](#ノートの管理)を参照する。既存の項目と型を保ち、独自の項目を新設するときは `x-kafstyler-` で始める。[^okf-v03-spec]
+- OKFでは、通常の文書のfrontmatterに空でない文字列の `type` を必須とする。Kafstylerの検索に必要な追加項目は[ノートの管理](#ノートの管理)を参照する。既存の項目と型を保ち、独自の項目を新設するときは `x-kafstyler-` で始める。[^okf-v03-spec]
 - まとまりとして交換する文書群は、ルートの `index.md` に `okf_version: "0.3"` を置く。サブディレクトリの `index.md` と、各階層の `log.md` にはfrontmatterを置かない。文書やファイルは標準のMarkdownリンクで結ぶ。相対パスは参照元のディレクトリ、先頭が `/` のパスは文書群のルートを基準にする。空白は `%20` と書く。[^okf-v03-spec]
 
 [^okf-v03-spec]: OKF v0.3公式仕様、第3〜6節と第8〜9節。
@@ -92,8 +94,8 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 [Addy Osmani・How the Claude Code team thinks about verification](https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/)（Claude Codeチームの公式技術記事、2026年11月16日公開、11月19日確認）。
 
 - 利用者の入口から実物を最後まで動かす。入力にかかわらず守る条件は性質ベースのテストで試し、挙動を保つ移行は旧版と新版に同じ入力を与えて比べる。
-- 実装前に、依頼と変更前の信頼できる版から期待値と合格条件を確定し、検証対象の版を固定する。安価な確認から始め、過去の障害に基づく確認は関係する差分で使う。前回の観測を次のレビューへ引き継ぐ。
-- 新しい必須チェックの候補は、まず記録だけ取って誤検知を調べる。実際の障害と安定していた変更で検証手順を評価し、再現できる見逃しを手順へ戻す。重複や不安定な判定も定期的に見直す。
+- 実装前に、依頼と変更前の信頼できる版から、期待する結果と合格条件を決める。検証では対象の版を固定し、手間の少ない確認から始める。過去の障害に基づく検査は、変更内容に関係するものを選ぶ。観測した結果は次のレビューに引き継ぐ。
+- 必須にするチェックの候補は、合否の判定に使う前に実行結果を記録し、誤検知を調べる。実際の障害と安定していた変更で検証手順を試し、見逃しを再現できたら手順を直す。重複や不安定な判定も定期的に見直す。
 
 | スキル | 適用する工程 |
 | --- | --- |
@@ -252,13 +254,13 @@ Anthropic・Hooks reference（公式リファレンス、2026年11月19日確認
 
 ### 長時間稼働するエージェント
 
-[Anthropic・Effective harnesses for long-running agents](https://www.anthropic.com/research/effective-harnesses-for-long-running-agents)（公式技術記事）。Gitの履歴と進捗の記録を次のセッションに渡す。引き継いだ時点で作業状態を[実物を使う検証](#claude-codeの検証)で確かめる。
+[Anthropic・Effective harnesses for long-running agents](https://www.anthropic.com/research/effective-harnesses-for-long-running-agents)（公式技術記事）。Gitの履歴と進捗メモを残す。次のセッションでは両方を読み、[普段の操作で動作を確かめて](#claude-codeの検証)から作業を続ける。
 
 [自律開発](skills/deliver/SKILL.md) · [評価と比較](skills/benchmark/SKILL.md)
 
 ### OpenAIの現場開発
 
-[OpenAI・現場で成果を届けるエンジニアリング（What FDE means at OpenAI）](https://openai.com/index/forward-deployed-engineering-means/)（開発元の実践記事）。[利用者の完成場面から考える設計](#登大遊の論理的思考)の実践例。顧客の業務と制約の下で試し、見つけた課題を製品開発へ返す。
+[OpenAI・現場で成果を届けるエンジニアリング（What FDE means at OpenAI）](https://openai.com/index/forward-deployed-engineering-means/)（開発元の実践記事）。[利用者の完成場面から考える設計](#登大遊の論理的思考)の実践例。顧客と一緒に、現場の条件で使えるかを確かめ、見つけた課題を製品開発に伝える。
 
 [目標設定](skills/charter/SKILL.md) · [自律開発](skills/deliver/SKILL.md)
 
@@ -287,7 +289,7 @@ Anthropic・Hooks reference（公式リファレンス、2026年11月19日確認
 | [Building effective AI agents](https://www.anthropic.com/research/building-effective-agents)・[Building agents with the Claude Agent SDK](https://claude.com/resources/articles/building-agents-with-the-claude-agent-sdk) | 作業を観測して次の操作を選ぶ最小のループから始め、停止条件を決める。 |
 | [Harness design for long-running apps](https://www.anthropic.com/research/harness-design-long-running-apps)・[A harness for every task](https://claude.dev/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code/)・[Agent harness design: 3 patterns](https://claude.com/resources/articles/harnessing-claudes-intelligence) | 成果の条件を揃え、自己判定で失敗を見落とすときに独立した検証を使う。 |
 | [Long-running Claude for scientific computing](https://www.anthropic.com/research/long-running-claude)・[Formalizing Fermat's Last Theorem](https://www.anthropic.com/research/formalizing-fermats-last-theorem) | 長期案件を検証できる工程に分け、進捗と外部の判定結果を次の作業へ引き継ぐ。 |
-| [Building verification loops in Claude Code with skills](https://claude.com/resources/articles/building-verification-loops-in-claude-code-with-skills)・[Demystifying evals for AI agents](https://www.anthropic.com/research/demystifying-evals-for-ai-agents) | [検証](#claude-codeの検証)に必要な手作業をスキル化し、評価では操作後の環境の状態を採点する。 |
+| [Building verification loops in Claude Code with skills](https://claude.com/resources/articles/building-verification-loops-in-claude-code-with-skills)・[Demystifying evals for AI agents](https://www.anthropic.com/research/demystifying-evals-for-ai-agents) | 手作業で行っている[確認](#claude-codeの検証)をスキルにする。成果は操作後に環境へ反映された結果で判定する。 |
 | [Using a chaos loop to harden the Claude Docs launch](https://claude.dev/blog/chaos-loop-claude-docs-launch/) | 負荷をかけた環境で失敗を再現し、観測、変更、再実行を繰り返す。 |
 | [How we built our multi-agent research system](https://www.anthropic.com/research/multi-agent-research-system)・[Building a C compiler with parallel Claudes](https://www.anthropic.com/research/building-c-compiler)・[Safely scaling multi-agent teams with Claude Fable 5.2](https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2/) | 独立した仕事を並行に調べ、成果の統合と同一対象への書き込みを管理する。 |
 | [Measuring AI agent autonomy in practice](https://www.anthropic.com/research/measuring-agent-autonomy) | 稼働時間に加え、途中介入や自発停止が必要だった条件を評価する。 |
@@ -307,7 +309,7 @@ Anthropic・Hooks reference（公式リファレンス、2026年11月19日確認
 | [Introducing Codex](https://openai.com/index/introducing-codex/)・[Introducing the Codex app](https://openai.com/index/introducing-the-codex-app/)・[Codex for (almost) everything](https://openai.com/index/codex-for-almost-everything/) | クラウドへの単発委譲、定期実行、既存スレッドへの再開を使い分ける。 |
 | [Introducing the Agents API](https://openai.com/index/introducing-the-agents-api/)・[The next evolution of the Agents SDK](https://openai.com/index/the-next-evolution-of-the-agents-sdk/) | 運用を任せるAPIと自分で制御するSDKを選び、セッションや実行環境を誰が管理するか決める。 |
 | [Codex as a platform](https://developers.openai.com/blog/codex-as-a-platform)・[Unlocking the Codex harness](https://openai.com/index/unlocking-the-codex-harness/)・[Unrolling the Codex agent loop](https://openai.com/index/unrolling-the-codex-agent-loop/) | `exec`、SDK、App Serverを目的に合わせて選び、実行単位、イベント、途中の指示、結果の取り出し方を押さえる。 |
-| [Codex-maxxing for long-running work](https://openai.com/index/codex-maxxing-long-running-work/) | [リポジトリの設計](#openaiのハーネス設計)に加え、進捗と成果を後続の処理が読める形で残す。 |
+| [Codex-maxxing for long-running work](https://openai.com/index/codex-maxxing-long-running-work/) | 作業ごとにスレッドを決め、判断と成果物を残して次の実行で参照する。[関連するリポジトリ設計](#openaiのハーネス設計) |
 | [Run long horizon tasks with Codex](https://developers.openai.com/blog/run-long-horizon-tasks-with-codex)・[Using PLANS.md for multi-hour problem solving](https://developers.openai.com/cookbook/articles/codex_exec_plans)・[Using Goals in Codex](https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex) | 目標、進捗、判断、合格条件を残し、実装と検証を繰り返して再開後も同じ目標を追う。 |
 | [Shell + Skills + Compaction](https://developers.openai.com/blog/skills-shell-tips)・[From model to agent](https://openai.com/index/equip-responses-api-computer-environment/) | 実行環境、スキル、会話の圧縮を組み合わせ、成果物を後続工程から取り出せるようにする。 |
 | [Session Memory](https://developers.openai.com/cookbook/examples/agents_sdk/session_memory)・[Building Reliable Agents with Memory and Compaction](https://developers.openai.com/cookbook/examples/agents_sdk/building_reliable_agents_memory_compaction) | セッション履歴の保持範囲を決め、要約から落ちると困る証拠は参照先を残す。 |
@@ -318,7 +320,7 @@ Anthropic・Hooks reference（公式リファレンス、2026年11月19日確認
 
 | 対象 | 仕様と確認すること |
 | --- | --- |
-| Claude Code | [セッション内の `/loop`](#claude-codeのloop)は実行中のセッションに依存する。[クラウド定期タスク](https://code.claude.com/docs/en/routines)は定時・API・GitHubイベントで起動する（[発表記事](https://claude.com/resources/articles/introducing-routines-in-claude-code)）。[Desktop定期実行](https://code.claude.com/docs/en/desktop-scheduled-tasks)は端末上のファイルとアプリを使う。 |
+| Claude Code | [セッション内の `/loop`](#claude-codeのloop)を実行するには、そのセッションを開いておく。[クラウド定期タスク](https://code.claude.com/docs/en/routines)は定時・API・GitHubイベントで起動する（[発表記事](https://claude.com/resources/articles/introducing-routines-in-claude-code)）。[Desktop定期実行](https://code.claude.com/docs/en/desktop-scheduled-tasks)は端末上のファイルとアプリを使う。 |
 | Claude Managed Agents | [概要](https://platform.claude.com/docs/en/managed-agents/overview)と[定期デプロイ](https://platform.claude.com/docs/en/managed-agents/scheduled-deployments)で、新規セッションの起動、保存、停止方法を確かめる。[Memory](https://platform.claude.com/docs/en/managed-agents/memory)でセッションをまたぐ記憶の共有範囲を決める（[活用例](https://claude.com/resources/articles/claude-managed-agents-memory)）。[Outcomes](https://platform.claude.com/docs/en/managed-agents/define-outcomes)で成果の判定を決める。 |
 | ChatGPT Work・Codex | [Scheduled tasks](https://learn.chatgpt.com/docs/automations)で定時・対応イベントと接続を確かめる。[Codex Cloud](https://learn.chatgpt.com/docs/cloud)と[クラウド環境](https://learn.chatgpt.com/docs/environments/cloud-environments)でリポジトリ、依存関係、再開時のファイルを確かめる。[長時間作業](https://learn.chatgpt.com/docs/long-running-work)・[Dotsのタスクと記憶](https://learn.chatgpt.com/docs/dots/tasks-and-memory)で状態や履歴を確認する入口を選ぶ。 |
 | OpenAI Agents API | [概要](https://developers.openai.com/api/docs/guides/agents-api/overview)・[定期実行](https://developers.openai.com/api/docs/guides/agents-api/sessions/automations)・[セッションの継続](https://developers.openai.com/api/docs/guides/agents-api/sessions)で、新規と既存のセッションを選ぶ。[Session webhooks](https://developers.openai.com/api/docs/guides/agents-api/sessions/webhooks)で通知後に成果を確認し、[エラー時の回復](https://developers.openai.com/api/docs/guides/agents-api/errors)で失敗後の再試行を決める。 |
@@ -422,13 +424,13 @@ Anthropic・Hooks reference（公式リファレンス、2026年11月19日確認
 
 ### Obsidianの保管庫
 
-[Obsidian・保管庫の作成](https://obsidian.md/help/vault)（公式文書）。保管庫を作成・切り替える手順。
+[Obsidian・保管庫の作成](https://obsidian.md/help/vault)（公式文書）。新しい保管庫を作るか、既存のフォルダを保管庫として開く手順。
 
 [データ設計](skills/schema/SKILL.md)
 
 ### Obsidianの内部リンク
 
-[Obsidian・内部リンク](https://obsidian.md/help/links)（公式文書）。リンクのファイル指定と見出し指定の書式。
+[Obsidian・内部リンク](https://obsidian.md/help/links)（公式文書）。リンク先にファイルや見出しを指定するときの書式。
 
 [データ設計](skills/schema/SKILL.md)
 
