@@ -8,7 +8,7 @@ aliases:
   - "使い方"
 generated:
   by: openai/chatgpt
-  at: "2026-11-20T01:02:42Z"
+  at: "2026-11-20T01:41:16Z"
 ---
 
 # Kafstyler
@@ -35,7 +35,7 @@ Kafstylerは、開発・調査・制作・運用に共通の作業規約と7つ�
 
 ## 大規模な開発を支える仕組み
 
-設計の中心は [`schema`](skills/schema/SKILL.md) です。何を一件と数え、どの文書やデータを正本とし、どこで更新するかを決めます。知識文書はOKFで記述してObsidian Vaultで管理し、分析データはdbtで変換・集計します。
+設計の中心は [`canonicalize`](skills/canonicalize/SKILL.md) です。何を一件と数え、どの文書やデータを正本とし、どこで更新するかを決めます。知識文書はOKFで記述してObsidian Vaultで管理し、分析データはdbtで変換・集計します。
 
 たとえば、公表統計の検索画面とCSVを毎週更新するサービスでは、データ収集と画面開発を別のチームが担当しても、次の定義と手順を共有できます。
 
@@ -43,40 +43,40 @@ Kafstylerは、開発・調査・制作・運用に共通の作業規約と7つ�
 2. **同じ正本から公開する。** 検索画面とCSVを生成し、公開先で値と出典を照合します。同じ資料を取り込み直しても行が重複しないことを確かめます。
 3. **訂正を反映する。** 半年前の数値が訂正されたら、次の担当が台帳に残った入力、版、再実行コマンドを使って影響する集計を更新します。仕様変更時は版を固定し、同じ入力で切り替え前後を比べます。
 
-[画面の設計基準](BIBLES.md#かふかのデザインパターン) · [定期実行と再開](skills/deliver/SKILL.md#常駐エージェントと定期実行) · [一次資料の見直し](BIBLES.md#資料の見直し) · [更新手順](MISSION.md#更新手順)
+[画面の設計基準](BIBLES.md#かふかのデザインパターン) · [定期実行と再開](skills/autocatalyze/SKILL.md#常駐エージェントと定期実行) · [一次資料の見直し](BIBLES.md#資料の見直し) · [更新手順](MISSION.md#更新手順)
 
 ### 7つのスキルと、残す成果物
 
-次の図は、定刻・イベント・回答で起動し、結果を確認したら次の起動を待つ運用での連携です。設定済みのスケジューラーやイベント受信先が起動を担い、`deliver` が作業台帳を開いて新しい周期か中断の続きかを判断します。単発の依頼でも、下の表にある責任に沿って必要なスキルを組み合わせます。
+定刻・イベント・回答で起動し、仕事の段階と観測した状況に応じてスキルを選びます。7つのどれも入口になり、必要な相手を呼び、結果を同じ作業IDに戻します。図は、前回の成果を使って次の仕事を進める連携例です。
 
 ```mermaid
 flowchart TD
-    accTitle: Kafstylerの7スキルと常時運用
-    accDescr: 定刻・イベント・回答を起点にdeliverが再開する。charterとbenchmarkが目標と評価を決め、schemaが正本と再開記録を定義する。必要に応じてhumanizerとpruneを使い、各工程でscrutinyの反証を取り込む。deliverは確認地点と次の起動条件を記録して待つ。
-    trigger["外部の起動元"]
-    subgraph work["該当する工程"]
-        charter["charter"] -->|"合格条件"| benchmark["benchmark"]
-        benchmark -->|"固定した評価・判定"| deliver["deliver"]
-        benchmark -. 報告書の推敲 .-> humanizer["humanizer"]
-        schema["schema"] -. 正本・再開記録 .-> deliver
-        schema -. 切替確認後 .-> prune["prune"]
+    accTitle: Kafstylerのスキル連携と継続運用
+    accDescr: 外部の起動元をきっかけに必要なスキルを使う。成果と検証結果を同じ作業IDに残し、次の周期に引き継ぐ。
+    trigger["定刻・イベント・回答"]
+    subgraph work["段階に応じて相互に呼び出す"]
+        goal["reconceptualize"] -->|"利用者の合格条件"| judge["adjudicate"]
+        judge <-->|"評価条件・実測結果"| run["autocatalyze"]
+        run <-->|"正本・確認地点"| canon["canonicalize"]
+        canon <-->|"移行条件・切替結果"| retire["decommission"]
+        edit["humanizer"] <-->|"主張・原典・指摘"| review["debunk"]
+        run <-->|"現行方式・代替案"| review
     end
-    trigger -->|"定刻・イベント・回答"| deliver
-    deliver -->|"記録して待機"| trigger
-    work <-->|"各工程の調査・反証"| scrutiny["scrutiny"]
+    trigger -->|"状態に応じて開始・再開"| work
+    run -->|"確認済みの成果を引き継ぐ"| trigger
 ```
 
-前回の目標・評価は、対象や条件が変わるまで引き継ぎます。定例は次回を待ち、一時ジョブは目的を達成するか中止したら解除します。旧版の整理から始める場合は、正本に影響する箇所を `prune` から `schema` に渡して移行条件を確かめます。
+たとえば動画を日次公開する仕事では、設定した定刻に制作を始め、公開先で指定した状態を読み戻します。途中で止まった回は同じ記録から再開し、次の定例では確認済みの条件と今回の入力を使って次の動画を作ります。公開済みの成果を調べる回は adjudicate、方式を見直す回は debunk や decommission からも始められます。
 
 | スキル | 責任範囲と次に渡すもの |
 | --- | --- |
-| [`charter`](skills/charter/SKILL.md) | 利用者の目的、使う入口、制約と完了場面を定める。合格条件と検証に使う道具を渡す。 |
-| [`schema`](skills/schema/SKILL.md) | 文書・データ・入出力の意味、識別子、正本、来歴、状態を設計する。更新・移行・再開で使う契約を渡す。 |
-| [`deliver`](skills/deliver/SKILL.md) | 実装、修正、移行、配布、運用を進める。利用者が試せる成果、確認結果と、途中なら再開条件を渡す。 |
+| [`reconceptualize`](skills/reconceptualize/SKILL.md) | 利用者の目的、使う入口、制約と完了場面を定める。合格条件と検証に使う道具を渡す。 |
+| [`canonicalize`](skills/canonicalize/SKILL.md) | 文書・データ・入出力の意味、識別子、正本、来歴、状態を設計する。更新・移行・再開で使う契約を渡す。 |
+| [`autocatalyze`](skills/autocatalyze/SKILL.md) | 実装、制作、移行、公開、復旧を進める。利用者の入口で成果を確かめ、確認地点と次回に使う結果を残す。 |
 | [`humanizer`](skills/humanizer/SKILL.md) | 読み手と用途から文章を設計し、見出し、用語、本文を整える。条件と根拠を追える文章を渡す。 |
-| [`scrutiny`](skills/scrutiny/SKILL.md) | 原典と実物から現行方式と代替案を調べ、前提を反証する。成立条件、重大な欠陥、影響と修正案を返す。 |
-| [`benchmark`](skills/benchmark/SKILL.md) | 設計前に判定を固定し、成果や手法を同条件で測る。測定値、採否、合否の証拠と再実行手順を渡す。 |
-| [`prune`](skills/prune/SKILL.md) | 重複するコード・文書・定期処理を統合し、役目を終えた方式を廃止する。切替結果と残した利用経路を渡す。 |
+| [`debunk`](skills/debunk/SKILL.md) | 原典と実物から現行方式と代替案を調べ、前提を反証する。成立条件、重大な欠陥、影響と修正案を返す。 |
+| [`adjudicate`](skills/adjudicate/SKILL.md) | 設計前に判定を固定し、成果や手法を同条件で測る。測定値、採否、合否の証拠と再実行手順を渡す。 |
+| [`decommission`](skills/decommission/SKILL.md) | 重複するコード・文書・定期処理を統合し、役目を終えた方式を廃止する。切替結果と残した利用経路を渡す。 |
 
 [連携手順](AGENTS.md#コマンドの連携)
 
@@ -130,13 +130,13 @@ agy plugin install https://github.com/KAFKA2306/kafstyler
 agy plugin list --json
 ```
 
-対象プロジェクトで `agy` を起動し、`/charter` などを使います。[ヘッドレスでの実行](skills/deliver/SKILL.md#antigravity-cliでレビューする) · [公式仕様](BIBLES.md#antigravity-cliの配布と実行)
+対象プロジェクトで `agy` を起動し、`/reconceptualize` などを使います。[ヘッドレスでの実行](skills/autocatalyze/SKILL.md#antigravity-cliでレビューする) · [公式仕様](BIBLES.md#antigravity-cliの配布と実行)
 
 ### 依頼を送って使う
 
 対象プロジェクトでツールを起動し、[最初の依頼文](#まず一件試す)を送ります。対象ファイルや資料を添え、普段の入口で何ができれば完了かを伝えてください。
 
-エージェントは依頼と工程から使うスキルを選びます。「台帳の列を統一し、移行後に旧ファイルを整理して」なら、設計前に `schema`、削除前に `prune` を使います。委譲先にも合格条件を渡し、変更前後を同じ入力で比べます。[作業規約](AGENTS.md#コマンドの連携)
+エージェントは依頼と工程から使うスキルを選びます。「台帳の列を統一し、移行後に旧ファイルを整理して」なら、設計前に `canonicalize`、削除前に `decommission` を使います。委譲先にも合格条件を渡し、変更前後を同じ入力で比べます。[作業規約](AGENTS.md#コマンドの連携)
 
 途中で判断を変えた発見があれば、見つけたことと次に確かめることを伝えます。成果を渡すときは、結果の直後に、その場で試せるリンクやコマンドを添えます。[報告の手順](AGENTS.md#出力と成果物)
 
@@ -212,9 +212,9 @@ python3 .agents/check.py
 
 ## スキル
 
-Claude Codeでは `/kafstyler:<名前>`、Codexでは `$` からKafstylerのスキルを選び、Antigravity CLIでは `/<名前>` を使います。各スキルは `scrutiny` で目標や成果物の前提を確かめ、重大な欠陥があれば修正に戻します。[7スキルと成果物](#7つのスキルと残す成果物)
+Claude Codeでは `/kafstyler:<名前>`、Codexでは `$` からKafstylerのスキルを選び、Antigravity CLIでは `/<名前>` を使います。各スキルは `debunk` で目標や成果物の前提を確かめ、重大な欠陥があれば修正に戻します。[7スキルと成果物](#7つのスキルと残す成果物)
 
-端末を閉じても定時に処理したいときは[常駐エージェントと定期実行](skills/deliver/SKILL.md#常駐エージェントと定期実行)を参照してください。プラグインを使えない環境では、[作業規約](AGENTS.md#全作業への適用と自己改善)に従って正本の版を固定し、必要なスキルのMarkdownを使います。
+端末を閉じても定時に処理したいときは[常駐エージェントと定期実行](skills/autocatalyze/SKILL.md#常駐エージェントと定期実行)を参照してください。プラグインを使えない環境では、[作業規約](AGENTS.md#全作業への適用と自己改善)に従って正本の版を固定し、必要なスキルのMarkdownを使います。
 
 ## Unity・VRChatで制作する
 
@@ -241,4 +241,4 @@ KAFKA2306のWeb UIを設計するときは[かふかのデザインパターン]
 
 ## ミッション・聖典・作業規約
 
-[OKF目次](index.md)から、[ミッション](MISSION.md)、[一次資料の聖典台帳](BIBLES.md)、[作業規約](AGENTS.md)を開けます。手順書が散らばっている場合は、現行の手順を一か所にまとめ、旧版と統合先を記録してObsidianでタグ検索できる形にします。[文書整理の手順](skills/schema/SKILL.md#台帳とobsidian-vaultで文書を整理する)
+[OKF目次](index.md)から、[ミッション](MISSION.md)、[一次資料の聖典台帳](BIBLES.md)、[作業規約](AGENTS.md)を開けます。手順書が散らばっている場合は、現行の手順を一か所にまとめ、旧版と統合先を記録してObsidianでタグ検索できる形にします。[文書整理の手順](skills/canonicalize/SKILL.md#台帳とobsidian-vaultで文書を整理する)

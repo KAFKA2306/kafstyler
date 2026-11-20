@@ -1,5 +1,5 @@
 {
-  "compared_to": "801f9f05b541c39273c3e66b24353e3a90664348",
+  "compared_to": "7a046fc96ff504d2bade8119e92e199a038e7820",
   "sources": {
     "成功基準と自動採点": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
     "エージェント評価と判定例": "https://www.anthropic.com/research/demystifying-evals-for-ai-agents",
@@ -20,250 +20,673 @@
     "試用できる成果とスキル連携図の作業記録": "https://github.com/KAFKA2306/kafstyler/issues/54",
     "イベント起動と待機の設計": "https://claude.com/resources/articles/building-always-on-agents",
     "通知の読み戻しと処理済み位置": "https://claude.dev/blog/building-effective-agent-automations/",
-    "運用の役割と連携図の作業記録": "https://github.com/KAFKA2306/kafstyler/issues/55"
+    "運用の役割と連携図の作業記録": "https://github.com/KAFKA2306/kafstyler/issues/55",
+    "Agent Skillsの識別子": "https://agentskills.io/specification#name-field",
+    "Claude Codeの組み込みコマンド": "https://code.claude.com/docs/en/commands#all-commands",
+    "改名前の適用記録": "https://github.com/KAFKA2306/kafstyler/blob/7a046fc96ff504d2bade8119e92e199a038e7820/.agents/markdown-reviews.json"
   },
-  "rules": "d13ef66c59d36b4ece6bcebda307805fb4bed40a90ebc9786cf9b6fdeec69b3a",
+  "rules": "d086ed7585cda369979856c25bb2975d03b620189f4d595f3fb28e9be6e2f541",
   "documents": {
     "AGENTS.md": {
-      "sha256": "9b6151c4346eaec96dd9c24e6400bc980b9075f0cb51ba67e9eee44a5a79ebaa",
+      "sha256": "17b1ce84d7a8cbc238a488b471c281087d6d1df78aefa8f0d77841466d315a54",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版の発動条件・既存見出し・コード例を比較し、候補の相対参照の到達を確認した。変更した手順は4つの定期・イベント起動の場面で読み合わせた。"},
-        "charter": {"status": "pass", "evidence": "全分野の依頼で必要なスキルを選ぶ条件を次の処理へ渡せることを確認条件にした。"},
-        "deliver": {"status": "pass", "evidence": "文書の通常入口から追加した節と受け渡し先を照合。Claude CodeとCodex用フックから同梱規約と全7スキルの発動条件を取得した。"},
-        "humanizer": {"status": "pass", "evidence": "既存の連携を保ち、常駐運用で同じ台帳へ確認結果と次の判断を返す一節を追加。"},
-        "prune": {"status": "pass", "evidence": "既存の役割と見出しを保ち、常駐向けの判断を担当スキルの手順に置いた。共通手順は既存の作業台帳を参照する。"},
-        "schema": {"status": "pass", "evidence": "既存の種別・タグ・別名を維持し、変更した文書の生成時刻を更新した。公式OKF厳格検査は13文書でエラー・警告0。"},
-        "scrutiny": {"status": "pass", "evidence": "同じ作業IDと別の起動を取り違えず、既存の権限と対象で判断することを確認した"}
+        "adjudicate": {
+          "status": "pass",
+          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。"
+        },
+        "autocatalyze": {
+          "status": "pass",
+          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。"
+        },
+        "canonicalize": {
+          "status": "pass",
+          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。"
+        },
+        "debunk": {
+          "status": "pass",
+          "evidence": "実行中の相手には結果を返す条件を読み合わせ、確認のための呼び直しが重複しないことを確認した。"
+        },
+        "decommission": {
+          "status": "pass",
+          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。"
+        },
+        "humanizer": {
+          "status": "pass",
+          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。"
+        },
+        "reconceptualize": {
+          "status": "pass",
+          "evidence": "段階に応じた起点、相互呼び出し、結果を同じ作業IDへ戻す条件を明記した。"
+        }
       }
     },
     "BIBLES.md": {
-      "sha256": "a4a9c95a30103943e651fde9d34517854e7d575613e9146a8cd5e80d28fdd0f9",
+      "sha256": "6b3c953112ae276e8da86f6c269a5804e9ac5e33957e0e1164943d8230e97ab7",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版と候補を比較し、既存の見出しとコードブロックを維持。候補の相対参照192件で不達0。"},
-        "charter": {"status": "pass", "evidence": "用途別の一次資料と台帳の保守手順へ冒頭から進めることを表示の確認条件にした。"},
-        "deliver": {"status": "pass", "evidence": "ローカルGFMで文書を表示し、用途別の一次資料と台帳の保守手順の入口を確認した。"},
-        "humanizer": {"status": "pass", "evidence": "主要節へのリンクを分野別に配置し、デザイン資料の表を4小節にした。"},
-        "prune": {"status": "pass", "evidence": "既存の3列表を一つ外し、一次資料URLと対応するスキルの参照を保持した。"},
-        "schema": {"status": "pass", "evidence": "frontmatterは着手版と一致。公式OKFの厳格検査で対象を含む13文書のエラーと警告は0。相対参照を解決した。"},
-        "scrutiny": {"status": "pass", "evidence": "用途別の一次資料と台帳の保守手順を探す読み方で、見出しとリンクが正しい既存手順へ結び付くことを照合した。"}
+        "adjudicate": {
+          "status": "pass",
+          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。"
+        },
+        "autocatalyze": {
+          "status": "pass",
+          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。"
+        },
+        "canonicalize": {
+          "status": "pass",
+          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。"
+        },
+        "debunk": {
+          "status": "pass",
+          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。"
+        },
+        "decommission": {
+          "status": "pass",
+          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。"
+        },
+        "humanizer": {
+          "status": "pass",
+          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。"
+        },
+        "reconceptualize": {
+          "status": "pass",
+          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。"
+        }
       }
     },
     "MISSION.md": {
-      "sha256": "46ba1a5c7530ff7ad0d16f1ad84e870bf501fcae2f83ed1d350bd005addfe92f",
+      "sha256": "3542dc6591618e07e59c704056c30d81faa9ecb9fff6692ce1857b9968c52a8b",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版と候補を比較し、既存の見出しとコードブロックを維持。候補の相対参照28件で不達0。"},
-        "charter": {"status": "pass", "evidence": "三つの使命と更新手順へ冒頭から進めることを表示の確認条件にした。"},
-        "deliver": {"status": "pass", "evidence": "ローカルGFMで文書を表示し、三つの使命と更新手順の入口を確認した。"},
-        "humanizer": {"status": "pass", "evidence": "統計の訂正例で公開CSVの照合と再開手順を段落で分けた。"},
-        "prune": {"status": "pass", "evidence": "事例と出典を保ち、導入の説明はREADMEの役割に残した。"},
-        "schema": {"status": "pass", "evidence": "frontmatterは着手版と一致。公式OKFの厳格検査で対象を含む13文書のエラーと警告は0。相対参照を解決した。"},
-        "scrutiny": {"status": "pass", "evidence": "三つの使命と更新手順を探す読み方で、見出しとリンクが正しい既存手順へ結び付くことを照合した。"}
+        "adjudicate": {
+          "status": "pass",
+          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。"
+        },
+        "autocatalyze": {
+          "status": "pass",
+          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。"
+        },
+        "canonicalize": {
+          "status": "pass",
+          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。"
+        },
+        "debunk": {
+          "status": "pass",
+          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。"
+        },
+        "decommission": {
+          "status": "pass",
+          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。"
+        },
+        "humanizer": {
+          "status": "pass",
+          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。"
+        },
+        "reconceptualize": {
+          "status": "pass",
+          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。"
+        }
       }
     },
     "README.md": {
-      "sha256": "a565b3fae04e83c3b89f116eeccc3d7db9c9a8cc89be3819e6e302382ab2232b",
+      "sha256": "0c6e5ef8810cebe6e76b6c8b2b19435ee777e543a505fdbbaf7e75534956203a",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版の発動条件・既存見出し・コード例を比較し、候補の相対参照の到達を確認した。変更した手順は4つの定期・イベント起動の場面で読み合わせた。"},
-        "charter": {"status": "pass", "evidence": "7スキルの責任と次の起動へ戻る連携を次の処理へ渡せることを確認条件にした。"},
-        "deliver": {"status": "pass", "evidence": "Mermaid 12.3.0のパーサでフローチャートと8本の辺を取得し、既存の7スキルのリンクと連携手順を照合した。"},
-        "humanizer": {"status": "pass", "evidence": "7スキルと起動元を図にし、表で単発を含む責任と渡す成果を明記した。"},
-        "prune": {"status": "pass", "evidence": "既存の役割と見出しを保ち、常駐向けの判断を担当スキルの手順に置いた。共通手順は既存の作業台帳を参照する。"},
-        "schema": {"status": "pass", "evidence": "既存の種別・タグ・別名を維持し、変更した文書の生成時刻を更新した。公式OKF厳格検査は13文書でエラー・警告0。"},
-        "scrutiny": {"status": "pass", "evidence": "定刻・イベント・回答の起動元とdeliverの作業を別に表示し、定例の待機と一時ジョブの解除を本文で照合した"}
+        "adjudicate": {
+          "status": "pass",
+          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。"
+        },
+        "autocatalyze": {
+          "status": "pass",
+          "evidence": "Mermaidで7スキルを含む図と8本の辺を解析し、外部起動と次回への引き継ぎを確認した。"
+        },
+        "canonicalize": {
+          "status": "pass",
+          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。"
+        },
+        "debunk": {
+          "status": "pass",
+          "evidence": "各スキルから始める条件と次の起動への戻りを、連携例と規約の両方で読み合わせた。"
+        },
+        "decommission": {
+          "status": "pass",
+          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。"
+        },
+        "humanizer": {
+          "status": "pass",
+          "evidence": "固有名の表記を7行で照合し、図と本文に制作、確認、再開、次回を記した。"
+        },
+        "reconceptualize": {
+          "status": "pass",
+          "evidence": "動画の日次公開、公開先の確認、中断後の再開の3場面で必要な入口を確認した。"
+        }
       }
     },
     "index.md": {
-      "sha256": "c520cfc1e226bce9bea7d01ccfccd507e928d1cc876349e1b01bb2bf36c08e42",
+      "sha256": "442d6e4313db21858219bf833381e726c32f8e24583d93ec40e93c9d1a79e8fc",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版と候補を比較し、既存の見出しとコードブロックを維持。候補の相対参照5件で不達0。"},
-        "charter": {"status": "pass", "evidence": "利用開始と設計・保守の入口へ冒頭から進めることを表示の確認条件にした。"},
-        "deliver": {"status": "pass", "evidence": "ローカルGFMで文書を表示し、利用開始と設計・保守の入口の入口を確認した。"},
-        "humanizer": {"status": "pass", "evidence": "用途が異なる5件を二つの見出しに分け、説明を統一した。"},
-        "prune": {"status": "pass", "evidence": "既存の5参照を分け、新しい参照先は加えていない。"},
-        "schema": {"status": "pass", "evidence": "frontmatterは着手版と一致。公式OKFの厳格検査で対象を含む13文書のエラーと警告は0。相対参照を解決した。"},
-        "scrutiny": {"status": "pass", "evidence": "利用開始と設計・保守の入口を探す読み方で、見出しとリンクが正しい既存手順へ結び付くことを照合した。"}
+        "adjudicate": {
+          "status": "pass",
+          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。"
+        },
+        "autocatalyze": {
+          "status": "pass",
+          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。"
+        },
+        "canonicalize": {
+          "status": "pass",
+          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。"
+        },
+        "debunk": {
+          "status": "pass",
+          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。"
+        },
+        "decommission": {
+          "status": "pass",
+          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。"
+        },
+        "humanizer": {
+          "status": "pass",
+          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。"
+        },
+        "reconceptualize": {
+          "status": "pass",
+          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。"
+        }
       }
     },
     "rules/kafstyler.md": {
-      "sha256": "d7cad582f5f409a6c1b65b317e8bb5ca33b97cb4a0248b2c09e76638b786d995",
+      "sha256": "d666ce838ed174223c0304f16dae8db9ffb421560b47b3e61e36b66c9fe6926b",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版と候補を比較し、既存の見出しとコードブロックを維持。候補の相対参照1件で不達0。"},
-        "charter": {"status": "pass", "evidence": "最初の依頼時に規約を開き、着手前に合格条件を決める手順へ冒頭から進めることを表示の確認条件にした。"},
-        "deliver": {"status": "pending", "evidence": "agyで配布ルールを検出しAGENTSへの参照1件を解決。認証済みセッションでルールが読み込まれ、最初の依頼でAGENTSを開くところは未実施。"},
-        "humanizer": {"status": "pass", "evidence": "作業規約、合格条件、該当スキルの順を番号付きにした。"},
-        "prune": {"status": "pass", "evidence": "既定パスと個別の導入先を調べる操作を規約を開く段階に置いた。"},
-        "schema": {"status": "pass", "evidence": "frontmatterは着手版と一致。公式OKFの厳格検査で対象を含む13文書のエラーと警告は0。相対参照を解決した。"},
-        "scrutiny": {"status": "pass", "evidence": "最初の依頼時に規約を開き、着手前に合格条件を決める手順を探す読み方で、見出しとリンクが正しい既存手順へ結び付くことを照合した。"}
+        "adjudicate": {
+          "status": "pass",
+          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。"
+        },
+        "autocatalyze": {
+          "status": "pending",
+          "evidence": "agyで配布ルールを検出しAGENTSへの参照1件を解決。認証済みセッションでルールが読み込まれ、最初の依頼でAGENTSを開くところは未実施。"
+        },
+        "canonicalize": {
+          "status": "pass",
+          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。"
+        },
+        "debunk": {
+          "status": "pass",
+          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。"
+        },
+        "decommission": {
+          "status": "pass",
+          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。"
+        },
+        "humanizer": {
+          "status": "pass",
+          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。"
+        },
+        "reconceptualize": {
+          "status": "pass",
+          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。"
+        }
       }
     },
-    "skills/benchmark/SKILL.md": {
-      "sha256": "e1d15b27fdbabe2bb676c2956fa7d2832a80cbb332705fc1ca35adebdca78e0d",
+    "skills/adjudicate/SKILL.md": {
+      "sha256": "e9fe6290b1ec0462ac0706fb632a7046b185c8dc31d7dd68077cb9984c88dabc",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版の発動条件・既存見出し・コード例を比較し、候補の相対参照の到達を確認した。変更した手順は4つの定期・イベント起動の場面で読み合わせた。"},
-        "charter": {"status": "pass", "evidence": "設計前の自動判定と実際の入口からの比較を次の処理へ渡せることを確認条件にした。"},
-        "deliver": {"status": "pass", "evidence": "文書の通常入口から追加した節と受け渡し先を照合。Claude CodeとCodex用フックから同梱規約と全7スキルの発動条件を取得した。"},
-        "humanizer": {"status": "pass", "evidence": "更新、差分なし、中断再開を実際の起動元で観測する条件と、通知の配信・再送の判定を追加した。"},
-        "prune": {"status": "pass", "evidence": "既存の役割と見出しを保ち、常駐向けの判断を担当スキルの手順に置いた。共通手順は既存の作業台帳を参照する。"},
-        "schema": {"status": "pass", "evidence": "既存の種別・タグ・別名を維持し、変更した文書の生成時刻を更新した。公式OKF厳格検査は13文書でエラー・警告0。"},
-        "scrutiny": {"status": "pass", "evidence": "一回の成功と運用中の起動・期限・重複・未到達を別々に判定することを照合した"}
+        "adjudicate": {
+          "status": "pass",
+          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。"
+        },
+        "autocatalyze": {
+          "status": "pass",
+          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。"
+        },
+        "canonicalize": {
+          "status": "pass",
+          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。"
+        },
+        "debunk": {
+          "status": "pass",
+          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。"
+        },
+        "decommission": {
+          "status": "pass",
+          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。"
+        },
+        "humanizer": {
+          "status": "pass",
+          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。"
+        },
+        "reconceptualize": {
+          "status": "pass",
+          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。"
+        }
       }
     },
-    "skills/charter/SKILL.md": {
-      "sha256": "d1a38af4c174bbfdfe1f2111f393d96e6f36c2f99704296fc1b443fb20b54a4a",
+    "skills/autocatalyze/SKILL.md": {
+      "sha256": "3df63e25492b1e58af0415b2030985dc6bc5ad98ba0b99383cb61ae3f3ac2558",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版の発動条件・既存見出し・コード例を比較し、候補の相対参照の到達を確認した。変更した手順は4つの定期・イベント起動の場面で読み合わせた。"},
-        "charter": {"status": "pass", "evidence": "利用者の目的と一周期・運用全体の合格条件を次の処理へ渡せることを確認条件にした。"},
-        "deliver": {"status": "pass", "evidence": "文書の通常入口から追加した節と受け渡し先を照合。Claude CodeとCodex用フックから同梱規約と全7スキルの発動条件を取得した。"},
-        "humanizer": {"status": "pass", "evidence": "期限内の成果、欠落、差分なし、失敗、上限の条件を評価担当に渡す。"},
-        "prune": {"status": "pass", "evidence": "既存の役割と見出しを保ち、常駐向けの判断を担当スキルの手順に置いた。共通手順は既存の作業台帳を参照する。"},
-        "schema": {"status": "pass", "evidence": "既存の種別・タグ・別名を維持し、変更した文書の生成時刻を更新した。公式OKF厳格検査は13文書でエラー・警告0。"},
-        "scrutiny": {"status": "pass", "evidence": "入力の版だけが変わる回と、利用目的や期限が変わって合格条件を見直す回を区別した"}
+        "adjudicate": {
+          "status": "pass",
+          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。"
+        },
+        "autocatalyze": {
+          "status": "pending",
+          "evidence": "配布フックから評価準備の案内を取得した。Claude Codeの認証済み対話で予定ジョブを登録し、初回実行と解除に至る既存の確認は未実施。"
+        },
+        "canonicalize": {
+          "status": "pass",
+          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。"
+        },
+        "debunk": {
+          "status": "pass",
+          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。"
+        },
+        "decommission": {
+          "status": "pass",
+          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。"
+        },
+        "humanizer": {
+          "status": "pass",
+          "evidence": "説明の冒頭で継続制作から開始し、本文で公開後確認と次回の利用先を具体化した。"
+        },
+        "reconceptualize": {
+          "status": "pass",
+          "evidence": "日次制作、成果を読み戻す場面、次の回が前の結果を使う条件を突き合わせた。"
+        }
       }
     },
-    "skills/deliver/SKILL.md": {
-      "sha256": "9241e30ed040472dfcc22258b8f704dc72984c879a376d5ab780ff42959bfdc1",
+    "skills/canonicalize/SKILL.md": {
+      "sha256": "0adb4b237b49695812ad90e86155d02ead9fb4a6c5aa181328964783ac9a9830",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版の発動条件・既存見出し・コード例を比較し、候補の相対参照の到達を確認した。変更した手順は4つの定期・イベント起動の場面で読み合わせた。"},
-        "charter": {"status": "pass", "evidence": "実行、検証、配布、通常起動からの再開を次の処理へ渡せることを確認条件にした。"},
-        "deliver": {"status": "pending", "evidence": "配布フックから評価準備の案内を取得した。Claude Codeの認証済み対話で予定ジョブを登録し、初回実行と解除に至る既存の確認は未実施。"},
-        "humanizer": {"status": "pass", "evidence": "既存の常駐手順で前回の確認地点、差分、待機・再試行・成功を整理した。"},
-        "prune": {"status": "pass", "evidence": "既存の役割と見出しを保ち、常駐向けの判断を担当スキルの手順に置いた。共通手順は既存の作業台帳を参照する。"},
-        "schema": {"status": "pass", "evidence": "既存の種別・タグ・別名を維持し、変更した文書の生成時刻を更新した。公式OKF厳格検査は13文書でエラー・警告0。"},
-        "scrutiny": {"status": "pass", "evidence": "差分なしの回は必要な通知の条件を確認。応答消失後は外部の正本から照合して、残りの確認に進むことを読み合わせた"}
+        "adjudicate": {
+          "status": "pass",
+          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。"
+        },
+        "autocatalyze": {
+          "status": "pass",
+          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。"
+        },
+        "canonicalize": {
+          "status": "pass",
+          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。"
+        },
+        "debunk": {
+          "status": "pass",
+          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。"
+        },
+        "decommission": {
+          "status": "pass",
+          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。"
+        },
+        "humanizer": {
+          "status": "pass",
+          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。"
+        },
+        "reconceptualize": {
+          "status": "pass",
+          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。"
+        }
+      }
+    },
+    "skills/debunk/SKILL.md": {
+      "sha256": "ba7d5e31eaddd6b26814fd54c8a6e9055a0fe0bb96c8882d28496d46568b2e6c",
+      "results": {
+        "adjudicate": {
+          "status": "pass",
+          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。"
+        },
+        "autocatalyze": {
+          "status": "pass",
+          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。"
+        },
+        "canonicalize": {
+          "status": "pass",
+          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。"
+        },
+        "debunk": {
+          "status": "pass",
+          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。"
+        },
+        "decommission": {
+          "status": "pass",
+          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。"
+        },
+        "humanizer": {
+          "status": "pass",
+          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。"
+        },
+        "reconceptualize": {
+          "status": "pass",
+          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。"
+        }
+      }
+    },
+    "skills/decommission/SKILL.md": {
+      "sha256": "3941f4fe04e6a2436dc030dbc5805bca6b3ad72d1444eed12afb19a43eec3481",
+      "results": {
+        "adjudicate": {
+          "status": "pass",
+          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。"
+        },
+        "autocatalyze": {
+          "status": "pass",
+          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。"
+        },
+        "canonicalize": {
+          "status": "pass",
+          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。"
+        },
+        "debunk": {
+          "status": "pass",
+          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。"
+        },
+        "decommission": {
+          "status": "pass",
+          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。"
+        },
+        "humanizer": {
+          "status": "pass",
+          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。"
+        },
+        "reconceptualize": {
+          "status": "pass",
+          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。"
+        }
       }
     },
     "skills/humanizer/SKILL.md": {
-      "sha256": "5a145842c8d97dd13f23fc105480bc55698969723c5c8c903dfc9b41590d3d4b",
+      "sha256": "d432b0304c61597c5d5f97a650fbd1bfb50efcec08e76b54901c969d7ae684e2",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版の発動条件・既存見出し・コード例を比較し、候補の相対参照の到達を確認した。変更した手順は4つの定期・イベント起動の場面で読み合わせた。"},
-        "charter": {"status": "pass", "evidence": "読み手に応じた文章と案内の設計を次の処理へ渡せることを確認条件にした。"},
-        "deliver": {"status": "pass", "evidence": "文書の通常入口から追加した節と受け渡し先を照合。Claude CodeとCodex用フックから同梱規約と全7スキルの発動条件を取得した。"},
-        "humanizer": {"status": "pass", "evidence": "運用出力で鮮度、確認範囲、復旧、利用者の次の操作を読み分ける条件を追加した。"},
-        "prune": {"status": "pass", "evidence": "既存の役割と見出しを保ち、常駐向けの判断を担当スキルの手順に置いた。共通手順は既存の作業台帳を参照する。"},
-        "schema": {"status": "pass", "evidence": "既存の種別・タグ・別名を維持し、変更した文書の生成時刻を更新した。公式OKF厳格検査は13文書でエラー・警告0。"},
-        "scrutiny": {"status": "pass", "evidence": "取得失敗を成功や最新として伝えず、通知が必要な回だけ既存の条件で配信することを照合した"}
+        "adjudicate": {
+          "status": "pass",
+          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。"
+        },
+        "autocatalyze": {
+          "status": "pass",
+          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。"
+        },
+        "canonicalize": {
+          "status": "pass",
+          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。"
+        },
+        "debunk": {
+          "status": "pass",
+          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。"
+        },
+        "decommission": {
+          "status": "pass",
+          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。"
+        },
+        "humanizer": {
+          "status": "pass",
+          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。"
+        },
+        "reconceptualize": {
+          "status": "pass",
+          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。"
+        }
       }
     },
-    "skills/prune/SKILL.md": {
-      "sha256": "20801f07f372b71743afab22b20b489e4efc615859beaa39bc6e3a5803b9cfc0",
+    "skills/reconceptualize/SKILL.md": {
+      "sha256": "5f64df74bebdfdc1494efffe3f81a0e4ef594d8b6677ff5411a9836a09186be5",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版の発動条件・既存見出し・コード例を比較し、候補の相対参照の到達を確認した。変更した手順は4つの定期・イベント起動の場面で読み合わせた。"},
-        "charter": {"status": "pass", "evidence": "コード・文書・処理・設定を整理し必要な入口を保つことを次の処理へ渡せることを確認条件にした。"},
-        "deliver": {"status": "pass", "evidence": "文書の通常入口から追加した節と受け渡し先を照合。Claude CodeとCodex用フックから同梱規約と全7スキルの発動条件を取得した。"},
-        "humanizer": {"status": "pass", "evidence": "新方式へ移した再開位置と切り戻しを確認し、旧起動停止後に次回の通常起動を読み戻す手順にした。"},
-        "prune": {"status": "pass", "evidence": "既存の役割と見出しを保ち、常駐向けの判断を担当スキルの手順に置いた。共通手順は既存の作業台帳を参照する。"},
-        "schema": {"status": "pass", "evidence": "既存の種別・タグ・別名を維持し、変更した文書の生成時刻を更新した。公式OKF厳格検査は13文書でエラー・警告0。"},
-        "scrutiny": {"status": "pass", "evidence": "新方式の初回成功だけで旧設定を削ると再開を失う例を検討し、通常の次回起動を削除の条件とした"}
-      }
-    },
-    "skills/schema/SKILL.md": {
-      "sha256": "0dad6051e67b449ae9a380bb148d5c0ecf03fc127273843e5d2992451d3ef99c",
-      "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版の発動条件・既存見出し・コード例を比較し、候補の相対参照の到達を確認した。変更した手順は4つの定期・イベント起動の場面で読み合わせた。"},
-        "charter": {"status": "pass", "evidence": "正本と入出力の契約、同じ回の再開に必要な記録を次の処理へ渡せることを確認条件にした。"},
-        "deliver": {"status": "pass", "evidence": "文書の通常入口から追加した節と受け渡し先を照合。Claude CodeとCodex用フックから同梱規約と全7スキルの発動条件を取得した。"},
-        "humanizer": {"status": "pass", "evidence": "作業ID、起動を識別する値、実行ID、入力・評価の版、外部反映を既存台帳に結んだ。"},
-        "prune": {"status": "pass", "evidence": "既存の役割と見出しを保ち、常駐向けの判断を担当スキルの手順に置いた。共通手順は既存の作業台帳を参照する。"},
-        "schema": {"status": "pass", "evidence": "既存の種別・タグ・別名を維持し、変更した文書の生成時刻を更新した。公式OKF厳格検査は13文書でエラー・警告0。"},
-        "scrutiny": {"status": "pass", "evidence": "同じイベントの再送と次の予定を見分け、反映不明の書き込みで確認済み位置を進めないことを照合した"}
-      }
-    },
-    "skills/scrutiny/SKILL.md": {
-      "sha256": "623b82ef5549b720b2a21acbf916219b3ebe459082a93e69a9e0cf4e8235d3dd",
-      "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版の発動条件・既存見出し・コード例を比較し、候補の相対参照の到達を確認した。変更した手順は4つの定期・イベント起動の場面で読み合わせた。"},
-        "charter": {"status": "pass", "evidence": "現行と代替案を原典・実物で反証することを次の処理へ渡せることを確認条件にした。"},
-        "deliver": {"status": "pass", "evidence": "文書の通常入口から追加した節と受け渡し先を照合。Claude CodeとCodex用フックから同梱規約と全7スキルの発動条件を取得した。"},
-        "humanizer": {"status": "pass", "evidence": "途中停止、古い結果、二重処理の反例から停止条件と再開の証拠を返すようにした。"},
-        "prune": {"status": "pass", "evidence": "既存の役割と見出しを保ち、常駐向けの判断を担当スキルの手順に置いた。共通手順は既存の作業台帳を参照する。"},
-        "schema": {"status": "pass", "evidence": "既存の種別・タグ・別名を維持し、変更した文書の生成時刻を更新した。公式OKF厳格検査は13文書でエラー・警告0。"},
-        "scrutiny": {"status": "pass", "evidence": "公開先の版・件数と作業台帳を照合し、欠落や二重反映を見つけられる手順を確認した"}
+        "adjudicate": {
+          "status": "pass",
+          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。"
+        },
+        "autocatalyze": {
+          "status": "pass",
+          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。"
+        },
+        "canonicalize": {
+          "status": "pass",
+          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。"
+        },
+        "debunk": {
+          "status": "pass",
+          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。"
+        },
+        "decommission": {
+          "status": "pass",
+          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。"
+        },
+        "humanizer": {
+          "status": "pass",
+          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。"
+        },
+        "reconceptualize": {
+          "status": "pass",
+          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。"
+        }
       }
     }
   },
   "files": {
-    ".agents/plugins/marketplace.json": {
-      "sha256": "094134d9f8a84b5c2d80cbdf7e83a6666d38730d3e0b052228702faf60641d75",
-      "results": {
-        "benchmark": {"status": "pass", "evidence": "Codex 0.167.0-alpha.4で同じ配布元を使い、旧候補とも一覧1件、インストール版0.5.34→0.5.35を確認した。"},
-        "charter": {"status": "pass", "evidence": "空のCodex環境で配布元を追加し、kafstylerを一覧から導入できることを条件にした。"},
-        "deliver": {"status": "pass", "evidence": "実CLIのmarketplace add、plugin list --available、plugin add、plugin listで候補を導入し有効と表示された。"},
-        "humanizer": {"status": "pass", "evidence": "displayNameのKafstylerが導入画面とREADMEの名前に一致することを実CLIで確認した。"},
-        "prune": {"status": "pass", "evidence": "配布元は一件で、スキルやフックの説明を重ねて持っていない。ローカル配布元の自動発見に必要なので保持した。"},
-        "schema": {"status": "pass", "evidence": "JSONを読み、配布元とプラグインの名前、localパス./、policy値をCodexの配布契約と照合した。"},
-        "scrutiny": {"status": "pass", "evidence": "./が現在の作業先を指す仮説を、別ディレクトリからの登録で確認し、配布元ディレクトリを解決した。"}
-      }
-    },
-    ".antigravity-plugin/plugin.json": {
-      "sha256": "edecb553923c5e2eab02c8d80bae8e34ac71222a890e156f9076cf707277dee3",
-      "results": {
-        "benchmark": {"status": "pass", "evidence": "0.5.39と0.5.40をパースし、変更はversionのみと照合した。"},
-        "charter": {"status": "pass", "evidence": "利用者が配布一覧の説明でプラグインの用途を判断できることを条件にした。"},
-        "deliver": {"status": "pass", "evidence": "3環境のマニフェストの同梱版0.5.40を確認した。"},
-        "humanizer": {"status": "pass", "evidence": "長い紹介文はClaude Codeの既存公開配布一覧と一致。"},
-        "prune": {"status": "pass", "evidence": "既存の説明欄を使い、同じ用途の表示項目を増やしていない。"},
-        "schema": {"status": "pass", "evidence": "既存のキーと値型を保ち、3環境のversionを0.5.40にそろえた。"},
-        "scrutiny": {"status": "pass", "evidence": "一覧と同梱の説明が食い違わないか公開配布元の値と照合し、先に固定した配布設定の差分条件を満たした。"}
-      }
-    },
-    ".claude-plugin/plugin.json": {
-      "sha256": "46e8b8786c536841ac7cf693b09340874ce841b15055640ed63b99c49995fdfa",
-      "results": {
-        "benchmark": {"status": "pass", "evidence": "0.5.39と0.5.40をパースし、変更はversionのみと照合した。"},
-        "charter": {"status": "pass", "evidence": "利用者が配布一覧の説明でプラグインの用途を判断できることを条件にした。"},
-        "deliver": {"status": "pass", "evidence": "3環境のマニフェストの同梱版0.5.40を確認した。"},
-        "humanizer": {"status": "pass", "evidence": "長い紹介文はClaude Codeの既存公開配布一覧と一致。"},
-        "prune": {"status": "pass", "evidence": "既存の説明欄を使い、同じ用途の表示項目を増やしていない。"},
-        "schema": {"status": "pass", "evidence": "既存のキーと値型を保ち、3環境のversionを0.5.40にそろえた。"},
-        "scrutiny": {"status": "pass", "evidence": "一覧と同梱の説明が食い違わないか公開配布元の値と照合し、先に固定した配布設定の差分条件を満たした。"}
-      }
-    },
-    ".codex-plugin/plugin.json": {
-      "sha256": "c49bac551f6a618eae4811af4f8fc5ab0ce2dc9e6599372fcb64f7e8a1e5ca57",
-      "results": {
-        "benchmark": {"status": "pass", "evidence": "0.5.39と0.5.40をパースし、変更はversionのみと照合した。"},
-        "charter": {"status": "pass", "evidence": "利用者が配布一覧の説明でプラグインの用途を判断できることを条件にした。"},
-        "deliver": {"status": "pass", "evidence": "3環境のマニフェストの同梱版0.5.40を確認した。"},
-        "humanizer": {"status": "pass", "evidence": "長い紹介文はClaude Codeの既存公開配布一覧と一致。短い紹介文で検証と引き継ぎを伝える。"},
-        "prune": {"status": "pass", "evidence": "既存の説明欄を使い、同じ用途の表示項目を増やしていない。"},
-        "schema": {"status": "pass", "evidence": "既存のキーと値型を保ち、3環境のversionを0.5.40にそろえた。"},
-        "scrutiny": {"status": "pass", "evidence": "一覧と同梱の説明が食い違わないか公開配布元の値と照合し、先に固定した配布設定の差分条件を満たした。"}
-      }
-    },
     ".agents/check.py": {
-      "sha256": "e4c77bdf33a1f38b5e87eab8e9ba59d139534c454df47d4a6976b8942d4d762e",
+      "sha256": "edb3690c6a1b247517e861da0a38b57d6523ceed6b2302184c3561128bcf396f",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "設計前の評価案内を含まない着手版の受付フックを新検査で両ホストとも不合格にし、候補では両ホストとも合格した。"},
-        "charter": {"status": "pass", "evidence": "保守担当が、依頼受付で設計前の目標設定と評価を受け取れることを合格条件にした。"},
-        "deliver": {"status": "pass", "evidence": "候補の通常コマンドでClaude CodeとCodex向けの既存10項目を実行した。"},
-        "humanizer": {"status": "pass", "evidence": "判定名に設計前の目標設定と評価を記して、欠落時の対象が出力から特定できることを確認した。"},
-        "prune": {"status": "pass", "evidence": "既存の受付チェック1箇所に条件を加え、スクリプトやフックを増やさなかった。"},
-        "schema": {"status": "pass", "evidence": "Pythonの判定結果を既存の結果辞書と終了コードの契約で返すことを差分で確認した。"},
-        "scrutiny": {"status": "pass", "evidence": "旧フックが7件の説明を返しても、設計前の評価案内を欠く場合に新条件が両ホストで落ちることを確認した。"}
+        "adjudicate": {
+          "status": "pass",
+          "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
+        },
+        "autocatalyze": {
+          "status": "pass",
+          "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
+        },
+        "canonicalize": {
+          "status": "pass",
+          "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
+        },
+        "debunk": {
+          "status": "pass",
+          "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
+        },
+        "decommission": {
+          "status": "pass",
+          "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
+        },
+        "humanizer": {
+          "status": "pass",
+          "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
+        },
+        "reconceptualize": {
+          "status": "pass",
+          "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
+        }
       }
     },
     ".agents/markdown-reviews.json": {
-      "sha256": "252c5117c951408e73cf8be6dce6336c9475d401db5582f242b8b5d0db5770e4",
+      "sha256": "3e3e6490a96271ec16645cc8cddfb0e0348b9132489632a6fe1849d3fc03b6d7",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "20ファイルと7スキルを維持し、現行版と候補版の文書と配布の版を比較。既存保留2件を引き継いだ。"},
-        "charter": {"status": "pass", "evidence": "後任の保守担当が対象版、READMEの採否、検証の範囲をこの台帳で確認できることを条件にした。"},
-        "deliver": {"status": "pass", "evidence": "更新した9文書と3マニフェストの判断を既存台帳へ記録し、JSONで読み戻した。"},
-        "humanizer": {"status": "pass", "evidence": "変更した文書への判定に対象・操作・結果が書かれていることを通読した。"},
-        "prune": {"status": "pass", "evidence": "既存の台帳のREADMEと自己検証の行を更新し、別の記録ファイルを増やさなかった。"},
-        "schema": {"status": "pass", "evidence": "documents13件とfiles7件を維持し、READMEは実ファイル、台帳は既存の自己参照を除く方式でハッシュを更新した。"},
-        "scrutiny": {"status": "pass", "evidence": "認証済みクライアントの既存保留2件を開始時の台帳から引き継いだ。"}
+        "adjudicate": {
+          "status": "pass",
+          "evidence": "記録の対象20件と新しい7名を照合し、旧版から引き継いだ認証済み実行の保留2件を記録した。"
+        },
+        "autocatalyze": {
+          "status": "pass",
+          "evidence": "記録の対象20件と新しい7名を照合し、旧版から引き継いだ認証済み実行の保留2件を記録した。"
+        },
+        "canonicalize": {
+          "status": "pass",
+          "evidence": "記録の対象20件と新しい7名を照合し、旧版から引き継いだ認証済み実行の保留2件を記録した。"
+        },
+        "debunk": {
+          "status": "pass",
+          "evidence": "記録の対象20件と新しい7名を照合し、旧版から引き継いだ認証済み実行の保留2件を記録した。"
+        },
+        "decommission": {
+          "status": "pass",
+          "evidence": "記録の対象20件と新しい7名を照合し、旧版から引き継いだ認証済み実行の保留2件を記録した。"
+        },
+        "humanizer": {
+          "status": "pass",
+          "evidence": "記録の対象20件と新しい7名を照合し、旧版から引き継いだ認証済み実行の保留2件を記録した。"
+        },
+        "reconceptualize": {
+          "status": "pass",
+          "evidence": "記録の対象20件と新しい7名を照合し、旧版から引き継いだ認証済み実行の保留2件を記録した。"
+        }
+      }
+    },
+    ".agents/plugins/marketplace.json": {
+      "sha256": "094134d9f8a84b5c2d80cbdf7e83a6666d38730d3e0b052228702faf60641d75",
+      "results": {
+        "adjudicate": {
+          "status": "pass",
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+        },
+        "autocatalyze": {
+          "status": "pass",
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+        },
+        "canonicalize": {
+          "status": "pass",
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+        },
+        "debunk": {
+          "status": "pass",
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+        },
+        "decommission": {
+          "status": "pass",
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+        },
+        "humanizer": {
+          "status": "pass",
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+        },
+        "reconceptualize": {
+          "status": "pass",
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+        }
       }
     },
     ".agents/quality.sh": {
-      "sha256": "fcae4825a8722a5e87c2124751b30d3d154c4bcfe6070c273633908b6f58dc76",
+      "sha256": "42410c502d282a256957ea49efb255e2eb52e421ffbf2c798a6c1b0dc5c8b48c",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版と候補の起動・受付を確認し、候補の両ホストで設計前の評価固定の案内を取得した。"},
-        "charter": {"status": "pass", "evidence": "依頼受付で評価を固定してから設計する順序を利用者の通常の入口に渡すことを条件にした。"},
-        "deliver": {"status": "pass", "evidence": "bashの構文検査と2マニフェストの起動・受付コマンドを実行した。"},
-        "humanizer": {"status": "pass", "evidence": "受付文を読み、charterで決める内容、benchmarkで固定する内容、設計の順序を確認した。"},
-        "prune": {"status": "pass", "evidence": "2ホスト共通の受付文1行を更新し、フックやコマンドを増やさなかった。"},
-        "schema": {"status": "pass", "evidence": "既存のsession、startの引数と標準出力を維持したことを差分と実行出力で確認した。"},
-        "scrutiny": {"status": "pass", "evidence": "現行版と候補版のスキル一覧を読み、設計前の案内追加で従来の7経路が消えていないことを確認した。"}
+        "adjudicate": {
+          "status": "pass",
+          "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
+        },
+        "autocatalyze": {
+          "status": "pass",
+          "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
+        },
+        "canonicalize": {
+          "status": "pass",
+          "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
+        },
+        "debunk": {
+          "status": "pass",
+          "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
+        },
+        "decommission": {
+          "status": "pass",
+          "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
+        },
+        "humanizer": {
+          "status": "pass",
+          "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
+        },
+        "reconceptualize": {
+          "status": "pass",
+          "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
+        }
+      }
+    },
+    ".antigravity-plugin/plugin.json": {
+      "sha256": "630f2e5495aa4edfd6d686b210260407253de43cd41e00adef587d6c15f69fee",
+      "results": {
+        "adjudicate": {
+          "status": "pass",
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+        },
+        "autocatalyze": {
+          "status": "pass",
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+        },
+        "canonicalize": {
+          "status": "pass",
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+        },
+        "debunk": {
+          "status": "pass",
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+        },
+        "decommission": {
+          "status": "pass",
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+        },
+        "humanizer": {
+          "status": "pass",
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+        },
+        "reconceptualize": {
+          "status": "pass",
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+        }
+      }
+    },
+    ".claude-plugin/plugin.json": {
+      "sha256": "776f231ca35f50cddf446fb786b7fd2f123f2ba60d5215102e8c994fdab385ff",
+      "results": {
+        "adjudicate": {
+          "status": "pass",
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+        },
+        "autocatalyze": {
+          "status": "pass",
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+        },
+        "canonicalize": {
+          "status": "pass",
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+        },
+        "debunk": {
+          "status": "pass",
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+        },
+        "decommission": {
+          "status": "pass",
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+        },
+        "humanizer": {
+          "status": "pass",
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+        },
+        "reconceptualize": {
+          "status": "pass",
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+        }
+      }
+    },
+    ".codex-plugin/plugin.json": {
+      "sha256": "745489b8828e05be3cf3fb9f67d5d176314721f25e3c99be0180ef60e339e3c2",
+      "results": {
+        "adjudicate": {
+          "status": "pass",
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+        },
+        "autocatalyze": {
+          "status": "pass",
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+        },
+        "canonicalize": {
+          "status": "pass",
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+        },
+        "debunk": {
+          "status": "pass",
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+        },
+        "decommission": {
+          "status": "pass",
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+        },
+        "humanizer": {
+          "status": "pass",
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+        },
+        "reconceptualize": {
+          "status": "pass",
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+        }
       }
     }
   }

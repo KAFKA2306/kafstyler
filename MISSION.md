@@ -8,16 +8,16 @@ aliases:
   - "ミッション"
 generated:
   by: openai/chatgpt
-  at: "2026-11-19T11:33:49Z"
+  at: "2026-11-20T01:41:16Z"
 sources:
   - id: work-policy
     resource: /AGENTS.md
     title: Kafstylerの作業規約
   - id: schema-contract
-    resource: /skills/schema/SKILL.md
+    resource: /skills/canonicalize/SKILL.md
     title: データ設計
   - id: delivery
-    resource: /skills/deliver/SKILL.md
+    resource: /skills/autocatalyze/SKILL.md
     title: 自律開発
 ---
 
@@ -27,7 +27,7 @@ Kafstylerは、エージェントが交代しても、成果を再現し、根�
 
 [自律成果創出](#自律成果創出) · [自律文書整備](#自律文書整備) · [自律改善](#自律改善) · [更新手順](#更新手順)
 
-その土台は [`schema`](skills/schema/SKILL.md) にある。何を一件と数えるか、どこを正本とし、誰がどう更新するかを決める。出典と版、必要な訂正履歴を残し、集計や公開物は正本から作る。知識文書はOKFのMarkdownをObsidian Vaultで管理し、分析の変換と集計はdbtで実装する。別のエージェントも同じ定義で成果を読み直し、変更がどこに及ぶかを調べられる。[^schema-contract]
+その土台は [`canonicalize`](skills/canonicalize/SKILL.md) にある。何を一件と数えるか、どこを正本とし、誰がどう更新するかを決める。出典と版、必要な訂正履歴を残し、集計や公開物は正本から作る。知識文書はOKFのMarkdownをObsidian Vaultで管理し、分析の変換と集計はdbtで実装する。別のエージェントも同じ定義で成果を読み直し、変更がどこに及ぶかを調べられる。[^schema-contract]
 
 **公表統計が半年後に訂正されたら**、次の定期実行は、発行元・系列ID・対象期間から訂正対象を特定する。改定の公表日と出典を残し、更新した公開CSVの値を原資料に照合する。
 
@@ -35,19 +35,19 @@ Kafstylerは、エージェントが交代しても、成果を再現し、根�
 
 ## 自律成果創出
 
-[`charter`](skills/charter/SKILL.md) で利用者が普段の入口で何をできれば完了かを定め、[`benchmark`](skills/benchmark/SKILL.md) でその合格を自動判定する方法を設計前に決める。[`deliver`](skills/deliver/SKILL.md) で実物を作り、利用者と同じ入口から動かして結果を届ける。定期実行では、最後に成果を確認した地点と次の工程を残し、中断後も同じ案件を再開できるようにする。[^delivery]
+[`reconceptualize`](skills/reconceptualize/SKILL.md) で利用者が普段の入口で何をできれば完了かを定め、[`adjudicate`](skills/adjudicate/SKILL.md) でその合格を自動判定する方法を設計前に決める。[`autocatalyze`](skills/autocatalyze/SKILL.md) で実物を作り、利用者と同じ入口から動かして結果を届ける。定期実行では、最後に成果を確認した地点と次の工程を残し、中断後も同じ案件を再開できるようにする。[^delivery]
 
 ## 自律文書整備
 
-文書と台帳を正本につなぎ、原典と現行の動作に照らして更新する。[`humanizer`](skills/humanizer/SKILL.md) で、初めて読む人が要点、成立条件、次の操作をつかめるようにする。[OKFの更新手順](skills/schema/SKILL.md#okfに沿って文書を更新確認する)で、種別とタグから現行文書を探し、出典や後継文書を開けることを確認する。[^schema-contract]
+文書と台帳を正本につなぎ、原典と現行の動作に照らして更新する。[`humanizer`](skills/humanizer/SKILL.md) で、初めて読む人が要点、成立条件、次の操作をつかめるようにする。[OKFの更新手順](skills/canonicalize/SKILL.md#okfに沿って文書を更新確認する)で、種別とタグから現行文書を探し、出典や後継文書を開けることを確認する。[^schema-contract]
 
 ## 自律改善
 
-実案件で起きた失敗や手戻りから、修正候補を見つける。[`scrutiny`](skills/scrutiny/SKILL.md) で各工程の前提を一次資料と実物に照らし、欠陥を見逃す条件を探す。同じ入力で変更前後を測り、再発、所要時間、使いやすさのうち改善したものを記録する。切り替えを実物で確認したら、[`prune`](skills/prune/SKILL.md) で役目を終えた手順、処理、設定を削る。Kafstyler自身の文書にも[同じ評価](AGENTS.md#全markdownに全スキルを使う)を適用する。[^work-policy]
+実案件で起きた失敗や手戻りから、修正候補を見つける。[`debunk`](skills/debunk/SKILL.md) で各工程の前提を一次資料と実物に照らし、欠陥を見逃す条件を探す。同じ入力で変更前後を測り、再発、所要時間、使いやすさのうち改善したものを記録する。切り替えを実物で確認したら、[`decommission`](skills/decommission/SKILL.md) で役目を終えた手順、処理、設定を削る。Kafstyler自身の文書にも[同じ評価](AGENTS.md#全markdownに全スキルを使う)を適用する。[^work-policy]
 
 ## 機械的に確かめる評価指標
 
-利用者の用事、代表入力、重大な失敗例、合格値、判定方法を設計前に作業台帳へ記録する。提出前に実物を同じ入力と環境で測り、対象の版、観測結果、再実行方法を残す。必須項目がすべて自動判定で合格したら、品質判定を終える。不合格や未確認が残れば、修正または再開条件を記録する。[評価の手順](skills/benchmark/SKILL.md)・[成功基準と評価の設計](BIBLES.md#成功基準と評価)
+利用者の用事、代表入力、重大な失敗例、合格値、判定方法を設計前に作業台帳へ記録する。提出前に実物を同じ入力と環境で測り、対象の版、観測結果、再実行方法を残す。必須項目がすべて自動判定で合格したら、品質判定を終える。不合格や未確認が残れば、修正または再開条件を記録する。[評価の手順](skills/adjudicate/SKILL.md)・[成功基準と評価の設計](BIBLES.md#成功基準と評価)
 
 ## 出力の共通基準
 
@@ -74,5 +74,5 @@ Kafstylerは、エージェントが交代しても、成果を再現し、根�
 [聖典台帳](BIBLES.md)から分野の一次資料と対応する手順を開く。定期実行や常駐運用では[常駐エージェント](BIBLES.md#常駐エージェント)から起動、再開、権限、成果の評価に使う資料を確認する。
 
 [^work-policy]: [Kafstylerの作業規約](AGENTS.md)
-[^schema-contract]: [データ設計の手順](skills/schema/SKILL.md)
-[^delivery]: [常駐エージェントと定期実行](skills/deliver/SKILL.md#常駐エージェントと定期実行)
+[^schema-contract]: [データ設計の手順](skills/canonicalize/SKILL.md)
+[^delivery]: [常駐エージェントと定期実行](skills/autocatalyze/SKILL.md#常駐エージェントと定期実行)
