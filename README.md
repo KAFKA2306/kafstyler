@@ -8,7 +8,7 @@ aliases:
   - "使い方"
 generated:
   by: openai/chatgpt
-  at: "2026-11-20T01:41:16Z"
+  at: "2026-11-20T01:51:01Z"
 ---
 
 # Kafstyler
@@ -47,26 +47,28 @@ Kafstylerは、開発・調査・制作・運用に共通の作業規約と7つ�
 
 ### 7つのスキルと、残す成果物
 
-定刻・イベント・回答で起動し、仕事の段階と観測した状況に応じてスキルを選びます。7つのどれも入口になり、必要な相手を呼び、結果を同じ作業IDに戻します。図は、前回の成果を使って次の仕事を進める連携例です。
+定刻・イベント・回答で起動し、仕事の段階と状況に応じてスキルを選びます。7つのどれも起点になり、必要な相手を呼んで、得た結果を同じ作業IDに戻します。両矢印は、どちらからも相手を呼べる連携の例です。
 
 ```mermaid
 flowchart TD
-    accTitle: Kafstylerのスキル連携と継続運用
-    accDescr: 外部の起動元をきっかけに必要なスキルを使う。成果と検証結果を同じ作業IDに残し、次の周期に引き継ぐ。
+    accTitle: Kafstylerの7スキルの相互呼び出し
+    accDescr: 各スキルは条件に応じて互いを呼ぶ。両矢印は呼び出しの例で、確認した成果は次の起動へ引き継ぐ。
     trigger["定刻・イベント・回答"]
-    subgraph work["段階に応じて相互に呼び出す"]
-        goal["reconceptualize"] -->|"利用者の合格条件"| judge["adjudicate"]
-        judge <-->|"評価条件・実測結果"| run["autocatalyze"]
-        run <-->|"正本・確認地点"| canon["canonicalize"]
-        canon <-->|"移行条件・切替結果"| retire["decommission"]
-        edit["humanizer"] <-->|"主張・原典・指摘"| review["debunk"]
-        run <-->|"現行方式・代替案"| review
+    subgraph work["必要なスキルを互いに呼ぶ"]
+        goal["reconceptualize"] <-->|"合格条件"| judge["adjudicate"]
+        goal <-->|"目標の前提"| proof["disprove"]
+        judge <-->|"反例の測定"| proof
+        proof <-->|"文章の根拠"| edit["humanizer"]
+        judge <-->|"実物の評価"| run["autocatalyze"]
+        run <-->|"正本と再開"| canon["canonicalize"]
+        canon <-->|"移行と切替"| retire["decommission"]
+        retire <-->|"利用案内の更新"| edit
     end
     trigger -->|"状態に応じて開始・再開"| work
     run -->|"確認済みの成果を引き継ぐ"| trigger
 ```
 
-たとえば動画を日次公開する仕事では、設定した定刻に制作を始め、公開先で指定した状態を読み戻します。途中で止まった回は同じ記録から再開し、次の定例では確認済みの条件と今回の入力を使って次の動画を作ります。公開済みの成果を調べる回は adjudicate、方式を見直す回は debunk や decommission からも始められます。
+たとえば動画を日次公開する仕事では、設定した定刻に制作を始め、公開先で指定した状態を読み戻します。途中で止まった回は同じ記録から再開し、次の定例では確認済みの条件と今回の入力を使って次の動画を作ります。公開済みの成果を調べる回は adjudicate、方式を見直す回は disprove や decommission からも始められます。
 
 | スキル | 責任範囲と次に渡すもの |
 | --- | --- |
@@ -74,7 +76,7 @@ flowchart TD
 | [`canonicalize`](skills/canonicalize/SKILL.md) | 文書・データ・入出力の意味、識別子、正本、来歴、状態を設計する。更新・移行・再開で使う契約を渡す。 |
 | [`autocatalyze`](skills/autocatalyze/SKILL.md) | 実装、制作、移行、公開、復旧を進める。利用者の入口で成果を確かめ、確認地点と次回に使う結果を残す。 |
 | [`humanizer`](skills/humanizer/SKILL.md) | 読み手と用途から文章を設計し、見出し、用語、本文を整える。条件と根拠を追える文章を渡す。 |
-| [`debunk`](skills/debunk/SKILL.md) | 原典と実物から現行方式と代替案を調べ、前提を反証する。成立条件、重大な欠陥、影響と修正案を返す。 |
+| [`disprove`](skills/disprove/SKILL.md) | 一次資料と実物を探し、現行方式と代替案の前提に反例があるかを試す。結論、調査範囲、証拠と未確認事項を返す。 |
 | [`adjudicate`](skills/adjudicate/SKILL.md) | 設計前に判定を固定し、成果や手法を同条件で測る。測定値、採否、合否の証拠と再実行手順を渡す。 |
 | [`decommission`](skills/decommission/SKILL.md) | 重複するコード・文書・定期処理を統合し、役目を終えた方式を廃止する。切替結果と残した利用経路を渡す。 |
 
@@ -212,7 +214,7 @@ python3 .agents/check.py
 
 ## スキル
 
-Claude Codeでは `/kafstyler:<名前>`、Codexでは `$` からKafstylerのスキルを選び、Antigravity CLIでは `/<名前>` を使います。各スキルは `debunk` で目標や成果物の前提を確かめ、重大な欠陥があれば修正に戻します。[7スキルと成果物](#7つのスキルと残す成果物)
+Claude Codeでは `/kafstyler:<名前>`、Codexでは `$` からKafstylerのスキルを選び、Antigravity CLIでは `/<名前>` を使います。各スキルは `disprove` で目標や成果物の前提を確かめ、重大な欠陥があれば修正に戻します。[7スキルと成果物](#7つのスキルと残す成果物)
 
 端末を閉じても定時に処理したいときは[常駐エージェントと定期実行](skills/autocatalyze/SKILL.md#常駐エージェントと定期実行)を参照してください。プラグインを使えない環境では、[作業規約](AGENTS.md#全作業への適用と自己改善)に従って正本の版を固定し、必要なスキルのMarkdownを使います。
 

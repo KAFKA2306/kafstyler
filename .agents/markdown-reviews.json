@@ -1,5 +1,5 @@
 {
-  "compared_to": "7a046fc96ff504d2bade8119e92e199a038e7820",
+  "compared_to": "670558d4296ee29134dc661e00e66d8d73ffdcfb",
   "sources": {
     "成功基準と自動採点": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
     "エージェント評価と判定例": "https://www.anthropic.com/research/demystifying-evals-for-ai-agents",
@@ -23,139 +23,141 @@
     "運用の役割と連携図の作業記録": "https://github.com/KAFKA2306/kafstyler/issues/55",
     "Agent Skillsの識別子": "https://agentskills.io/specification#name-field",
     "Claude Codeの組み込みコマンド": "https://code.claude.com/docs/en/commands#all-commands",
-    "改名前の適用記録": "https://github.com/KAFKA2306/kafstyler/blob/7a046fc96ff504d2bade8119e92e199a038e7820/.agents/markdown-reviews.json"
+    "改名前の適用記録": "https://github.com/KAFKA2306/kafstyler/blob/7a046fc96ff504d2bade8119e92e199a038e7820/.agents/markdown-reviews.json",
+    "0.6.0の確認記録": "https://github.com/KAFKA2306/kafstyler/blob/670558d4296ee29134dc661e00e66d8d73ffdcfb/.agents/markdown-reviews.json",
+    "disproveの英語定義": "https://dictionary.cambridge.org/dictionary/english/disproved"
   },
-  "rules": "d086ed7585cda369979856c25bb2975d03b620189f4d595f3fb28e9be6e2f541",
+  "rules": "98eeeaa00ea0f6a0dc2b3869c201eb38bbf121a721108684463ef9c08e7a9f14",
   "documents": {
     "AGENTS.md": {
-      "sha256": "17b1ce84d7a8cbc238a488b471c281087d6d1df78aefa8f0d77841466d315a54",
+      "sha256": "752387d1d798aff488bc445878c7ff99b833de10c5c35e90f0996ea9780da5ae",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。"
+          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。"
+          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。"
-        },
-        "debunk": {
-          "status": "pass",
-          "evidence": "実行中の相手には結果を返す条件を読み合わせ、確認のための呼び直しが重複しないことを確認した。"
+          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。"
+          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+        },
+        "disprove": {
+          "status": "pass",
+          "evidence": "実行中の相手には結果を返す条件を読み合わせ、確認のための呼び直しが重複しないことを確認した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。"
+          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "段階に応じた起点、相互呼び出し、結果を同じ作業IDへ戻す条件を明記した。"
+          "evidence": "段階に応じた起点、相互呼び出し、結果を同じ作業IDへ戻す条件を明記した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         }
       }
     },
     "BIBLES.md": {
-      "sha256": "6b3c953112ae276e8da86f6c269a5804e9ac5e33957e0e1164943d8230e97ab7",
+      "sha256": "a01b347753612df9d56c892c745a0fb0e40963afeaf05bdef89658458abf2450",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。"
+          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。"
+          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。"
-        },
-        "debunk": {
-          "status": "pass",
-          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。"
+          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。"
+          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+        },
+        "disprove": {
+          "status": "pass",
+          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。"
+          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。"
+          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         }
       }
     },
     "MISSION.md": {
-      "sha256": "3542dc6591618e07e59c704056c30d81faa9ecb9fff6692ce1857b9968c52a8b",
+      "sha256": "e1cade37f10568c46a66499491e3c83c458ba7e273ddc4b29fb926edce780025",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。"
+          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。"
+          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。"
-        },
-        "debunk": {
-          "status": "pass",
-          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。"
+          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。"
+          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+        },
+        "disprove": {
+          "status": "pass",
+          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。"
+          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。"
+          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         }
       }
     },
     "README.md": {
-      "sha256": "0c6e5ef8810cebe6e76b6c8b2b19435ee777e543a505fdbbaf7e75534956203a",
+      "sha256": "7b6a645f9637468bf2ff0fdaad5974c2ecf20097c9c33c5b9c7f70a28f2ebeff",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。"
+          "evidence": "Mermaidパーサーで7スキル、双方向8本、外部起動と引き継ぎ2本を測定した。全スキルが2つ以上の相手と接続されることも確認した。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "Mermaidで7スキルを含む図と8本の辺を解析し、外部起動と次回への引き継ぎを確認した。"
+          "evidence": "次の起動への引き継ぎを図の辺として解析し、動画公開の説明と照合した。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。"
-        },
-        "debunk": {
-          "status": "pass",
-          "evidence": "各スキルから始める条件と次の起動への戻りを、連携例と規約の両方で読み合わせた。"
+          "evidence": "作業ID、正本、再開、移行の受け渡しを図と共通規約で照合した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。"
+          "evidence": "旧名が図と参照に含まれないことを確認し、旧方式の廃止で利用案内を更新する相互経路を確認した。"
+        },
+        "disprove": {
+          "status": "pass",
+          "evidence": "目標と反例の取り違えを検討し、7スキルの相互経路と調査の3種類の結論を本文と照合した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "固有名の表記を7行で照合し、図と本文に制作、確認、再開、次回を記した。"
+          "evidence": "両矢印を条件付きの呼び出しの例として説明し、矢印の用途と既存見出しを確認した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "動画の日次公開、公開先の確認、中断後の再開の3場面で必要な入口を確認した。"
+          "evidence": "図と本文で、状況によって7スキルのどこからでも開始できることを示した。"
         }
       }
     },
@@ -174,13 +176,13 @@
           "status": "pass",
           "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。"
         },
-        "debunk": {
-          "status": "pass",
-          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。"
-        },
         "decommission": {
           "status": "pass",
           "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。"
+        },
+        "disprove": {
+          "status": "pass",
+          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。"
         },
         "humanizer": {
           "status": "pass",
@@ -207,13 +209,13 @@
           "status": "pass",
           "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。"
         },
-        "debunk": {
-          "status": "pass",
-          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。"
-        },
         "decommission": {
           "status": "pass",
           "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。"
+        },
+        "disprove": {
+          "status": "pass",
+          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。"
         },
         "humanizer": {
           "status": "pass",
@@ -226,44 +228,44 @@
       }
     },
     "skills/adjudicate/SKILL.md": {
-      "sha256": "e9fe6290b1ec0462ac0706fb632a7046b185c8dc31d7dd68077cb9984c88dabc",
+      "sha256": "3f3c36f078a25e0710dae96c7c0471ada0b03e7470db10583e8fdf8cef2f87fa",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。"
+          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。"
+          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。"
-        },
-        "debunk": {
-          "status": "pass",
-          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。"
+          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。"
+          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+        },
+        "disprove": {
+          "status": "pass",
+          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。"
+          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。"
+          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         }
       }
     },
     "skills/autocatalyze/SKILL.md": {
-      "sha256": "3df63e25492b1e58af0415b2030985dc6bc5ad98ba0b99383cb61ae3f3ac2558",
+      "sha256": "9635ef699bddbc1135c10257ea6eba53d86796b70d6a2204b7d323eae611414b",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。"
+          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "autocatalyze": {
           "status": "pending",
@@ -271,188 +273,188 @@
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。"
-        },
-        "debunk": {
-          "status": "pass",
-          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。"
+          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。"
+          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+        },
+        "disprove": {
+          "status": "pass",
+          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "説明の冒頭で継続制作から開始し、本文で公開後確認と次回の利用先を具体化した。"
+          "evidence": "説明の冒頭で継続制作から開始し、本文で公開後確認と次回の利用先を具体化した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "日次制作、成果を読み戻す場面、次の回が前の結果を使う条件を突き合わせた。"
+          "evidence": "日次制作、成果を読み戻す場面、次の回が前の結果を使う条件を突き合わせた。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         }
       }
     },
     "skills/canonicalize/SKILL.md": {
-      "sha256": "0adb4b237b49695812ad90e86155d02ead9fb4a6c5aa181328964783ac9a9830",
+      "sha256": "82418c1f37c6fd3923391566cca5d3feff1d9ebd48842842fbe2122324f0c30d",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。"
+          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。"
+          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。"
-        },
-        "debunk": {
-          "status": "pass",
-          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。"
+          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。"
+          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+        },
+        "disprove": {
+          "status": "pass",
+          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。"
+          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。"
-        }
-      }
-    },
-    "skills/debunk/SKILL.md": {
-      "sha256": "ba7d5e31eaddd6b26814fd54c8a6e9055a0fe0bb96c8882d28496d46568b2e6c",
-      "results": {
-        "adjudicate": {
-          "status": "pass",
-          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。"
-        },
-        "autocatalyze": {
-          "status": "pass",
-          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。"
-        },
-        "canonicalize": {
-          "status": "pass",
-          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。"
-        },
-        "debunk": {
-          "status": "pass",
-          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。"
-        },
-        "decommission": {
-          "status": "pass",
-          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。"
-        },
-        "humanizer": {
-          "status": "pass",
-          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。"
-        },
-        "reconceptualize": {
-          "status": "pass",
-          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。"
+          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         }
       }
     },
     "skills/decommission/SKILL.md": {
-      "sha256": "3941f4fe04e6a2436dc030dbc5805bca6b3ad72d1444eed12afb19a43eec3481",
+      "sha256": "ff4d36bda0e1b8a3cacc6c20461aca920916dc598ecaad25e69716d42a468503",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。"
+          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。"
+          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。"
-        },
-        "debunk": {
-          "status": "pass",
-          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。"
+          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。"
+          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+        },
+        "disprove": {
+          "status": "pass",
+          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。"
+          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。"
+          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+        }
+      }
+    },
+    "skills/disprove/SKILL.md": {
+      "sha256": "d9f462a367a571d2c78c4043998cbbb7f65b123f2faa9265d9bb9040816691c7",
+      "results": {
+        "adjudicate": {
+          "status": "pass",
+          "evidence": "移動前後で見出し、20件の相対参照、外部URLを照合し、定義の発動条件をフックから読み戻した。"
+        },
+        "autocatalyze": {
+          "status": "pass",
+          "evidence": "常駐レビューから確認済み地点と正本を同じ作業台帳へ返す手順を移動先で確認した。"
+        },
+        "canonicalize": {
+          "status": "pass",
+          "evidence": "識別子とフォルダー、タグ、一次URL、対象版と調査範囲の記録を照合した。"
+        },
+        "decommission": {
+          "status": "pass",
+          "evidence": "旧パスの削除後に新パスへ移動し、元の見出しをすべて解決した。"
+        },
+        "disprove": {
+          "status": "pass",
+          "evidence": "反証成立、調べた範囲で反例なし、証拠不足の3例を代入し、証拠の欠落を反証成立として扱わない手順を通読した。"
+        },
+        "humanizer": {
+          "status": "pass",
+          "evidence": "発動条件と結論の3区分を推敲し、読者が調査範囲と判断を読み分けられることを確認した。"
+        },
+        "reconceptualize": {
+          "status": "pass",
+          "evidence": "読者が調べた前提ごとの結論とその適用範囲を判断できることを完了条件にした。"
         }
       }
     },
     "skills/humanizer/SKILL.md": {
-      "sha256": "d432b0304c61597c5d5f97a650fbd1bfb50efcec08e76b54901c969d7ae684e2",
+      "sha256": "741f5d2805f6654f0ea80542c282614cde72d59c474a05b8a12c9bee2216d766",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。"
+          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。"
+          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。"
-        },
-        "debunk": {
-          "status": "pass",
-          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。"
+          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。"
+          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+        },
+        "disprove": {
+          "status": "pass",
+          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。"
+          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。"
+          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         }
       }
     },
     "skills/reconceptualize/SKILL.md": {
-      "sha256": "5f64df74bebdfdc1494efffe3f81a0e4ef594d8b6677ff5411a9836a09186be5",
+      "sha256": "8ab903487974bf31b62bab6fb11025fc5f4b7f8d5fc5f2eecd45a84ced325be9",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。"
+          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。"
+          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。"
-        },
-        "debunk": {
-          "status": "pass",
-          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。"
+          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。"
+          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+        },
+        "disprove": {
+          "status": "pass",
+          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。"
+          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。"
+          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
         }
       }
     }
@@ -473,11 +475,11 @@
           "status": "pass",
           "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
         },
-        "debunk": {
+        "decommission": {
           "status": "pass",
           "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
         },
-        "decommission": {
+        "disprove": {
           "status": "pass",
           "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
         },
@@ -492,35 +494,35 @@
       }
     },
     ".agents/markdown-reviews.json": {
-      "sha256": "3e3e6490a96271ec16645cc8cddfb0e0348b9132489632a6fe1849d3fc03b6d7",
+      "sha256": "f0d871cbcfec3fd98b12174d06f1098735d8b135197605eacb5167ca71161e68",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "記録の対象20件と新しい7名を照合し、旧版から引き継いだ認証済み実行の保留2件を記録した。"
+          "evidence": "台帳の20ファイルと7識別子、移動前後のパスと版を照合し、既存の認証済み実行2件の保留を記録した。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "記録の対象20件と新しい7名を照合し、旧版から引き継いだ認証済み実行の保留2件を記録した。"
+          "evidence": "台帳の20ファイルと7識別子、移動前後のパスと版を照合し、既存の認証済み実行2件の保留を記録した。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "記録の対象20件と新しい7名を照合し、旧版から引き継いだ認証済み実行の保留2件を記録した。"
-        },
-        "debunk": {
-          "status": "pass",
-          "evidence": "記録の対象20件と新しい7名を照合し、旧版から引き継いだ認証済み実行の保留2件を記録した。"
+          "evidence": "台帳の20ファイルと7識別子、移動前後のパスと版を照合し、既存の認証済み実行2件の保留を記録した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "記録の対象20件と新しい7名を照合し、旧版から引き継いだ認証済み実行の保留2件を記録した。"
+          "evidence": "台帳の20ファイルと7識別子、移動前後のパスと版を照合し、既存の認証済み実行2件の保留を記録した。"
+        },
+        "disprove": {
+          "status": "pass",
+          "evidence": "台帳の20ファイルと7識別子、移動前後のパスと版を照合し、既存の認証済み実行2件の保留を記録した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "記録の対象20件と新しい7名を照合し、旧版から引き継いだ認証済み実行の保留2件を記録した。"
+          "evidence": "台帳の20ファイルと7識別子、移動前後のパスと版を照合し、既存の認証済み実行2件の保留を記録した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "記録の対象20件と新しい7名を照合し、旧版から引き継いだ認証済み実行の保留2件を記録した。"
+          "evidence": "台帳の20ファイルと7識別子、移動前後のパスと版を照合し、既存の認証済み実行2件の保留を記録した。"
         }
       }
     },
@@ -539,11 +541,11 @@
           "status": "pass",
           "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
         },
-        "debunk": {
+        "decommission": {
           "status": "pass",
           "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
         },
-        "decommission": {
+        "disprove": {
           "status": "pass",
           "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
         },
@@ -572,11 +574,11 @@
           "status": "pass",
           "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
         },
-        "debunk": {
+        "decommission": {
           "status": "pass",
           "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
         },
-        "decommission": {
+        "disprove": {
           "status": "pass",
           "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
         },
@@ -591,101 +593,101 @@
       }
     },
     ".antigravity-plugin/plugin.json": {
-      "sha256": "630f2e5495aa4edfd6d686b210260407253de43cd41e00adef587d6c15f69fee",
+      "sha256": "a60b7ba5128801ddd4a0e0f4ee2c2772a12eab4c079f94e25ba087b3931435ab",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
-        },
-        "debunk": {
-          "status": "pass",
-          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
+        },
+        "disprove": {
+          "status": "pass",
+          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
         }
       }
     },
     ".claude-plugin/plugin.json": {
-      "sha256": "776f231ca35f50cddf446fb786b7fd2f123f2ba60d5215102e8c994fdab385ff",
+      "sha256": "75313681e54d47aa3973cc2ae9c2af710bcd4ff80294e45e1651acbd718d9027",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
-        },
-        "debunk": {
-          "status": "pass",
-          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
+        },
+        "disprove": {
+          "status": "pass",
+          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
         }
       }
     },
     ".codex-plugin/plugin.json": {
-      "sha256": "745489b8828e05be3cf3fb9f67d5d176314721f25e3c99be0180ef60e339e3c2",
+      "sha256": "200d639bcf4ec7d1c5657a5e620c1915d670c9564db8e7cf6b9e3345e054f579",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
-        },
-        "debunk": {
-          "status": "pass",
-          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
+        },
+        "disprove": {
+          "status": "pass",
+          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
         }
       }
     }

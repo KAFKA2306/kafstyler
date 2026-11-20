@@ -75,7 +75,7 @@ verified:
 
 [画面評価ガイド](https://github.com/KAFKA2306/design/blob/main/docs/frontend-review.md)（共有デザインの手順）で見た目と操作を確かめる。状態と入力方法の要件は[設計と検証の基準](https://github.com/KAFKA2306/design#current-design-contract)を使う。
 
-使うスキルは[画面の評価](skills/adjudicate/SKILL.md#画面の評価)、[反証レビュー](skills/debunk/SKILL.md)、[目標設定](skills/reconceptualize/SKILL.md)。
+使うスキルは[画面の評価](skills/adjudicate/SKILL.md#画面の評価)、[反証レビュー](skills/disprove/SKILL.md)、[目標設定](skills/reconceptualize/SKILL.md)。
 
 ## ノートの管理
 
@@ -135,7 +135,7 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 | [reconceptualize](skills/reconceptualize/SKILL.md) | 作業前に入口、入力、最後に観測する結果を決める |
 | [humanizer](skills/humanizer/SKILL.md#本文の推敲と提出前の確認) | 元の依頼や原典を固定し、読者の入口で推敲稿を試す |
 | [canonicalize](skills/canonicalize/SKILL.md#完了条件) | 読み書きの契約、旧データとの互換、再処理を確かめる |
-| [debunk](skills/debunk/SKILL.md) | 対象版と判定基準を固定し、差分から過去の失敗を選ぶ |
+| [disprove](skills/disprove/SKILL.md) | 対象版と判定基準を固定し、差分から過去の失敗を選ぶ |
 | [decommission](skills/decommission/SKILL.md) | 削除前後に利用経路と、残した検査が拾う失敗を確かめる |
 | [adjudicate](skills/adjudicate/SKILL.md#検証手順の評価) | 不変条件と旧版との比較を設計し、評価手順自体の精度も測る |
 | [autocatalyze](skills/autocatalyze/SKILL.md#実装と検証) | 既存の検査を先に実行し、普段の入口から結果を読み戻す |
@@ -146,13 +146,13 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [GOV.UK・利用者テスト](https://www.gov.uk/service-manual/user-research/using-moderated-usability-testing)（公式手引き）。文書、ツール、画面の用途が分かりづらいときは、普段の入口で初見の理解と作業の完了をそれぞれ確かめる。利用者には目標を伝え、手順は伏せる。評価では、対象の版、止まった箇所、観察した事実、利用者への影響、修正後の合格条件を返す。用途を確認できない場合は未確定とし、試せた範囲を伝える。
 
-[評価と比較](skills/adjudicate/SKILL.md) · [反証レビュー](skills/debunk/SKILL.md)
+[評価と比較](skills/adjudicate/SKILL.md) · [反証レビュー](skills/disprove/SKILL.md)
 
 ### imozの日本語編集
 
 [imoz・日本語の文章編集ガイド](https://imoz.jp/humanizer.ja.txt)（編集ガイド）。人が読む文章の執筆と推敲
 
-[評価と比較](skills/adjudicate/SKILL.md) · [自律開発](skills/autocatalyze/SKILL.md) · [データ設計](skills/canonicalize/SKILL.md) · [反証レビュー](skills/debunk/SKILL.md) · [文章の推敲](skills/humanizer/SKILL.md) · [目標設定](skills/reconceptualize/SKILL.md) · [不要なファイル・コード・文章の削除](skills/decommission/SKILL.md)
+[評価と比較](skills/adjudicate/SKILL.md) · [自律開発](skills/autocatalyze/SKILL.md) · [データ設計](skills/canonicalize/SKILL.md) · [反証レビュー](skills/disprove/SKILL.md) · [文章の推敲](skills/humanizer/SKILL.md) · [目標設定](skills/reconceptualize/SKILL.md) · [不要なファイル・コード・文章の削除](skills/decommission/SKILL.md)
 
 ### 読者から記事を設計する
 
@@ -166,7 +166,7 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 - [MaryCache・imozuru](https://github.com/MaryCache/imozuru)（公式リポジトリ）。分野の用語、文献、引用をたどり、判断を支える原文の場所を調べる。
 - [nanaism・yomiyasu](https://github.com/nanaism/yomiyasu)（公式リポジトリ）。主張と条件を保ち、人が読む日本語を推敲する。
 
-[成果物の確認手順](AGENTS.md#成果物の各要素を根拠と照合する) · [導入手順](README.md#成果物の根拠調査と推敲) · [反証レビュー](skills/debunk/SKILL.md#成果物の理由を確かめる)
+[成果物の確認手順](AGENTS.md#成果物の各要素を根拠と照合する) · [導入手順](README.md#成果物の根拠調査と推敲) · [反証レビュー](skills/disprove/SKILL.md#成果物の理由を確かめる)
 
 ## エージェントとハーネス
 
@@ -648,7 +648,7 @@ Anthropic・Hooks reference（公式リファレンス、2026年11月19日確認
 
 [かふかのZenn記事一覧](https://zenn.dev/kafka2306?tab=articles)（記事一覧）。対象の作業に近い記事を探す。
 
-[評価と比較](skills/adjudicate/SKILL.md) · [自律開発](skills/autocatalyze/SKILL.md) · [データ設計](skills/canonicalize/SKILL.md) · [反証レビュー](skills/debunk/SKILL.md) · [文章の推敲](skills/humanizer/SKILL.md) · [目標設定](skills/reconceptualize/SKILL.md) · [不要なファイル・コード・文章の削除](skills/decommission/SKILL.md)
+[評価と比較](skills/adjudicate/SKILL.md) · [自律開発](skills/autocatalyze/SKILL.md) · [データ設計](skills/canonicalize/SKILL.md) · [反証レビュー](skills/disprove/SKILL.md) · [文章の推敲](skills/humanizer/SKILL.md) · [目標設定](skills/reconceptualize/SKILL.md) · [不要なファイル・コード・文章の削除](skills/decommission/SKILL.md)
 
 ### AIが増やす判断箇所
 
@@ -684,7 +684,7 @@ Anthropic・Hooks reference（公式リファレンス、2026年11月19日確認
 
 [OSSが動いた。でもその判定はまだ使えない。「動く」と「使ってよい」を4状態に分ける](https://zenn.dev/kafka2306/articles/2026-08-14-05-compatibility-is-not-validation)（記事）。動作・入力条件・証拠を別々に確かめ、判定に使える範囲を定める。
 
-[評価と比較](skills/adjudicate/SKILL.md) · [反証レビュー](skills/debunk/SKILL.md)
+[評価と比較](skills/adjudicate/SKILL.md) · [反証レビュー](skills/disprove/SKILL.md)
 
 ### 成果物を仕事の証拠にする
 
@@ -696,31 +696,31 @@ Anthropic・Hooks reference（公式リファレンス、2026年11月19日確認
 
 [AIの文章に「透かし」があると言われたら、誰がそれを証明できるのか](https://zenn.dev/kafka2306/articles/claude-watermark-secret-key-detection)（記事）。検証主体と公開根拠を確かめ、一次資料で前提を見直す。
 
-[反証レビュー](skills/debunk/SKILL.md)
+[反証レビュー](skills/disprove/SKILL.md)
 
 ### AI検索向けの一次情報
 
 [AI検索最適化（GEO/AEO）運用指針](https://zenn.dev/kafka2306/articles/6dd453d941b99f)（記事）。公開物の一次情報、機械可読性、施策の検証条件を確認する。
 
-[文章の推敲](skills/humanizer/SKILL.md) · [反証レビュー](skills/debunk/SKILL.md)
+[文章の推敲](skills/humanizer/SKILL.md) · [反証レビュー](skills/disprove/SKILL.md)
 
 ### 目的別の情報収集サイト
 
 [AI活用してそうな情報サイトのクオリティがすごい](https://zenn.dev/kafka2306/articles/1436dad81ab3ac)（記事）。調べたい項目から企業史、財務、IRなどの候補を探し、原典へたどる。
 
-[反証レビュー](skills/debunk/SKILL.md)
+[反証レビュー](skills/disprove/SKILL.md)
 
 ### 継続検証による技術監査
 
 [Adaptive Survivable Verification System (ASVS) に基づく技術監査フレームワーク](https://zenn.dev/kafka2306/articles/5c3c93f798da3f)（記事）。実行時の変化を観測し、検証で用いる証拠を定める。
 
-[評価と比較](skills/adjudicate/SKILL.md) · [反証レビュー](skills/debunk/SKILL.md)
+[評価と比較](skills/adjudicate/SKILL.md) · [反証レビュー](skills/disprove/SKILL.md)
 
 ### 完了を裏づける証拠
 
 [AIの“やったふり”とハルシネーションを暴くゼロトラスト・コントラクト](https://zenn.dev/kafka2306/articles/77e6af7be1d527)（記事）。完了報告を実行結果や再現できる証拠と照らす。
 
-[評価と比較](skills/adjudicate/SKILL.md) · [反証レビュー](skills/debunk/SKILL.md)
+[評価と比較](skills/adjudicate/SKILL.md) · [反証レビュー](skills/disprove/SKILL.md)
 
 ### エージェント向けのフォルダ整理
 

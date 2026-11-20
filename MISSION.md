@@ -43,7 +43,7 @@ Kafstylerは、エージェントが交代しても、成果を再現し、根�
 
 ## 自律改善
 
-実案件で起きた失敗や手戻りから、修正候補を見つける。[`debunk`](skills/debunk/SKILL.md) で各工程の前提を一次資料と実物に照らし、欠陥を見逃す条件を探す。同じ入力で変更前後を測り、再発、所要時間、使いやすさのうち改善したものを記録する。切り替えを実物で確認したら、[`decommission`](skills/decommission/SKILL.md) で役目を終えた手順、処理、設定を削る。Kafstyler自身の文書にも[同じ評価](AGENTS.md#全markdownに全スキルを使う)を適用する。[^work-policy]
+実案件で起きた失敗や手戻りから、修正候補を見つける。[`disprove`](skills/disprove/SKILL.md) で各工程の前提を一次資料と実物に照らし、欠陥を見逃す条件を探す。同じ入力で変更前後を測り、再発、所要時間、使いやすさのうち改善したものを記録する。切り替えを実物で確認したら、[`decommission`](skills/decommission/SKILL.md) で役目を終えた手順、処理、設定を削る。Kafstyler自身の文書にも[同じ評価](AGENTS.md#全markdownに全スキルを使う)を適用する。[^work-policy]
 
 ## 機械的に確かめる評価指標
 
