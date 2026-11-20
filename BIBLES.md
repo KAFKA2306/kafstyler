@@ -31,7 +31,17 @@ verified:
 
 # 聖典台帳
 
-作業の分野から、設計や検証の根拠となる一次資料と、実際に使う手順を探せる。[台帳の更新手順](MISSION.md#更新手順)・[評価指標](MISSION.md#機械的に確かめる評価指標)・[外部手法への置き換え](MISSION.md#外部実装への置き換え)
+設計や検証に使う一次資料と、対応するスキルを掲載する。
+
+## 分野から探す
+
+- **設計・評価** [かふかのデザインパターン](#かふかのデザインパターン) · [目標・文章・評価](#目標文章評価)
+- **文書・データ** [ノートの管理](#ノートの管理) · [Obsidian](#obsidian) · [データ・オントロジー・命名](#データオントロジー命名)
+- **開発・運用** [エージェントとハーネス](#エージェントとハーネス) · [常駐エージェント](#常駐エージェント) · [CLI・開発・インフラ](#cli開発インフラ)
+- **制作** [UIとComfyUI](#uiとcomfyui) · [ユニティとVRChatの制作ツール](#ユニティとvrchatの制作ツール) · [Tripoと3D生成](#tripoと3d生成)
+- **書籍・実践例** [AIエンジニアリングの書籍](#aiエンジニアリングの書籍) · [かふかのZenn](#かふかのzenn) · [ISUCONのハーネス](#isuconのハーネス)
+
+[資料の見直し](#資料の見直し) · [台帳の更新手順](MISSION.md#更新手順) · [評価指標](MISSION.md#機械的に確かめる評価指標) · [外部手法への置き換え](MISSION.md#外部実装への置き換え)
 
 ## 資料の見直し
 
@@ -43,12 +53,29 @@ verified:
 
 [KAFKA2306/design](https://github.com/KAFKA2306/design) は、KAFKA2306のプロジェクトが共有するWeb UIの設計正本。共通部品、見た目、操作状態の定義は上流を読み、業務ルール、データ、公開環境は各プロジェクトの正本を使う。共有デザインを導入するときは、利用側の `design.config.json` で採用する版をコミットSHAに固定する。
 
-| 判断すること | 使うパターンと一次資料 | 参照するスキル・コマンド |
-| --- | --- | --- |
-| 利用者の操作の順番 | 確認して行動する、比較して決める、調査してから行動する、実行して結果を確認する、の中から実際の操作に合う順番を選ぶ。[操作パターンの実装](https://github.com/KAFKA2306/design/blob/main/registry/ui/product/journey.ts) | [目標設定](skills/charter/SKILL.md)・[自律開発](skills/deliver/SKILL.md) |
-| 判断に必要な情報と文言 | 利用者が結論、理由、根拠、次の操作を見つけられるようにする。実績、予測、仮説、未確認を表示まで区別する。[共通の判断パネル](https://github.com/KAFKA2306/design/blob/main/registry/ui/product/decision.tsx)・[コンテンツのスキーマ](https://github.com/KAFKA2306/design/blob/main/artifacts/content.schema.json) | [データ設計](skills/schema/SKILL.md)・[文章の推敲](skills/humanizer/SKILL.md) |
-| 部品と見た目の正本 | 共通の部品とトークンを使い、同期後の状態を検証する。利用側で同じ値や部品を独立して維持する箇所は、置き換え後に整理する。[設計・同期の手順](https://github.com/KAFKA2306/design/blob/main/skills/frontend-design/SKILL.md#workflow)・[共通トークン](https://github.com/KAFKA2306/design/blob/main/tokens/foundation.tokens.json) | [自律開発](skills/deliver/SKILL.md)・[不要なファイル・コード・文章の削除](skills/prune/SKILL.md) |
-| 画面の評価 | [画面評価ガイド](https://github.com/KAFKA2306/design/blob/main/docs/frontend-review.md)（共有デザインの手順）で見た目と操作を確かめる。状態と入力方法の要件は[設計と検証の基準](https://github.com/KAFKA2306/design#current-design-contract)を使う。 | [画面の評価](skills/benchmark/SKILL.md#画面の評価)・[反証レビュー](skills/scrutiny/SKILL.md)・[目標設定](skills/charter/SKILL.md) |
+### 利用者の操作の順番
+
+確認して行動する、比較して決める、調査してから行動する、実行して結果を確認する、の中から実際の操作に合う順番を選ぶ。[操作パターンの実装](https://github.com/KAFKA2306/design/blob/main/registry/ui/product/journey.ts)
+
+使うスキルは[目標設定](skills/charter/SKILL.md)と[自律開発](skills/deliver/SKILL.md)。
+
+### 判断に必要な情報と文言
+
+利用者が結論、理由、根拠、次の操作を見つけられるようにする。実績、予測、仮説、未確認を表示まで区別する。[共通の判断パネル](https://github.com/KAFKA2306/design/blob/main/registry/ui/product/decision.tsx) · [コンテンツのスキーマ](https://github.com/KAFKA2306/design/blob/main/artifacts/content.schema.json)
+
+使うスキルは[データ設計](skills/schema/SKILL.md)と[文章の推敲](skills/humanizer/SKILL.md)。
+
+### 部品と見た目の正本
+
+共通の部品とトークンを使い、同期後の状態を検証する。利用側で同じ値や部品を独立して維持する箇所は、置き換え後に整理する。[設計・同期の手順](https://github.com/KAFKA2306/design/blob/main/skills/frontend-design/SKILL.md#workflow) · [共通トークン](https://github.com/KAFKA2306/design/blob/main/tokens/foundation.tokens.json)
+
+使うスキルは[自律開発](skills/deliver/SKILL.md)と[不要なファイル・コード・文章の削除](skills/prune/SKILL.md)。
+
+### 画面の評価
+
+[画面評価ガイド](https://github.com/KAFKA2306/design/blob/main/docs/frontend-review.md)（共有デザインの手順）で見た目と操作を確かめる。状態と入力方法の要件は[設計と検証の基準](https://github.com/KAFKA2306/design#current-design-contract)を使う。
+
+使うスキルは[画面の評価](skills/benchmark/SKILL.md#画面の評価)、[反証レビュー](skills/scrutiny/SKILL.md)、[目標設定](skills/charter/SKILL.md)。
 
 ## ノートの管理
 
