@@ -1,5 +1,5 @@
 {
-  "compared_to": "b0157d969aa6ea2e073426d454a727781423a5fa",
+  "compared_to": "30a468b867de1a781f73d4ffc6951ade412dfb14",
   "sources": {
     "成功基準と自動採点": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
     "エージェント評価と判定例": "https://www.anthropic.com/research/demystifying-evals-for-ai-agents",
@@ -52,15 +52,15 @@
       }
     },
     "README.md": {
-      "sha256": "c734409c274a725cd60e5ccf96fd24070d99c6320acdcdac79df47abe5adc063",
+      "sha256": "30901e2b28e6c0774a9e830d01f1a51faecff3a7f139907cf5f095029566ed49",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "相対参照は前後41件で切れ0件。新しい説明が設計前と提出時の両方の出力を示すことを確認した。"},
-        "charter": {"status": "pass", "evidence": "読者が事例の表から準備する評価と確認できる結果を見つけられることを条件にした。"},
-        "deliver": {"status": "pass", "evidence": "スキル一覧のbenchmarkリンクから設計前と提出前の手順を開いた。"},
-        "humanizer": {"status": "pass", "evidence": "表の評価行で、設計前に固定するものと提出時に確認するものを一行で読めることを確認した。"},
-        "prune": {"status": "pass", "evidence": "表の1行のみを変更し、評価方法の詳細は既存のリンクに集約した。"},
-        "schema": {"status": "pass", "evidence": "YAMLの種別・タグと、スキル一覧の行構造が着手版と一致した。"},
-        "scrutiny": {"status": "pass", "evidence": "旧版との比較がない初回制作も評価できることを、表の更新文言とbenchmarkの手順から確認した。"}
+        "benchmark": {"status": "pass", "evidence": "着手版と候補をGitHubのレンダリングで照合。試用は最初の節に移り、既存の見出し27件と導入・検証のコマンドを維持。相対参照41→40件、切れ0件。"},
+        "charter": {"status": "pass", "evidence": "初見の読者が、冒頭で用途と対応ツールを把握し、依頼例または導入先を選べることを合格条件にして、実際のREADME構成と照合した。"},
+        "deliver": {"status": "pass", "evidence": "GitHub Markdown APIのHTMLで、依頼文が最初のコードブロックに見え、導入欄から3クライアントを選べ、保守の補足が3件の開閉欄に収まることを照合した。"},
+        "humanizer": {"status": "pass", "evidence": "冒頭の二段落を推敲し、正本からの公開、過去データの訂正、引き継ぎの順に事例を組み直した。導入条件とコマンドを着手版と照合した。"},
+        "prune": {"status": "pass", "evidence": "同じschemaへのリンクの重複を一件取り除いた。導入の前提、既存の見出し、コマンドは保ち、環境別の補足と保守手順を畳んだ。"},
+        "schema": {"status": "pass", "evidence": "frontmatterは着手版と一致。公式OKF v0.3の厳格検査は13件・エラーと警告0件。type=guideとkafstyler/guideでREADMEが1件見つかった。"},
+        "scrutiny": {"status": "pass", "evidence": "試用文の到達経路、導入先の選択、Windows・WSLの導入前確認を検討。導入の見出しと3環境へのリンクを開いたままにし、権限確認は導入コマンドより前に置いた。"}
       }
     },
     "index.md": {
@@ -234,15 +234,15 @@
       }
     },
     ".agents/markdown-reviews.json": {
-      "sha256": "fc1b431400f47b02ef9bd39a23853586f8d0878c630a4cdd2f303de7dde40cae",
+      "sha256": "c4f9712233954aad014c60403fdfc2b811f078e6ffe0ee157e3ae31cf32d187b",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "追跡20件・7スキルを維持し、変更対象の記録と既知の保留2件を着手版と照合した。"},
-        "charter": {"status": "pass", "evidence": "保守担当がどの版を比較し、何を自動判定したかをこの台帳で確認できることを条件にした。"},
-        "deliver": {"status": "pass", "evidence": "既存の台帳に今回の版と検証結果を記録し、JSONとして読み戻した。"},
-        "humanizer": {"status": "pass", "evidence": "判定対象と試した入力、結果を簡潔に記し、過去の未確認操作を区別したことを通読した。"},
-        "prune": {"status": "pass", "evidence": "監査の正本とファイルのキーを再利用し、新しい台帳を加えなかった。"},
-        "schema": {"status": "pass", "evidence": "documents13件・files7件をGitの一覧に照合し、既存の自己ハッシュ方式で更新した。"},
-        "scrutiny": {"status": "pass", "evidence": "既存の保留2件の状態を変更せず、今回の確認と既存の実機未実施を照合した。"}
+        "benchmark": {"status": "pass", "evidence": "着手版と候補で追跡20件、7スキルと既存の未確認2件を照合した。"},
+        "charter": {"status": "pass", "evidence": "後任の保守担当が対象版、READMEの採否、検証の範囲をこの台帳で確認できることを条件にした。"},
+        "deliver": {"status": "pass", "evidence": "READMEに対する7件の判断を台帳に記録して、JSONで読み戻した。"},
+        "humanizer": {"status": "pass", "evidence": "変更した文書への判定に対象・操作・結果が書かれていることを通読した。"},
+        "prune": {"status": "pass", "evidence": "既存の台帳のREADMEと自己検証の行を更新し、別の記録ファイルを増やさなかった。"},
+        "schema": {"status": "pass", "evidence": "documents13件とfiles7件を維持し、READMEは実ファイル、台帳は既存の自己参照を除く方式でハッシュを更新した。"},
+        "scrutiny": {"status": "pass", "evidence": "既存の未確認2件を新たなREADMEの確認と混同していないことを、着手版の状態と照合した。"}
       }
     },
     ".agents/quality.sh": {
