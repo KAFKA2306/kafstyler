@@ -1,5 +1,5 @@
 {
-  "compared_to": "483f9d0136043ecdf9089b0cf49db6881ee82106",
+  "compared_to": "801f9f05b541c39273c3e66b24353e3a90664348",
   "sources": {
     "成功基準と自動採点": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
     "エージェント評価と判定例": "https://www.anthropic.com/research/demystifying-evals-for-ai-agents",
@@ -17,20 +17,23 @@
     "全体の表示を見直した記録": "https://github.com/KAFKA2306/kafstyler/issues/53",
     "利用中の状態を伝える設計の原典": "https://www.nngroup.com/articles/ten-usability-heuristics/",
     "応答の文体の設計": "https://www.nngroup.com/articles/tone-of-voice-dimensions/",
-    "試用できる成果とスキル連携図の作業記録": "https://github.com/KAFKA2306/kafstyler/issues/54"
+    "試用できる成果とスキル連携図の作業記録": "https://github.com/KAFKA2306/kafstyler/issues/54",
+    "イベント起動と待機の設計": "https://claude.com/resources/articles/building-always-on-agents",
+    "通知の読み戻しと処理済み位置": "https://claude.dev/blog/building-effective-agent-automations/",
+    "運用の役割と連携図の作業記録": "https://github.com/KAFKA2306/kafstyler/issues/55"
   },
-  "rules": "f684faf6dbd36e4d36d2c6b15d689c78e63bf6e7f1f6b30b64268bf34322ab72",
+  "rules": "d13ef66c59d36b4ece6bcebda307805fb4bed40a90ebc9786cf9b6fdeec69b3a",
   "documents": {
     "AGENTS.md": {
-      "sha256": "451cf09659e0a3669e68e9e6797a85b13de49cbb80295947bad474f90d918c2b",
+      "sha256": "9b6151c4346eaec96dd9c24e6400bc980b9075f0cb51ba67e9eee44a5a79ebaa",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版との比較で既存の見出しと入口を保った。典型の依頼と挨拶・形式指定・失敗の比較条件を作業記録#54で先に固定した。"},
-        "charter": {"status": "pass", "evidence": "利用者に起きた変化の直後に、利用者自身が試せる入口が分かることを合格条件にした。"},
-        "deliver": {"status": "pass", "evidence": "Claude CodeとCodexの配布フックを実行し、両方で作業規約に更新後の出力手順が含まれることを検査した。"},
-        "humanizer": {"status": "pass", "evidence": "着手、途中の発見、試用の入口、根拠、軽い会話を段落ごとに整理した。観測できた条件で結果を述べる文にそろえた。"},
-        "prune": {"status": "pass", "evidence": "報告の仕様は共通規約の既存節に置いた。通知や呼び出しを強制する新しいフックを追加せず、deliverは既存節を参照する。"},
-        "schema": {"status": "pass", "evidence": "種別・タグ・別名を維持し、意味を変えた規約の生成時刻を更新した。OKFの厳格検査は13文書・エラーと警告0。"},
-        "scrutiny": {"status": "pass", "evidence": "文章を短くするだけで試用ができない例、形式指定の出力に演出を足す例、公開に立ち会えず完了したか判断できない例を照合し、実物・確認範囲・指定形式を条件に残した。"}
+        "benchmark": {"status": "pass", "evidence": "着手版の発動条件・既存見出し・コード例を比較し、候補の相対参照の到達を確認した。変更した手順は4つの定期・イベント起動の場面で読み合わせた。"},
+        "charter": {"status": "pass", "evidence": "全分野の依頼で必要なスキルを選ぶ条件を次の処理へ渡せることを確認条件にした。"},
+        "deliver": {"status": "pass", "evidence": "文書の通常入口から追加した節と受け渡し先を照合。Claude CodeとCodex用フックから同梱規約と全7スキルの発動条件を取得した。"},
+        "humanizer": {"status": "pass", "evidence": "既存の連携を保ち、常駐運用で同じ台帳へ確認結果と次の判断を返す一節を追加。"},
+        "prune": {"status": "pass", "evidence": "既存の役割と見出しを保ち、常駐向けの判断を担当スキルの手順に置いた。共通手順は既存の作業台帳を参照する。"},
+        "schema": {"status": "pass", "evidence": "既存の種別・タグ・別名を維持し、変更した文書の生成時刻を更新した。公式OKF厳格検査は13文書でエラー・警告0。"},
+        "scrutiny": {"status": "pass", "evidence": "同じ作業IDと別の起動を取り違えず、既存の権限と対象で判断することを確認した"}
       }
     },
     "BIBLES.md": {
@@ -58,15 +61,15 @@
       }
     },
     "README.md": {
-      "sha256": "5ffb3e9a114c9843ddf146fcc9d05a76cc247a9f7785d181b31b2ff5b58cbd56",
+      "sha256": "a565b3fae04e83c3b89f116eeccc3d7db9c9a8cc89be3819e6e302382ab2232b",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版と比較して既存見出しとMermaid以外のコードブロックが一致。図のラベルに7スキルが含まれ、相対リンクの参照先を照合した。"},
-        "charter": {"status": "pass", "evidence": "読者が合格条件、実物の検証、推敲、正本移行と整理、横断レビューのつながりを図から確かめられることを条件にした。"},
-        "deliver": {"status": "pass", "evidence": "7スキルの見出し直後に図を置き、対応表と直後の説明から関連するスキルの手順をたどれることを照合した。"},
-        "humanizer": {"status": "pass", "evidence": "合格条件、固定した評価、報告書の推敲、切替確認後という具体的な矢印ラベルを確認した。"},
-        "prune": {"status": "pass", "evidence": "統計データの処理を表す図をスキル同士の図に差し替え、図の本数を一つに保った。統計の例と手順は文章に残した。"},
-        "schema": {"status": "pass", "evidence": "種別・タグ・別名と既存の相対リンクを維持し、意味の変更を生成時刻に記録。図とスキル表を同じ節へ置いた。"},
-        "scrutiny": {"status": "pass", "evidence": "全スキルが直列必須と読める例を避け、条件付きの連携を点線にした。反証は最後の工程で一度だけ行うとの誤読を説明文で防ぎ、pruneから始める場合も明記した。"}
+        "benchmark": {"status": "pass", "evidence": "着手版の発動条件・既存見出し・コード例を比較し、候補の相対参照の到達を確認した。変更した手順は4つの定期・イベント起動の場面で読み合わせた。"},
+        "charter": {"status": "pass", "evidence": "7スキルの責任と次の起動へ戻る連携を次の処理へ渡せることを確認条件にした。"},
+        "deliver": {"status": "pass", "evidence": "Mermaid 12.3.0のパーサでフローチャートと8本の辺を取得し、既存の7スキルのリンクと連携手順を照合した。"},
+        "humanizer": {"status": "pass", "evidence": "7スキルと起動元を図にし、表で単発を含む責任と渡す成果を明記した。"},
+        "prune": {"status": "pass", "evidence": "既存の役割と見出しを保ち、常駐向けの判断を担当スキルの手順に置いた。共通手順は既存の作業台帳を参照する。"},
+        "schema": {"status": "pass", "evidence": "既存の種別・タグ・別名を維持し、変更した文書の生成時刻を更新した。公式OKF厳格検査は13文書でエラー・警告0。"},
+        "scrutiny": {"status": "pass", "evidence": "定刻・イベント・回答の起動元とdeliverの作業を別に表示し、定例の待機と一時ジョブの解除を本文で照合した"}
       }
     },
     "index.md": {
@@ -94,87 +97,87 @@
       }
     },
     "skills/benchmark/SKILL.md": {
-      "sha256": "81e361e326bb515cb3ef90c0d9ce4227b4a11bfa84bb0b101c43934b612cc7f1",
+      "sha256": "e1d15b27fdbabe2bb676c2956fa7d2832a80cbb332705fc1ca35adebdca78e0d",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版と候補を比較し、既存の見出しとコードブロックを維持。候補の相対参照38件で不達0。"},
-        "charter": {"status": "pass", "evidence": "設計前に評価を決め、同じ評価で採否を決める手順へ冒頭から進めることを表示の確認条件にした。"},
-        "deliver": {"status": "pass", "evidence": "ローカルGFMで文書を表示し、設計前に評価を決め、同じ評価で採否を決める手順の入口を確認した。"},
-        "humanizer": {"status": "pass", "evidence": "設計前の固定と提出時の判定を冒頭で区別した。"},
-        "prune": {"status": "pass", "evidence": "評価項目は既存節に集約し、冒頭は目的と参照に絞った。"},
-        "schema": {"status": "pass", "evidence": "frontmatterは着手版と一致。公式OKFの厳格検査で対象を含む13文書のエラーと警告は0。相対参照を解決した。"},
-        "scrutiny": {"status": "pass", "evidence": "設計前に評価を決め、同じ評価で採否を決める手順を探す読み方で、見出しとリンクが正しい既存手順へ結び付くことを照合した。"}
+        "benchmark": {"status": "pass", "evidence": "着手版の発動条件・既存見出し・コード例を比較し、候補の相対参照の到達を確認した。変更した手順は4つの定期・イベント起動の場面で読み合わせた。"},
+        "charter": {"status": "pass", "evidence": "設計前の自動判定と実際の入口からの比較を次の処理へ渡せることを確認条件にした。"},
+        "deliver": {"status": "pass", "evidence": "文書の通常入口から追加した節と受け渡し先を照合。Claude CodeとCodex用フックから同梱規約と全7スキルの発動条件を取得した。"},
+        "humanizer": {"status": "pass", "evidence": "更新、差分なし、中断再開を実際の起動元で観測する条件と、通知の配信・再送の判定を追加した。"},
+        "prune": {"status": "pass", "evidence": "既存の役割と見出しを保ち、常駐向けの判断を担当スキルの手順に置いた。共通手順は既存の作業台帳を参照する。"},
+        "schema": {"status": "pass", "evidence": "既存の種別・タグ・別名を維持し、変更した文書の生成時刻を更新した。公式OKF厳格検査は13文書でエラー・警告0。"},
+        "scrutiny": {"status": "pass", "evidence": "一回の成功と運用中の起動・期限・重複・未到達を別々に判定することを照合した"}
       }
     },
     "skills/charter/SKILL.md": {
-      "sha256": "b04b08163ca9b9ca89124da73ac15002e9897129f6147a22853878599d345788",
+      "sha256": "d1a38af4c174bbfdfe1f2111f393d96e6f36c2f99704296fc1b443fb20b54a4a",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版と候補を比較し、既存の見出しとコードブロックを維持。候補の相対参照19件で不達0。"},
-        "charter": {"status": "pass", "evidence": "合格条件づくりと提出前の成果確認へ冒頭から進めることを表示の確認条件にした。"},
-        "deliver": {"status": "pass", "evidence": "ローカルGFMで文書を表示し、合格条件づくりと提出前の成果確認の入口を確認した。"},
-        "humanizer": {"status": "pass", "evidence": "完了場面、現行の障害、必要な観測を各手順の太字で確認できる。"},
-        "prune": {"status": "pass", "evidence": "出力条件の本文を保ち、冒頭は二つの参照先を示した。"},
-        "schema": {"status": "pass", "evidence": "frontmatterは着手版と一致。公式OKFの厳格検査で対象を含む13文書のエラーと警告は0。相対参照を解決した。"},
-        "scrutiny": {"status": "pass", "evidence": "合格条件づくりと提出前の成果確認を探す読み方で、見出しとリンクが正しい既存手順へ結び付くことを照合した。"}
+        "benchmark": {"status": "pass", "evidence": "着手版の発動条件・既存見出し・コード例を比較し、候補の相対参照の到達を確認した。変更した手順は4つの定期・イベント起動の場面で読み合わせた。"},
+        "charter": {"status": "pass", "evidence": "利用者の目的と一周期・運用全体の合格条件を次の処理へ渡せることを確認条件にした。"},
+        "deliver": {"status": "pass", "evidence": "文書の通常入口から追加した節と受け渡し先を照合。Claude CodeとCodex用フックから同梱規約と全7スキルの発動条件を取得した。"},
+        "humanizer": {"status": "pass", "evidence": "期限内の成果、欠落、差分なし、失敗、上限の条件を評価担当に渡す。"},
+        "prune": {"status": "pass", "evidence": "既存の役割と見出しを保ち、常駐向けの判断を担当スキルの手順に置いた。共通手順は既存の作業台帳を参照する。"},
+        "schema": {"status": "pass", "evidence": "既存の種別・タグ・別名を維持し、変更した文書の生成時刻を更新した。公式OKF厳格検査は13文書でエラー・警告0。"},
+        "scrutiny": {"status": "pass", "evidence": "入力の版だけが変わる回と、利用目的や期限が変わって合格条件を見直す回を区別した"}
       }
     },
     "skills/deliver/SKILL.md": {
-      "sha256": "32eb44c020a976937dc855022d28c3d46c7f2af496966cf7854eeddd371db559",
+      "sha256": "9241e30ed040472dfcc22258b8f704dc72984c879a376d5ab780ff42959bfdc1",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "既存の見出しとコードブロックが一致し、追加した出力手順への相対リンクが規約の既存節に解決した。"},
-        "charter": {"status": "pass", "evidence": "検証が済んだ成果を、利用者が普段の入口から即座に試せることを引き渡しの条件にした。"},
+        "benchmark": {"status": "pass", "evidence": "着手版の発動条件・既存見出し・コード例を比較し、候補の相対参照の到達を確認した。変更した手順は4つの定期・イベント起動の場面で読み合わせた。"},
+        "charter": {"status": "pass", "evidence": "実行、検証、配布、通常起動からの再開を次の処理へ渡せることを確認条件にした。"},
         "deliver": {"status": "pending", "evidence": "配布フックから評価準備の案内を取得した。Claude Codeの認証済み対話で予定ジョブを登録し、初回実行と解除に至る既存の確認は未実施。"},
-        "humanizer": {"status": "pass", "evidence": "検証後の引き渡し段落に、操作の入口と根拠を渡す一文を追加した。"},
-        "prune": {"status": "pass", "evidence": "出力仕様をスキル側で再掲せず、共通規約の既存節を参照した。"},
-        "schema": {"status": "pass", "evidence": "発動条件・タグ・既存のverified履歴を保ち、意味が変わった現在の版の生成時刻を更新した。"},
-        "scrutiny": {"status": "pass", "evidence": "導入・常駐経路、検証前の完了宣言、順序への影響を確認。実物を確認できた場合に試用入口を返す手順を既存の完了段落に置いた。"}
+        "humanizer": {"status": "pass", "evidence": "既存の常駐手順で前回の確認地点、差分、待機・再試行・成功を整理した。"},
+        "prune": {"status": "pass", "evidence": "既存の役割と見出しを保ち、常駐向けの判断を担当スキルの手順に置いた。共通手順は既存の作業台帳を参照する。"},
+        "schema": {"status": "pass", "evidence": "既存の種別・タグ・別名を維持し、変更した文書の生成時刻を更新した。公式OKF厳格検査は13文書でエラー・警告0。"},
+        "scrutiny": {"status": "pass", "evidence": "差分なしの回は必要な通知の条件を確認。応答消失後は外部の正本から照合して、残りの確認に進むことを読み合わせた"}
       }
     },
     "skills/humanizer/SKILL.md": {
-      "sha256": "27517f771c1badd5ed91c5a89fccf9fbbf8b4aa7f8df4700c289d1c6439385af",
+      "sha256": "5a145842c8d97dd13f23fc105480bc55698969723c5c8c903dfc9b41590d3d4b",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版と候補を比較し、既存の見出しとコードブロックを維持。候補の相対参照14件で不達0。"},
-        "charter": {"status": "pass", "evidence": "原稿の設計、見出しと用語、本文の推敲へ冒頭から進めることを表示の確認条件にした。"},
-        "deliver": {"status": "pass", "evidence": "ローカルGFMで文書を表示し、原稿の設計、見出しと用語、本文の推敲の入口を確認した。"},
-        "humanizer": {"status": "pass", "evidence": "原稿の段階に応じて開く節を冒頭に示した。"},
-        "prune": {"status": "pass", "evidence": "段階ごとの規則を既存本文に残し、ナビの名称は用途に絞った。"},
-        "schema": {"status": "pass", "evidence": "frontmatterは着手版と一致。公式OKFの厳格検査で対象を含む13文書のエラーと警告は0。相対参照を解決した。"},
-        "scrutiny": {"status": "pass", "evidence": "原稿の設計、見出しと用語、本文の推敲を探す読み方で、見出しとリンクが正しい既存手順へ結び付くことを照合した。"}
+        "benchmark": {"status": "pass", "evidence": "着手版の発動条件・既存見出し・コード例を比較し、候補の相対参照の到達を確認した。変更した手順は4つの定期・イベント起動の場面で読み合わせた。"},
+        "charter": {"status": "pass", "evidence": "読み手に応じた文章と案内の設計を次の処理へ渡せることを確認条件にした。"},
+        "deliver": {"status": "pass", "evidence": "文書の通常入口から追加した節と受け渡し先を照合。Claude CodeとCodex用フックから同梱規約と全7スキルの発動条件を取得した。"},
+        "humanizer": {"status": "pass", "evidence": "運用出力で鮮度、確認範囲、復旧、利用者の次の操作を読み分ける条件を追加した。"},
+        "prune": {"status": "pass", "evidence": "既存の役割と見出しを保ち、常駐向けの判断を担当スキルの手順に置いた。共通手順は既存の作業台帳を参照する。"},
+        "schema": {"status": "pass", "evidence": "既存の種別・タグ・別名を維持し、変更した文書の生成時刻を更新した。公式OKF厳格検査は13文書でエラー・警告0。"},
+        "scrutiny": {"status": "pass", "evidence": "取得失敗を成功や最新として伝えず、通知が必要な回だけ既存の条件で配信することを照合した"}
       }
     },
     "skills/prune/SKILL.md": {
-      "sha256": "daaeac9d9e4e9a51f53df8fa8e7f6ce2fe5b5797095e9f6796059968a3852304",
+      "sha256": "20801f07f372b71743afab22b20b489e4efc615859beaa39bc6e3a5803b9cfc0",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版と候補を比較し、既存の見出しとコードブロックを維持。候補の相対参照29件で不達0。"},
-        "charter": {"status": "pass", "evidence": "削除前の影響確認と削除後の確認へ冒頭から進めることを表示の確認条件にした。"},
-        "deliver": {"status": "pass", "evidence": "ローカルGFMで文書を表示し、削除前の影響確認と削除後の確認の入口を確認した。"},
-        "humanizer": {"status": "pass", "evidence": "削除の可否を決める段階と旧経路を確認する段階を識別できる。"},
-        "prune": {"status": "pass", "evidence": "既存の削除後確認を元の順序と入れ子で維持した。"},
-        "schema": {"status": "pass", "evidence": "frontmatterは着手版と一致。公式OKFの厳格検査で対象を含む13文書のエラーと警告は0。相対参照を解決した。"},
-        "scrutiny": {"status": "pass", "evidence": "削除前の影響確認と削除後の確認を探す読み方で、見出しとリンクが正しい既存手順へ結び付くことを照合した。"}
+        "benchmark": {"status": "pass", "evidence": "着手版の発動条件・既存見出し・コード例を比較し、候補の相対参照の到達を確認した。変更した手順は4つの定期・イベント起動の場面で読み合わせた。"},
+        "charter": {"status": "pass", "evidence": "コード・文書・処理・設定を整理し必要な入口を保つことを次の処理へ渡せることを確認条件にした。"},
+        "deliver": {"status": "pass", "evidence": "文書の通常入口から追加した節と受け渡し先を照合。Claude CodeとCodex用フックから同梱規約と全7スキルの発動条件を取得した。"},
+        "humanizer": {"status": "pass", "evidence": "新方式へ移した再開位置と切り戻しを確認し、旧起動停止後に次回の通常起動を読み戻す手順にした。"},
+        "prune": {"status": "pass", "evidence": "既存の役割と見出しを保ち、常駐向けの判断を担当スキルの手順に置いた。共通手順は既存の作業台帳を参照する。"},
+        "schema": {"status": "pass", "evidence": "既存の種別・タグ・別名を維持し、変更した文書の生成時刻を更新した。公式OKF厳格検査は13文書でエラー・警告0。"},
+        "scrutiny": {"status": "pass", "evidence": "新方式の初回成功だけで旧設定を削ると再開を失う例を検討し、通常の次回起動を削除の条件とした"}
       }
     },
     "skills/schema/SKILL.md": {
-      "sha256": "4235d1c1559ae5c61c14f506bc43f48c87c20cecfff77ba8cfdf4c0cb40ed70c",
+      "sha256": "0dad6051e67b449ae9a380bb148d5c0ecf03fc127273843e5d2992451d3ef99c",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版と候補を比較し、既存の見出しとコードブロックを維持。候補の相対参照57件で不達0。"},
-        "charter": {"status": "pass", "evidence": "正本の定義、dbt・OKF、完了条件へ冒頭から進めることを表示の確認条件にした。"},
-        "deliver": {"status": "pass", "evidence": "ローカルGFMで文書を表示し、正本の定義、dbt・OKF、完了条件の入口を確認した。"},
-        "humanizer": {"status": "pass", "evidence": "設計するものから手順へ進めるようにし、正本を決める段階を強調した。"},
-        "prune": {"status": "pass", "evidence": "データ設計や移行の要件を既存の担当節で管理する構成を保った。"},
-        "schema": {"status": "pass", "evidence": "frontmatterは着手版と一致。公式OKFの厳格検査で対象を含む13文書のエラーと警告は0。相対参照を解決した。"},
-        "scrutiny": {"status": "pass", "evidence": "正本の定義、dbt・OKF、完了条件を探す読み方で、見出しとリンクが正しい既存手順へ結び付くことを照合した。"}
+        "benchmark": {"status": "pass", "evidence": "着手版の発動条件・既存見出し・コード例を比較し、候補の相対参照の到達を確認した。変更した手順は4つの定期・イベント起動の場面で読み合わせた。"},
+        "charter": {"status": "pass", "evidence": "正本と入出力の契約、同じ回の再開に必要な記録を次の処理へ渡せることを確認条件にした。"},
+        "deliver": {"status": "pass", "evidence": "文書の通常入口から追加した節と受け渡し先を照合。Claude CodeとCodex用フックから同梱規約と全7スキルの発動条件を取得した。"},
+        "humanizer": {"status": "pass", "evidence": "作業ID、起動を識別する値、実行ID、入力・評価の版、外部反映を既存台帳に結んだ。"},
+        "prune": {"status": "pass", "evidence": "既存の役割と見出しを保ち、常駐向けの判断を担当スキルの手順に置いた。共通手順は既存の作業台帳を参照する。"},
+        "schema": {"status": "pass", "evidence": "既存の種別・タグ・別名を維持し、変更した文書の生成時刻を更新した。公式OKF厳格検査は13文書でエラー・警告0。"},
+        "scrutiny": {"status": "pass", "evidence": "同じイベントの再送と次の予定を見分け、反映不明の書き込みで確認済み位置を進めないことを照合した"}
       }
     },
     "skills/scrutiny/SKILL.md": {
-      "sha256": "d2ce77f6f49e953245622e4d267c53a079055bb822dd2e596fc4c90712ed2873",
+      "sha256": "623b82ef5549b720b2a21acbf916219b3ebe459082a93e69a9e0cf4e8235d3dd",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版と候補を比較し、既存の見出しとコードブロックを維持。候補の相対参照19件で不達0。"},
-        "charter": {"status": "pass", "evidence": "調査と反証の手順、返す結果へ冒頭から進めることを表示の確認条件にした。"},
-        "deliver": {"status": "pass", "evidence": "ローカルGFMで文書を表示し、調査と反証の手順、返す結果の入口を確認した。"},
-        "humanizer": {"status": "pass", "evidence": "論点、対立仮説、記録する指摘を文中の段階名で追えるようにした。"},
-        "prune": {"status": "pass", "evidence": "既存の反証条件と出力項目を本文に置き、冒頭に重複して列挙しなかった。"},
-        "schema": {"status": "pass", "evidence": "frontmatterは着手版と一致。公式OKFの厳格検査で対象を含む13文書のエラーと警告は0。相対参照を解決した。"},
-        "scrutiny": {"status": "pass", "evidence": "調査と反証の手順、返す結果を探す読み方で、見出しとリンクが正しい既存手順へ結び付くことを照合した。"}
+        "benchmark": {"status": "pass", "evidence": "着手版の発動条件・既存見出し・コード例を比較し、候補の相対参照の到達を確認した。変更した手順は4つの定期・イベント起動の場面で読み合わせた。"},
+        "charter": {"status": "pass", "evidence": "現行と代替案を原典・実物で反証することを次の処理へ渡せることを確認条件にした。"},
+        "deliver": {"status": "pass", "evidence": "文書の通常入口から追加した節と受け渡し先を照合。Claude CodeとCodex用フックから同梱規約と全7スキルの発動条件を取得した。"},
+        "humanizer": {"status": "pass", "evidence": "途中停止、古い結果、二重処理の反例から停止条件と再開の証拠を返すようにした。"},
+        "prune": {"status": "pass", "evidence": "既存の役割と見出しを保ち、常駐向けの判断を担当スキルの手順に置いた。共通手順は既存の作業台帳を参照する。"},
+        "schema": {"status": "pass", "evidence": "既存の種別・タグ・別名を維持し、変更した文書の生成時刻を更新した。公式OKF厳格検査は13文書でエラー・警告0。"},
+        "scrutiny": {"status": "pass", "evidence": "公開先の版・件数と作業台帳を照合し、欠落や二重反映を見つけられる手順を確認した"}
       }
     }
   },
@@ -192,38 +195,38 @@
       }
     },
     ".antigravity-plugin/plugin.json": {
-      "sha256": "773269a2c0def698aef45087361b3395e8cab020c8e5c0e5fce681a381008bde",
+      "sha256": "edecb553923c5e2eab02c8d80bae8e34ac71222a890e156f9076cf707277dee3",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版0.5.38と候補0.5.39をJSONで比較し、版のみ変わったことを確認した。"},
+        "benchmark": {"status": "pass", "evidence": "0.5.39と0.5.40をパースし、変更はversionのみと照合した。"},
         "charter": {"status": "pass", "evidence": "利用者が配布一覧の説明でプラグインの用途を判断できることを条件にした。"},
-        "deliver": {"status": "pass", "evidence": "3つの同梱マニフェストから0.5.39を読み取った。"},
+        "deliver": {"status": "pass", "evidence": "3環境のマニフェストの同梱版0.5.40を確認した。"},
         "humanizer": {"status": "pass", "evidence": "長い紹介文はClaude Codeの既存公開配布一覧と一致。"},
         "prune": {"status": "pass", "evidence": "既存の説明欄を使い、同じ用途の表示項目を増やしていない。"},
-        "schema": {"status": "pass", "evidence": "3クライアントのversionを0.5.39に更新し、同じJSONキーと値型を維持した。"},
+        "schema": {"status": "pass", "evidence": "既存のキーと値型を保ち、3環境のversionを0.5.40にそろえた。"},
         "scrutiny": {"status": "pass", "evidence": "一覧と同梱の説明が食い違わないか公開配布元の値と照合し、先に固定した配布設定の差分条件を満たした。"}
       }
     },
     ".claude-plugin/plugin.json": {
-      "sha256": "d612447f9584e8796ea0a602b4a3c42c3778b7f1ce935f787a1a2468ddaea192",
+      "sha256": "46e8b8786c536841ac7cf693b09340874ce841b15055640ed63b99c49995fdfa",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版0.5.38と候補0.5.39をJSONで比較し、版のみ変わったことを確認した。"},
+        "benchmark": {"status": "pass", "evidence": "0.5.39と0.5.40をパースし、変更はversionのみと照合した。"},
         "charter": {"status": "pass", "evidence": "利用者が配布一覧の説明でプラグインの用途を判断できることを条件にした。"},
-        "deliver": {"status": "pass", "evidence": "3つの同梱マニフェストから0.5.39を読み取った。"},
+        "deliver": {"status": "pass", "evidence": "3環境のマニフェストの同梱版0.5.40を確認した。"},
         "humanizer": {"status": "pass", "evidence": "長い紹介文はClaude Codeの既存公開配布一覧と一致。"},
         "prune": {"status": "pass", "evidence": "既存の説明欄を使い、同じ用途の表示項目を増やしていない。"},
-        "schema": {"status": "pass", "evidence": "3クライアントのversionを0.5.39に更新し、同じJSONキーと値型を維持した。"},
+        "schema": {"status": "pass", "evidence": "既存のキーと値型を保ち、3環境のversionを0.5.40にそろえた。"},
         "scrutiny": {"status": "pass", "evidence": "一覧と同梱の説明が食い違わないか公開配布元の値と照合し、先に固定した配布設定の差分条件を満たした。"}
       }
     },
     ".codex-plugin/plugin.json": {
-      "sha256": "9bf03641c4997e59e2272deb37e9a655fa4ed49ef62c8ec8c948868d10d95448",
+      "sha256": "c49bac551f6a618eae4811af4f8fc5ab0ce2dc9e6599372fcb64f7e8a1e5ca57",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "着手版0.5.38と候補0.5.39をJSONで比較し、版のみ変わったことを確認した。"},
+        "benchmark": {"status": "pass", "evidence": "0.5.39と0.5.40をパースし、変更はversionのみと照合した。"},
         "charter": {"status": "pass", "evidence": "利用者が配布一覧の説明でプラグインの用途を判断できることを条件にした。"},
-        "deliver": {"status": "pass", "evidence": "3つの同梱マニフェストから0.5.39を読み取った。"},
+        "deliver": {"status": "pass", "evidence": "3環境のマニフェストの同梱版0.5.40を確認した。"},
         "humanizer": {"status": "pass", "evidence": "長い紹介文はClaude Codeの既存公開配布一覧と一致。短い紹介文で検証と引き継ぎを伝える。"},
         "prune": {"status": "pass", "evidence": "既存の説明欄を使い、同じ用途の表示項目を増やしていない。"},
-        "schema": {"status": "pass", "evidence": "3クライアントのversionを0.5.39に更新し、同じJSONキーと値型を維持した。"},
+        "schema": {"status": "pass", "evidence": "既存のキーと値型を保ち、3環境のversionを0.5.40にそろえた。"},
         "scrutiny": {"status": "pass", "evidence": "一覧と同梱の説明が食い違わないか公開配布元の値と照合し、先に固定した配布設定の差分条件を満たした。"}
       }
     },
@@ -240,11 +243,11 @@
       }
     },
     ".agents/markdown-reviews.json": {
-      "sha256": "078a861f538f9ff9a6142f3cdeb795d676e7543bdacfa165a76ee4282a1b2dee",
+      "sha256": "252c5117c951408e73cf8be6dce6336c9475d401db5582f242b8b5d0db5770e4",
       "results": {
-        "benchmark": {"status": "pass", "evidence": "更新した3文書と3マニフェストの版を比較し、20ファイル・7スキルと既存保留2件を維持した。"},
+        "benchmark": {"status": "pass", "evidence": "20ファイルと7スキルを維持し、現行版と候補版の文書と配布の版を比較。既存保留2件を引き継いだ。"},
         "charter": {"status": "pass", "evidence": "後任の保守担当が対象版、READMEの採否、検証の範囲をこの台帳で確認できることを条件にした。"},
-        "deliver": {"status": "pass", "evidence": "規約、利用案内、スキル、配布設定の確認結果を既存台帳へ追記し、JSONで読み戻した。"},
+        "deliver": {"status": "pass", "evidence": "更新した9文書と3マニフェストの判断を既存台帳へ記録し、JSONで読み戻した。"},
         "humanizer": {"status": "pass", "evidence": "変更した文書への判定に対象・操作・結果が書かれていることを通読した。"},
         "prune": {"status": "pass", "evidence": "既存の台帳のREADMEと自己検証の行を更新し、別の記録ファイルを増やさなかった。"},
         "schema": {"status": "pass", "evidence": "documents13件とfiles7件を維持し、READMEは実ファイル、台帳は既存の自己参照を除く方式でハッシュを更新した。"},

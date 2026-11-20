@@ -8,7 +8,7 @@ aliases:
   - "使い方"
 generated:
   by: openai/chatgpt
-  at: "2026-11-20T00:47:32Z"
+  at: "2026-11-20T01:02:42Z"
 ---
 
 # Kafstyler
@@ -47,34 +47,38 @@ Kafstylerは、開発・調査・制作・運用に共通の作業規約と7つ�
 
 ### 7つのスキルと、残す成果物
 
-成果物を作るときは、`charter` で合格条件を決め、`benchmark` で設計前に評価方法を固定します。`deliver` は固定した評価を実物にかけます。図の点線は、報告書の推敲や旧版の整理など、依頼に応じた連携です。
+次の図は、定刻・イベント・回答で起動し、結果を確認したら次の起動を待つ運用での連携です。設定済みのスケジューラーやイベント受信先が起動を担い、`deliver` が作業台帳を開いて新しい周期か中断の続きかを判断します。単発の依頼でも、下の表にある責任に沿って必要なスキルを組み合わせます。
 
 ```mermaid
 flowchart TD
-    accTitle: Kafstylerのスキルの連携
-    accDescr: charterの合格条件からbenchmarkが評価を固定し、deliverが実物に適用する。報告書ではhumanizer、正本への切り替えを確認した後はpruneと連携する。各スキルは担当工程でscrutinyを使う。
-    subgraph work["依頼に該当するスキル"]
+    accTitle: Kafstylerの7スキルと常時運用
+    accDescr: 定刻・イベント・回答を起点にdeliverが再開する。charterとbenchmarkが目標と評価を決め、schemaが正本と再開記録を定義する。必要に応じてhumanizerとpruneを使い、各工程でscrutinyの反証を取り込む。deliverは確認地点と次の起動条件を記録して待つ。
+    trigger["外部の起動元"]
+    subgraph work["該当する工程"]
         charter["charter"] -->|"合格条件"| benchmark["benchmark"]
-        benchmark -->|"固定した評価"| deliver["deliver"]
+        benchmark -->|"固定した評価・判定"| deliver["deliver"]
         benchmark -. 報告書の推敲 .-> humanizer["humanizer"]
-        schema["schema"] -. 切替確認後 .-> prune["prune"]
+        schema["schema"] -. 正本・再開記録 .-> deliver
+        schema -. 切替確認後 .-> prune["prune"]
     end
-    work -->|"各スキルから"| scrutiny["scrutiny"]
+    trigger -->|"定刻・イベント・回答"| deliver
+    deliver -->|"記録して待機"| trigger
+    work <-->|"各工程の調査・反証"| scrutiny["scrutiny"]
 ```
 
-各スキルは担当工程で `scrutiny` を呼び、指摘を元の作業に戻します。旧版の整理から始める場合も、正本に影響するなら `prune` は先に `schema` で移行条件を確かめます。
+前回の目標・評価は、対象や条件が変わるまで引き継ぎます。定例は次回を待ち、一時ジョブは目的を達成するか中止したら解除します。旧版の整理から始める場合は、正本に影響する箇所を `prune` から `schema` に渡して移行条件を確かめます。
 
-| スキル | 次の工程に渡すもの |
+| スキル | 責任範囲と次に渡すもの |
 | --- | --- |
-| [`charter`](skills/charter/SKILL.md) | 数値を見つけ、出典と更新日を確認できるという合格条件 |
-| [`schema`](skills/schema/SKILL.md) | 正本と更新経路、識別子・単位・出典・版の定義 |
-| [`deliver`](skills/deliver/SKILL.md) | 更新処理、検索画面、CSVと、公開先での確認結果 |
-| [`humanizer`](skills/humanizer/SKILL.md) | 読み違えにくい項目名と、更新が止まったときの案内 |
-| [`scrutiny`](skills/scrutiny/SKILL.md) | 画面だけ更新されると古いCSVを見逃す、という反例 |
-| [`benchmark`](skills/benchmark/SKILL.md) | 設計前に固定した自動判定と、提出する版の合否・再実行手順 |
-| [`prune`](skills/prune/SKILL.md) | 旧更新処理を削った差分と、新しい定期実行で画面・CSVが更新された記録 |
+| [`charter`](skills/charter/SKILL.md) | 利用者の目的、使う入口、制約と完了場面を定める。合格条件と検証に使う道具を渡す。 |
+| [`schema`](skills/schema/SKILL.md) | 文書・データ・入出力の意味、識別子、正本、来歴、状態を設計する。更新・移行・再開で使う契約を渡す。 |
+| [`deliver`](skills/deliver/SKILL.md) | 実装、修正、移行、配布、運用を進める。利用者が試せる成果、確認結果と、途中なら再開条件を渡す。 |
+| [`humanizer`](skills/humanizer/SKILL.md) | 読み手と用途から文章を設計し、見出し、用語、本文を整える。条件と根拠を追える文章を渡す。 |
+| [`scrutiny`](skills/scrutiny/SKILL.md) | 原典と実物から現行方式と代替案を調べ、前提を反証する。成立条件、重大な欠陥、影響と修正案を返す。 |
+| [`benchmark`](skills/benchmark/SKILL.md) | 設計前に判定を固定し、成果や手法を同条件で測る。測定値、採否、合否の証拠と再実行手順を渡す。 |
+| [`prune`](skills/prune/SKILL.md) | 重複するコード・文書・定期処理を統合し、役目を終えた方式を廃止する。切替結果と残した利用経路を渡す。 |
 
-事例に応じて組み合わせます。たとえば古いCSVを見逃す条件が見つかったら、それを検証に加え、修正後に公開先で確かめます。[連携手順](AGENTS.md#コマンドの連携)
+[連携手順](AGENTS.md#コマンドの連携)
 
 ## プラグインの使い方
 
