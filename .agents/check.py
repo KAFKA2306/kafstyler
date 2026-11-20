@@ -33,7 +33,17 @@ def inventory_paths(root, staged, all_files):
     if not staged and not all_files:
         args.extend(("--others", "--exclude-standard"))
     output = subprocess.check_output(args, cwd=root)
-    return sorted(set(os.fsdecode(output).split("\0")) - {""})
+    paths = set(os.fsdecode(output).split("\0")) - {""}
+    if all_files and not staged:
+        candidates = subprocess.check_output(
+            ["git", "ls-files", "--others", "--exclude-standard", "--full-name", "-z"], cwd=root
+        )
+        paths.update(name for name in os.fsdecode(candidates).split("\0") if is_markdown(Path(name)))
+    return sorted(paths)
+
+
+def is_markdown(path):
+    return path.suffix.lower() in MARKDOWN_SUFFIXES or path.name == "contents.lr"
 
 
 def file_digest(root, path, staged):
@@ -62,7 +72,7 @@ def markdown_inventory(root, staged, all_files=False):
             if all_files:
                 raise ValueError(f"追跡中のファイルが作業ツリーにない。{path}")
             continue
-        if path.suffix.lower() not in MARKDOWN_SUFFIXES and path.name != "contents.lr":
+        if not is_markdown(path):
             if all_files:
                 files[name] = file_digest(root, path, staged)
             continue
@@ -220,7 +230,7 @@ if __name__ == "__main__":
     modes.add_argument("--markdown-inventory", action="store_true", help="文書とスキルの現行版を出力する")
     modes.add_argument("--markdown-only", action="store_true", help="Markdownの適用記録だけを照合する")
     modes.add_argument("--staged", action="store_true", help="コミットに含める版と適用記録を照合する")
-    parser.add_argument("--all-files", action="store_true", help="Gitで追跡する全ファイルを対象にする")
+    parser.add_argument("--all-files", action="store_true", help="Markdownに加えてGitで追跡する非Markdownも対象にする")
     args = parser.parse_args()
     root = Path.cwd()
     try:

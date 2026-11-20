@@ -1,5 +1,5 @@
 {
-  "compared_to": "670558d4296ee29134dc661e00e66d8d73ffdcfb",
+  "compared_to": "e2e361f8193f97de13e0dc1fea86f104d7d6c692",
   "sources": {
     "成功基準と自動採点": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
     "エージェント評価と判定例": "https://www.anthropic.com/research/demystifying-evals-for-ai-agents",
@@ -25,7 +25,10 @@
     "Claude Codeの組み込みコマンド": "https://code.claude.com/docs/en/commands#all-commands",
     "改名前の適用記録": "https://github.com/KAFKA2306/kafstyler/blob/7a046fc96ff504d2bade8119e92e199a038e7820/.agents/markdown-reviews.json",
     "0.6.0の確認記録": "https://github.com/KAFKA2306/kafstyler/blob/670558d4296ee29134dc661e00e66d8d73ffdcfb/.agents/markdown-reviews.json",
-    "disproveの英語定義": "https://dictionary.cambridge.org/dictionary/english/disproved"
+    "disproveの英語定義": "https://dictionary.cambridge.org/dictionary/english/disproved",
+    "自己適用の合格条件と記録": "https://github.com/KAFKA2306/kafstyler/issues/38#issuecomment-7027909343",
+    "正本のmainを特定するGit公式仕様": "https://git-scm.com/docs/git-ls-remote",
+    "指定した版のファイルを読むGit公式仕様": "https://git-scm.com/docs/git-show"
   },
   "rules": "98eeeaa00ea0f6a0dc2b3869c201eb38bbf121a721108684463ef9c08e7a9f14",
   "documents": {
@@ -129,35 +132,35 @@
       }
     },
     "README.md": {
-      "sha256": "7b6a645f9637468bf2ff0fdaad5974c2ecf20097c9c33c5b9c7f70a28f2ebeff",
+      "sha256": "dd527d9a98aad3e3bb130a39461954664783e5df2a356a0a7f4885e95777d1c6",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "Mermaidパーサーで7スキル、双方向8本、外部起動と引き継ぎ2本を測定した。全スキルが2つ以上の相手と接続されることも確認した。"
+          "evidence": "「まず一件試す」のコピー部分を同じ方法で抽出。旧版は正本URL・main・規約名・スキルのパスが0件。候補から同じ40桁SHAの規約と7スキルを取得でき、依頼文に検証手順と結果を残す指定があった。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "次の起動への引き継ぎを図の辺として解析し、動画公開の説明と照合した。"
+          "evidence": "「まず一件試す」のコピー部分にあるURLから git ls-remote でmainを取得し、同じSHAを使って git show で規約とスキルを開いた。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "作業ID、正本、再開、移行の受け渡しを図と共通規約で照合した。"
+          "evidence": "AGENTS.mdのプラグイン非対応環境の手順と照合。公開正本の完全SHAを参照キーとして保持し、OKF v0.3の検査13件にエラー・警告なし。種別とタグでREADMEを1件取得。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "旧名が図と参照に含まれないことを確認し、旧方式の廃止で利用案内を更新する相互経路を確認した。"
+          "evidence": "個別の導入手順への分岐を追加せず、既存のコピー部分を差し替えた。READMEの相対リンクと見出しの一覧は着手版と一致。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "目標と反例の取り違えを検討し、7スキルの相互経路と調査の3種類の結論を本文と照合した。"
+          "evidence": "プロジェクト資料だけを添える初回利用を試すと旧文にKafstylerへの参照がない。候補のコピー内のURLを取得し、mainのSHAとAGENTS.md、規約に記載された7スキルのファイルを実物で照合した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "両矢印を条件付きの呼び出しの例として説明し、矢印の用途と既存見出しを確認した。"
+          "evidence": "「まず一件試す」で、添える入力、必要なGitHub閲覧、コピーする指示の順に読めることを通読。yomiyasuの検査に候補の変更箇所の指摘なし。同じ入力での比較と結果を残す元の要件を文中に維持した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "図と本文で、状況によって7スキルのどこからでも開始できることを示した。"
+          "evidence": "プラグイン未導入の読者が、コピーした依頼から版を固定して作業に入り、使ったSHA・手順・結果を後からたどれるよう「まず一件試す」の案内と依頼文を照合した。"
         }
       }
     },
@@ -461,68 +464,68 @@
   },
   "files": {
     ".agents/check.py": {
-      "sha256": "edb3690c6a1b247517e861da0a38b57d6523ceed6b2302184c3561128bcf396f",
+      "sha256": "a71f2653da3e15eff29a74c42bcd9bb5e05fdcc3ed014cab652f22f895c80933",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
+          "evidence": "着手版と候補に通常・全ファイルの一覧取得を実行。追加予定Markdownの検出は全ファイルで0→3件、通常は3→3件。Gitのindexへ追加した2ファイルはステージ済み内容のSHAと一致。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
+          "evidence": "保守の入口である --markdown-inventory --all-files で追加予定のMarkdown 3件を取得。現行の追跡済み20件の一覧は追加前の旧出力と一致。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
+          "evidence": "一覧の同じdocumentsに追加予定の3件が入り、追跡済み非Markdownはfilesのまま。ステージ検査は追跡済みの版と未ステージの版を異なるSHAで識別。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
+          "evidence": "Markdown判定を is_markdown に一つ置き、大文字の拡張子と contents.lr が両モードで同じ扱いになることを3件の入力で確認。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
+          "evidence": "AGENTS.md「全Markdownに全スキルを使う」と現行コマンドを照合。旧版の全ファイルモードから未追跡Markdown 3件が落ち、候補は3件を検出。無視対象と未追跡非Markdownは入らなかった。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
+          "evidence": "実際の引数の説明を、Markdownに追跡済み非Markdownを加える操作として記述し、通常モードと全ファイルモードの一覧と読み比べた。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
+          "evidence": "保守担当者が記録作成前に一覧を作る場面を確認。通常から全ファイルに替えても追加予定Markdownが一覧に残ることを、同じ3ファイルと既存のコマンドで確認。"
         }
       }
     },
     ".agents/markdown-reviews.json": {
-      "sha256": "f0d871cbcfec3fd98b12174d06f1098735d8b135197605eacb5167ca71161e68",
+      "sha256": "6fcad097df7f33b728cd77d135ddd9648477d2dbabd82d1dc2ddd5278ca4da7f",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "台帳の20ファイルと7識別子、移動前後のパスと版を照合し、既存の認証済み実行2件の保留を記録した。"
+          "evidence": "変更箇所の実測結果を記録し、20ファイル×7スキルの既存の版照合に接続。認証済み実行の保留2件の状態を引き継いだ。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "台帳の20ファイルと7識別子、移動前後のパスと版を照合し、既存の認証済み実行2件の保留を記録した。"
+          "evidence": "作業Issue #38の合格条件とREADME・一覧コマンドの比較結果から、責任の異なる7スキルの結果を各変更ファイルに戻した。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "台帳の20ファイルと7識別子、移動前後のパスと版を照合し、既存の認証済み実行2件の保留を記録した。"
+          "evidence": "既存のdocuments／files、7スキル名、statusとevidenceの契約を使う。台帳自身の要約値には自身のsha256だけを含めない現行方式を使用。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "台帳の20ファイルと7識別子、移動前後のパスと版を照合し、既存の認証済み実行2件の保留を記録した。"
+          "evidence": "READMEの図だけに言及していた7件を初回利用の観測に置き換え、図の旧観測はGit履歴のe2e361fで参照できる。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "台帳の20ファイルと7識別子、移動前後のパスと版を照合し、既存の認証済み実行2件の保留を記録した。"
+          "evidence": "追跡済みの旧資料をそのまま通過と数えず、READMEと一覧コマンドで再現した入力と候補の観測を各該当セルに追加。認証済み実行の保留2件を保持した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "台帳の20ファイルと7識別子、移動前後のパスと版を照合し、既存の認証済み実行2件の保留を記録した。"
+          "evidence": "READMEと検査の根拠を、対象箇所、操作、観測結果が同じセルから読み取れる文に整えた。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "台帳の20ファイルと7識別子、移動前後のパスと版を照合し、既存の認証済み実行2件の保留を記録した。"
+          "evidence": "次の保守担当者が作業Issueの合格条件を開き、対象・観測結果・既存の保留2件を特定できることを台帳の参照と現行一覧から照合。"
         }
       }
     },
