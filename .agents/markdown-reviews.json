@@ -1,5 +1,5 @@
 {
-  "compared_to": "e2e361f8193f97de13e0dc1fea86f104d7d6c692",
+  "compared_to": "36d819f5222981c88295642a6e4534f54a7582ba",
   "sources": {
     "成功基準と自動採点": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
     "エージェント評価と判定例": "https://www.anthropic.com/research/demystifying-evals-for-ai-agents",
@@ -28,40 +28,43 @@
     "disproveの英語定義": "https://dictionary.cambridge.org/dictionary/english/disproved",
     "自己適用の合格条件と記録": "https://github.com/KAFKA2306/kafstyler/issues/38#issuecomment-7027909343",
     "正本のmainを特定するGit公式仕様": "https://git-scm.com/docs/git-ls-remote",
-    "指定した版のファイルを読むGit公式仕様": "https://git-scm.com/docs/git-show"
+    "指定した版のファイルを読むGit公式仕様": "https://git-scm.com/docs/git-show",
+    "軽量化の作業記録": "https://github.com/KAFKA2306/kafstyler/issues/56",
+    "公式OKFバリデータ": "https://github.com/open-knowledge-format/open-knowledge-format/blob/527e81aff55992be21507e97004286789126f88c/skills/okf-generate/scripts/validate.py",
+    "Codexのローカル配布元": "https://developers.openai.com/plugins/build/plugins#how-local-marketplaces-work"
   },
-  "rules": "98eeeaa00ea0f6a0dc2b3869c201eb38bbf121a721108684463ef9c08e7a9f14",
+  "rules": "f412c30cc306ee94ad80e58be143685efae7c62114ae22e820a7f5574ed7c248",
   "documents": {
     "AGENTS.md": {
-      "sha256": "752387d1d798aff488bc445878c7ff99b833de10c5c35e90f0996ea9780da5ae",
+      "sha256": "ac941e8e87f0be7aa403b5a59ac92606f883a623b9caa1a92ebcc02ebd99c24b",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "着手版37,760バイトと候補28,911バイトを比較。18見出し、既存リンク先66件、固定済みの評価・完了条件を照合した。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "別ディレクトリからCodex CLIで0.7.1を導入し、配布された規約、7スキルとマニフェストを候補と比較した。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "公式OKFの厳格検査で13文書のエラー・警告0件。公式スキャナーのpolicyとkafstyler/maintenanceの組でAGENTS.mdが1件見つかった。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "規約の更新と外部実装比較の重複をMISSIONに集約し、規約から各手順を開けることを確認した。共通規約とREADME以外のMarkdownは同一。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "実行中の相手には結果を返す条件を読み合わせ、確認のための呼び直しが重複しないことを確認した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "独立した差分レビューで設計前・コミット前の条件、短いやりとりの例外、定期タスク間で読む記録を照合し、短縮で曖昧になった指定を戻した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "同じ見出しの前後を比べ、リンク文言を短縮し、必須・例外・再開条件が指す対象を再確認した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "段階に応じた起点、相互呼び出し、結果を同じ作業IDへ戻す条件を明記した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "依頼受付から目標・判定・記録を経て実物を届ける流れを完了場面とし、作業記録56で維持する配布入口と検査条件を先に定めた。"
         }
       }
     },
@@ -132,35 +135,35 @@
       }
     },
     "README.md": {
-      "sha256": "dd527d9a98aad3e3bb130a39461954664783e5df2a356a0a7f4885e95777d1c6",
+      "sha256": "844c2a40e06d34d1d2368065cc4affa11a1aedc534336c17e74054c927aaa407",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "「まず一件試す」のコピー部分を同じ方法で抽出。旧版は正本URL・main・規約名・スキルのパスが0件。候補から同じ40桁SHAの規約と7スキルを取得でき、依頼文に検証手順と結果を残す指定があった。"
+          "evidence": "着手版20,058バイトと候補18,047バイトを比較。27見出し、リンク70件、Mermaidを含むフェンス8件、既存インラインコード59件を照合した。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "「まず一件試す」のコピー部分にあるURLから git ls-remote でmainを取得し、同じSHAを使って git show で規約とスキルを開いた。"
+          "evidence": "READMEの別プロジェクトでのCodexローカル配布手順を実行し、一覧で有効な0.7.1と同梱スキル7件を確認した。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "AGENTS.mdのプラグイン非対応環境の手順と照合。公開正本の完全SHAを参照キーとして保持し、OKF v0.3の検査13件にエラー・警告なし。種別とタグでREADMEを1件取得。"
+          "evidence": "正式な導入・検証・外部ツールのリンク先65件と既存フロントマターを着手版と照合した。公式OKFの厳格検査は警告とエラー0件。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "個別の導入手順への分岐を追加せず、既存のコピー部分を差し替えた。READMEの相対リンクと見出しの一覧は着手版と一致。"
+          "evidence": "説明を短縮し、従来の用途別見出し、3クライアントの導入手順、外部ツールのコマンドを照合した。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "プロジェクト資料だけを添える初回利用を試すと旧文にKafstylerへの参照がない。候補のコピー内のURLを取得し、mainのSHAとAGENTS.md、規約に記載された7スキルのファイルを実物で照合した。"
+          "evidence": "同じmainのSHAで規約とスキルを読む初回の依頼文、スキルを直接選ぶ入口、更新後にフックを確認する手順を着手版と照合し、フェンス内の任意のコマンドと図が同一であることを確かめた。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "「まず一件試す」で、添える入力、必要なGitHub閲覧、コピーする指示の順に読めることを通読。yomiyasuの検査に候補の変更箇所の指摘なし。同じ入力での比較と結果を残す元の要件を文中に維持した。"
+          "evidence": "導入前に試す案内、三つのクライアント別の手順、用途例を通読し、重複文を圧縮して見出しと操作を保った。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "プラグイン未導入の読者が、コピーした依頼から版を固定して作業に入り、使ったSHA・手順・結果を後からたどれるよう「まず一件試す」の案内と依頼文を照合した。"
+          "evidence": "最初の依頼から導入・有効化までの読者の動作を確認し、用途別の入力・結果と連携図を残した。"
         }
       }
     },
@@ -497,37 +500,37 @@
       }
     },
     ".agents/markdown-reviews.json": {
-      "sha256": "6fcad097df7f33b728cd77d135ddd9648477d2dbabd82d1dc2ddd5278ca4da7f",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "変更箇所の実測結果を記録し、20ファイル×7スキルの既存の版照合に接続。認証済み実行の保留2件の状態を引き継いだ。"
+          "evidence": "版を照合して規約と利用案内の適用結果を更新し、変更前からの認証済み実行2件の保留と他ファイルの確認範囲を維持した。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "作業Issue #38の合格条件とREADME・一覧コマンドの比較結果から、責任の異なる7スキルの結果を各変更ファイルに戻した。"
+          "evidence": "版を照合して規約と利用案内の適用結果を更新し、変更前からの認証済み実行2件の保留と他ファイルの確認範囲を維持した。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "既存のdocuments／files、7スキル名、statusとevidenceの契約を使う。台帳自身の要約値には自身のsha256だけを含めない現行方式を使用。"
+          "evidence": "版を照合して規約と利用案内の適用結果を更新し、変更前からの認証済み実行2件の保留と他ファイルの確認範囲を維持した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "READMEの図だけに言及していた7件を初回利用の観測に置き換え、図の旧観測はGit履歴のe2e361fで参照できる。"
+          "evidence": "版を照合して規約と利用案内の適用結果を更新し、変更前からの認証済み実行2件の保留と他ファイルの確認範囲を維持した。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "追跡済みの旧資料をそのまま通過と数えず、READMEと一覧コマンドで再現した入力と候補の観測を各該当セルに追加。認証済み実行の保留2件を保持した。"
+          "evidence": "版を照合して規約と利用案内の適用結果を更新し、変更前からの認証済み実行2件の保留と他ファイルの確認範囲を維持した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "READMEと検査の根拠を、対象箇所、操作、観測結果が同じセルから読み取れる文に整えた。"
+          "evidence": "版を照合して規約と利用案内の適用結果を更新し、変更前からの認証済み実行2件の保留と他ファイルの確認範囲を維持した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "次の保守担当者が作業Issueの合格条件を開き、対象・観測結果・既存の保留2件を特定できることを台帳の参照と現行一覧から照合。"
+          "evidence": "版を照合して規約と利用案内の適用結果を更新し、変更前からの認証済み実行2件の保留と他ファイルの確認範囲を維持した。"
         }
-      }
+      },
+      "sha256": "f3b9e3c60e4c9343df1fdf1e1979ac6619d8e1e98d9baded9a852e8718bbc978"
     },
     ".agents/plugins/marketplace.json": {
       "sha256": "094134d9f8a84b5c2d80cbdf7e83a6666d38730d3e0b052228702faf60641d75",
@@ -596,101 +599,101 @@
       }
     },
     ".antigravity-plugin/plugin.json": {
-      "sha256": "a60b7ba5128801ddd4a0e0f4ee2c2772a12eab4c079f94e25ba087b3931435ab",
+      "sha256": "5c92880db79eef26a3038a8103fc70eb07f05541a0c3e763249b1e9d639254f8",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
+          "evidence": "JSONの構造と設定値を0.7.0と比較し、versionを0.7.1へそろえた差分だけであることを確認した。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
+          "evidence": "JSONの構造と設定値を0.7.0と比較し、versionを0.7.1へそろえた差分だけであることを確認した。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
+          "evidence": "JSONの構造と設定値を0.7.0と比較し、versionを0.7.1へそろえた差分だけであることを確認した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
+          "evidence": "JSONの構造と設定値を0.7.0と比較し、versionを0.7.1へそろえた差分だけであることを確認した。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
+          "evidence": "JSONの構造と設定値を0.7.0と比較し、versionを0.7.1へそろえた差分だけであることを確認した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
+          "evidence": "JSONの構造と設定値を0.7.0と比較し、versionを0.7.1へそろえた差分だけであることを確認した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
+          "evidence": "JSONの構造と設定値を0.7.0と比較し、versionを0.7.1へそろえた差分だけであることを確認した。"
         }
       }
     },
     ".claude-plugin/plugin.json": {
-      "sha256": "75313681e54d47aa3973cc2ae9c2af710bcd4ff80294e45e1651acbd718d9027",
+      "sha256": "3370c7c0d2002566533feeb7aa528f0d3287954904e6fb552c07ba982d714e34",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
+          "evidence": "JSONの構造と設定値を0.7.0と比較し、versionを0.7.1へそろえた差分だけであることを確認した。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
+          "evidence": "JSONの構造と設定値を0.7.0と比較し、versionを0.7.1へそろえた差分だけであることを確認した。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
+          "evidence": "JSONの構造と設定値を0.7.0と比較し、versionを0.7.1へそろえた差分だけであることを確認した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
+          "evidence": "JSONの構造と設定値を0.7.0と比較し、versionを0.7.1へそろえた差分だけであることを確認した。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
+          "evidence": "JSONの構造と設定値を0.7.0と比較し、versionを0.7.1へそろえた差分だけであることを確認した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
+          "evidence": "JSONの構造と設定値を0.7.0と比較し、versionを0.7.1へそろえた差分だけであることを確認した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
+          "evidence": "JSONの構造と設定値を0.7.0と比較し、versionを0.7.1へそろえた差分だけであることを確認した。"
         }
       }
     },
     ".codex-plugin/plugin.json": {
-      "sha256": "200d639bcf4ec7d1c5657a5e620c1915d670c9564db8e7cf6b9e3345e054f579",
+      "sha256": "97c77dfa33b1e1e52fc53804009c5521a2265fd1abe551df0509b1c787c6f181",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
+          "evidence": "JSONの構造と設定値を0.7.0と比較し、versionを0.7.1へそろえた差分だけであることを確認した。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
+          "evidence": "JSONの構造と設定値を0.7.0と比較し、versionを0.7.1へそろえた差分だけであることを確認した。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
+          "evidence": "JSONの構造と設定値を0.7.0と比較し、versionを0.7.1へそろえた差分だけであることを確認した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
+          "evidence": "JSONの構造と設定値を0.7.0と比較し、versionを0.7.1へそろえた差分だけであることを確認した。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
+          "evidence": "JSONの構造と設定値を0.7.0と比較し、versionを0.7.1へそろえた差分だけであることを確認した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
+          "evidence": "JSONの構造と設定値を0.7.0と比較し、versionを0.7.1へそろえた差分だけであることを確認した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "3クライアントの配布設定を0.6.0と0.7.0で比較し、版と各配布先の設定を読み戻した。"
+          "evidence": "JSONの構造と設定値を0.7.0と比較し、versionを0.7.1へそろえた差分だけであることを確認した。"
         }
       }
     }
