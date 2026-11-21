@@ -11,7 +11,7 @@ description: "実装から確認まで進め、定時・イベント・再開を
 
 ## 常時稼働エージェントの中核
 
-他の6 Skills（`reconceptualize`、`canonicalize`、`adjudicate`、`disprove`、`didactization`、`decommission`）は必要な専門判断を提供し、`autocatalyze` は**担当交代・中断・並行案件をまたいで仕事を継続して完了させる制御**を担当する。認可済みの起動元・台帳・検証入口を再利用し、重複するジョブや常駐プロセスを増やさない。[長時間エージェント](../../BIBLES.md#長時間稼働するエージェント) · [常駐の聖典](../../BIBLES.md#常駐エージェント)
+他の6 Skills（`reconceptualize`、`canonicalize`、`adjudicate`、`disprove`、`didactization`、`decommission`）は必要な専門判断を提供し、`autocatalyze` は**担当交代・中断・並行案件をまたいで観測・案件選定・実行・検証・次の改善を続ける制御**を担当する。認可済みの起動元・台帳・検証入口を再利用し、重複するジョブや常駐プロセスを増やさない。[長時間エージェント](../../BIBLES.md#長時間稼働するエージェント) · [常駐の聖典](../../BIBLES.md#常駐エージェント)
 
 | 段階 | 操作 | 次へ進む条件 |
 | --- | --- | --- |
