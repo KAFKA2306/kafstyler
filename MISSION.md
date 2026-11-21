@@ -13,7 +13,7 @@ Kafstylerは、研究・開発・制作・公開・運用をまたぐ多数の�
 
 - **[autocatalyze](skills/autocatalyze/SKILL.md)｜常時稼働する成果創出の中核。** 定時・イベント・中断後の再開から案件を選び、状態を復元し、必要な作業を委譲・実装・公開・検証する。障害を復旧し、別のAI担当や次回の実行へ引き継ぐ。単発の修正を、大規模な継続運用の一部として完了させる。
 - **[reconceptualize](skills/reconceptualize/SKILL.md)｜構想を、本当に解くべき問題と完成像へ変える。** 既存の手段に縛られず目的を再定義し、利用者が実際に達成できる結果と合格条件を決める。多数の案件が局所的な作業に埋もれず、より大きな目的へ向かうようにする。
-- **[canonicalize](skills/canonicalize/SKILL.md)｜成果と判断を失わない正本をつくる。** データの意味・所在・更新方法を統一し、重複と矛盾を解消する。作業ID、対象の版、決定、検証結果、未完了の工程、再開条件を既存の正本で引き継ぎ、別のAIが会話の再説明なしに続きを進められるようにする。
+- **[canonicalize](skills/canonicalize/SKILL.md)｜大規模運用で判断と成果を失わない共通基盤をつくる。** 対象ID、データの意味、正本、版、出典、更新経路、作業状態を一貫させる。`autocatalyze`には最後の確認結果と再開条件、`adjudicate`には比較可能な入力版、`disprove`には反証に使う来歴、`didactization`には出典、`decommission`には移行先と切替条件を渡す。複数のAI担当が同じ対象を同じ定義で扱えるようにし、成果の取り違えと二重作業を防ぐための設計を担う。
 - **[adjudicate](skills/adjudicate/SKILL.md)｜成果を測定し、最善の選択を残す。** 候補を同じ条件で比較し、精度、品質、操作成功、費用、運用負荷など実際の目的に関わる結果で採否を決める。見かけの進捗ではなく、改善を確認できる選択を積み上げる。
 - **[disprove](skills/disprove/SKILL.md)｜重大な思い込みを反証する。** 設計、仮説、完成判定の弱点を具体的な反例や実物の確認で探し、致命的な誤りが大規模に広がる前に修正する。証拠のない断定や、テストだけ通って利用できない成果を見逃さない。
 - **[didactization](skills/didactization/SKILL.md)｜実績を、再利用できる知識へ変える。** 一次資料、実験、失敗、例外から汎用的な原則と再現方法を抽出し、他の人やAIが理解・検証・応用できる文章にする。文章を増やすのではなく、次の研究・開発・判断を改善する知見を蓄積する。
@@ -27,7 +27,7 @@ Kafstylerは、研究・開発・制作・公開・運用をまたぐ多数の�
 flowchart TD
     autocatalyze["autocatalyze：復元・実装・公開・検証・引き継ぎ"]
     reconceptualize["reconceptualize：目的と合格条件の再定義"]
-    canonicalize["canonicalize：正本と再開状態の管理"]
+    canonicalize["canonicalize：正本・版・来歴・再開状態の統一"]
     adjudicate["adjudicate：同条件での比較と採否"]
     disprove["disprove：仮説と完成判定の反証"]
     didactization["didactization：実測と発見の知識化"]
@@ -35,8 +35,8 @@ flowchart TD
 
     autocatalyze -->|目的の再検討を依頼| reconceptualize
     reconceptualize -->|完成像と合格条件を返す| autocatalyze
-    autocatalyze -->|正本と状態の整理を依頼| canonicalize
-    canonicalize -->|実績と再開条件を返す| autocatalyze
+    autocatalyze -->|対象・実行結果・未処理の記録を渡す| canonicalize
+    canonicalize -->|確認済みの版・正本・再開位置を返す| autocatalyze
     autocatalyze -->|候補の比較を依頼| adjudicate
     adjudicate -->|実測と採否を返す| autocatalyze
     autocatalyze -->|反例の検証を依頼| disprove

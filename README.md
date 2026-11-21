@@ -11,7 +11,7 @@ description: "常時稼働エージェントの設計思想、7 Skillsの責務�
 
 **Kafstylerは、複数のリポジトリで仕事を継続するための7 Skillsです。** Claude Code・Codex・Antigravity CLIで使い、`autocatalyze`が案件選定・実行・検証・次回起動を統括します。`reconceptualize`・`canonicalize`・`disprove`・`adjudicate`・`didactization`・`decommission`は、目的、正本、反証、実測、知見、廃止の判断を分担します。
 
-[設計の理由](#なぜこの7-skillsなのか) · [連携構造](#常時稼働エージェントの中核) · [大規模運用](#7つのskillが連関して成果を出す) · [導入](#プラグインの使い方)
+[設計の理由](#なぜこの7-skillsなのか) · [連携構造](#常時稼働エージェントの中核) · [正本と引き継ぎ](#canonicalizeが大規模運用の共通基盤をつくる) · [大規模運用](#7つのskillが連関して成果を出す) · [導入](#プラグインの使い方)
 
 ## Kafstylerが変えること
 
@@ -33,13 +33,13 @@ description: "常時稼働エージェントの設計思想、7 Skillsの責務�
 | --- | --- | --- |
 | [`autocatalyze`](skills/autocatalyze/SKILL.md) | 今回どの案件を実行し、どこから再開し、次に何を観測するか | 複数の担当が同じ仕事を起動し、重複公開や処理漏れを起こす |
 | [`reconceptualize`](skills/reconceptualize/SKILL.md) | 利用者にとって何が達成条件か | 公開障害を後回しにしてIssue数だけを成果とみなす |
-| [`canonicalize`](skills/canonicalize/SKILL.md) | データ・作業状態の正本、識別子、更新規則は何か | リポジトリごとに状態と版が分裂し、異なるAI担当が誤った情報で再開する |
+| [`canonicalize`](skills/canonicalize/SKILL.md) | **複数AIが共有する対象・正本・版・判断・再開状態をどう一貫させるか** | 担当ごとに異なる定義を使い、誤った再実行、比較、旧版の削除を招く |
 | [`disprove`](skills/disprove/SKILL.md) | 現行の設計や仮説が破綻する条件は何か | 監視停止・公開先の不整合・二重実行を見逃す |
 | [`adjudicate`](skills/adjudicate/SKILL.md) | 固定した条件で測ると、本当に合格・改善したか | 実際の公開結果や費用を比較せず、差分だけで改善を判断する |
 | [`didactization`](skills/didactization/SKILL.md) | 今回の発見の何が、別案件にも適用できるか | 他プロジェクトに過去の失敗と解決策が共有されず、調査を繰り返す |
 | [`decommission`](skills/decommission/SKILL.md) | どの旧処理・規則・通知を安全に廃止できるか | 旧経路と検証が累積し、次の改善の時間・費用を圧迫する |
 
-`reconceptualize` は達成条件を決め、`adjudicate` は測定して採否を決めます。`disprove` は測定項目自体が見落とした反例を探します。`canonicalize` は次回実行のための正確な状態を保ち、`didactization` は別案件にも移せる知見を残します。`decommission` は `autocatalyze` が増やした成果に付随する旧経路を減らし、運用の余力を守ります。
+`reconceptualize` は達成条件を決め、`adjudicate` は測定して採否を決めます。`disprove` は測定項目自体が見落とした反例を探します。`canonicalize` は対象・版・出典・処理位置を共通の正本につなぎ、他の6 Skillsが同じ事実と判断を引き継げるようにします。`didactization` は別案件にも移せる知見を残します。`decommission` は `autocatalyze` が増やした成果に付随する旧経路を減らし、運用の余力を守ります。
 
 ### なぜ一つの巨大な指示や、7つの独立常駐エージェントにしないのか
 
@@ -97,6 +97,44 @@ flowchart TD
 | [`canonicalize`](skills/canonicalize/SKILL.md) | 作業ID・確認済みコミット・公開結果・未処理と再開条件をまとめる | 次回の`autocatalyze`と交代するAIが読む状態 |
 
 **`autocatalyze`は案件間の優先順位と再開を担い、6 Skillsは異なるプロジェクトへ移せる専門的な判断を返します。** 一件の成果を検証した後も、新たな障害や次の更新を観測します。
+
+## canonicalizeが大規模運用の共通基盤をつくる
+
+**`canonicalize`は、AIが交代し、プロジェクトが増えても、同じ対象を同じ意味・版・状態で扱えるようにするSkillです。** `autocatalyze`がどれだけ多くの案件を実行しても、成果と判断が別々のファイル・Issue・セッションに分裂すれば、次の担当は正しい続きを選べません。正本の分裂は誤った再実行、データの二重公開、検証のやり直し、旧方式の誤削除につながります。
+
+`canonicalize`は管理対象ごとに**正本、識別子、版、出典、更新経路、状態遷移**を確定し、既存のIssue・実行履歴・データ管理先を参照できる形に結びます。すべてを一つの巨大な台帳へ集約するのではなく、**同じ意味の情報に競合する現行の正本を作らない**ことが中心です。
+
+| 連携するSkill | `canonicalize`から渡すもの | 成果への寄与 |
+| --- | --- | --- |
+| [`autocatalyze`](skills/autocatalyze/SKILL.md) | 作業ID、対象コミット、処理済み位置、未処理、再開条件 | セッションやAI担当を替えても、確認済みの位置から次の作業を選べる |
+| [`reconceptualize`](skills/reconceptualize/SKILL.md) | 対象の識別子、現行の利用先、判断の版 | 異なる担当が同じ対象と成果条件について議論できる |
+| [`disprove`](skills/disprove/SKILL.md) | 入力版、出典、訂正履歴、現行の契約 | 同じ条件で破綻例を再現し、原因を切り分けられる |
+| [`adjudicate`](skills/adjudicate/SKILL.md) | 比較対象の版、単位、粒度、測定結果の参照先 | 実装前後を取り違えず、同条件で採否を判断できる |
+| [`didactization`](skills/didactization/SKILL.md) | 主張と結び付いた原資料、数値、版、訂正履歴 | 過去の知見を更新・引用しても根拠をたどれる |
+| [`decommission`](skills/decommission/SKILL.md) | 現行の正本、旧版からの対応、切替条件、参照元 | 必要な情報を移した後で旧経路を安全に廃止できる |
+
+### canonicalizeが統一する実際の対象
+
+[cast_event_cal](https://github.com/KAFKA2306/cast_event_cal)では開催回のID、主催者の告知、公開Webとカレンダーファイルの対応をそろえます。[know](https://github.com/KAFKA2306/know)では記事の出典、作成・改訂時点、旧URLと現行記事の関係をそろえます。[semiconductor-earnings-model](https://github.com/KAFKA2306/semiconductor-earnings-model)では企業、決算期、通貨・単位、一次開示と計算モデルの関係をそろえます。それぞれの正本は各プロジェクトに置き、`autocatalyze`が共通の作業IDと実行履歴から引き継ぎます。
+
+```mermaid
+flowchart TD
+    C["canonicalize：対象ID・正本・版・来歴・再開状態を確定"]
+    C -->|確認済みの位置と次の起動条件| A["autocatalyze：案件を再開・実行"]
+    C -->|対象と現行の利用先| R["reconceptualize：成果条件を再定義"]
+    C -->|入力版と出典| D["disprove：重大な反例を再現"]
+    C -->|比較可能な版と単位| J["adjudicate：実物を評価"]
+    C -->|根拠と訂正履歴| K["didactization：知見を継承"]
+    C -->|移行先と切替条件| X["decommission：旧経路を廃止"]
+    A -->|実行結果・未処理| C
+    R -->|合格条件| C
+    D -->|再現条件| C
+    J -->|検証結果| C
+    K -->|新しい知見の参照| C
+    X -->|残した経路| C
+```
+
+**`autocatalyze`が運用を前へ進め、`canonicalize`がその成果を失わず次の担当へ渡せる状態にします。** この二つを切り離すと、継続実行はできても、何を引き継ぐべきかが曖昧になります。
 
 ## decommissionが常時稼働の実行力を守る
 
