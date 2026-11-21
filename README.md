@@ -1,96 +1,125 @@
 ---
 type: guide
-description: "常時稼働エージェントのためのKafstyler。大規模運用、引き継ぎ、実装、検証、改善を扱う7 Skills。"
+description: "常時稼働エージェントの設計思想、7 Skillsの責務、引き継ぎと検証、導入方法。"
 ---
 
 # Kafstyler
 
-**AIエージェントが常時稼働し、成果を積み上げる。**
+**AIが交代しても、複数のプロジェクトを更新し続けるための7 Skills。**
 
-Kafstylerは、Claude Code・Codex・Antigravity CLIで**複数のリポジトリを定期的に更新し、AI担当やセッションが交代しても運用を止めない**ための7 Skillsです。例えば、公表統計を週次取得してWebサイトとCSVを公開する運用では、各Skillが次の仕事をします。
+Kafstylerは、Claude Code・Codex・Antigravity CLIで使うAIエージェント向けのSkillsです。仕事を一件ずつ終えるだけでなく、前回の成果を引き継ぎ、新しい問題を発見し、必要な改善を実行し続ける運用を設計します。
 
-**`autocatalyze`** は既存の定期実行から起動し、前回の成功記録と公表元の更新を照合して、修正する系列・対象月・リポジトリを選びます。**`reconceptualize`** は「Web画面とCSVが同じ改定値・単位・出典を示す」を合格条件にします。**`canonicalize`** は系列ID・対象月・公表日で初報と訂正値を区別し、WebとCSVが参照する正本を一つにします。**`disprove`** は二重取り込み、旧データの再公開、取得失敗を成功と誤認するケースを探します。
+[なぜ必要か](#なぜ単発のai作業では足りないのか) · [なぜ7 Skillsか](#なぜこの7-skillsなのか) · [連携する仕組み](#常時稼働エージェントの中核) · [実務例](#7つのskillが連関して成果を出す) · [試す](#まず一件試す) · [導入](#プラグインの使い方)
 
-**`autocatalyze`** は必要な取得処理・集計・公開コードを修正し、実際の公開URLを読み戻します。**`adjudicate`** は原資料・Web・CSVの値と件数を突き合わせ、不一致なら修正工程へ戻します。**`didactization`** は今回見つけた訂正パターンと再現手順を、次の案件でも使える知見にまとめます。**`decommission`** は後継の動作を確認してから、旧ジョブ・重複集計・不要な通知を廃止し、次回の実行負担を減らします。
+## なぜ単発のAI作業では足りないのか
 
-**`canonicalize`** は作業ID、対象コミット、最後に確認した公開結果、未処理、次回起動条件を既存のIssueや実行履歴に残します。**`autocatalyze`** は次の起動でその記録を読み、前のAIとの会話なしで続きを始めます。今週の更新に成功しても、来週の新しい統計、訂正、障害対応へ運用は続きます。
+例えば、公表統計を毎週取得してWeb画面とCSVを更新するプロジェクトでは、初回の実装が動いた後にも仕事が発生します。公表元が過去の値を訂正し、公開画面だけ古いまま残ることがあります。取得ジョブが失敗しても、前週のCSVが残っているため正常に見えることがあります。新しい方式へ移ったのに旧ジョブが動き続け、二重に取得・通知することもあります。
 
-[できること](#kafstylerが変えること) · [設計の理由](#なぜこの7-skillsなのか) · [まず一件試す](#まず一件試す) · [導入する](#プラグインの使い方) · [常時稼働の仕組み](#常時稼働エージェントの中核) · [実例を見る](#成果から使い方を選ぶ)
+さらに、AIのセッションが切れたり担当モデルが変わったりすると、どのデータを処理済みか、どの公開結果を確認したかを会話だけから復元できません。多数のリポジトリでは、こうした障害と引き継ぎが同時に発生します。
+
+**必要なのは「指示を一回実行するAI」だけではありません。前回の状態を復元し、今回の変化に対応し、外部の成果を検証し、次回も同じ正本から続ける運用です。** Kafstylerはその判断と作業を7 Skillsに分けます。
 
 ## Kafstylerが変えること
 
-| 運用中の課題 | Kafstylerの仕組み |
+| 単発実行で起きる問題 | Kafstylerで受け持つSkillと具体的な処理 |
 | --- | --- |
-| 案件が増えると、担当AIに毎回説明し直す | `canonicalize` が正本と状態をそろえ、`autocatalyze` が前回の記録から再開する |
-| 定期実行が成功したように見えて、成果が届かない | `adjudicate` で利用者の入口の結果を確かめ、`autocatalyze` が失敗を次の実行へ引き継ぐ |
-| AIやセッションの交代で、途中工程が重複・消失する | 作業ID、対象版、確認済みの結果、未処理、次の起動条件を引き継ぐ |
-| 案件が増えるほど旧処理・重複検証・通知が残り、開発より維持管理に時間を使う | `decommission` が旧経路を安全に廃止し、実行回数・費用・障害の原因を減らして次の改善に余力を戻す |
-
-[改善の事例](https://github.com/KAFKA2306/articles/blob/main/articles/kafstyler-agent-quality-loop.md) · [継続的なデータ運用例](https://github.com/KAFKA2306/semiconductor-earnings-model)
+| AIが交代すると、何を終えたか分からない | `canonicalize` が作業ID・入力版・最終確認結果を正本でそろえ、`autocatalyze` が再開する |
+| コマンド成功を成果の成功と取り違える | `reconceptualize` が公開結果の合格条件を定め、`adjudicate` が公開先を実測する |
+| 想定していない入力で間違った結果を公開する | `disprove` が改定値の取り違え・重複・取得失敗などの反例を探す |
+| 修正のたびに調査や運用作業が増える | `didactization` が再利用できる知見を残し、`decommission` が旧方式を安全に廃止する |
 
 ## なぜこの7 Skillsなのか
 
-**Kafstylerの設計対象は、一回の回答ではなく、複数プロジェクトを何か月も更新する運用です。** 一つの修正が成功しても、翌週には新しいデータ、故障、仕様変更が届きます。AI担当やモデルが交代したとき、前回の会話だけに状態を残していると、検証済みの処理を再実行したり、古い版を公開したりする危険があります。
-
-そこでKafstylerは、**時間をまたいで仕事を動かす責任を `autocatalyze` に集め、目的・正本・反証・評価・知見・廃止の判断を6 Skillsに分けます。** 7つは順番に必ず通る工程ではありません。判断の種類が違うため、必要なSkillだけを呼び出し、結果を一つの作業に戻せるようにした構成です。
+**設計の基本は「実行の責任を一つに集め、異なる判断は分ける」ことです。** `autocatalyze` は定時・イベント・再開から案件を選び、実装と検証と引き継ぎを統括します。他の6 Skillsは必要になった判断だけを引き受け、結果を `autocatalyze` に返します。
 
 ### 7 Skillsを分ける理由
 
-| Skill | そのSkillだけが決めること | 混同した場合の失敗例 |
+| Skill | 独立させた判断 | 混ぜたときに起こる問題 |
 | --- | --- | --- |
-| [`autocatalyze`](skills/autocatalyze/SKILL.md) | **いつ・どの案件を・どこから再開するか。** 実装、公開結果の読み戻し、次回の起動への引き継ぎを統括する | 他のSkillが各自で定期起動すると、同じCSVを二重公開し、どちらが処理済みか分からなくなる |
-| [`reconceptualize`](skills/reconceptualize/SKILL.md) | **何が利用者にとって成功か。** 「CSV生成成功」ではなく「公開画面とCSVで訂正値が一致」を定義する | コマンドが正常終了しただけで、古い画面を成功扱いする |
-| [`canonicalize`](skills/canonicalize/SKILL.md) | **どの識別子・版・保存先が正本か。** 初報と改定値、作業IDと実行IDを区別する | 担当AIごとに別のCSV・台帳を更新し、次の担当が正しい値を選べない |
-| [`disprove`](skills/disprove/SKILL.md) | **どんな反例なら現在の方式が破綻するか。** 重複取得、取得失敗、改定の取り違えを探す | 想定した正常例しか検査せず、重大な失敗条件そのものを見落とす |
-| [`adjudicate`](skills/adjudicate/SKILL.md) | **同じ条件で測って採用できるか。** 原資料と公開値、再実行時の件数、費用を比較する | 「失敗しそう」という推測だけで採否を決める。または変更した側が自分で合格条件を緩める |
-| [`didactization`](skills/didactization/SKILL.md) | **今回の経験の何を他案件でも再利用できるか。** 訂正パターン、根拠、再現手順、適用条件を残す | ログは残っても次の担当が意味を理解できず、同じ調査と失敗を繰り返す |
-| [`decommission`](skills/decommission/SKILL.md) | **何を安全に廃止するか。** 新方式で代替した旧ジョブや重複通知を停止・削除する | 案件が増えるほど旧方式・監査・定期処理が積み上がり、新しい仕事に使う実行枠が減る |
+| [`autocatalyze`](skills/autocatalyze/SKILL.md) | 今回どの案件を実行し、どこから再開し、次に何を観測するか | 複数の担当が同じ仕事を起動し、重複公開や処理漏れを起こす |
+| [`reconceptualize`](skills/reconceptualize/SKILL.md) | 利用者にとって何が達成条件か | CSVを作っただけで、公開画面の古い値を見逃す |
+| [`canonicalize`](skills/canonicalize/SKILL.md) | データ・作業状態の正本、識別子、更新規則は何か | 担当ごとに別の値や作業履歴を更新する |
+| [`disprove`](skills/disprove/SKILL.md) | 現行の設計や仮説が破綻する条件は何か | 正常例しか試さず、二重取り込みや訂正の混同を見逃す |
+| [`adjudicate`](skills/adjudicate/SKILL.md) | 固定した条件で測ると、本当に合格・改善したか | 実装した本人の主観や変更後に緩めた基準で採用する |
+| [`didactization`](skills/didactization/SKILL.md) | 今回の発見の何が、別案件にも適用できるか | 作業ログは残っても、次の担当が同じ問題を再調査する |
+| [`decommission`](skills/decommission/SKILL.md) | どの旧処理・規則・通知を安全に廃止できるか | 案件が増えるほど管理負荷が増え、次の改善を実行しにくくなる |
 
-**`reconceptualize` と `adjudicate` は別です。** 前者は「何を達成すべきか」を決め、後者は「実物がその条件を満たしたか」を測ります。**`disprove` と `adjudicate` も別です。** 前者は評価から漏れた破綻条件を探し、後者は固定した条件で候補を比較します。**`canonicalize` と `didactization` も別です。** 前者は次回の処理が読む正しい状態を管理し、後者は別案件にも持ち運べる知識を編集します。**`decommission` は `autocatalyze` と対になる役割**で、実装を増やす一方にならないよう、不要になった経路を安全に減らします。
+`reconceptualize` は達成条件を決め、`adjudicate` は測定して採否を決めます。`disprove` は測定項目自体が見落とした反例を探します。`canonicalize` は次回実行のための正確な状態を保ち、`didactization` は別案件にも移せる知見を残します。`decommission` は `autocatalyze` が増やした成果に付随する旧経路を減らし、運用の余力を守ります。
 
 ### なぜ一つの巨大な指示や、7つの独立常駐エージェントにしないのか
 
-一つの巨大な指示へすべて詰め込むと、軽微な修正にまで無関係な評価・記事作成・台帳整備が割り込み、各判断の責任が曖昧になります。反対に7 Skillsそれぞれが起動・状態管理・公開を担当すると、同じ案件への重複書き込みや引き継ぎの不整合が生じやすくなります。
+一つの巨大な指示にまとめると、簡単なバグ修正にも無関係な記事作成・監査・台帳更新が入り、どの判断が必要だったのか分かりにくくなります。反対に7 Skillsそれぞれが定期実行や正本の更新を独立して担うと、同じ案件への二重書き込みと実行状態の不一致が起きやすくなります。
 
-**`autocatalyze` が起動と実行の流れを一元化し、各専門Skillは必要な判断と証拠を返す**ことで、この両方を避けます。担当が交代しても継続できるよう、記録は会話内ではなく既存のIssue・実行履歴・対象プロジェクトの正本に置きます。KafstylerのSkills自体が常駐プロセスやスケジューラーを提供するわけではなく、認可済みの既存の起動手段と接続して使います。
+したがって、**`autocatalyze` は時間をまたぐ実行と引き継ぎを一元化し、他の6 Skillsは案件ごとに必要な専門判断だけを返す**構成にします。7 Skillsは毎回すべて実行する工程ではありません。Skillそのものが常駐サービスやジョブ実行基盤を提供するのではなく、既存の認可済みスケジューラー・実行環境から起動して使います。
 
-### 必要なSkillだけを選ぶ制御
+## 常時稼働エージェントの中核
+
+### `autocatalyze` がどのように6 Skillsを使うか
 
 ```mermaid
 flowchart TD
-    wake["既存の定時起動・イベント"] --> auto["autocatalyze：実績を復元し案件を選ぶ"]
-    state[("既存のIssue・実行履歴：作業ID・版・前回結果・再開条件")] -->|前回の状態| auto
-    auto --> need{"今、追加の判断が必要？"}
-    need -->|目的が不明| goal["reconceptualize：成果条件を定義"]
-    need -->|正本・履歴が不整合| canon["canonicalize：正本と版を統一"]
-    need -->|重大な反例を調査| proof["disprove：失敗条件を発見"]
-    need -->|品質・費用を比較| judge["adjudicate：同条件で測定"]
-    need -->|知見を再利用| learn["didactization：原則と再現例を記録"]
-    need -->|旧経路を廃止| retire["decommission：旧処理を安全に削除"]
-    need -->|追加判断なし| work["autocatalyze：必要な変更だけ実行"]
-    goal -->|合格条件| auto
-    canon -->|正本・識別子| auto
-    proof -->|反例・修正条件| auto
-    judge -->|測定値・採否| auto
-    learn -->|再利用する知見| auto
-    retire -->|残す経路・削減結果| auto
-    auto --> work
-    work --> verify["autocatalyze：公開先を読み戻して検証"]
-    verify -->|検証結果と未処理を記録| state
+    start["定時・イベント・担当交代"] --> auto["autocatalyze：前回の作業ID・入力版・結果を復元"]
+    record[("既存のIssue・実行履歴・データの正本")] -->|前回の状態| auto
+    auto --> changed{"対応すべき変化・未処理はある？"}
+    changed -->|なし| next["autocatalyze：再処理を省いて次の起動へ"]
+    changed -->|あり| choose["autocatalyze：今回の案件と必要な判断を選ぶ"]
+    choose -.->|目標が曖昧| goal["reconceptualize：合格条件"]
+    choose -.->|正本・版の整理| canon["canonicalize：識別子・履歴・正本"]
+    choose -.->|重要な反例| proof["disprove：破綻条件"]
+    choose -.->|採否の測定| judge["adjudicate：実測結果"]
+    choose -.->|知見の再利用| learn["didactization：出典付きの原則"]
+    choose -.->|旧方式の廃止| retire["decommission：現行経路と削減結果"]
+    goal -.->|条件を返す| work["autocatalyze：修正・公開・外部結果を検証"]
+    canon -.->|正本を返す| work
+    proof -.->|反例を返す| work
+    judge -.->|採否を返す| work
+    learn -.->|知見を返す| work
+    retire -.->|廃止結果を返す| work
+    choose --> work
+    work -->|検証結果と未処理を記録| record
+    work --> next
+    next --> start
 ```
 
-この図の分岐は **呼び出し候補** であり、毎回すべて実行する順路ではありません。`autocatalyze` は公表元に更新がなければ取得や公開を省きます。`autocatalyze` は改定があれば `canonicalize` の正本を使って再処理し、`adjudicate` で公開値を確かめます。`autocatalyze` は旧ジョブが残ったときだけ `decommission` に廃止を依頼します。各回の結果は次の起動へ渡し、一件の終了を常時稼働全体の終了とはしません。
+**点線は必要な場合だけ呼び出す専門Skill、実線は継続する運用です。** 複数の専門Skillを使う回も、一つも使わない回もあります。`autocatalyze` は更新がないときは取得・再生成・不要な通知を省き、変更があるときは実物を確認してから次回へ引き継ぎます。失敗した場合は確認済みの位置と再試行条件を残し、同じ外部更新を二重反映しません。
 
-### この構成で守る条件
+## 大規模な開発を支える仕組み
 
-- **`autocatalyze` は処理の受付・実行終了・成果の検証を区別する。** 公開先を読めない場合は成功と記録しない。
-- **`canonicalize` は再試行と新しい定期起動を区別する。** 同じ入力を再送しても二重反映せず、確認済みの処理位置から再開できるようにする。
-- **`adjudicate` と `disprove` は必要な機能を失う変更を検出する。** `decommission` は後継が使えることを確かめてから旧方式を廃止する。
-- **`didactization` は新しい発見があるときだけ知見を増やす。** 単発の簡単な修正に全Skillの適用や新しい台帳を要求しない。
+### 7つのSkillが連関して成果を出す
 
-この分割は7 Skillsが常に最適という実測結果ではなく、**大規模運用で起きる「実行の中断、正本の分裂、評価漏れ、経験の消失、仕組みの肥大化」を別々に解消するための設計判断**です。継続運用で得た実測がこの境界を否定したら、`adjudicate` で見直し、`decommission` で不要になった構造を減らします。
+公表統計を毎週取得し、Web画面とCSVを更新するケースでは、次のように**具体的な入力と出力**を引き継ぎます。
 
-[根拠：長時間稼働するエージェント](BIBLES.md#長時間稼働するエージェント) · [評価指標のすり替えと独立した検証](BIBLES.md#評価指標のすり替えと独立した検証) · [減算による解決](BIBLES.md#減算による解決)
+| Skillの仕事 | 次のSkillへ渡すもの |
+| --- | --- |
+| [`autocatalyze`](skills/autocatalyze/SKILL.md) は前回の実行記録と公表元の更新を比べ、訂正対象の系列と期間を選ぶ | 対象系列ID・対象月・入力版を `reconceptualize` と `canonicalize` へ |
+| [`reconceptualize`](skills/reconceptualize/SKILL.md) は「WebとCSVが同じ改定値・単位・出典を表示する」を合格条件にする | 代表入力と確認操作を `adjudicate` へ |
+| [`canonicalize`](skills/canonicalize/SKILL.md) は系列ID・対象月・公表日で初報と改定値を区別し、WebとCSVの正本をそろえる | 正本の場所・識別子・再処理範囲を `autocatalyze` へ |
+| [`disprove`](skills/disprove/SKILL.md) は取得失敗・重複取り込み・古いCSVの再公開を反例として調べる | 破綻する入力と修正条件を `autocatalyze` と `adjudicate` へ |
+| [`autocatalyze`](skills/autocatalyze/SKILL.md) は必要な取得・集計・公開コードを修正し、公開結果を読み戻す | 公開URL・CSV・実行ログを `adjudicate` へ |
+| [`adjudicate`](skills/adjudicate/SKILL.md) は公表元・Web・CSVの値と出典を照合し、再実行後の行数も調べる | 合否・実測値・再現手順を `autocatalyze` へ。不合格なら修正に戻す |
+| [`didactization`](skills/didactization/SKILL.md) は再現した訂正パターンと例外を、他のデータ更新にも使える知見にまとめる | 根拠と適用条件を既存の知識正本へ |
+| [`decommission`](skills/decommission/SKILL.md) は後継の結果を確認したうえで、旧ジョブ・重複集計・不要な通知を廃止する | 残す経路・削減した処理・機能維持の結果を `canonicalize` と `autocatalyze` へ |
+| [`canonicalize`](skills/canonicalize/SKILL.md) は作業ID・コミット・確認済み結果・未処理・次の起動条件を既存の記録にそろえる | 次回の `autocatalyze` と交代したAI担当が読む再開情報 |
+
+この表は**複数のSkillsが必要だったケース**であり、全案件に9工程を課すものではありません。例えば更新がなければ `autocatalyze` は再取得を省きます。文章に新しい発見がなければ `didactization` に新規記事を作らせません。
+
+## decommissionが常時稼働の実行力を守る
+
+**`decommission` は、継続運用で増え続ける維持管理の負担を減らし、次の改善に使える実行余力を取り戻すSkillです。** 新方式の移行後も旧ジョブが残ると、同じデータの取得、古いCSVの上書き、二重通知が続き得ます。`canonicalize` が現行の正本を定義し、`adjudicate` が新方式の利用結果を測定したあと、`decommission` が旧ジョブ・設定・参照を整理します。`autocatalyze` は次の起動で新方式だけが動くことを確かめます。
+
+価値を測るのは削除ファイル数ではありません。**必要な機能を維持したまま、減らせた起動回数・処理時間・費用・誤通知・保守対象**です。未測定の効果は改善したと断定しません。不要と確認できない現役の依存は削除しません。
+
+## 何をもって設計の有効性を確かめるか
+
+| 実際に試す状況 | 合格とみなす結果 |
+| --- | --- |
+| `autocatalyze` が同じ入力で途中失敗・再起動する | `canonicalize` の記録から続きが分かり、公開結果が二重にならない |
+| `adjudicate` が改定値を含むCSVを検証する | 公表元・公開画面・CSVの値、単位、出典が一致する |
+| 前回の担当AIと会話できない状態で再開する | `autocatalyze` が既存記録から対象版・確認済み結果・残作業を復元できる |
+| `decommission` が旧ジョブを廃止する | 後継だけが次回起動し、必要な成果を一度だけ出す |
+| 公表元に変化がない周期を実行する | `autocatalyze` が不要な再取得・再公開を行わない |
+
+これは評価**方法**であり、成功率や費用削減率を実測した結果ではありません。`adjudicate` で同じ条件の前後比較を行い、`disprove` で見落とした失敗条件がないか調べます。結果に応じてSkill間の境界も見直します。
 
 ## まず一件試す
 
@@ -151,60 +180,6 @@ agy plugin list --json
 
 Claude Codeは `claude plugin validate .`、Antigravity CLIは `agy plugin validate --json .` など、各CLIの標準の検証を使います。変更したSkillが読み込まれることと、該当する実際の依頼の結果を確認します。スキル呼び出しのためのフック承認・全Markdown監査は不要です。
 
-## 常時稼働エージェントの中核
-
-[`autocatalyze`](skills/autocatalyze/SKILL.md#常時稼働エージェントの中核) は、**常時稼働エージェントの中核Skill**です。定時・イベント・再開を入口として、進行中の案件だけでなく、次の改善候補や新しい障害を観測し続けます。必要なときに他のSkillsへ委譲し、実装、公開先の検証、復旧、成果の蓄積を統括します。
-
-長期運用では、一件の「完了」は次の観測へ進むための通過点です。仕事がない周期には不要なLLM呼び出しや通知をせず、次の起動を維持します。起動には接続済みのスケジューラーやイベント機構を使い、Kafstyler自体が独立した常駐サービスを提供するわけではありません。
-
-## 大規模な開発を支える仕組み
-
-例として、**公表統計の検索画面とCSVを毎週更新し、過去の数値が訂正されたときも正しく追従する運用**を考えます。定期更新を一度成功させるだけでなく、データの改定、公開先の不一致、担当AIの交代をまたいで成果の品質を維持する仕事です。
-
-### 7つのSkillが連関して成果を出す
-
-| Skillが行うこと | 次へ渡す具体的な結果 |
-| --- | --- |
-| [`autocatalyze`](skills/autocatalyze/SKILL.md) は週次起動で前回の状態を復元し、統計の新しい公表・訂正を調べて、更新すべき系列と期間を選ぶ。 | 対象系列ID・対象月・入力の版・最後の成功・未処理事項を `reconceptualize` と `canonicalize` へ渡す |
-| [`reconceptualize`](skills/reconceptualize/SKILL.md) は「ファイルを生成する」ではなく「公開画面とCSVで同じ訂正値・単位・出典を確認できる」を目的にする。 | 利用者の操作、代表入力、合格条件を `canonicalize` と `adjudicate` へ渡す |
-| [`canonicalize`](skills/canonicalize/SKILL.md) は発行元・系列ID・対象期間・公表日で初報と改定値を区別し、画面とCSVが使う正本をそろえる。 | 正本の場所、識別子、訂正履歴、再処理範囲を `disprove` と `autocatalyze` へ渡す |
-| [`disprove`](skills/disprove/SKILL.md) は初報と改定値の混同、重複取り込み、取得失敗時の古い数値の誤表示など、結果を壊す反例を探す。 | 再現できる失敗条件と修正対象を `autocatalyze`、判定用の入力を `adjudicate` へ渡す |
-| [`autocatalyze`](skills/autocatalyze/SKILL.md) は必要な取得・集計・画面更新を実装して公開し、公開先の版を読み戻す。 | 実際の画面・CSV・実行ログを `adjudicate` へ渡す |
-| [`adjudicate`](skills/adjudicate/SKILL.md) は原典・画面・CSVの系列、値、件数、出典を同条件で照合し、再取り込みでも二重登録しないか確かめる。 | 合否・実測値・再現手順を `autocatalyze` に返し、不合格なら修正へ戻す |
-| [`didactization`](skills/didactization/SKILL.md) は今回の訂正処理や失敗から、次の系列・別プロジェクトでも使える原則と再現例を残す。 | 出典と成立条件のある知見を既存の正本へ渡す |
-| [`decommission`](skills/decommission/SKILL.md) は `canonicalize` の正本と `adjudicate` の比較結果を受けて、二重同期・古い集計・重複通知を安全に廃止する。 | 必要な機能が維持された証拠、減らした起動・管理負荷、唯一の現行経路を `canonicalize` と `autocatalyze` に返す |
-| [`canonicalize`](skills/canonicalize/SKILL.md) は最終確認した版、処理済み位置、未処理、次の起動条件を既存記録にそろえる。 | 別の担当AIや次回の `autocatalyze` が会話の再説明なしで使える状態を残す |
-
-```mermaid
-flowchart TD
-    trigger["週次起動・新しい公表・障害・再開"] --> auto["autocatalyze：状態復元と案件選定"]
-    auto --> goal["reconceptualize：公開画面とCSVの合格条件を定める"]
-    goal --> canon["canonicalize：系列ID・公表日・正本を統一"]
-    canon --> proof["disprove：初報と改定値の混同などを反証"]
-    proof --> build["autocatalyze：取得・集計・画面を更新して公開"]
-    build --> judge["adjudicate：原典・画面・CSVを同条件で照合"]
-    judge --> decision{"実物の結果は合格？"}
-    decision -->|不合格| build
-    decision -->|合格| learn["didactization：失敗と訂正を再利用できる知見に"]
-    learn --> retire["decommission：旧経路・重複通知・不要な検査を廃止"]
-    retire --> freed["decommission：管理負荷・二重実行の削減を確認"]
-    freed --> record["canonicalize：現行経路・版・結果・再開条件を記録"]
-    record --> next["次の定期起動・別担当AIへの引き継ぎ"]
-    next --> auto
-```
-
-この図は7 Skillsの連携が役立つケースを示したものです。毎回7つ全部を呼ぶ仕組みではありません。たとえば新規データに訂正も障害もなければ、`autocatalyze` は差分を確認して不要な再処理を省きます。**一件の成功は次の周期の入力となり、運用と改善は継続します。**
-
-[画面の設計正本](https://github.com/KAFKA2306/design) · [定期実行と再開](skills/autocatalyze/SKILL.md#常駐エージェントと定期実行)
-
-## decommissionが常時稼働の実行力を守る
-
-**[`decommission`](skills/decommission/SKILL.md) は、長期間の自律運用で増え続ける維持管理の負担を取り除き、`autocatalyze` が新しい成果に使える余力を生み出すSkillです。** 単なるファイル削除ではありません。使われなくなった経路、同じ仕事を繰り返す定期処理、重複する正本、効果のない検査や通知を、必要な機能を維持したまま廃止します。
-
-例えば統計データの更新方式を切り替えた後、旧ジョブが残ると同じデータを二度取得し、古いCSVを再公開し、通知まで重複する恐れがあります。`canonicalize` が残す正本を決め、`adjudicate` が新方式の結果を検証し、`decommission` が旧ジョブ・設定・参照を停止・削除します。`autocatalyze` は次回の通常起動で新方式だけが動くことを確かめ、浮いた実行枠を次の案件へ使えます。
-
-`decommission` の成果は削除ファイル数ではなく、**必要な機能を保ちながら減らせた処理回数・実行時間・費用・誤通知・保守対象**で測ります。比較できる実績がない場合は削減効果を推定値として区別します。不要と証明できないものは件数目標のために消しません。
-
 ## 成果から使い方を選ぶ
 
 分野が変わっても、`autocatalyze` が案件を選び、必要なSkillが結果を返し、その成果を次の観測へ引き継ぎます。「イベント収集を直して」なら、[公開カレンダー](https://github.com/KAFKA2306/cast_event_cal)のURLと「開催回が公開WebとICSに一度ずつ載り、主催者の告知を開ける」という合格条件を渡します。目的と結果は[作業台帳](AGENTS.md#正本と記録)に残ります。
@@ -243,7 +218,7 @@ flowchart TD
 
 ## スキル
 
-Claude Codeは `/kafstyler:<名前>`、Codexは `$<名前>`、Antigravity CLIは `/<名前>` からSkillを選びます。各Skillの目的と判断基準は[7つのスキルと、残す成果物](#7つのスキルと残す成果物)を参照してください。
+Claude Codeは `/kafstyler:<名前>`、Codexは `$<名前>`、Antigravity CLIは `/<名前>` からSkillを選びます。各Skillの目的と判断基準は[7つのSkillが連関して成果を出す](#7つのskillが連関して成果を出す)を参照してください。
 
 端末を閉じた後の定期実行やイベント起動は、[autocatalyzeの実行方法](skills/autocatalyze/SKILL.md#常駐エージェントと定期実行)を使います。実行前に必要な権限と接続、前回の状態を確認します。
 
