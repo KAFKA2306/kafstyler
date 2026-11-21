@@ -1,8 +1,6 @@
 ---
 name: disprove
 description: "重要な仮説・方式・設計を一次資料と実物で反証し、重大な欠陥を調べる。"
-metadata:
-  kafstyler-model-selector: audit
 ---
 
 # 反証レビュー

@@ -1,8 +1,6 @@
 ---
 name: canonicalize
 description: "データ・文書の正本、識別子、入出力契約、移行経路を設計・統合する。"
-metadata:
-  kafstyler-model-selector: execution
 ---
 
 # 正本とデータ契約
