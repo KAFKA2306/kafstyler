@@ -5,6 +5,8 @@ description: "AIの仕事を使える成果まで進める共通規約"
 
 # Kafstylerの作業規約
 
+Kafstylerは、**複数のAIエージェント・セッション・プロジェクトをまたぐ引き継ぎと大規模な継続運用**を前提とした7 Skills。作業の版・合格条件・結果・再開条件を既存の正本で共有し、担当者が交代しても完了まで進める。[READMEの構成図](README.md#大規模運用引き継ぎの全体像)
+
 ## 原則
 
 依頼を実際に使える成果まで進める。文書、Issue、テスト、スキル呼び出しだけを完了としない。新しい仕組みを足す前に、修正・統合・削除・現状維持を比較する。
@@ -28,7 +30,7 @@ description: "AIの仕事を使える成果まで進める共通規約"
 | [decommission](skills/decommission/SKILL.md) | 重複・不要なものの削減 |
 | [autocatalyze](skills/autocatalyze/SKILL.md) | 自律実装、常時稼働、復旧、引き継ぎ |
 
-他のスキルを一律に呼び出す義務はない。定時・イベント・再開の自律運用では `autocatalyze` が中核として他の専門手順を必要に応じて使う。
+**運用の中核は `autocatalyze`。** 定時・イベント・再開・引き継ぎを一元管理し、`reconceptualize`、`canonicalize`、`adjudicate`、`disprove`、`didactization`、`decommission` は必要な案件で選ぶ。全Skillsを一律に呼ぶ義務はない。図解では抽象的な「専門スキル」だけで済ませず、実際のSkill名と役割を明記する。
 
 ## Mermaid図解
 
@@ -43,7 +45,7 @@ description: "AIの仕事を使える成果まで進める共通規約"
 
 共通規約はこのファイル、各専門手順は `skills/*/SKILL.md`、利用案内は [README](README.md)、一次資料は [BIBLES](BIBLES.md) に置く。規則を重複転記しない。
 
-複数回にまたがる作業・委譲・定期処理・復旧では、既存のIssueや実行履歴にID、対象、結果、再開条件を残す。単発の軽微な変更に台帳を新設しない。frontmatter、OKF、Obsidian、dbtは利用先に必要な場合だけ採用する。
+複数回にまたがる作業・委譲・定期処理・復旧では、次のAI担当が元の会話を読まずに続行できるよう、既存のIssueや実行履歴に作業ID、対象と版、目的・合格条件、最後に確認した成果と検証結果、未完了の工程、再開条件を残す。単発の軽微な変更に台帳を新設しない。frontmatter、OKF、Obsidian、dbtは利用先に必要な場合だけ採用する。
 
 ## 変更と完了
 
