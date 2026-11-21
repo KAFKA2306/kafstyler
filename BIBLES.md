@@ -192,6 +192,13 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [教材化と改稿](skills/didactization/SKILL.md#発見を汎用原則に変える) · [規則の費用対効果](AGENTS.md)
 
+### 技術白書の執筆
+
+- [George Mason University Writing Center・White Papers](https://writingcenter.gmu.edu/writing-resources/different-genres/white-papers)（大学の執筆ガイド）。白書を問題と解決策の検討として構成し、判断基準、代替案、根拠、推奨を必要に応じて示す。販売促進を目的とする白書とは区別する。
+- [NIST・Technical Series Publications Author Instructions](https://www.nist.gov/nist-research-library/nist-technical-series-publications-author-instructions)（米国国立標準技術研究所の技術報告作成指針）。要旨、本文、参考文献、図表、単位、版の扱いを参考に、主張を一次資料・測定条件・結果へたどれるようにする。NIST固有の出版手続きは一般の白書に適用しない。
+
+[技術白書を書く](skills/didactization/SKILL.md#技術白書を構成する) · [評価と比較](skills/adjudicate/SKILL.md) · [反証レビュー](skills/disprove/SKILL.md)
+
 ### 成果物の根拠と読みやすさ
 
 - [MaryCache・imozuru](https://github.com/MaryCache/imozuru)（公式リポジトリ）。分野の用語、文献、引用をたどり、判断を支える原文の場所を調べる。
