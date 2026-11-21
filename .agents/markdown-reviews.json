@@ -38,139 +38,142 @@
     "代理指標の危険": "https://deepmind.google/blog/specification-gaming-the-flip-side-of-ai-ingenuity/",
     "評価基準": "https://developers.openai.com/api/docs/guides/evaluation-best-practices",
     "常時稼働の復元": "https://www.anthropic.com/research/effective-harnesses-for-long-running-agents",
-    "運用負荷削減": "https://sre.google/workbook/eliminating-toil/"
+    "運用負荷削減": "https://sre.google/workbook/eliminating-toil/",
+    "GOV.UK Content Design": "https://guidance.publishing.service.gov.uk/writing-to-gov-uk-standards/plan-manage-content/understand-content-design/",
+    "ChatGPT decreases idea diversity in brainstorming": "https://www.nature.com/articles/s41562-025-02173-x",
+    "Large Language Models Cannot Self-Correct Reasoning Yet": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/8b4add8b0aa8749d80a34ca5d941c355-Abstract-Conference.html"
   },
-  "rules": "d7ca1c0945ca1c685da768d28cbd62d9711a12b7f41fca4967acdec8a53d0b73",
+  "rules": "45ce995bf8014b2c41f393b4f63ab1ae29883180ede73246cdd90cd94b4c5113",
   "documents": {
     "AGENTS.md": {
-      "sha256": "279882e0a788e1603fd521a30bbb876c2e61222120344c60c605ffd4e9a157fb",
+      "sha256": "bee7dc62a3bc2dcf23af599cc2230ab2c4f86f017b42c700ec8a2160f3d6e73e",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "AGENTS.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。"
+          "evidence": "AGENTS.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "AGENTS.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。"
+          "evidence": "AGENTS.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "AGENTS.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。"
+          "evidence": "AGENTS.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "AGENTS.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。"
+          "evidence": "AGENTS.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "AGENTS.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。"
+          "evidence": "AGENTS.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "AGENTS.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。"
+          "evidence": "AGENTS.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "AGENTS.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。"
+          "evidence": "AGENTS.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         }
       }
     },
     "BIBLES.md": {
-      "sha256": "e44161009944187fae9bc1e83f23263ab4eaa4f7c1af925cea8dc2865087382b",
+      "sha256": "2d0a321ca46fa37ec4f75de17909256dec4ab901be66dcb81782d2d3a33085e2",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "BIBLES.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。"
+          "evidence": "BIBLES.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "BIBLES.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。"
+          "evidence": "BIBLES.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "BIBLES.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。"
+          "evidence": "BIBLES.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "BIBLES.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。"
+          "evidence": "BIBLES.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "BIBLES.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。"
+          "evidence": "BIBLES.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "BIBLES.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。"
+          "evidence": "BIBLES.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "BIBLES.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。"
+          "evidence": "BIBLES.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         }
       }
     },
     "MISSION.md": {
-      "sha256": "323eb8cb5f97259205f89e8c6413cbbc585b735c02c80bd2861ae1bbc9b5459e",
+      "sha256": "5d4f6c01cdedcdd99d766a49ce1157ab0f4bdbda21124bb21ebb2368a9bcb038",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "MISSION.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。"
+          "evidence": "MISSION.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "MISSION.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。"
+          "evidence": "MISSION.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "MISSION.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。"
+          "evidence": "MISSION.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "MISSION.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。"
+          "evidence": "MISSION.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "MISSION.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。"
+          "evidence": "MISSION.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "MISSION.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。"
+          "evidence": "MISSION.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "MISSION.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。"
+          "evidence": "MISSION.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         }
       }
     },
     "README.md": {
-      "sha256": "a5bc5ab50b93b25997dac2d9b1b6dcc7047b836e38600f14034ebfb3d93fa2ec",
+      "sha256": "9e40b19a6f78b12f4bd18046ad87d5227a36df7cd921ae41403546787038434f",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "README.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。"
+          "evidence": "README.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "README.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。"
+          "evidence": "README.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "README.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。"
+          "evidence": "README.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "README.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。"
+          "evidence": "README.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "README.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。"
+          "evidence": "README.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "README.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。"
+          "evidence": "README.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "README.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。"
+          "evidence": "README.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         }
       }
     },
@@ -406,35 +409,35 @@
       }
     },
     "skills/humanizer/SKILL.md": {
-      "sha256": "938cefa9772def66d7a4a5d48361f4571f19b1aa9e5db782e306e511e0b9ad2f",
+      "sha256": "fb05676c7615a6b789a072b17058fdf653661c142411ec849134ddc15494f047",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "skills/humanizer/SKILL.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。"
+          "evidence": "skills/humanizer/SKILL.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "skills/humanizer/SKILL.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。"
+          "evidence": "skills/humanizer/SKILL.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "skills/humanizer/SKILL.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。"
+          "evidence": "skills/humanizer/SKILL.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "skills/humanizer/SKILL.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。"
+          "evidence": "skills/humanizer/SKILL.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "skills/humanizer/SKILL.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。"
+          "evidence": "skills/humanizer/SKILL.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "skills/humanizer/SKILL.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。"
+          "evidence": "skills/humanizer/SKILL.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "skills/humanizer/SKILL.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。"
+          "evidence": "skills/humanizer/SKILL.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
         }
       }
     },
@@ -537,7 +540,7 @@
           "evidence": "配布版0.8.0の3マニフェスト、起動フック、Antigravity規約の版を照合した。台帳のSHA-256を再計算した。実際の配布環境での新セッション検証は別工程。"
         }
       },
-      "sha256": "a75da133742a580cc08a444f3ee4cfef747d2c54da9ba6488b7d5a923b6cd321"
+      "sha256": "1a4a763234fb3725ed24a0e85bf2a0fe7fadea1fd7070a797a67aa54c0bc683b"
     },
     ".agents/plugins/marketplace.json": {
       "sha256": "094134d9f8a84b5c2d80cbdf7e83a6666d38730d3e0b052228702faf60641d75",
