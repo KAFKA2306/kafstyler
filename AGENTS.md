@@ -30,7 +30,7 @@ Kafstylerは、**複数のAIエージェント・セッション・プロジェ�
 | [decommission](skills/decommission/SKILL.md) | 後継の動作を確認して旧経路・重複処理を廃止し、運用負担を減らす |
 | [autocatalyze](skills/autocatalyze/SKILL.md) | 自律実装、常時稼働、復旧、引き継ぎ |
 
-**運用の中核は `autocatalyze`。** 定時・イベント・再開・引き継ぎを一元管理し、`reconceptualize`、`canonicalize`、`adjudicate`、`disprove`、`didactization`、`decommission` は必要な案件で選ぶ。全Skillsを一律に呼ぶ義務はない。図解では抽象的な「専門スキル」だけで済ませず、各Skill名を主語にして、受け取る入力・次へ渡す結果・成果への寄与を明記する。Skill間の矢印は具体的な引き継ぎ内容を示す。
+**運用の中核は `autocatalyze`。** [7 Skillsを分けた理由](README.md#なぜこの7-skillsなのか)。 定時・イベント・再開・引き継ぎを一元管理し、`reconceptualize`、`canonicalize`、`adjudicate`、`disprove`、`didactization`、`decommission` は必要な案件で選ぶ。全Skillsを一律に呼ぶ義務はない。図解では抽象的な「専門スキル」だけで済ませず、各Skill名を主語にして、受け取る入力・次へ渡す結果・成果への寄与を明記する。Skill間の矢印は具体的な引き継ぎ内容を示す。
 
 ## Mermaid図解
 

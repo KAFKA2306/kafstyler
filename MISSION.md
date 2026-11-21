@@ -19,7 +19,7 @@ Kafstylerは、研究・開発・制作・公開・運用をまたぐ多数の�
 - **[didactization](skills/didactization/SKILL.md)｜実績を、再利用できる知識へ変える。** 一次資料、実験、失敗、例外から汎用的な原則と再現方法を抽出し、他の人やAIが理解・検証・応用できる文章にする。文章を増やすのではなく、次の研究・開発・判断を改善する知見を蓄積する。
 - **[decommission](skills/decommission/SKILL.md)｜常時稼働の余力を生み、規模を拡大できる状態を守る。** `canonicalize` が統一した正本と `adjudicate` が確かめた後継経路を受け取り、旧処理・重複ジョブ・過剰な検査や通知を廃止する。必要な機能を保ちながら実行回数・費用・障害要因・管理対象を減らし、`autocatalyze` が新しい成果に使う余力を取り戻す。
 
-各Skillが受け取る入力と次へ渡す具体的な成果は、[READMEの継続運用例](README.md#7つのskillが連関して成果を出す)を参照する。
+各Skillを分けた理由と、統合したときの失敗は [READMEの設計思想](README.md#なぜこの7-skillsなのか) に示す。具体的な受け渡しは [READMEの継続運用例](README.md#7つのskillが連関して成果を出す) を参照する。
 
 ## autocatalyzeと6 Skillsの成果循環
 
