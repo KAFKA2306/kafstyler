@@ -1,5 +1,5 @@
 {
-  "compared_to": "754e9b6955933728eade6f6aa1777c2755ee9cdd",
+  "compared_to": "b0c20f526a65b3b5ebcea3f4178c18b02e331c7d",
   "sources": {
     "成功基準と自動採点": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
     "エージェント評価と判定例": "https://www.anthropic.com/research/demystifying-evals-for-ai-agents",
@@ -469,11 +469,11 @@
   },
   "files": {
     ".agents/check.py": {
-      "sha256": "a71f2653da3e15eff29a74c42bcd9bb5e05fdcc3ed014cab652f22f895c80933",
+      "sha256": "c9ba4213cf803a8455c90789c0c3623df719e78f33d03e6f56263ce7808152f1",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "着手版と候補に通常・全ファイルの一覧取得を実行。追加予定Markdownの検出は全ファイルで0→3件、通常は3→3件。Gitのindexへ追加した2ファイルはステージ済み内容のSHAと一致。"
+          "evidence": "監査のPASS根拠を同条件7入力で旧版と候補版に与えた。現行で通過してしまう未完了表現4件は候補で拒否し、適切な記録3件は通過した。今回の評価範囲は根拠文の判定である。"
         },
         "autocatalyze": {
           "status": "pass",
@@ -481,7 +481,7 @@
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "一覧の同じdocumentsに追加予定の3件が入り、追跡済み非Markdownはfilesのまま。ステージ検査は追跡済みの版と未ステージの版を異なるSHAで識別。"
+          "evidence": "監査プログラムと監査台帳の版を一致させるため、既存のハッシュ値を独立計算と照合したうえで、変更後プログラムのSHA-256および台帳自身の自己参照を除いたSHA-256を再計算した。"
         },
         "decommission": {
           "status": "pass",
@@ -489,7 +489,7 @@
         },
         "disprove": {
           "status": "pass",
-          "evidence": "AGENTS.md「全Markdownに全スキルを使う」と現行コマンドを照合。旧版の全ファイルモードから未追跡Markdown 3件が落ち、候補は3件を検出。無視対象と未追跡非Markdownは入らなかった。"
+          "evidence": "現行の根拠文判定には、完了していないことを異なる言い方で記すと合格に見える反例4件があった。同じ入力で候補の拒否4件と正常例の通過3件を検証した。"
         },
         "humanizer": {
           "status": "pass",
@@ -513,7 +513,7 @@
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "着手版、規約とREADMEの版、配布設定の版、同じ入力で比較した回答を照合し、差分のある判断を更新した。既存の認証済み実行2件は引き続き保留した。"
+          "evidence": "既存の台帳自己ハッシュを再現してから、check.pyの変更版SHA-256を追記。台帳自身のsha256フィールドだけを除いた正規化JSONから自己ハッシュを再計算し、循環参照を避けた。"
         },
         "decommission": {
           "status": "pass",
@@ -532,7 +532,7 @@
           "evidence": "着手版、規約とREADMEの版、配布設定の版、同じ入力で比較した回答を照合し、差分のある判断を更新した。既存の認証済み実行2件は引き続き保留した。"
         }
       },
-      "sha256": "1b8f9089d3b939abd64d6c1ccf7b3fa527e2deb508a42d3df4b5b17bdb5c021d"
+      "sha256": "15abaf6c26263791eef65119349d1275ef8edfc014fc5b4fff02d6f76a271e90"
     },
     ".agents/plugins/marketplace.json": {
       "sha256": "094134d9f8a84b5c2d80cbdf7e83a6666d38730d3e0b052228702faf60641d75",
