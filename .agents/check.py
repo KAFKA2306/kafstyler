@@ -159,7 +159,9 @@ def check_review_entries(documents, inventory, skills, counts, errors):
                 errors.append(f"{path} の {skill} は不合格: {evidence}")
             elif status == "pass" and re.search(
                 r"(?:は|が|で)\s*(?:未確認|未検証|未実施)(?=[\s。、．]|$)"
-                r"|(?:実行|実施|検証|確認|試験|導入)していない|試していない|確かめていない",
+                r"|(?:実行|実施|検証|確認|試験|導入)していない|試していない|確かめていない"
+                r"|(?:未確認|未検証|未実施|未完了)(?=のまま|[\\s。、．]|$)"
+                r"|(?:確認|検証|試験|実行|導入)でき(?:ていない|なかった)|完了していない",
                 evidence,
             ):
                 errors.append(f"{path} の {skill} は未確認事項を含むため合格の範囲を再評価する。")
