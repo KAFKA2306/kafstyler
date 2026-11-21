@@ -82,7 +82,7 @@ flowchart TD
 | [`reconceptualize`](skills/reconceptualize/SKILL.md) | 目的・利用経路・制約・完了場面を定め、合格条件と検証の道具を渡す。 |
 | [`canonicalize`](skills/canonicalize/SKILL.md) | 文書・データ・入出力の意味、識別子、正本、来歴、状態を設計し、更新・移行・再開の契約を渡す。 |
 | [`autocatalyze`](skills/autocatalyze/SKILL.md) | 常時稼働エージェントの中核。起動・選定・委譲・実装・公開検証・復旧・継続を統括する。 |
-| [`humanizer`](skills/humanizer/SKILL.md) | 読み手と用途に沿って見出し・用語・本文を整え、条件と根拠を追える文章を渡す。 |
+| [`humanizer`](skills/humanizer/SKILL.md) | 記事では発見を汎用原則・検証例・反例に変える。発見がなければ既存記事を直し、説明文は根拠を保って推敲する。 |
 | [`disprove`](skills/disprove/SKILL.md) | 一次資料と実物で現行方式・代替案の前提に反例を探し、結論・範囲・証拠・未確認事項を返す。 |
 | [`adjudicate`](skills/adjudicate/SKILL.md) | 判定を設計前に固定し、成果・手法を同条件で測る。測定値、採否、証拠、再実行手順を渡す。 |
 | [`decommission`](skills/decommission/SKILL.md) | 重複するコード・文書・定期処理を統合し、旧方式を廃止。切替結果と残した利用経路を渡す。 |
@@ -193,7 +193,7 @@ python3 .agents/check.py
 
 ### 記事・動画・音声
 
-記事は数値を一次資料と照合し、読者のつもりで手順を再現する。動画は音声・字幕を通しで確認し、公開先でチャンネル・公開状態を確かめる。音声は同じ台詞で比較し、採用WAV・モデル・シード・参照音声を残す。[記事](https://github.com/KAFKA2306/articles/blob/main/articles/kafstyler-agent-quality-loop.md) · [動画](https://github.com/KAFKA2306/yt3) · [音声](https://github.com/KAFKA2306/yt4)
+記事は実際の発見から再利用できる原則を抽出し、数値や実験を一次資料・再実行で確かめ、成立しない条件を示す。発見がないときは既存記事を改善し、新規公開や重複を増やさない。動画は音声・字幕を通しで確認し、公開先でチャンネル・公開状態を確かめる。音声は同じ台詞で比較し、採用WAV・モデル・シード・参照音声を残す。[記事](https://github.com/KAFKA2306/articles/blob/main/articles/kafstyler-agent-quality-loop.md) · [動画](https://github.com/KAFKA2306/yt3) · [音声](https://github.com/KAFKA2306/yt4)
 
 ### VRChat・3D・画像制作
 
