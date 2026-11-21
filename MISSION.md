@@ -47,7 +47,7 @@ flowchart TD
     decommission -->|削減した負担・維持した機能・現行経路を返す| autocatalyze
 ```
 
-`autocatalyze` は案件の状態を復元し、必要なSkillだけを選んで依頼し、実装・公開・利用者の入口での検証まで進める。`reconceptualize`、`canonicalize`、`adjudicate`、`disprove`、`didactization`、`decommission` はそれぞれの判断と結果を `autocatalyze` に返す。`autocatalyze` は検証済みの成果と未完了工程を次の起動へ引き継ぐ。`autocatalyze` はLLMの連続起動や全Skillsの一律実行を必須にしない。
+`autocatalyze` は定時・イベント・担当交代を起点に案件の状態を復元し、判断が必要なSkillを呼び出して実装・公開・利用者の入口での検証まで進める。`reconceptualize`、`canonicalize`、`adjudicate`、`disprove`、`didactization`、`decommission` はそれぞれの判断と結果を `autocatalyze` に返す。`autocatalyze` は検証済みの成果と未完了工程を記録し、既存の実行基盤による次の起動と、交代したAI担当へ引き継ぐ。
 
 ## adjudicateとautocatalyzeの成果判定
 
