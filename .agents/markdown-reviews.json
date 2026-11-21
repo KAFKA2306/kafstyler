@@ -1,5 +1,5 @@
 {
-  "compared_to": "74542d01665cdd1e97ab41a00d6055593f07140d",
+  "compared_to": "cbf696b9e1142aac31c43b3560b654da9ff95dae",
   "sources": {
     "成功基準と自動採点": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
     "エージェント評価と判定例": "https://www.anthropic.com/research/demystifying-evals-for-ai-agents",
@@ -208,35 +208,35 @@
       }
     },
     "rules/kafstyler.md": {
-      "sha256": "d666ce838ed174223c0304f16dae8db9ffb421560b47b3e61e36b66c9fe6926b",
+      "sha256": "d77b32906fe7efc13fc1936738d68d189a2a77b214d27729c6e1e573adc9a838",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。"
+          "evidence": "rules/kafstyler.md の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         },
         "autocatalyze": {
-          "status": "pending",
-          "evidence": "agyで配布ルールを検出しAGENTSへの参照1件を解決。認証済みセッションでルールが読み込まれ、最初の依頼でAGENTSを開くところは未実施。"
+          "status": "pass",
+          "evidence": "rules/kafstyler.md の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。"
+          "evidence": "rules/kafstyler.md の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。"
+          "evidence": "rules/kafstyler.md の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。"
+          "evidence": "rules/kafstyler.md の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。"
+          "evidence": "rules/kafstyler.md の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。"
+          "evidence": "rules/kafstyler.md の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         }
       }
     },
@@ -510,34 +510,34 @@
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "全11件の改稿と7スキルの適用記録、規約集約値、台帳の自己参照を除くハッシュを照合した。固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。"
+          "evidence": "配布版0.8.0の3マニフェスト、起動フック、Antigravity規約の版を照合した。台帳のSHA-256を再計算した。実際の配布環境での新セッション検証は別工程。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "全11件の改稿と7スキルの適用記録、規約集約値、台帳の自己参照を除くハッシュを照合した。起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。"
+          "evidence": "配布版0.8.0の3マニフェスト、起動フック、Antigravity規約の版を照合した。台帳のSHA-256を再計算した。実際の配布環境での新セッション検証は別工程。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "全11件の改稿と7スキルの適用記録、規約集約値、台帳の自己参照を除くハッシュを照合した。正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。"
+          "evidence": "配布版0.8.0の3マニフェスト、起動フック、Antigravity規約の版を照合した。台帳のSHA-256を再計算した。実際の配布環境での新セッション検証は別工程。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "全11件の改稿と7スキルの適用記録、規約集約値、台帳の自己参照を除くハッシュを照合した。追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。"
+          "evidence": "配布版0.8.0の3マニフェスト、起動フック、Antigravity規約の版を照合した。台帳のSHA-256を再計算した。実際の配布環境での新セッション検証は別工程。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "全11件の改稿と7スキルの適用記録、規約集約値、台帳の自己参照を除くハッシュを照合した。対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。"
+          "evidence": "配布版0.8.0の3マニフェスト、起動フック、Antigravity規約の版を照合した。台帳のSHA-256を再計算した。実際の配布環境での新セッション検証は別工程。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "全11件の改稿と7スキルの適用記録、規約集約値、台帳の自己参照を除くハッシュを照合した。汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。"
+          "evidence": "配布版0.8.0の3マニフェスト、起動フック、Antigravity規約の版を照合した。台帳のSHA-256を再計算した。実際の配布環境での新セッション検証は別工程。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "全11件の改稿と7スキルの適用記録、規約集約値、台帳の自己参照を除くハッシュを照合した。問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。"
+          "evidence": "配布版0.8.0の3マニフェスト、起動フック、Antigravity規約の版を照合した。台帳のSHA-256を再計算した。実際の配布環境での新セッション検証は別工程。"
         }
       },
-      "sha256": "d80b5c5dcb60dfa8b6e8624c2417fba0478ca8c0d5d095cf46d2fbfed68d06d3"
+      "sha256": "a75da133742a580cc08a444f3ee4cfef747d2c54da9ba6488b7d5a923b6cd321"
     },
     ".agents/plugins/marketplace.json": {
       "sha256": "094134d9f8a84b5c2d80cbdf7e83a6666d38730d3e0b052228702faf60641d75",
@@ -573,134 +573,134 @@
       }
     },
     ".agents/quality.sh": {
-      "sha256": "42410c502d282a256957ea49efb255e2eb52e421ffbf2c798a6c1b0dc5c8b48c",
+      "sha256": "0f8d028759276f257b2bd519ce8dee4f17299c848d3d542c8214ca8708f86a16",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
+          "evidence": ".agents/quality.sh の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
+          "evidence": ".agents/quality.sh の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
+          "evidence": ".agents/quality.sh の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
+          "evidence": ".agents/quality.sh の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
+          "evidence": ".agents/quality.sh の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
+          "evidence": ".agents/quality.sh の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "新名と合格条件に対応する期待値を照合し、Claude CodeとCodex向けのフック検査10項目が合格した。"
+          "evidence": ".agents/quality.sh の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         }
       }
     },
     ".antigravity-plugin/plugin.json": {
-      "sha256": "9b7a23c260ab9c3a4167087b65e544d33a2ca1093b49d84c78a71b93673dbff2",
+      "sha256": "b094daddc5558e34e521ef24c38db225124b8a9d01daa439c205ee4dffac312d",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "JSONのキー・設定値を0.7.1と比較し、3配布先でversionを0.7.2へそろえた差分だけであることを確認した。"
+          "evidence": ".antigravity-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "JSONのキー・設定値を0.7.1と比較し、3配布先でversionを0.7.2へそろえた差分だけであることを確認した。"
+          "evidence": ".antigravity-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "JSONのキー・設定値を0.7.1と比較し、3配布先でversionを0.7.2へそろえた差分だけであることを確認した。"
+          "evidence": ".antigravity-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "JSONのキー・設定値を0.7.1と比較し、3配布先でversionを0.7.2へそろえた差分だけであることを確認した。"
+          "evidence": ".antigravity-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "JSONのキー・設定値を0.7.1と比較し、3配布先でversionを0.7.2へそろえた差分だけであることを確認した。"
+          "evidence": ".antigravity-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "JSONのキー・設定値を0.7.1と比較し、3配布先でversionを0.7.2へそろえた差分だけであることを確認した。"
+          "evidence": ".antigravity-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "JSONのキー・設定値を0.7.1と比較し、3配布先でversionを0.7.2へそろえた差分だけであることを確認した。"
+          "evidence": ".antigravity-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         }
       }
     },
     ".claude-plugin/plugin.json": {
-      "sha256": "a74a9a9a844fb711a66e1e4c1c5dd16eebc3ae14c31901e6cd95c23f5cc6a867",
+      "sha256": "8e0b6013d0e60d5dfa25c277167c69921ef8fef6718e47b416a029be56bf6e49",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "JSONのキー・設定値を0.7.1と比較し、3配布先でversionを0.7.2へそろえた差分だけであることを確認した。"
+          "evidence": ".claude-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "JSONのキー・設定値を0.7.1と比較し、3配布先でversionを0.7.2へそろえた差分だけであることを確認した。"
+          "evidence": ".claude-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "JSONのキー・設定値を0.7.1と比較し、3配布先でversionを0.7.2へそろえた差分だけであることを確認した。"
+          "evidence": ".claude-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "JSONのキー・設定値を0.7.1と比較し、3配布先でversionを0.7.2へそろえた差分だけであることを確認した。"
+          "evidence": ".claude-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "JSONのキー・設定値を0.7.1と比較し、3配布先でversionを0.7.2へそろえた差分だけであることを確認した。"
+          "evidence": ".claude-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "JSONのキー・設定値を0.7.1と比較し、3配布先でversionを0.7.2へそろえた差分だけであることを確認した。"
+          "evidence": ".claude-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "JSONのキー・設定値を0.7.1と比較し、3配布先でversionを0.7.2へそろえた差分だけであることを確認した。"
+          "evidence": ".claude-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         }
       }
     },
     ".codex-plugin/plugin.json": {
-      "sha256": "1f982b712d357e43b58379a086b92e4297edb9a1ff3e4901a25db603e6b929d1",
+      "sha256": "40d0fdc5ba681cb74d4361751f2a9f92a8958b15e120ef8d18026b61bec4dc80",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "JSONのキー・設定値を0.7.1と比較し、3配布先でversionを0.7.2へそろえた差分だけであることを確認した。"
+          "evidence": ".codex-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "JSONのキー・設定値を0.7.1と比較し、3配布先でversionを0.7.2へそろえた差分だけであることを確認した。"
+          "evidence": ".codex-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "JSONのキー・設定値を0.7.1と比較し、3配布先でversionを0.7.2へそろえた差分だけであることを確認した。"
+          "evidence": ".codex-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "JSONのキー・設定値を0.7.1と比較し、3配布先でversionを0.7.2へそろえた差分だけであることを確認した。"
+          "evidence": ".codex-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "JSONのキー・設定値を0.7.1と比較し、3配布先でversionを0.7.2へそろえた差分だけであることを確認した。"
+          "evidence": ".codex-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "JSONのキー・設定値を0.7.1と比較し、3配布先でversionを0.7.2へそろえた差分だけであることを確認した。"
+          "evidence": ".codex-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "JSONのキー・設定値を0.7.1と比較し、3配布先でversionを0.7.2へそろえた差分だけであることを確認した。"
+          "evidence": ".codex-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
         }
       }
     }

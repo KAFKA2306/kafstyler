@@ -1,12 +1,12 @@
 {
   "name": "kafstyler",
-  "version": "0.7.2",
-  "description": "AIエージェントが開発・調査・制作・運用で目標を定め、成果を検証して届け、文書や手法を自律的に改善する。",
+  "version": "0.8.0",
+  "description": "常時稼働エージェントを中核に、開発・調査・制作・運用を継続し、実成果を検証して再開・改善する。",
   "repository": "https://github.com/KAFKA2306/kafstyler",
   "skills": "./skills/",
   "interface": {
     "displayName": "Kafstyler",
-    "shortDescription": "成果を検証し、次の担当に引き継ぐAIエージェント用プラグイン"
+    "shortDescription": "常時稼働と実成果の検証を担うAIエージェント用プラグイン"
   },
   "hooks": {
     "hooks": {
