@@ -5,7 +5,7 @@ description: "AIの仕事を使える成果まで進める共通規約"
 
 # Kafstylerの作業規約
 
-Kafstylerは、**複数のAIエージェント・セッション・プロジェクトをまたぐ引き継ぎと大規模な継続運用**を前提とした7 Skills。作業の版・合格条件・結果・再開条件を既存の正本で共有し、担当者が交代しても運用を継続し、成果・検証結果・次の改善を積み上げる。[READMEの構成図](README.md#大規模運用引き継ぎの全体像)
+Kafstylerは、**複数のAIエージェント・セッション・プロジェクトをまたぐ引き継ぎと大規模な継続運用**を前提とした7 Skills。作業の版・合格条件・結果・再開条件を既存の正本で共有し、担当者が交代しても運用を継続し、成果・検証結果・次の改善を積み上げる。[READMEの構成図](README.md#7つのskillが連関して成果を出す)
 
 ## 原則
 
@@ -30,7 +30,7 @@ Kafstylerは、**複数のAIエージェント・セッション・プロジェ�
 | [decommission](skills/decommission/SKILL.md) | 重複・不要なものの削減 |
 | [autocatalyze](skills/autocatalyze/SKILL.md) | 自律実装、常時稼働、復旧、引き継ぎ |
 
-**運用の中核は `autocatalyze`。** 定時・イベント・再開・引き継ぎを一元管理し、`reconceptualize`、`canonicalize`、`adjudicate`、`disprove`、`didactization`、`decommission` は必要な案件で選ぶ。全Skillsを一律に呼ぶ義務はない。図解では抽象的な「専門スキル」だけで済ませず、実際のSkill名と役割を明記する。
+**運用の中核は `autocatalyze`。** 定時・イベント・再開・引き継ぎを一元管理し、`reconceptualize`、`canonicalize`、`adjudicate`、`disprove`、`didactization`、`decommission` は必要な案件で選ぶ。全Skillsを一律に呼ぶ義務はない。図解では抽象的な「専門スキル」だけで済ませず、各Skill名を主語にして、受け取る入力・次へ渡す結果・成果への寄与を明記する。Skill間の矢印は具体的な引き継ぎ内容を示す。
 
 ## Mermaid図解
 
