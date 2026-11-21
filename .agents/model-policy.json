@@ -15,10 +15,6 @@
     "discount_multiplier": 1,
     "discount": "none"
   },
-  "providers": [
-    "OpenAI",
-    "Google"
-  ],
   "roles": {
     "audit": {
       "criterion": "highest_score",

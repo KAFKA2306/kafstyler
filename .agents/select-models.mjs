@@ -43,7 +43,7 @@ function normalized(snapshot,cfg){
   assertFresh(original,cfg.benchmark_source.max_source_age_days);
   const rows=new Map();
   for(const m of snapshot.models){
-    if(m.deprecated||!m.slug||!m.name||!cfg.providers.includes(m.creator?.name))continue;
+    if(m.deprecated||!m.slug||!m.name||!m.creator?.name)continue;
     const score=m.evaluations?.[cfg.benchmark];
     const input=m.pricing?.price_1m_input_tokens;
     const output=m.pricing?.price_1m_output_tokens;
