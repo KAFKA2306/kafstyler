@@ -1,5 +1,5 @@
 {
-  "compared_to": "6c49e67173df06ae7ddc513fac579f294680ae80",
+  "compared_to": "9502510aecedde6f1e7545a392bfdcd62ac0ce99",
   "sources": {
     "成功基準と自動採点": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
     "エージェント評価と判定例": "https://www.anthropic.com/research/demystifying-evals-for-ai-agents",
@@ -43,7 +43,7 @@
     "ChatGPT decreases idea diversity in brainstorming": "https://www.nature.com/articles/s41562-025-02173-x",
     "Large Language Models Cannot Self-Correct Reasoning Yet": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/8b4add8b0aa8749d80a34ca5d941c355-Abstract-Conference.html"
   },
-  "rules": "beec674aeb72c9a2604558a5bd09560f176dbe60d8d6b6a18e59bbd65279edd9",
+  "rules": "3c9bc4170942e34da96ee4ef998ded43c122e2b3ebb8eb9ac23158803307faa4",
   "documents": {
     "AGENTS.md": {
       "sha256": "44db0e8a7bd0d5b155765224b939c04b86cf31ed5c77456cb0de138bbd38d894",
@@ -286,7 +286,7 @@
       }
     },
     "skills/adjudicate/SKILL.md": {
-      "sha256": "8688b3b8cdc663ba96c35562584456dbb62af3e22878699cd6eef4ee24f9a959",
+      "sha256": "a2a91173742ffde8fbf995a0b9f82007e2e1615b6ee20a215d762fd1fa5257d2",
       "results": {
         "adjudicate": {
           "status": "pass",
@@ -300,7 +300,7 @@
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "skills/adjudicate/SKILL.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。",
+          "evidence": "skills/adjudicate/SKILL.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。 スキル参照先を現行の正本へ統一した。",
           "scope": "document"
         },
         "decommission": {
@@ -320,7 +320,7 @@
         },
         "didactization": {
           "status": "pass",
-          "evidence": "合格条件を実装前に固定すること、自己採点で合格としないことを冒頭で明確化。独立評価できない条件を残す。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。 新名称の役割では、記事以外に独自の発見を要求しない。",
+          "evidence": "合格条件を実装前に固定すること、自己採点で合格としないことを冒頭で明確化。独立評価できない条件を残す。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。 新名称の役割では、記事以外に独自の発見を要求しない。 旧humanizerへの呼び出しとリンクをdidactizationへ修正し、相対パスと見出しの参照先を静的に確認した。",
           "scope": "document"
         }
       }
@@ -406,7 +406,7 @@
       }
     },
     "skills/decommission/SKILL.md": {
-      "sha256": "25dbcced9f4914f967eadd46f263c2817719768265597b5062ea98508fa8ff43",
+      "sha256": "7bd26679d73ea63fbdb407dd98adfd13ca02e530323145fecb882609fbcfbc77",
       "results": {
         "adjudicate": {
           "status": "pass",
@@ -420,7 +420,7 @@
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "skills/decommission/SKILL.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。",
+          "evidence": "skills/decommission/SKILL.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。 スキル参照先を現行の正本へ統一した。",
           "scope": "document"
         },
         "decommission": {
@@ -440,7 +440,7 @@
         },
         "didactization": {
           "status": "pass",
-          "evidence": "削除対象と削除しない条件を冒頭で区別。削減率より利用経路と障害検出を優先する表現に整理。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。 新名称の役割では、記事以外に独自の発見を要求しない。",
+          "evidence": "削除対象と削除しない条件を冒頭で区別。削減率より利用経路と障害検出を優先する表現に整理。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。 新名称の役割では、記事以外に独自の発見を要求しない。 旧humanizerへの呼び出しとリンクをdidactizationへ修正し、相対パスと見出しの参照先を静的に確認した。",
           "scope": "document"
         }
       }
@@ -486,7 +486,7 @@
       }
     },
     "skills/reconceptualize/SKILL.md": {
-      "sha256": "46528989e2dc1cfcc334786f119a51f2b6e9a2e87bfb3775a9b876950168eba5",
+      "sha256": "4de558521e6fad828a4035ee2935dd958f825c29a4e673209a92b0f3da54e40c",
       "results": {
         "adjudicate": {
           "status": "pass",
@@ -500,7 +500,7 @@
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "skills/reconceptualize/SKILL.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。",
+          "evidence": "skills/reconceptualize/SKILL.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。 スキル参照先を現行の正本へ統一した。",
           "scope": "document"
         },
         "decommission": {
@@ -520,7 +520,7 @@
         },
         "didactization": {
           "status": "pass",
-          "evidence": "完了場面を読者の最後の操作と見える結果で定義。比較案の理由と代理指標の扱いを簡潔化。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。 新名称の役割では、記事以外に独自の発見を要求しない。",
+          "evidence": "完了場面を読者の最後の操作と見える結果で定義。比較案の理由と代理指標の扱いを簡潔化。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。 新名称の役割では、記事以外に独自の発見を要求しない。 旧humanizerへの呼び出しとリンクをdidactizationへ修正し、相対パスと見出しの参照先を静的に確認した。",
           "scope": "document"
         }
       }
@@ -641,11 +641,11 @@
         },
         "didactization": {
           "status": "pass",
-          "evidence": "7スキルと13 Markdownの各結果をdidactizationへ切り替え、版・対象・参照パスと計算されたハッシュを照合。",
+          "evidence": "7スキルと13 Markdownの各結果をdidactizationへ切り替え、版・対象・参照パスと計算されたハッシュを照合。 2026-11-21: 3件の旧スキルへのリンク漏れを修正し、適用記録とrulesのダイジェストを再照合した。",
           "scope": "static"
         }
       },
-      "sha256": "693a88ad3bf6dee711c77a488e0886dd040f59738c76fc9b3a392ca392d8acd8"
+      "sha256": "3ee55bab63db20610a2d73371a82ad65925682be145ff4e631e1166ef7f5b351"
     },
     ".agents/plugins/marketplace.json": {
       "sha256": "094134d9f8a84b5c2d80cbdf7e83a6666d38730d3e0b052228702faf60641d75",
