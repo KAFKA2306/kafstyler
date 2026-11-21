@@ -8,7 +8,7 @@ aliases:
   - "使い方"
 generated:
   by: openai/chatgpt
-  at: "2026-11-20T02:22:12Z"
+  at: "2026-11-21T08:00:37.634Z"
 ---
 
 # Kafstyler
@@ -22,6 +22,11 @@ generated:
 対応環境 Claude Code · Codex · Antigravity CLI
 
 ## まず一件試す
+
+
+## 常時稼働エージェントの中核
+
+[`autocatalyze`](skills/autocatalyze/SKILL.md#常時稼働エージェントの中核) が起動・状態復元・案件選定・他の6スキルへの委譲・実行・公開先検証・復旧・次回への引き継ぎを統括します。**常時稼働とはLLMの連続実行ではなく、必要なときに前回の成果から再開できることです。** Issueや台帳の更新だけでは完了しません。[一次資料](BIBLES.md#常駐エージェント)
 
 対象のURLか資料を添え、GitHubを読めるAIに次の依頼文を送ります。導入前でも読み取り専用で試せます。
 
@@ -76,7 +81,7 @@ flowchart TD
 | --- | --- |
 | [`reconceptualize`](skills/reconceptualize/SKILL.md) | 目的・利用経路・制約・完了場面を定め、合格条件と検証の道具を渡す。 |
 | [`canonicalize`](skills/canonicalize/SKILL.md) | 文書・データ・入出力の意味、識別子、正本、来歴、状態を設計し、更新・移行・再開の契約を渡す。 |
-| [`autocatalyze`](skills/autocatalyze/SKILL.md) | 実装・制作・移行・公開・復旧を進め、普段の入口で確かめた地点と結果を残す。 |
+| [`autocatalyze`](skills/autocatalyze/SKILL.md) | 常時稼働エージェントの中核。起動・選定・委譲・実装・公開検証・復旧・継続を統括する。 |
 | [`humanizer`](skills/humanizer/SKILL.md) | 読み手と用途に沿って見出し・用語・本文を整え、条件と根拠を追える文章を渡す。 |
 | [`disprove`](skills/disprove/SKILL.md) | 一次資料と実物で現行方式・代替案の前提に反例を探し、結論・範囲・証拠・未確認事項を返す。 |
 | [`adjudicate`](skills/adjudicate/SKILL.md) | 判定を設計前に固定し、成果・手法を同条件で測る。測定値、採否、証拠、再実行手順を渡す。 |

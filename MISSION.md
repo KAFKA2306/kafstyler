@@ -8,7 +8,7 @@ aliases:
   - "ミッション"
 generated:
   by: openai/chatgpt
-  at: "2026-11-20T01:41:16Z"
+  at: "2026-11-21T08:00:37.634Z"
 sources:
   - id: work-policy
     resource: /AGENTS.md
@@ -35,6 +35,13 @@ Kafstylerは、エージェントが交代しても、成果を再現し、根�
 
 ## 自律成果創出
 
+
+### 常時稼働エージェントを中心にする
+
+`autocatalyze` は単発の自律開発ではなく**常時稼働エージェントの中核**である。常時稼働とはLLMを休みなく呼ぶことではない。定時・イベント・再開に応じて前回の状態を読み、案件選定・委譲・実行・外部検証・停止・次回へ引き継ぐことで、実成果を継続して届ける。差分のない回は呼び出しと通知を省く。[運用中核](skills/autocatalyze/SKILL.md#常時稼働エージェントの中核)
+
+受付・報告・Issue作成だけでは成功と数えない。利用者が成果を利用でき、障害・重複実行・中断後にも正しく継続できるかを判定する。
+
 [`reconceptualize`](skills/reconceptualize/SKILL.md) で利用者が普段の入口で何をできれば完了かを定め、[`adjudicate`](skills/adjudicate/SKILL.md) でその合格を自動判定する方法を設計前に決める。[`autocatalyze`](skills/autocatalyze/SKILL.md) で実物を作り、利用者と同じ入口から動かして結果を届ける。定期実行では、最後に成果を確認した地点と次の工程を残し、中断後も同じ案件を再開できるようにする。[^delivery]
 
 ## 自律文書整備
@@ -42,6 +49,9 @@ Kafstylerは、エージェントが交代しても、成果を再現し、根�
 文書と台帳を正本につなぎ、原典と現行の動作に照らして更新する。[`humanizer`](skills/humanizer/SKILL.md) で、初めて読む人が要点、成立条件、次の操作をつかめるようにする。[OKFの更新手順](skills/canonicalize/SKILL.md#okfに沿って文書を更新確認する)で、種別とタグから現行文書を探し、出典や後継文書を開けることを確認する。[^schema-contract]
 
 ## 自律改善
+
+
+新しい規約と検査は、対策するAIの失敗と追加費用を対応付けて比較し、削除・不採用も改善として扱う。探索仮説と実証結果を区別する。[減算](BIBLES.md#減算による解決) · [評価](BIBLES.md#評価指標のすり替えと独立した検証)
 
 実案件で起きた失敗や手戻りから、修正候補を見つける。[`disprove`](skills/disprove/SKILL.md) で各工程の前提を一次資料と実物に照らし、欠陥を見逃す条件を探す。同じ入力で変更前後を測り、再発、所要時間、使いやすさのうち改善したものを記録する。切り替えを実物で確認したら、[`decommission`](skills/decommission/SKILL.md) で役目を終えた手順、処理、設定を削る。Kafstyler自身の文書にも[同じ評価](AGENTS.md#全markdownに全スキルを使う)を適用する。[^work-policy]
 

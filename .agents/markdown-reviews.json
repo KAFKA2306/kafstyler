@@ -1,5 +1,5 @@
 {
-  "compared_to": "b0c20f526a65b3b5ebcea3f4178c18b02e331c7d",
+  "compared_to": "74542d01665cdd1e97ab41a00d6055593f07140d",
   "sources": {
     "成功基準と自動採点": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
     "エージェント評価と判定例": "https://www.anthropic.com/research/demystifying-evals-for-ai-agents",
@@ -33,139 +33,144 @@
     "公式OKFバリデータ": "https://github.com/open-knowledge-format/open-knowledge-format/blob/527e81aff55992be21507e97004286789126f88c/skills/okf-generate/scripts/validate.py",
     "Codexのローカル配布元": "https://developers.openai.com/plugins/build/plugins#how-local-marketplaces-work",
     "初回案内と報告の作業記録": "https://github.com/KAFKA2306/kafstyler/issues/54",
-    "重要な情報を先に示す文書構成": "https://guidance.publishing.service.gov.uk/writing-to-gov-uk-standards/writing-guidelines/clear-structure/"
+    "重要な情報を先に示す文書構成": "https://guidance.publishing.service.gov.uk/writing-to-gov-uk-standards/writing-guidelines/clear-structure/",
+    "減算の実験": "https://www.nature.com/articles/s41586-021-03380-y",
+    "代理指標の危険": "https://deepmind.google/blog/specification-gaming-the-flip-side-of-ai-ingenuity/",
+    "評価基準": "https://developers.openai.com/api/docs/guides/evaluation-best-practices",
+    "常時稼働の復元": "https://www.anthropic.com/research/effective-harnesses-for-long-running-agents",
+    "運用負荷削減": "https://sre.google/workbook/eliminating-toil/"
   },
-  "rules": "f71d8cec6d2ed578e38a00c5e3b6f8030529072676cbe070a78578277ba3932f",
+  "rules": "d7ca1c0945ca1c685da768d28cbd62d9711a12b7f41fca4967acdec8a53d0b73",
   "documents": {
     "AGENTS.md": {
-      "sha256": "d5b73b029907d276dbcceba8557ec2f6bd733cd4dc47f94718d5427e861bfba8",
+      "sha256": "279882e0a788e1603fd521a30bbb876c2e61222120344c60c605ffd4e9a157fb",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "旧版と候補版の規約を独立したセッションへ渡し、運用点検と記事の事前確認を同じ入力で各1回比較。優先事項、根拠、次の確認方法が最初の段落にそろったのは旧版1/2、候補2/2。結果はこの2例の応答に限る。"
+          "evidence": "AGENTS.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "Claude CodeとCodexの配布フックを既存検査から起動し、対象版の規約全文と7スキルの案内を確認。別セッションで新しい報告指示を使い、運用点検・記事確認の回答を生成した。"
+          "evidence": "AGENTS.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "規約の出力節を報告手順の正本とし、既存の見出しとリンクを着手版に照合。公式OKF厳格検査は13文書でエラー・警告0。"
+          "evidence": "AGENTS.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "既存の出力節で手順を補い、追加スキル・別様式を作らず、7スキルの識別子と既存の参照を維持した。"
+          "evidence": "AGENTS.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "着手版の報告で運用点検の次の確認手順が後続段落にあることを再現。候補の運用点検では取得エラー・実行履歴なしを、記事確認では未実施の端末確認を区別した。"
+          "evidence": "AGENTS.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "候補版の2回答で、優先事項と照合に使う結果が冒頭にあり、残りの判定と確認範囲を後続から読めることを確認した。"
+          "evidence": "AGENTS.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "利用者が点検報告の冒頭から優先対象、観測、次に取る操作と確認条件を把握できる場面を先に定め、運用点検と記事の事前確認で照合した。"
+          "evidence": "AGENTS.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。"
         }
       }
     },
     "BIBLES.md": {
-      "sha256": "a01b347753612df9d56c892c745a0fb0e40963afeaf05bdef89658458abf2450",
+      "sha256": "e44161009944187fae9bc1e83f23263ab4eaa4f7c1af925cea8dc2865087382b",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "BIBLES.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "BIBLES.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "BIBLES.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "BIBLES.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "BIBLES.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "BIBLES.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "BIBLES.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。"
         }
       }
     },
     "MISSION.md": {
-      "sha256": "e1cade37f10568c46a66499491e3c83c458ba7e273ddc4b29fb926edce780025",
+      "sha256": "323eb8cb5f97259205f89e8c6413cbbc585b735c02c80bd2861ae1bbc9b5459e",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "MISSION.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "MISSION.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "MISSION.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "MISSION.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "MISSION.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "MISSION.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "MISSION.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。"
         }
       }
     },
     "README.md": {
-      "sha256": "4f3b2745074d482dbfbb3514900a205c5146d152f64937adbd972bd310a0a19c",
+      "sha256": "a5bc5ab50b93b25997dac2d9b1b6dcc7047b836e38600f14034ebfb3d93fa2ec",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "初回の依頼文で対象・変更可否・返す内容を特定できるか比較。旧版は修正を指示し、候補は読み取り専用で試せる。27見出し、70リンク、試用文以外の7コード・図ブロックが同一。"
+          "evidence": "README.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "READMEの試用文を抽出し、正本のSHAとスキルの指定、読み取り専用の指示と任意の修正手順をたどった。運用と記事の2入力を規約を渡した独立セッションで確認した。"
+          "evidence": "README.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "現行mainのSHAから同じ版の規約とスキルを読む指示を維持。既存リンクと出典の一覧を照合し、公式OKF厳格検査で13文書のエラー・警告0を確認した。"
+          "evidence": "README.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "初回の例は既存の一つのブロックで置き換え、導入・直接実行・修正の経路を確認。ファイルや独立コマンドの追加は0件。"
+          "evidence": "README.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "旧版の試用文からは編集なしを指定できず修正を求めることを確認。候補は編集・公開・設定変更を明記し、任意の修正で置き換える一行を特定した。"
+          "evidence": "README.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "初回の説明と依頼文を通読し、対象、変更可否、知りたい結果の順に読めることと、元のSHA・検証・結果の記録指定を確認した。"
+          "evidence": "README.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "未導入の利用者がURLか資料を添えて試し、優先対応と検証の方法を受け取る流れを、README冒頭のリンクから依頼文までたどった。"
+          "evidence": "README.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。"
         }
       }
     },
@@ -236,233 +241,233 @@
       }
     },
     "skills/adjudicate/SKILL.md": {
-      "sha256": "3f3c36f078a25e0710dae96c7c0471ada0b03e7470db10583e8fdf8cef2f87fa",
+      "sha256": "ceb1f0361cf0074ba4513e47af36abfa91223a418d1887d8993ecdf99bb4860b",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/adjudicate/SKILL.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/adjudicate/SKILL.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/adjudicate/SKILL.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/adjudicate/SKILL.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/adjudicate/SKILL.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/adjudicate/SKILL.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/adjudicate/SKILL.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。"
         }
       }
     },
     "skills/autocatalyze/SKILL.md": {
-      "sha256": "9635ef699bddbc1135c10257ea6eba53d86796b70d6a2204b7d323eae611414b",
+      "sha256": "260eb5b78aed0997d12c373bcb22d26d02d35c048839da7897218f46634114fb",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/autocatalyze/SKILL.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。"
         },
         "autocatalyze": {
-          "status": "pending",
-          "evidence": "配布フックから評価準備の案内を取得した。Claude Codeの認証済み対話で予定ジョブを登録し、初回実行と解除に至る既存の確認は未実施。"
+          "status": "pass",
+          "evidence": "skills/autocatalyze/SKILL.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/autocatalyze/SKILL.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/autocatalyze/SKILL.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/autocatalyze/SKILL.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "説明の冒頭で継続制作から開始し、本文で公開後確認と次回の利用先を具体化した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/autocatalyze/SKILL.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "日次制作、成果を読み戻す場面、次の回が前の結果を使う条件を突き合わせた。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/autocatalyze/SKILL.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。"
         }
       }
     },
     "skills/canonicalize/SKILL.md": {
-      "sha256": "82418c1f37c6fd3923391566cca5d3feff1d9ebd48842842fbe2122324f0c30d",
+      "sha256": "7d5f6109ec1986fa160c8df39258bee5a4d107963500ea0a764527039ff896df",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/canonicalize/SKILL.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/canonicalize/SKILL.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/canonicalize/SKILL.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/canonicalize/SKILL.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/canonicalize/SKILL.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/canonicalize/SKILL.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/canonicalize/SKILL.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。"
         }
       }
     },
     "skills/decommission/SKILL.md": {
-      "sha256": "ff4d36bda0e1b8a3cacc6c20461aca920916dc598ecaad25e69716d42a468503",
+      "sha256": "101014c7cf6f7c5ae283f4d880b27137acc333bdf18c3681e9731293578667c2",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/decommission/SKILL.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/decommission/SKILL.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/decommission/SKILL.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/decommission/SKILL.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/decommission/SKILL.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/decommission/SKILL.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/decommission/SKILL.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。"
         }
       }
     },
     "skills/disprove/SKILL.md": {
-      "sha256": "d9f462a367a571d2c78c4043998cbbb7f65b123f2faa9265d9bb9040816691c7",
+      "sha256": "7197fd05e6c0b5eef2fcb5c9dc4388a20c03acac8cadbc7dfaf32f840016673e",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "移動前後で見出し、20件の相対参照、外部URLを照合し、定義の発動条件をフックから読み戻した。"
+          "evidence": "skills/disprove/SKILL.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "常駐レビューから確認済み地点と正本を同じ作業台帳へ返す手順を移動先で確認した。"
+          "evidence": "skills/disprove/SKILL.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "識別子とフォルダー、タグ、一次URL、対象版と調査範囲の記録を照合した。"
+          "evidence": "skills/disprove/SKILL.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "旧パスの削除後に新パスへ移動し、元の見出しをすべて解決した。"
+          "evidence": "skills/disprove/SKILL.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "反証成立、調べた範囲で反例なし、証拠不足の3例を代入し、証拠の欠落を反証成立として扱わない手順を通読した。"
+          "evidence": "skills/disprove/SKILL.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "発動条件と結論の3区分を推敲し、読者が調査範囲と判断を読み分けられることを確認した。"
+          "evidence": "skills/disprove/SKILL.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "読者が調べた前提ごとの結論とその適用範囲を判断できることを完了条件にした。"
+          "evidence": "skills/disprove/SKILL.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。"
         }
       }
     },
     "skills/humanizer/SKILL.md": {
-      "sha256": "741f5d2805f6654f0ea80542c282614cde72d59c474a05b8a12c9bee2216d766",
+      "sha256": "938cefa9772def66d7a4a5d48361f4571f19b1aa9e5db782e306e511e0b9ad2f",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/humanizer/SKILL.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/humanizer/SKILL.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/humanizer/SKILL.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/humanizer/SKILL.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/humanizer/SKILL.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/humanizer/SKILL.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/humanizer/SKILL.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。"
         }
       }
     },
     "skills/reconceptualize/SKILL.md": {
-      "sha256": "8ab903487974bf31b62bab6fb11025fc5f4b7f8d5fc5f2eecd45a84ced325be9",
+      "sha256": "91f4192f467b5640b46c944bcaf38181fe0f6caff7ede9ccc890ee82c6a2c903",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/reconceptualize/SKILL.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/reconceptualize/SKILL.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/reconceptualize/SKILL.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/reconceptualize/SKILL.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/reconceptualize/SKILL.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/reconceptualize/SKILL.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。 今回はdisproveへのリンクをたどり、見出しと外部参照を着手版と照合した。"
+          "evidence": "skills/reconceptualize/SKILL.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。"
         }
       }
     }
@@ -505,34 +510,34 @@
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "着手版、規約とREADMEの版、配布設定の版、同じ入力で比較した回答を照合し、差分のある判断を更新した。既存の認証済み実行2件は引き続き保留した。"
+          "evidence": "全11件の改稿と7スキルの適用記録、規約集約値、台帳の自己参照を除くハッシュを照合した。固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "着手版、規約とREADMEの版、配布設定の版、同じ入力で比較した回答を照合し、差分のある判断を更新した。既存の認証済み実行2件は引き続き保留した。"
+          "evidence": "全11件の改稿と7スキルの適用記録、規約集約値、台帳の自己参照を除くハッシュを照合した。起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "既存の台帳自己ハッシュを再現してから、check.pyの変更版SHA-256を追記。台帳自身のsha256フィールドだけを除いた正規化JSONから自己ハッシュを再計算し、循環参照を避けた。"
+          "evidence": "全11件の改稿と7スキルの適用記録、規約集約値、台帳の自己参照を除くハッシュを照合した。正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "着手版、規約とREADMEの版、配布設定の版、同じ入力で比較した回答を照合し、差分のある判断を更新した。既存の認証済み実行2件は引き続き保留した。"
+          "evidence": "全11件の改稿と7スキルの適用記録、規約集約値、台帳の自己参照を除くハッシュを照合した。追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "着手版、規約とREADMEの版、配布設定の版、同じ入力で比較した回答を照合し、差分のある判断を更新した。既存の認証済み実行2件は引き続き保留した。"
+          "evidence": "全11件の改稿と7スキルの適用記録、規約集約値、台帳の自己参照を除くハッシュを照合した。対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。"
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "着手版、規約とREADMEの版、配布設定の版、同じ入力で比較した回答を照合し、差分のある判断を更新した。既存の認証済み実行2件は引き続き保留した。"
+          "evidence": "全11件の改稿と7スキルの適用記録、規約集約値、台帳の自己参照を除くハッシュを照合した。汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "着手版、規約とREADMEの版、配布設定の版、同じ入力で比較した回答を照合し、差分のある判断を更新した。既存の認証済み実行2件は引き続き保留した。"
+          "evidence": "全11件の改稿と7スキルの適用記録、規約集約値、台帳の自己参照を除くハッシュを照合した。問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。"
         }
       },
-      "sha256": "0df087a1d138150d42b13c8368ed3f73e42b995b8cd2116fe302daaf232e8c13"
+      "sha256": "d80b5c5dcb60dfa8b6e8624c2417fba0478ca8c0d5d095cf46d2fbfed68d06d3"
     },
     ".agents/plugins/marketplace.json": {
       "sha256": "094134d9f8a84b5c2d80cbdf7e83a6666d38730d3e0b052228702faf60641d75",

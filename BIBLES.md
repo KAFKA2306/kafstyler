@@ -8,7 +8,7 @@ aliases:
   - "聖典台帳"
 generated:
   by: openai/chatgpt
-  at: "2026-11-20T01:41:16Z"
+  at: "2026-11-21T08:00:37.634Z"
 sources:
   - id: okf-v03-spec
     resource: https://github.com/open-knowledge-format/open-knowledge-format/blob/527e81aff55992be21507e97004286789126f88c/SPEC.md
@@ -109,6 +109,31 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 [台帳とObsidian Vaultで文書を整理する](skills/canonicalize/SKILL.md#台帳とobsidian-vaultで文書を整理する)
 
 ## 目標・文章・評価
+
+
+### 問題の再定義と利用者の目的
+
+[Design Council・Double Diamond](https://www.designcouncil.org.uk/resources/the-double-diamond/)（設計原典）。解決策の前に問題を探索・定義する。[GOV.UK・Solve a whole problem for users](https://www.gov.uk/service-manual/service-standard/point-2-solve-a-whole-problem)（公式基準）。利用者が一連の用事を完了できるか確かめる。
+
+[目標設定](skills/reconceptualize/SKILL.md) · [自律開発](skills/autocatalyze/SKILL.md)
+
+### 評価指標のすり替えと独立した検証
+
+- [Google DeepMind・Specification gaming](https://deepmind.google/blog/specification-gaming-the-flip-side-of-ai-ingenuity/)（開発元の事例）。指標を満たしても本来の目的を達成しない問題を扱う。
+- [OpenAI・Evaluation best practices](https://developers.openai.com/api/docs/guides/evaluation-best-practices)（公式ガイド）。評価入力と実装を分離する。
+- [OpenAI・How we monitor internal coding agents for misalignment](https://openai.com/index/how-we-monitor-internal-coding-agents-misalignment/)（開発元の事例）。テスト操作や監視の限界を踏まえる。
+- [Center for Open Science・Preregistration](https://www.cos.io/initiatives/prereg)（研究手法の原典）。探索と確証の判定条件を区別する。
+
+[評価と比較](skills/adjudicate/SKILL.md) · [反証レビュー](skills/disprove/SKILL.md)
+
+### 減算による解決
+
+- [Adamsほか・People systematically overlook subtractive changes](https://www.nature.com/articles/s41586-021-03380-y)（Nature誌の人間行動研究）。削除案を明示的に探す。AIの性質を直接実証した研究ではない。
+- [Martin Fowler・Yagni](https://martinfowler.com/bliki/Yagni.html)（設計原典）。不要な機能を先回りして足さない。
+- [Google SRE・Eliminating Toil](https://sre.google/workbook/eliminating-toil/)（公式手引き）。作業の自動化だけでなく発生源を取り除く。
+
+[不要なファイル・コード・文章の削除](skills/decommission/SKILL.md) · [自律開発](skills/autocatalyze/SKILL.md)
+
 
 ### 登大遊の論理的思考
 
@@ -298,6 +323,9 @@ Anthropic・Hooks reference（公式リファレンス、2026年11月19日確認
 [目標設定](skills/reconceptualize/SKILL.md) · [自律開発](skills/autocatalyze/SKILL.md)
 
 ## 常駐エージェント
+
+
+**中核の設計資料。** [Anthropic・Effective harnesses for long-running agents](https://www.anthropic.com/research/effective-harnesses-for-long-running-agents) はセッションを越える復元、[Anthropic・Scaling Managed Agents with stable interfaces](https://www.anthropic.com/research/managed-agents) は状態と環境の分離、[Google SRE・Eliminating Toil](https://sre.google/workbook/eliminating-toil/) は不要な起動の削減に使う。[autocatalyze](skills/autocatalyze/SKILL.md#常時稼働エージェントの中核) が専門工程を統括する。
 
 2026年11月18日に、常駐、定期・イベント起動、長時間実行、再開、記憶、権限、成果の検証に具体的な設計判断がある公式英語資料を確認した。[Anthropic Engineering](https://www.anthropic.com/engineering)・[Claude Resources](https://claude.com/resources/articles)・[claude.dev](https://claude.dev/)・[OpenAI Engineering](https://openai.com/news/engineering/)・[OpenAI Developers](https://developers.openai.com/blog)の索引と、記事から参照された公式仕様を対象にした。翻訳版、重複URL、本文を確認できなかった資料は集計から外した。
 
