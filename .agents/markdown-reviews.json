@@ -469,7 +469,7 @@
   },
   "files": {
     ".agents/check.py": {
-      "sha256": "c9ba4213cf803a8455c90789c0c3623df719e78f33d03e6f56263ce7808152f1",
+      "sha256": "1c6fda856e2d8c85c1b32091ea861a987c9d6cc8365382a2e3ed504284c1474c",
       "results": {
         "adjudicate": {
           "status": "pass",
@@ -532,7 +532,7 @@
           "evidence": "着手版、規約とREADMEの版、配布設定の版、同じ入力で比較した回答を照合し、差分のある判断を更新した。既存の認証済み実行2件は引き続き保留した。"
         }
       },
-      "sha256": "15abaf6c26263791eef65119349d1275ef8edfc014fc5b4fff02d6f76a271e90"
+      "sha256": "0df087a1d138150d42b13c8368ed3f73e42b995b8cd2116fe302daaf232e8c13"
     },
     ".agents/plugins/marketplace.json": {
       "sha256": "094134d9f8a84b5c2d80cbdf7e83a6666d38730d3e0b052228702faf60641d75",
