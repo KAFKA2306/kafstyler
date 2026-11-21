@@ -8,23 +8,31 @@ aliases:
   - "使い方"
 generated:
   by: openai/chatgpt
-  at: "2026-11-21T08:50:15.935Z"
+  at: "2026-11-21T08:52:46.952Z"
 ---
 
 # Kafstyler
 
-**AIに仕事を任せるなら、返事ではなく「使える成果」で終わらせる。**
+**AIの仕事を、使える成果まで。**
 
-Kafstylerは、Claude Code・Codex・Antigravity CLIで、仕事の完了条件から実装、公開先の確認、次の担当への引き継ぎまでをつなぐ7スキルのプラグインです。作業が中断したときも、前回確認した結果から再開することを重視します。
+Kafstylerは、Claude Code・Codex・Antigravity CLIで使えるAIエージェント用プラグインです。完了条件を決め、成果を検証し、担当やセッションが替わっても作業を引き継げるようにします。
 
-**[導入前に確認する](#まず一件試す)** · **[導入する](#プラグインの使い方)** · **[実際の用途を見る](#成果から使い方を選ぶ)**
+[できること](#kafstylerが変えること) · [まず一件試す](#まず一件試す) · [導入する](#プラグインの使い方) · [実例を見る](#成果から使い方を選ぶ)
 
-> **向いている用途:** 複数のプロジェクトをAIに任せる、担当AIを替える、定期処理や長い仕事を続ける。
+## Kafstylerが変えること
 
+| 困りごと | Kafstylerでの進め方 |
+| --- | --- |
+| 指示はこなしたが、使える状態か分からない | 実装前に合格条件を決め、利用者の入口で確かめる |
+| AIやセッションが替わるたび、最初から説明する | 作業ID、正本、検証結果、再開条件を引き継ぐ |
+| 定期処理が止まったのに、古い結果を最新と報告する | 最後の成功、失敗位置、次の起動条件を区別する |
+| 規則とテストが増え、改善したか分からない | 同条件で比較し、不要な仕組みを減らす |
+
+実例は[AI開発の改善記録](https://github.com/KAFKA2306/articles/blob/main/articles/kafstyler-agent-quality-loop.md)と[半導体決算モデル](https://github.com/KAFKA2306/semiconductor-earnings-model)で確認できます。
 
 ## まず一件試す
 
-**導入前に規約を確かめる:** 公開GitHubを読めるAIに、以下の依頼文を送ると、Kafstylerの規約を参照した読み取り専用の診断を試せます。これはプラグイン本体の動作確認ではありません。例の対象は公開リポジトリです。自分の仕事で試す場合は対象URLを置き換えてください。
+公開GitHubを読めるAIに、次の依頼文を送ってみてください。Kafstylerの公開規約を参照して、リポジトリの改善点を読み取り専用で調べる例です。自分の仕事で試すときは対象URLを替えます。
 
 ```text
 対象: https://github.com/KAFKA2306/semiconductor-earnings-model
@@ -37,78 +45,7 @@ Kafstyler（https://github.com/KAFKA2306/kafstyler）のmainのコミットSHA�
 編集・公開・設定変更はしないでください。
 ```
 
-**この試行で確認する4点**
-
-1. **現状:** 実際に開けたURLと観測した結果があるか。
-2. **優先順位:** 問題が一件に絞られ、利用者への影響が説明されているか。
-3. **合格条件:** 何を操作して何が表示されれば直ったと分かるか。
-4. **限界:** 開けなかったページや実行していない操作を、成功と報告していないか。
-
-これは読み取り専用の診断です。修正まで任せる場合は、対象・変更可能な範囲・合格条件を伝え、[導入手順](#プラグインの使い方)に進んでください。
-
-## Kafstylerが変えること
-
-| ありがちな行き詰まり | Kafstylerが要求すること |
-| --- | --- |
-| 指示はこなしたが、使える状態か分からない | 実装前に合格条件を決め、利用者の入口で確かめる |
-| AIやセッションが替わるたび、最初から説明する | 作業ID、正本、検証結果、再開条件を引き継ぐ |
-| 定期処理が止まったのに、古い結果を最新と報告する | 最後の成功、失敗位置、次の起動条件を区別する |
-| 規則とテストが増え、改善したか分からない | 同条件で比較し、不要な仕組みを減らす |
-
-**実際の対象で確認する:** [AI開発の改善例と出典](https://github.com/KAFKA2306/articles/blob/main/articles/kafstyler-agent-quality-loop.md) · [半導体決算モデルのリポジトリ](https://github.com/KAFKA2306/semiconductor-earnings-model)。これらは適用事例への入口であり、すべての環境で同じ効果が出るという保証ではありません。
-
-## 常時稼働エージェントの中核
-
-[`autocatalyze`](skills/autocatalyze/SKILL.md#常時稼働エージェントの中核) が起動・状態復元・案件選定・他の6スキルへの委譲・実行・公開先検証・復旧・次回への引き継ぎを統括します。**常時稼働とはLLMの連続実行ではなく、必要なときに前回の成果から再開できることです。** Issueや台帳の更新だけでは完了しません。[一次資料](BIBLES.md#常駐エージェント)
-
-## 大規模な開発を支える仕組み
-
-[`canonicalize`](skills/canonicalize/SKILL.md) で一件の単位、正本、更新先を決めます。知識文書はOKFとObsidian Vault、分析データの変換・集計はdbtを使います。
-
-公表統計の検索画面とCSVを毎週更新するなら、収集と画面開発の担当で次の手順を共有します。
-
-1. **正本を決める。** 発行元・系列ID・対象期間で値を識別し、単位を統一。地域・季節調整は系列IDで区別し、改定の公表日と出典を記録します。
-2. **同じ正本から公開する。** 画面とCSVを作り、公開先の値と出典を照合します。再取り込みで行が増えないことも確かめます。
-3. **訂正を反映する。** 半年前の値が訂正されたら、台帳の入力・版・コマンドから対象集計を再実行します。仕様変更は版を固定し、同じ入力で前後を比較します。
-
-[画面の設計基準](BIBLES.md#かふかのデザインパターン) · [定期実行と再開](skills/autocatalyze/SKILL.md#常駐エージェントと定期実行) · [一次資料の見直し](BIBLES.md#資料の見直し) · [更新手順](MISSION.md#更新手順)
-
-### 7つのスキルと、残す成果物
-
-定刻・イベント・回答を機に、7スキルのどれからでも始められます。必要な相手を呼び、結果は同じ作業IDに戻します。両矢印は相互呼び出しの例です。
-
-```mermaid
-flowchart TD
-    accTitle: Kafstylerの7スキルの相互呼び出し
-    accDescr: 各スキルは条件に応じて互いを呼ぶ。両矢印は呼び出しの例で、確認した成果は次の起動へ引き継ぐ。
-    trigger["定刻・イベント・回答"]
-    subgraph work["必要なスキルを互いに呼ぶ"]
-        goal["reconceptualize"] <-->|"合格条件"| judge["adjudicate"]
-        goal <-->|"目標の前提"| proof["disprove"]
-        judge <-->|"反例の測定"| proof
-        proof <-->|"原則と反例の根拠"| edit["didactization"]
-        judge <-->|"実物の評価"| run["autocatalyze"]
-        run <-->|"正本と再開"| canon["canonicalize"]
-        canon <-->|"移行と切替"| retire["decommission"]
-        retire <-->|"教材の統合・推敲"| edit
-    end
-    trigger -->|"状態に応じて開始・再開"| work
-    run -->|"確認済みの成果を引き継ぐ"| trigger
-```
-
-動画を日次公開するなら、定刻に制作を始め、公開先で指定した状態を読み戻します。停止した回は同じ記録から再開し、次回は確認済みの条件と新しい入力を使います。成果の評価は `adjudicate`、方式の見直しは `disprove` や `decommission` からも始められます。
-
-| スキル | 責任範囲と次に渡すもの |
-| --- | --- |
-| [`reconceptualize`](skills/reconceptualize/SKILL.md) | 目的・利用経路・制約・完了場面を定め、合格条件と検証の道具を渡す。 |
-| [`canonicalize`](skills/canonicalize/SKILL.md) | 文書・データ・入出力の意味、識別子、正本、来歴、状態を設計し、更新・移行・再開の契約を渡す。 |
-| [`autocatalyze`](skills/autocatalyze/SKILL.md) | 常時稼働エージェントの中核。起動・選定・委譲・実装・公開検証・復旧・継続を統括する。 |
-| [`didactization`](skills/didactization/SKILL.md) | 記事・研究ノートを根拠・汎用原則・再現手順・反例のある教材にする。README・PR・UI・報告は原意を守って自然に推敲する。 |
-| [`disprove`](skills/disprove/SKILL.md) | 一次資料と実物で現行方式・代替案の前提に反例を探し、結論・範囲・証拠・未確認事項を返す。 |
-| [`adjudicate`](skills/adjudicate/SKILL.md) | 判定を設計前に固定し、成果・手法を同条件で測る。測定値、採否、証拠、再実行手順を渡す。 |
-| [`decommission`](skills/decommission/SKILL.md) | 重複するコード・文書・定期処理を統合し、旧方式を廃止。切替結果と残した利用経路を渡す。 |
-
-[連携手順](AGENTS.md#コマンドの連携)
+返答に、観測した事実と出典、最優先の改善、修正後の確認方法が示されるかを見ます。プラグインを使って修正する手順は[導入方法](#プラグインの使い方)にあります。
 
 ## プラグインの使い方
 
@@ -196,13 +133,66 @@ python3 .agents/check.py
 
 全Markdownへのスキル適用を[適用記録](.agents/markdown-reviews.json)に残し、ステージ後に `python3 .agents/check.py --staged` を実行します。配布設定・フックも確認するなら `--all-files`、版の一覧は `--markdown-inventory`、ステージ済み全ファイルの照合は `--staged --all-files` を使います。[適用と記録の手順](AGENTS.md#全markdownに全スキルを使う)
 
-- **Claude Code**では `claude plugin validate .` と `claude --plugin-dir "$PWD"` を実行します。別プロジェクトから試すときは `--plugin-dir` にチェックアウトの絶対パスを渡します。
-- **Codex**では検証用の `CODEX_HOME` を設定し、`codex plugin marketplace add "$PWD"` と `codex plugin add kafstyler@kafstyler` を実行します。変更後は `codex plugin remove kafstyler@kafstyler` で検証用のコピーを削除し、再導入します。新しいセッションで `/hooks` を確認・承認します。[ローカル配布元の仕様](https://developers.openai.com/plugins/build/plugins#how-local-marketplaces-work)
-- **Antigravity CLI**では `agy plugin validate --json .` の後、検証環境で `agy plugin install .` と `agy plugin list --json` を実行し、版・7スキル・常時有効なルールを確かめます。[公式の警告判定](https://antigravity.google/docs/build-plugins/#warnings-in-multi-tool-repositories)
+- Claude Codeでは `claude plugin validate .` と `claude --plugin-dir "$PWD"` を実行します。別プロジェクトから試すときは `--plugin-dir` にチェックアウトの絶対パスを渡します。
+- Codexでは検証用の `CODEX_HOME` を設定し、`codex plugin marketplace add "$PWD"` と `codex plugin add kafstyler@kafstyler` を実行します。変更後は `codex plugin remove kafstyler@kafstyler` で検証用のコピーを削除し、再導入します。新しいセッションで `/hooks` を確認・承認します。[ローカル配布元の仕様](https://developers.openai.com/plugins/build/plugins#how-local-marketplaces-work)
+- Antigravity CLIでは `agy plugin validate --json .` の後、検証環境で `agy plugin install .` と `agy plugin list --json` を実行し、版・7スキル・常時有効なルールを確かめます。[公式の警告判定](https://antigravity.google/docs/build-plugins/#warnings-in-multi-tool-repositories)
 
 影響するクライアントにスキル名なしの依頼を送り、呼び出し履歴か `SKILL.md` の読み込みと、成果物の合否を確かめます。漏れを直したら影響する工程を同じ入力でやり直します。[本体の変更手順](AGENTS.md#kafstyler本体の変更)
 
 </details>
+
+## 常時稼働エージェントの中核
+
+[`autocatalyze`](skills/autocatalyze/SKILL.md#常時稼働エージェントの中核) は、定時やイベントをきっかけに前回の作業を再開し、他の6スキルへの委譲、実装、公開先での確認、復旧を統括します。処理が必要なときに起動し、成果と再開条件を次回へ渡します。[一次資料](BIBLES.md#常駐エージェント)
+
+## 大規模な開発を支える仕組み
+
+[`canonicalize`](skills/canonicalize/SKILL.md) で一件の単位、正本、更新先を決めます。知識文書はOKFとObsidian Vault、分析データの変換・集計はdbtを使います。
+
+公表統計の検索画面とCSVを毎週更新するなら、収集と画面開発の担当で次の手順を共有します。
+
+1. 正本を決める。 発行元・系列ID・対象期間で値を識別し、単位を統一。地域・季節調整は系列IDで区別し、改定の公表日と出典を記録します。
+2. 同じ正本から公開する。 画面とCSVを作り、公開先の値と出典を照合します。再取り込みで行が増えないことも確かめます。
+3. 訂正を反映する。 半年前の値が訂正されたら、台帳の入力・版・コマンドから対象集計を再実行します。仕様変更は版を固定し、同じ入力で前後を比較します。
+
+[画面の設計基準](BIBLES.md#かふかのデザインパターン) · [定期実行と再開](skills/autocatalyze/SKILL.md#常駐エージェントと定期実行) · [一次資料の見直し](BIBLES.md#資料の見直し) · [更新手順](MISSION.md#更新手順)
+
+### 7つのスキルと、残す成果物
+
+仕事に応じたスキルを呼び出し、結果を同じ作業IDにまとめます。図の矢印はスキル間の連携を示します。
+
+```mermaid
+flowchart TD
+    accTitle: Kafstylerの7スキルの相互呼び出し
+    accDescr: 各スキルは条件に応じて互いを呼ぶ。両矢印は呼び出しの例で、確認した成果は次の起動へ引き継ぐ。
+    trigger["定刻・イベント・回答"]
+    subgraph work["必要なスキルを互いに呼ぶ"]
+        goal["reconceptualize"] <-->|"合格条件"| judge["adjudicate"]
+        goal <-->|"目標の前提"| proof["disprove"]
+        judge <-->|"反例の測定"| proof
+        proof <-->|"原則と反例の根拠"| edit["didactization"]
+        judge <-->|"実物の評価"| run["autocatalyze"]
+        run <-->|"正本と再開"| canon["canonicalize"]
+        canon <-->|"移行と切替"| retire["decommission"]
+        retire <-->|"教材の統合・推敲"| edit
+    end
+    trigger -->|"状態に応じて開始・再開"| work
+    run -->|"確認済みの成果を引き継ぐ"| trigger
+```
+
+動画を日次公開するなら、定刻に制作を始め、公開先で指定した状態を読み戻します。停止した回は同じ記録から再開し、次回は確認済みの条件と新しい入力を使います。成果の評価は `adjudicate`、方式の見直しは `disprove` や `decommission` からも始められます。
+
+| スキル | 責任範囲と次に渡すもの |
+| --- | --- |
+| [`reconceptualize`](skills/reconceptualize/SKILL.md) | 目的・利用経路・制約・完了場面を定め、合格条件と検証の道具を渡す。 |
+| [`canonicalize`](skills/canonicalize/SKILL.md) | 文書・データ・入出力の意味、識別子、正本、来歴、状態を設計し、更新・移行・再開の契約を渡す。 |
+| [`autocatalyze`](skills/autocatalyze/SKILL.md) | 常時稼働エージェントの中核。起動・選定・委譲・実装・公開検証・復旧・継続を統括する。 |
+| [`didactization`](skills/didactization/SKILL.md) | 記事・研究ノートを根拠・汎用原則・再現手順・反例のある教材にする。README・PR・UI・報告は原意を守って自然に推敲する。 |
+| [`disprove`](skills/disprove/SKILL.md) | 一次資料と実物で現行方式・代替案の前提に反例を探し、結論・範囲・証拠・未確認事項を返す。 |
+| [`adjudicate`](skills/adjudicate/SKILL.md) | 判定を設計前に固定し、成果・手法を同条件で測る。測定値、採否、証拠、再実行手順を渡す。 |
+| [`decommission`](skills/decommission/SKILL.md) | 重複するコード・文書・定期処理を統合し、旧方式を廃止。切替結果と残した利用経路を渡す。 |
+
+[連携手順](AGENTS.md#コマンドの連携)
 
 ## 成果から使い方を選ぶ
 
