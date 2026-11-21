@@ -2,6 +2,6 @@
   "$schema": "https://antigravity.google/schemas/v1/plugin.json",
   "name": "kafstyler",
   "displayName": "Kafstyler",
-  "version": "0.9.0",
-  "description": "常時稼働エージェントを中核に、開発・調査・制作・運用を継続し、実成果を検証して再開・改善する。"
+  "version": "0.9.1",
+  "description": "AIの仕事を回答で終わらせず、完成条件の設定・実装・公開確認・引き継ぎまで進める7スキル。定期処理や中断後の再開にも対応。"
 }
