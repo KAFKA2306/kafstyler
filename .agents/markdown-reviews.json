@@ -1,5 +1,5 @@
 {
-  "compared_to": "9502510aecedde6f1e7545a392bfdcd62ac0ce99",
+  "compared_to": "13e94450779c761b63683d0d6f5232a2d3102ccf",
   "sources": {
     "成功基準と自動採点": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
     "エージェント評価と判定例": "https://www.anthropic.com/research/demystifying-evals-for-ai-agents",
@@ -43,10 +43,10 @@
     "ChatGPT decreases idea diversity in brainstorming": "https://www.nature.com/articles/s41562-025-02173-x",
     "Large Language Models Cannot Self-Correct Reasoning Yet": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/8b4add8b0aa8749d80a34ca5d941c355-Abstract-Conference.html"
   },
-  "rules": "3c9bc4170942e34da96ee4ef998ded43c122e2b3ebb8eb9ac23158803307faa4",
+  "rules": "4faab73e8149edb7599890fb9da44c6789b8d23828e3eb8316e592a73daeead4",
   "documents": {
     "AGENTS.md": {
-      "sha256": "44db0e8a7bd0d5b155765224b939c04b86cf31ed5c77456cb0de138bbd38d894",
+      "sha256": "fe20e0ea142c630163125437282a8388bb69cd377b97d13bb18781144342bea2",
       "results": {
         "adjudicate": {
           "status": "pass",
@@ -80,13 +80,13 @@
         },
         "didactization": {
           "status": "pass",
-          "evidence": "AGENTS.md について、記事には観測・原則・再現手順・反例・適用限界、一般文書には原意保持と自然な推敲を要求する改訂を確認し、役割の使い分けと参照先を照合した。",
+          "evidence": "AGENTS.md について、記事には観測・原則・再現手順・反例・適用限界、一般文書には原意保持と自然な推敲を要求する改訂を確認し、役割の使い分けと参照先を照合した。 命名規約の重複する条件文を削除し、既存の意味を保持して明瞭化した。",
           "scope": "document"
         }
       }
     },
     "BIBLES.md": {
-      "sha256": "92547bb1ec9bfa68358a95dc3bb4d0047ea01ab4aa1945f6f2b15fe7370a6257",
+      "sha256": "ae6c6c3174d706da8fe2153abee726e606a6bd57a19bfe9ded581522a7800a93",
       "results": {
         "adjudicate": {
           "status": "pass",
@@ -120,7 +120,7 @@
         },
         "didactization": {
           "status": "pass",
-          "evidence": "BIBLES.md について、記事には観測・原則・再現手順・反例・適用限界、一般文書には原意保持と自然な推敲を要求する改訂を確認し、役割の使い分けと参照先を照合した。",
+          "evidence": "BIBLES.md について、記事には観測・原則・再現手順・反例・適用限界、一般文書には原意保持と自然な推敲を要求する改訂を確認し、役割の使い分けと参照先を照合した。 旧名の表示と現行SKILL.mdのリンク先の不一致を解消し、現行名称を一致させた。",
           "scope": "document"
         }
       }
@@ -641,11 +641,11 @@
         },
         "didactization": {
           "status": "pass",
-          "evidence": "7スキルと13 Markdownの各結果をdidactizationへ切り替え、版・対象・参照パスと計算されたハッシュを照合。 2026-11-21: 3件の旧スキルへのリンク漏れを修正し、適用記録とrulesのダイジェストを再照合した。",
+          "evidence": "7スキルと13 Markdownの各結果をdidactizationへ切り替え、版・対象・参照パスと計算されたハッシュを照合。 2026-11-21: 3件の旧スキルへのリンク漏れを修正し、適用記録とrulesのダイジェストを再照合した。 表示名と正本リンクの修正、共通規約のSHAと自己参照を除いた台帳ハッシュを更新した。",
           "scope": "static"
         }
       },
-      "sha256": "3ee55bab63db20610a2d73371a82ad65925682be145ff4e631e1166ef7f5b351"
+      "sha256": "71906e3213f6b3fee8029b90432b57a6afe6156b14eed3d59dd0eed43597ced9"
     },
     ".agents/plugins/marketplace.json": {
       "sha256": "094134d9f8a84b5c2d80cbdf7e83a6666d38730d3e0b052228702faf60641d75",
