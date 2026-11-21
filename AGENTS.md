@@ -45,7 +45,11 @@ description: "AIの仕事を使える成果まで進める共通規約"
 
 ## モデル選定
 
-候補・予算・別会社fallbackは [model-policy.json](.agents/model-policy.json)、実測スナップショットは [model-selection.json](.agents/model-selection.json)、更新処理は [select-models.mjs](.agents/select-models.mjs) を正本とする。`adjudicate` と `disprove` は監査用途、その他は実行用途として選ぶ。候補名と実行可能なCLIモデルIDは区別する。外部有償APIを必要としない。
+各スキルの公式frontmatterの`name`を識別子とし、モデル名や独自の選定キーは書かない。[設定](.agents/model-policy.json)に第三者スコア、価格上限3 USD/100万トークン（入力75％・出力25％）、最低品質、対象会社、`adjudicate`・`disprove`のスコア優先だけ定義する。他のスキルは費用対効果で選び、新しいスキルも自動検出する。
+
+[選定器](.agents/select-models.mjs)は公開データの元の測定日・出典を確認し、全社横断のパレートフロントから第一候補、別会社からfallbackを選ぶ。後者はパレート非劣位でなくてもよい。欠損・鮮度不足・別会社候補不足なら既存の選定を保持し、エラーを報告する。APIキー不要で週次更新・手動更新に対応する。
+
+[結果](.agents/model-selection.json)は候補の第三者評価と価格であって、CLIで利用できるモデルID、週次制限の検知、実際のモデル切替は保証しない。[Agent Skills公式仕様](https://agentskills.io/specification)
 
 ## 改善の方針
 

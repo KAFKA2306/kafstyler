@@ -1,124 +1,129 @@
 {
-  "schema_version": 1,
-  "updated_from_benchmark": null,
-  "status": "bootstrap_unverified",
-  "note": "Initial intent only. Not benchmark verified or confirmed available in CLI. Do not claim real model dispatch.",
+  "schema_version": 2,
+  "status": "benchmark_selected_runtime_unverified",
+  "updated_from_benchmark": "2026-11-19",
+  "source": "https://artificialanalysis.ai/leaderboards/models",
+  "pricing": {
+    "input_weight": 0.75,
+    "output_weight": 0.25,
+    "max_usd": 3
+  },
   "skills": {
     "adjudicate": {
       "primary": {
-        "name": "Gemini 4 Neon",
+        "name": "Gemini 3.8 Flash (High)",
         "provider": "Google",
-        "score": null,
-        "price": null,
+        "score": 40.9262,
+        "price": 1.5,
         "model_id": null
       },
       "fallback": {
-        "name": "GPT-6.1 Terra",
+        "name": "GPT-6 Luna (Max)",
         "provider": "OpenAI",
-        "score": null,
-        "price": null,
-        "model_id": null
-      },
-      "fallback_reason": "provider weekly quota or service outage"
-    },
-    "disprove": {
-      "primary": {
-        "name": "Gemini 4 Neon",
-        "provider": "Google",
-        "score": null,
-        "price": null,
-        "model_id": null
-      },
-      "fallback": {
-        "name": "GPT-6.1 Terra",
-        "provider": "OpenAI",
-        "score": null,
-        "price": null,
-        "model_id": null
-      },
-      "fallback_reason": "provider weekly quota or service outage"
-    },
-    "reconceptualize": {
-      "primary": {
-        "name": "GPT-6 Luna",
-        "provider": "OpenAI",
-        "score": null,
-        "price": null,
-        "model_id": null
-      },
-      "fallback": {
-        "name": "Gemini 4 Hydrogen",
-        "provider": "Google",
-        "score": null,
-        "price": null,
-        "model_id": null
-      },
-      "fallback_reason": "provider weekly quota or service outage"
-    },
-    "didactization": {
-      "primary": {
-        "name": "GPT-6 Luna",
-        "provider": "OpenAI",
-        "score": null,
-        "price": null,
-        "model_id": null
-      },
-      "fallback": {
-        "name": "Gemini 4 Hydrogen",
-        "provider": "Google",
-        "score": null,
-        "price": null,
-        "model_id": null
-      },
-      "fallback_reason": "provider weekly quota or service outage"
-    },
-    "canonicalize": {
-      "primary": {
-        "name": "GPT-6 Luna",
-        "provider": "OpenAI",
-        "score": null,
-        "price": null,
-        "model_id": null
-      },
-      "fallback": {
-        "name": "Gemini 4 Hydrogen",
-        "provider": "Google",
-        "score": null,
-        "price": null,
-        "model_id": null
-      },
-      "fallback_reason": "provider weekly quota or service outage"
-    },
-    "decommission": {
-      "primary": {
-        "name": "GPT-6 Luna",
-        "provider": "OpenAI",
-        "score": null,
-        "price": null,
-        "model_id": null
-      },
-      "fallback": {
-        "name": "Gemini 4 Hydrogen",
-        "provider": "Google",
-        "score": null,
-        "price": null,
+        "score": 38.1245,
+        "price": 0.2,
         "model_id": null
       },
       "fallback_reason": "provider weekly quota or service outage"
     },
     "autocatalyze": {
       "primary": {
-        "name": "GPT-6 Luna",
+        "name": "GPT-6 Luna (Max)",
         "provider": "OpenAI",
-        "score": null,
-        "price": null,
+        "score": 38.1245,
+        "price": 0.2,
         "model_id": null
       },
       "fallback": {
-        "name": "Gemini 4 Hydrogen",
+        "name": "Gemini 3.8 Flash (High)",
         "provider": "Google",
-        "score": null,
-        "price": null,
+        "score": 40.9262,
+        "price": 1.5,
+        "model_id": null
+      },
+      "fallback_reason": "provider weekly quota or service outage"
+    },
+    "canonicalize": {
+      "primary": {
+        "name": "GPT-6 Luna (Max)",
+        "provider": "OpenAI",
+        "score": 38.1245,
+        "price": 0.2,
+        "model_id": null
+      },
+      "fallback": {
+        "name": "Gemini 3.8 Flash (High)",
+        "provider": "Google",
+        "score": 40.9262,
+        "price": 1.5,
+        "model_id": null
+      },
+      "fallback_reason": "provider weekly quota or service outage"
+    },
+    "decommission": {
+      "primary": {
+        "name": "GPT-6 Luna (Max)",
+        "provider": "OpenAI",
+        "score": 38.1245,
+        "price": 0.2,
+        "model_id": null
+      },
+      "fallback": {
+        "name": "Gemini 3.8 Flash (High)",
+        "provider": "Google",
+        "score": 40.9262,
+        "price": 1.5,
+        "model_id": null
+      },
+      "fallback_reason": "provider weekly quota or service outage"
+    },
+    "didactization": {
+      "primary": {
+        "name": "GPT-6 Luna (Max)",
+        "provider": "OpenAI",
+        "score": 38.1245,
+        "price": 0.2,
+        "model_id": null
+      },
+      "fallback": {
+        "name": "Gemini 3.8 Flash (High)",
+        "provider": "Google",
+        "score": 40.9262,
+        "price": 1.5,
+        "model_id": null
+      },
+      "fallback_reason": "provider weekly quota or service outage"
+    },
+    "disprove": {
+      "primary": {
+        "name": "Gemini 3.8 Flash (High)",
+        "provider": "Google",
+        "score": 40.9262,
+        "price": 1.5,
+        "model_id": null
+      },
+      "fallback": {
+        "name": "GPT-6 Luna (Max)",
+        "provider": "OpenAI",
+        "score": 38.1245,
+        "price": 0.2,
+        "model_id": null
+      },
+      "fallback_reason": "provider weekly quota or service outage"
+    },
+    "reconceptualize": {
+      "primary": {
+        "name": "GPT-6 Luna (Max)",
+        "provider": "OpenAI",
+        "score": 38.1245,
+        "price": 0.2,
+        "model_id": null
+      },
+      "fallback": {
+        "name": "Gemini 3.8 Flash (High)",
+        "provider": "Google",
+        "score": 40.9262,
+        "price": 1.5,
         "model_id": null
       },
       "fallback_reason": "provider weekly quota or service outage"

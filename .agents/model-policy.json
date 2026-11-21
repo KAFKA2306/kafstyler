@@ -1,44 +1,24 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "benchmark_source": {
     "repository": "Maicarons/artificial-analysis-leaderboards",
     "url": "https://artificialanalysis.ai/leaderboards/models",
     "pointer": "https://raw.githubusercontent.com/Maicarons/artificial-analysis-leaderboards/main/data/latest.json",
-    "max_source_age_days": 3
+    "max_source_age_days": 8
   },
   "benchmark": "artificial_analysis_intelligence_index",
   "price": {
-    "unit": "USD_per_1M_tokens",
     "input_weight": 0.75,
     "output_weight": 0.25,
-    "max_usd": 3,
-    "discount_multiplier": 1,
-    "discount": "none"
+    "max_usd": 3
   },
-  "roles": {
-    "audit": {
-      "criterion": "highest_score",
-      "bootstrap": [
-        "Gemini 4 Neon",
-        "GPT-6.1 Terra"
-      ]
-    },
-    "execution": {
-      "criterion": "score_per_dollar",
-      "min_score": 30,
-      "bootstrap": [
-        "GPT-6 Luna",
-        "Gemini 4 Hydrogen"
-      ]
-    }
-  },
-  "skill_roles": {
-    "adjudicate": "audit",
-    "disprove": "audit",
-    "reconceptualize": "execution",
-    "didactization": "execution",
-    "canonicalize": "execution",
-    "decommission": "execution",
-    "autocatalyze": "execution"
-  }
+  "providers": [
+    "OpenAI",
+    "Google"
+  ],
+  "quality_fraction": 0.7,
+  "score_first": [
+    "adjudicate",
+    "disprove"
+  ]
 }

@@ -1,7 +1,7 @@
 name: Refresh skill models
 on:
   schedule:
-    - cron: '17 2 * * *'
+    - cron: '17 2 * * 3'
   workflow_dispatch:
 permissions:
   contents: write
@@ -12,11 +12,11 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: 'lts/*'
       - run: node .agents/select-models.mjs --write
-      - name: Commit selection when data improves
+      - name: Commit new selection
         run: |
           git add .agents/model-selection.json
           if git diff --cached --quiet; then exit 0; fi
-          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'chore: refresh model selection'
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'chore: refresh measured model selection'
           git push
