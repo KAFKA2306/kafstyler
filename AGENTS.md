@@ -27,7 +27,7 @@ Kafstylerは、**複数のAIエージェント・セッション・プロジェ�
 | [canonicalize](skills/canonicalize/SKILL.md) | データ契約・正本・移行 |
 | [didactization](skills/didactization/SKILL.md) | 知見の教材化と文章編集 |
 | [disprove](skills/disprove/SKILL.md) | 重要な仮説・設計の反証 |
-| [decommission](skills/decommission/SKILL.md) | 重複・不要なものの削減 |
+| [decommission](skills/decommission/SKILL.md) | 後継の動作を確認して旧経路・重複処理を廃止し、運用負担を減らす |
 | [autocatalyze](skills/autocatalyze/SKILL.md) | 自律実装、常時稼働、復旧、引き継ぎ |
 
 **運用の中核は `autocatalyze`。** 定時・イベント・再開・引き継ぎを一元管理し、`reconceptualize`、`canonicalize`、`adjudicate`、`disprove`、`didactization`、`decommission` は必要な案件で選ぶ。全Skillsを一律に呼ぶ義務はない。図解では抽象的な「専門スキル」だけで済ませず、各Skill名を主語にして、受け取る入力・次へ渡す結果・成果への寄与を明記する。Skill間の矢印は具体的な引き継ぎ内容を示す。

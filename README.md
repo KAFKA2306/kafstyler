@@ -18,7 +18,7 @@ Kafstylerは、Claude Code・Codex・Antigravity CLIで使う7つのSkillsです
 | 案件が増えると、担当AIに毎回説明し直す | `canonicalize` が正本と状態をそろえ、`autocatalyze` が前回の記録から再開する |
 | 定期実行が成功したように見えて、成果が届かない | `adjudicate` で利用者の入口の結果を確かめ、`autocatalyze` が失敗を次の実行へ引き継ぐ |
 | AIやセッションの交代で、途中工程が重複・消失する | 作業ID、対象版、確認済みの結果、未処理、次の起動条件を引き継ぐ |
-| 手順・監査・テストばかり増えて運用が重くなる | `decommission` で余分な仕組みを廃止し、必要なSkillsだけ動かす |
+| 案件が増えるほど旧処理・重複検証・通知が残り、開発より維持管理に時間を使う | `decommission` が旧経路を安全に廃止し、実行回数・費用・障害の原因を減らして次の改善に余力を戻す |
 
 [改善の事例](https://github.com/KAFKA2306/articles/blob/main/articles/kafstyler-agent-quality-loop.md) · [継続的なデータ運用例](https://github.com/KAFKA2306/semiconductor-earnings-model)
 
@@ -102,7 +102,7 @@ Claude Codeは `claude plugin validate .`、Antigravity CLIは `agy plugin valid
 | [`autocatalyze`](skills/autocatalyze/SKILL.md) は必要な取得・集計・画面更新を実装して公開し、公開先の版を読み戻す。 | 実際の画面・CSV・実行ログを `adjudicate` へ渡す |
 | [`adjudicate`](skills/adjudicate/SKILL.md) は原典・画面・CSVの系列、値、件数、出典を同条件で照合し、再取り込みでも二重登録しないか確かめる。 | 合否・実測値・再現手順を `autocatalyze` に返し、不合格なら修正へ戻す |
 | [`didactization`](skills/didactization/SKILL.md) は今回の訂正処理や失敗から、次の系列・別プロジェクトでも使える原則と再現例を残す。 | 出典と成立条件のある知見を既存の正本へ渡す |
-| [`decommission`](skills/decommission/SKILL.md) は新経路への切替を確認して、二重同期・古い集計・重複通知など不要になった処理を廃止する。 | 残した実行経路と削除後の確認結果を `canonicalize` と `autocatalyze` へ渡す |
+| [`decommission`](skills/decommission/SKILL.md) は `canonicalize` の正本と `adjudicate` の比較結果を受けて、二重同期・古い集計・重複通知を安全に廃止する。 | 必要な機能が維持された証拠、減らした起動・管理負荷、唯一の現行経路を `canonicalize` と `autocatalyze` に返す |
 | [`canonicalize`](skills/canonicalize/SKILL.md) は最終確認した版、処理済み位置、未処理、次の起動条件を既存記録にそろえる。 | 別の担当AIや次回の `autocatalyze` が会話の再説明なしで使える状態を残す |
 
 ```mermaid
@@ -116,8 +116,9 @@ flowchart TD
     judge --> decision{"実物の結果は合格？"}
     decision -->|不合格| build
     decision -->|合格| learn["didactization：失敗と訂正を再利用できる知見に"]
-    learn --> retire["decommission：重複した旧経路を廃止"]
-    retire --> record["canonicalize：確認済みの版・結果・再開条件を記録"]
+    learn --> retire["decommission：旧経路・重複通知・不要な検査を廃止"]
+    retire --> freed["decommission：管理負荷・二重実行の削減を確認"]
+    freed --> record["canonicalize：現行経路・版・結果・再開条件を記録"]
     record --> next["次の定期起動・別担当AIへの引き継ぎ"]
     next --> auto
 ```
@@ -125,6 +126,14 @@ flowchart TD
 この図は7 Skillsの連携が役立つケースを示したものです。毎回7つ全部を呼ぶ仕組みではありません。たとえば新規データに訂正も障害もなければ、`autocatalyze` は差分を確認して不要な再処理を省きます。**一件の成功は次の周期の入力となり、運用と改善は継続します。**
 
 [画面の設計正本](https://github.com/KAFKA2306/design) · [定期実行と再開](skills/autocatalyze/SKILL.md#常駐エージェントと定期実行)
+
+## decommissionが常時稼働の実行力を守る
+
+**[`decommission`](skills/decommission/SKILL.md) は、長期間の自律運用で増え続ける維持管理の負担を取り除き、`autocatalyze` が新しい成果に使える余力を生み出すSkillです。** 単なるファイル削除ではありません。使われなくなった経路、同じ仕事を繰り返す定期処理、重複する正本、効果のない検査や通知を、必要な機能を維持したまま廃止します。
+
+例えば統計データの更新方式を切り替えた後、旧ジョブが残ると同じデータを二度取得し、古いCSVを再公開し、通知まで重複する恐れがあります。`canonicalize` が残す正本を決め、`adjudicate` が新方式の結果を検証し、`decommission` が旧ジョブ・設定・参照を停止・削除します。`autocatalyze` は次回の通常起動で新方式だけが動くことを確かめ、浮いた実行枠を次の案件へ使えます。
+
+`decommission` の成果は削除ファイル数ではなく、**必要な機能を保ちながら減らせた処理回数・実行時間・費用・誤通知・保守対象**で測ります。比較できる実績がない場合は削減効果を推定値として区別します。不要と証明できないものは件数目標のために消しません。
 
 ## 成果から使い方を選ぶ
 

@@ -17,7 +17,7 @@ Kafstylerは、研究・開発・制作・公開・運用をまたぐ多数の�
 - **[adjudicate](skills/adjudicate/SKILL.md)｜成果を測定し、最善の選択を残す。** 候補を同じ条件で比較し、精度、品質、操作成功、費用、運用負荷など実際の目的に関わる結果で採否を決める。見かけの進捗ではなく、改善を確認できる選択を積み上げる。
 - **[disprove](skills/disprove/SKILL.md)｜重大な思い込みを反証する。** 設計、仮説、完成判定の弱点を具体的な反例や実物の確認で探し、致命的な誤りが大規模に広がる前に修正する。証拠のない断定や、テストだけ通って利用できない成果を見逃さない。
 - **[didactization](skills/didactization/SKILL.md)｜実績を、再利用できる知識へ変える。** 一次資料、実験、失敗、例外から汎用的な原則と再現方法を抽出し、他の人やAIが理解・検証・応用できる文章にする。文章を増やすのではなく、次の研究・開発・判断を改善する知見を蓄積する。
-- **[decommission](skills/decommission/SKILL.md)｜不要な仕組みをなくし、実行力を取り戻す。** 役割を終えたコード、規則、CI、フック、文書、台帳、運用手順を統合・廃止する。案件が増えても管理負荷が膨張しないようにし、必要な機能と検証は維持する。
+- **[decommission](skills/decommission/SKILL.md)｜常時稼働の余力を生み、規模を拡大できる状態を守る。** `canonicalize` が統一した正本と `adjudicate` が確かめた後継経路を受け取り、旧処理・重複ジョブ・過剰な検査や通知を廃止する。必要な機能を保ちながら実行回数・費用・障害要因・管理対象を減らし、`autocatalyze` が新しい成果に使う余力を取り戻す。
 
 各Skillが受け取る入力と次へ渡す具体的な成果は、[READMEの継続運用例](README.md#7つのskillが連関して成果を出す)を参照する。
 
@@ -31,7 +31,7 @@ flowchart TD
     adjudicate["adjudicate：同条件での比較と採否"]
     disprove["disprove：仮説と完成判定の反証"]
     didactization["didactization：実測と発見の知識化"]
-    decommission["decommission：不要な実装と規則の廃止"]
+    decommission["decommission：重複経路を廃止し運用の余力を生む"]
 
     autocatalyze -->|目的の再検討を依頼| reconceptualize
     reconceptualize -->|完成像と合格条件を返す| autocatalyze
@@ -44,7 +44,7 @@ flowchart TD
     autocatalyze -->|発見の再利用を依頼| didactization
     didactization -->|出典付きの知見を返す| autocatalyze
     autocatalyze -->|旧経路の整理を依頼| decommission
-    decommission -->|廃止結果と残す経路を返す| autocatalyze
+    decommission -->|削減した負担・維持した機能・現行経路を返す| autocatalyze
 ```
 
 `autocatalyze` は案件の状態を復元し、必要なSkillだけを選んで依頼し、実装・公開・利用者の入口での検証まで進める。`reconceptualize`、`canonicalize`、`adjudicate`、`disprove`、`didactization`、`decommission` はそれぞれの判断と結果を `autocatalyze` に返す。`autocatalyze` は検証済みの成果と未完了工程を次の起動へ引き継ぐ。`autocatalyze` はLLMの連続起動や全Skillsの一律実行を必須にしない。
