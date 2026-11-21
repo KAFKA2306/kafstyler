@@ -181,41 +181,41 @@ Claude Codeは `claude plugin validate .`、Antigravity CLIは `agy plugin valid
 
 ## 成果から使い方を選ぶ
 
-`autocatalyze`は異なる分野の案件を選び、必要なSkillの判断・検証結果を次の観測へ引き継ぎます。
+`autocatalyze`が公開成果と運用履歴を観測し、必要なSkillが分野固有の問題を解決します。成果の版、検証方法、再開条件を共有し、複数の担当AIが次の更新へ引き継ぎます。
 
 ### 開発・運用
 
-停止した処理を最終成功時刻と失敗ログから直し、次の結果を利用者のURLで確認する。画面は初見で情報と出典を探し、迷った操作と合格条件を一件にまとめる。[定期運用](https://github.com/KAFKA2306/agent-resources) · [画面の評価例](https://github.com/KAFKA2306/design/blob/main/docs/frontend-review.md)
+複数のGitHub Pagesや公開サービスを対象に、公開先での機能障害を検出し、原因となる変更を修正、再公開、回帰確認します。`canonicalize`が各サイトの正本とリリース版を管理し、`adjudicate`が実利用の操作を確かめ、`decommission`が旧配布経路・重複監視を整理します。[定期運用](https://github.com/KAFKA2306/agent-resources) · [画面設計](https://github.com/KAFKA2306/design)
 
 ### 記事・動画・音声
 
-記事は実際の発見から再利用できる原則を抽出し、数値や実験を一次資料・再実行で確かめ、成立しない条件を示す。発見がないときは既存記事を改善し、新規公開や重複を増やさない。動画は音声・字幕を通しで確認し、公開先でチャンネル・公開状態を確かめる。音声は同じ台詞で比較し、採用WAV・モデル・シード・参照音声を残す。[記事](https://github.com/KAFKA2306/articles/blob/main/articles/kafstyler-agent-quality-loop.md) · [動画](https://github.com/KAFKA2306/yt3) · [音声](https://github.com/KAFKA2306/yt4)
+研究・一次資料の検証から記事の改訂、動画の字幕・音声確認、公開後の追跡までをつなぎます。`didactization`は複数の制作物に適用できる知見を残し、`adjudicate`は公開成果と品質を確認し、`canonicalize`が原典・音源・モデル・版を追跡できる状態にします。[記事](https://github.com/KAFKA2306/articles) · [動画](https://github.com/KAFKA2306/yt3) · [音声](https://github.com/KAFKA2306/yt4)
 
 ### VRChat・3D・画像制作
 
-ワールドでは初期位置から展示へ歩き、案内を読んで操作する。衣装はUnityで取り込み・装着し、指定ポーズで貫通とウェイト崩れを確認する。画像は素材・シード・サイズをそろえ、画質と処理時間を比べる。[VRMine](https://github.com/KAFKA2306/vrmine) · [衣装](https://github.com/KAFKA2306/image2outfit) · [ComfyUIの制作台帳](https://github.com/KAFKA2306/comfyui-workflows-factory)
+画像生成、3Dモデル化、Unityへの取り込み、ワールドとアバターへの適用を制作パイプラインとして扱います。`reconceptualize`が利用場面を定義し、`disprove`が破綻しやすい素材・ポーズ・構成を調べ、`adjudicate`が出力品質と実環境の操作を確認します。使われなくなったワークフローは`decommission`で整理します。[VRMine](https://github.com/KAFKA2306/vrmine) · [衣装制作](https://github.com/KAFKA2306/image2outfit) · [ワークフロー](https://github.com/KAFKA2306/comfyui-workflows-factory)
 
 ### ボードゲーム・ゲーム
 
-スマホで作品と版を選び、プレイ中に裁定と公式説明書の該当ページを開く。MODはSteam版に導入し、プレイ中に効果を確かめる。[ボドゲのミカタ](https://bodoge-no-mikata.vercel.app/) · [Slay the Spire 2のMOD](https://github.com/KAFKA2306/sts2)
+説明書・版・裁定の正本と、ゲームの実動作やMODの互換性を継続して管理します。`canonicalize`が作品と版を区別し、`disprove`が例外と不整合を調べ、`adjudicate`がゲーム中の利用結果を確かめます。[ボドゲのミカタ](https://bodoge-no-mikata.vercel.app/) · [Slay the Spire 2](https://github.com/KAFKA2306/sts2)
 
 ### 企業・市場の調査
 
-半導体の価格と出荷は決算期・単位をそろえ、実績・会社予想・シナリオを分けて、公開画面で式と一次開示を開く。統計は初報・改定値を対象月・公表日で区別し、公開CSVを原資料と照合する。[半導体決算モデル](https://github.com/KAFKA2306/semiconductor-earnings-model) · [米雇用統計](https://github.com/KAFKA2306/nonfarmpayroll)
+企業開示と公表統計の取得、訂正履歴、決算期・通貨・単位の統一から、計算モデルと公開画面までを追跡します。`canonicalize`は数値と出典の正本をそろえ、`disprove`は前提と感応度の弱点を探し、`adjudicate`は実績・予測・シナリオの比較条件を固定します。[半導体決算モデル](https://github.com/KAFKA2306/semiconductor-earnings-model) · [米雇用統計](https://github.com/KAFKA2306/nonfarmpayroll)
 
 ### 科学・製造の調査
 
-同じ材料・加工目的の候補を一次資料から探し、温度・圧力・速度などの条件と歩留まり・欠陥率を表にする。論文は対象・比較条件・測定値と引用箇所を記録し、案件で試せる条件を選ぶ。[製造工程の調査](https://github.com/KAFKA2306/factory) · [arXiv調査](https://github.com/KAFKA2306/daily-arXiv-ai-enhanced)
+一次論文から材料、加工条件、歩留まり、欠陥率を収集し、再現条件と評価方法を比較します。`reconceptualize`が解く課題を定め、`disprove`が対立仮説を探し、`adjudicate`が測定条件をそろえ、`didactization`が後続の研究で使える知見を残します。[製造技術](https://github.com/KAFKA2306/factory) · [論文調査](https://github.com/KAFKA2306/daily-arXiv-ai-enhanced)
 
-技術白書を作る場合は、[執筆の一次資料](BIBLES.md#技術白書の執筆)を起点に、`reconceptualize` が導入目的と採否条件を定め、`canonicalize` が論文・実験の版と数値をそろえます。`disprove` が不利な結果や例外を探し、`adjudicate` が同条件で候補を比較します。`didactization` が根拠と限界を読者の判断につなげ、`decommission` が旧稿・重複説明を整理し、`autocatalyze` が公開版を検証して改訂を引き継ぎます。[白書の執筆手順](skills/didactization/SKILL.md#技術白書を構成する)
+技術白書は[執筆の一次資料](BIBLES.md#技術白書の執筆)を起点に、`reconceptualize`が採否条件、`canonicalize`が引用と数値の正本、`disprove`が反証、`adjudicate`が比較結果、`didactization`が論証、`decommission`が旧稿の統合を担当し、`autocatalyze`が改訂と公開を引き継ぎます。[執筆の手順](skills/didactization/SKILL.md#技術白書を構成する)
 
 ### Kaggle
 
-データ版・時系列分割・公式指標・ベースラインをそろえ、手元の検証と公式提出の結果を分けて記録する。[商品価格予測コンペ](https://github.com/KAFKA2306/mitsuikaggle)
+データ更新、時系列分割、実験記録、ベースライン、公式提出を一つの比較可能な実験系列として扱います。`canonicalize`がデータと特徴量の版、`adjudicate`が独立検証、`disprove`がリークや評価条件の破綻を調べます。[価格予測](https://github.com/KAFKA2306/mitsuikaggle)
 
 ### 暮らしと学習
 
-家計は明細の再取り込みで件数・合計が変わらず、差額から元の取引を開けるか試す。蔵書は同じ作品の別版を区別し、目的のノートに戻る。旅行は公式時刻・総額・取消条件を比べ、現地時刻で乗り換えを確かめる。[家計](https://github.com/KAFKA2306/kakeibo) · [蔵書](https://github.com/KAFKA2306/books) · [旅行計画](https://github.com/KAFKA2306/travel)
+家計、蔵書、旅行計画の異なるデータをそれぞれの正本に保ち、更新、重複、外部情報の改定を継続して管理します。`canonicalize`が識別子と履歴を統一し、`adjudicate`が明細や公式条件との一致を確認し、`decommission`が不要になった同期を整理します。[家計](https://github.com/KAFKA2306/kakeibo) · [蔵書](https://github.com/KAFKA2306/books) · [旅行](https://github.com/KAFKA2306/travel)
 
 ## スキル
 
