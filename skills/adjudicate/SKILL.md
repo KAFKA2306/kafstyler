@@ -2,7 +2,7 @@
 name: adjudicate
 description: "成果物や方式を比較・評価するとき、同一条件で実測して採否を決める。"
 metadata:
-  kafstyler-model-selector: adjudicate
+  kafstyler-model-selector: audit
 ---
 
 # 評価と比較

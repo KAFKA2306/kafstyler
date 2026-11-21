@@ -2,7 +2,7 @@
 name: autocatalyze
 description: "実装から確認まで進め、定時・イベント・再開を含む常時稼働エージェントの中核を担う。"
 metadata:
-  kafstyler-model-selector: autocatalyze
+  kafstyler-model-selector: execution
 ---
 
 # 自律実行と常時稼働エージェント

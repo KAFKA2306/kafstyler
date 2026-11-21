@@ -2,7 +2,7 @@
 name: decommission
 description: "不要なコード、文書、規則、フック、CI、テスト、旧方式を削減する。"
 metadata:
-  kafstyler-model-selector: decommission
+  kafstyler-model-selector: execution
 ---
 
 # 不要な仕組みの削除

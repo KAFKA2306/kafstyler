@@ -2,7 +2,7 @@
 name: reconceptualize
 description: "目的や完成条件が曖昧な依頼で、利用者が達成する行動と検証方法を明確にする。"
 metadata:
-  kafstyler-model-selector: reconceptualize
+  kafstyler-model-selector: execution
 ---
 
 # 目的の再定義

@@ -2,7 +2,7 @@
 name: didactization
 description: "記事の発見を再利用できる知見に変え、一般文書は原意を守って簡潔に整える。"
 metadata:
-  kafstyler-model-selector: didactization
+  kafstyler-model-selector: execution
 ---
 
 # 知見の教材化と推敲

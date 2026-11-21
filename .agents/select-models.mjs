@@ -60,9 +60,11 @@ export function choose(snapshot,cfg){
   const {rows,date}=normalized(snapshot,cfg);
   const result={schema_version:1,status:'benchmark_selected_runtime_unverified',updated_from_benchmark:date,
     source:cfg.benchmark_source.url,pricing:cfg.price,skills:{}};
-  check(Object.keys(cfg.skill_models).length===7,'Expected seven existing skill names');
-  for(const name of Object.keys(cfg.skill_models).sort()){
-    const rule=cfg.skill_models[name];
+  check(Object.keys(cfg.skill_roles).length===7,'Expected seven existing skill names');
+  for(const name of Object.keys(cfg.skill_roles).sort()){
+    const role=cfg.skill_roles[name];
+    const rule=cfg.roles[role];
+    check(rule,'Unknown model role '+role);
     const allowed=rows.filter(x=>x.score>=(rule.min_score||0));
     check(new Set(allowed.map(x=>x.provider)).size>=2,'Insufficient independent providers for '+name);
     const global=pareto(allowed).sort((a,b)=>rank(a,b,rule.criterion));
@@ -93,7 +95,7 @@ async function main(){
     return;
   }
   if(argv.includes('--baseline')){
-    console.log(JSON.stringify(Object.fromEntries(Object.entries(cfg.skill_models).map(([k,v])=>[k,v.bootstrap])),null,2));
+    console.log(JSON.stringify(Object.fromEntries(Object.entries(cfg.skill_roles).map(([k,role])=>[k,cfg.roles[role].bootstrap])),null,2));
     return;
   }
   try {

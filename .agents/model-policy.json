@@ -19,54 +19,15 @@
     "OpenAI",
     "Google"
   ],
-  "skill_models": {
-    "adjudicate": {
+  "roles": {
+    "audit": {
       "criterion": "highest_score",
       "bootstrap": [
         "Gemini 4 Neon",
         "GPT-6.1 Terra"
       ]
     },
-    "disprove": {
-      "criterion": "highest_score",
-      "bootstrap": [
-        "Gemini 4 Neon",
-        "GPT-6.1 Terra"
-      ]
-    },
-    "reconceptualize": {
-      "criterion": "score_per_dollar",
-      "min_score": 30,
-      "bootstrap": [
-        "GPT-6 Luna",
-        "Gemini 4 Hydrogen"
-      ]
-    },
-    "didactization": {
-      "criterion": "score_per_dollar",
-      "min_score": 30,
-      "bootstrap": [
-        "GPT-6 Luna",
-        "Gemini 4 Hydrogen"
-      ]
-    },
-    "canonicalize": {
-      "criterion": "score_per_dollar",
-      "min_score": 30,
-      "bootstrap": [
-        "GPT-6 Luna",
-        "Gemini 4 Hydrogen"
-      ]
-    },
-    "decommission": {
-      "criterion": "score_per_dollar",
-      "min_score": 30,
-      "bootstrap": [
-        "GPT-6 Luna",
-        "Gemini 4 Hydrogen"
-      ]
-    },
-    "autocatalyze": {
+    "execution": {
       "criterion": "score_per_dollar",
       "min_score": 30,
       "bootstrap": [
@@ -74,5 +35,14 @@
         "Gemini 4 Hydrogen"
       ]
     }
+  },
+  "skill_roles": {
+    "adjudicate": "audit",
+    "disprove": "audit",
+    "reconceptualize": "execution",
+    "didactization": "execution",
+    "canonicalize": "execution",
+    "decommission": "execution",
+    "autocatalyze": "execution"
   }
 }
