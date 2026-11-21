@@ -67,12 +67,12 @@ autocatalyzeを使い、このプロジェクトの検索機能を直して。
 ```mermaid
 flowchart TD
     start["複数プロジェクト・定時起動・依頼・障害"] --> core["autocatalyze：状態復元・案件選定・委譲・実行"]
-    core -. "目的整理" .-> goal["reconceptualize：目的と合格条件"]
-    core -. "正本・データ設計" .-> canon["canonicalize：正本と引き継ぎデータ"]
-    core -. "評価" .-> judge["adjudicate：合格条件と実測"]
-    core -. "反証" .-> proof["disprove：重大な反例の確認"]
-    core -. "文書化" .-> write["didactization：知見の教材化と推敲"]
-    core -. "整理・廃止" .-> retire["decommission：不要な仕組みの削減"]
+    core -.->|目的整理| goal["reconceptualize：目的と合格条件"]
+    core -.->|正本・データ設計| canon["canonicalize：正本と引き継ぎデータ"]
+    core -.->|評価| judge["adjudicate：合格条件と実測"]
+    core -.->|反証| proof["disprove：重大な反例の確認"]
+    core -.->|文書化| write["didactization：知見の教材化と推敲"]
+    core -.->|整理・廃止| retire["decommission：不要な仕組みの削減"]
     core --> verify["実装・公開先で成果を検証"]
     verify --> record["既存の正本に作業ID・版・検証結果・未完了・再開条件を保存"]
     record --> handoff["次のAI担当・別セッション・次回の定期実行"]
