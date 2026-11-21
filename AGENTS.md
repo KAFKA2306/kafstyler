@@ -48,15 +48,15 @@ Kafstylerは、開発・調査・制作・運用でAIエージェントが課題
 
 ## スキル別モデル選定
 
-既存7スキルの frontmatter \`name\` をキーにモデルを選ぶ。監査・実行などの新しいスキル種別は作らない。frontmatter の \`metadata.kafstyler-model-selector\` はその \`name\` を指し、実行モデルそのものを切り替える機能ではない。
+既存7スキルの frontmatter `name` をキーにモデルを選ぶ。監査・実行などの新しいスキル種別は作らない。frontmatter の `metadata.kafstyler-model-selector` はその `name` を指し、実行モデルそのものを切り替える機能ではない。
 
-[モデル方針](.agents/model-policy.json)を正本とし、初期候補は \`disprove\`・\`adjudicate\` が Gemini 4 Neon → GPT-6.1 Terra、それ以外は GPT-6 Luna → Gemini 4 Hydrogen とする。矢印の後者は週次利用枠・障害時の別会社fallbackであり、パレート非劣位でなくてもよい。初期候補はスコア・実行可能性未検証。
+[モデル方針](.agents/model-policy.json)を正本とし、初期候補は `disprove`・`adjudicate` が Gemini 4 Neon → GPT-6.1 Terra、それ以外は GPT-6 Luna → Gemini 4 Hydrogen とする。矢印の後者は週次利用枠・障害時の別会社fallbackであり、パレート非劣位でなくてもよい。初期候補はスコア・実行可能性未検証。
 
-[選定プログラム](.agents/select-models.mjs)は、公開されている第三者スコアと通常価格を使って、入力75％・出力25％のUSD/100万トークン、上限3 USDで比較する。全社横断のパレートフロントで第一候補を決め、その会社と異なる会社の次点をfallbackにする。固定した入力データ・設定・参照日では同じ結果を返す。日次の[公開データ更新](.github/workflows/model-selection.yml)はAPIキー不要。公開スナップショットが古い、出典不明、候補が欠ける場合は設定を維持する。モデルごとの \`score\`・\`price\`・日付を保存する。
+[選定プログラム](.agents/select-models.mjs)は、公開されている第三者スコアと通常価格を使って、入力75％・出力25％のUSD/100万トークン、上限3 USDで比較する。全社横断のパレートフロントで第一候補を決め、その会社と異なる会社の次点をfallbackにする。固定した入力データ・設定・参照日では同じ結果を返す。日次の[公開データ更新](.github/workflows/model-selection.yml)はAPIキー不要。公開スナップショットが古い、出典不明、候補が欠ける場合は設定を維持する。モデルごとの `score`・`price`・日付を保存する。
 
-\`node .agents/select-models.mjs --baseline\` で希望候補、\`node .agents/select-models.mjs --resolve disprove --unavailable Google\` で選定済みのfallbackを表示する。外部の有償APIは呼ばない。選定結果は実行できるモデルIDや認証済みCLIを保証しない。実行器はClaude Code・Codex・Antigravityの各公式モデル選択規則に従ってIDを検証し、権限・週次制限による失敗時に別会社へ切り替える。スキル定義自体は全クライアントで共用する。
+`node .agents/select-models.mjs --baseline` で希望候補、`node .agents/select-models.mjs --resolve disprove --unavailable Google` で選定済みのfallbackを表示する。外部の有償APIは呼ばない。選定結果は実行できるモデルIDや認証済みCLIを保証しない。実行器はClaude Code・Codex・Antigravityの各公式モデル選択規則に従ってIDを検証し、権限・週次制限による失敗時に別会社へ切り替える。スキル定義自体は全クライアントで共用する。
 
-公式仕様：[Agent Skills](https://agentskills.io/specification)、[Claude Code Skills](https://code.claude.com/docs/en/skills)、[Codex Subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents)、[Antigravity Skills](https://antigravity.google/docs/skills)。\`context: fork\` とClaude Codeの \`model\` は同一ツール内のsubagent指定であり、異なる会社のCLIを呼び分ける機能ではない。
+公式仕様：[Agent Skills](https://agentskills.io/specification)、[Claude Code Skills](https://code.claude.com/docs/en/skills)、[Codex Subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents)、[Antigravity Skills](https://antigravity.google/docs/skills)。`context: fork` とClaude Codeの `model` は同一ツール内のsubagent指定であり、異なる会社のCLIを呼び分ける機能ではない。
 
 ## ミッションとコマンド
 
