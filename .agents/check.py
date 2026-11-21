@@ -107,9 +107,10 @@ def check_markdown(root, inventory, staged):
     if review.get("rules") != inventory["rules"]:
         errors.append("規約またはスキルが変わった。現行版で対象を確認する。")
     counts = dict.fromkeys(("pass", "fail", "not_applicable", "pending"), 0)
+    scope_counts = dict.fromkeys(("document", "static", "runtime", "production"), 0)
     for group in ("documents", "files"):
         if group in inventory:
-            check_review_entries(review.get(group), inventory[group], skills, counts, errors)
+            check_review_entries(review.get(group), inventory[group], skills, counts, scope_counts, errors)
     label = "全ファイル" if "files" in inventory else "Markdown"
     for error in errors:
         print(f"{label} 不合格 {error}")
@@ -118,11 +119,13 @@ def check_markdown(root, inventory, staged):
         f"{label} {'不合格' if errors else '合格'} {count}件 × {len(skills)}スキル。"
         f"合格 {counts['pass']}、不合格 {counts['fail']}、"
         f"適用外 {counts['not_applicable']}、未確認 {counts['pending']}。"
+        f" PASSの確認範囲: 文書 {scope_counts['document']}、静的 {scope_counts['static']}、"
+        f"実行 {scope_counts['runtime']}、公開先 {scope_counts['production']}。"
     )
     return not errors
 
 
-def check_review_entries(documents, inventory, skills, counts, errors):
+def check_review_entries(documents, inventory, skills, counts, scope_counts, errors):
     if not isinstance(documents, dict):
         raise ValueError("適用記録はファイルパスをキーにしたオブジェクトにする。")
     for path, digest in inventory.items():
@@ -166,6 +169,32 @@ def check_review_entries(documents, inventory, skills, counts, errors):
             ):
                 errors.append(f"{path} の {skill} は未確認事項を含むため合格の範囲を再評価する。")
                 continue
+            if status == "pass":
+                scope = result.get("scope")
+                if scope not in scope_counts:
+                    errors.append(f"{path} の {skill} のPASSに確認範囲がない。")
+                    continue
+                if scope == "runtime":
+                    # 文書上の判断と実行結果を混同しない。記録だけで事実性は証明できない。
+                    if (
+                        not isinstance(result.get("command"), str)
+                        or not result["command"].strip()
+                        or result.get("exit_code") != 0
+                        or not isinstance(result.get("observed_result"), str)
+                        or not result["observed_result"].strip()
+                    ):
+                        errors.append(f"{path} の {skill} の実行PASSにコマンド・終了コード・観測がない。")
+                        continue
+                if scope == "production":
+                    if (
+                        not isinstance(result.get("entry_url"), str)
+                        or not result["entry_url"].startswith("https://")
+                        or not isinstance(result.get("observed_result"), str)
+                        or not result["observed_result"].strip()
+                    ):
+                        errors.append(f"{path} の {skill} の公開先PASSにURL・観測がない。")
+                        continue
+                scope_counts[scope] += 1
             counts[status] += 1
     for path in sorted(documents.keys() - inventory.keys()):
         errors.append(f"対象に存在しないファイル {path} の適用記録がある。")

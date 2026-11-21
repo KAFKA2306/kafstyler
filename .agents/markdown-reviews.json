@@ -1,5 +1,5 @@
 {
-  "compared_to": "ce035ec6a397d9ac42892f95220da54dd5232baf",
+  "compared_to": "6c49e67173df06ae7ddc513fac579f294680ae80",
   "sources": {
     "成功基準と自動採点": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
     "エージェント評価と判定例": "https://www.anthropic.com/research/demystifying-evals-for-ai-agents",
@@ -50,31 +50,38 @@
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "AGENTS.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。"
+          "evidence": "AGENTS.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "scope": "document"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "AGENTS.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。"
+          "evidence": "AGENTS.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "scope": "document"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "AGENTS.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。"
+          "evidence": "AGENTS.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "scope": "document"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "AGENTS.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。"
+          "evidence": "AGENTS.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "scope": "document"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "AGENTS.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。"
+          "evidence": "AGENTS.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "scope": "document"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "AGENTS.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。"
+          "evidence": "AGENTS.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "scope": "document"
         },
         "didactization": {
           "status": "pass",
-          "evidence": "AGENTS.md について、記事には観測・原則・再現手順・反例・適用限界、一般文書には原意保持と自然な推敲を要求する改訂を確認し、役割の使い分けと参照先を照合した。"
+          "evidence": "AGENTS.md について、記事には観測・原則・再現手順・反例・適用限界、一般文書には原意保持と自然な推敲を要求する改訂を確認し、役割の使い分けと参照先を照合した。",
+          "scope": "document"
         }
       }
     },
@@ -83,31 +90,38 @@
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "BIBLES.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。"
+          "evidence": "BIBLES.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "scope": "document"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "BIBLES.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。"
+          "evidence": "BIBLES.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "scope": "document"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "BIBLES.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。"
+          "evidence": "BIBLES.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "scope": "document"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "BIBLES.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。"
+          "evidence": "BIBLES.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "scope": "document"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "BIBLES.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。"
+          "evidence": "BIBLES.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "scope": "document"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "BIBLES.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。"
+          "evidence": "BIBLES.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "scope": "document"
         },
         "didactization": {
           "status": "pass",
-          "evidence": "BIBLES.md について、記事には観測・原則・再現手順・反例・適用限界、一般文書には原意保持と自然な推敲を要求する改訂を確認し、役割の使い分けと参照先を照合した。"
+          "evidence": "BIBLES.md について、記事には観測・原則・再現手順・反例・適用限界、一般文書には原意保持と自然な推敲を要求する改訂を確認し、役割の使い分けと参照先を照合した。",
+          "scope": "document"
         }
       }
     },
@@ -116,31 +130,38 @@
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "MISSION.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。"
+          "evidence": "MISSION.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "scope": "document"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "MISSION.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。"
+          "evidence": "MISSION.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "scope": "document"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "MISSION.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。"
+          "evidence": "MISSION.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "scope": "document"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "MISSION.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。"
+          "evidence": "MISSION.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "scope": "document"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "MISSION.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。"
+          "evidence": "MISSION.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "scope": "document"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "MISSION.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。"
+          "evidence": "MISSION.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "scope": "document"
         },
         "didactization": {
           "status": "pass",
-          "evidence": "MISSION.md について、記事には観測・原則・再現手順・反例・適用限界、一般文書には原意保持と自然な推敲を要求する改訂を確認し、役割の使い分けと参照先を照合した。"
+          "evidence": "MISSION.md について、記事には観測・原則・再現手順・反例・適用限界、一般文書には原意保持と自然な推敲を要求する改訂を確認し、役割の使い分けと参照先を照合した。",
+          "scope": "document"
         }
       }
     },
@@ -149,31 +170,38 @@
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "README.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。"
+          "evidence": "README.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "scope": "document"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "README.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。"
+          "evidence": "README.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "scope": "document"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "README.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。"
+          "evidence": "README.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "scope": "document"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "README.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。"
+          "evidence": "README.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "scope": "document"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "README.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。"
+          "evidence": "README.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "scope": "document"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "README.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。"
+          "evidence": "README.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "scope": "document"
         },
         "didactization": {
           "status": "pass",
-          "evidence": "README.md について、記事には観測・原則・再現手順・反例・適用限界、一般文書には原意保持と自然な推敲を要求する改訂を確認し、役割の使い分けと参照先を照合した。"
+          "evidence": "README.md について、記事には観測・原則・再現手順・反例・適用限界、一般文書には原意保持と自然な推敲を要求する改訂を確認し、役割の使い分けと参照先を照合した。",
+          "scope": "document"
         }
       }
     },
@@ -182,31 +210,38 @@
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。"
+          "evidence": "改名前後で見出し・外部URL・参照件数を比較し、全13文書で相対参照618件を解決した。",
+          "scope": "document"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。"
+          "evidence": "作業ツリーの新しい相対リンクと見出しを解決し、配布対象7件と照合した。",
+          "scope": "document"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。"
+          "evidence": "種別・別名・リンクを着手版と比較し、OKFの厳格検査で不達とエラー0件を確認した。",
+          "scope": "document"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。"
+          "evidence": "旧フォルダーへの参照を確認し、対象文書の移動先と既存見出しを照合した。",
+          "scope": "document"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。"
+          "evidence": "旧参照、移動先の大文字小文字、見出し違いを候補に、対象の相対リンクと識別子を検査した。",
+          "scope": "document"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。"
+          "evidence": "役割の説明と、利用者が開く新しい参照先を照合した。",
+          "scope": "document"
         },
         "didactization": {
           "status": "pass",
-          "evidence": "すべての入口を『試す・合格条件を確かめる・一次資料を探す』という読者の操作で説明。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。 新名称の役割では、記事以外に独自の発見を要求しない。"
+          "evidence": "すべての入口を『試す・合格条件を確かめる・一次資料を探す』という読者の操作で説明。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。 新名称の役割では、記事以外に独自の発見を要求しない。",
+          "scope": "document"
         }
       }
     },
@@ -215,31 +250,38 @@
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "rules/kafstyler.md の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
+          "evidence": "rules/kafstyler.md の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。",
+          "scope": "document"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "rules/kafstyler.md の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
+          "evidence": "rules/kafstyler.md の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。",
+          "scope": "document"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "rules/kafstyler.md の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
+          "evidence": "rules/kafstyler.md の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。",
+          "scope": "document"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "rules/kafstyler.md の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
+          "evidence": "rules/kafstyler.md の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。",
+          "scope": "document"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "rules/kafstyler.md の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
+          "evidence": "rules/kafstyler.md の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。",
+          "scope": "document"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "rules/kafstyler.md の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
+          "evidence": "rules/kafstyler.md の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。",
+          "scope": "document"
         },
         "didactization": {
           "status": "pass",
-          "evidence": "Antigravity導入先の調べ方を短縮。再開・成果の読み戻し・記録を操作順に説明。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。 新名称の役割では、記事以外に独自の発見を要求しない。"
+          "evidence": "Antigravity導入先の調べ方を短縮。再開・成果の読み戻し・記録を操作順に説明。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。 新名称の役割では、記事以外に独自の発見を要求しない。",
+          "scope": "document"
         }
       }
     },
@@ -248,31 +290,38 @@
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "skills/adjudicate/SKILL.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。"
+          "evidence": "skills/adjudicate/SKILL.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。",
+          "scope": "document"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "skills/adjudicate/SKILL.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。"
+          "evidence": "skills/adjudicate/SKILL.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。",
+          "scope": "document"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "skills/adjudicate/SKILL.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。"
+          "evidence": "skills/adjudicate/SKILL.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。",
+          "scope": "document"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "skills/adjudicate/SKILL.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。"
+          "evidence": "skills/adjudicate/SKILL.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。",
+          "scope": "document"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "skills/adjudicate/SKILL.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。"
+          "evidence": "skills/adjudicate/SKILL.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。",
+          "scope": "document"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "skills/adjudicate/SKILL.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。"
+          "evidence": "skills/adjudicate/SKILL.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。",
+          "scope": "document"
         },
         "didactization": {
           "status": "pass",
-          "evidence": "合格条件を実装前に固定すること、自己採点で合格としないことを冒頭で明確化。独立評価できない条件を残す。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。 新名称の役割では、記事以外に独自の発見を要求しない。"
+          "evidence": "合格条件を実装前に固定すること、自己採点で合格としないことを冒頭で明確化。独立評価できない条件を残す。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。 新名称の役割では、記事以外に独自の発見を要求しない。",
+          "scope": "document"
         }
       }
     },
@@ -281,31 +330,38 @@
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "skills/autocatalyze/SKILL.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。"
+          "evidence": "skills/autocatalyze/SKILL.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。",
+          "scope": "document"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "skills/autocatalyze/SKILL.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。"
+          "evidence": "skills/autocatalyze/SKILL.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。",
+          "scope": "document"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "skills/autocatalyze/SKILL.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。"
+          "evidence": "skills/autocatalyze/SKILL.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。",
+          "scope": "document"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "skills/autocatalyze/SKILL.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。"
+          "evidence": "skills/autocatalyze/SKILL.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。",
+          "scope": "document"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "skills/autocatalyze/SKILL.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。"
+          "evidence": "skills/autocatalyze/SKILL.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。",
+          "scope": "document"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "skills/autocatalyze/SKILL.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。"
+          "evidence": "skills/autocatalyze/SKILL.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。",
+          "scope": "document"
         },
         "didactization": {
           "status": "pass",
-          "evidence": "空の見出し状態を解消し、常時稼働の中核と定期実行の説明を正しい順序に再配置。実成果の入口と再開可能性を先に説明。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。 新名称の役割では、記事以外に独自の発見を要求しない。"
+          "evidence": "空の見出し状態を解消し、常時稼働の中核と定期実行の説明を正しい順序に再配置。実成果の入口と再開可能性を先に説明。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。 新名称の役割では、記事以外に独自の発見を要求しない。",
+          "scope": "document"
         }
       }
     },
@@ -314,31 +370,38 @@
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "skills/canonicalize/SKILL.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。"
+          "evidence": "skills/canonicalize/SKILL.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。",
+          "scope": "document"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "skills/canonicalize/SKILL.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。"
+          "evidence": "skills/canonicalize/SKILL.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。",
+          "scope": "document"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "skills/canonicalize/SKILL.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。"
+          "evidence": "skills/canonicalize/SKILL.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。",
+          "scope": "document"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "skills/canonicalize/SKILL.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。"
+          "evidence": "skills/canonicalize/SKILL.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。",
+          "scope": "document"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "skills/canonicalize/SKILL.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。"
+          "evidence": "skills/canonicalize/SKILL.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。",
+          "scope": "document"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "skills/canonicalize/SKILL.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。"
+          "evidence": "skills/canonicalize/SKILL.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。",
+          "scope": "document"
         },
         "didactization": {
           "status": "pass",
-          "evidence": "正本・識別子・利用側の役割を冒頭で明確化。重複する定義を扱う条件を短縮し、参照は維持。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。 新名称の役割では、記事以外に独自の発見を要求しない。"
+          "evidence": "正本・識別子・利用側の役割を冒頭で明確化。重複する定義を扱う条件を短縮し、参照は維持。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。 新名称の役割では、記事以外に独自の発見を要求しない。",
+          "scope": "document"
         }
       }
     },
@@ -347,31 +410,38 @@
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "skills/decommission/SKILL.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。"
+          "evidence": "skills/decommission/SKILL.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。",
+          "scope": "document"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "skills/decommission/SKILL.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。"
+          "evidence": "skills/decommission/SKILL.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。",
+          "scope": "document"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "skills/decommission/SKILL.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。"
+          "evidence": "skills/decommission/SKILL.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。",
+          "scope": "document"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "skills/decommission/SKILL.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。"
+          "evidence": "skills/decommission/SKILL.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。",
+          "scope": "document"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "skills/decommission/SKILL.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。"
+          "evidence": "skills/decommission/SKILL.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。",
+          "scope": "document"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "skills/decommission/SKILL.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。"
+          "evidence": "skills/decommission/SKILL.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。",
+          "scope": "document"
         },
         "didactization": {
           "status": "pass",
-          "evidence": "削除対象と削除しない条件を冒頭で区別。削減率より利用経路と障害検出を優先する表現に整理。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。 新名称の役割では、記事以外に独自の発見を要求しない。"
+          "evidence": "削除対象と削除しない条件を冒頭で区別。削減率より利用経路と障害検出を優先する表現に整理。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。 新名称の役割では、記事以外に独自の発見を要求しない。",
+          "scope": "document"
         }
       }
     },
@@ -380,31 +450,38 @@
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "skills/disprove/SKILL.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。"
+          "evidence": "skills/disprove/SKILL.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。",
+          "scope": "document"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "skills/disprove/SKILL.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。"
+          "evidence": "skills/disprove/SKILL.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。",
+          "scope": "document"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "skills/disprove/SKILL.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。"
+          "evidence": "skills/disprove/SKILL.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。",
+          "scope": "document"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "skills/disprove/SKILL.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。"
+          "evidence": "skills/disprove/SKILL.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。",
+          "scope": "document"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "skills/disprove/SKILL.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。"
+          "evidence": "skills/disprove/SKILL.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。",
+          "scope": "document"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "skills/disprove/SKILL.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。"
+          "evidence": "skills/disprove/SKILL.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。",
+          "scope": "document"
         },
         "didactization": {
           "status": "pass",
-          "evidence": "反例・証拠・影響を先に示し、対立仮説の検証方法を操作可能な文で説明。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。 新名称の役割では、記事以外に独自の発見を要求しない。"
+          "evidence": "反例・証拠・影響を先に示し、対立仮説の検証方法を操作可能な文で説明。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。 新名称の役割では、記事以外に独自の発見を要求しない。",
+          "scope": "document"
         }
       }
     },
@@ -413,31 +490,38 @@
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "skills/reconceptualize/SKILL.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。"
+          "evidence": "skills/reconceptualize/SKILL.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。",
+          "scope": "document"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "skills/reconceptualize/SKILL.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。"
+          "evidence": "skills/reconceptualize/SKILL.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。",
+          "scope": "document"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "skills/reconceptualize/SKILL.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。"
+          "evidence": "skills/reconceptualize/SKILL.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。",
+          "scope": "document"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "skills/reconceptualize/SKILL.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。"
+          "evidence": "skills/reconceptualize/SKILL.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。",
+          "scope": "document"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "skills/reconceptualize/SKILL.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。"
+          "evidence": "skills/reconceptualize/SKILL.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。",
+          "scope": "document"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "skills/reconceptualize/SKILL.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。"
+          "evidence": "skills/reconceptualize/SKILL.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。",
+          "scope": "document"
         },
         "didactization": {
           "status": "pass",
-          "evidence": "完了場面を読者の最後の操作と見える結果で定義。比較案の理由と代理指標の扱いを簡潔化。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。 新名称の役割では、記事以外に独自の発見を要求しない。"
+          "evidence": "完了場面を読者の最後の操作と見える結果で定義。比較案の理由と代理指標の扱いを簡潔化。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。 新名称の役割では、記事以外に独自の発見を要求しない。",
+          "scope": "document"
         }
       }
     },
@@ -446,66 +530,80 @@
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "skills/didactization/SKILL.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。"
+          "evidence": "skills/didactization/SKILL.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "scope": "document"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "skills/didactization/SKILL.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。"
+          "evidence": "skills/didactization/SKILL.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "scope": "document"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "skills/didactization/SKILL.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。"
+          "evidence": "skills/didactization/SKILL.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "scope": "document"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "skills/didactization/SKILL.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。"
+          "evidence": "skills/didactization/SKILL.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "scope": "document"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "skills/didactization/SKILL.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。"
+          "evidence": "skills/didactization/SKILL.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "scope": "document"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "skills/didactization/SKILL.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。"
+          "evidence": "skills/didactization/SKILL.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "scope": "document"
         },
         "didactization": {
           "status": "pass",
-          "evidence": "skills/didactization/SKILL.md について、記事には観測・原則・再現手順・反例・適用限界、一般文書には原意保持と自然な推敲を要求する改訂を確認し、役割の使い分けと参照先を照合した。"
+          "evidence": "skills/didactization/SKILL.md について、記事には観測・原則・再現手順・反例・適用限界、一般文書には原意保持と自然な推敲を要求する改訂を確認し、役割の使い分けと参照先を照合した。",
+          "scope": "document"
         }
       }
     }
   },
   "files": {
     ".agents/check.py": {
-      "sha256": "1c6fda856e2d8c85c1b32091ea861a987c9d6cc8365382a2e3ed504284c1474c",
+      "sha256": "b3e4a158840ddc40fa4c5e33e74e9fd6dd27a7887db44a9461ee63df23406a33",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "監査のPASS根拠を同条件7入力で旧版と候補版に与えた。現行で通過してしまう未完了表現4件は候補で拒否し、適切な記録3件は通過した。今回の評価範囲は根拠文の判定である。"
+          "scope": "static",
+          "evidence": "監査チェックのPASSに確認範囲を要求し、document/static/runtime/productionを区別。runtimeは実行コマンド・終了コード0・観測、productionはURL・観測の入力必須を実装し、既存の監査台帳140組を範囲付きに更新した。実行環境の外部検証は別の証拠にする。"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "保守の入口である --markdown-inventory --all-files で追加予定のMarkdown 3件を取得。現行の追跡済み20件の一覧は追加前の旧出力と一致。"
+          "scope": "static",
+          "evidence": "既存のcheck_markdownと全ファイルチェックに確認範囲の集計を追加し、同じ監査台帳と既存のcheck.py実行入口を維持した。Pythonの実行確認は独立して行う。"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "監査プログラムと監査台帳の版を一致させるため、既存のハッシュ値を独立計算と照合したうえで、変更後プログラムのSHA-256および台帳自身の自己参照を除いたSHA-256を再計算した。"
+          "evidence": "監査プログラムと監査台帳の版を一致させるため、既存のハッシュ値を独立計算と照合したうえで、変更後プログラムのSHA-256および台帳自身の自己参照を除いたSHA-256を再計算した。",
+          "scope": "static"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "Markdown判定を is_markdown に一つ置き、大文字の拡張子と contents.lr が両モードで同じ扱いになることを3件の入力で確認。"
+          "evidence": "Markdown判定を is_markdown に一つ置き、大文字の拡張子と contents.lr が両モードで同じ扱いになることを3件の入力で確認。",
+          "scope": "static"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "現行の根拠文判定には、完了していないことを異なる言い方で記すと合格に見える反例4件があった。同じ入力で候補の拒否4件と正常例の通過3件を検証した。"
+          "scope": "static",
+          "evidence": "文書確認を実機の成功と取り違える反例を想定し、PASSの確認範囲が欠ける場合と実行・公開の具体的証拠がない場合に拒否する分岐を確認した。実際のPython実行結果は別に検証する。"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "保守担当者が記録作成前に一覧を作る場面を確認。通常から全ファイルに替えても追加予定Markdownが一覧に残ることを、同じ3ファイルと既存のコマンドで確認。"
+          "evidence": "保守担当者が記録作成前に一覧を作る場面を確認。通常から全ファイルに替えても追加予定Markdownが一覧に残ることを、同じ3ファイルと既存のコマンドで確認。",
+          "scope": "static"
         },
         "didactization": {
           "status": "pass",
-          "evidence": "実際の引数の説明を、Markdownに追跡済み非Markdownを加える操作として記述し、通常モードと全ファイルモードの一覧と読み比べた。"
+          "evidence": "実際の引数の説明を、Markdownに追跡済み非Markdownを加える操作として記述し、通常モードと全ファイルモードの一覧と読み比べた。",
+          "scope": "static"
         }
       }
     },
@@ -513,65 +611,79 @@
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "配布版0.8.0の3マニフェスト、起動フック、Antigravity規約の版を照合した。台帳のSHA-256を再計算した。実際の配布環境での新セッション検証は別工程。 改名に伴うレビュー台帳の現行版を照合。"
+          "evidence": "配布版0.8.0の3マニフェスト、起動フック、Antigravity規約の版を照合した。台帳のSHA-256を再計算した。実際の配布環境での新セッション検証は別工程。 改名に伴うレビュー台帳の現行版を照合。",
+          "scope": "static"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "配布版0.8.0の3マニフェスト、起動フック、Antigravity規約の版を照合した。台帳のSHA-256を再計算した。実際の配布環境での新セッション検証は別工程。 改名に伴うレビュー台帳の現行版を照合。"
+          "evidence": "配布版0.8.0の3マニフェスト、起動フック、Antigravity規約の版を照合した。台帳のSHA-256を再計算した。実際の配布環境での新セッション検証は別工程。 改名に伴うレビュー台帳の現行版を照合。",
+          "scope": "static"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "配布版0.8.0の3マニフェスト、起動フック、Antigravity規約の版を照合した。台帳のSHA-256を再計算した。実際の配布環境での新セッション検証は別工程。 改名に伴うレビュー台帳の現行版を照合。"
+          "evidence": "配布版0.8.0の3マニフェスト、起動フック、Antigravity規約の版を照合した。台帳のSHA-256を再計算した。実際の配布環境での新セッション検証は別工程。 改名に伴うレビュー台帳の現行版を照合。",
+          "scope": "static"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "配布版0.8.0の3マニフェスト、起動フック、Antigravity規約の版を照合した。台帳のSHA-256を再計算した。実際の配布環境での新セッション検証は別工程。 改名に伴うレビュー台帳の現行版を照合。"
+          "evidence": "配布版0.8.0の3マニフェスト、起動フック、Antigravity規約の版を照合した。台帳のSHA-256を再計算した。実際の配布環境での新セッション検証は別工程。 改名に伴うレビュー台帳の現行版を照合。",
+          "scope": "static"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "配布版0.8.0の3マニフェスト、起動フック、Antigravity規約の版を照合した。台帳のSHA-256を再計算した。実際の配布環境での新セッション検証は別工程。 改名に伴うレビュー台帳の現行版を照合。"
+          "evidence": "配布版0.8.0の3マニフェスト、起動フック、Antigravity規約の版を照合した。台帳のSHA-256を再計算した。実際の配布環境での新セッション検証は別工程。 改名に伴うレビュー台帳の現行版を照合。",
+          "scope": "static"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "配布版0.8.0の3マニフェスト、起動フック、Antigravity規約の版を照合した。台帳のSHA-256を再計算した。実際の配布環境での新セッション検証は別工程。 改名に伴うレビュー台帳の現行版を照合。"
+          "evidence": "配布版0.8.0の3マニフェスト、起動フック、Antigravity規約の版を照合した。台帳のSHA-256を再計算した。実際の配布環境での新セッション検証は別工程。 改名に伴うレビュー台帳の現行版を照合。",
+          "scope": "static"
         },
         "didactization": {
           "status": "pass",
-          "evidence": "7スキルと13 Markdownの各結果をdidactizationへ切り替え、版・対象・参照パスと計算されたハッシュを照合。"
+          "evidence": "7スキルと13 Markdownの各結果をdidactizationへ切り替え、版・対象・参照パスと計算されたハッシュを照合。",
+          "scope": "static"
         }
       },
-      "sha256": "488db9639398e453383a16880fc9596020e0c1795b309a38cea4f8eaa0f9ad61"
+      "sha256": "693a88ad3bf6dee711c77a488e0886dd040f59738c76fc9b3a392ca392d8acd8"
     },
     ".agents/plugins/marketplace.json": {
       "sha256": "094134d9f8a84b5c2d80cbdf7e83a6666d38730d3e0b052228702faf60641d75",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。",
+          "scope": "static"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。",
+          "scope": "static"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。",
+          "scope": "static"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。",
+          "scope": "static"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。",
+          "scope": "static"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。",
+          "scope": "static"
         },
         "didactization": {
           "status": "pass",
-          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。"
+          "evidence": "配布先とバージョンを読み戻し、3クライアントのマニフェストで版以外の差がないことを旧版と比較した。",
+          "scope": "static"
         }
       }
     },
@@ -580,31 +692,38 @@
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": ".agents/quality.sh の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
+          "evidence": ".agents/quality.sh の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。",
+          "scope": "static"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": ".agents/quality.sh の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
+          "evidence": ".agents/quality.sh の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。",
+          "scope": "static"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": ".agents/quality.sh の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
+          "evidence": ".agents/quality.sh の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。",
+          "scope": "static"
         },
         "decommission": {
           "status": "pass",
-          "evidence": ".agents/quality.sh の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
+          "evidence": ".agents/quality.sh の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。",
+          "scope": "static"
         },
         "disprove": {
           "status": "pass",
-          "evidence": ".agents/quality.sh の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
+          "evidence": ".agents/quality.sh の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。",
+          "scope": "static"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": ".agents/quality.sh の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
+          "evidence": ".agents/quality.sh の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。",
+          "scope": "static"
         },
         "didactization": {
           "status": "pass",
-          "evidence": ".agents/quality.sh の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
+          "evidence": ".agents/quality.sh の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。",
+          "scope": "static"
         }
       }
     },
@@ -613,31 +732,38 @@
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": ".antigravity-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。"
+          "evidence": ".antigravity-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。",
+          "scope": "static"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": ".antigravity-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。"
+          "evidence": ".antigravity-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。",
+          "scope": "static"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": ".antigravity-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。"
+          "evidence": ".antigravity-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。",
+          "scope": "static"
         },
         "decommission": {
           "status": "pass",
-          "evidence": ".antigravity-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。"
+          "evidence": ".antigravity-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。",
+          "scope": "static"
         },
         "disprove": {
           "status": "pass",
-          "evidence": ".antigravity-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。"
+          "evidence": ".antigravity-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。",
+          "scope": "static"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": ".antigravity-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。"
+          "evidence": ".antigravity-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。",
+          "scope": "static"
         },
         "didactization": {
           "status": "pass",
-          "evidence": ".antigravity-plugin/plugin.json の配布設定を確認。0.9.0への版更新は文章の意味を変えない。"
+          "evidence": ".antigravity-plugin/plugin.json の配布設定を確認。0.9.0への版更新は文章の意味を変えない。",
+          "scope": "static"
         }
       }
     },
@@ -646,31 +772,38 @@
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": ".claude-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。"
+          "evidence": ".claude-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。",
+          "scope": "static"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": ".claude-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。"
+          "evidence": ".claude-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。",
+          "scope": "static"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": ".claude-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。"
+          "evidence": ".claude-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。",
+          "scope": "static"
         },
         "decommission": {
           "status": "pass",
-          "evidence": ".claude-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。"
+          "evidence": ".claude-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。",
+          "scope": "static"
         },
         "disprove": {
           "status": "pass",
-          "evidence": ".claude-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。"
+          "evidence": ".claude-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。",
+          "scope": "static"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": ".claude-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。"
+          "evidence": ".claude-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。",
+          "scope": "static"
         },
         "didactization": {
           "status": "pass",
-          "evidence": ".claude-plugin/plugin.json の配布設定を確認。0.9.0への版更新は文章の意味を変えない。"
+          "evidence": ".claude-plugin/plugin.json の配布設定を確認。0.9.0への版更新は文章の意味を変えない。",
+          "scope": "static"
         }
       }
     },
@@ -679,31 +812,38 @@
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": ".codex-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。"
+          "evidence": ".codex-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。",
+          "scope": "static"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": ".codex-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。"
+          "evidence": ".codex-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。",
+          "scope": "static"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": ".codex-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。"
+          "evidence": ".codex-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。",
+          "scope": "static"
         },
         "decommission": {
           "status": "pass",
-          "evidence": ".codex-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。"
+          "evidence": ".codex-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。",
+          "scope": "static"
         },
         "disprove": {
           "status": "pass",
-          "evidence": ".codex-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。"
+          "evidence": ".codex-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。",
+          "scope": "static"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": ".codex-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。"
+          "evidence": ".codex-plugin/plugin.json の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。 配布設定0.9.0の項目を元の版と照合。",
+          "scope": "static"
         },
         "didactization": {
           "status": "pass",
-          "evidence": ".codex-plugin/plugin.json の配布設定を確認。0.9.0への版更新は文章の意味を変えない。"
+          "evidence": ".codex-plugin/plugin.json の配布設定を確認。0.9.0への版更新は文章の意味を変えない。",
+          "scope": "static"
         }
       }
     }
