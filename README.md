@@ -214,6 +214,8 @@ Claude Codeは `claude plugin validate .`、Antigravity CLIは `agy plugin valid
 
 同じ材料・加工目的の候補を一次資料から探し、温度・圧力・速度などの条件と歩留まり・欠陥率を表にする。論文は対象・比較条件・測定値と引用箇所を記録し、案件で試せる条件を選ぶ。[製造工程の調査](https://github.com/KAFKA2306/factory) · [arXiv調査](https://github.com/KAFKA2306/daily-arXiv-ai-enhanced)
 
+技術白書を作る場合は、[執筆の一次資料](BIBLES.md#技術白書の執筆)を起点に、`reconceptualize` が導入目的と採否条件を定め、`canonicalize` が論文・実験の版と数値をそろえます。`disprove` が不利な結果や例外を探し、`adjudicate` が同条件で候補を比較します。`didactization` が根拠と限界を読者の判断につなげ、`decommission` が旧稿・重複説明を整理し、`autocatalyze` が公開版を検証して改訂を引き継ぎます。[白書の執筆手順](skills/didactization/SKILL.md#技術白書を構成する)
+
 ### Kaggle
 
 データ版・時系列分割・公式指標・ベースラインをそろえ、手元の検証と公式提出の結果を分けて記録する。[商品価格予測コンペ](https://github.com/KAFKA2306/mitsuikaggle)
