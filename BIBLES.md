@@ -96,7 +96,7 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [^okf-v03-spec]: OKF v0.3公式仕様、第3〜6節と第8〜9節。
 
-[文書のメタデータを整える](skills/canonicalize/SKILL.md#okfに沿って文書を更新確認する)・[公式OKFスキルを使う](skills/canonicalize/SKILL.md#公式okfスキルを使う)
+[文書のメタデータを整える](skills/canonicalize/SKILL.md)・[公式OKFスキルを使う](skills/canonicalize/SKILL.md#公式okfスキルを使う)
 
 ### 文書監査と移行
 
@@ -236,7 +236,7 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [Anthropic・Run prompts on a schedule](https://code.claude.com/docs/en/scheduled-tasks#run-a-prompt-repeatedly-with-loop)（公式リファレンス）。`/loop` からのスキルの定期実行、実行条件、ジョブの解除を確認する。
 
-[自律開発の連携手順](skills/autocatalyze/SKILL.md#claude-codeの-loop-連携)
+[自律開発の連携手順](skills/autocatalyze/SKILL.md)
 
 ### Claude Codeのフック
 
