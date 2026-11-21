@@ -1,5 +1,5 @@
 {
-  "compared_to": "0b18336c2c36901fcfb41315ea0b8906c5539805",
+  "compared_to": "dd5d778f8d1a6cff58a5d7fbc8fef887ec62de24",
   "sources": {
     "成功基準と自動採点": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
     "エージェント評価と判定例": "https://www.anthropic.com/research/demystifying-evals-for-ai-agents",
@@ -43,44 +43,44 @@
     "ChatGPT decreases idea diversity in brainstorming": "https://www.nature.com/articles/s41562-025-02173-x",
     "Large Language Models Cannot Self-Correct Reasoning Yet": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/8b4add8b0aa8749d80a34ca5d941c355-Abstract-Conference.html"
   },
-  "rules": "4faab73e8149edb7599890fb9da44c6789b8d23828e3eb8316e592a73daeead4",
+  "rules": "a9ba5b37eb624b708e7fde1f5504810fbf8cceea40287a268a7908eea27ec305",
   "documents": {
     "AGENTS.md": {
-      "sha256": "fe20e0ea142c630163125437282a8388bb69cd377b97d13bb18781144342bea2",
+      "sha256": "5d6d4955f77df819add102b1b82ef4e33fed9cedbec14a1e71a9e37d335f21eb",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "AGENTS.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "evidence": "2026-11-21 編集依頼。AGENTS.md を adjudicate の観点で読み、出力と成果物の規約に公開紹介の減算基準を明記し、既存の根拠記録・操作条件と矛盾しないことを照合した。 静的な文書確認であり初見利用者の操作実測とは区別する。",
           "scope": "document"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "AGENTS.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "evidence": "2026-11-21 編集依頼。AGENTS.md を autocatalyze の観点で読み、出力と成果物の規約に公開紹介の減算基準を明記し、既存の根拠記録・操作条件と矛盾しないことを照合した。 静的な文書確認であり初見利用者の操作実測とは区別する。",
           "scope": "document"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "AGENTS.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "evidence": "2026-11-21 編集依頼。AGENTS.md を canonicalize の観点で読み、出力と成果物の規約に公開紹介の減算基準を明記し、既存の根拠記録・操作条件と矛盾しないことを照合した。 静的な文書確認であり初見利用者の操作実測とは区別する。",
           "scope": "document"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "AGENTS.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "evidence": "2026-11-21 編集依頼。AGENTS.md を decommission の観点で読み、出力と成果物の規約に公開紹介の減算基準を明記し、既存の根拠記録・操作条件と矛盾しないことを照合した。 静的な文書確認であり初見利用者の操作実測とは区別する。",
           "scope": "document"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "AGENTS.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "evidence": "2026-11-21 編集依頼。AGENTS.md を disprove の観点で読み、出力と成果物の規約に公開紹介の減算基準を明記し、既存の根拠記録・操作条件と矛盾しないことを照合した。 静的な文書確認であり初見利用者の操作実測とは区別する。",
           "scope": "document"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "AGENTS.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "evidence": "2026-11-21 編集依頼。AGENTS.md を reconceptualize の観点で読み、出力と成果物の規約に公開紹介の減算基準を明記し、既存の根拠記録・操作条件と矛盾しないことを照合した。 静的な文書確認であり初見利用者の操作実測とは区別する。",
           "scope": "document"
         },
         "didactization": {
           "status": "pass",
-          "evidence": "AGENTS.md について、記事には観測・原則・再現手順・反例・適用限界、一般文書には原意保持と自然な推敲を要求する改訂を確認し、役割の使い分けと参照先を照合した。 命名規約の重複する条件文を削除し、既存の意味を保持して明瞭化した。",
+          "evidence": "2026-11-21 編集依頼。AGENTS.md を didactization の観点で読み、出力と成果物の規約に公開紹介の減算基準を明記し、既存の根拠記録・操作条件と矛盾しないことを照合した。 静的な文書確認であり初見利用者の操作実測とは区別する。",
           "scope": "document"
         }
       }
@@ -166,41 +166,41 @@
       }
     },
     "README.md": {
-      "sha256": "3f7c5ad295bbb21ecfdaa6e2cbda3ba1c63bfa6e4b79e5d68810e3eeede0df0e",
+      "sha256": "fce09816b844a076e49e58df9c5b791a0c5221d73c8b0e1129a9f2c5a9abc1ba",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "2026-11-21 READMEの初回体験の推敲・減算。adjudicateの観点で変更前の読者経路・見出し・実例リンク・CLIコマンド・前提条件を照合。不要な限定・重複した注意・太字を削り、価値→用途→試行→導入→詳しい仕組みの順に整理した。既存のコマンドと外部リンクを保持し、読み取り専用の例である条件を保持した。実ユーザーの理解度と配布CLIの実行は別途検証が必要。",
+          "evidence": "2026-11-21 編集依頼。README.md を adjudicate の観点で読み、最初の導線から用途の限定・試用前の注意・4項目リスト・免責文がなく、既存の導入コマンド・実例リンクは保持した。 静的な文書確認であり初見利用者の操作実測とは区別する。",
           "scope": "document"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "2026-11-21 READMEの初回体験の推敲・減算。autocatalyzeの観点で変更前の読者経路・見出し・実例リンク・CLIコマンド・前提条件を照合。不要な限定・重複した注意・太字を削り、価値→用途→試行→導入→詳しい仕組みの順に整理した。既存のコマンドと外部リンクを保持し、読み取り専用の例である条件を保持した。実ユーザーの理解度と配布CLIの実行は別途検証が必要。",
+          "evidence": "2026-11-21 編集依頼。README.md を autocatalyze の観点で読み、最初の導線から用途の限定・試用前の注意・4項目リスト・免責文がなく、既存の導入コマンド・実例リンクは保持した。 静的な文書確認であり初見利用者の操作実測とは区別する。",
           "scope": "document"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "2026-11-21 READMEの初回体験の推敲・減算。canonicalizeの観点で変更前の読者経路・見出し・実例リンク・CLIコマンド・前提条件を照合。不要な限定・重複した注意・太字を削り、価値→用途→試行→導入→詳しい仕組みの順に整理した。既存のコマンドと外部リンクを保持し、読み取り専用の例である条件を保持した。実ユーザーの理解度と配布CLIの実行は別途検証が必要。",
+          "evidence": "2026-11-21 編集依頼。README.md を canonicalize の観点で読み、最初の導線から用途の限定・試用前の注意・4項目リスト・免責文がなく、既存の導入コマンド・実例リンクは保持した。 静的な文書確認であり初見利用者の操作実測とは区別する。",
           "scope": "document"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "2026-11-21 READMEの初回体験の推敲・減算。decommissionの観点で変更前の読者経路・見出し・実例リンク・CLIコマンド・前提条件を照合。不要な限定・重複した注意・太字を削り、価値→用途→試行→導入→詳しい仕組みの順に整理した。既存のコマンドと外部リンクを保持し、読み取り専用の例である条件を保持した。実ユーザーの理解度と配布CLIの実行は別途検証が必要。",
+          "evidence": "2026-11-21 編集依頼。README.md を decommission の観点で読み、最初の導線から用途の限定・試用前の注意・4項目リスト・免責文がなく、既存の導入コマンド・実例リンクは保持した。 静的な文書確認であり初見利用者の操作実測とは区別する。",
           "scope": "document"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "2026-11-21 READMEの初回体験の推敲・減算。disproveの観点で変更前の読者経路・見出し・実例リンク・CLIコマンド・前提条件を照合。不要な限定・重複した注意・太字を削り、価値→用途→試行→導入→詳しい仕組みの順に整理した。既存のコマンドと外部リンクを保持し、読み取り専用の例である条件を保持した。実ユーザーの理解度と配布CLIの実行は別途検証が必要。",
+          "evidence": "2026-11-21 編集依頼。README.md を disprove の観点で読み、最初の導線から用途の限定・試用前の注意・4項目リスト・免責文がなく、既存の導入コマンド・実例リンクは保持した。 静的な文書確認であり初見利用者の操作実測とは区別する。",
           "scope": "document"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "2026-11-21 READMEの初回体験の推敲・減算。reconceptualizeの観点で変更前の読者経路・見出し・実例リンク・CLIコマンド・前提条件を照合。不要な限定・重複した注意・太字を削り、価値→用途→試行→導入→詳しい仕組みの順に整理した。既存のコマンドと外部リンクを保持し、読み取り専用の例である条件を保持した。実ユーザーの理解度と配布CLIの実行は別途検証が必要。",
+          "evidence": "2026-11-21 編集依頼。README.md を reconceptualize の観点で読み、最初の導線から用途の限定・試用前の注意・4項目リスト・免責文がなく、既存の導入コマンド・実例リンクは保持した。 静的な文書確認であり初見利用者の操作実測とは区別する。",
           "scope": "document"
         },
         "didactization": {
           "status": "pass",
-          "evidence": "2026-11-21 READMEの初回体験の推敲・減算。didactizationの観点で変更前の読者経路・見出し・実例リンク・CLIコマンド・前提条件を照合。不要な限定・重複した注意・太字を削り、価値→用途→試行→導入→詳しい仕組みの順に整理した。既存のコマンドと外部リンクを保持し、読み取り専用の例である条件を保持した。実ユーザーの理解度と配布CLIの実行は別途検証が必要。",
+          "evidence": "2026-11-21 編集依頼。README.md を didactization の観点で読み、最初の導線から用途の限定・試用前の注意・4項目リスト・免責文がなく、既存の導入コマンド・実例リンクは保持した。 静的な文書確認であり初見利用者の操作実測とは区別する。",
           "scope": "document"
         }
       }
@@ -526,41 +526,41 @@
       }
     },
     "skills/didactization/SKILL.md": {
-      "sha256": "11b542a50e59ef46a74ba925c2ee3826ef06b3cd51a9ffd41c67d6e9a49a5e00",
+      "sha256": "6de02c62ba1ee3e90f6f06746258052a1dd642f507ef2a938d7c74e049e7c67d",
       "results": {
         "adjudicate": {
           "status": "pass",
-          "evidence": "skills/didactization/SKILL.md の改稿版を対象に、固定した外部の評価入力と実成果の比較、自己採点の抜け道を文書の該当箇所で確認した。運用上の効果は別案件で測る。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "evidence": "2026-11-21 編集依頼。skills/didactization/SKILL.md を adjudicate の観点で読み、本文の推敲手順に減算基準を統合し、技術文書・教材の根拠と条件を保持する規則を継続した。 静的な文書確認であり初見利用者の操作実測とは区別する。",
           "scope": "document"
         },
         "autocatalyze": {
           "status": "pass",
-          "evidence": "skills/didactization/SKILL.md の改稿版を対象に、起動・復元・選定・委譲・実行・外部検証・停止、差分なし・重複・再開について各文書の契約を確認した。実際の次周期は運用時に評価する。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "evidence": "2026-11-21 編集依頼。skills/didactization/SKILL.md を autocatalyze の観点で読み、本文の推敲手順に減算基準を統合し、技術文書・教材の根拠と条件を保持する規則を継続した。 静的な文書確認であり初見利用者の操作実測とは区別する。",
           "scope": "document"
         },
         "canonicalize": {
           "status": "pass",
-          "evidence": "skills/didactization/SKILL.md の改稿版を対象に、正本の一意性と利用先の切替、来歴と識別子の保護、二重同期の廃止を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "evidence": "2026-11-21 編集依頼。skills/didactization/SKILL.md を canonicalize の観点で読み、本文の推敲手順に減算基準を統合し、技術文書・教材の根拠と条件を保持する規則を継続した。 静的な文書確認であり初見利用者の操作実測とは区別する。",
           "scope": "document"
         },
         "decommission": {
           "status": "pass",
-          "evidence": "skills/didactization/SKILL.md の改稿版を対象に、追加前に削除・統合を比較し、利用経路と障害検出を守って削減する規則を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "evidence": "2026-11-21 編集依頼。skills/didactization/SKILL.md を decommission の観点で読み、本文の推敲手順に減算基準を統合し、技術文書・教材の根拠と条件を保持する規則を継続した。 静的な文書確認であり初見利用者の操作実測とは区別する。",
           "scope": "document"
         },
         "disprove": {
           "status": "pass",
-          "evidence": "skills/didactization/SKILL.md の改稿版を対象に、対立仮説と判別観測、探索と検証の区別、不要な資料再調査の抑制を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "evidence": "2026-11-21 編集依頼。skills/didactization/SKILL.md を disprove の観点で読み、本文の推敲手順に減算基準を統合し、技術文書・教材の根拠と条件を保持する規則を継続した。 静的な文書確認であり初見利用者の操作実測とは区別する。",
           "scope": "document"
         },
         "reconceptualize": {
           "status": "pass",
-          "evidence": "skills/didactization/SKILL.md の改稿版を対象に、問題の再定義、追加・削除・不変更の比較と代理指標でない利用者の結果を確認した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。 今回の改名に伴う章見出し・正本参照・配布入口を既存条件と照合。",
+          "evidence": "2026-11-21 編集依頼。skills/didactization/SKILL.md を reconceptualize の観点で読み、本文の推敲手順に減算基準を統合し、技術文書・教材の根拠と条件を保持する規則を継続した。 静的な文書確認であり初見利用者の操作実測とは区別する。",
           "scope": "document"
         },
         "didactization": {
           "status": "pass",
-          "evidence": "skills/didactization/SKILL.md について、記事には観測・原則・再現手順・反例・適用限界、一般文書には原意保持と自然な推敲を要求する改訂を確認し、役割の使い分けと参照先を照合した。",
+          "evidence": "2026-11-21 編集依頼。skills/didactization/SKILL.md を didactization の観点で読み、本文の推敲手順に減算基準を統合し、技術文書・教材の根拠と条件を保持する規則を継続した。 静的な文書確認であり初見利用者の操作実測とは区別する。",
           "scope": "document"
         }
       }
@@ -645,7 +645,7 @@
           "scope": "static"
         }
       },
-      "sha256": "88c36a656b09a91c2ecead5f5004ec6dfaf42ef403f765742a3e8bc74b7f38d7"
+      "sha256": "27d240dc830f2bf11f422dbfe01df296b7da7ddd73209e24f717e8d20532b527"
     },
     ".agents/plugins/marketplace.json": {
       "sha256": "094134d9f8a84b5c2d80cbdf7e83a6666d38730d3e0b052228702faf60641d75",
