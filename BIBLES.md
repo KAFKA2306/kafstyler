@@ -31,7 +31,7 @@ verified:
 
 # 聖典台帳
 
-設計や検証に使う一次資料と、対応するスキルを掲載する。
+何を判断・検証するかから資料を探す。各項目には一次URL、使う場面、対応するスキルをまとめる。
 
 ## 分野から探す
 
@@ -110,7 +110,6 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 ## 目標・文章・評価
 
-
 ### 問題の再定義と利用者の目的
 
 [Design Council・Double Diamond](https://www.designcouncil.org.uk/resources/the-double-diamond/)（設計原典）。解決策の前に問題を探索・定義する。[GOV.UK・Solve a whole problem for users](https://www.gov.uk/service-manual/service-standard/point-2-solve-a-whole-problem)（公式基準）。利用者が一連の用事を完了できるか確かめる。
@@ -133,7 +132,6 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 - [Google SRE・Eliminating Toil](https://sre.google/workbook/eliminating-toil/)（公式手引き）。作業の自動化だけでなく発生源を取り除く。
 
 [不要なファイル・コード・文章の削除](skills/decommission/SKILL.md) · [自律開発](skills/autocatalyze/SKILL.md)
-
 
 ### 登大遊の論理的思考
 
@@ -188,9 +186,9 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 ### 知見を残す記事の基準
 
-- [GOV.UK・Understand content design](https://guidance.publishing.service.gov.uk/writing-to-gov-uk-standards/plan-manage-content/understand-content-design/)（英国政府の公式編集ガイド）。読者の用事を先に定め、重複や競合を増やす記事は減らし、更新・統合する判断に使う。
-- [Meinckeほか・ChatGPT decreases idea diversity in brainstorming](https://www.nature.com/articles/s41562-025-02173-x)（Nature Human Behaviour、2025年）。論文が扱うブレーンストーミングでは、個々の案の質の向上と案集合の多様性の低下が併存し得る。これを文章全般への普遍的な結論とはせず、独自の観測なしに量産した記事が似通わないかを見直す理由にする。
-- [Huangほか・Large Language Models Cannot Self-Correct Reasoning Yet](https://proceedings.iclr.cc/paper_files/paper/2024/hash/8b4add8b0aa8749d80a34ca5d941c355-Abstract-Conference.html)（ICLR 2024）。外部フィードバックのない推論の自己訂正には限界があり、品質の確認は原資料・実行結果・独立した判定に結び付ける。全モデル・全課題で自己訂正が不可能という意味ではない。
+- [GOV.UK・Understand content design](https://guidance.publishing.service.gov.uk/writing-to-gov-uk-standards/plan-manage-content/understand-content-design/)（英国政府の公式編集ガイド）。執筆前に読者の用事を確かめ、新規記事を作るか既存記事を更新・統合するか判断する。
+- [Meinckeほか・ChatGPT decreases idea diversity in brainstorming](https://www.nature.com/articles/s41562-025-02173-x)（Nature Human Behaviour、2025年）。ブレーンストーミングで案の質が高まっても、集合としての多様性が下がる場合がある。文章一般への証明とは扱わず、独自の観測のない記事が既存記事と重複しないか確認する際に参照する。
+- [Huangほか・Large Language Models Cannot Self-Correct Reasoning Yet](https://proceedings.iclr.cc/paper_files/paper/2024/hash/8b4add8b0aa8749d80a34ca5d941c355-Abstract-Conference.html)（ICLR 2024）。外部フィードバックなしの推論の自己訂正には限界がある。記事の正確さは原資料・実行結果・独立した判定で確かめる。ただし、すべてのモデル・課題で自己訂正が不可能という主張ではない。
 
 [記事の執筆と改稿](skills/humanizer/SKILL.md#発見を汎用原則に変える) · [規則の費用対効果](AGENTS.md#規則の費用対効果と比較実験)
 
@@ -331,7 +329,6 @@ Anthropic・Hooks reference（公式リファレンス、2026年11月19日確認
 [目標設定](skills/reconceptualize/SKILL.md) · [自律開発](skills/autocatalyze/SKILL.md)
 
 ## 常駐エージェント
-
 
 **中核の設計資料。** [Anthropic・Effective harnesses for long-running agents](https://www.anthropic.com/research/effective-harnesses-for-long-running-agents) はセッションを越える復元、[Anthropic・Scaling Managed Agents with stable interfaces](https://www.anthropic.com/research/managed-agents) は状態と環境の分離、[Google SRE・Eliminating Toil](https://sre.google/workbook/eliminating-toil/) は不要な起動の削減に使う。[autocatalyze](skills/autocatalyze/SKILL.md#常時稼働エージェントの中核) が専門工程を統括する。
 
