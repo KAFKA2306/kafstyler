@@ -43,10 +43,10 @@
     "ChatGPT decreases idea diversity in brainstorming": "https://www.nature.com/articles/s41562-025-02173-x",
     "Large Language Models Cannot Self-Correct Reasoning Yet": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/8b4add8b0aa8749d80a34ca5d941c355-Abstract-Conference.html"
   },
-  "rules": "45ce995bf8014b2c41f393b4f63ab1ae29883180ede73246cdd90cd94b4c5113",
+  "rules": "eb6f53f5ee6370825bcb9887ae028f927c45943d8ea2a935ef17c107b78758b3",
   "documents": {
     "AGENTS.md": {
-      "sha256": "bee7dc62a3bc2dcf23af599cc2230ab2c4f86f017b42c700ec8a2160f3d6e73e",
+      "sha256": "944052b6249b8fe95850b066304090f3fc589f73842e3ee7ef838e8ab9c4874e",
       "results": {
         "adjudicate": {
           "status": "pass",
@@ -70,7 +70,7 @@
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "AGENTS.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
+          "evidence": "依頼処理の手順をAIの失敗対策より先に配置。途中経過と利用者の成果の違いを具体化し、重複する監査の説明を短縮。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。"
         },
         "reconceptualize": {
           "status": "pass",
@@ -79,7 +79,7 @@
       }
     },
     "BIBLES.md": {
-      "sha256": "2d0a321ca46fa37ec4f75de17909256dec4ab901be66dcb81782d2d3a33085e2",
+      "sha256": "a40ec30edbd55b2fba03b497469014fcd7729b85a12c042f83f69a26502ea1ce",
       "results": {
         "adjudicate": {
           "status": "pass",
@@ -103,7 +103,7 @@
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "BIBLES.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
+          "evidence": "一次資料の選び方を冒頭で明示。GOV.UK、案の多様性、自己訂正の研究について用途と適用限界を読み取りやすく修正。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。"
         },
         "reconceptualize": {
           "status": "pass",
@@ -112,7 +112,7 @@
       }
     },
     "MISSION.md": {
-      "sha256": "5d4f6c01cdedcdd99d766a49ce1157ab0f4bdbda21124bb21ebb2368a9bcb038",
+      "sha256": "ffdf91b5698f1494d2e80d97cf318e2cff8ea1ed2d62b3a1a58f47862f3572fb",
       "results": {
         "adjudicate": {
           "status": "pass",
@@ -136,7 +136,7 @@
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "MISSION.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
+          "evidence": "新規記事の採否、文書の実用性、自己改善の比較条件をまとめ直し、重複文を削除。既存の引用と関連リンクを維持。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。"
         },
         "reconceptualize": {
           "status": "pass",
@@ -145,7 +145,7 @@
       }
     },
     "README.md": {
-      "sha256": "9e40b19a6f78b12f4bd18046ad87d5227a36df7cd921ae41403546787038434f",
+      "sha256": "26b0c2089bc17287804096013bcefa70bc026c100bb6075ccd45e6097e6f2956",
       "results": {
         "adjudicate": {
           "status": "pass",
@@ -169,7 +169,7 @@
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "README.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
+          "evidence": "初回試用の見出し直下に依頼文を置き、常時稼働の説明を独立節へ移動。冒頭の用途を具体化し、旧リンクとコマンドを維持。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。"
         },
         "reconceptualize": {
           "status": "pass",
@@ -178,7 +178,7 @@
       }
     },
     "index.md": {
-      "sha256": "442d6e4313db21858219bf833381e726c32f8e24583d93ec40e93c9d1a79e8fc",
+      "sha256": "320157b3e84c48911d96e653355eeaa0c395f00e20722b63b71edb031fbcfb81",
       "results": {
         "adjudicate": {
           "status": "pass",
@@ -202,7 +202,7 @@
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "表示する新名と役割表、既存の見出し・リンク文言を比較した。"
+          "evidence": "すべての入口を『試す・合格条件を確かめる・一次資料を探す』という読者の操作で説明。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。"
         },
         "reconceptualize": {
           "status": "pass",
@@ -211,7 +211,7 @@
       }
     },
     "rules/kafstyler.md": {
-      "sha256": "d77b32906fe7efc13fc1936738d68d189a2a77b214d27729c6e1e573adc9a838",
+      "sha256": "c51a6516e72c3be5cb72cf34ed46cf62a6ed76492db49ff02be8e891afc9b4b5",
       "results": {
         "adjudicate": {
           "status": "pass",
@@ -235,7 +235,7 @@
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "rules/kafstyler.md の配布0.8.0の版と内容を確認。常時稼働の中核を起動フックとAntigravityの配布規約へ反映し、3クライアントの共通版を照合した。実クライアントの再起動検証は別工程。"
+          "evidence": "Antigravity導入先の調べ方を短縮。再開・成果の読み戻し・記録を操作順に説明。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。"
         },
         "reconceptualize": {
           "status": "pass",
@@ -244,7 +244,7 @@
       }
     },
     "skills/adjudicate/SKILL.md": {
-      "sha256": "ceb1f0361cf0074ba4513e47af36abfa91223a418d1887d8993ecdf99bb4860b",
+      "sha256": "8688b3b8cdc663ba96c35562584456dbb62af3e22878699cd6eef4ee24f9a959",
       "results": {
         "adjudicate": {
           "status": "pass",
@@ -268,7 +268,7 @@
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "skills/adjudicate/SKILL.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。"
+          "evidence": "合格条件を実装前に固定すること、自己採点で合格としないことを冒頭で明確化。独立評価できない条件を残す。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。"
         },
         "reconceptualize": {
           "status": "pass",
@@ -277,7 +277,7 @@
       }
     },
     "skills/autocatalyze/SKILL.md": {
-      "sha256": "260eb5b78aed0997d12c373bcb22d26d02d35c048839da7897218f46634114fb",
+      "sha256": "f5e4b6c2732eab86629799c4133f1c9faccbe2e49460f903be9bbf2596359a0b",
       "results": {
         "adjudicate": {
           "status": "pass",
@@ -301,7 +301,7 @@
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "skills/autocatalyze/SKILL.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。"
+          "evidence": "空の見出し状態を解消し、常時稼働の中核と定期実行の説明を正しい順序に再配置。実成果の入口と再開可能性を先に説明。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。"
         },
         "reconceptualize": {
           "status": "pass",
@@ -310,7 +310,7 @@
       }
     },
     "skills/canonicalize/SKILL.md": {
-      "sha256": "7d5f6109ec1986fa160c8df39258bee5a4d107963500ea0a764527039ff896df",
+      "sha256": "d2c8197dd4f4db440b508e8a790ff74158ac603a8df742d885882acf19be55e5",
       "results": {
         "adjudicate": {
           "status": "pass",
@@ -334,7 +334,7 @@
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "skills/canonicalize/SKILL.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。"
+          "evidence": "正本・識別子・利用側の役割を冒頭で明確化。重複する定義を扱う条件を短縮し、参照は維持。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。"
         },
         "reconceptualize": {
           "status": "pass",
@@ -343,7 +343,7 @@
       }
     },
     "skills/decommission/SKILL.md": {
-      "sha256": "101014c7cf6f7c5ae283f4d880b27137acc333bdf18c3681e9731293578667c2",
+      "sha256": "25dbcced9f4914f967eadd46f263c2817719768265597b5062ea98508fa8ff43",
       "results": {
         "adjudicate": {
           "status": "pass",
@@ -367,7 +367,7 @@
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "skills/decommission/SKILL.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。"
+          "evidence": "削除対象と削除しない条件を冒頭で区別。削減率より利用経路と障害検出を優先する表現に整理。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。"
         },
         "reconceptualize": {
           "status": "pass",
@@ -376,7 +376,7 @@
       }
     },
     "skills/disprove/SKILL.md": {
-      "sha256": "7197fd05e6c0b5eef2fcb5c9dc4388a20c03acac8cadbc7dfaf32f840016673e",
+      "sha256": "4cf4dcc0950439dcdeafa7e5c236e4754d66ca991b204cd7e8dea26a74e0c148",
       "results": {
         "adjudicate": {
           "status": "pass",
@@ -400,7 +400,7 @@
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "skills/disprove/SKILL.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。"
+          "evidence": "反例・証拠・影響を先に示し、対立仮説の検証方法を操作可能な文で説明。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。"
         },
         "reconceptualize": {
           "status": "pass",
@@ -409,7 +409,7 @@
       }
     },
     "skills/humanizer/SKILL.md": {
-      "sha256": "fb05676c7615a6b789a072b17058fdf653661c142411ec849134ddc15494f047",
+      "sha256": "2c8272d0399fd619331e51359b69543c66e7ee62ce0afc0228a2ff64715a12a3",
       "results": {
         "adjudicate": {
           "status": "pass",
@@ -433,7 +433,7 @@
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "skills/humanizer/SKILL.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。 知見抽出方針の変更点と元の規約・読者の用事を照合し、GitHubの反映ファイルを読み戻した。"
+          "evidence": "独自の発見の採否と読者向けの構成判断を分離。重複していた原則・反例・公開条件の説明を削除。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。"
         },
         "reconceptualize": {
           "status": "pass",
@@ -442,7 +442,7 @@
       }
     },
     "skills/reconceptualize/SKILL.md": {
-      "sha256": "91f4192f467b5640b46c944bcaf38181fe0f6caff7ede9ccc890ee82c6a2c903",
+      "sha256": "46528989e2dc1cfcc334786f119a51f2b6e9a2e87bfb3775a9b876950168eba5",
       "results": {
         "adjudicate": {
           "status": "pass",
@@ -466,7 +466,7 @@
         },
         "humanizer": {
           "status": "pass",
-          "evidence": "skills/reconceptualize/SKILL.md の改稿版を対象に、汎用原則、成立条件、反例、再現例と不要な新規文書を増やさない条件を記述した。"
+          "evidence": "完了場面を読者の最後の操作と見える結果で定義。比較案の理由と代理指標の扱いを簡潔化。 変更後の本文と見出しをGitHubのmainから読み直し、原文のコマンド・参照先・成立条件を保持した。"
         },
         "reconceptualize": {
           "status": "pass",
@@ -540,7 +540,7 @@
           "evidence": "配布版0.8.0の3マニフェスト、起動フック、Antigravity規約の版を照合した。台帳のSHA-256を再計算した。実際の配布環境での新セッション検証は別工程。"
         }
       },
-      "sha256": "1a4a763234fb3725ed24a0e85bf2a0fe7fadea1fd7070a797a67aa54c0bc683b"
+      "sha256": "478d3581af0cf342c9909079c5fc47a295eb482222ac2a67b2817e9013f9c202"
     },
     ".agents/plugins/marketplace.json": {
       "sha256": "094134d9f8a84b5c2d80cbdf7e83a6666d38730d3e0b052228702faf60641d75",
