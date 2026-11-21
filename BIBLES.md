@@ -63,7 +63,7 @@ verified:
 
 利用者が結論、理由、根拠、次の操作を見つけられるようにする。実績、予測、仮説、未確認を表示まで区別する。[共通の判断パネル](https://github.com/KAFKA2306/design/blob/main/registry/ui/product/decision.tsx) · [コンテンツのスキーマ](https://github.com/KAFKA2306/design/blob/main/artifacts/content.schema.json)
 
-使うスキルは[データ設計](skills/canonicalize/SKILL.md)と[文章の推敲](skills/humanizer/SKILL.md)。
+使うスキルは[データ設計](skills/canonicalize/SKILL.md)と[知見の教材化と推敲](skills/didactization/SKILL.md)。
 
 ### 部品と見た目の正本
 
@@ -156,7 +156,7 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 | スキル | 適用する工程 |
 | --- | --- |
 | [reconceptualize](skills/reconceptualize/SKILL.md) | 作業前に入口、入力、最後に観測する結果を決める |
-| [humanizer](skills/humanizer/SKILL.md#本文の推敲と提出前の確認) | 元の依頼や原典を固定し、読者の入口で推敲稿を試す |
+| [humanizer](skills/didactization/SKILL.md#本文の推敲と提出前の確認) | 元の依頼や原典を固定し、読者の入口で推敲稿を試す |
 | [canonicalize](skills/canonicalize/SKILL.md#完了条件) | 読み書きの契約、旧データとの互換、再処理を確かめる |
 | [disprove](skills/disprove/SKILL.md) | 対象版と判定基準を固定し、差分から過去の失敗を選ぶ |
 | [decommission](skills/decommission/SKILL.md) | 削除前後に利用経路と、残した検査が拾う失敗を確かめる |
@@ -175,14 +175,14 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [imoz・日本語の文章編集ガイド](https://imoz.jp/humanizer.ja.txt)（編集ガイド）。人が読む文章の執筆と推敲
 
-[評価と比較](skills/adjudicate/SKILL.md) · [自律開発](skills/autocatalyze/SKILL.md) · [データ設計](skills/canonicalize/SKILL.md) · [反証レビュー](skills/disprove/SKILL.md) · [文章の推敲](skills/humanizer/SKILL.md) · [目標設定](skills/reconceptualize/SKILL.md) · [不要なファイル・コード・文章の削除](skills/decommission/SKILL.md)
+[評価と比較](skills/adjudicate/SKILL.md) · [自律開発](skills/autocatalyze/SKILL.md) · [データ設計](skills/canonicalize/SKILL.md) · [反証レビュー](skills/disprove/SKILL.md) · [知見の教材化と推敲](skills/didactization/SKILL.md) · [目標設定](skills/reconceptualize/SKILL.md) · [不要なファイル・コード・文章の削除](skills/decommission/SKILL.md)
 
 ### 読者から記事を設計する
 
 - [英国国家統計局・Designing content to meet user needs](https://service-manual.ons.gov.uk/content/writing-for-users/user-needs)（公式編集ガイド）。読者が何をしたいかを根拠から把握し、何ができれば記事がその用事に応えたといえるかを執筆前に決める。
 - [Nielsen Norman Group・The Layer-Cake Pattern of Scanning Content on the Web](https://www.nngroup.com/articles/layer-cake-pattern-scanning/)（視線計測の研究報告）。見出しを拾い読みして必要な本文を探す行動を踏まえ、見出しだけでも答えの場所を見つけられるかを確かめる。
 
-[文章の推敲](skills/humanizer/SKILL.md#記事を読者から設計する)
+[知見の教材化と推敲](skills/didactization/SKILL.md#記事を読者から設計する)
 
 ### 知見を残す記事の基準
 
@@ -190,7 +190,7 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 - [Meinckeほか・ChatGPT decreases idea diversity in brainstorming](https://www.nature.com/articles/s41562-025-02173-x)（Nature Human Behaviour、2025年）。ブレーンストーミングで案の質が高まっても、集合としての多様性が下がる場合がある。文章一般への証明とは扱わず、独自の観測のない記事が既存記事と重複しないか確認する際に参照する。
 - [Huangほか・Large Language Models Cannot Self-Correct Reasoning Yet](https://proceedings.iclr.cc/paper_files/paper/2024/hash/8b4add8b0aa8749d80a34ca5d941c355-Abstract-Conference.html)（ICLR 2024）。外部フィードバックなしの推論の自己訂正には限界がある。記事の正確さは原資料・実行結果・独立した判定で確かめる。ただし、すべてのモデル・課題で自己訂正が不可能という主張ではない。
 
-[記事の執筆と改稿](skills/humanizer/SKILL.md#発見を汎用原則に変える) · [規則の費用対効果](AGENTS.md#規則の費用対効果と比較実験)
+[教材化と改稿](skills/didactization/SKILL.md#発見を汎用原則に変える) · [規則の費用対効果](AGENTS.md#規則の費用対効果と比較実験)
 
 ### 成果物の根拠と読みやすさ
 
@@ -681,7 +681,7 @@ Anthropic・Hooks reference（公式リファレンス、2026年11月19日確認
 
 [かふかのZenn記事一覧](https://zenn.dev/kafka2306?tab=articles)（記事一覧）。対象の作業に近い記事を探す。
 
-[評価と比較](skills/adjudicate/SKILL.md) · [自律開発](skills/autocatalyze/SKILL.md) · [データ設計](skills/canonicalize/SKILL.md) · [反証レビュー](skills/disprove/SKILL.md) · [文章の推敲](skills/humanizer/SKILL.md) · [目標設定](skills/reconceptualize/SKILL.md) · [不要なファイル・コード・文章の削除](skills/decommission/SKILL.md)
+[評価と比較](skills/adjudicate/SKILL.md) · [自律開発](skills/autocatalyze/SKILL.md) · [データ設計](skills/canonicalize/SKILL.md) · [反証レビュー](skills/disprove/SKILL.md) · [知見の教材化と推敲](skills/didactization/SKILL.md) · [目標設定](skills/reconceptualize/SKILL.md) · [不要なファイル・コード・文章の削除](skills/decommission/SKILL.md)
 
 ### AIが増やす判断箇所
 
@@ -723,7 +723,7 @@ Anthropic・Hooks reference（公式リファレンス、2026年11月19日確認
 
 [人は他人を『何を任せられるか』で圧縮する——成果物が仕事の証拠になるまで](https://zenn.dev/kafka2306/articles/2026-08-13-02-how-people-compress-a-person)（記事）。担当できる課題と得られる結果を成果物で示す。
 
-[目標設定](skills/reconceptualize/SKILL.md) · [文章の推敲](skills/humanizer/SKILL.md)
+[目標設定](skills/reconceptualize/SKILL.md) · [知見の教材化と推敲](skills/didactization/SKILL.md)
 
 ### 透かしの検証可能性
 
@@ -735,7 +735,7 @@ Anthropic・Hooks reference（公式リファレンス、2026年11月19日確認
 
 [AI検索最適化（GEO/AEO）運用指針](https://zenn.dev/kafka2306/articles/6dd453d941b99f)（記事）。公開物の一次情報、機械可読性、施策の検証条件を確認する。
 
-[文章の推敲](skills/humanizer/SKILL.md) · [反証レビュー](skills/disprove/SKILL.md)
+[知見の教材化と推敲](skills/didactization/SKILL.md) · [反証レビュー](skills/disprove/SKILL.md)
 
 ### 目的別の情報収集サイト
 

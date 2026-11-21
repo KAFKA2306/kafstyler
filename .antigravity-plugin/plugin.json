@@ -2,6 +2,6 @@
   "$schema": "https://antigravity.google/schemas/v1/plugin.json",
   "name": "kafstyler",
   "displayName": "Kafstyler",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "常時稼働エージェントを中核に、開発・調査・制作・運用を継続し、実成果を検証して再開・改善する。"
 }

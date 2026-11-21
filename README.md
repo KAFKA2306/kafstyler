@@ -64,11 +64,11 @@ flowchart TD
         goal["reconceptualize"] <-->|"合格条件"| judge["adjudicate"]
         goal <-->|"目標の前提"| proof["disprove"]
         judge <-->|"反例の測定"| proof
-        proof <-->|"文章の根拠"| edit["humanizer"]
+        proof <-->|"原則と反例の根拠"| edit["didactization"]
         judge <-->|"実物の評価"| run["autocatalyze"]
         run <-->|"正本と再開"| canon["canonicalize"]
         canon <-->|"移行と切替"| retire["decommission"]
-        retire <-->|"利用案内の更新"| edit
+        retire <-->|"教材の統合・推敲"| edit
     end
     trigger -->|"状態に応じて開始・再開"| work
     run -->|"確認済みの成果を引き継ぐ"| trigger
@@ -81,7 +81,7 @@ flowchart TD
 | [`reconceptualize`](skills/reconceptualize/SKILL.md) | 目的・利用経路・制約・完了場面を定め、合格条件と検証の道具を渡す。 |
 | [`canonicalize`](skills/canonicalize/SKILL.md) | 文書・データ・入出力の意味、識別子、正本、来歴、状態を設計し、更新・移行・再開の契約を渡す。 |
 | [`autocatalyze`](skills/autocatalyze/SKILL.md) | 常時稼働エージェントの中核。起動・選定・委譲・実装・公開検証・復旧・継続を統括する。 |
-| [`humanizer`](skills/humanizer/SKILL.md) | 記事では発見を汎用原則・検証例・反例に変える。発見がなければ既存記事を直し、説明文は根拠を保って推敲する。 |
+| [`didactization`](skills/didactization/SKILL.md) | 記事・研究ノートを根拠・汎用原則・再現手順・反例のある教材にする。README・PR・UI・報告は原意を守って自然に推敲する。 |
 | [`disprove`](skills/disprove/SKILL.md) | 一次資料と実物で現行方式・代替案の前提に反例を探し、結論・範囲・証拠・未確認事項を返す。 |
 | [`adjudicate`](skills/adjudicate/SKILL.md) | 判定を設計前に固定し、成果・手法を同条件で測る。測定値、採否、証拠、再実行手順を渡す。 |
 | [`decommission`](skills/decommission/SKILL.md) | 重複するコード・文書・定期処理を統合し、旧方式を廃止。切替結果と残した利用経路を渡す。 |
