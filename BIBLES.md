@@ -186,6 +186,14 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [文章の推敲](skills/humanizer/SKILL.md#記事を読者から設計する)
 
+### 知見を残す記事の基準
+
+- [GOV.UK・Understand content design](https://guidance.publishing.service.gov.uk/writing-to-gov-uk-standards/plan-manage-content/understand-content-design/)（英国政府の公式編集ガイド）。読者の用事を先に定め、重複や競合を増やす記事は減らし、更新・統合する判断に使う。
+- [Meinckeほか・ChatGPT decreases idea diversity in brainstorming](https://www.nature.com/articles/s41562-025-02173-x)（Nature Human Behaviour、2025年）。論文が扱うブレーンストーミングでは、個々の案の質の向上と案集合の多様性の低下が併存し得る。これを文章全般への普遍的な結論とはせず、独自の観測なしに量産した記事が似通わないかを見直す理由にする。
+- [Huangほか・Large Language Models Cannot Self-Correct Reasoning Yet](https://proceedings.iclr.cc/paper_files/paper/2024/hash/8b4add8b0aa8749d80a34ca5d941c355-Abstract-Conference.html)（ICLR 2024）。外部フィードバックのない推論の自己訂正には限界があり、品質の確認は原資料・実行結果・独立した判定に結び付ける。全モデル・全課題で自己訂正が不可能という意味ではない。
+
+[記事の執筆と改稿](skills/humanizer/SKILL.md#発見を汎用原則に変える) · [規則の費用対効果](AGENTS.md#規則の費用対効果と比較実験)
+
 ### 成果物の根拠と読みやすさ
 
 - [MaryCache・imozuru](https://github.com/MaryCache/imozuru)（公式リポジトリ）。分野の用語、文献、引用をたどり、判断を支える原文の場所を調べる。
