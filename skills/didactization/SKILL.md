@@ -11,7 +11,8 @@ aliases:
   - "文書校正"
 generated:
   by: openai/chatgpt
-  at: "2026-11-21T08:55:31.941Z"
+  at: "2026-11-21T08:55:31.941Z"metadata:
+  kafstyler-model-selector: didactization
 ---
 
 # 知見の教材化と推敲

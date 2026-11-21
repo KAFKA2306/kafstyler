@@ -10,7 +10,8 @@ aliases:
   - "目標"
 generated:
   by: openai/chatgpt
-  at: "2026-11-21T08:00:37.634Z"
+  at: "2026-11-21T08:00:37.634Z"metadata:
+  kafstyler-model-selector: reconceptualize
 ---
 
 # 目標設定

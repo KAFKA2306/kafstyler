@@ -10,7 +10,8 @@ aliases:
   - "反証"
 generated:
   by: openai/chatgpt
-  at: "2026-11-21T08:00:37.634Z"
+  at: "2026-11-21T08:00:37.634Z"metadata:
+  kafstyler-model-selector: disprove
 ---
 
 # 反証レビュー

@@ -10,7 +10,8 @@ aliases:
   - "不要なファイル・コード・文章の削除"
 generated:
   by: openai/chatgpt
-  at: "2026-11-21T08:00:37.634Z"
+  at: "2026-11-21T08:00:37.634Z"metadata:
+  kafstyler-model-selector: decommission
 ---
 
 # 不要なファイル・コード・文章の削除

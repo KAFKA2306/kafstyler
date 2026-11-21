@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "benchmark_source": {
+    "repository": "Maicarons/artificial-analysis-leaderboards",
+    "url": "https://artificialanalysis.ai/leaderboards/models",
+    "pointer": "https://raw.githubusercontent.com/Maicarons/artificial-analysis-leaderboards/main/data/latest.json",
+    "max_source_age_days": 3
+  },
+  "benchmark": "artificial_analysis_intelligence_index",
+  "price": {
+    "unit": "USD_per_1M_tokens",
+    "input_weight": 0.75,
+    "output_weight": 0.25,
+    "max_usd": 3,
+    "discount_multiplier": 1,
+    "discount": "none"
+  },
+  "providers": [
+    "OpenAI",
+    "Google"
+  ],
+  "skill_models": {
+    "adjudicate": {
+      "criterion": "highest_score",
+      "bootstrap": [
+        "Gemini 4 Neon",
+        "GPT-6.1 Terra"
+      ]
+    },
+    "disprove": {
+      "criterion": "highest_score",
+      "bootstrap": [
+        "Gemini 4 Neon",
+        "GPT-6.1 Terra"
+      ]
+    },
+    "reconceptualize": {
+      "criterion": "score_per_dollar",
+      "min_score": 30,
+      "bootstrap": [
+        "GPT-6 Luna",
+        "Gemini 4 Hydrogen"
+      ]
+    },
+    "didactization": {
+      "criterion": "score_per_dollar",
+      "min_score": 30,
+      "bootstrap": [
+        "GPT-6 Luna",
+        "Gemini 4 Hydrogen"
+      ]
+    },
+    "canonicalize": {
+      "criterion": "score_per_dollar",
+      "min_score": 30,
+      "bootstrap": [
+        "GPT-6 Luna",
+        "Gemini 4 Hydrogen"
+      ]
+    },
+    "decommission": {
+      "criterion": "score_per_dollar",
+      "min_score": 30,
+      "bootstrap": [
+        "GPT-6 Luna",
+        "Gemini 4 Hydrogen"
+      ]
+    },
+    "autocatalyze": {
+      "criterion": "score_per_dollar",
+      "min_score": 30,
+      "bootstrap": [
+        "GPT-6 Luna",
+        "Gemini 4 Hydrogen"
+      ]
+    }
+  }
+}
