@@ -21,32 +21,38 @@ Kafstylerは、研究・開発・制作・公開・運用をまたぐ多数の�
 
 各Skillが受け取る入力と次へ渡す具体的な成果は、[READMEの継続運用例](README.md#7つのskillが連関して成果を出す)を参照する。
 
-## 成果が次の成果を生む構造
+## autocatalyzeと6 Skillsの成果循環
 
 ```mermaid
 flowchart TD
-    ideas["人の構想・課題／複数プロジェクト"] --> core["autocatalyze：案件選定・実装・復旧・引き継ぎ"]
-    core -.->|目的と完成像| goal["reconceptualize：課題の再定義"]
-    core -.->|正本と再開状態| canon["canonicalize：情報の一元化"]
-    core -.->|比較と採否| judge["adjudicate：実測による選択"]
-    core -.->|前提の反証| proof["disprove：重大な誤りの発見"]
-    core -.->|知見の再利用| learn["didactization：発見の教材化"]
-    core -.->|負荷と重複の削減| prune["decommission：不要な仕組みの廃止"]
-    core --> outcomes["実装・公開・運用され、利用できる成果"]
-    outcomes --> evidence["実利用の結果・検証・新しい知見"]
-    evidence --> record["既存の正本に成果と再開条件を残す"]
-    record --> next["次のAI担当・次の起動・次の挑戦"]
-    next --> core
+    autocatalyze["autocatalyze：復元・実装・公開・検証・引き継ぎ"]
+    reconceptualize["reconceptualize：目的と合格条件の再定義"]
+    canonicalize["canonicalize：正本と再開状態の管理"]
+    adjudicate["adjudicate：同条件での比較と採否"]
+    disprove["disprove：仮説と完成判定の反証"]
+    didactization["didactization：実測と発見の知識化"]
+    decommission["decommission：不要な実装と規則の廃止"]
+
+    autocatalyze -->|目的の再検討を依頼| reconceptualize
+    reconceptualize -->|完成像と合格条件を返す| autocatalyze
+    autocatalyze -->|正本と状態の整理を依頼| canonicalize
+    canonicalize -->|実績と再開条件を返す| autocatalyze
+    autocatalyze -->|候補の比較を依頼| adjudicate
+    adjudicate -->|実測と採否を返す| autocatalyze
+    autocatalyze -->|反例の検証を依頼| disprove
+    disprove -->|重大な欠陥と修正条件を返す| autocatalyze
+    autocatalyze -->|発見の再利用を依頼| didactization
+    didactization -->|出典付きの知見を返す| autocatalyze
+    autocatalyze -->|旧経路の整理を依頼| decommission
+    decommission -->|廃止結果と残す経路を返す| autocatalyze
 ```
 
-`autocatalyze` が継続実行を担い、他の6 Skillsは案件に必要な判断だけを提供する。全Skillsの一律実行や独自スケジューラーの新設は目的ではない。常時稼働とは、LLMを止めずに動かすことではなく、必要なときに状態を復元し、成果の創出と改善を続けられることである。
+`autocatalyze` は案件の状態を復元し、必要なSkillだけを選んで依頼し、実装・公開・利用者の入口での検証まで進める。`reconceptualize`、`canonicalize`、`adjudicate`、`disprove`、`didactization`、`decommission` はそれぞれの判断と結果を `autocatalyze` に返す。`autocatalyze` は検証済みの成果と未完了工程を次の起動へ引き継ぐ。`autocatalyze` はLLMの連続起動や全Skillsの一律実行を必須にしない。
 
-## 成果の基準
+## adjudicateとautocatalyzeの成果判定
 
-成果の大きさは、生成した文章・コード・Issueの数では測らない。**利用者が解決できた問題、実際に使われる成果、再利用できる知見、削減できた負担、長期にわたって改善できる範囲**で判断する。完成の宣言ではなく、利用者の入口から成果を確認する。
+`reconceptualize` は利用者が完了できる行動を合格条件にする。`adjudicate` は文章・コード・Issueの生成数ではなく、利用者が解決できた問題、成果の利用状況、品質、削減できた負荷を評価する。`disprove` は検証結果と実利用が食い違う反例を調べる。`autocatalyze` は利用者の入口で成果を確認し、未確認の工程を完了扱いしない。`canonicalize` は確認済みの結果と対象の版を正本に残す。`didactization` は再利用できる知見を残す。`decommission` は不要な仕組みを廃止した効果を確認する。
 
-## 改善と更新
+## autocatalyzeと6 Skillsの改善・更新
 
-`autocatalyze` が継続運用で得た失敗と実測を次の案件に反映する。`reconceptualize` で目的を見直し、`adjudicate` と `disprove` で選択を確かめ、`canonicalize` と `didactization` で成果を継承し、`decommission` で不要になった仕組みをなくす。
-
-変更は利用者の明示指示、再現した問題、実物の利用結果に基づく。必要な公式仕様を参照し、影響する経路を検証する。判断の経緯はGit履歴で追えるようにする。
+`autocatalyze` は利用者の明示指示、再現した失敗、実物の利用結果から改善案件を選ぶ。`reconceptualize` は目的と完成条件を必要に応じて見直す。`adjudicate` は改善前後を比較し、`disprove` は変更の重大な反例を検証する。`canonicalize` は更新後の正本と引き継ぎ情報を整え、`didactization` は再利用可能な知見として整理する。`decommission` は役割を終えた仕組みを撤去する。`autocatalyze` は必要な公式仕様と影響範囲を確認し、結果を検証してGit履歴に反映する。
