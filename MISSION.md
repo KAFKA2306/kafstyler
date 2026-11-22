@@ -1,6 +1,8 @@
 ---
 type: policy
 description: "7 Skillsで大規模な自律成果創出を実現するKafstylerの使命"
+tags:
+  - kafstyler/mission
 ---
 
 # ミッション
@@ -16,6 +18,10 @@ Kafstylerは、研究・開発・制作・公開・運用をまたぐ多数の�
 `reconceptualize` は各プロジェクトのMISSIONと実測を照合し、既存Issueがなくても重要な問題を発見する。`autocatalyze` はMISSIONへの寄与、利用者への影響、緊急性、解決可能性から着手するIssueを選び、実装・公開・検証する。`canonicalize` はMISSIONの参照先、Issue、コミット、検証結果、再開条件を既存の正本で結ぶ。`adjudicate` と `disprove` が達成を検証し、結果が期待に届かなければ `reconceptualize` がIssueの解き方だけでなくMISSIONの前提まで再検討する。`didactization` は成果の再利用可能な知見を残し、`decommission` は不要になった仕事を廃止する。
 
 大きな継続案件はIssueで引き継ぐ。小さな修正にIssueの新設を強制しない。既存の目的・正本を読み、重複する目標文書や進捗台帳を増やさない。[運用規約](AGENTS.md#missionとissueの運用) · [一次資料](BIBLES.md#missionとissueによる案件選定)
+
+## 日常保守をAIなしで完了し、判断を成果へ集中する
+
+データの差分取り込みとVaultの形式検査・修復は、上流で保守されるCLIとOSの定期実行に任せる。更新がない日はLLMを呼ばず、物理的な正本も増やさない。`autocatalyze`は解けない例外と重要な案件を扱い、`canonicalize`は正本と参照経路を統一し、`adjudicate`と`disprove`が見逃し・誤修正・費用を検証する。`decommission`が重複する経路を廃止し、外部実装の進化を取り込む。[共通規約](AGENTS.md#外部実装を利用する常駐差分保守)
 
 ## 7 Skillsが実現すること
 
