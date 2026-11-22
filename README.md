@@ -215,7 +215,7 @@ orca skills get orchestration --full
 
 **設定の優先順位はKafstylerが上です。** OrcaのBotが通常作成する新しいworktreeより、[Kafstylerの作業規約](AGENTS.md#orcaなど外部実行環境との優先順位)に従います。`main`一本・1ワークツリーで書き込みを直列化し、別リポジトリの作業や読み取り専用の調査を並列化します。
 
-Orcaは、複数AIの[セッション検索](https://orca.dev/docs/cli/reference#session-search)、[監督付きワーカー](https://orca.dev/docs/cli/orchestration)、[ブラウザー検証](https://orca.dev/docs/cli/overview#browser-automation)、[リモートPCとスマホ](https://orca.dev/docs/ways-to-run)にも活用します。[横断運用の構想](skills/autocatalyze/SKILL.md#orcaの横断運用) · [公式資料](BIBLES.md#orcaを横断運用の実行基盤にする)
+Orcaは、複数AIの[セッション検索](https://orca.dev/docs/cli/reference#session-search)、[監督付きワーカー](https://orca.dev/docs/cli/orchestration)、[ブラウザー検証](https://orca.dev/docs/cli/overview#browser-automation)、[リモートPCとスマホ](https://orca.dev/docs/ways-to-run)にも活用します。**Plugins・Skills・MCP・Botsを区別して追加**し、[拡張の採用判断](BIBLES.md#orcaの拡張を選ぶ)から必要なものだけ使います。[横断運用の構想](skills/autocatalyze/SKILL.md#orcaの横断運用) · [公式資料](BIBLES.md#orcaを横断運用の実行基盤にする)
 
 ### 依頼を送って使う
 

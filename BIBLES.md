@@ -371,6 +371,27 @@ Orcaが持つ画面・CLI・遠隔実行を`autocatalyze`の仕事に沿って�
 
 [Orcaの実行手順](skills/autocatalyze/SKILL.md#orcaで監督して実行する) · [成果までの運用設計](skills/autocatalyze/SKILL.md#orcaの横断運用)
 
+### Orcaの拡張を選ぶ
+
+Orcaの拡張は**Plugins（画面・コマンド）**、**Skills（AIに操作を教える）**、**MCP（外部サービスと連携）**、**Bots（イベントから実行）**を区別する。まず[設定と標準機能](https://orca.dev/docs/settings)にあるAgent Dashboard・Skillsページ・利用枠・通知を使い、重複するプラグインは入れない。
+
+| 種類・公式入口 | 選定と使い方 |
+| --- | --- |
+| [Orca公式Pluginディレクトリ](https://orca.dev/plugins)・[公式カタログ](https://github.com/stablyai/orca-plugins) | `Settings → Plugins`（Windows: `Ctrl+Shift+X`）から検索し、発行元、ソース、実行権限、対応版を確認する。見た目だけならテーマやアイコン、成果物の編集ならExcalidrawなどの公式Pluginを優先する。 |
+| [Orca公式Skills](https://orca.dev/docs/cli/skills) | `orca-cli`は端末・作業場所・ブラウザー操作、`orchestration`はRun・Task・Dispatch、`computer-use`はデスクトップ操作。既存のインストールを先に確認し、必要なSkillだけ追加する。使う前に`orca skills get <topic> --full`で実行版の仕様を読む。 |
+| [Orca MCP設定](https://orca.dev/docs/cli/skills#mcp-servers) | `Settings → Integrations → MCP`で外部ツールを接続する。GitHubなど既存の認可済みツールがあれば二重登録しない。 |
+| [Orca Bots](https://orca.dev/docs/bots) | GitHub等のイベントとAI担当を結び付けるが、Kafstylerの`main`一本規約に従い、標準の新規worktree付き書き込みフローはそのまま有効化しない。 |
+
+**Kafstyler向け拡張候補。**
+
+- [No Worktrees](https://orca.dev/plugins/rolottr/orca-no-worktrees)（コミュニティ製、未レビュー、Full access）：`workspace.create.before`を使いOrcaによる新規worktreeを拒否する。実装の[`main.mjs`](https://github.com/rolottr/orca-no-worktrees/blob/main/main.mjs)と[`orca-plugin.json`](https://github.com/rolottr/orca-no-worktrees/blob/main/orca-plugin.json)を確認済み。前者は`event.kind === 'worktree'`を拒否し、後者はフックの`onError: pass`を指定。フックによる拒否は本来の新規worktree要求を止めるため、既存checkoutを使う入口を先に確保する。新しいworktreeを別経路で作るGit操作や同時書き込みまで禁止する機能ではない。
+- [Skill Tracker](https://orca.dev/plugins/robshox/skill-tracker)：セッションで実際に読み込まれたKafstyler Skillsを確認する候補。ただし`agent.tool.after`フックを使用するため、既存のフック障害との整合と性能を確認するまで導入しない。
+- [Regia](https://orca.dev/plugins/cryptosecco/orca-regia-plugin)・[Projects & Sessions](https://orca.dev/plugins/simplycreatecode/projects-sessions-sidebar)：Botの判断待ちと過去のセッションを見渡す候補。標準Agent Dashboard・セッション履歴と比べ、運用上の改善が実測できるときだけ採用する。
+
+**権限と採否。** 上記コミュニティプラグインは公式掲載でもコードレビュー済みとは限らず、Full accessではユーザー権限でファイル・ネットワーク・プロセスにアクセスできる。自動インストールやフルアクセスを既定で有効にしない。採用する場合はソース、権限、変更履歴を確認し、既存`main`での起動・不要な作業場所の不作成・アンインストール後の復旧を実機で確かめる。競合を解決できない場合は、プラグインを増やさずOrcaの既存checkout選択で運用する。
+
+[Kafstylerの優先規約](AGENTS.md#orcaなど外部実行環境との優先順位) · [Orca運用の手順](skills/autocatalyze/SKILL.md#orcaで監督して実行する)
+
 ### プラグインの構成
 
 [Anthropic・プラグインの構成要素](https://code.claude.com/docs/en/plugins/components)（公式仕様）。コマンドやスキルの構成
