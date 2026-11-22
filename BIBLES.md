@@ -112,7 +112,20 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 | [GOV.UK・Retire outdated content](https://guidance.publishing.service.gov.uk/writing-to-gov-uk-standards/plan-manage-content/retire-content/)（公開文書の運用基準） | 旧版を更新・統合・退役するとき、元URLから後継を見つけられるか、検索に旧版が混ざらないかを確かめる。 |
 | [Zenn・Zenn CLIで記事・本を管理する方法](https://zenn.dev/zenn/articles/zenn-cli-guide)（公開先の仕様） | Zennへ出す場合だけ、記事種別・ファイル名・公開用メタデータとリポジトリの正本を照合する。 |
 
-具体的な移行と参照更新は[canonicalize](skills/canonicalize/SKILL.md#台帳とobsidian-vaultで文書を整理する)、問題と対象の選定は[reconceptualize](skills/reconceptualize/SKILL.md#自律的に問題を発見して再構築する)、変更前後の検索と出典の評価は[adjudicate](skills/adjudicate/SKILL.md#成果物に合う判定を選ぶ)、後継への切替後の旧文書・重複機能の撤去は[decommission](skills/decommission/SKILL.md#整理の手順)が担う。中断・再開と継続監視は[autocatalyze](skills/autocatalyze/SKILL.md#常時稼働エージェントの中核)へ戻す。判断基準の原典はこの節に集め、Skillsには手順を置く。
+各判断・実行手順は [reconceptualize](skills/reconceptualize/SKILL.md)、[canonicalize](skills/canonicalize/SKILL.md)、[adjudicate](skills/adjudicate/SKILL.md)、[decommission](skills/decommission/SKILL.md)、[autocatalyze](skills/autocatalyze/SKILL.md) に置く。改稿時は [didactization](skills/didactization/SKILL.md)、重大な誤統合の検証には [disprove](skills/disprove/SKILL.md) を使う。
+
+```mermaid
+flowchart TD
+    reconceptualize["reconceptualize：検索失敗と古い正本を発見"] -->|質問・期待する答え| canonicalize["canonicalize：分類・正本・移行先を定義"]
+    canonicalize -->|検索入口・変更前後の版| adjudicate["adjudicate：検索・出典・後継リンクを比較"]
+    adjudicate -->|後継が使えることを確認| decommission["decommission：旧文書・重複機能を退役"]
+    decommission -->|整理結果・未完了の作業| autocatalyze["autocatalyze：結果を記録して運用を継続"]
+    autocatalyze -->|利用結果で新たな問題を発見| reconceptualize
+    canonicalize -.->|文面の改稿が必要| didactization["didactization：文言・見出しを整える"]
+    didactization -.->|改稿結果| adjudicate
+    adjudicate -.->|誤統合の疑い| disprove["disprove：対立する分類を反証"]
+    disprove -.->|判別した根拠| canonicalize
+```
 
 ## 目標・文章・評価
 
