@@ -23,6 +23,12 @@ description: "常時稼働エージェントの設計思想、7 Skillsの責務�
 | 同じ失敗を何度も調査する | `didactization`が根拠と再現条件を別案件でも使える知見にする |
 | 旧実装・ジョブ・監視が増え続ける | `decommission`が後継の動作を確認して旧経路を廃止し、次の案件に使う余力を戻す |
 
+## MISSION駆動・Issue駆動
+
+**MISSIONが成果を決め、Issueが実行をつなぎ、検証結果が次の使命判断を変える。** `autocatalyze` はプロジェクトの目的・未完了Issue・実物の結果を照合し、最も重要な問題から実行する。`reconceptualize` が未登録の問題も発見し、`canonicalize` がIssue・コミット・確認済みの成果を結ぶ。Issueを閉じた数ではなく、目的に対する実際の改善で次の案件を選び直す。
+
+[MISSION](MISSION.md#mission起点のissue駆動) · [運用規約](AGENTS.md#missionとissueの運用) · [GitHub公式資料](BIBLES.md#missionとissueによる案件選定)
+
 ## なぜこの7 Skillsなのか
 
 **設計の基本は「実行の責任を一つに集め、異なる判断は分ける」ことです。** `autocatalyze` は定時・イベント・再開から案件を選び、実装と検証と引き継ぎを統括します。他の6 Skillsは必要になった判断だけを引き受け、結果を `autocatalyze` に返します。
@@ -55,6 +61,7 @@ description: "常時稼働エージェントの設計思想、7 Skillsの責務�
 flowchart TD
     start["定時・イベント・担当交代"] --> auto["autocatalyze：前回の作業ID・入力版・結果を復元"]
     record[("既存のIssue・実行履歴・データの正本")] -->|前回の状態| auto
+    mission[("MISSION：目指す成果")] -->|優先する価値と完成場面| choose
     auto --> changed{"対応すべき変化・未処理はある？"}
     changed -->|なし| next["autocatalyze：再処理を省いて次の起動へ"]
     changed -->|あり| choose["autocatalyze：今回の案件と必要な判断を選ぶ"]
@@ -72,6 +79,7 @@ flowchart TD
     retire -.->|廃止結果を返す| work
     choose --> work
     work -->|検証結果と未処理を記録| record
+    work -->|実測が目的に届かない場合は前提を再検討| mission
     work --> next
     next --> start
 ```

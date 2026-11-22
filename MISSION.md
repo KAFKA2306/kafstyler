@@ -9,6 +9,14 @@ description: "7 Skillsで大規模な自律成果創出を実現するKafstyler�
 
 Kafstylerは、研究・開発・制作・公開・運用をまたぐ多数のプロジェクトで、構想から実利用までを継続して進めるための7 Skills。担当AI、セッション、モデル、実行環境が変わっても、目的と実績を引き継ぎ、次の成果につなぐ。
 
+## MISSION起点のIssue駆動
+
+**MISSIONは達成すべき成果、Issueはその成果のために解く問題、Gitコミットは実装、利用結果は達成の証拠。** Kafstylerはこの四つを結び付ける。Issueを閉じることではなく、MISSIONに向けて利用者の問題が解決したことを完成とする。
+
+`reconceptualize` は各プロジェクトのMISSIONと実測を照合し、既存Issueがなくても重要な問題を発見する。`autocatalyze` はMISSIONへの寄与、利用者への影響、緊急性、解決可能性から着手するIssueを選び、実装・公開・検証する。`canonicalize` はMISSIONの参照先、Issue、コミット、検証結果、再開条件を既存の正本で結ぶ。`adjudicate` と `disprove` が達成を検証し、結果が期待に届かなければ `reconceptualize` がIssueの解き方だけでなくMISSIONの前提まで再検討する。`didactization` は成果の再利用可能な知見を残し、`decommission` は不要になった仕事を廃止する。
+
+大きな継続案件はIssueで引き継ぐ。小さな修正にIssueの新設を強制しない。既存の目的・正本を読み、重複する目標文書や進捗台帳を増やさない。[運用規約](AGENTS.md#missionとissueの運用) · [一次資料](BIBLES.md#missionとissueによる案件選定)
+
 ## 7 Skillsが実現すること
 
 - **[autocatalyze](skills/autocatalyze/SKILL.md)｜常時稼働する成果創出の中核。** 定時・イベント・中断後の再開から案件を選び、状態を復元し、必要な作業を委譲・実装・公開・検証する。障害を復旧し、別のAI担当や次回の実行へ引き継ぐ。単発の修正を、大規模な継続運用の一部として完了させる。

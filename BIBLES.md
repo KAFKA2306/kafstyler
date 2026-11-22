@@ -142,6 +142,19 @@ flowchart TD
 
 ## 目標・文章・評価
 
+### MISSIONとIssueによる案件選定
+
+使命から実行と検証をつなぐときは、**目的と成果の基準**、**個別作業の追跡**、**完成・不採用の判定**を分ける。
+
+| 一次資料 | Kafstylerでの採用判断 |
+| --- | --- |
+| [Google Cloud・AI/ML Operational excellence](https://docs.cloud.google.com/architecture/framework/perspectives/ai-ml/operational-excellence)（2026年10月29日レビュー） | 解く問題と必要な成果を最初に定め、目的を測定可能な結果へ結び付ける。`reconceptualize` がMISSIONへの寄与を判断し、`adjudicate` が成果を測る。 |
+| [GitHub・About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/learning-about-issues/about-issues)（公式仕様） | Issueを問題・意見・作業の単位として使う。MISSIONや実物の成果をIssueに置き換えず、`canonicalize` が相互参照を保つ。 |
+| [GitHub・Planning and tracking work](https://docs.github.com/en/issues/tracking-your-work-with-issues/learning-about-issues/planning-and-tracking-work-for-your-team-or-project)（公式ガイド） | 大きな仕事だけ必要な粒度に分割し、Issue間の依存関係をたどる。`autocatalyze` が実行順を決め、Issue数を成果としない。 |
+| [GitHub・Closing an issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/administering-issues/closing-an-issue)（公式仕様） | 解決済みと実行予定なしを区別する。`autocatalyze` は確認した成果を紐付けて閉じ、`decommission` は重複・不要な仕事を整理する。 |
+
+[共通運用](AGENTS.md#missionとissueの運用) · [自律開発](skills/autocatalyze/SKILL.md#missionに沿ったissue駆動) · [正本の統一](skills/canonicalize/SKILL.md#missionとissueの正本関係)
+
 ### 問題の再定義と利用者の目的
 
 [Design Council・Double Diamond](https://www.designcouncil.org.uk/resources/the-double-diamond/)（設計原典）。解決策の前に問題を探索・定義する。[GOV.UK・Solve a whole problem for users](https://www.gov.uk/service-manual/service-standard/point-2-solve-a-whole-problem)（公式基準）。利用者が一連の用事を完了できるか確かめる。
