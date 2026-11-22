@@ -560,6 +560,24 @@ Orcaの拡張は**Plugins（画面・コマンド）**、**Skills（AIに操作�
 
 [自律開発の実行手順](skills/autocatalyze/SKILL.md#常駐エージェントと定期実行)・[再開の記録](skills/canonicalize/SKILL.md#定期実行と再開の記録)・[運用での評価](skills/adjudicate/SKILL.md#定期実行と再開の評価)・[長時間作業の引き継ぎ](#長時間稼働するエージェント)
 
+### 外部主導の差分取り込みとVault保守
+
+**ゼロトークンの常駐保守は、AIを小型化する前にAIを呼ばないことから始める。** 上流が実装・保守する機能を使い、Kafstylerは接続条件、正本、完成の判断だけを定める。
+
+| 一次資料・実装 | Kafstylerへの適用 |
+| --- | --- |
+| [OKF v0.3仕様](https://github.com/open-knowledge-format/open-knowledge-format/blob/main/SPEC.md)・[公式Validator](https://github.com/open-knowledge-format/open-knowledge-format/blob/main/skills/okf-generate/scripts/validate.py) | 知識の構造とfrontmatter、予約ファイルの検証。意味の正しさとは分ける。 |
+| [Google Cloud Knowledge Compiler](https://github.com/GoogleCloudPlatform/knowledge-compiler)・[CLI安定性](https://github.com/GoogleCloudPlatform/knowledge-compiler/blob/main/STABILITY.md) | `vault-extract`のSHA-256キャッシュで既処理の入力を省き、`vault-lint --fix`で決定的な形式修復、`vault-lint --json`で検証する。`vault-correct`は事実訂正用なので無審査の一括処理に使わない。 |
+| [rclone copy](https://rclone.org/commands/rclone_copy/) | 登録済みの読取元からキャッシュへ更新分をコピー。`--dry-run`で事前確認し、`sync`による削除を日次取り込みへ混ぜない。 |
+| [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/latest/) | 一時入力は`XDG_CACHE_HOME`、正本は`OBSIDIAN_VAULT_PATH`。WindowsとWSLは同じ実体へ別の表記で到達する。 |
+| [Windows Task Scheduler](https://learn.microsoft.com/en-us/windows/win32/TaskSchd/about-the-task-scheduler)・[Orca Scheduled Automations](https://orca.dev/docs/cli/automations) | OSが非AI保守を起動し、Orcaの`--precheck`は0ならAI起動、非0ならスキップ。旧ジョブを照合して二重起動を防ぐ。 |
+| [LiquidAI d1-2B](https://huggingface.co/LiquidAI/d1-2B) | 文書生成ではなく分類・選択肢の判断モデル。APIトークンを使わなくてもGPU資源は必要。固定規則より良いことを実測できる場合だけ導入する。 |
+| [Erlang/OTP Supervisor Principles](https://www.erlang.org/doc/system/sup_princ.html)・[AWSの安全な再試行](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/) | 監督の独立、再試行の上限、同一入力の重複反映防止。新しい監督用台帳を作らず既存の実行履歴につなぐ。 |
+
+[vault-maintenance.sh](scripts/vault-maintenance.sh)は上流CLIを呼ぶ薄い入口で、同期DB・モデル判断を内蔵しない。`vault-extract`は抽出であって知識の採否を決めない。Knowledge Compilerの任意Git同期フックは、Kafstylerの単一書き手・`main`運用と競合しない場合だけ使う。Agent Skillsの`SKILL.md`はAgent Skills仕様を優先し、OKFの概念文書と同一のfrontmatterを強制しない。
+
+[実行手順](skills/autocatalyze/SKILL.md#外部ツールによるゼロトークン保守) · [正本管理](skills/canonicalize/SKILL.md#vaultとパスの単一正本) · [旧経路の廃止](skills/decommission/SKILL.md#外部実装への移管)
+
 ### Anthropicの技術記事と事例
 
 | 英語一次資料 | 設計で使う判断 |
