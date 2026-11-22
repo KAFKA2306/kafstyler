@@ -142,13 +142,12 @@ flowchart TD
 
 ### 互換を残さない移行
 
-新しい正本へ切り替える移行では、廃止する旧契約を明示し、旧形式の読み書き・別名・二重ジョブを無期限に維持しない。必要なデータと出典を移してから、通常の入口を確認して旧経路を削除する。
+新しい正本へ切り替える移行では、廃止する旧契約を明示し、旧形式の読み書き・別名・二重ジョブを無期限に維持しない。必要なデータと出典を移してから、通常の入口を確認して旧経路を削除する。公開URLの退役判断は[文書監査と移行](#文書監査と移行)に統合する。
 
 | 一次資料 | 移行での判断 |
 | --- | --- |
 | [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)（公開APIの版規則） | 公開APIを宣言しSemVerで版管理している場合、非互換の変更をMAJOR更新として伝える。単なる内部文書の変更を機械的にMAJORとしない。 |
 | [Git・git-rm](https://git-scm.com/docs/git-rm)（公式操作） | 廃止すると確定した追跡ファイルをリポジトリと作業ツリーから外し、過去の変更はGit履歴で確認する。 |
-| [GOV.UK・Retire outdated content](https://guidance.publishing.service.gov.uk/writing-to-gov-uk-standards/plan-manage-content/retire-content/)（公開文書の退役） | 公開URLと参照元を調べ、読者の到達に必要な案内だけ残す。旧版が現行の検索結果に競合する状態は解消する。 |
 
 [破壊的移行の共通規約](AGENTS.md#破壊的移行と旧方式の廃止) · [正本の移行](skills/canonicalize/SKILL.md#正本の移行と旧版の整理) · [旧経路の廃止](skills/decommission/SKILL.md) · [移行の実行](skills/autocatalyze/SKILL.md#破壊的移行の実行)
 
