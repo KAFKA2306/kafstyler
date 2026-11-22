@@ -219,7 +219,7 @@ Orcaは、複数AIの[セッション検索](https://orca.dev/docs/cli/reference
 
 初回はOrcaの`Settings → Experimental → CLI`でCLIを有効にし、`Settings → Agents`とSkills画面で使用するエージェントとSkillを確認します。`Settings → Plugins`では公式カタログの[Excalidraw・Spreadsheet・SQLite Browserなど](BIBLES.md#orcaの拡張を選ぶ)から必要なものだけ選びます。Kafstylerの編集は既存`main`のタブで行い、Botの標準コード変更フローが新しいworktreeを作る場合は使いません。
 
-OrcaのAutomationsは定時・イベント起動、BotsはGitHub・Slack等からの受付と返答、Remote ServerはPC・スマホ間の継続操作を担います。**7 SkillsはOrca専用Pluginへ移さず、Codex・Antigravity・Claude Codeと共通に使います。** [常駐・通信の実行手順](skills/autocatalyze/SKILL.md#orcaのautomationsとbotsを使う) · [判断根拠](BIBLES.md#orcaを常駐通信基盤として使う)
+OrcaのAutomationsは定時実行、BotsはGitHub・Slack等からのイベント受付と返答、Remote Serverは常駐ホストとPC・スマホ間の継続操作を担います。**7 SkillsはOrca専用Pluginへ移さず、Codex・Antigravity・Claude Codeと共通に使います。** [常駐・通信の実行手順](skills/autocatalyze/SKILL.md#orcaのautomationsとbotsを使う) · [通信IDと再開の正本](skills/canonicalize/SKILL.md#定期実行と再開の記録) · [判断根拠](BIBLES.md#orcaを常駐通信基盤として使う)
 
 ### 依頼を送って使う
 

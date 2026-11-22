@@ -371,19 +371,35 @@ Orcaが持つ画面・CLI・遠隔実行を`autocatalyze`の仕事に沿って�
 
 [Orcaの実行手順](skills/autocatalyze/SKILL.md#orcaで監督して実行する) · [成果までの運用設計](skills/autocatalyze/SKILL.md#orcaの横断運用)
 
+
 ### Orcaを常駐・通信基盤として使う
 
-OrcaネイティブPluginへの全面移行はしない。OrcaはエージェントのSkillsを読み込めるが、[Plugin manifestの`contributes.skills`](https://github.com/stablyai/orca/blob/main/docs/reference/plugin-manifest.md)は現行では予約済みで、Skills配布の入口にはならない。Kafstyler本体の7 SkillsとCLI別プラグインは維持し、以下の標準機能を実行時だけ使う。
+**Kafstylerの7 Skillsは各Agent共通のままにする。** Orcaが担うのは常駐ホスト・起動・外部通信・作業中の連絡であり、判断と完成判定は`autocatalyze`、案件・成果の正本は`canonicalize`が担う。OrcaネイティブPluginの[`contributes.skills`](https://github.com/stablyai/orca/blob/main/docs/reference/plugin-manifest.md)は公式マニフェストで予約済みのため、既存Skillsの置き換えに使わない。
 
-| 公式一次資料 | 運用への適用 |
+| 公式一次資料 | 運用で使う仕組み |
 | --- | --- |
-| [Scheduled automations](https://orca.dev/docs/cli/automations) | 定時・cron・RRULE起動を受け持つ。既存`main`に作用させるときは新規worktreeを作る`--repo`ではなく、確認した既存作業場所の`--workspace`を使う。`--disabled`で登録し`--precheck`で差分のない実行を省く。 |
-| [Bots quickstart](https://orca.dev/docs/bots)・[Bot security](https://orca.dev/docs/bots/security) | GitHub・Slack・Linear等のイベント受付、会話・回答待ち・通知を担う。Botの標準コード作業は別worktreeに分かれるため、Kafstylerの書き込み案件は既存`main`の単一担当へ渡す。`Who can ask`とイベント起動の範囲は別に確認する。 |
-| [Orchestration](https://orca.dev/docs/cli/orchestration) | Task・Dispatch・Messageで複数AIの調査結果・質問・完了を中継する。Deliveryを処理してackし、実行IDと既存Issue・コミットを結ぶ。ワーカー完了を成果検証に代用しない。 |
-| [Remote Orca Servers](https://orca.dev/docs/remote-servers)・[Mobile](https://orca.dev/docs/mobile) | 稼働するホストでセッションと資格情報を保持し、他PC・スマホで監督する。ホストの停止、PCの休止、通信断は処理停止・欠落として確認する。Linux/macOSはサービス管理があるが、Windowsには同機能がない。 |
-| [Codex in Orca](https://orca.dev/docs/agents/codex) | Codexタブごとの独立サーバーはセッション分離に有効な一方、共有サーバーのバックグラウンド実行や`codex agents`から見えなくなる。継続運用が共有セッションを必要とする場合だけOrcaのCodex分離設定を見直す。 |
+| [Scheduled automations](https://orca.dev/docs/cli/automations) | CLIから定時・cron・RRULEで起動。既存`main`には`--workspace`で対象を固定し、最初は`--disabled`で登録。`--precheck`は終了コード0なら実行し、非0ならスキップする。スケジュールのホスト・タイムゾーン・最終結果は`list`・`show`・`runs`で読み戻す。 |
+| [Automationの再開と実行引数](https://orca.dev/docs/cli/automations#reuse-an-existing-automation-session) | `--reuse-session`は既存Workspaceの生きたセッションを再利用する場合だけ。通常は新しいセッションと既存作業履歴の引き継ぎを使う。`--extra-agent-args`のモデル・effort指定は新規セッション用で、再利用と併用しない。欠席回の再実行猶予は`--missed-run-grace-minutes`で指定できる。 |
+| [Bots quickstart](https://orca.dev/docs/bots)・[Bot connectors](https://orca.dev/docs/bots/connectors) | Botは会話・定時実行・GitHub／Slack／Linearのメンションやイベント・Webhookを受け付ける。Botによるコード変更は標準で新しいworktreeとPRを生成するため、Kafstylerの書き込みは既存`main`の単一担当に案件として引き継ぐ。 |
+| [Bot security](https://orca.dev/docs/bots/security) | Botの既定会話権限はFull accessになり得る。`Who can ask`はメンションを制限するが、イベントによる自動起動は別。外部入力の受付用Botは権限・Connector・発火対象を絞り、書き込みは独立したKafstylerの認可済み経路で行う。承認依頼は依頼者が承認できる点にも注意する。 |
+| [Orchestration](https://orca.dev/docs/cli/orchestration) | Run・Task・Dispatchで別リポジトリの実行や読み取り専用調査を管理。`check`で取得したDeliveryのメッセージを処理・記録してから`--ack`する。`worker_done`は`taskId`と`dispatchId`を照合し、Gitと成果を検証するまで完了にしない。 |
+| [Remote Orca Servers](https://orca.dev/docs/remote-servers)・[Mobile](https://orca.dev/docs/mobile) | ホストが作業状態・CLI認証・Agentを保持し、PC・スマホは接続先となる。ホストは起動・通信できる状態を維持する。macOS/Linuxの`orca serve service`は利用可能だがWindowsには未対応。クライアント切断とホスト停止を区別する。 |
+| [Orca skills registry & MCP](https://orca.dev/docs/cli/skills) | KafstylerのSkillsを複製せず、Orca固有の操作だけ`orca skills get orca-cli --full`や`orca skills get orchestration --full`から実行ホストに一致する手順を取得する。 |
 
-[Orcaでの運用手順](skills/autocatalyze/SKILL.md#orcaのautomationsとbotsを使う) · [共通規約](AGENTS.md#orcaなど外部実行環境との優先順位)
+**通信断と再送の境界。** GitHub・Slack・Linear・Webhookの外部イベントはOrca Cloudを通り、ホスト停止中の依頼保持は最大1日。WebhookのURLは起動権限を持つため秘密として扱い、必要なら署名を追加する。[Bot connectors](https://orca.dev/docs/bots/connectors#webhooks)。Orcaによる配送、Botの会話、Automationの実行、Orchestrationのメッセージ受信を、外部正本への変更の確定と混同しない。接続復旧後は元サービスで更新を再取得し、同じ作業ID・イベントID・書き込み操作IDに照合する。[再開情報の契約](skills/canonicalize/SKILL.md#定期実行と再開の記録)
+
+```mermaid
+flowchart LR
+    T["Orca Automations：時刻・precheck"] -->|"起動ID・予定時刻"| A["autocatalyze：案件選定・実行"]
+    B["Orca Bots：Issue・通知・Webhook"] -->|"出典・イベントID・受付内容"| C["canonicalize：案件・処理位置の正本"]
+    C -->|"対象版・未処理・権限・再開条件"| A
+    A -->|"調査・反証を委譲"| O["Orca Orchestration：Task・Dispatch・Message"]
+    O -->|"成果候補・配送ID・実行ID"| A
+    A -->|"確認済みコミット・実物の結果"| C
+    A -->|"必要な結果だけ返す"| B
+```
+
+[実行手順](skills/autocatalyze/SKILL.md#orcaのautomationsとbotsを使う) · [共通規約](AGENTS.md#orcaなど外部実行環境との優先順位)
 
 ### Orcaの拡張を選ぶ
 
@@ -404,7 +420,7 @@ Orcaの拡張は**Plugins（画面・コマンド）**、**Skills（AIに操作�
 
 **Chrome拡張とOrca Pluginは別。** [組み込みブラウザーのChrome拡張](https://orca.dev/docs/browser/overview#chrome-extensions)は試験機能で、ローカルプロファイルにだけ適用する。一部の拡張は正しく動作しない。Orca Pluginと二重導入せず、必要なWeb操作は既存ブラウザーとOrca CLIから先に検証する。
 
-**Botは外部入力と権限を分ける。** [公式Bot security](https://orca.dev/docs/bots/security)では、Botは初期設定によってFull accessで動き、イベント起動は`Who can ask`の許可対象とは別に発火する。GitHub Issue・Slack・メールなど他者の文章を読むBotは、承認が使えるClaude/Codexの`Ask for approval`などの権限を使い、最初は読み取り専用のトリアージに限定する。Botのコード修正は新しいworktreeを作る標準経路なので、Kafstylerでは既存`main`の`autocatalyze`へ案件を渡す。Botの状態・メモリはGitと既存Issueの正本の代わりにしない。
+**Botの権限とイベント起動。** [公式Bot security](https://orca.dev/docs/bots/security)の権限はKafstylerの正本管理を代替しない。外部イベントは発見・分類に使い、書き込み担当と分ける。[常駐・通信の原則](#orcaを常駐通信基盤として使う)
 **Kafstyler向け拡張候補。**
 
 - [No Worktrees](https://orca.dev/plugins/rolottr/orca-no-worktrees)（コミュニティ製、未レビュー、Full access）：`workspace.create.before`を使いOrcaによる新規worktreeを拒否する。実装の[`main.mjs`](https://github.com/rolottr/orca-no-worktrees/blob/main/main.mjs)と[`orca-plugin.json`](https://github.com/rolottr/orca-no-worktrees/blob/main/orca-plugin.json)を確認済み。前者は`event.kind === 'worktree'`を拒否し、後者はフックの`onError: pass`を指定。フックの`onError: pass`によってフック失敗時は通過し得るため、このプラグインをGit運用の強制境界とは扱わない。既存checkoutを選び、Git状態を実際に読み戻す。別経路の`git worktree add`や同時書き込みも防げない。
