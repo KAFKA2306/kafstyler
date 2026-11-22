@@ -40,6 +40,21 @@ if [[ -n "${KAFSTYLER_INGEST_SOURCE:-}" ]]; then
   command -v vault-extract >/dev/null || { echo "Install upstream Knowledge Compiler (vault-extract)" >&2; exit 2; }
   mkdir -p "$cache/inbox"
   rclone copy "$KAFSTYLER_INGEST_SOURCE" "$cache/inbox" --exclude ".git/**" --exclude ".obsidian/**"
+  declare -A source_stems=()
+  while IFS= read -r -d "" file; do
+    case "${file,,}" in
+      *.pdf|*.pptx|*.docx|*.xlsx|*.xls|*.csv|*.html|*.htm|*.mhtml|*.md|*.txt)
+        name="${file##*/}"
+        stem="${name%.*}"
+        stem="${stem,,}"
+        stem="${stem#copy of }"
+        if [[ -n "${source_stems[$stem]+set}" && "${source_stems[$stem]}" != "$file" ]]; then
+          echo "Two inputs would write the same raw document: ${source_stems[$stem]} and $file" >&2
+          exit 2
+        fi
+        source_stems[$stem]="$file" ;;
+    esac
+  done < <(find "$cache/inbox" -type f -print0)
   while IFS= read -r -d "" file; do
     case "${file,,}" in
       *.pdf|*.pptx|*.docx|*.xlsx|*.xls|*.csv|*.html|*.htm|*.mhtml|*.md|*.txt)
