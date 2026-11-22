@@ -8,7 +8,7 @@ aliases:
   - "聖典台帳"
 generated:
   by: openai/chatgpt
-  at: "2026-11-21T08:00:37.634Z"
+  at: "2026-11-22T03:16:36.100Z"
 sources:
   - id: okf-v03-spec
     resource: https://github.com/open-knowledge-format/open-knowledge-format/blob/527e81aff55992be21507e97004286789126f88c/SPEC.md
@@ -18,6 +18,18 @@ sources:
     resource: https://code.claude.com/docs/en/goal
   - id: claude-code-agent-view
     resource: https://code.claude.com/docs/en/agent-view
+  - id: orca-automations
+    resource: https://orca.dev/docs/cli/automations
+  - id: orca-bot-connectors
+    resource: https://orca.dev/docs/bots/connectors
+  - id: orca-bot-security
+    resource: https://orca.dev/docs/bots/security
+  - id: orca-orchestration
+    resource: https://orca.dev/docs/cli/orchestration
+  - id: orca-remote-servers
+    resource: https://orca.dev/docs/remote-servers
+  - id: orca-plugin-manifest
+    resource: https://github.com/stablyai/orca/blob/main/docs/reference/plugin-manifest.md
 verified:
   - by: openai/chatgpt
     at: "2026-11-19T09:51:58Z"
