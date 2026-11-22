@@ -569,6 +569,7 @@ Orcaの拡張は**Plugins（画面・コマンド）**、**Skills（AIに操作�
 | [OKF v0.3仕様](https://github.com/open-knowledge-format/open-knowledge-format/blob/main/SPEC.md)・[公式Validator](https://github.com/open-knowledge-format/open-knowledge-format/blob/main/skills/okf-generate/scripts/validate.py) | 知識の構造とfrontmatter、予約ファイルの検証。意味の正しさとは分ける。 |
 | [Google Cloud Knowledge Compiler](https://github.com/GoogleCloudPlatform/knowledge-compiler)・[CLI安定性](https://github.com/GoogleCloudPlatform/knowledge-compiler/blob/main/STABILITY.md) | `vault-extract`のSHA-256キャッシュで既処理の入力を省き、`vault-lint --fix`で決定的な形式修復、`vault-lint --json`で検証する。`vault-correct`は事実訂正用なので無審査の一括処理に使わない。 |
 | [rclone copy](https://rclone.org/commands/rclone_copy/) | 登録済みの読取元からキャッシュへ更新分をコピー。`--dry-run`で事前確認し、`sync`による削除を日次取り込みへ混ぜない。 |
+| [rclone combine backend](https://rclone.org/combine/) | 複数の読み取り元を別名付きのサブフォルダとして一つの仮想remoteにまとめる。`KAFSTYLER_INGEST_SOURCE`にはそのremoteを渡し、実ファイルやVaultの正本を追加複製しない。抽出後の同名衝突は処理前に検出して停止する。 |
 | [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/latest/) | 一時入力は`XDG_CACHE_HOME`、正本は`OBSIDIAN_VAULT_PATH`。WindowsとWSLは同じ実体へ別の表記で到達する。 |
 | [Windows Task Scheduler](https://learn.microsoft.com/en-us/windows/win32/TaskSchd/about-the-task-scheduler)・[Orca Scheduled Automations](https://orca.dev/docs/cli/automations) | OSが非AI保守を起動し、Orcaの`--precheck`は0ならAI起動、非0ならスキップ。旧ジョブを照合して二重起動を防ぐ。 |
 | [LiquidAI d1-2B](https://huggingface.co/LiquidAI/d1-2B) | 文書生成ではなく分類・選択肢の判断モデル。APIトークンを使わなくてもGPU資源は必要。固定規則より良いことを実測できる場合だけ導入する。 |
