@@ -54,6 +54,7 @@ Kafstylerは、**複数のAIエージェント・セッション・プロジェ�
 - **Git作業。** Orcaの新規worktree・新規ブランチ・Botの自動ワーカー作成より、下記の**`main`一本・1ワークツリー**を優先する。既存の`main`チェックアウトを使う。別の作業場所を自動生成する入口は使わない。同一リポジトリに書き込む担当は同時に一つとし、並列化は別リポジトリの作業か読み取り専用の調査・評価で行う。
 - **案件と判断。** `autocatalyze`が案件選定・実装・検証・再開を統括する。OrcaのRun・Task・DispatchやBotの記憶は実行上の状態であって、既存Issue・実行履歴・Gitコミットによる`canonicalize`の正本を置き換えない。端末終了・ワーカー完了・Botの報告だけで成果を合格にしない。
 - **起動と通知。** 定期処理・監視・フックをOrcaに移す場合、既存のジョブと役割・起動条件・結果を照合し、二重実行を防いでから切り替える。新たなフックで承認障害を増やさない。機能が規約と両立しなければその機能を使わず、既存の認可済み実行経路を使う。
+- **配布と実行を分離。** Kafstylerの7 SkillsはClaude Code・Codex・Antigravity向けの共通定義を正本とし、Orcaでは検出された同じSkillsを使用する。OrcaネイティブPluginは、Skillsを複製するためには作らず、標準機能にないOrca固有の画面や操作が実証された場合だけ検討する。Automationsは起動、Botsは受付と返答、Orchestrationは試行中の連絡、`autocatalyze`は案件選定と成果検証、`canonicalize`は正本と再開位置を担う。[Orca常駐と通信](skills/autocatalyze/SKILL.md#orcaのautomationsとbotsを使う)
 
 これらはKafstylerがエージェントに渡す運用規約。Orca自身に未確認の強制設定を追加せず、起動時に既存作業場所の選択とGit状態を読み戻して遵守を確かめる。[Orcaの公式仕様と適用](BIBLES.md#orcaでエージェントを監督する) · [Orca実行手順](skills/autocatalyze/SKILL.md#orcaで監督して実行する)
 

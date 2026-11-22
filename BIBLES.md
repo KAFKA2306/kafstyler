@@ -371,6 +371,20 @@ Orcaが持つ画面・CLI・遠隔実行を`autocatalyze`の仕事に沿って�
 
 [Orcaの実行手順](skills/autocatalyze/SKILL.md#orcaで監督して実行する) · [成果までの運用設計](skills/autocatalyze/SKILL.md#orcaの横断運用)
 
+### Orcaを常駐・通信基盤として使う
+
+OrcaネイティブPluginへの全面移行はしない。OrcaはエージェントのSkillsを読み込めるが、[Plugin manifestの`contributes.skills`](https://github.com/stablyai/orca/blob/main/docs/reference/plugin-manifest.md)は現行では予約済みで、Skills配布の入口にはならない。Kafstyler本体の7 SkillsとCLI別プラグインは維持し、以下の標準機能を実行時だけ使う。
+
+| 公式一次資料 | 運用への適用 |
+| --- | --- |
+| [Scheduled automations](https://orca.dev/docs/cli/automations) | 定時・cron・RRULE起動を受け持つ。既存`main`に作用させるときは新規worktreeを作る`--repo`ではなく、確認した既存作業場所の`--workspace`を使う。`--disabled`で登録し`--precheck`で差分のない実行を省く。 |
+| [Bots quickstart](https://orca.dev/docs/bots)・[Bot security](https://orca.dev/docs/bots/security) | GitHub・Slack・Linear等のイベント受付、会話・回答待ち・通知を担う。Botの標準コード作業は別worktreeに分かれるため、Kafstylerの書き込み案件は既存`main`の単一担当へ渡す。`Who can ask`とイベント起動の範囲は別に確認する。 |
+| [Orchestration](https://orca.dev/docs/cli/orchestration) | Task・Dispatch・Messageで複数AIの調査結果・質問・完了を中継する。Deliveryを処理してackし、実行IDと既存Issue・コミットを結ぶ。ワーカー完了を成果検証に代用しない。 |
+| [Remote Orca Servers](https://orca.dev/docs/remote-servers)・[Mobile](https://orca.dev/docs/mobile) | 稼働するホストでセッションと資格情報を保持し、他PC・スマホで監督する。ホストの停止、PCの休止、通信断は処理停止・欠落として確認する。Linux/macOSはサービス管理があるが、Windowsには同機能がない。 |
+| [Codex in Orca](https://orca.dev/docs/agents/codex) | Codexタブごとの独立サーバーはセッション分離に有効な一方、共有サーバーのバックグラウンド実行や`codex agents`から見えなくなる。継続運用が共有セッションを必要とする場合だけOrcaのCodex分離設定を見直す。 |
+
+[Orcaでの運用手順](skills/autocatalyze/SKILL.md#orcaのautomationsとbotsを使う) · [共通規約](AGENTS.md#orcaなど外部実行環境との優先順位)
+
 ### Orcaの拡張を選ぶ
 
 Orcaの拡張は**Plugins（画面・コマンド）**、**Skills（AIに操作を教える）**、**MCP（外部サービスと連携）**、**Bots（イベントから実行）**を区別する。まず[設定と標準機能](https://orca.dev/docs/settings)にあるAgent Dashboard・Skillsページ・利用枠・通知を使い、重複するプラグインは入れない。
