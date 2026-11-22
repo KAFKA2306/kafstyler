@@ -114,6 +114,8 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [Design Council・Double Diamond](https://www.designcouncil.org.uk/resources/the-double-diamond/)（設計原典）。解決策の前に問題を探索・定義する。[GOV.UK・Solve a whole problem for users](https://www.gov.uk/service-manual/service-standard/point-2-solve-a-whole-problem)（公式基準）。利用者が一連の用事を完了できるか確かめる。
 
+[Anthropic・Trustworthy agents in practice](https://www.anthropic.com/research/trustworthy-agents)（エージェントの自律性と監督に関する研究）。個々の可逆的な操作では自律性を生かし、利用者の目的が不明な判断や重大な変更では上位の方針と権限を確認する。質問を増やすことと、必要な判断を得ることを区別する。
+
 [目標設定](skills/reconceptualize/SKILL.md) · [自律開発](skills/autocatalyze/SKILL.md)
 
 ### 評価指標のすり替えと独立した検証
