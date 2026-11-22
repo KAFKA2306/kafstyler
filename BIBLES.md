@@ -108,6 +108,21 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [台帳とObsidian Vaultで文書を整理する](skills/canonicalize/SKILL.md#台帳とobsidian-vaultで文書を整理する)
 
+### 文書の分類・検索・鮮度を判断する
+
+既存のMarkdown・frontmatter・目次を正本として、利用者が**必要な情報を正しく発見し、更新版に到達できること**を文書管理の成果とする。分類数・タグ数・ノート数・プラグイン数を成果の代理にしない。[Diátaxisの作業原典](https://diataxis.fr/how-to-use-diataxis/)に従い、既存の一文書から用事に効く問題を見つけ、小さく修正して確かめる。4分類の空フォルダを先に作らない。
+
+| 一次資料 | 文書管理で変える判断 |
+| --- | --- |
+| [Stanford・Noy / McGuinness「Ontology Development 101」](https://protege.stanford.edu/publications/ontology_development/ontology101-noy-mcguinness.html)（オントロジー設計原著） | 型や階層を作る前に、その知識で答えるべき質問（competency questions）を決め、必要な粒度と識別・関係を選ぶ。VLogの人物・ワールド・道具の分類は、実際の問いに答えられるかを検証する。 |
+| [W3C・SKOS Reference](https://www.w3.org/TR/skos-reference/)（語彙・分類の標準仕様） | 正規名・別名・検索用表記、上位・下位概念を区別する。同音異義語や表記ゆれを一律ストップワードで消す前に、何を指しているか確認する。SKOSを採用することと、全ノートをRDFに変換することは別。 |
+| [Obsidian・Bases](https://obsidian.md/help/bases)（公式仕様） | Markdownのプロパティを標準のテーブル・絞り込みで扱えるか先に試す。Dataviewの導入や表示用の二重台帳を必要条件にしない。 |
+| [GOV.UK・Retire outdated content](https://guidance.publishing.service.gov.uk/writing-to-gov-uk-standards/plan-manage-content/retire-content/)（公式運用基準） | 旧版が検索結果で現行の答えを妨げる場合、保持・更新・統合・退役・後継への案内を判断する。削除件数ではなく、読者が誤った版を開かないことを確かめる。 |
+| [Google SRE・Monitoring Distributed Systems](https://sre.google/sre-book/monitoring-distributed-systems/)（運用設計原典） | 監視の症状と原因を区別する考えを文書運用に応用する。検索結果の取り違え、リンク切れ、古い正本への到達を症状として測り、索引数・生成数・処理成功だけで健全と判断しない。 |
+| [Chenほか・Knowing When to Stop: The Evidence-Action Gap in Coding Agents](https://arxiv.org/abs/2610.31895)（2026年のコーディングエージェント研究） | 文書移行やVault操作で外部環境の障害が確定したら、同じ失敗を繰り返さず、障害・完了範囲・必要な外部操作・再開条件を記録する。研究対象はコーディングエージェントであり、文書管理への利用は手順設計上の応用。独立して進められる別の文書改善は続ける。 |
+
+[文書の正本と移行](skills/canonicalize/SKILL.md#台帳とobsidian-vaultで文書を整理する) · [成果の評価](skills/adjudicate/SKILL.md#成果物に合う判定を選ぶ) · [継続実行](skills/autocatalyze/SKILL.md#常時稼働エージェントの中核)
+
 ## 目標・文章・評価
 
 ### 問題の再定義と利用者の目的
