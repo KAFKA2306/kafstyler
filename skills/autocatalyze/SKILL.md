@@ -67,7 +67,7 @@ OSのスケジューラーから[`scripts/vault-maintenance.sh`](../../scripts/v
 
 1. 対象Vault・取得元の権限・既存ジョブ・Git状態・Knowledge CompilerのCLI版を確かめる。OKF未移行なら公式の移行手順を別に一度適用する。
 2. 複数の取得元はrcloneの`combine` backendで互いに異なる名前のサブフォルダへ束ね、一つの`KAFSTYLER_INGEST_SOURCE`として渡す。抽出先の同名衝突は`--apply`がVaultへの書き込み前に拒否する。
-3. `rclone copy SOURCE DEST --dry-run`2. `rclone copy SOURCE DEST --dry-run`で更新を確認し、`--check`で形式の現状を測り、代表入力で`--apply`の初回・再実行・失敗を検証する。スクリプトは`flock`で同時実行を防ぎ、Git管理Vaultでは作業前のcleanな`main`と、成功後のローカルコミットを要求する。外部pushは行わない。
+3. `rclone copy SOURCE DEST --dry-run`で更新を確認し、`--check`で形式の現状を測り、代表入力で`--apply`の初回・再実行・失敗を検証する。スクリプトは`flock`で同時実行を防ぎ、Git管理Vaultでは作業前のcleanな`main`と、成功後のローカルコミットを要求する。外部pushは行わない。
 4. 既存の定期ジョブと重複しないOS起動元に切替える。取得に失敗した回を差分なしと記録しない。OrcaはAIが必要な差分のときだけ`--precheck`で起動し、実行IDと完了の検証を既存の案件へ結び付ける。Orcaの手動実行はprecheckを迂回する。
 5. 固定規則で解決できない分類に限って`adjudicate`で小型モデルを独立評価する。d1-2Bの常駐は必須でなく、判断不能・生成・実装が必要な場合だけ認可済みfrontierモデルに昇格する。再試行は上限を持ち、成果を読み戻してから処理済み位置を更新する。
 
