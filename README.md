@@ -25,6 +25,8 @@ tags:
 | 同じ失敗を何度も調査する | `didactization`が根拠と再現条件を別案件でも使える知見にする |
 | 旧実装・ジョブ・監視が増え続ける | `decommission`が後継の動作を確認して旧経路を廃止し、次の案件に使う余力を戻す |
 
+**旧方式を残さない移行。** `canonicalize` が新しい正本を決め、`autocatalyze` が利用側を切り替え、`decommission` が旧定義・互換経路・重複起動を廃止します。既存データの保持と実動作は `adjudicate`・`disprove` で確認します。[破壊的移行の規約](AGENTS.md#破壊的移行と旧方式の廃止) · [原典](BIBLES.md#互換を残さない移行)
+
 ## MISSION駆動・Issue駆動
 
 **MISSIONが成果を決め、Issueが実行をつなぎ、検証結果が次の使命判断を変える。** `autocatalyze` はプロジェクトの目的・未完了Issue・実物の結果を照合し、最も重要な問題から実行する。`reconceptualize` が未登録の問題も発見し、`canonicalize` がIssue・コミット・確認済みの成果を結ぶ。Issueを閉じた数ではなく、目的に対する実際の改善で次の案件を選び直す。
