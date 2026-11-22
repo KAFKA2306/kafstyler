@@ -12,7 +12,7 @@ Kafstylerは、研究・開発・制作・公開・運用をまたぐ多数の�
 ## 7 Skillsが実現すること
 
 - **[autocatalyze](skills/autocatalyze/SKILL.md)｜常時稼働する成果創出の中核。** 定時・イベント・中断後の再開から案件を選び、状態を復元し、必要な作業を委譲・実装・公開・検証する。障害を復旧し、別のAI担当や次回の実行へ引き継ぐ。単発の修正を、大規模な継続運用の一部として完了させる。
-- **[reconceptualize](skills/reconceptualize/SKILL.md)｜構想を、本当に解くべき問題と完成像へ変える。** 既存の手段に縛られず目的を再定義し、利用者が実際に達成できる結果と合格条件を決める。多数の案件が局所的な作業に埋もれず、より大きな目的へ向かうようにする。
+- **[reconceptualize](skills/reconceptualize/SKILL.md)｜まだ依頼されていない本質的な問題を発見し、完成像を再構築する。** 依頼と利用結果、繰り返す失敗から前提や目的を問い直し、現行手段の延長と根本的な転換を比べて採用案を選ぶ。利用者の成果と合格条件を `autocatalyze` に渡し、実測が改善しなければ問題そのものを再検討する。
 - **[canonicalize](skills/canonicalize/SKILL.md)｜大規模運用で判断と成果を失わない共通基盤をつくる。** 対象ID、データの意味、正本、版、出典、更新経路、作業状態を一貫させる。`autocatalyze`には最後の確認結果と再開条件、`adjudicate`には比較可能な入力版、`disprove`には反証に使う来歴、`didactization`には出典、`decommission`には移行先と切替条件を渡す。複数のAI担当が同じ対象を同じ定義で扱えるようにし、成果の取り違えと二重作業を防ぐための設計を担う。
 - **[adjudicate](skills/adjudicate/SKILL.md)｜成果を測定し、最善の選択を残す。** 候補を同じ条件で比較し、精度、品質、操作成功、費用、運用負荷など実際の目的に関わる結果で採否を決める。見かけの進捗ではなく、改善を確認できる選択を積み上げる。
 - **[disprove](skills/disprove/SKILL.md)｜重大な思い込みを反証する。** 設計、仮説、完成判定の弱点を具体的な反例や実物の確認で探し、致命的な誤りが大規模に広がる前に修正する。証拠のない断定や、テストだけ通って利用できない成果を見逃さない。
@@ -26,15 +26,15 @@ Kafstylerは、研究・開発・制作・公開・運用をまたぐ多数の�
 ```mermaid
 flowchart TD
     autocatalyze["autocatalyze：復元・実装・公開・検証・引き継ぎ"]
-    reconceptualize["reconceptualize：目的と合格条件の再定義"]
+    reconceptualize["reconceptualize：問題の発見・完成像の再構築"]
     canonicalize["canonicalize：正本・版・来歴・再開状態の統一"]
     adjudicate["adjudicate：同条件での比較と採否"]
     disprove["disprove：仮説と完成判定の反証"]
     didactization["didactization：実測と発見の知識化"]
     decommission["decommission：重複経路を廃止し運用の余力を生む"]
 
-    autocatalyze -->|目的の再検討を依頼| reconceptualize
-    reconceptualize -->|完成像と合格条件を返す| autocatalyze
+    autocatalyze -->|成果の停滞・再発・前提変化を渡す| reconceptualize
+    reconceptualize -->|選んだ完成像・理由・合格条件を返す| autocatalyze
     autocatalyze -->|対象・実行結果・未処理の記録を渡す| canonicalize
     canonicalize -->|確認済みの版・正本・再開位置を返す| autocatalyze
     autocatalyze -->|候補の比較を依頼| adjudicate
@@ -55,4 +55,4 @@ flowchart TD
 
 ## autocatalyzeと6 Skillsの改善・更新
 
-`autocatalyze` は利用者の明示指示、再現した失敗、実物の利用結果から改善案件を選ぶ。`reconceptualize` は目的と完成条件を必要に応じて見直す。`adjudicate` は改善前後を比較し、`disprove` は変更の重大な反例を検証する。`canonicalize` は更新後の正本と引き継ぎ情報を整え、`didactization` は再利用可能な知見として整理する。`decommission` は役割を終えた仕組みを撤去する。`autocatalyze` は必要な公式仕様と影響範囲を確認し、結果を検証してGit履歴に反映する。
+`autocatalyze` は利用者の明示指示、再現した失敗、実物の利用結果から改善案件を選ぶ。`reconceptualize` は実測の停滞や再発した失敗から、自発的に問題を発見し、目的・完成像・完成条件を再構築する。`adjudicate` は改善前後を比較し、`disprove` は変更の重大な反例を検証する。`canonicalize` は更新後の正本と引き継ぎ情報を整え、`didactization` は再利用可能な知見として整理する。`decommission` は役割を終えた仕組みを撤去する。`autocatalyze` は必要な公式仕様と影響範囲を確認し、結果を検証してGit履歴に反映する。
