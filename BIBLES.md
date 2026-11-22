@@ -125,6 +125,14 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [評価と比較](skills/adjudicate/SKILL.md) · [反証レビュー](skills/disprove/SKILL.md)
 
+### 合成回答と人間の判断を区別する
+
+- [Maierほか・LLMs Reproduce Human Purchase Intent via Semantic Similarity Elicitation of Likert Ratings](https://arxiv.org/abs/2510.08338)（PyMC Labs・Colgate-Palmolive共同研究、arXiv v3、2025年）。LLMの自由記述を意味類似性で5段階の回答分布に変換するSSRを、57件の商品コンセプト調査・実回答者9,300人で比較した。商品間の購買意向平均の相関は、人間の回答者を二分した場合の相関の約90%に達したが、実際の購買の予測精度ではない。回答の変換に使う基準文は同じ57調査に合わせて調整されており、別の商品群で同じ精度になるかは確かめられていない。
+- [Bisbeeほか・Synthetic Replacements for Human Survey Data? The Perils of Large Language Models](https://www.cambridge.org/core/journals/political-analysis/article/synthetic-replacements-for-human-survey-data-the-perils-of-large-language-models/B92267DC26195C7F36E63EA04A47D2FE)（Political Analysis、2024年）。政治意識調査では合成回答の平均が実調査に近くても、回答のばらつきや属性との関係が食い違い、実際の回答者の代理として推論すると結論が変わった。SSRそのものの追試ではない。回答分布の一致だけでなく、意思決定に必要な関係を実測で照合する。
+- [AAPOR・Making Good Choices—and Explaining Them](https://aapor.org/announcements/making-good-choices/)（米国世論調査研究協会、2026年）。AIが生成した回答を人間から回収した回答と区別し、生成・検証の方法を明示する。ペルソナ別の模擬回答は仮説の発見に使い、利用者の需要や行動を確定する根拠には実際の人間による観測を用いる。
+
+[評価と比較](skills/adjudicate/SKILL.md) · [反証レビュー](skills/disprove/SKILL.md) · [利用者の目的](skills/reconceptualize/SKILL.md)
+
 ### 減算による解決
 
 - [Adamsほか・People systematically overlook subtractive changes](https://www.nature.com/articles/s41586-021-03380-y)（Nature誌の人間行動研究）。削除案を明示的に探す。AIの性質を直接実証した研究ではない。
