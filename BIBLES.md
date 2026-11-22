@@ -116,11 +116,11 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 ```mermaid
 flowchart TD
-    reconceptualize["reconceptualize：検索失敗と古い正本を発見"] -->|質問・期待する答え| canonicalize["canonicalize：分類・正本・移行先を定義"]
+    autocatalyze["autocatalyze：案件を起動・記録・再開"] -->|観測した検索失敗| reconceptualize["reconceptualize：検索失敗と古い正本を発見"]
+    reconceptualize -->|質問・期待する答え| canonicalize["canonicalize：分類・正本・移行先を定義"]
     canonicalize -->|検索入口・変更前後の版| adjudicate["adjudicate：検索・出典・後継リンクを比較"]
     adjudicate -->|後継が使えることを確認| decommission["decommission：旧文書・重複機能を退役"]
-    decommission -->|整理結果・未完了の作業| autocatalyze["autocatalyze：結果を記録して運用を継続"]
-    autocatalyze -->|利用結果で新たな問題を発見| reconceptualize
+    decommission -->|整理結果・未完了の作業| autocatalyze
     canonicalize -.->|文面の改稿が必要| didactization["didactization：文言・見出しを整える"]
     didactization -.->|改稿結果| adjudicate
     adjudicate -.->|誤統合の疑い| disprove["disprove：対立する分類を反証"]
@@ -576,7 +576,7 @@ Anthropic・Hooks reference（公式リファレンス、2026年11月19日確認
 
 | プラグイン（ID） | 調査時点の通常版候補 | 用途と採用判断の根拠 |
 | --- | --- | --- |
-| [Dataview](https://github.com/blacksmithgu/obsidian-dataview)（`dataview`） | [0.5.70](https://github.com/blacksmithgu/obsidian-dataview/releases/tag/0.5.70) | frontmatterやノートから一覧を生成する。まずObsidian標準の[ベース](https://obsidian.md/help/bases)で足りるか比べ、必要なクエリだけ導入する。DataviewJSの実行は通常のDQL検索と区別する。 |
+| [Dataview](https://github.com/blacksmithgu/obsidian-dataview)（`dataview`） | [0.5.70](https://github.com/blacksmithgu/obsidian-dataview/releases/tag/0.5.70) | frontmatterやノートから一覧を生成する。まずObsidian標準のBasesで足りるか比べ、必要なクエリだけ導入する。DataviewJSの実行は通常のDQL検索と区別する。 |
 | [Omnisearch](https://github.com/scambier/obsidian-omnisearch)（`omnisearch`） | [1.32.0](https://github.com/scambier/obsidian-omnisearch/releases/tag/1.32.0) | 順位付けした検索・関連する文書の発見。[標準検索](https://obsidian.md/help/plugins/search)で見つからない実例がある場合に追加する。 |
 | [Calendar](https://github.com/liamcain/obsidian-calendar-plugin)（`calendar`） | [1.5.10](https://github.com/liamcain/obsidian-calendar-plugin/releases/tag/1.5.10) | デイリーノートへの日付別移動。2021年公開の通常版。日次ノート作成の正本設定を他プラグインと競合させない。 |
 | [Periodic Notes](https://github.com/liamcain/obsidian-periodic-notes)（`periodic-notes`） | [0.0.17](https://github.com/liamcain/obsidian-periodic-notes/releases/tag/0.0.17) | 週次・月次などの定期ノートを作成する。Calendarとの連携設定をそろえる。2021年の通常版で、保守状況と現行Obsidianでの動作を確かめる。 |
