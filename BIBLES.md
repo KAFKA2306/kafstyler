@@ -271,53 +271,41 @@ flowchart TD
 
 ## ファンドマネージャーの聖典
 
-投資判断の対象は、ニュースや銘柄を先に選ぶことではなく、**運用目的・投資可能期間・負債・流動性・ベンチマーク・期待超過収益**から決める。ニュースの反応、企業の予想利益、指数の配分変更を評価する場合、予想・実績・データの観測時点を別々に固定し、株価に織り込まれた期待と対比する。資料は方法論とデータの一次資料を優先し、運用成績を保証する投資助言として採用しない。
+**投資方針→資産配分→期待収益→市場価格との比較→実績評価**の順に判断する。個々の材料や低PERをきっかけに資産配分を変えず、保有指数の重複、借入、円建ての資金需要、税・費用を含む全体の運用成果で採否を決める。
 
-### 運用哲学と期待リターン
+### 中核8件
 
-| 一次資料 | 運用で使う判断 |
-| --- | --- |
-| [Grinold / Kahn『Active Portfolio Management』第2版](https://www.mheducation.com/highered/mhp/product/active-portfolio-management-quantitative-approach-producing-superior-returns-selecting-superior-returns-controlling-risk.html)（McGraw Hill、1999年） | アクティブ運用の成否をベンチマーク相対の予測精度・リスク・費用で測る。予測に独自の情報優位がない場合、集中ポジションを正当化しない。 |
-| [Antti Ilmanen『Expected Returns』](https://www.wiley.com/en-us/expected-returns-an-investor%27s-guide-to-harvesting-market-rewards-p-9781119990727)（Wiley、2011年） | 資産別の期待収益を金利、評価倍率、リスクプレミアム等から組み立て、過去の値上がりをそのまま将来に延長しない。 |
-| [Ilmanen / Maloney『Understanding Return Expectations』](https://rpc.cfainstitute.org/research/foundation/2026/understanding-return-expectations)（CFA Institute Research Foundation、2026年11月12日） | 投資家が直近3〜10年の上昇を外挿する偏りと、利回り・価格から推定する長期期待収益を区別する。米国株の高い過去リターンだけを買い増しの根拠にしない。 |
-| [Howard Marks『The Most Important Thing』](https://cup.columbia.edu/book/the-most-important-thing/9780231527095/)（Columbia University Press、2011年） | 好材料の多さではなく、それを市場価格がどこまで織り込んでいるか、サイクルの位置、損失余地、見通しの不確実さを見る。 |
-| [John C. Bogle『Common Sense on Mutual Funds』改訂版](https://www.wiley.com/en-us/-p-9780470138137)（Wiley、2009年） | コスト控除後でアクティブ運用が低コストの広域指数投資を超える根拠があるかを問う。 |
-| [Graham / Dodd『Security Analysis』第7版](https://www.mheducation.com/highered/mhp/product/security-analysis-seventh-edition-principles-techniques.html?viewOption=student)（McGraw Hill、2023年） | 個別企業・業界の評価で、見かけの低PERと持続的な利益・安全余裕を区別する。銘柄分析と指数採用の判断を混同しない。 |
+| 役割 | 一次資料 | 採用する判断 |
+| --- | --- | --- |
+| 投資方針 | [CFA Institute・Basics of Portfolio Planning and Construction（2026）](https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/basics-of-portfolio-planning-and-construction) | 目的・運用期間・リスク許容度・資金需要から投資方針書（IPS）と再配分規則を決める。 |
+| 資産配分 | [CFA Institute・Principles of Asset Allocation（2026）](https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/principles-asset-allocation) | 資産だけでなく負債や目標との関係、シナリオ分析から配分の頑健性を比べる。 |
+| 期待収益 | [Antti Ilmanen『Expected Returns』（2011）](https://www.aqr.com/insights/research/book/expected-returns-an-investors-guide-to-harvesting-market-rewards) | 資産クラス・投資スタイル・リスク要因の期待収益を構築する。 |
+| 期待の誤認 | [Ilmanen / Maloney『Understanding Return Expectations』（CFA Institute Research Foundation、2026-11-12）](https://rpc.cfainstitute.org/research/foundation/2026/understanding-return-expectations) | 過去の高リターンを将来へ外挿した主観的期待と、利回り・価格から導く期待収益を分ける。 |
+| 市場超過収益 | [Grinold / Kahn『Active Portfolio Management』第2版（1999）](https://www.mheducation.com/highered/mhp/product/active-portfolio-management-quantitative-approach-producing-superior-returns-selecting-superior-returns-controlling-risk.html) | ベンチマーク、予測の情報価値、追跡誤差、コストを比較し、アクティブな判断を採る根拠を評価する。 |
+| 価格・サイクル | [Howard Marks『The Most Important Thing』（2011）](https://cup.columbia.edu/book/the-most-important-thing/9780231527095/) | 好材料と、それが価格に織り込まれた度合いを区別し、下方リスクと市場サイクルを見る。 |
+| 指数運用 | [John C. Bogle『Common Sense on Mutual Funds』改訂版（2009）](https://www.wiley.com/en-jp/shop/general-finance-investments/common-sense-on-mutual-funds-updated-10th-anniversary-edition-p-9780470138137) | 手数料・売買コスト・税を差し引いた結果で、低コストの広域指数運用と比較する。 |
+| 成績評価 | [CFA Institute・Portfolio Performance Evaluation（2026）](https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/portfolio-performance-evaluation) | リターン測定、配分・銘柄選択の寄与度分析、運用技量の評価を区別する。 |
 
-### 運用設計・分析・リスク
+### 個別の検証に使う一次資料3件
 
-| 一次資料 | 運用で使う判断 |
-| --- | --- |
-| [CFA 2026・Portfolio Management: An Overview](https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/portfolio-management-overview) | 投資方針書（IPS）から運用目的・制約・再配分・成績評価を定める。 |
-| [CFA 2026・Capital Market Expectations I](https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/capital-market-expectations-part-i) | 資産別の将来リターン予測を、景気・インフレ・金利・評価倍率から構成する。 |
-| [CFA 2026・Principles of Asset Allocation](https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/principles-asset-allocation) | 資産のみの最適化で終えず、借入・将来支出・流動性・リスク予算・シナリオを含めて配分を検証する。 |
-| [CFA 2026・Analysis of Active Portfolio Management](https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/analysis-active-portfolio-management) | シャープレシオとインフォメーションレシオを区別し、超過収益とトラッキングエラーを比較する。 |
-| [CFA 2026・Measuring and Managing Market Risk](https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/measuring-managing-market-risk) | リスク要因、VaR、ストレス・バックテストで下落と集中リスクを点検する。 |
-| [CFA 2026・Credit Analysis Models](https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/credit-analysis-models) | AI設備投資などの資金調達リスクを、信用スプレッド、債務不履行確率、回収率に分解する。 |
-| [CFA 2026・Evaluating Quality of Financial Reports](https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/evaluating-quality-financial-reports) | 予想PERを使う前に、利益の一時性、キャッシュフロー、会計方針を確認する。 |
-| [Aswath Damodaran・Valuation](https://pages.stern.nyu.edu/~adamodar/New_Home_Page/valuation/val.htm)（NYU Stern、教材・スプレッドシート） | 利益成長率、割引率、正常利益の仮定を明示し、逆算した価格の妥当性を比べる。 |
-| [CFA 2026・Currency Management: An Introduction](https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/currency-management-introduction) | 円建て投資家が海外資産のリターンを比較する際、為替リスクとヘッジ方針を分離して決める。 |
+| 検証対象 | 一次資料 | 使う場面 |
+| --- | --- | --- |
+| 企業価値・持続的利益 | [NYU Stern・Aswath Damodaran『Valuation』教材](https://pages.stern.nyu.edu/~adamodar/New_Home_Page/valuation/val.htm) | 半導体などで予想PERの分母が正常利益かを検証する。 |
+| 全世界株式指数 | [MSCI・Index Methodology](https://www.msci.com/indexes/index-resources/index-methodology) | 組入れ対象・比率・定期見直しを原ルールで確認する。 |
+| 米国株式指数 | [S&P Dow Jones Indices・S&P U.S. Indices Methodology](https://www.spglobal.com/spdji/en/methodology/article/sp-us-indices-methodology/) | 時価総額加重など指数構成の根拠を確認する。 |
 
-### 指数・実績データ・評価基準
+### 投資判断への適用
 
-| 一次資料 | 運用で使う判断 |
-| --- | --- |
-| [CFA 2026・Portfolio Performance Evaluation](https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/portfolio-performance-evaluation) | リターン測定、配分・選択要因への寄与度分解、成績の評価を区別する。 |
-| [CFA Institute・GIPS Standards](https://rpc.cfainstitute.org/gips-standards) | 成績の期間、手数料、キャッシュフロー、報告単位の一貫性を確かめ、見せ方による誤認を防ぐ。 |
-| [Kenneth French・Data Library](https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html)（Dartmouth College） | 市場・規模・バリュー等の要因を参照し、指数の超過成績を特定要因への偏りと区別する。 |
-| [MSCI・Index Methodology](https://www.msci.com/indexes/index-resources/index-methodology) | 全世界・先進国・新興国指数の組入れルールを正本で確認する。 |
-| [S&P DJI・S&P U.S. Indices Methodology](https://www.spglobal.com/spdji/en/methodology/article/sp-us-indices-methodology/) | 時価総額加重と均等加重の構成・再配分ルールを確認する。 |
-
-投資案件では、`canonicalize` が保有資産・借入・ベンチマーク・見通しとデータ時点を固定し、`disprove` が「利益のピーク」「設備投資の資金不足」「市場が既に織り込んだ」といった仮説の反証条件を用意する。`adjudicate` は実績・将来予測・手数料・税・為替・負債を合わせて現状維持と変更案を比較する。価格・予想値はこの台帳に転記して固定せず、分析時点の一次データで再取得する。
+`canonicalize` は保有指数・借入・費用・基準時点・ベンチマークを固定する。`disprove` は「AI需要の減速」「予想利益のピーク」「市場に既に織り込み済み」といった仮説を反証する。`adjudicate` は現状維持と配分変更を、期待収益・損失・費用・税・為替で比較する。優位性が確認できなければ売買しない。
 
 ```mermaid
 flowchart LR
-    C["canonicalize：保有・負債・予測の時点をそろえる"] --> D["disprove：市場見通しの反証条件を検証"]
-    D --> A["adjudicate：期待収益・リスク・費用を比較"]
+    C["canonicalize：資産・負債・基準時点"] --> D["disprove：投資仮説を反証"]
+    D --> A["adjudicate：期待収益・損失・費用を比較"]
     A --> C
 ```
 
-[正本とデータの管理](skills/canonicalize/SKILL.md) · [反証](skills/disprove/SKILL.md) · [評価と比較](skills/adjudicate/SKILL.md)
+[データの正本](skills/canonicalize/SKILL.md) · [反証レビュー](skills/disprove/SKILL.md) · [評価と比較](skills/adjudicate/SKILL.md)
 
 ## エージェントとハーネス
 
