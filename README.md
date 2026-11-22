@@ -205,11 +205,13 @@ agy plugin list --json
 
 ### Orca
 
-[Orca](https://orca.dev/docs)でClaude Code・Codex・Antigravityを起動する場合も、各エージェント側に導入したKafstylerの7 Skillsを使えます。Orcaは端末・監督付きワーカー・状態表示を担当し、`autocatalyze`は実装と検証、`canonicalize`は正本と再開位置を管理します。[OrcaのSkill仕様](https://orca.dev/docs/cli/skills)では、`skills/<name>/SKILL.md`を持つリポジトリからSkillsを導入できます。
+[Orca](https://orca.dev/docs)がある環境では、`autocatalyze`が仕事の性質に応じてOrcaの端末、監督付きワーカー、Automations、Bots、ブラウザー、Remote Server、利用枠の観測を選びます。Kafstylerの7 SkillsはClaude Code・Codex・Antigravityに共通のまま維持し、`canonicalize`が正本と再開位置を管理します。単発の仕事をわざわざ多段のOrchestrationにせず、複数担当や継続実行ではOrcaの管理機能を使います。[機能選択の手順](skills/autocatalyze/SKILL.md#orca機能を選んで使う) · [公式Skills仕様](https://orca.dev/docs/cli/skills)
 
 ```sh
 orca status --json
 orca worktree current --json
+orca skills installed --json
+# 監督付きの複数担当が必要なときだけ
 orca skills get orchestration --full
 ```
 
@@ -217,7 +219,7 @@ orca skills get orchestration --full
 
 Orcaは、複数AIの[セッション検索](https://orca.dev/docs/cli/reference#session-search)、[監督付きワーカー](https://orca.dev/docs/cli/orchestration)、[ブラウザー検証](https://orca.dev/docs/cli/overview#browser-automation)、[リモートPCとスマホ](https://orca.dev/docs/ways-to-run)にも活用します。**Plugins・Skills・MCP・Botsを区別して追加**し、[拡張の採用判断](BIBLES.md#orcaの拡張を選ぶ)から必要なものだけ使います。[横断運用の構想](skills/autocatalyze/SKILL.md#orcaの横断運用) · [公式資料](BIBLES.md#orcaを横断運用の実行基盤にする)
 
-初回はOrcaの`Settings → Experimental → CLI`でCLIを有効にし、`Settings → Agents`とSkills画面で使用するエージェントとSkillを確認します。`Settings → Plugins`では公式カタログの[Excalidraw・Spreadsheet・SQLite Browserなど](BIBLES.md#orcaの拡張を選ぶ)から必要なものだけ選びます。Kafstylerの編集は既存`main`のタブで行い、Botの標準コード変更フローが新しいworktreeを作る場合は使いません。
+初回はOrcaの`Settings → General → Orca CLI`でCLIを登録し、AgentsとSkills画面で使用するエージェントとSkillを確認します。`Settings → Plugins`では標準機能では扱えない成果物がある場合だけ[公式カタログ](BIBLES.md#orcaの拡張を選ぶ)から選びます。Kafstylerの編集は既存`main`のタブで行い、Botの標準コード変更フローが新しいworktreeを作る場合は使いません。
 
 OrcaのAutomationsは定時実行、BotsはGitHub・Slack等からのイベント受付と返答、Remote Serverは常駐ホストとPC・スマホ間の継続操作を担います。**7 SkillsはOrca専用Pluginへ移さず、Codex・Antigravity・Claude Codeと共通に使います。** [常駐・通信の実行手順](skills/autocatalyze/SKILL.md#orcaのautomationsとbotsを使う) · [通信IDと再開の正本](skills/canonicalize/SKILL.md#定期実行と再開の記録) · [判断根拠](BIBLES.md#orcaを常駐通信基盤として使う)
 
