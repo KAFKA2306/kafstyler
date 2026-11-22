@@ -54,14 +54,26 @@ description: "実装から確認まで進め、定時・イベント・再開を
 
 ## Orcaで監督して実行する
 
-OrcaからClaude Code・Codex・Antigravityを起動するときは、[Orca公式資料の採用判断](../../BIBLES.md#orcaでエージェントを監督する)に従う。Orcaは実行環境と監督、`autocatalyze`は案件選定・実装・実物の合格、`canonicalize`は正本・版・再開状態を担う。
+OrcaからClaude Code・Codex・Antigravityを起動するときは、**[Kafstyler優先の共通規約](../../AGENTS.md#orcaなど外部実行環境との優先順位)をOrcaの既定動作より優先**し、[公式資料の採用判断](../../BIBLES.md#orcaでエージェントを監督する)を参照する。Orcaは実行環境と監督、`autocatalyze`は案件選定・実装・実物の合格、`canonicalize`は正本・版・再開状態を担う。
 
-1. `orca status --json`、`orca worktree current --json`でOrcaの接続と対象ディレクトリを確認し、[Gitの作業状態](../../AGENTS.md#gitの作業状態)も照合する。Orcaを使えない場合もKafstyler単体の実行を止めない。
-2. 単発の依頼は既存の端末で進める。複数担当への引き継ぎと完了報告が必要なら、実行環境の`orca skills get orchestration --full`を読んでRun・Task・Dispatchの現行仕様を確認する。Orcaが管理する既存の作業場所で`orca orchestration worker-start --task <taskId> --worktree current --agent codex --json`を使う。`new-child`など新規worktreeの作成や共有checkoutへの同時書き込みはしない。
+1. `orca status --json`、`orca worktree current --json`と[Gitの作業状態](../../AGENTS.md#gitの作業状態)で、対象が既存の`main`チェックアウトか確認する。既存作業場所から`orca agent launch --agent codex --json`で起動するか、場所を`--worktree path:<既存の絶対パス>`で指定する。Orcaが使えない場合もKafstyler単体の実行を止めない。
+2. 単発の依頼は既存端末で進める。監督と完了報告が必要なら、`orca skills get orchestration --full`で実行版のRun・Task・Dispatch仕様を確認する。対象が既存の`main`と一致したときだけ`orca orchestration worker-start --task <taskId> --worktree current --agent codex --json`を使う。Orca Botの標準コード変更フロー、`new-child`、新規worktree作成、共有checkoutへの同時書き込みを使わない。独立した他リポジトリの作業や読み取り専用の監査は並列で実行できる。
 3. Task/Dispatch IDとKafstylerの案件ID・対象コミットを対応付ける。ワーカーの`worker_done`は`taskId`・`dispatchId`・成否を照合し、ログと実際の成果を読み戻す。完了の判定は[実装と検証](#実装と検証)に従い、Orcaの状態表示だけで確定しない。
 4. コメント更新の前に既存の文面を確認する。`orca agent hooks status --json`で管理フックを切り分け、承認エラーが作業を阻害する場合は`orca agent hooks off --json`でOrca管理の状態通知を停止できる。不要なフック・重複するスケジューラー・第2の台帳は作らず、既存の起動元を切り替えるときは旧経路停止と再開の検証まで行う。
 
 Orca CLI、フック切替、ワーカーの起動を実行していない場合は実施済みと報告しない。
+
+## Orcaの横断運用
+
+**構想：Kafstylerが判断と成果を統括し、Orcaが複数CLI・ホスト・画面の実行状態をまとめる。** Orcaの機能を追加すること自体を目標にせず、既存の監視・自動化・正本を再利用する。
+
+1. **横断観測。** `orca search --query <障害語> --scope conversation --json`や既存GitHub Issue・実行履歴から、止まった仕事、繰り返す失敗、未確認の公開結果を見つける。`reconceptualize`が解く価値のある問題を選び、`canonicalize`が案件IDと最後の確認版を紐付ける。Orca Botは読み取り専用の候補発見にも利用できる。
+2. **仕事の分配。** `autocatalyze`が対象リポジトリと合格条件を確定する。OrcaのRun・Task・Dispatchで独立調査を並列化し、`disprove`・`adjudicate`に異なる検証を任せる。**同一リポジトリの書き込みは一つの既存`main`チェックアウトで直列に行う。** Orca既定のBotワークフローが新しいworktreeを必要とする場合は、その書き込み経路を使わず、既存作業場所のエージェントへ渡す。
+3. **実物で合格。** 変更を`main`へコミットし、必要ならOrcaの埋め込みブラウザー・ブラウザープロファイル・Computer Useで公開画面やローカルアプリを確かめる。`adjudicate`が実測で採否を判断し、`canonicalize`がコミットと検証結果を正本に残す。Orcaの`worker_done`やUIの終了表示だけでは合格にしない。
+4. **継続と遠隔。** 既存の定期ジョブ・イベント通知があるならそれを優先する。Orcaの定期実行を新しく採用する場合は`--workspace`で既存の作業場所を選び、軽い`--precheck`で無変化の起動を省き、旧経路の停止と再開を検証する。複数ホストやスマホはOrcaの状態確認・回答依頼の入口として使い、ファイルの正本は増やさない。
+5. **実行枠の選択。** Orcaで利用枠・起動可能なモデルとホストを確かめる。Kafstylerの[モデル選定](../../AGENTS.md#モデル選定)を優先し、候補IDが利用先で使えないなら認可された別会社の候補へ切り替える。上限・障害・未完了は既存履歴に残して次回へつなぐ。
+
+**最初の導入単位。** 既存の1リポジトリで、読み取り専用の障害調査 → `main`での単一担当修正 → ブラウザーからの成果確認 → 次回起動での再開を実測する。別リポジトリへの同時作業は、この一連の作業が維持できると確認してから広げる。[Orcaの一次資料](../../BIBLES.md#orcaを横断運用の実行基盤にする)
 
 ## 一件を合格まで進める
 

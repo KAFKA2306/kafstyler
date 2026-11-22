@@ -343,7 +343,7 @@ Anthropic・Hooks reference（公式リファレンス、2026年11月19日確認
 | [Agent hooks & memory](https://orca.dev/docs/agents/hooks-memory) | `orca agent hooks status --json`でOrca管理の状態通知フックを調べ、必要なら`on`/`off`で切り替える。状態通知と実行許可を混同しない。承認エラーの解決に別の強制フックを足さない。 |
 | [Scheduled automations](https://orca.dev/docs/cli/automations) | 既存スケジューラーと実行元を照合し、同じ案件を二重起動しない。既存の作業場所を使う場合は`--workspace`を選ぶ。 |
 
-**Gitの作業場所。** Orca標準の複数worktree運用は、Kafstylerの[1リポジトリ1ワークツリー・`main`一本](AGENTS.md#gitの作業状態)とは異なる。Kafstylerの対象では監督ワーカーを`--worktree current`など既存の場所に割り当て、`new-child`などを使わない。共有checkoutへの同時書き込みも避ける。OrcaのUI表示・実行受付・Gitコミット・実物の動作は異なる証拠として照合する。
+**規約の優先順位。** [Kafstylerの共通規約](AGENTS.md#orcaなど外部実行環境との優先順位)をOrcaの既定動作・Botテンプレートより優先する。Orcaの新規worktree作成は、[公式Worktrees仕様](https://orca.dev/docs/model/worktrees)にある標準の運用であり、[Botのコード変更](https://orca.dev/docs/bots)も通常は新たなworktreeに委譲する。Kafstylerの対象では既存の`main`チェックアウトを使い、`worker-start --worktree current`や`agent launch --worktree path:<既存パス>`のように対象を明示する。共有checkoutへの書き込みを直列化し、別リポジトリや読み取り専用の作業だけを並列実行する。UI表示・実行受付・Gitコミット・利用者の入口での動作は別々に照合する。Orcaの`orca.yaml`で作業ブランチ禁止を強制する公式キーは確認できないため、存在しない設定を作らない。
 
 ```mermaid
 flowchart LR
@@ -354,6 +354,22 @@ flowchart LR
 ```
 
 [Orcaの実行手順](skills/autocatalyze/SKILL.md#orcaで監督して実行する) · [Orcaから使う](README.md#orca)
+
+### Orcaを横断運用の実行基盤にする
+
+Orcaが持つ画面・CLI・遠隔実行を`autocatalyze`の仕事に沿って使う。新しいKafstyler Skill、独自のOrca Bot台帳、各リポジトリの重複ジョブは増やさない。
+
+| 公式一次資料 | 大規模運用での使い方 |
+| --- | --- |
+| [Orca CLI reference](https://orca.dev/docs/cli/reference)・[セッション検索](https://orca.dev/docs/cli/reference#session-search) | 複数AIの端末・会話・失敗を同じ入口から探し、復旧と再開の根拠を取得する。`orca search`の観測結果は`canonicalize`の既存履歴と結ぶ。 |
+| [Orchestration](https://orca.dev/docs/cli/orchestration) | Run・Task・Dispatchと依存関係で、別リポジトリの独立案件や読み取り専用の調査・反証を並列化する。各リポジトリの更新は単一担当が既存`main`に逐次コミットする。 |
+| [Bots](https://orca.dev/docs/bots)・[ユースケース](https://orca.dev/docs/bots/use-cases) | GitHub等のイベントから障害・Issue・レビューの候補を拾い、まず読み取り専用のトリアージに使う。Botの標準コード変更は新規worktreeなので、Kafstyler管轄リポジトリの書き込みにはそのまま使わない。 |
+| [Scheduled automations](https://orca.dev/docs/cli/automations) | `--workspace`で既存作業場所を使い、`--precheck`で差分なしの起動を省く。既存の定期処理が同じ役割なら新規登録せず、移行時は旧経路を止めて読み戻す。 |
+| [CLI browser automation](https://orca.dev/docs/cli/overview#browser-automation)・[Computer use](https://orca.dev/docs/cli/computer-use) | 公開UIの操作、スクリーンショット、デスクトップアプリの確認を実物検証に組み込む。公式APIや直接検証できる手段があれば優先する。 |
+| [Remote Orca Servers](https://orca.dev/docs/ways-to-run)・[モバイル](https://orca.dev/docs/mobile) | 複数PCの実行状態と利用者の確認依頼を遠隔から見届ける。ホストの稼働、接続、認可を確認し、端末上で未実行の仕事を完了扱いしない。 |
+| [Usage & rate-limit tracking](https://orca.dev/docs/agents/usage-rate-limits)・[CLI agent launch](https://orca.dev/docs/cli/reference) | 各CLIの利用枠と実際に指定できるモデルを確認し、Kafstylerのモデル選定方針を利用可能な実行担当へ割り当てる。公開評価の候補とそのホストで使えるIDを分ける。 |
+
+[Orcaの実行手順](skills/autocatalyze/SKILL.md#orcaで監督して実行する) · [成果までの運用設計](skills/autocatalyze/SKILL.md#orcaの横断運用)
 
 ### プラグインの構成
 
