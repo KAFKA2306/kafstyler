@@ -1,6 +1,8 @@
 ---
 type: guide
 description: "常時稼働エージェントの設計思想、7 Skillsの責務、引き継ぎと検証、導入方法。"
+tags:
+  - kafstyler/guide
 ---
 
 # Kafstyler
@@ -28,6 +30,24 @@ description: "常時稼働エージェントの設計思想、7 Skillsの責務�
 **MISSIONが成果を決め、Issueが実行をつなぎ、検証結果が次の使命判断を変える。** `autocatalyze` はプロジェクトの目的・未完了Issue・実物の結果を照合し、最も重要な問題から実行する。`reconceptualize` が未登録の問題も発見し、`canonicalize` がIssue・コミット・確認済みの成果を結ぶ。Issueを閉じた数ではなく、目的に対する実際の改善で次の案件を選び直す。
 
 [MISSION](MISSION.md#mission起点のissue駆動) · [運用規約](AGENTS.md#missionとissueの運用) · [GitHub公式資料](BIBLES.md#missionとissueによる案件選定)
+
+## 外部ツールで回す日常保守
+
+常駐するのはLLMではなくスケジューラー。データ差分はrclone、抽出・OKF準拠のVault整形はKnowledge Compiler、起動はOS、必要なAI作業の受付はOrcaに任せる。Kafstylerは既存7 Skillsで正本・評価・成果をつなぐ。
+
+```mermaid
+flowchart LR
+  data["許可済みのデータ源"] --> rclone["rclone: 差分コピー"]
+  rclone --> compiler["Knowledge Compiler: 抽出とlint"]
+  compiler --> vault["単一のOKF/Vault正本"]
+  compiler -->|人間・モデル判断が必要な差分| auto["autocatalyze: 案件化"]
+  auto --> small["評価済み小型モデル: 任意"]
+  auto --> frontier["必要な場合だけ高性能モデル"]
+```
+
+WSL等のbash環境では、`OBSIDIAN_VAULT_PATH`に既存Vaultを設定して[`scripts/vault-maintenance.sh`](scripts/vault-maintenance.sh)を`--check`で検査する。`KAFSTYLER_INGEST_SOURCE`を指定した場合は`--apply`でrcloneから取得・抽出し、形式修復・検証する。Git管理Vaultはcleanな`main`でのみ実行し、検証済み差分をローカルコミットする。OSの定期登録・元データの認可・既存ジョブの切替は[実行手順](skills/autocatalyze/SKILL.md#外部ツールによるゼロトークン保守)に従う。実行環境を接続していない場合は自動稼働しない。
+
+[原典](BIBLES.md#外部主導の差分取り込みとvault保守) · [単一正本](skills/canonicalize/SKILL.md#vaultとパスの単一正本) · [モデルの採否](skills/adjudicate/SKILL.md#低コスト常駐を評価する)
 
 ## なぜこの7 Skillsなのか
 
