@@ -55,6 +55,8 @@ Kafstylerは、**複数のAIエージェント・セッション・プロジェ�
 - **案件と判断。** `autocatalyze`が案件選定・実装・検証・再開を統括する。OrcaのRun・Task・DispatchやBotの記憶は実行上の状態であって、既存Issue・実行履歴・Gitコミットによる`canonicalize`の正本を置き換えない。端末終了・ワーカー完了・Botの報告だけで成果を合格にしない。
 - **起動と通知。** 定期処理・監視・フックをOrcaに移す場合、既存のジョブと役割・起動条件・結果を照合し、二重実行を防いでから切り替える。新たなフックで承認障害を増やさない。機能が規約と両立しなければその機能を使わず、既存の認可済み実行経路を使う。
 - **配布と実行を分離。** Kafstylerの7 SkillsはClaude Code・Codex・Antigravity向けの共通定義を正本とし、Orcaでは検出された同じSkillsを使用する。OrcaネイティブPluginは、Skillsを複製するためには作らず、標準機能にないOrca固有の画面や操作が実証された場合だけ検討する。Automationsは起動、Botsは受付と返答、Orchestrationは試行中の連絡、`autocatalyze`は案件選定と成果検証、`canonicalize`は正本と再開位置を担う。[Orca常駐と通信](skills/autocatalyze/SKILL.md#orcaのautomationsとbotsを使う)
+- **機能の使い分け。** Orcaが使える環境では、`autocatalyze`が毎回の仕事に対して[Orcaの実行経路](skills/autocatalyze/SKILL.md#orca機能を選んで使う)を選ぶ。単発の端末操作、監督付き委譲、定期実行、Bot受付、ブラウザー・デスクトップ検証、遠隔ホスト、利用枠の観測を使い分ける。すべての機能を毎回起動せず、同じ目的の入口や状態管理を重複させない。Orcaが使えなければ共通Skillsによる既存CLI運用を続ける。
+- **実行状態と成果を区別。** Orcaの端末ハンドル、Run/Task/Dispatch、Botの記憶、Automationの履歴は作業を進めるための一時状態。`canonicalize`は既存の正本に作業ID・入力版・実物の確認結果を引き継ぐ。Orcaによる委譲・再試行・ホスト切替でも、一つの対象へ書く担当は一人とする。
 
 これらはKafstylerがエージェントに渡す運用規約。Orca自身に未確認の強制設定を追加せず、起動時に既存作業場所の選択とGit状態を読み戻して遵守を確かめる。[Orcaの公式仕様と適用](BIBLES.md#orcaでエージェントを監督する) · [Orca実行手順](skills/autocatalyze/SKILL.md#orcaで監督して実行する)
 
