@@ -118,6 +118,26 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 [目標設定](skills/reconceptualize/SKILL.md) · [自律開発](skills/autocatalyze/SKILL.md)
 
+### 自律的な問題発見と概念再構築
+
+`reconceptualize` は要求された解決策を順位付けする前に、実績、再発、利用のつまずき、維持費、既存の機能が生む負担から**取り組む価値がある問題**を見つける。発見した事実と原因の仮説を分け、現状維持・削除・再利用・根本的な再設計を比較する。採用した案は `autocatalyze` に渡し、実測の変化から問題設定自体の妥当性を評価する。
+
+| 一次資料 | Kafstylerで使う判断 |
+| --- | --- |
+| [Donald A. Schön・The Reflective Practitioner](https://books.google.com/books?id=oYNHAAAAMAAJ)（1983年、原著の書誌） | 与えられた課題の解決以前に、何を問題として設定したのかを問い直す。 |
+| [Kees Dorst・Frame Innovation](https://mitpress.mit.edu/9780262328852/frame-innovation/)（MIT Press、2015年） | 既存解決策の改良と、問題の捉え方を変更する案を明確に分ける。 |
+| [Ackoff、Magidson、Addison・Idealized Design](https://www.oreilly.com/library/view/idealized-design-creating/0131963635/ch01.html)（2006年、原著第1章） | 現行機能から積み上げるだけでなく、望ましい完成状態から必要な構造を考える。 |
+| [Chris Argyris・Double Loop Learning in Organizations](https://hbr.org/1977/09/double-loop-learning-in-organizations)（Harvard Business Review、1977年） | 期待した成果が出ないとき、実装の修正だけでなく目標・前提・判断基準まで戻る。 |
+| [Richard Hamming・You and Your Research](https://www.cs.virginia.edu/~robins/YouAndYourResearch)（1986年講演の記録） | 簡単に片付く仕事ではなく、影響が大きく進展可能な問題を選ぶ。 |
+| [Teresa Torres・Prioritize Opportunities, Not Solutions](https://www.producttalk.org/prioritize-opportunities/)（2019年、著者の記事） | Issueや機能案の前に、利用者の未充足の用事・障害を選定する。 |
+| [Jeongほか・TIDE: Proactive Multi-Problem Discovery via Template-Guided Iteration](https://arxiv.org/abs/2606.04743)（2026年、研究論文） | 明示されていない問題を証拠付きで探索する。発見済みの証拠を次の探索に引き継ぎ、重複した問題の列挙を避ける。 |
+| [Gloaguenほか・Coding Agents Don't Know When to Act](https://www.sri.inf.ethz.ch/publications/gloaguen2026coding)（2026年、FixedBench） | 既に解決した問題や修正不要な状態を見分け、何もしない判断を成功に含める。 |
+| [SWE-sweep](https://swesweep.com/)（2026年、研究・評価基盤） | 具体的な修正箇所を与えない状況で、実際に問題を発見・修復できるかを評価する。 |
+
+これらは同じ証拠水準ではない。書籍・講演・設計記事は問題設定の方法論、TIDE・FixedBench・SWE-sweepはAIエージェントの観測・評価に使う。研究結果をKafstylerでの改善実績と取り違えず、実際の利用結果で採否を確かめる。
+
+[概念再構築](skills/reconceptualize/SKILL.md#自律的に問題を発見して再構築する) · [継続実行と案件選定](skills/autocatalyze/SKILL.md#常時稼働エージェントの中核)
+
 ### 評価指標のすり替えと独立した検証
 
 - [Google DeepMind・Specification gaming](https://deepmind.google/blog/specification-gaming-the-flip-side-of-ai-ingenuity/)（開発元の事例）。指標を満たしても本来の目的を達成しない問題を扱う。
