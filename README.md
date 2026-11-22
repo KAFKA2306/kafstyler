@@ -18,7 +18,7 @@ description: "常時稼働エージェントの設計思想、7 Skillsの責務�
 | 大規模運用の課題 | 解決を担当するSkill |
 | --- | --- |
 | 担当交代で案件の状態が失われる | `canonicalize`が作業ID・対象版・公開結果を正本にまとめ、`autocatalyze`が再開する |
-| 修正が増えても利用者の体験が改善しない | `reconceptualize`が成功条件を定め、`adjudicate`が実際の成果で採否を決める |
+| 修正が増えても利用者の体験が改善しない | `reconceptualize`が目的や手段を問い直して解く問題を選び、`adjudicate`が実際の成果で採否を決める |
 | 重大な入力や障害を見落とす | `disprove`が反例を探し、`autocatalyze`が必要な修正を実行する |
 | 同じ失敗を何度も調査する | `didactization`が根拠と再現条件を別案件でも使える知見にする |
 | 旧実装・ジョブ・監視が増え続ける | `decommission`が後継の動作を確認して旧経路を廃止し、次の案件に使う余力を戻す |
@@ -32,14 +32,14 @@ description: "常時稼働エージェントの設計思想、7 Skillsの責務�
 | Skill | 独立させた判断 | 混ぜたときに起こる問題 |
 | --- | --- | --- |
 | [`autocatalyze`](skills/autocatalyze/SKILL.md) | 今回どの案件を実行し、どこから再開し、次に何を観測するか | 複数の担当が同じ仕事を起動し、重複公開や処理漏れを起こす |
-| [`reconceptualize`](skills/reconceptualize/SKILL.md) | 利用者にとって何が達成条件か | 公開障害を後回しにしてIssue数だけを成果とみなす |
+| [`reconceptualize`](skills/reconceptualize/SKILL.md) | 実績から本当に解くべき問題を見つけ、どの完成像を選ぶか | 与えられたIssueや既存手段の達成だけで満足し、本来の問題を放置する |
 | [`canonicalize`](skills/canonicalize/SKILL.md) | **複数AIが共有する対象・正本・版・判断・再開状態をどう一貫させるか** | 担当ごとに異なる定義を使い、誤った再実行、比較、旧版の削除を招く |
 | [`disprove`](skills/disprove/SKILL.md) | 現行の設計や仮説が破綻する条件は何か | 監視停止・公開先の不整合・二重実行を見逃す |
 | [`adjudicate`](skills/adjudicate/SKILL.md) | 固定した条件で測ると、本当に合格・改善したか | 実際の公開結果や費用を比較せず、差分だけで改善を判断する |
 | [`didactization`](skills/didactization/SKILL.md) | 今回の発見の何が、別案件にも適用できるか | 他プロジェクトに過去の失敗と解決策が共有されず、調査を繰り返す |
 | [`decommission`](skills/decommission/SKILL.md) | どの旧処理・規則・通知を安全に廃止できるか | 旧経路と検証が累積し、次の改善の時間・費用を圧迫する |
 
-`reconceptualize` は達成条件を決め、`adjudicate` は測定して採否を決めます。`disprove` は測定項目自体が見落とした反例を探します。`canonicalize` は対象・版・出典・処理位置を共通の正本につなぎ、他の6 Skillsが同じ事実と判断を引き継げるようにします。`didactization` は別案件にも移せる知見を残します。`decommission` は `autocatalyze` が増やした成果に付随する旧経路を減らし、運用の余力を守ります。
+`reconceptualize` は依頼や利用結果から目的そのものを見直して完成像を選び、`adjudicate` は測定して採否を決めます。`disprove` は測定項目自体が見落とした反例を探します。`canonicalize` は対象・版・出典・処理位置を共通の正本につなぎ、他の6 Skillsが同じ事実と判断を引き継げるようにします。`didactization` は別案件にも移せる知見を残します。`decommission` は `autocatalyze` が増やした成果に付随する旧経路を減らし、運用の余力を守ります。
 
 ### なぜ一つの巨大な指示や、7つの独立常駐エージェントにしないのか
 
@@ -58,13 +58,13 @@ flowchart TD
     auto --> changed{"対応すべき変化・未処理はある？"}
     changed -->|なし| next["autocatalyze：再処理を省いて次の起動へ"]
     changed -->|あり| choose["autocatalyze：今回の案件と必要な判断を選ぶ"]
-    choose -.->|目標が曖昧| goal["reconceptualize：合格条件"]
+    choose -.->|成果停滞・再発・前提変化| goal["reconceptualize：問題の再構築"]
     choose -.->|正本・版の整理| canon["canonicalize：識別子・履歴・正本"]
     choose -.->|重要な反例| proof["disprove：破綻条件"]
     choose -.->|採否の測定| judge["adjudicate：実測結果"]
     choose -.->|知見の再利用| learn["didactization：出典付きの原則"]
     choose -.->|旧方式の廃止| retire["decommission：現行経路と削減結果"]
-    goal -.->|条件を返す| work["autocatalyze：修正・公開・外部結果を検証"]
+    goal -.->|選んだ完成像・合格条件を返す| work["autocatalyze：修正・公開・外部結果を検証"]
     canon -.->|正本を返す| work
     proof -.->|反例を返す| work
     judge -.->|採否を返す| work
@@ -87,7 +87,7 @@ flowchart TD
 | Skill | 複数リポジトリに対する仕事 | 次へ渡す結果 |
 | --- | --- | --- |
 | [`autocatalyze`](skills/autocatalyze/SKILL.md) | 3件の公開先・失敗ログ・Issue・最終確認版を調べ、優先案件を選ぶ | 対象ID・コミット・最終成功・未処理 |
-| [`reconceptualize`](skills/reconceptualize/SKILL.md) | イベントの検索、記事の出典確認、決算の数値・式の追跡を成功条件にする | 利用者の操作と期待結果 |
+| [`reconceptualize`](skills/reconceptualize/SKILL.md) | 公開結果と再発する問題を調べ、検索・出典確認・数値追跡のうち最も重要な利用者の障害から完成像を選ぶ | 問題の根拠・採用する完成像・利用者の操作と合格条件 |
 | [`canonicalize`](skills/canonicalize/SKILL.md) | イベントID、記事の出典と改訂、決算期・単位をそれぞれの正本に統一する | 識別子・入力版・履歴・再開位置 |
 | [`disprove`](skills/disprove/SKILL.md) | イベントの二重掲載、記事の参照切れ、決算期をまたぐ誤集計を調べる | 反例・再現入力・修正条件 |
 | [`autocatalyze`](skills/autocatalyze/SKILL.md) | 取得・検索・集計の必要なコードを修正し公開先を読み戻す | 修正コミット・公開URL・実行ログ |
