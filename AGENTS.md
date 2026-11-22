@@ -22,7 +22,7 @@ Kafstylerは、**複数のAIエージェント・セッション・プロジェ�
 
 | スキル | 必要になるとき |
 | --- | --- |
-| [reconceptualize](skills/reconceptualize/SKILL.md) | 目的・完成条件の整理 |
+| [reconceptualize](skills/reconceptualize/SKILL.md) | 実績から本質的な問題を自発的に見つけ、目的・手段・完成像を再構築する |
 | [adjudicate](skills/adjudicate/SKILL.md) | 測定・比較・採否 |
 | [canonicalize](skills/canonicalize/SKILL.md) | 複数AI・複数プロジェクトで使う正本、識別子、版、出典、再開状態をそろえる |
 | [didactization](skills/didactization/SKILL.md) | 知見の教材化と文章編集 |
