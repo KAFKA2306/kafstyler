@@ -203,6 +203,18 @@ agy plugin list --json
 
 対象プロジェクトで `agy` を起動します。
 
+### Orca
+
+[Orca](https://orca.dev/docs)でClaude Code・Codex・Antigravityを起動する場合も、各エージェント側に導入したKafstylerの7 Skillsを使えます。Orcaは端末・監督付きワーカー・状態表示を担当し、`autocatalyze`は実装と検証、`canonicalize`は正本と再開位置を管理します。[OrcaのSkill仕様](https://orca.dev/docs/cli/skills)では、`skills/<name>/SKILL.md`を持つリポジトリからSkillsを導入できます。
+
+```sh
+orca status --json
+orca worktree current --json
+orca skills get orchestration --full
+```
+
+既存の`main`一本・1ワークツリー運用を維持し、新しいworktreeや重複スケジューラーは作りません。[連携手順](skills/autocatalyze/SKILL.md#orcaで監督して実行する) · [一次資料](BIBLES.md#orcaでエージェントを監督する)
+
 ### 依頼を送って使う
 
 Claude Codeでは `/kafstyler:autocatalyze`、Codexでは `$autocatalyze`、Antigravity CLIでは `/autocatalyze` で起動します。正本統合には `canonicalize`、旧経路の廃止には `decommission` を使います。

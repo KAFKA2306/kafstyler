@@ -37,7 +37,7 @@ verified:
 
 - **設計・評価** [かふかのデザインパターン](#かふかのデザインパターン) · [目標・文章・評価](#目標文章評価)
 - **文書・データ** [ノートの管理](#ノートの管理) · [技術白書の執筆](#技術白書の執筆) · [Obsidian](#obsidian) · [データ・オントロジー・命名](#データオントロジー命名)
-- **開発・運用** [エージェントとハーネス](#エージェントとハーネス) · [常駐エージェント](#常駐エージェント) · [CLI・開発・インフラ](#cli開発インフラ)
+- **開発・運用** [エージェントとハーネス](#エージェントとハーネス) · [Orca](#orcaでエージェントを監督する) · [常駐エージェント](#常駐エージェント) · [CLI・開発・インフラ](#cli開発インフラ)
 - **制作** [UIとComfyUI](#uiとcomfyui) · [ユニティとVRChatの制作ツール](#ユニティとvrchatの制作ツール) · [Tripoと3D生成](#tripoと3d生成)
 - **書籍・実践例** [AIエンジニアリングの書籍](#aiエンジニアリングの書籍) · [かふかのZenn](#かふかのzenn) · [ISUCONのハーネス](#isuconのハーネス)
 
@@ -329,6 +329,31 @@ Anthropic・Hooks reference（公式リファレンス、2026年11月19日確認
 - [Microsoft・PowerShellのGet-Command](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/get-command)、[WSLの相互運用設定](https://learn.microsoft.com/en-us/windows/wsl/wsl-config#interop-settings)（公式リファレンス）。PATHから解決したCLIを特定し、WSLでもWindows側のPATHが追加される設定を確認する。
 
 [配布版の導入](README.md)・[ヘッドレスでレビューする](skills/autocatalyze/SKILL.md#antigravity-cliでレビューする)
+
+### Orcaでエージェントを監督する
+
+[Stably AI・Orca公式ドキュメント](https://orca.dev/docs)・[公式リポジトリ](https://github.com/stablyai/orca)。OrcaはClaude Code・Codex・Antigravityなどを動かし、端末・作業場所・ワーカーを監督する実行環境。Kafstylerの7 Skillsと正本を置き換えず、`autocatalyze`の委譲と引き継ぎを補助する。
+
+| Orca公式一次資料 | Kafstylerへの適用 |
+| --- | --- |
+| [CLI overview](https://orca.dev/docs/cli/overview) | `orca status --json`で接続を確認し、端末・作業場所をCLIで観測する。 |
+| [Skills registry & MCP](https://orca.dev/docs/cli/skills) | OrcaはClaude/Codex等のSkill配置を発見する。`skills/<name>/SKILL.md`を持つリポジトリからSkillsを導入できる。Orca固有の操作は実行版に合う`orca skills get <topic>`を参照し、Kafstylerの7 Skillsを複製しない。 |
+| [Orchestration](https://orca.dev/docs/cli/orchestration) | Run・Task・Dispatchとワーカーを使い、`taskId`・`dispatchId`を含む完了通知を照合する。ワーカーの終了だけでは公開成果の合格としない。 |
+| [Worktree checkpoints](https://orca.dev/docs/cli/worktree-checkpoints) | 作業コメントの更新前に`orca worktree current --json`を読む。長期の作業ID・確認済みコミット・再開位置は`canonicalize`が既存のIssueや実行履歴に置く。 |
+| [Agent hooks & memory](https://orca.dev/docs/agents/hooks-memory) | `orca agent hooks status --json`でOrca管理の状態通知フックを調べ、必要なら`on`/`off`で切り替える。状態通知と実行許可を混同しない。承認エラーの解決に別の強制フックを足さない。 |
+| [Scheduled automations](https://orca.dev/docs/cli/automations) | 既存スケジューラーと実行元を照合し、同じ案件を二重起動しない。既存の作業場所を使う場合は`--workspace`を選ぶ。 |
+
+**Gitの作業場所。** Orca標準の複数worktree運用は、Kafstylerの[1リポジトリ1ワークツリー・`main`一本](AGENTS.md#gitの作業状態)とは異なる。Kafstylerの対象では監督ワーカーを`--worktree current`など既存の場所に割り当て、`new-child`などを使わない。共有checkoutへの同時書き込みも避ける。OrcaのUI表示・実行受付・Gitコミット・実物の動作は異なる証拠として照合する。
+
+```mermaid
+flowchart LR
+    O["Orca：Run・Task・Dispatch"] -->|"taskId・dispatchId・実行状態"| A["autocatalyze：実装・実物検証"]
+    A -->|"確認済みコミット・未完了"| C["canonicalize：正本と再開位置"]
+    C -->|"引き継ぐ版・再開条件"| A
+    A -->|"結果・完了報告"| O
+```
+
+[Orcaの実行手順](skills/autocatalyze/SKILL.md#orcaで監督して実行する) · [Orcaから使う](README.md#orca)
 
 ### プラグインの構成
 

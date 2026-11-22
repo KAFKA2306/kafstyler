@@ -52,6 +52,17 @@ description: "実装から確認まで進め、定時・イベント・再開を
 
 常駐運用の合格には、設定した入口から初回を実際に起動し、利用者の入口で成果を読み戻す。継続するジョブでは次回の予定またはイベントでも起動し、前回の確認地点を引き継いで差分に応じた結果を残すことを確かめる。終了するジョブでは解除後に設定を読み戻す。[運用での評価](../adjudicate/SKILL.md#定期実行と再開の評価)から変更に関わる失敗事例を選ぶ。再開を変えた場合は途中でセッションを切り、同じ案件の次の工程から進むことを確かめる。再試行を変えた場合は外部書き込みの直後に応答を切り、同じ入力で成果が一件に保たれることを確かめる。端末停止中の起動が要件なら、その条件で起動と成果を確認する。
 
+## Orcaで監督して実行する
+
+OrcaからClaude Code・Codex・Antigravityを起動するときは、[Orca公式資料の採用判断](../../BIBLES.md#orcaでエージェントを監督する)に従う。Orcaは実行環境と監督、`autocatalyze`は案件選定・実装・実物の合格、`canonicalize`は正本・版・再開状態を担う。
+
+1. `orca status --json`、`orca worktree current --json`でOrcaの接続と対象ディレクトリを確認し、[Gitの作業状態](../../AGENTS.md#gitの作業状態)も照合する。Orcaを使えない場合もKafstyler単体の実行を止めない。
+2. 単発の依頼は既存の端末で進める。複数担当への引き継ぎと完了報告が必要なら、実行環境の`orca skills get orchestration --full`を読んでRun・Task・Dispatchの現行仕様を確認する。Orcaが管理する既存の作業場所で`orca orchestration worker-start --task <taskId> --worktree current --agent codex --json`を使う。`new-child`など新規worktreeの作成や共有checkoutへの同時書き込みはしない。
+3. Task/Dispatch IDとKafstylerの案件ID・対象コミットを対応付ける。ワーカーの`worker_done`は`taskId`・`dispatchId`・成否を照合し、ログと実際の成果を読み戻す。完了の判定は[実装と検証](#実装と検証)に従い、Orcaの状態表示だけで確定しない。
+4. コメント更新の前に既存の文面を確認する。`orca agent hooks status --json`で管理フックを切り分け、承認エラーが作業を阻害する場合は`orca agent hooks off --json`でOrca管理の状態通知を停止できる。不要なフック・重複するスケジューラー・第2の台帳は作らず、既存の起動元を切り替えるときは旧経路停止と再開の検証まで行う。
+
+Orca CLI、フック切替、ワーカーの起動を実行していない場合は実施済みと報告しない。
+
 ## 一件を合格まで進める
 
 Claude Code・Codexで `/goal` が使える場合は、`autocatalyze` の手順、作業台帳の参照先、利用者の入口で確かめる合格条件、実行上限を渡し、目標の状態を確認する。
