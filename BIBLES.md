@@ -373,11 +373,11 @@ Orcaが持つ画面・CLI・遠隔実行を`autocatalyze`の仕事に沿って�
 
 | 公式一次資料 | 大規模運用での使い方 |
 | --- | --- |
-| [Orca CLI reference](https://orca.dev/docs/cli/reference)・[セッション検索](https://orca.dev/docs/cli/reference#session-search) | 複数AIの端末・会話・失敗を同じ入口から探し、復旧と再開の根拠を取得する。`orca search`の観測結果は`canonicalize`の既存履歴と結ぶ。 |
-| [Orchestration](https://orca.dev/docs/cli/orchestration) | Run・Task・Dispatchと依存関係で、別リポジトリの独立案件や読み取り専用の調査・反証を並列化する。各リポジトリの更新は単一担当が既存`main`に逐次コミットする。 |
+| [Orca CLI reference](https://orca.dev/docs/cli/reference)・[セッション検索](https://orca.dev/docs/cli/reference#session-search) | `orca search`で複数AIの失敗を探し、`orca terminal list/show/read/wait/send`で既存端末を観測・操作する。再起動後は端末ハンドルを取り直し、端末が見つからない場合も`hostScope`が対象ホストを含まなければ終了と断定しない。結果は`canonicalize`の既存履歴と結ぶ。 |
+| [Orchestration](https://orca.dev/docs/cli/orchestration) | Runは名前空間であって起動装置ではない。`run-create`・`task-create`後に`worker-start`で明示的に担当を起動する。`worker_done`の`taskId`・`dispatchId`を照合し、Deliveryは全メッセージを処理してからack、検証後は`worker-release`する。質問には`ask`、依存判断には必要時のみgateを使う。別リポジトリや読み取り専用調査を並列化し、同じ`main`への書き込みは直列化する。旧`orchestration run`は使わない。 |
 | [Bots](https://orca.dev/docs/bots)・[ユースケース](https://orca.dev/docs/bots/use-cases) | GitHub等のイベントから障害・Issue・レビューの候補を拾い、まず読み取り専用のトリアージに使う。Botの標準コード変更は新規worktreeなので、Kafstyler管轄リポジトリの書き込みにはそのまま使わない。 |
 | [Scheduled automations](https://orca.dev/docs/cli/automations) | `--workspace`で既存作業場所を使い、`--precheck`で差分なしの起動を省く。既存の定期処理が同じ役割なら新規登録せず、移行時は旧経路を止めて読み戻す。 |
-| [CLI browser automation](https://orca.dev/docs/cli/overview#browser-automation)・[Computer use](https://orca.dev/docs/cli/computer-use) | 公開UIの操作、スクリーンショット、デスクトップアプリの確認を実物検証に組み込む。公式APIや直接検証できる手段があれば優先する。 |
+| [CLI browser automation](https://orca.dev/docs/cli/overview#browser-automation)・[Browser profiles](https://orca.dev/docs/cli/overview#browser-profiles)・[Computer use](https://orca.dev/docs/cli/computer-use) | 公開Webは`orca goto`→`orca snapshot`→操作→再snapshot/スクリーンショットで検証し、認証状態が異なる検証はBrowser profileを使い分ける。デスクトップアプリは`computer-use`、Android端末・AVDは必要時に`orca-emulator-android`を選ぶ。APIや直接取得できる結果があれば優先する。 |
 | [Remote Orca Servers](https://orca.dev/docs/ways-to-run)・[モバイル](https://orca.dev/docs/mobile) | 複数PCの実行状態と利用者の確認依頼を遠隔から見届ける。ホストの稼働、接続、認可を確認し、端末上で未実行の仕事を完了扱いしない。 |
 | [Usage & rate-limit tracking](https://orca.dev/docs/agents/usage-tracking)・[CLI agent launch](https://orca.dev/docs/cli/reference) | 各CLIの利用枠と実際に指定できるモデルを確認し、Kafstylerのモデル選定方針を利用可能な実行担当へ割り当てる。公開評価の候補とそのホストで使えるIDを分ける。 |
 
@@ -396,7 +396,7 @@ Orcaが持つ画面・CLI・遠隔実行を`autocatalyze`の仕事に沿って�
 | [Bot security](https://orca.dev/docs/bots/security) | Botの既定会話権限はFull accessになり得る。`Who can ask`はメンションを制限するが、イベントによる自動起動は別。外部入力の受付用Botは権限・Connector・発火対象を絞り、書き込みは独立したKafstylerの認可済み経路で行う。承認依頼は依頼者が承認できる点にも注意する。 |
 | [Orchestration](https://orca.dev/docs/cli/orchestration) | Run・Task・Dispatchで別リポジトリの実行や読み取り専用調査を管理。`check`で取得したDeliveryのメッセージを処理・記録してから`--ack`する。`worker_done`は`taskId`と`dispatchId`を照合し、Gitと成果を検証するまで完了にしない。 |
 | [Remote Orca Servers](https://orca.dev/docs/remote-servers)・[Mobile](https://orca.dev/docs/mobile) | ホストが作業状態・CLI認証・Agentを保持し、PC・スマホは接続先となる。ホストは起動・通信できる状態を維持する。macOS/Linuxの`orca serve service`は利用可能だがWindowsには未対応。クライアント切断とホスト停止を区別する。 |
-| [Orca skills registry & MCP](https://orca.dev/docs/cli/skills) | KafstylerのSkillsを複製せず、Orca固有の操作だけ`orca skills get orca-cli --full`や`orca skills get orchestration --full`から実行ホストに一致する手順を取得する。 |
+| [Orca skills registry & MCP](https://orca.dev/docs/cli/skills) | KafstylerのSkillsを複製しない。`orca skills installed --json`でエージェントごとの検出状況を調べ、必要な公式Skillだけ導入する。Orca操作時は`orca skills get orca-cli --full`、監督付き委譲時は`orca skills get orchestration --full`から実行版と一致する手順を取得する。 |
 
 **通信断と再送の境界。** GitHub・Slack・Linear・Webhookの外部イベントはOrca Cloudを通り、ホスト停止中の依頼保持は最大1日。WebhookのURLは起動権限を持つため秘密として扱い、必要なら署名を追加する。[Bot connectors](https://orca.dev/docs/bots/connectors#webhooks)。Orcaによる配送、Botの会話、Automationの実行、Orchestrationのメッセージ受信を、外部正本への変更の確定と混同しない。接続復旧後は元サービスで更新を再取得し、同じ作業ID・イベントID・書き込み操作IDに照合する。[再開情報の契約](skills/canonicalize/SKILL.md#定期実行と再開の記録)
 
