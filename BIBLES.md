@@ -85,7 +85,7 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 タグは小文字とハイフンを使い、階層は `/` で区切る。YAMLでは `kafstyler/canon` と書く。Obsidianでは `[type:reference] tag:#kafstyler/canon` で種別とタグを組み合わせて検索する。
 
-[保管庫](#obsidianの保管庫)・[内部リンク](#obsidianの内部リンク)・[プロパティ](#obsidianのプロパティ)・[タグ](#obsidianのタグ)・[検索](#obsidianの検索)・[データ設計](skills/canonicalize/SKILL.md)
+[保管庫](#obsidianの保管庫)・[内部リンク](#obsidianの内部リンク)・[プロパティ](#obsidianのプロパティ)・[タグ](#obsidianのタグ)・[検索](#obsidianの検索)・[データ設計](skills/canonicalize/SKILL.md)・[文書監査と移行](#文書監査と移行)
 
 ### Open Knowledge Format (OKF) v0.3
 
@@ -100,28 +100,19 @@ Obsidianでは、このリポジトリのルートを保管庫として開く。
 
 ### 文書監査と移行
 
-| 一次資料 | 手順で使う判断 |
+文書の分類・検索・統廃合は、読者や後続のAIが**必要な問いに正しい正本と出典から答え、古い版を誤って採用しない**ことを目的とする。最初に実際の検索質問と参照元を選び、既存のMarkdown・frontmatter・索引で解決できるか調べる。ノート数・分類数・プラグイン数を成果とせず、同じ質問で変更前後を比較する。役割の異なる文書を同じ分類へ強制せず、同じ役割の重複は整理する。
+
+| 一次資料 | 文書管理での判断 |
 | --- | --- |
-| [英国政府デジタルサービス・Transition content to GOV.UK](https://www.gov.uk/guidance/govuk-transition-guidance-for-agencies#audit-your-content)（公式ガイド） | 利用状況、古さ、重複を調べ、利用者に必要な内容から移行を進める。旧URLを棚卸しし、移行先か保管先を記録する。 |
-| [Diátaxis・Diátaxis as a guide to work](https://diataxis.fr/how-to-use-diataxis/)（設計原典） | 読者がその文書で果たす用事を確かめ、説明、資料、手順、学習の役割に沿って一件ずつ改稿する。 |
-| [Zenn・Zenn CLIで記事・本を管理する方法](https://zenn.dev/zenn/articles/zenn-cli-guide)（公式ガイド） | 記事種別の `type`、`topics`、`published` と、公開先が使うファイル名を確認する。 |
+| [Diátaxis・Diátaxis as a guide to work](https://diataxis.fr/how-to-use-diataxis/)（設計原典） | 読者が学習・作業・参照・理解のどれを求めているかを確認し、既存文書を少しずつ改善する。分類先の空フォルダを先に量産しない。 |
+| [Stanford・Noy / McGuinness「Ontology Development 101」](https://protege.stanford.edu/publications/ontology_development/ontology101-noy-mcguinness.html)（オントロジー設計原著） | 型・階層・関係を増やす前に、知識から答えるべき質問（competency questions）を決める。分類と識別子が実データの問いに答えられるか検証する。 |
+| [W3C・SKOS Reference](https://www.w3.org/TR/skos-reference/)（語彙の標準仕様） | 正規名、別名、上位・下位概念を区別する。異なる対象を表記だけで統合せず、同じ対象の表記ゆれを検索可能にする。RDFへの全面移行は目的としない。 |
+| [Obsidian・Bases](https://obsidian.md/help/bases)（標準機能の仕様） | Markdownのプロパティの一覧・絞り込み・編集は標準機能から試し、Dataviewや別の表示用台帳と役割を比較する。 |
+| [GOV.UK・Transition content to GOV.UK](https://www.gov.uk/guidance/govuk-transition-guidance-for-agencies#audit-your-content)（移行ガイド） | 利用状況・参照元・古さ・重複と旧URLを棚卸しし、移行先と保存先を定める。 |
+| [GOV.UK・Retire outdated content](https://guidance.publishing.service.gov.uk/writing-to-gov-uk-standards/plan-manage-content/retire-content/)（公開文書の運用基準） | 旧版を更新・統合・退役するとき、元URLから後継を見つけられるか、検索に旧版が混ざらないかを確かめる。 |
+| [Zenn・Zenn CLIで記事・本を管理する方法](https://zenn.dev/zenn/articles/zenn-cli-guide)（公開先の仕様） | Zennへ出す場合だけ、記事種別・ファイル名・公開用メタデータとリポジトリの正本を照合する。 |
 
-[台帳とObsidian Vaultで文書を整理する](skills/canonicalize/SKILL.md#台帳とobsidian-vaultで文書を整理する)
-
-### 文書の分類・検索・鮮度を判断する
-
-既存のMarkdown・frontmatter・目次を正本として、利用者が**必要な情報を正しく発見し、更新版に到達できること**を文書管理の成果とする。分類数・タグ数・ノート数・プラグイン数を成果の代理にしない。[Diátaxisの作業原典](https://diataxis.fr/how-to-use-diataxis/)に従い、既存の一文書から用事に効く問題を見つけ、小さく修正して確かめる。4分類の空フォルダを先に作らない。
-
-| 一次資料 | 文書管理で変える判断 |
-| --- | --- |
-| [Stanford・Noy / McGuinness「Ontology Development 101」](https://protege.stanford.edu/publications/ontology_development/ontology101-noy-mcguinness.html)（オントロジー設計原著） | 型や階層を作る前に、その知識で答えるべき質問（competency questions）を決め、必要な粒度と識別・関係を選ぶ。VLogの人物・ワールド・道具の分類は、実際の問いに答えられるかを検証する。 |
-| [W3C・SKOS Reference](https://www.w3.org/TR/skos-reference/)（語彙・分類の標準仕様） | 正規名・別名・検索用表記、上位・下位概念を区別する。同音異義語や表記ゆれを一律ストップワードで消す前に、何を指しているか確認する。SKOSを採用することと、全ノートをRDFに変換することは別。 |
-| [Obsidian・Bases](https://obsidian.md/help/bases)（公式仕様） | Markdownのプロパティを標準のテーブル・絞り込みで扱えるか先に試す。Dataviewの導入や表示用の二重台帳を必要条件にしない。 |
-| [GOV.UK・Retire outdated content](https://guidance.publishing.service.gov.uk/writing-to-gov-uk-standards/plan-manage-content/retire-content/)（公式運用基準） | 旧版が検索結果で現行の答えを妨げる場合、保持・更新・統合・退役・後継への案内を判断する。削除件数ではなく、読者が誤った版を開かないことを確かめる。 |
-| [Google SRE・Monitoring Distributed Systems](https://sre.google/sre-book/monitoring-distributed-systems/)（運用設計原典） | 監視の症状と原因を区別する考えを文書運用に応用する。検索結果の取り違え、リンク切れ、古い正本への到達を症状として測り、索引数・生成数・処理成功だけで健全と判断しない。 |
-| [Chenほか・Knowing When to Stop: The Evidence-Action Gap in Coding Agents](https://arxiv.org/abs/2610.31895)（2026年のコーディングエージェント研究） | 文書移行やVault操作で外部環境の障害が確定したら、同じ失敗を繰り返さず、障害・完了範囲・必要な外部操作・再開条件を記録する。研究対象はコーディングエージェントであり、文書管理への利用は手順設計上の応用。独立して進められる別の文書改善は続ける。 |
-
-[文書の正本と移行](skills/canonicalize/SKILL.md#台帳とobsidian-vaultで文書を整理する) · [成果の評価](skills/adjudicate/SKILL.md#成果物に合う判定を選ぶ) · [継続実行](skills/autocatalyze/SKILL.md#常時稼働エージェントの中核)
+具体的な移行と参照更新は[canonicalize](skills/canonicalize/SKILL.md#台帳とobsidian-vaultで文書を整理する)、問題と対象の選定は[reconceptualize](skills/reconceptualize/SKILL.md#自律的に問題を発見して再構築する)、変更前後の検索と出典の評価は[adjudicate](skills/adjudicate/SKILL.md#成果物に合う判定を選ぶ)、後継への切替後の旧文書・重複機能の撤去は[decommission](skills/decommission/SKILL.md#整理の手順)が担う。中断・再開と継続監視は[autocatalyze](skills/autocatalyze/SKILL.md#常時稼働エージェントの中核)へ戻す。判断基準の原典はこの節に集め、Skillsには手順を置く。
 
 ## 目標・文章・評価
 
@@ -385,6 +376,8 @@ Anthropic・Hooks reference（公式リファレンス、2026年11月19日確認
 **中核の設計資料。** [Anthropic・Effective harnesses for long-running agents](https://www.anthropic.com/research/effective-harnesses-for-long-running-agents) はセッションを越える復元、[Anthropic・Scaling Managed Agents with stable interfaces](https://www.anthropic.com/research/managed-agents) は状態と環境の分離、[Google SRE・Eliminating Toil](https://sre.google/workbook/eliminating-toil/) は不要な起動の削減に使う。[autocatalyze](skills/autocatalyze/SKILL.md#常時稼働エージェントの中核) が専門工程を統括する。
 
 2026年11月18日に、常駐、定期・イベント起動、長時間実行、再開、記憶、権限、成果の検証に具体的な設計判断がある公式英語資料を確認した。[Anthropic Engineering](https://www.anthropic.com/engineering)・[Claude Resources](https://claude.com/resources/articles)・[claude.dev](https://claude.dev/)・[OpenAI Engineering](https://openai.com/news/engineering/)・[OpenAI Developers](https://developers.openai.com/blog)の索引と、記事から参照された公式仕様を対象にした。翻訳版、重複URL、本文を確認できなかった資料は集計から外した。
+
+[Google SRE・Monitoring Distributed Systems](https://sre.google/sre-book/monitoring-distributed-systems/) は処理件数やプロセス稼働だけでなく利用時の症状を見て原因へ進む監視に使う。[Chenほか・Knowing When to Stop: The Evidence-Action Gap in Coding Agents](https://arxiv.org/abs/2610.31895)（2026年）は、十分な証拠がある障害では無益な再試行をやめ、障害内容・進捗・必要な外部支援・再開条件を渡す設計の根拠とする。回復可能な障害では早すぎる引き継ぎを避け、独立して進められる案件は続ける。
 
 [自律開発の実行手順](skills/autocatalyze/SKILL.md#常駐エージェントと定期実行)・[再開の記録](skills/canonicalize/SKILL.md#定期実行と再開の記録)・[運用での評価](skills/adjudicate/SKILL.md#定期実行と再開の評価)・[長時間作業の引き継ぎ](#長時間稼働するエージェント)
 
