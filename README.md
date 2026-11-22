@@ -217,6 +217,8 @@ orca skills get orchestration --full
 
 Orcaは、複数AIの[セッション検索](https://orca.dev/docs/cli/reference#session-search)、[監督付きワーカー](https://orca.dev/docs/cli/orchestration)、[ブラウザー検証](https://orca.dev/docs/cli/overview#browser-automation)、[リモートPCとスマホ](https://orca.dev/docs/ways-to-run)にも活用します。**Plugins・Skills・MCP・Botsを区別して追加**し、[拡張の採用判断](BIBLES.md#orcaの拡張を選ぶ)から必要なものだけ使います。[横断運用の構想](skills/autocatalyze/SKILL.md#orcaの横断運用) · [公式資料](BIBLES.md#orcaを横断運用の実行基盤にする)
 
+初回はOrcaの`Settings → Experimental → CLI`でCLIを有効にし、`Settings → Agents`とSkills画面で使用するエージェントとSkillを確認します。`Settings → Plugins`では公式カタログの[Excalidraw・Spreadsheet・SQLite Browserなど](BIBLES.md#orcaの拡張を選ぶ)から必要なものだけ選びます。Kafstylerの編集は既存`main`のタブで行い、Botの標準コード変更フローが新しいworktreeを作る場合は使いません。
+
 ### 依頼を送って使う
 
 Claude Codeでは `/kafstyler:autocatalyze`、Codexでは `$autocatalyze`、Antigravity CLIでは `/autocatalyze` で起動します。正本統合には `canonicalize`、旧経路の廃止には `decommission` を使います。

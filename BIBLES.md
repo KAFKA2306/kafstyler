@@ -382,9 +382,18 @@ Orcaの拡張は**Plugins（画面・コマンド）**、**Skills（AIに操作�
 | [Orca MCP設定](https://orca.dev/docs/cli/skills#mcp-servers) | `Settings → Integrations → MCP`で外部ツールを接続する。GitHubなど既存の認可済みツールがあれば二重登録しない。 |
 | [Orca Bots](https://orca.dev/docs/bots) | GitHub等のイベントとAI担当を結び付けるが、Kafstylerの`main`一本規約に従い、標準の新規worktree付き書き込みフローはそのまま有効化しない。 |
 
+**公式Pluginカタログを基準に選ぶ。** 2026年11月22日、[公式カタログv2](https://github.com/stablyai/orca-plugins/blob/main/orca-catalog.json)の43件を版・実行権限まで照合した。`data`36件、`declarative`1件、`sandboxed-ui`6件、`trusted-worker`0件。マーケットの全掲載数は日々変わり、この43件とコミュニティ製を混同しない。[公式レビュー規約](https://github.com/stablyai/orca-plugins/blob/main/REVIEW_POLICY.md)は最低限の権限、公開ソース、版固定の検証を要求する。[Orca本体のプラグイン執筆ガイド](https://github.com/stablyai/orca/blob/main/docs/reference/plugin-authoring.md)は実行形式を説明する。掲載・インストール可能なことと安全性の保証を区別する。
+
+公式の実用候補は、[Excalidraw](https://orca.dev/plugins/stablyai/orca-excalidraw)（構造図編集）、[Spreadsheet](https://orca.dev/plugins/stablyai/orca-spreadsheet)（表計算編集）、[SQLite Browser](https://orca.dev/plugins/stablyai/orca-sqlite-browser)（データベースの読み取り）、[Word Document Viewer](https://orca.dev/plugins/stablyai/orca-docx)（Word文書の確認）、[Image Markup](https://orca.dev/plugins/stablyai/orca-image-markup)（スクリーンショットへの注記）。このうち実際に扱うファイルがある機能だけ採用する。外部の読み書き、DB接続、GPU監視、Skill追跡などを理由に第三者プラグインを導入する前に、Orca本体のビューア、Resource Manager、Agent Dashboard、セッション履歴、CLIで同じ問いに答えられるか確かめる。
+
+**Skillsは公式の7種類から用途別に選ぶ。** [`orca-cli`、`orchestration`、`computer-use`、`orca-linear`、`orca-emulator`、`orca-emulator-android`、`orca-per-workspace-env`](https://orca.dev/docs/cli/skills)。先に`orca skills installed --json`と`orca skills install --all --dry-run`でインストール範囲を確認する。標準の3種類を使う際も`orca skills get <topic> --full`で実行ホストの版に合わせる。`orchestration`は[試験機能](https://orca.dev/docs/cli/orchestration)であり、CLIを有効化して使う。`Skills → Share skills`は版固定されたSkillを別ホストに配布できるが、非公開URLを知る人は取得でき、リンクを失効させてもインストール済みのコピーは消えない。Kafstylerの通常配布はGitHubの正本を優先し、共有リンクの用途と公開範囲が明確な場合だけ使う。
+
+**Chrome拡張とOrca Pluginは別。** [組み込みブラウザーのChrome拡張](https://orca.dev/docs/browser/overview#chrome-extensions)は試験機能で、ローカルプロファイルにだけ適用する。一部の拡張は正しく動作しない。Orca Pluginと二重導入せず、必要なWeb操作は既存ブラウザーとOrca CLIから先に検証する。
+
+**Botは外部入力と権限を分ける。** [公式Bot security](https://orca.dev/docs/bots/security)では、Botは初期設定によってFull accessで動き、イベント起動は`Who can ask`の許可対象とは別に発火する。GitHub Issue・Slack・メールなど他者の文章を読むBotは、承認が使えるClaude/Codexの`Ask for approval`などの権限を使い、最初は読み取り専用のトリアージに限定する。Botのコード修正は新しいworktreeを作る標準経路なので、Kafstylerでは既存`main`の`autocatalyze`へ案件を渡す。Botの状態・メモリはGitと既存Issueの正本の代わりにしない。
 **Kafstyler向け拡張候補。**
 
-- [No Worktrees](https://orca.dev/plugins/rolottr/orca-no-worktrees)（コミュニティ製、未レビュー、Full access）：`workspace.create.before`を使いOrcaによる新規worktreeを拒否する。実装の[`main.mjs`](https://github.com/rolottr/orca-no-worktrees/blob/main/main.mjs)と[`orca-plugin.json`](https://github.com/rolottr/orca-no-worktrees/blob/main/orca-plugin.json)を確認済み。前者は`event.kind === 'worktree'`を拒否し、後者はフックの`onError: pass`を指定。フックによる拒否は本来の新規worktree要求を止めるため、既存checkoutを使う入口を先に確保する。新しいworktreeを別経路で作るGit操作や同時書き込みまで禁止する機能ではない。
+- [No Worktrees](https://orca.dev/plugins/rolottr/orca-no-worktrees)（コミュニティ製、未レビュー、Full access）：`workspace.create.before`を使いOrcaによる新規worktreeを拒否する。実装の[`main.mjs`](https://github.com/rolottr/orca-no-worktrees/blob/main/main.mjs)と[`orca-plugin.json`](https://github.com/rolottr/orca-no-worktrees/blob/main/orca-plugin.json)を確認済み。前者は`event.kind === 'worktree'`を拒否し、後者はフックの`onError: pass`を指定。フックの`onError: pass`によってフック失敗時は通過し得るため、このプラグインをGit運用の強制境界とは扱わない。既存checkoutを選び、Git状態を実際に読み戻す。別経路の`git worktree add`や同時書き込みも防げない。
 - [Skill Tracker](https://orca.dev/plugins/robshox/skill-tracker)：セッションで実際に読み込まれたKafstyler Skillsを確認する候補。ただし`agent.tool.after`フックを使用するため、既存のフック障害との整合と性能を確認するまで導入しない。
 - [Regia](https://orca.dev/plugins/cryptosecco/orca-regia-plugin)・[Projects & Sessions](https://orca.dev/plugins/simplycreatecode/projects-sessions-sidebar)：Botの判断待ちと過去のセッションを見渡す候補。標準Agent Dashboard・セッション履歴と比べ、運用上の改善が実測できるときだけ採用する。
 

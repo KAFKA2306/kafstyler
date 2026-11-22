@@ -56,10 +56,14 @@ description: "実装から確認まで進め、定時・イベント・再開を
 
 OrcaからClaude Code・Codex・Antigravityを起動するときは、**[Kafstyler優先の共通規約](../../AGENTS.md#orcaなど外部実行環境との優先順位)をOrcaの既定動作より優先**し、[公式資料の採用判断](../../BIBLES.md#orcaでエージェントを監督する)を参照する。Orcaは実行環境と監督、`autocatalyze`は案件選定・実装・実物の合格、`canonicalize`は正本・版・再開状態を担う。
 
+最初に[Orcaの公式Skills](../../BIBLES.md#orcaの拡張を選ぶ)の導入先を`orca skills installed --json`で確認し、必要なら`orca skills install --all --dry-run`で変更対象を調べる。`orchestration`は試験機能のため、実行するOrcaで有効になっていることを確認する。CLIが使えることと、Orcaの標準BotがKafstylerの規約で書き込めることは別の条件。
+
 1. `orca status --json`、`orca worktree current --json`と[Gitの作業状態](../../AGENTS.md#gitの作業状態)で、対象が既存の`main`チェックアウトか確認する。既存作業場所から`orca agent launch --agent codex --json`で起動するか、場所を`--worktree path:<既存の絶対パス>`で指定する。Orcaが使えない場合もKafstyler単体の実行を止めない。
 2. 単発の依頼は既存端末で進める。監督と完了報告が必要なら、`orca skills get orchestration --full`で実行版のRun・Task・Dispatch仕様を確認する。対象が既存の`main`と一致したときだけ`orca orchestration worker-start --task <taskId> --worktree current --agent codex --json`を使う。Orca Botの標準コード変更フロー、`new-child`、新規worktree作成、共有checkoutへの同時書き込みを使わない。独立した他リポジトリの作業や読み取り専用の監査は並列で実行できる。
 3. Task/Dispatch IDとKafstylerの案件ID・対象コミットを対応付ける。ワーカーの`worker_done`は`taskId`・`dispatchId`・成否を照合し、ログと実際の成果を読み戻す。完了の判定は[実装と検証](#実装と検証)に従い、Orcaの状態表示だけで確定しない。
 4. コメント更新の前に既存の文面を確認する。`orca agent hooks status --json`で管理フックを切り分け、承認エラーが作業を阻害する場合は`orca agent hooks off --json`でOrca管理の状態通知を停止できる。不要なフック・重複するスケジューラー・第2の台帳は作らず、既存の起動元を切り替えるときは旧経路停止と再開の検証まで行う。
+
+GitHub Issue・Slack・メール等の外部内容を受け取るOrca Botは、[公式Bot security](https://orca.dev/docs/bots/security)に従って`Who can ask`とイベント自動起動の範囲を分け、書き込みを伴うFull accessを初期状態のままにしない。Botの読み取り専用の問題発見結果を受け取ってから、既存`main`上の単一実行担当に渡す。No Worktreesプラグインは失敗時に通過し得るため、この規約の強制装置と見なさない。
 
 Orca CLI、フック切替、ワーカーの起動を実行していない場合は実施済みと報告しない。
 
