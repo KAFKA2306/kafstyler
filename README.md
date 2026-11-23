@@ -267,7 +267,7 @@ Claude Codeでは `/kafstyler:autocatalyze`、Codexでは `$autocatalyze`、Anti
 
 ### 作業中の版で試す
 
-Claude Codeは `claude plugin validate .`、Antigravity CLIは `agy plugin validate --json .` で構造を検査し、各CLIでSkillの読み込みと実際の依頼の動作を確認します。
+`python3 scripts/check-repo.py` でMarkdownのYAMLと相対リンクを検査します（PyYAMLが必要）。Claude Codeは `claude plugin validate .`、Antigravity CLIは `agy plugin validate --json .` でプラグイン構造を検証します。Skill改訂時は[固定評価ケース](evals/cases.json)で無介入・停止を含む実行結果を比較し、各CLIで利用者の入口から動作を確認します。
 
 ## 成果から使い方を選ぶ
 
