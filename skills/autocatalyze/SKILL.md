@@ -85,6 +85,17 @@ OSのスケジューラーから[`scripts/vault-maintenance.sh`](../../scripts/v
 
 [上流仕様](../../bibles/agents-and-orca.md#外部主導の差分取り込みとvault保守)
 
+## VRChatを妨げないVRC Friend Connect連携
+
+VRC Friend Connectのデータはローカルの第三者情報を含む。VRChat・SteamVR・VRC Friend Connectの稼働中は一切DBを開かず、モデルも起動しない。OSの待機時間帯にだけ、[読み取り専用の構造検査](../../scripts/vrcfriend_offline.py)を利用する。VRChat APIやゲームのプロセスに接続しない。
+
+- **入口。** Windowsで既存のPython実行環境を明示し、`python scripts/vrcfriend_offline.py` を実行する。既定のデータルートは `%APPDATA%\VRC Friend Connect`。WSLでは `--root` でWindowsの実パスを指定する。Windowsの `tasklist.exe` にアクセスできなければ停止し、別コマンドへ無言で切り替えない。
+- **停止優先。** VRChat、SteamVR、VRC Friend Connectが起動中なら `skipped`。途中で起動した場合も検査結果を破棄する。SQLiteは `mode=ro&immutable=1` でスキーマのみを読む。未チェックポイントのWAL、DB破損、依存不足は異常停止し、読み込みに失敗した状態を差分なしとみなさない。対象アプリのファイルを変更しない。
+- **個人情報を持ち出さない。** 対象は公式掲載の `db_1.1.sqlite` と `db.sqlite`。行の値、フレンド名、ユーザーID、メモ、認証情報、設定、ログ本文は取得・出力しない。最初の出力はテーブル名・列名・スキーマ版のみ。生成した報告をGit管理Vaultへ無条件で同期せず、個別データの取り込みは実スキーマ、用途、保存先が確認されてから別途採否を決める。
+- **小型判断モデル。** 標準動作ではLLMゼロ。候補表の用途判定が必要なときだけ、別途用意したローカルの `d1-2B` `/v1/systemone` に `--d1-endpoint http://127.0.0.1:8080/v1/systemone` で任意接続する。送るのはテーブル名・列名のみで、出力は未検証の提案。モデルを常駐させず、VR利用中にGPUを占有させない。CPUのみ・少数スレッドの実行環境で、固定規則や素の構成より有効な場合だけ採用する。候補判定がどのDBレコードを読むかの許可にはならない。
+
+データを読み込む通常利用は、ユーザー端末で稼働停止→スキーマ確認→許可された列だけの抽出設計→別の静的評価→実機確認の順に進める。スキーマ未確認の段階で特定の友人・行動履歴を読み出すコードを推測実装しない。[一次資料](../../bibles/agents-and-orca.md#vrchatと小型判断モデルのローカル連携)
+
 ## Orca機能を選んで使う
 
 Orcaが利用可能なホストでは、`autocatalyze`が**仕事の目的と実行先から必要なOrca機能を選び、実際に使う**。Orcaは既存のClaude Code・Codex・Antigravityの代わりではなく、それらを起動・監督・接続する環境。別の起動元、同じ用途のSkill、監視台帳を増やすためには使わない。[Orcaの選定根拠](../../bibles/agents-and-orca.md#orcaを横断運用の実行基盤にする)
