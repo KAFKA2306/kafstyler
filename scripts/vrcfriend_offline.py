@@ -19,7 +19,7 @@ from urllib.parse import urlsplit
 
 BUSY_NAMES = {
     "vrchat.exe", "vrserver.exe", "vrcompositor.exe", "vrmonitor.exe",
-    "vrc friend connect.exe",
+    "vrc friend connect.exe", "vrcfc.exe", "vrcfriendconnect.exe",
 }
 DB_NAMES = ("db_1.1.sqlite", "db.sqlite")
 
@@ -50,7 +50,10 @@ def require_idle():
 
 
 def database_metadata(path):
-    uri = path.resolve().as_uri() + "?mode=ro"
+    wal = Path(str(path) + "-wal")
+    if wal.is_file() and wal.stat().st_size:
+        raise ProbeError(f"Uncheckpointed WAL found for {path.name}; schema cannot be safely inspected")
+    uri = path.resolve().as_uri() + "?mode=ro&immutable=1"
     with closing(sqlite3.connect(uri, uri=True, timeout=0.05)) as db:
         db.execute("PRAGMA query_only=ON")
         db.execute("PRAGMA busy_timeout=50")
