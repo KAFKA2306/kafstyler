@@ -130,6 +130,17 @@ flowchart LR
 
 **Kafstylerの適用条件。** 監督は既存のOrca/OSスケジューラーとCLIの公開インターフェースを利用し、同じ作業の重複監督・重複起動を避ける。再開前に既存Issue・実行履歴の作業ID、`job_key`、対象コミット、検証結果、権限、同一対象の書き手を照合する。停止は成功や差分なしに変換しない。承認待ち、権限拒否、入力破損、外部書き込みの反映不明、セッション消失を無条件に自動再起動せず`stopped`/`blocked`で原因と再開条件を残す。既存`main`を書き換える作業を並列投入せず、読み取り専用調査か別リポジトリだけ並列化する。
 
+**上流Skillをそのまま使う。** 実行中の長い一件を別セッションが監督する必要があるときは、[tj-loopの共通Skill](https://github.com/laiso/tj-loop/blob/main/tj-loop/SKILL.md)と対応する[環境別adapter](https://github.com/laiso/tj-loop/tree/main/tj-loop/adapters)を実行ホストで読む。監督用Skillや常駐サービスをKafstylerに複製しない。Orca Orchestrationなど既存の公開APIで観測・一度だけの再開・停止まで扱えるなら追加導入しない。導入が必要なホストでは[Skills CLIの公式手順](https://github.com/vercel-labs/skills/blob/main/docs/commands.md#skills-add)に従い、先に導入対象を表示し、プロジェクトへ第8のSkillを加えずユーザー単位で導入・照合する。次は**Claude Code向けの例**（Node.js 22.20以上）。他のAgentには対応adapterと実際のCLI版を確認してから対象Agentを選ぶ。
+
+```sh
+npx skills add laiso/tj-loop --list
+npx skills add laiso/tj-loop --skill tj-loop -g -a claude-code
+npx skills ls -g -a claude-code
+```
+
+**原著者の検証範囲。** [Claude Code adapter](https://github.com/laiso/tj-loop/blob/main/tj-loop/adapters/claude-code.md)は2.1.328で一通り検証済み、[Antigravity adapter](https://github.com/laiso/tj-loop/blob/main/tj-loop/adapters/antigravity.md)は1.5.12のACP経路の一部のみ確認済み。[Codex](https://github.com/laiso/tj-loop/blob/main/tj-loop/adapters/codex.md)、[OpenCode](https://github.com/laiso/tj-loop/blob/main/tj-loop/adapters/opencode.md)、[Pi](https://github.com/laiso/tj-loop/blob/main/tj-loop/adapters/pi.md)は原著者の記述時点でend-to-end未検証。上流の「2周期進捗なしを停滞と判定」「同一停滞に1回だけ送信」「状況不明・再停止で人間へ」の判断は利用できるが、権限待ちや失敗した外部反映を機械的に再送しない。`--dangerously-skip-permissions`など上流の例示フラグもKafstylerの認可条件を上書きしない。監督の心拍ごとにLLMを起動する方式は、無差分保守のトークンゼロと両立しないため、監督が必要な実行中の案件だけに適用する。ホストでの導入・起動・復旧は実測するまで「連携済み」としない。
+
+
 ```mermaid
 flowchart TD
     E["Orca Bots・Automations／既存の起動元"] --> S["監督役：進捗と正本の状態を確認"]
