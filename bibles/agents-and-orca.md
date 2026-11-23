@@ -134,6 +134,23 @@ flowchart TD
 
 [実行契約](../AGENTS.md#orcaなど外部実行環境との優先順位) · [継続作業の手順](../skills/autocatalyze/SKILL.md#常時稼働エージェントの中核)
 
+### Orca Botsの役割分担・進捗・判断待ち
+
+**標準機能で運用する。** [Bots quickstart](https://orca.dev/docs/bots)のBot Homeには作業・Automations・人間の判断を待つ`Needs you`がある。[Orchestration](https://orca.dev/docs/cli/orchestration)のTask・Dispatchは実行中の進捗確認と委譲に使う。Kafstylerは別の進捗DBや独自の質問キューを作らず、Orca上の表示から既存Issue・Gitコミット・検証結果へ遡れるようにする。端末の`waiting`を「承認待ち」と決めつけず、質問の内容と権限、ホスト・対象セッションを確認する。
+
+| 運用上の役割 | 入力と動作 | 正本・権限の境界 |
+| --- | --- | --- |
+| 受付・司令塔Bot | GitHub・Slack・Linear等のイベントを受け、対象Issue・重複・緊急度・停止理由を整理し、次の担当へ送る | Botの会話・記憶を正本にせず、外部入力は命令として実行しない |
+| 案件の作業担当 | `autocatalyze`が一件の目的・入力版・合格条件を渡し、Orchestrationで独立した調査・反証を委譲する | 同じリポジトリへの書き込みは既存`main`の一担当だけ。Bot標準の新規worktree作成は使わない |
+| 品質・PR監視 | 既存CI・レビュー結果を読み、重要な失敗や未検証の公開成果を抽出する | [公式ユースケース](https://orca.dev/docs/bots/use-cases)と既存GitHub機能を優先し、重複Bot・重複ジョブを設けない |
+| 人間の判断 | `Needs you`またはOrchestrationの質問を、選択肢・影響・推奨理由・対象ID付きで提示する | 権限追加・外部公開・不可逆操作は実際の承認を待ち、次アクションの提案を許可とみなさない |
+
+**トークンと停止の境界。** Orca Botの`Look around`は既定で平日8〜20時に4時間ごと、`Memory upkeep`は新しい会話があった日の深夜に実行され、いずれも利用中のAgent枠を消費する。既存定期監視と重複する場合はBot設定から止め、差分検査を先に行う。`Who can ask`とイベント起動の権限は別に制限する。[Bots quickstart](https://orca.dev/docs/bots)・[Security](https://orca.dev/docs/bots/security)。Orca 1.4.271では再起動・利用枠エラー後にBotが途中停止する既知問題があるため、[更新履歴](https://orca.dev/changelog/1-4-271)と元サービスの記録を照合してから再開し、重複実行や完了誤認を防ぐ。
+
+**外部実践から採るのは原理だけ。** [Andy氏の実践記事（2026-11-17）](https://zenn.dev/andoshin11/articles/ba68b39ef9a8ce)はClaude Task Tools、Codex向けMCP、自作Plugin・iOS/Watchアプリで進捗・質問・次アクションを集約した自己報告であり、月約6,000セッションの数値はKafstylerの性能目標や独立検証結果ではない。私有のClaudeログ・Orca内部SQLiteへの解析依存や新しいPluginの導入は、標準の`Needs you`・Orchestration・Mobileで不足が実測されるまで行わない。司令塔・案件別・横断レビューの分業も、1件の受付で不足すると確認できたときだけ増やす。
+
+[運用手順](../skills/autocatalyze/SKILL.md#orca-botの受付進捗と判断待ち) · [共通規約](../AGENTS.md#orcaなど外部実行環境との優先順位)
+
 ### Orcaを横断運用の実行基盤にする
 
 Orcaが持つ画面・CLI・遠隔実行を`autocatalyze`の仕事に沿って使う。新しいKafstyler Skill、独自のOrca Bot台帳、各リポジトリの重複ジョブは増やさない。
