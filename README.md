@@ -321,6 +321,9 @@ Claude Codeは `/kafstyler:<名前>`、Codexは `$<名前>`、Antigravity CLIは
 
 ## 外部スキルとテンプレート
 
+Kafstylerは外部Skillの実行を第一候補とします。実行環境で既に使えるSkillを優先し、足りない機能だけ上流の公式配布先から導入します。独自Skillを機能ごとに増やさず、7 Skillsは目的・採否・検証・引き継ぎを担当します。[発見・採用・実行手順](skills/autocatalyze/SKILL.md#外部skillを優先して実行する) · [一次資料](bibles/agents-and-orca.md#外部agent-skillsを採用する)
+
+
 ### 成果物の根拠調査と推敲
 
 imozuruで根拠を原文までたどり、yomiyasuで説明を整え、反証レビューで利用場面に照らします。Claude CodeかCodexの新しいセッションで両方を選べることを確かめます。[成果物の確認手順](skills/didactization/SKILL.md#本文の推敲と提出前の確認)

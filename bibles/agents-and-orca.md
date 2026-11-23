@@ -83,6 +83,18 @@ Anthropic・Hooks reference（公式リファレンス、2026年11月19日確認
 
 [配布版の導入](../README.md)・[ヘッドレスでレビューする](../skills/autocatalyze/SKILL.md#antigravity-cliでレビューする)
 
+### 外部Agent Skillsを採用する
+
+[Agent Skillsオープン仕様](https://agentskills.io/specification)・[公式リポジトリ](https://github.com/agentskills/agentskills)。外部Skillの`SKILL.md`を名前と説明で発見し、必要な案件で本文・参照ファイルを読み込む方式を共通の入口とする。Kafstylerの7 Skillsは作業固有の外部Skillを複製せず、目的・安全な実行範囲・完成条件と正本の引き継ぎを担う。
+
+| 上流の公開入口 | 適用 |
+| --- | --- |
+| [Orca Skills registry](https://orca.dev/docs/cli/skills) | インストール済みSkillsを確認し、実際のOrca版に対応する操作手順を取得する。Claude/Codex等に登録されたSkillもOrcaのSkill UIから発見できる。 |
+| [Anthropicの公式Pluginマーケット](https://github.com/anthropics/claude-plugins-official)・[Claude CodeのSkills](https://code.claude.com/docs/en/skills) | 対象機能に合う公式・公開配布Skillを見つけ、Claude Codeの標準Plugin/Skill導入と更新経路を使う。 |
+| [Agent Skills仕様](https://agentskills.io/specification) | 複数の実行環境に対応するSkillの形式・段階的読み込みを確認し、特定ベンダーへの過剰な依存を避ける。 |
+
+**選定の境界。** 「公式」でも権限や機能の適合は自動保証されない。インストール先、実際に使ったSkillの版と出典、許可された権限、成果の検証を分ける。既に目的を満たす機能の再調査はせず、上流が新機能を公開したときや現行の失敗・保守負担が判明したときだけ置換を検討する。Kafstylerの実装を減らせても、外部の変更が`main`一本・単一書き手・秘密情報・承認条件を破るなら採用しない。[実行手順](../skills/autocatalyze/SKILL.md#外部skillを優先して実行する)。
+
 ### Orcaでエージェントを監督する
 
 [Stably AI・Orca公式ドキュメント](https://orca.dev/docs)・[公式リポジトリ](https://github.com/stablyai/orca)。OrcaはClaude Code・Codex・Antigravityなどを動かし、端末・作業場所・ワーカーを監督する実行環境。Kafstylerの7 Skillsと正本を置き換えず、`autocatalyze`の委譲と引き継ぎを補助する。
