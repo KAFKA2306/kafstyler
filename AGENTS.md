@@ -81,6 +81,8 @@ Kafstylerは、**複数のAIエージェント・セッション・プロジェ�
 - **機能の使い分け。** Orcaが使える環境では、`autocatalyze`が毎回の仕事に対して[Orcaの実行経路](skills/autocatalyze/SKILL.md#orca機能を選んで使う)を選ぶ。単発の端末操作、監督付き委譲、定期実行、Bot受付、ブラウザー・デスクトップ検証、遠隔ホスト、利用枠の観測を使い分ける。すべての機能を毎回起動せず、同じ目的の入口や状態管理を重複させない。Orcaが使えなければ共通Skillsによる既存CLI運用を続ける。
 - **実行状態と成果を区別。** Orcaの端末ハンドル、Run/Task/Dispatch、Botの記憶、Automationの履歴は作業を進めるための一時状態。`canonicalize`は既存の正本に作業ID・入力版・実物の確認結果を引き継ぐ。Orcaによる委譲・再試行・ホスト切替でも、一つの対象へ書く担当は一人とする。
 
+- **独立監督と再開。** 長時間作業にtj-loop型の監督役を使う場合も、Orca Botsは受付・連絡、既存の`autocatalyze`は停滞判定と成果検証、`canonicalize`は再開の正本を担う。同じ停滞への再開指示は一度に限り、セッション消失・承認待ち・権限拒否・外部反映不明を自動成功や無限再起動に変えない。Bot内部CLI・SQLite・Electronの性能上限を安定APIの前提にせず、公開機能で検証する。[監督方式とRexの比較](bibles/agents-and-orca.md#orca-botstj-loopの監督構造とrexの比較)
+
 これらはKafstylerがエージェントに渡す運用規約。Orca自身に未確認の強制設定を追加せず、起動時に既存作業場所の選択とGit状態を読み戻して遵守を確かめる。[Orcaの公式仕様と適用](bibles/agents-and-orca.md#orcaでエージェントを監督する) · [Orca実行手順](skills/autocatalyze/SKILL.md#orcaで監督して実行する)
 
 ## Gitの作業状態
