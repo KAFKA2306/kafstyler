@@ -108,6 +108,32 @@ flowchart LR
 
 [Orcaの実行手順](../skills/autocatalyze/SKILL.md#orcaで監督して実行する) · [Orcaから使う](../README.md#orca)
 
+### Orca Bots・tj-loopの監督構造とRexの比較
+
+**確定している公開契約。** [Orca Bots](https://orca.dev/docs/bots)は、Botごとに指定したホストでClaude Code・CodexなどのCLIを動かし、会話・GitHub・Slack・Linear・定時イベントから仕事を受け付ける。コード変更の標準経路は新しいGit worktreeのworkerとPRであり、Kafstylerの`main`一本・単一書き手と衝突する。[Orca Orchestration](https://orca.dev/docs/cli/orchestration)はTask・Dispatch・メッセージによる監督付き委譲を公開する。Botの記憶はホスト上のファイル、チャットはそのホストのOrcaストレージに保存されるが、外部の成果が確定した証拠ではない。[Bot security](https://orca.dev/docs/bots/security)
+
+**実装観察と未確認事項。** 2026年11月22日の@laisoによるOrca Bots実機報告には「起動したClaude/Codexプロセスを内部CLIとSQLiteでメッセージングして制御する」とある。ただしSQLiteのスキーマ、永続配送、プロセス消失後の再実行・トランザクション回復、将来の互換性は公開契約として確認できていない。内部DBを直接読み書きするKafstyler独自連携を作らない。「Electronの限界」も性能測定を伴わない見解として扱い、設計上の事実にしない。
+
+**長時間作業の監督原理。** [laiso/tj-loop README](https://github.com/laiso/tj-loop)・[公式Skill](https://github.com/laiso/tj-loop/blob/main/tj-loop/SKILL.md)のTomは作業担当、Jerryは一定間隔で同じ作業セッションの進捗を読む独立監督担当。進行中は介入せず、停止・停滞を検出したときだけ再開可能性を調べ、同じ停滞への再開指示は一度に限る。完了時は終了し、セッション状態が読めない・再開後も停滞・権限判断が必要なら人間へ引き継ぐ。これを新しい8番目のSkillや独自デーモンとして複製せず、必要なときだけ`autocatalyze`の観測・再開判断に取り込む。
+
+**Kafstylerの適用条件。** 監督は既存のOrca/OSスケジューラーとCLIの公開インターフェースを利用し、同じ作業の重複監督・重複起動を避ける。再開前に既存Issue・実行履歴の作業ID、`job_key`、対象コミット、検証結果、権限、同一対象の書き手を照合する。停止は成功や差分なしに変換しない。承認待ち、権限拒否、入力破損、外部書き込みの反映不明、セッション消失を無条件に自動再起動せず`stopped`/`blocked`で原因と再開条件を残す。既存`main`を書き換える作業を並列投入せず、読み取り専用調査か別リポジトリだけ並列化する。
+
+```mermaid
+flowchart TD
+    E["Orca Bots・Automations／既存の起動元"] --> S["監督役：進捗と正本の状態を確認"]
+    S --> J{"進行・停滞・完了・異常"}
+    J -->|進行中| K["介入せず次の観測へ"]
+    J -->|停滞・再開可能| R["同一停滞に一度だけ再開指示"]
+    J -->|完了候補| V["実入口・Git・作業IDで検証"]
+    J -->|権限拒否・状態不明・再開失敗| B["停止理由と再開条件を正本へ"]
+    R --> S
+    V --> C["canonicalize：確認済み成果を正本へ"]
+```
+
+**Rexとの関係。** [Superlogical Rex](https://www.superlogical.com/rex/docs/installation)は独自の端末・マルチプレクサ、[CLI](https://www.superlogical.com/rex/docs/automate/cli)、[エージェント向けSkill](https://www.superlogical.com/rex/docs/automate/agent-skill)、継続セッションを提供する別の実行・監視候補。2026年11月23日時点でテスト提供段階で、Windowsクライアント・サーバーは登録したテスター向け。Orcaを置き換えると決めつけず、利用環境で「再起動後のセッション復元・通信・多重起動抑止・資源消費・`main`単一書き手との適合」を同条件で測ってから採否を決める。ターミナル機能の比較とBotの外部イベント受付の比較は分ける。
+
+[実行契約](../AGENTS.md#orcaなど外部実行環境との優先順位) · [継続作業の手順](../skills/autocatalyze/SKILL.md#常時稼働エージェントの中核)
+
 ### Orcaを横断運用の実行基盤にする
 
 Orcaが持つ画面・CLI・遠隔実行を`autocatalyze`の仕事に沿って使う。新しいKafstyler Skill、独自のOrca Bot台帳、各リポジトリの重複ジョブは増やさない。
