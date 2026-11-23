@@ -132,6 +132,8 @@ OrcaからClaude Code・Codex・Antigravityを起動するときは、**[Kafstyl
 
 GitHub Issue・Slack・メール等の外部内容を受け取るOrca Botは、[公式Bot security](https://orca.dev/docs/bots/security)に従って`Who can ask`とイベント自動起動の範囲を分け、書き込みを伴うFull accessを初期状態のままにしない。Botの読み取り専用の問題発見結果を受け取ってから、既存`main`上の単一実行担当に渡す。No Worktreesプラグインは失敗時に通過し得るため、この規約の強制装置と見なさない。
 
+**既存mainの書き込み前。** [Orca Botの接続契約](../../integrations/orca/README.md)に従い、対象ホストで`python3 <Kafstylerのパス>/scripts/orca-preflight.py --repo <対象checkout>`を実行する。終了コード0の`ready`のみ着手可能。`blocked`（2）やGit取得の`error`（1）は書き込みを中断し、原因を既存Issueへ残す。検査は排他ロックではないため、Orcaの担当割当でも一リポジトリ一書き手を守る。異常を単なるスキップに変えるため、検査をAutomationsの`--precheck`に指定しない。
+
 Orca CLI、フック切替、ワーカーの起動を実行していない場合は実施済みと報告しない。
 
 
