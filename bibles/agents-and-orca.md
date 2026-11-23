@@ -132,7 +132,7 @@ flowchart TD
 
 **Rexとの関係。** [Superlogical Rex](https://www.superlogical.com/rex/docs/installation)は独自の端末・マルチプレクサ、[CLI](https://www.superlogical.com/rex/docs/automate/cli)、[エージェント向けSkill](https://www.superlogical.com/rex/docs/automate/agent-skill)、継続セッションを提供する別の実行・監視候補。2026年11月23日時点でテスト提供段階で、Windowsクライアント・サーバーは登録したテスター向け。Orcaを置き換えると決めつけず、利用環境で「再起動後のセッション復元・通信・多重起動抑止・資源消費・`main`単一書き手との適合」を同条件で測ってから採否を決める。ターミナル機能の比較とBotの外部イベント受付の比較は分ける。
 
-[実行契約](../AGENTS.md#orcaなど外部実行環境との優先順位) · [継続作業の手順](../skills/autocatalyze/SKILL.md#常時稼働エージェントの中核)
+[Orca Botの接続手順](../integrations/orca/README.md) · [実行契約](../AGENTS.md#orcaなど外部実行環境との優先順位) · [継続作業の手順](../skills/autocatalyze/SKILL.md#常時稼働エージェントの中核)
 
 ### Orca Botsの役割分担・進捗・判断待ち
 
