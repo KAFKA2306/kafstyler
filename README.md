@@ -11,7 +11,7 @@ tags:
 
 複数のAIが開発や公開を繰り返すと、プロジェクトごとに旧実装、定期処理、検証、判断履歴が積み上がります。AIが交代すると以前の判断や公開結果を調べ直し、既に成功した工程の再実行や、残された旧方式との二重動作が起こります。
 
-**Kafstylerは、複数のリポジトリで仕事を継続するための7 Skillsです。** Claude Code・Codex・Antigravity CLIで使い、`autocatalyze`が案件選定・実行・検証・次回起動を統括します。`reconceptualize`・`canonicalize`・`disprove`・`adjudicate`・`didactization`・`decommission`は、目的、正本、反証、実測、知見、廃止の判断を分担します。
+**Kafstylerは、一個人の構想を永続的な知能機関へ変える7 Skillsです。** モデル・端末・担当AIを交換しても使命、来歴付き正本、実世界で観測した成果を継承する。Claude Code・Codex・Antigravity CLIで使い、`autocatalyze`が案件選定・実行・検証・次回起動を統括します。`reconceptualize`・`canonicalize`・`disprove`・`adjudicate`・`didactization`・`decommission`は、目的、正本、反証、実測、知見、廃止の判断を分担します。
 
 [設計の理由](#なぜこの7-skillsなのか) · [連携構造](#常時稼働エージェントの中核) · [正本と引き継ぎ](#canonicalizeが大規模運用の共通基盤をつくる) · [大規模運用](#7つのskillが連関して成果を出す) · [導入](#プラグインの使い方)
 
@@ -25,13 +25,13 @@ tags:
 | 同じ失敗を何度も調査する | `didactization`が根拠と再現条件を別案件でも使える知見にする |
 | 旧実装・ジョブ・監視が増え続ける | `decommission`が後継の動作を確認して旧経路を廃止し、次の案件に使う余力を戻す |
 
-**旧方式を残さない移行。** `canonicalize` が新しい正本を決め、`autocatalyze` が利用側を切り替え、`decommission` が旧定義・互換経路・重複起動を廃止します。既存データの保持と実動作は `adjudicate`・`disprove` で確認します。[破壊的移行の規約](AGENTS.md#破壊的移行と旧方式の廃止) · [原典](BIBLES.md#互換を残さない移行)
+**旧方式を残さない移行。** `canonicalize` が新しい正本を決め、`autocatalyze` が利用側を切り替え、`decommission` が旧定義・互換経路・重複起動を廃止します。既存データの保持と実動作は `adjudicate`・`disprove` で確認します。[破壊的移行の規約](AGENTS.md#破壊的移行と旧方式の廃止) · [原典](bibles/knowledge-and-obsidian.md#互換を残さない移行)
 
 ## MISSION駆動・Issue駆動
 
 **MISSIONが成果を決め、Issueが実行をつなぎ、検証結果が次の使命判断を変える。** `autocatalyze` はプロジェクトの目的・未完了Issue・実物の結果を照合し、最も重要な問題から実行する。`reconceptualize` が未登録の問題も発見し、`canonicalize` がIssue・コミット・確認済みの成果を結ぶ。Issueを閉じた数ではなく、目的に対する実際の改善で次の案件を選び直す。
 
-[MISSION](MISSION.md#mission起点のissue駆動) · [運用規約](AGENTS.md#missionとissueの運用) · [GitHub公式資料](BIBLES.md#missionとissueによる案件選定)
+[MISSION](MISSION.md#mission起点のissue駆動) · [運用規約](AGENTS.md#missionとissueの運用) · [GitHub公式資料](bibles/mission-eval-writing.md#missionとissueによる案件選定)
 
 ## 外部ツールで回す日常保守
 
@@ -49,9 +49,11 @@ flowchart LR
 
 WSL等のbash環境では、`OBSIDIAN_VAULT_PATH`に既存Vaultを設定して[`scripts/vault-maintenance.sh`](scripts/vault-maintenance.sh)を`--check`で検査する。`KAFSTYLER_INGEST_SOURCE`を指定した場合は`--apply`でrcloneから取得・抽出し、形式修復・検証する。Git管理Vaultはcleanな`main`でのみ実行し、検証済み差分をローカルコミットする。OSの定期登録・元データの認可・既存ジョブの切替は[実行手順](skills/autocatalyze/SKILL.md#外部ツールによるゼロトークン保守)に従う。実行環境を接続していない場合は自動稼働しない。
 
-[原典](BIBLES.md#外部主導の差分取り込みとvault保守) · [単一正本](skills/canonicalize/SKILL.md#vaultとパスの単一正本) · [モデルの採否](skills/adjudicate/SKILL.md#低コスト常駐を評価する)
+[原典](bibles/agents-and-orca.md#外部主導の差分取り込みとvault保守) · [単一正本](skills/canonicalize/SKILL.md#vaultとパスの単一正本) · [モデルの採否](skills/adjudicate/SKILL.md#低コスト常駐を評価する)
 
 ## なぜこの7 Skillsなのか
+
+[使命と五原則](MISSION.md#組織エントロピーを反転する五原則) · [3層実行と停止契約](AGENTS.md#計算資源の3層配分と停止契約) · [比較評価](AGENTS.md#kafstyler自身の反証と比較評価)
 
 **設計の基本は「実行の責任を一つに集め、異なる判断は分ける」ことです。** `autocatalyze` は定時・イベント・再開から案件を選び、実装と検証と引き継ぎを統括します。他の6 Skillsは必要になった判断だけを引き受け、結果を `autocatalyze` に返します。
 
@@ -247,11 +249,11 @@ orca skills get orchestration --full
 
 **設定の優先順位はKafstylerが上です。** OrcaのBotが通常作成する新しいworktreeより、[Kafstylerの作業規約](AGENTS.md#orcaなど外部実行環境との優先順位)に従います。`main`一本・1ワークツリーで書き込みを直列化し、別リポジトリの作業や読み取り専用の調査を並列化します。
 
-Orcaは、複数AIの[セッション検索](https://orca.dev/docs/cli/reference#session-search)、[監督付きワーカー](https://orca.dev/docs/cli/orchestration)、[ブラウザー検証](https://orca.dev/docs/cli/overview#browser-automation)、[リモートPCとスマホ](https://orca.dev/docs/ways-to-run)にも活用します。**Plugins・Skills・MCP・Botsを区別して追加**し、[拡張の採用判断](BIBLES.md#orcaの拡張を選ぶ)から必要なものだけ使います。[横断運用の構想](skills/autocatalyze/SKILL.md#orcaの横断運用) · [公式資料](BIBLES.md#orcaを横断運用の実行基盤にする)
+Orcaは、複数AIの[セッション検索](https://orca.dev/docs/cli/reference#session-search)、[監督付きワーカー](https://orca.dev/docs/cli/orchestration)、[ブラウザー検証](https://orca.dev/docs/cli/overview#browser-automation)、[リモートPCとスマホ](https://orca.dev/docs/ways-to-run)にも活用します。**Plugins・Skills・MCP・Botsを区別して追加**し、[拡張の採用判断](bibles/agents-and-orca.md#orcaの拡張を選ぶ)から必要なものだけ使います。[横断運用の構想](skills/autocatalyze/SKILL.md#orcaの横断運用) · [公式資料](bibles/agents-and-orca.md#orcaを横断運用の実行基盤にする)
 
-初回はOrcaの`Settings → General → Orca CLI`でCLIを登録し、AgentsとSkills画面で使用するエージェントとSkillを確認します。`Settings → Plugins`では標準機能では扱えない成果物がある場合だけ[公式カタログ](BIBLES.md#orcaの拡張を選ぶ)から選びます。Kafstylerの編集は既存`main`のタブで行い、Botの標準コード変更フローが新しいworktreeを作る場合は使いません。
+初回はOrcaの`Settings → General → Orca CLI`でCLIを登録し、AgentsとSkills画面で使用するエージェントとSkillを確認します。`Settings → Plugins`では標準機能では扱えない成果物がある場合だけ[公式カタログ](bibles/agents-and-orca.md#orcaの拡張を選ぶ)から選びます。Kafstylerの編集は既存`main`のタブで行い、Botの標準コード変更フローが新しいworktreeを作る場合は使いません。
 
-OrcaのAutomationsは定時実行、BotsはGitHub・Slack等からのイベント受付と返答、Remote Serverは常駐ホストとPC・スマホ間の継続操作を担います。**7 SkillsはOrca専用Pluginへ移さず、Codex・Antigravity・Claude Codeと共通に使います。** [常駐・通信の実行手順](skills/autocatalyze/SKILL.md#orcaのautomationsとbotsを使う) · [通信IDと再開の正本](skills/canonicalize/SKILL.md#定期実行と再開の記録) · [判断根拠](BIBLES.md#orcaを常駐通信基盤として使う)
+OrcaのAutomationsは定時実行、BotsはGitHub・Slack等からのイベント受付と返答、Remote Serverは常駐ホストとPC・スマホ間の継続操作を担います。**7 SkillsはOrca専用Pluginへ移さず、Codex・Antigravity・Claude Codeと共通に使います。** [常駐・通信の実行手順](skills/autocatalyze/SKILL.md#orcaのautomationsとbotsを使う) · [通信IDと再開の正本](skills/canonicalize/SKILL.md#定期実行と再開の記録) · [判断根拠](bibles/agents-and-orca.md#orcaを常駐通信基盤として使う)
 
 ### 依頼を送って使う
 
@@ -295,7 +297,7 @@ Claude Codeは `claude plugin validate .`、Antigravity CLIは `agy plugin valid
 
 一次論文から材料、加工条件、歩留まり、欠陥率を収集し、再現条件と評価方法を比較します。`reconceptualize`が解く課題を定め、`disprove`が対立仮説を探し、`adjudicate`が測定条件をそろえ、`didactization`が後続の研究で使える知見を残します。[製造技術](https://github.com/KAFKA2306/factory) · [論文調査](https://github.com/KAFKA2306/daily-arXiv-ai-enhanced)
 
-技術白書は[執筆の一次資料](BIBLES.md#技術白書の執筆)を起点に、`reconceptualize`が採否条件、`canonicalize`が引用と数値の正本、`disprove`が反証、`adjudicate`が比較結果、`didactization`が論証、`decommission`が旧稿の統合を担当し、`autocatalyze`が改訂と公開を引き継ぎます。[執筆の手順](skills/didactization/SKILL.md#技術白書を構成する)
+技術白書は[執筆の一次資料](bibles/mission-eval-writing.md#技術白書の執筆)を起点に、`reconceptualize`が採否条件、`canonicalize`が引用と数値の正本、`disprove`が反証、`adjudicate`が比較結果、`didactization`が論証、`decommission`が旧稿の統合を担当し、`autocatalyze`が改訂と公開を引き継ぎます。[執筆の手順](skills/didactization/SKILL.md#技術白書を構成する)
 
 ### Kaggle
 
@@ -313,7 +315,7 @@ Claude Codeは `/kafstyler:<名前>`、Codexは `$<名前>`、Antigravity CLIは
 
 ## Unity・VRChatで制作する
 
-汎用Unityは `CoplayDev/unity-mcp`、VRChat Worldsは `swax/UnityMCP-VRC`、VRChat Avatarsは `lighfu/unity-agent` を使い、Unity EditorやVRChat SDKで成果を確かめます。[公式の接続手順](BIBLES.md#ユニティとvrchatの制作ツール)
+汎用Unityは `CoplayDev/unity-mcp`、VRChat Worldsは `swax/UnityMCP-VRC`、VRChat Avatarsは `lighfu/unity-agent` を使い、Unity EditorやVRChat SDKで成果を確かめます。[公式の接続手順](bibles/dev-infra-and-3d.md#ユニティとvrchatの制作ツール)
 
 ## 外部スキルとテンプレート
 
@@ -328,11 +330,11 @@ npx skills add nanaism/yomiyasu
 
 ### Googleのフロントエンド設計スキル
 
-KAFKA2306のWeb UIを設計するときは[かふかのデザインパターン](BIBLES.md#かふかのデザインパターン)を先に確認します。Claude Codeで `/plugin marketplace add google-gemini/demolab`、`/plugin install demolab@demolab` の順に実行し、`/demolab:gemini-frontend-design` で設計案を検討します。[Google Gemini DemoLabの導入手順](https://github.com/google-gemini/demolab#claude-code)
+KAFKA2306のWeb UIを設計するときは[かふかのデザインパターン](bibles/design-and-ui.md#かふかのデザインパターン)を先に確認します。Claude Codeで `/plugin marketplace add google-gemini/demolab`、`/plugin install demolab@demolab` の順に実行し、`/demolab:gemini-frontend-design` で設計案を検討します。[Google Gemini DemoLabの導入手順](https://github.com/google-gemini/demolab#claude-code)
 
 ### ComfyUIのワークフローテンプレート
 
-[採用基準](BIBLES.md#comfyuiのワークフロー選定)に合わせ、`Workflow → Browse Workflow Templates` で候補を開き、必要なモデルと出力を確認します。[ComfyUI公式手順](https://docs.comfy.org/interface/features/template) · [テンプレートの正本](https://github.com/Comfy-Org/workflow_templates)
+[採用基準](bibles/design-and-ui.md#comfyuiのワークフロー選定)に合わせ、`Workflow → Browse Workflow Templates` で候補を開き、必要なモデルと出力を確認します。[ComfyUI公式手順](https://docs.comfy.org/interface/features/template) · [テンプレートの正本](https://github.com/Comfy-Org/workflow_templates)
 
 ## ミッション・聖典・作業規約
 
