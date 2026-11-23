@@ -23,6 +23,30 @@ tags:
 
 [共通運用](../AGENTS.md#missionとissueの運用) · [自律開発](../skills/autocatalyze/SKILL.md#missionに沿ったissue駆動) · [正本の統一](../skills/canonicalize/SKILL.md#missionとissueの正本関係)
 
+### Project as Codeと案件コンテキスト
+
+[熊井 悠「AI駆動開発では『Project as Code』が超重要である！」](https://qiita.com/kumai_yu/items/0aa2fc294f8e1347e36c)（2025年3月17日、提唱者による原典）。**Project as Code（PaC）**は、プロジェクトの意図・要件・仕様も版管理し、AIが参照できる情報にするという著者の提案であり、標準規格名ではない。原典は**Concept（思考・アイデア）・Definition（実体ファイル）・Facade（人向けの文書・成果物）**の3層を区別する。
+
+Kafstylerでは3層の専用ディレクトリや第二の台帳は作らず、既存の正本へ対応付ける。
+
+- **Concept：** 達成したい成果、業務知識、判断の理由を、必要な粒度でMISSION・既存Issue・採用判断に残す。チャットや担当AIの記憶だけを引き継ぎ元にしない。
+- **Definition：** 仕様・データ契約・コード・作業規約を、それぞれの役割の正本とGitコミットで管理する。Issue、仕様、実装で同じ事実を独立更新しない。
+- **Facade：** README、図、報告など人が確認する表現を、関連する正本と版に結び付ける。正本から複製した情報を独立した正解として維持しない。
+
+```mermaid
+flowchart LR
+    C["Concept：目的・業務知識・受入条件"] -->|"canonicalize：正本へ記録"| D["Definition：仕様・コード・Gitの版"]
+    D -->|"案件に必要な部分を抽出"| X["作業用コンテキスト"]
+    X -->|"autocatalyze：実装と検証"| R["実成果・確認結果"]
+    D -->|"必要なときに提示"| F["Facade：README・図・報告"]
+    F -->|"人が意図を照合"| C
+    R -->|"adjudicate：目的との一致を判定"| C
+```
+
+AIへは**対象のMISSION・Issue・関係する仕様やコード・検証結果だけ**を渡す。画面設計、API定義などの中間コンテキストが必要なら既存のDefinitionから抽出し、生成物に元の版を結び付ける。全リポジトリの恒常的な投入や、生成した要約を新しい正本にする運用は採用しない。意図との一致、利用者の入口での成果、必要な資料に到達するまでの読量で有効性を確かめる。
+
+[正本と案件の対応](../skills/canonicalize/SKILL.md#missionとissueの正本関係) · [自律開発と実入口での検証](../skills/autocatalyze/SKILL.md) · [共通規約](../AGENTS.md#missionとissueの運用)
+
 ### 問題の再定義と利用者の目的
 
 [Design Council・Double Diamond](https://www.designcouncil.org.uk/resources/the-double-diamond/)（設計原典）。解決策の前に問題を探索・定義する。[GOV.UK・Solve a whole problem for users](https://www.gov.uk/service-manual/service-standard/point-2-solve-a-whole-problem)（公式基準）。利用者が一連の用事を完了できるか確かめる。
