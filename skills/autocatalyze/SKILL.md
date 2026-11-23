@@ -16,6 +16,8 @@ description: "実装から確認まで進め、定時・イベント・再開を
 3. **実装と評価を完了する。** 必要なSkillsを呼び、既存の `main` で一件を実装・コミットし、利用者の入口で検証する。成果とコミットをIssueに返し、確認済みならcloseする。未検証なら開いたまま結果・再開条件を更新する。依存関係が消えた・重複している・使命に不要なIssueは理由を残して整理する。
 4. **MISSIONへ実測を返す。** `adjudicate` と `disprove` の評価を見て、成果が使命に寄与したかを判断する。寄与していなければ `reconceptualize` に問題設定・優先順位、必要ならMISSIONの前提の見直しを渡し、次の案件選定を変える。
 
+**Project as Codeを実行に接続する。** 案件を選んだら[canonicalizeのコンテキスト組立て](../canonicalize/SKILL.md#案件コンテキストを組み立てるproject-as-code)に従い、目的・合格条件（Concept）、仕様・コードと対象コミット（Definition）、人が確認する結果（Facade）を既存の正本に結び付ける。担当には案件IDと版付きの必要な参照を渡す。再開時は対象版の変化を確認し、変化した資料だけ読み直す。実装後は元の目的との一致を評価し、必要なFacade更新を`didactization`へ渡す。
+
 [共通規約](../../AGENTS.md#missionとissueの運用) · [GitHub公式資料](../../bibles/mission-eval-writing.md#missionとissueによる案件選定) · [MISSION](../../MISSION.md#mission起点のissue駆動)
 
 ## 破壊的移行の実行
@@ -115,7 +117,7 @@ Orcaが利用可能なホストでは、`autocatalyze`が**仕事の目的と実
 
 **能力判定。** Orcaを使う初回または環境変更・失敗時は`orca status --json`で接続を確かめ、対象がGit作業なら`orca worktree current --json`と[Gitの作業状態](../../AGENTS.md#gitの作業状態)を照合する。必要な機能に応じて`orca terminal list --json`、`orca automations list --json`、`orca skills installed --json`を読む。コマンド詳細は実行中の版に一致する`orca skills get orca-cli --full`または`orca skills get orchestration --full`から取得する。全操作の前に全機能を調査し直さない。CLI不達・ホスト不在・権限不足のときは既存CLIで実行できる工程を進め、未実施のOrca操作を成果に数えない。
 
-**委譲の単位。** `reconceptualize`が選んだ問題、`canonicalize`の作業ID・対象版、`disprove`の破綻条件、`adjudicate`の合格条件を渡す。担当には読み取り専用か書き込みか、使うホスト・モデル、期限と停止条件、提出する根拠を明示する。Orcaの実行状態は一時的な観測、Git/Issue・公開先の実結果は正本として区別する。監督付きの仕事が完了したら必要なログを読み戻して`worker-release`で端末を整理する。次の起動ではOrca側の状態だけを信用せず`canonicalize`から再開する。
+**委譲の単位。** [案件コンテキスト](../canonicalize/SKILL.md#案件コンテキストを組み立てるproject-as-code)で選んだ目的・仕様・コードの参照をTask/Dispatchへ添え、`reconceptualize`が選んだ問題、`canonicalize`の作業ID・対象版、`disprove`の破綻条件、`adjudicate`の合格条件を渡す。担当には読み取り専用か書き込みか、使うホスト・モデル、期限と停止条件、提出する根拠を明示する。Orcaの実行状態は一時的な観測、Git/Issue・公開先の実結果は正本として区別する。監督付きの仕事が完了したら必要なログを読み戻して`worker-release`で端末を整理する。次の起動ではOrca側の状態だけを信用せず`canonicalize`から再開する。
 
 ## Orcaで監督して実行する
 

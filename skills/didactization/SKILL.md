@@ -13,6 +13,8 @@ didactization は、研究・障害・実験から得た知見を、別のAI担�
 
 [imozの執筆・推敲ルール](../../bibles/mission-eval-writing.md#imozの日本語編集)を読み、読者、用途、媒体、変更範囲、原資料を確かめる。[出力の共通基準](../../MISSION.md)
 
+**Project as CodeのFacadeを更新する。** README・設計図・報告など人向けの表現を編集するときは、`canonicalize`が特定した[ConceptとDefinition](../canonicalize/SKILL.md#案件コンテキストを組み立てるproject-as-code)の参照を読み、対象版の実装・測定結果と照合する。根拠となる仕様・コード・成果へリンクし、生成した説明を独立した仕様の正本にしない。説明と実物が食い違う場合は、採用済みの要求と原本を再確認する。
+
 ## 差分抽出と知識化を分ける
 
 `vault-extract`は入力の抽出、`vault-lint`は構造の検査であって、事実を正本として認定する処理ではない。`didactization`は実際に確認した新情報・訂正・反例だけを出典付きで既存の文書に統合し、差分なしの入力から毎日新しい解説を再生成しない。文章の意味を伴う変更は`canonicalize`の正本判断と`disprove`の反例確認を経る。[資料](../../bibles/agents-and-orca.md#外部主導の差分取り込みとvault保守)

@@ -37,6 +37,28 @@ OKF・Obsidian・dbtは必要な対象で使う。一般のMarkdownや分析処�
 
 `reconceptualize` が目的や完成条件を変更したら、採用された目的の正本と影響を受けるIssueの参照を更新する。目的の改定をIssueの終了やAIの自己判断だけで確定させない。[共通運用](../../AGENTS.md#missionとissueの運用) · [一次資料](../../bibles/mission-eval-writing.md#missionとissueによる案件選定)
 
+## 案件コンテキストを組み立てる（Project as Code）
+
+[Project as Codeの3層](../../bibles/mission-eval-writing.md#project-as-codeと案件コンテキスト)をエージェントの作業・引き継ぎに接続する。専用の台帳やディレクトリは増やさず、既存の正本の参照先と対象版を必要な分だけ渡す。
+
+1. **Conceptを確定する。** 利用者の依頼、リポジトリのMISSION、既存Issueから、解く問題、業務上の理由、利用者の入口、事前の合格条件を特定する。提案と採用済みの意思決定を区別する。
+2. **Definitionを選ぶ。** 対象のGit完全コミットSHAと、関係する仕様・コード・設定・テストのパスまたは見出し、確認済みの実行結果を特定する。検索結果は候補とし、必須の根拠が欠けている箇所だけ追加で読む。
+3. **必要なコンテキストだけ渡す。** `autocatalyze`、Orca Task、Claude Code、Codexなどの担当に、案件ID、目的と合格条件の正本、変更対象の参照と版、最後の確認結果、権限・停止条件を渡す。派生要約を新しい正本にしない。別セッションでは会話の再読ではなく、この参照先から復元する。
+4. **Facadeを区別する。** README・図・報告は人向けの表示であり、対応するDefinitionの版・出典へ結ぶ。画面設計・DB設計・API定義などの中間コンテキストは必要な案件で既存仕様から抽出し、実装後に原本と照合する。
+5. **結果を正本へ返す。** コミット、実物の検証結果、更新された仕様への参照を既存Issueや実行履歴へ戻す。`adjudicate`がConceptの合格条件と実利用を照合し、必要なFacade更新を`didactization`へ渡す。変更がなければ再生成しない。
+
+```mermaid
+flowchart LR
+    I["MISSION・Issue：Concept"] --> C["canonicalize：参照と版を選定"]
+    D["仕様・コード・Git：Definition"] --> C
+    C --> A["autocatalyze・Agent：実行"]
+    A --> V["adjudicate：実物と目的を照合"]
+    V --> D
+    D --> F["didactization：Facadeを更新"]
+```
+
+**確認条件：** 別のセッションが元の会話なしで同じ案件・版・合格条件を特定し、必要なDefinitionを開き、実結果をIssueへ返せること。参照切れ・要求と仕様の矛盾は未確認のまま解決扱いせず、確認済みの版と再開条件を既存Issueへ残す。
+
 ## 正本の移行と旧版の整理
 
 破壊的移行では、旧方式の互換運用を既定にしない。必要なデータ・出典・履歴を新正本へ移し、読み書きする利用側の参照を切り替えてから旧定義を削除する。[共通規約](../../AGENTS.md#破壊的移行と旧方式の廃止)
