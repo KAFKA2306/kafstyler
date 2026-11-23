@@ -53,6 +53,14 @@ class PreflightTests(unittest.TestCase):
         self.assertEqual((rc, data["status"]), (2, "blocked"))
         self.assertEqual(data["local_branches"], ["experimental", "main"])
 
+    def test_second_worktree_is_blocked_even_without_extra_local_branch(self):
+        with tempfile.TemporaryDirectory() as another:
+            cmd(self.repo, "worktree", "add", "-q", "--detach", str(Path(another) / "secondary"))
+            rc, data = self.run_gate()
+            self.assertEqual((rc, data["status"]), (2, "blocked"))
+            self.assertEqual(data["worktree_count"], 2)
+            self.assertEqual(data["local_branches"], ["main"])
+
     def test_missing_git_checkout_is_error_not_noop(self):
         self.repo = self.repo / "missing"
         rc, data = self.run_gate()
