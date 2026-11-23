@@ -26,6 +26,8 @@ sources:
     resource: https://orca.dev/docs/bots/security
   - id: orca-orchestration
     resource: https://orca.dev/docs/cli/orchestration
+  - id: tj-loop-skill
+    resource: https://github.com/laiso/tj-loop/blob/8bc68994165cd2834bbbf3048fe3dd917b35c290/tj-loop/SKILL.md
   - id: orca-remote-servers
     resource: https://orca.dev/docs/remote-servers
   - id: orca-plugin-manifest
