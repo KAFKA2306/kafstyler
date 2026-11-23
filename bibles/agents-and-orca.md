@@ -268,6 +268,17 @@ Orcaの拡張は**Plugins（画面・コマンド）**、**Skills（AIに操作�
 
 [実行手順](../skills/autocatalyze/SKILL.md#外部ツールによるゼロトークン保守) · [正本管理](../skills/canonicalize/SKILL.md#vaultとパスの単一正本) · [旧経路の廃止](../skills/decommission/SKILL.md#外部実装への移管)
 
+### VRChatと小型判断モデルのローカル連携
+
+| 一次資料 | Kafstylerへの適用 |
+| --- | --- |
+| [VRC Friend Connect公式配布・データ保存先](https://booth.pm/ja/items/5098669) | `%APPDATA%\\VRC Friend Connect\\db\\db_1.1.sqlite` と旧版 `db.sqlite` が公式のSQLite保存先。フレンド情報はローカル保管。設定には認証情報が含まれるので読取・同期対象から除外する。 |
+| [SQLite URI filenames](https://www.sqlite.org/uri.html)・[WALの仕様](https://www.sqlite.org/wal.html) | `mode=ro&immutable=1` でアプリ側の書き込みとロックを避ける。未チェックポイントWALがあれば読み取りを中止し、古い状態を最新と判定しない。 |
+| [Windows tasklist](https://learn.microsoft.com/windows-server/administration/windows-commands/tasklist) | VRChat・SteamVR・VRC Friend Connectの稼働有無を確認し、稼働中や検知不能ならDBとモデルに触れない。 |
+| [Liquid AI d1-2B](https://huggingface.co/LiquidAI/d1-2B)・[公式GGUFとSystem One](https://huggingface.co/LiquidAI/d1-2B-GGUF) | 判断専用の約1.92B。llama.cpp v0.8.0以上の`/v1/systemone`で`choice`・`noul`・`score`を利用可能。常駐やGPU占有を前提とせず、静的ルールで判定不能な場合に限定し、ローカルで独立評価する。 |
+
+[読み取り専用スキーマ検査](../scripts/vrcfriend_offline.py)を先に動かす。アプリのDB内の行データやログ本文は読み込まない。どのテーブルが何を表すか確定した後、必要なデータ項目と保存先、プライバシー条件、実測結果を評価して次の連携を決める。VRChatの利用とフレンドの行動を変える自動操作は行わない。
+
 ### Anthropicの技術記事と事例
 
 | 英語一次資料 | 設計で使う判断 |
