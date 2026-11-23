@@ -251,7 +251,9 @@ orca skills get orchestration --full
 
 Orcaは、複数AIの[セッション検索](https://orca.dev/docs/cli/reference#session-search)、[監督付きワーカー](https://orca.dev/docs/cli/orchestration)、[ブラウザー検証](https://orca.dev/docs/cli/overview#browser-automation)、[リモートPCとスマホ](https://orca.dev/docs/ways-to-run)にも活用します。**Plugins・Skills・MCP・Botsを区別して追加**し、[拡張の採用判断](bibles/agents-and-orca.md#orcaの拡張を選ぶ)から必要なものだけ使います。[横断運用の構想](skills/autocatalyze/SKILL.md#orcaの横断運用) · [公式資料](bibles/agents-and-orca.md#orcaを横断運用の実行基盤にする)
 
-初回はOrcaの`Settings → General → Orca CLI`でCLIを登録し、AgentsとSkills画面で使用するエージェントとSkillを確認します。`Settings → Plugins`では標準機能では扱えない成果物がある場合だけ[公式カタログ](bibles/agents-and-orca.md#orcaの拡張を選ぶ)から選びます。Kafstylerの編集は既存`main`のタブで行い、Botの標準コード変更フローが新しいworktreeを作る場合は使いません。
+初回はOrcaの`Settings → Experimental → CLI`でCLIを登録し、AgentsとSkills画面で使用するエージェントとSkillを確認します。`Settings → Plugins`では標準機能では扱えない成果物がある場合だけ[公式カタログ](bibles/agents-and-orca.md#orcaの拡張を選ぶ)から選びます。Kafstylerの編集は既存`main`のタブで行い、Botの標準コード変更フローが新しいworktreeを作る場合は使いません。
+
+[Orca Botの接続手順と初回メッセージ](integrations/orca/README.md)から、実機のGitHub Connectorを読み取り専用で確認できます。コード変更前には[mainチェック](scripts/orca-preflight.py)を使い、Orca標準の別worktree作成は避けます。
 
 OrcaのAutomationsは定時実行、BotsはGitHub・Slack等からのイベント受付と返答、Remote Serverは常駐ホストとPC・スマホ間の継続操作を担います。**7 SkillsはOrca専用Pluginへ移さず、Codex・Antigravity・Claude Codeと共通に使います。** [常駐・通信の実行手順](skills/autocatalyze/SKILL.md#orcaのautomationsとbotsを使う) · [通信IDと再開の正本](skills/canonicalize/SKILL.md#定期実行と再開の記録) · [判断根拠](bibles/agents-and-orca.md#orcaを常駐通信基盤として使う)
 
