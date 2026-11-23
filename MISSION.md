@@ -1,72 +1,83 @@
 ---
 type: policy
-description: "7 Skillsで大規模な自律成果創出を実現するKafstylerの使命"
+description: "一個人の構想を継続する知能機関へ変えるKafstylerの使命"
 tags:
   - kafstyler/mission
 ---
 
 # ミッション
 
-**一人の構想を、複数のAIエージェントが引き継ぎながら実現し、社会で使われ続ける大きな成果へ育てる。**
+**一人の構想、美学、探究心を、交換可能なAIエージェントと外部基盤が引き継ぎ、社会で使われ続ける成果と再利用可能な知識へ変える。**
 
-Kafstylerは、研究・開発・制作・公開・運用をまたぐ多数のプロジェクトで、構想から実利用までを継続して進めるための7 Skills。担当AI、セッション、モデル、実行環境が変わっても、目的と実績を引き継ぎ、次の成果につなぐ。
+Kafstylerは単なる作業手順やプロジェクト管理ではない。AI、端末、サービス、モデル世代が交代しても目的・根拠・実績が失われず、活動の規模が増すほど意思決定が遅くならず、過去の蓄積が次の成果を助ける**永続的な知能機関（Autonomous Cognitive Institution）の憲法**である。
+
+## 永続する三つの基盤
+
+1. **使命（MISSION）**：人間が何を実現し、どの価値を守るかを決める。各リポジトリの目的はそのプロジェクトの既存の正本から読む。
+2. **来歴を持つ正本（Canonical Provenance）**：対象、識別子、版、出典、判断、最後の確認結果と再開条件を、会話の外にあるGit履歴・Issue・適切なデータ正本へ結ぶ。競合する第二の正本を作らない。
+3. **観測された成果（Observable Outcomes）**：完了はAIの自己申告でなく、利用者の通常の入口で観測した結果と、事前に決めた合格条件で確定する。
+
+モデル、セッション、実行基盤、スケジューラーは交換可能な計算資源である。これらに使命や記憶の唯一の実体を依存させない。
+
+## 組織エントロピーを反転する五原則
+
+1. **判断時間を増やさない**：分野別の一次資料索引から関係する正本だけを読み、事前に固定した外部判定を使う。差分がなければ何もせず終了する。
+2. **知見を散逸させない**：確認済みの版、証拠、再開条件を外部に残し、反例と成功条件を別案件でも使える形へ還流する。
+3. **追加より減算を先に考える**：不要な仕事を削り、移行後に旧経路・二重ジョブ・重複ルールを退役させる。価値を維持したまま減らした負荷を成果として測る。
+4. **計算を必要な層へ配分する**：確定処理は上流CLIとOS、合否が閉じた定型変更は低コスト実行主体、目的の再定義・重大反証・昇格案件は高知能実行主体へ委ねる。全層が同じ正本と停止条件に従う。
+5. **自分自身を反証する**：素の構成・現行版・改訂版を固定課題で比較し、不要な変更を行わない判断と、証拠付き停止も正解に含める。規約の増加自体を成果としない。
+
+具体的な実行契約は[共通作業規約](AGENTS.md)に集約し、一次資料は[聖典台帳](BIBLES.md)から必要な分野だけ参照する。
 
 ## MISSION起点のIssue駆動
 
-**MISSIONは達成すべき成果、Issueはその成果のために解く問題、Gitコミットは実装、利用結果は達成の証拠。** Kafstylerはこの四つを結び付ける。Issueを閉じることではなく、MISSIONに向けて利用者の問題が解決したことを完成とする。
+**MISSIONは成果の方向、Issueは解く問題、コミットは変更の版、利用結果は完成の証拠。** Issueを閉じた数ではなく、解決できた利用者の問題で判断する。
 
-`reconceptualize` は各プロジェクトのMISSIONと実測を照合し、既存Issueがなくても重要な問題を発見する。`autocatalyze` はMISSIONへの寄与、利用者への影響、緊急性、解決可能性から着手するIssueを選び、実装・公開・検証する。`canonicalize` はMISSIONの参照先、Issue、コミット、検証結果、再開条件を既存の正本で結ぶ。`adjudicate` と `disprove` が達成を検証し、結果が期待に届かなければ `reconceptualize` がIssueの解き方だけでなくMISSIONの前提まで再検討する。`didactization` は成果の再利用可能な知見を残し、`decommission` は不要になった仕事を廃止する。
-
-大きな継続案件はIssueで引き継ぐ。小さな修正にIssueの新設を強制しない。既存の目的・正本を読み、重複する目標文書や進捗台帳を増やさない。[運用規約](AGENTS.md#missionとissueの運用) · [一次資料](BIBLES.md#missionとissueによる案件選定)
+`reconceptualize`は目的と実測からIssueにない問題も発見し、`autocatalyze`は価値・緊急性・費用・実現可能性で案件を選び実装と検証を進める。`canonicalize`はMISSION、Issue、コミット、成果、再開条件をつなぐ。結果が届かなければ`disprove`と`adjudicate`の観測を使って問題設定まで見直す。複数回にまたがる案件だけ既存Issueを使い、軽微な一回限りの仕事に台帳を新設しない。[Issue運用](AGENTS.md#missionとissueの運用)
 
 ## 日常保守をAIなしで完了し、判断を成果へ集中する
 
-データの差分取り込みとVaultの形式検査・修復は、上流で保守されるCLIとOSの定期実行に任せる。更新がない日はLLMを呼ばず、物理的な正本も増やさない。`autocatalyze`は解けない例外と重要な案件を扱い、`canonicalize`は正本と参照経路を統一し、`adjudicate`と`disprove`が見逃し・誤修正・費用を検証する。`decommission`が重複する経路を廃止し、外部実装の進化を取り込む。[共通規約](AGENTS.md#外部実装を利用する常駐差分保守)
+差分検出、同期、形式検証、キャッシュ判定、定時起動はOSと既存の上流ツールに任せる。変化がない実行はLLMを起動せず終了する。重大な例外だけを`autocatalyze`へ引き上げ、必要なSkillを選ぶ。失敗や権限の不足を推測で埋めず、証拠・停止理由・再開条件を渡す。[外部保守](AGENTS.md#外部実装を利用する常駐差分保守)・[実行層](AGENTS.md#計算資源の3層配分と停止契約)
 
 ## 7 Skillsが実現すること
 
-- **[autocatalyze](skills/autocatalyze/SKILL.md)｜常時稼働する成果創出の中核。** 定時・イベント・中断後の再開から案件を選び、状態を復元し、必要な作業を委譲・実装・公開・検証する。障害を復旧し、別のAI担当や次回の実行へ引き継ぐ。単発の修正を、大規模な継続運用の一部として完了させる。
-- **[reconceptualize](skills/reconceptualize/SKILL.md)｜まだ依頼されていない本質的な問題を発見し、完成像を再構築する。** 依頼と利用結果、繰り返す失敗から前提や目的を問い直し、現行手段の延長と根本的な転換を比べて採用案を選ぶ。利用者の成果と合格条件を `autocatalyze` に渡し、実測が改善しなければ問題そのものを再検討する。
-- **[canonicalize](skills/canonicalize/SKILL.md)｜大規模運用で判断と成果を失わない共通基盤をつくる。** 対象ID、データの意味、正本、版、出典、更新経路、作業状態を一貫させる。`autocatalyze`には最後の確認結果と再開条件、`adjudicate`には比較可能な入力版、`disprove`には反証に使う来歴、`didactization`には出典、`decommission`には移行先と切替条件を渡す。複数のAI担当が同じ対象を同じ定義で扱えるようにし、成果の取り違えと二重作業を防ぐための設計を担う。
-- **[adjudicate](skills/adjudicate/SKILL.md)｜成果を測定し、最善の選択を残す。** 候補を同じ条件で比較し、精度、品質、操作成功、費用、運用負荷など実際の目的に関わる結果で採否を決める。見かけの進捗ではなく、改善を確認できる選択を積み上げる。
-- **[disprove](skills/disprove/SKILL.md)｜重大な思い込みを反証する。** 設計、仮説、完成判定の弱点を具体的な反例や実物の確認で探し、致命的な誤りが大規模に広がる前に修正する。証拠のない断定や、テストだけ通って利用できない成果を見逃さない。
-- **[didactization](skills/didactization/SKILL.md)｜実績を、再利用できる知識へ変える。** 一次資料、実験、失敗、例外から汎用的な原則と再現方法を抽出し、他の人やAIが理解・検証・応用できる文章にする。文章を増やすのではなく、次の研究・開発・判断を改善する知見を蓄積する。
-- **[decommission](skills/decommission/SKILL.md)｜常時稼働の余力を生み、規模を拡大できる状態を守る。** `canonicalize` が統一した正本と `adjudicate` が確かめた後継経路を受け取り、旧処理・重複ジョブ・過剰な検査や通知を廃止する。必要な機能を保ちながら実行回数・費用・障害要因・管理対象を減らし、`autocatalyze` が新しい成果に使う余力を取り戻す。
+| Skill | 知能機関の機能 | 引き継ぐもの |
+| --- | --- | --- |
+| [canonicalize](skills/canonicalize/SKILL.md) | 座標系と記憶 | 対象ID・正本・版・出典・再開状態 |
+| [autocatalyze](skills/autocatalyze/SKILL.md) | 推進力 | 優先案件・実装・公開・検証・次回起動 |
+| [reconceptualize](skills/reconceptualize/SKILL.md) | 枠組みの再構築 | 新たな問題・完成像・成果条件 |
+| [disprove](skills/disprove/SKILL.md) | 反証 | 重大な反例・再現条件・修正条件 |
+| [adjudicate](skills/adjudicate/SKILL.md) | 実測と採否 | 固定条件・観測結果・比較と判断 |
+| [didactization](skills/didactization/SKILL.md) | 知識の複利 | 根拠付きの汎用原理・適用条件 |
+| [decommission](skills/decommission/SKILL.md) | 新陳代謝 | 維持した価値・退役した経路・削減した負荷 |
 
-各Skillを分けた理由と、統合したときの失敗は [READMEの設計思想](README.md#なぜこの7-skillsなのか) に示す。具体的な受け渡しは [READMEの継続運用例](README.md#7つのskillが連関して成果を出す) を参照する。
+7つの常駐プロセスを立てるのではない。`autocatalyze`が案件選定と引き継ぎを統括し、他の6 Skillsは必要な判断だけを行う。正本を共有するから、開発、研究、金融、制作、生活の知見がプロジェクトを越えて再利用できる。
 
 ## autocatalyzeと6 Skillsの成果循環
 
 ```mermaid
 flowchart TD
-    autocatalyze["autocatalyze：復元・実装・公開・検証・引き継ぎ"]
-    reconceptualize["reconceptualize：問題の発見・完成像の再構築"]
-    canonicalize["canonicalize：正本・版・来歴・再開状態の統一"]
-    adjudicate["adjudicate：同条件での比較と採否"]
-    disprove["disprove：仮説と完成判定の反証"]
-    didactization["didactization：実測と発見の知識化"]
-    decommission["decommission：重複経路を廃止し運用の余力を生む"]
-
-    autocatalyze -->|成果の停滞・再発・前提変化を渡す| reconceptualize
-    reconceptualize -->|選んだ完成像・理由・合格条件を返す| autocatalyze
-    autocatalyze -->|対象・実行結果・未処理の記録を渡す| canonicalize
-    canonicalize -->|確認済みの版・正本・再開位置を返す| autocatalyze
-    autocatalyze -->|候補の比較を依頼| adjudicate
-    adjudicate -->|実測と採否を返す| autocatalyze
-    autocatalyze -->|反例の検証を依頼| disprove
-    disprove -->|重大な欠陥と修正条件を返す| autocatalyze
-    autocatalyze -->|発見の再利用を依頼| didactization
-    didactization -->|出典付きの知見を返す| autocatalyze
-    autocatalyze -->|旧経路の整理を依頼| decommission
-    decommission -->|削減した負担・維持した機能・現行経路を返す| autocatalyze
+  M["人間のMISSION"] --> A["autocatalyze: 案件選定・実行・検証"]
+  C["canonicalize: 正本・版・来歴・再開"] <--> A
+  A --> R["reconceptualize: 問題と完成像"]
+  A --> D["disprove: 重大な反例"]
+  A --> J["adjudicate: 実測と採否"]
+  A --> K["didactization: 知見の再利用"]
+  A --> X["decommission: 旧経路の退役"]
+  R --> A
+  D --> A
+  J --> A
+  K --> C
+  X --> C
+  A --> O["利用者の入口で観測した成果"]
+  O --> C
+  O --> M
 ```
-
-`autocatalyze` は定時・イベント・担当交代を起点に案件の状態を復元し、判断が必要なSkillを呼び出して実装・公開・利用者の入口での検証まで進める。`reconceptualize`、`canonicalize`、`adjudicate`、`disprove`、`didactization`、`decommission` はそれぞれの判断と結果を `autocatalyze` に返す。`autocatalyze` は検証済みの成果と未完了工程を記録し、既存の実行基盤による次の起動と、交代したAI担当へ引き継ぐ。
 
 ## adjudicateとautocatalyzeの成果判定
 
-`reconceptualize` は利用者が完了できる行動を合格条件にする。`adjudicate` は文章・コード・Issueの生成数ではなく、利用者が解決できた問題、成果の利用状況、品質、削減できた負荷を評価する。`disprove` は検証結果と実利用が食い違う反例を調べる。`autocatalyze` は利用者の入口で成果を確認し、未確認の工程を完了扱いしない。`canonicalize` は確認済みの結果と対象の版を正本に残す。`didactization` は再利用できる知見を残す。`decommission` は不要な仕組みを廃止した効果を確認する。
+完了は資料、Issue、コミット、スキル実行数で代用しない。利用者の入口で動作と成果を測り、重大な反例を検査し、未検証の公開や未到達の成果は完了に含めない。無介入が正しいときは`noop`、権限や証拠が不足するときは`stopped`で正常に引き継ぐ。
 
-## autocatalyzeと6 Skillsの改善・更新
+## 人間が決定すること
 
-`autocatalyze` は利用者の明示指示、再現した失敗、実物の利用結果から改善案件を選ぶ。`reconceptualize` は実測の停滞や再発した失敗から、自発的に問題を発見し、目的・完成像・完成条件を再構築する。`adjudicate` は改善前後を比較し、`disprove` は変更の重大な反例を検証する。`canonicalize` は更新後の正本と引き継ぎ情報を整え、`didactization` は再利用可能な知見として整理する。`decommission` は役割を終えた仕組みを撤去する。`autocatalyze` は必要な公式仕様と影響範囲を確認し、結果を検証してGit履歴に反映する。
+人間は創設者として使命、美学、優先する価値、不可逆な判断を担う。許可済みで可逆的な保守と改善は実行主体が完遂する。使命の転換、権限の拡大、重大な不可逆操作では観測事実、対立案、反証、必要な決定だけを人間に返す。
