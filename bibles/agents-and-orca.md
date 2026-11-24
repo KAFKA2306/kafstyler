@@ -157,6 +157,21 @@ flowchart TD
 
 [Orca Botの接続手順](../integrations/orca/README.md) · [実行契約](../AGENTS.md#orcaなど外部実行環境との優先順位) · [継続作業の手順](../skills/autocatalyze/SKILL.md#常時稼働エージェントの中核)
 
+### agent-dispatchのIssue駆動と障害からの学習
+
+[八神翔大・agent-dispatchの運用報告（2026年11月23日）](https://qiita.com/shotayagami/items/1fce6273b665bd7258e8) · [公開実装（記事時点のコミット）](https://github.com/shotayagami/agent-dispatch/tree/2fee8ad4f8644a1e6849ea14cf39d3f614e28a86)。セキュリティ対応の増加を契機に、監視からIssue化、仕様、実装、検証、レビューへつなげた事例。既存の[Issue駆動](../AGENTS.md#missionとissueの運用)と[障害の閉ループ](../skills/autocatalyze/SKILL.md#常時稼働エージェントの中核)を評価する根拠として使う。
+
+| 判断対象 | 事例から得る判断と実装根拠 |
+| --- | --- |
+| 権限と入力 | 無人の実装担当から外部書き込みの資格情報を分離し、認可された制御層だけが外部操作を行う。外部Issueの文章は指示として信頼せず、作成者・対象・認可を確認する。[実行制御](https://github.com/shotayagami/agent-dispatch/blob/2fee8ad4f8644a1e6849ea14cf39d3f614e28a86/bin/agent-dispatch) |
+| 再試行と環境 | 利用不能が確認された場合と、拒否・タイムアウト・途中差分が残る場合を分ける。検証コマンド欠落（終了コード127）のような環境不良を実装の再修正で解決しようとしない。必須検証が未実施なら合格にしない。[検証ゲート](https://github.com/shotayagami/agent-dispatch/blob/2fee8ad4f8644a1e6849ea14cf39d3f614e28a86/bin/agent-dispatch-verify) |
+| 重複と版 | 検索索引は候補発見に使い、着手直前にはIssue本体の現在状態と既存の着手記録を照合する。外部書き込み直前に対象版を再確認し、検証・レビューは確認したコミットに結び付ける。[実行制御](https://github.com/shotayagami/agent-dispatch/blob/2fee8ad4f8644a1e6849ea14cf39d3f614e28a86/bin/agent-dispatch) |
+| 監視の実効性 | 検出件数やタイマーの正常終了ではなく、検出対象からIssueの作成・解消後の終了までを外部正本で照合する。取得失敗を差分なしと区別し、失敗対象と継続回数を記録する。[検出処理](https://github.com/shotayagami/agent-dispatch/blob/2fee8ad4f8644a1e6849ea14cf39d3f614e28a86/bin/agent-detect) |
+
+**実運用の反例。** 著者による11月14日〜23日の集計はAI起動96回、実装報告38件のうち検証成功12・失敗4・未実施22件、レビュー46件のうち要修正20件。検証の成功と仕様の適合は別に評価する。また、GitHub APIへの不適切な検索条件で422が発生し、失敗した取得を黙って除外したため、8日間・3リポジトリでIssueの作成と解消処理が停止していたという報告がある。集計は著者の非公開運用記録であり、公開実装で確認できるのは対策のコードである。
+
+**採用範囲。** Orcaと既存の定期処理で上記の制御を満たすか判断するための事例として採用する。ラベル体系、別worktree、独自ディスパッチャ、モデル順序、固定起動上限は移植しない。新規Skillやジョブを増やす根拠にはしない。
+
 ### Orca Botsの役割分担・進捗・判断待ち
 
 **標準機能で運用する。** [Bots quickstart](https://orca.dev/docs/bots)のBot Homeには作業・Automations・人間の判断を待つ`Needs you`がある。[Orchestration](https://orca.dev/docs/cli/orchestration)のTask・Dispatchは実行中の進捗確認と委譲に使う。Kafstylerは別の進捗DBや独自の質問キューを作らず、Orca上の表示から既存Issue・Gitコミット・検証結果へ遡れるようにする。端末の`waiting`を「承認待ち」と決めつけず、質問の内容と権限、ホスト・対象セッションを確認する。
