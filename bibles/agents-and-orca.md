@@ -47,6 +47,33 @@ tags:
 
 [自律開発の連携手順](../skills/autocatalyze/SKILL.md)
 
+### Claude ShipによるPRの自律運用
+
+[Anthropic・Introducing Claude Ship（2026年11月23日）](https://claude.com/ja/resources/articles/introducing-claude-ship) · [Claude Ship公式仕様](https://code.claude.com/docs/ja/claude-ship) · [ローカルの /ship・/steward](https://code.claude.com/docs/ja/ship-command)。PR後のレビュー、修正、承認を外部サービスへ委ねる選択肢。
+
+| 責務 | 上流機能 | Kafstylerでの判断 |
+| --- | --- | --- |
+| 問題の発見と指摘の検証 | Code Review | `disprove`の反証を補助する。指摘なしを成果の合格と同一視しない。 |
+| CI失敗・競合・指摘の修正 | PR Steward | `autocatalyze`が既存の書き手と重複しない場合に利用する。Stewardは承認・マージを担わない。 |
+| 規約に沿った承認 | Claude Approvals | `adjudicate`の合格条件と対象版を照合し、GitHubの必須チェック・承認規約を守る。 |
+| PRの完了 | GitHubのブランチ規則 | マージされた版と利用者の入口で成果を読み戻す。 |
+
+```mermaid
+flowchart LR
+    P[PRの対象コミット] --> R[Code Review]
+    R -->|修正が必要| S[PR Steward]
+    S -->|新しいコミット| R
+    R -->|レビュー結果| A[Claude Approvals]
+    A -->|承認条件を満たす| G[GitHubの必須条件]
+    G -->|マージ| V[成果の読み戻し]
+```
+
+**採用の境界。** 組織向けClaude ShipはTeam・Enterpriseで利用でき、Code Reviewは一般提供、PR StewardとClaude Approvalsはベータ。承認ポリシーはobserveモードから比較し、既存のレビュー・CI・承認との重複、誤承認、手戻り、費用を確認してから置換する。observeでも課金される場合があり、支出上限を確認する。ポリシーファイルの追加で既存の自動レビューが停止し得るため、適用前に発火条件を確認する。
+
+ローカルの `/ship` はPRの作成とレビュー、`/steward` は既存PRの監視・修正に使う。公式仕様では `/ship` がデフォルトブランチから別ブランチを作成する場合があり、ネイティブWindowsでは監視が開始されない。Kafstyler管轄では[main一本・単一書き手](../AGENTS.md#gitの作業状態)を優先し、PRを作るためだけにブランチや並行監視を増やさない。必要な場合は既存の認可済みレビュー入口を使う。監視が他者の変更やコメントを契機に実行するコードと認証情報の権限も確認する。
+
+独自のPR監督・再試行・承認機構は、上流機能で不足が実証されるまで追加しない。[外部機能の選定](../skills/autocatalyze/SKILL.md#外部skillを優先して実行する) · [独立した合否判定](../skills/adjudicate/SKILL.md#固定した評価で採否を決める)
+
 ### Claude Codeのフック
 
 Anthropic・Hooks reference（公式リファレンス、2026年11月19日確認。一次資料URLは冒頭の `sources.anthropic-hooks` に記録）。[設定場所](https://code.claude.com/docs/en/hooks#hook-locations)、[matcher](https://code.claude.com/docs/en/hooks#matcher-patterns)、[イベント別の発火条件・入出力・判定制御](https://code.claude.com/docs/en/hooks#hook-events)を確認する。[^anthropic-hooks]
