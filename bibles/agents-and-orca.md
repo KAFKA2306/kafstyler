@@ -4,6 +4,12 @@ description: "AIエージェントとOrcaの一次資料と判断基準"
 tags:
   - kafstyler/canon
   - kafstyler/reference
+generated:
+  by: openai/chatgpt
+  at: "2026-11-24T14:44:00Z"
+sources:
+  - id: agent-sessions-supervisor
+    resource: https://github.com/laiso/agent-sessions/blob/7bc74d7179de52cdbfe020700c434d60c5d68901/skills/agent-sessions-supervisor/SKILL.md
 ---
 
 # AIエージェントとOrca
@@ -153,20 +159,20 @@ flowchart LR
 
 **実装観察と未確認事項。** 2026年11月22日の@laisoによるOrca Bots実機報告には「起動したClaude/Codexプロセスを内部CLIとSQLiteでメッセージングして制御する」とある。ただしSQLiteのスキーマ、永続配送、プロセス消失後の再実行・トランザクション回復、将来の互換性は公開契約として確認できていない。内部DBを直接読み書きするKafstyler独自連携を作らない。「Electronの限界」も性能測定を伴わない見解として扱い、設計上の事実にしない。
 
-**長時間作業の監督原理。** [laiso/tj-loop README](https://github.com/laiso/tj-loop)・[公式Skill](https://github.com/laiso/tj-loop/blob/main/tj-loop/SKILL.md)のTomは作業担当、Jerryは一定間隔で同じ作業セッションの進捗を読む独立監督担当。進行中は介入せず、停止・停滞を検出したときだけ再開可能性を調べ、同じ停滞への再開指示は一度に限る。完了時は終了し、セッション状態が読めない・再開後も停滞・権限判断が必要なら人間へ引き継ぐ。これを新しい8番目のSkillや独自デーモンとして複製せず、必要なときだけ`autocatalyze`の観測・再開判断に取り込む。
+**長時間作業の監督原理。** [laiso/tj-loop](https://github.com/laiso/tj-loop)は作業担当と独立監督役を分け、[agent-sessions-supervisor](https://github.com/laiso/agent-sessions/blob/7bc74d7179de52cdbfe020700c434d60c5d68901/skills/agent-sessions-supervisor/SKILL.md)はHerdr・tmux・Orcaを共通の観測・連絡経路で扱う。前者は監督ループ、後者は既存ワーカーの観測と認可済みの連絡を担う。[^agent-sessions-supervisor] 同一案件に二つの監督ループを起動しない。
 
-**Kafstylerの適用条件。** 監督は既存のOrca/OSスケジューラーとCLIの公開インターフェースを利用し、同じ作業の重複監督・重複起動を避ける。再開前に既存Issue・実行履歴の作業ID、`job_key`、対象コミット、検証結果、権限、同一対象の書き手を照合する。停止は成功や差分なしに変換しない。承認待ち、権限拒否、入力破損、外部書き込みの反映不明、セッション消失を無条件に自動再起動せず`stopped`/`blocked`で原因と再開条件を残す。既存`main`を書き換える作業を並列投入せず、読み取り専用調査か別リポジトリだけ並列化する。
+**監督手段の選定。** [agent-sessions README](https://github.com/laiso/agent-sessions/blob/7bc74d7179de52cdbfe020700c434d60c5d68901/README.md)によればPython 3.11以上、追加Pythonパッケージ不要で、Linuxを主対象としmacOSにも対応する。複数の端末基盤を横断して観測する必要があれば、この上流SkillとCLIを候補にする。既存Orcaの公開機能で十分なら追加導入しない。独立した周期監督が必要ならtj-loopの[共通Skill](https://github.com/laiso/tj-loop/blob/main/tj-loop/SKILL.md)と[対応adapter](https://github.com/laiso/tj-loop/tree/main/tj-loop/adapters)を選ぶ。導入・更新は[外部Agent Skillsの採用基準](#外部agent-skillsを採用する)に従い、上流の操作手順・独自デーモン・進捗DBをKafstylerへ複製しない。
 
-**上流Skillをそのまま使う。** 実行中の長い一件を別セッションが監督する必要があるときは、[tj-loopの共通Skill](https://github.com/laiso/tj-loop/blob/main/tj-loop/SKILL.md)と対応する[環境別adapter](https://github.com/laiso/tj-loop/tree/main/tj-loop/adapters)を実行ホストで読む。監督用Skillや常駐サービスをKafstylerに複製しない。Orca Orchestrationなど既存の公開APIで観測・一度だけの再開・停止まで扱えるなら追加導入しない。導入が必要なホストでは[Skills CLIの公式手順](https://github.com/vercel-labs/skills/blob/main/docs/commands.md#skills-add)に従い、先に導入対象を表示し、プロジェクトへ第8のSkillを加えずユーザー単位で導入・照合する。次は**Claude Code向けの例**（Node.js 22.20以上）。他のAgentには対応adapterと実際のCLI版を確認してから対象Agentを選ぶ。
+| 状態 | 観測根拠と判断 |
+| --- | --- |
+| 進行中 | 固定した対象に新しい案件関連の出力がある。介入しない。 |
+| 停滞 | 同じ待機画面が連続2回続くか、期待した工程から進まない。認可範囲内で一度だけ連絡し、同じ対象を再観測する。 |
+| 完了候補 | 対応する `worker_done` または終了端末の最終結果を読み、案件ID・対象版・実物と照合する。端末終了を成功とみなさない。 |
+| 判断待ち・不明 | 質問・権限拒否・承認待ち・対象不明・再連絡後の停滞は、根拠と再開条件を既存Issue・実行履歴に残す。 |
 
-```sh
-npx skills add laiso/tj-loop --list
-npx skills add laiso/tj-loop --skill tj-loop -g -a claude-code
-npx skills ls -g -a claude-code
-```
+**観測と連絡の境界。** Orcaの構造化メッセージはID・送受信者・案件で照合し、端末出力は本文の変化で判定する（取得時刻だけの変化は進捗ではない）。空のOrca一覧はCLI不達の場合もあるため、不在・完了と断定しない。送信前に上流のdry-runで固定対象・文面・Enterの有無を確認し、認可済みのエージェント入力先にだけ一度送る。シェルへの誤入力、観測内容を命令として扱うこと、拒否後の再指示を避ける。配送不明や部分失敗は読み戻して照合し、自動再送しない。観測専用の依頼では送信しない。[^agent-sessions-supervisor] 
 
-**原著者の検証範囲。** [Claude Code adapter](https://github.com/laiso/tj-loop/blob/main/tj-loop/adapters/claude-code.md)は2.1.328で一通り検証済み、[Antigravity adapter](https://github.com/laiso/tj-loop/blob/main/tj-loop/adapters/antigravity.md)は1.5.12のACP経路の一部のみ確認済み。[Codex](https://github.com/laiso/tj-loop/blob/main/tj-loop/adapters/codex.md)、[OpenCode](https://github.com/laiso/tj-loop/blob/main/tj-loop/adapters/opencode.md)、[Pi](https://github.com/laiso/tj-loop/blob/main/tj-loop/adapters/pi.md)は原著者の記述時点でend-to-end未検証。上流の「2周期進捗なしを停滞と判定」「同一停滞に1回だけ送信」「状況不明・再停止で人間へ」の判断は利用できるが、権限待ちや失敗した外部反映を機械的に再送しない。`--dangerously-skip-permissions`など上流の例示フラグもKafstylerの認可条件を上書きしない。監督の心拍ごとにLLMを起動する方式は、無差分保守のトークンゼロと両立しないため、監督が必要な実行中の案件だけに適用する。ホストでの導入・起動・復旧は実測するまで「連携済み」としない。
-
+**Kafstylerの適用条件。** 監督は既存の起動元を使い、再開前に作業ID・`job_key`・対象コミット・権限・単一書き手・最後の確認結果を照合する。無差分保守のLLM起動を増やさず、監督が必要な実行中案件だけに適用する。tj-loopの[adapter別の検証記録](https://github.com/laiso/tj-loop/tree/main/tj-loop/adapters)とagent-sessionsの対応環境は別の契約であり、導入・観測・送信・再観測の実機検証なしに連携済みとしない。
 
 ```mermaid
 flowchart TD
@@ -183,6 +189,8 @@ flowchart TD
 **Rexとの関係。** [Superlogical Rex](https://www.superlogical.com/rex/docs/installation)は独自の端末・マルチプレクサ、[CLI](https://www.superlogical.com/rex/docs/automate/cli)、[エージェント向けSkill](https://www.superlogical.com/rex/docs/automate/agent-skill)、継続セッションを提供する別の実行・監視候補。2026年11月23日時点でテスト提供段階で、Windowsクライアント・サーバーは登録したテスター向け。Orcaを置き換えると決めつけず、利用環境で「再起動後のセッション復元・通信・多重起動抑止・資源消費・`main`単一書き手との適合」を同条件で測ってから採否を決める。ターミナル機能の比較とBotの外部イベント受付の比較は分ける。
 
 [Orca Botの接続手順](../integrations/orca/README.md) · [実行契約](../AGENTS.md#orcaなど外部実行環境との優先順位) · [継続作業の手順](../skills/autocatalyze/SKILL.md#常時稼働エージェントの中核)
+
+[^agent-sessions-supervisor]: [agent-sessions-supervisor SKILL.md](https://github.com/laiso/agent-sessions/blob/7bc74d7179de52cdbfe020700c434d60c5d68901/skills/agent-sessions-supervisor/SKILL.md) · [CLI README](https://github.com/laiso/agent-sessions/blob/7bc74d7179de52cdbfe020700c434d60c5d68901/README.md)
 
 ### agent-dispatchのIssue駆動と障害からの学習
 
