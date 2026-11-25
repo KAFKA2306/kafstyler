@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "status": "benchmark_selected_runtime_unverified",
-  "updated_from_benchmark": "2026-11-19",
+  "updated_from_benchmark": "2026-11-23",
   "source": "https://artificialanalysis.ai/leaderboards/models",
   "pricing": {
     "input_weight": 0.75,
