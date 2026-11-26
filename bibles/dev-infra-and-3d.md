@@ -46,6 +46,22 @@ tags:
 
 [自律開発](../skills/autocatalyze/SKILL.md#実装と検証) · [評価と比較](../skills/adjudicate/SKILL.md) · [旧経路の廃止](../skills/decommission/SKILL.md)
 
+### 横断的な開発保守の選定
+
+miseを環境・タスクの共通入口とし、依存更新、検証の起動、機密検査、リリース、機密設定の暗号化は別の責務として扱う。既存の標準機能で十分なら追加しない。次の候補を案件ごとに評価する。
+
+| 責務・候補 | 採用条件と検証 |
+| --- | --- |
+| 依存更新：[Renovate](https://docs.renovatebot.com/)・[mise manager](https://docs.renovatebot.com/modules/manager/mise/) | 複数言語・CLI・Actionsの更新を横断できる候補。通常の更新ブランチ・PRと自動マージはmain一本・一書き手の規約に抵触するため現状では有効化しない。[自動マージの仕様](https://docs.renovatebot.com/key-concepts/automerge/)を踏まえ、認可済みの経路で更新・互換性検証・公開・復旧を一元化できる場合に限って採用する。 |
+| Gitフック：[Lefthook](https://lefthook.dev/usage/) | 既存の検証を呼び出すフック管理の候補。具体的な事故や重複があり、追加の承認障害を増やさない場合だけ採用する。フック内に検証ロジックを再実装せず既存タスクを呼ぶ。ローカルフックは未設定・スキップ・API経由の更新を防げないため、必要な保護は実際の書き込み経路でも確認する。 |
+| 機密検査：[Gitleaks](https://github.com/gitleaks/gitleaks) | 機密値を含みうるコード・設定・Git差分を機械的に検査する第一候補。既存のシークレット検出が不足する場合に導入し、対象範囲・終了コード・既知の検出例と誤検知を確認する。検出値をログへ出さず、実際の漏洩は失効・再発行を含めて対応する。 |
+| リリース：[Release Please](https://github.com/googleapis/release-please) | Conventional Commitsから版・変更履歴・GitHub Releaseを管理する候補。通常のリリースPRはmain一本運用と衝突するため現状では有効化しない。版管理が必要な配布物に限り、既存リリース経路との重複をなくし、規約に適合する方法で公開版と成果物を照合できる場合に採用する。 |
+| 機密設定：[SOPS](https://getsops.io/docs/)・[mise連携](https://mise.jdx.dev/environments/secrets/sops.html) | 暗号化した設定をGitで共有する具体的な必要がある場合に限る。既存の機密管理機能を優先し、復号鍵をGitに置かず、認可された実行先だけで復号する。鍵不足・復号失敗は明示して停止し、平文・ログへの漏洩を検査する。 |
+
+mise採用済みの案件では、必要なCLIと版を既存のmise設定に集約し、検証は既存タスクを再利用する。別タスクランナー（just・Task・Make）、フック管理（pre-commit）、環境管理（Nix）、依存更新（Dependabot）は一律追加も一律廃止もしない。現行で足りるなら維持し、置換による純減と同等以上の結果が確認できたものだけ退役させる。自動更新・検証・公開を有効化する前に、必要な権限、同時書き込み、失敗時の停止、通常入口での成果、重複起動の有無を確かめる。
+
+[自律開発](../skills/autocatalyze/SKILL.md#実装と検証) · [評価と比較](../skills/adjudicate/SKILL.md) · [旧経路の廃止](../skills/decommission/SKILL.md)
+
 ### uvの環境管理
 
 [Astral・uv](https://docs.astral.sh/uv/)（公式ドキュメント）。Pythonの環境と依存関係
