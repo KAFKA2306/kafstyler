@@ -11,6 +11,15 @@ description = "Read an OKF bundle as JSON; set OKF_ROOT to the adopted upstream 
 raw_args = true
 run = 'python3 "${OKF_ROOT:?Set OKF_ROOT to the adopted OKF checkout}/skills/okf-consume/scripts/scan.py" --json'
 
+[tasks.vault-install]
+description = "Explicitly install the adopted Knowledge Compiler 1.3.1 revision using uv"
+run = "uv tool install 'knowledge-compiler[extract] @ git+https://github.com/GoogleCloudPlatform/knowledge-compiler.git@52e0f4bd2a01f2dec55c380d9ed4b42d38ace7fe'"
+
+[tasks.vault-correct]
+description = "Correct a specified vault fact; upstream is read-only without --apply"
+raw_args = true
+run = "vault-correct"
+
 [tasks.vault-init]
 description = "Initialize a Knowledge Compiler vault (--target PATH)"
 raw_args = true

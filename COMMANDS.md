@@ -22,21 +22,24 @@ tags:
 
 **OKF v0.3**：[仕様](https://github.com/open-knowledge-format/open-knowledge-format/blob/527e81aff55992be21507e97004286789126f88c/SPEC.md) · [okf-generate](https://github.com/open-knowledge-format/open-knowledge-format/blob/527e81aff55992be21507e97004286789126f88c/skills/okf-generate/SKILL.md) · [okf-consume](https://github.com/open-knowledge-format/open-knowledge-format/blob/527e81aff55992be21507e97004286789126f88c/skills/okf-consume/SKILL.md)。生成・更新はgenerate、読取り・検索はconsumeを使う。本文の仕様を複製しない。導入先が採用版の公式Skillを配布する。
 
-CLI検索では、採用版の上流checkoutを `OKF_ROOT` に指定し、Python 3.9以上とPyYAMLを導入環境で用意する。例：`mise run okf-scan ./vault --grep "topic"`。出力はJSON。入力はbundle rootと検索条件。
+CLI検索では、採用版の上流checkoutを `OKF_ROOT` に指定し、Python 3.9以上とPyYAMLを導入環境で用意し、同じ依存ロックを再利用する。初回導入時だけ上流を利用環境の外部資材ディレクトリへ取得し、`git -C "$OKF_ROOT" checkout --detach 527e81aff55992be21507e97004286789126f88c` で採用版を指定する。Kafstyler本体のブランチは変更しない。例：`mise run okf-scan ./vault --grep "topic"`。出力はJSON。入力はbundle rootと検索条件。
 
 **Knowledge Compiler 1.3.1**：[採用版README](https://github.com/GoogleCloudPlatform/knowledge-compiler/blob/52e0f4bd2a01f2dec55c380d9ed4b42d38ace7fe/README.md) · [CLI安定性契約](https://github.com/GoogleCloudPlatform/knowledge-compiler/blob/52e0f4bd2a01f2dec55c380d9ed4b42d38ace7fe/STABILITY.md)。Python 3.10以上。必要な実行環境で導入する例：
 
 ```sh
-uv tool install 'knowledge-compiler[extract] @ git+https://github.com/GoogleCloudPlatform/knowledge-compiler.git@52e0f4bd2a01f2dec55c380d9ed4b42d38ace7fe'
+mise run vault-install
 ```
 
 | 操作 | 共通タスク |
 | --- | --- |
 | 保管庫の初期化 | `mise run vault-init --target ./vault` |
 | 原資料の取り込み | `mise run vault-extract ./source.pdf --vault ./vault` |
-| 知識検索 | `mise run vault-query "topic" --vault ./vault` |
+| 知識検索 | `mise run vault-query "topic" --vault ./vault --json` |
+| 既知の誤情報を修正 | `mise run vault-correct "正しい記述" --stale "旧記述" --target "NOTE" --vault-path ./vault --apply --json` |
 | グラフ表示 | `mise run vault-graph ./vault` |
 | 既存の取り込み・修復・コミット | `OBSIDIAN_VAULT_PATH=/path/to/vault mise run vault-maintain` |
+
+`vault-correct` は `--apply` がない場合は書き込まない。修正対象と新旧の記述が特定され、書き込みが認可された場合だけ実行する。上流が保持する歴史資料を改変しない。
 
 保守の環境変数・排他・Git/非Gitモードは[既存スクリプト](scripts/vault-maintenance.sh)を正本とする。保守タスクは書き込みを伴うため閲覧用途では使わない。
 
@@ -86,8 +89,8 @@ uv tool install 'knowledge-compiler[extract] @ git+https://github.com/GoogleClou
 | Codex・ChatGPTの長期作業 | [Goals](https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex) · [Codex Cloud](https://learn.chatgpt.com/docs/cloud) · [Scheduled tasks](https://learn.chatgpt.com/docs/automations) · [Dots](https://learn.chatgpt.com/docs/dots/tasks-and-memory)。採用環境でのみ利用 |
 | OpenAIの非同期API | [Agents API sessions](https://developers.openai.com/api/docs/guides/agents-api/sessions) · [Automations](https://developers.openai.com/api/docs/guides/agents-api/sessions/automations) · [Session webhooks](https://developers.openai.com/api/docs/guides/agents-api/sessions/webhooks) · [Errors](https://developers.openai.com/api/docs/guides/agents-api/errors) · [Responses background mode](https://developers.openai.com/api/docs/guides/background)。既存IDと認可を再利用 |
 | Antigravity拡張・実行 | `agy plugin install URL`（既存配布契約）。[Plugin作成](https://antigravity.google/docs/build-plugins/) · [JSON Schema](https://antigravity.google/schemas/v1/plugin.json) · [認証](https://antigravity.google/docs/install?tab=cli) · [Headless](https://antigravity.google/docs/cli/headless/) |
-| DeepSeek Harness | [公式操作・拡張](https://deepseek-harness.github.io/deepseek-harness/) · [構成](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/architecture.md)。採用版のプロファイルとバンドルを利用 |
-| 共通の監督 | [tj-loop Skill](https://github.com/laiso/tj-loop/blob/main/tj-loop/SKILL.md) · [agent-sessions-supervisor Skill](https://github.com/laiso/agent-sessions/blob/7bc74d7179de52cdbfe020700c434d60c5d68901/skills/agent-sessions-supervisor/SKILL.md) · [CLI README](https://github.com/laiso/agent-sessions/blob/7bc74d7179de52cdbfe020700c434d60c5d68901/README.md)。既存ワーカーの観測・連絡に限定し、二重監督しない |
+| DeepSeek Harness | `npx @deepseek-ai/dsh@VERSION web --no-open`。VERSIONは採用済みnpm版に置き換える。[公式README](https://github.com/deepseek-ai/deepseek-harness) · [公式操作・拡張](https://deepseek-harness.github.io/deepseek-harness/)。開発プレビューのため版とプロファイルを固定し、未導入なら自動起動しない |
+| 共通の監督 | [tj-loop Skill](https://github.com/laiso/tj-loop/blob/8bc68994165cd2834bbbf3048fe3dd917b35c290/tj-loop/SKILL.md) · [agent-sessions-supervisor Skill](https://github.com/laiso/agent-sessions/blob/7bc74d7179de52cdbfe020700c434d60c5d68901/skills/agent-sessions-supervisor/SKILL.md) · [CLI README](https://github.com/laiso/agent-sessions/blob/7bc74d7179de52cdbfe020700c434d60c5d68901/README.md)。採用版checkout内で `./agent-sessions --source orca --format json`（一覧）、`./agent-sessions read TARGET`（読取）、認可された相手に限り `./agent-sessions send TARGET MESSAGE`（一度だけ送信）。既存ワーカーの観測・連絡に限定し、二重監督しない |
 | 代替基盤 | [Rex](https://www.superlogical.com/rex/docs/installation) · [agent-dispatchの既存実装](https://github.com/shotayagami/agent-dispatch/tree/2fee8ad4f8644a1e6849ea14cf39d3f614e28a86) · [Symphony](https://openai.com/index/open-source-codex-orchestration-symphony/)。役割の不足があるときだけ置換候補にする |
 
 ### Orcaの操作契約
@@ -171,6 +174,31 @@ Orca標準の新規worktree・自動PRはKafstylerのmain一本と競合する�
 | 画像・動画・音声 | `magick INPUT OUTPUT`（[ImageMagick](https://imagemagick.org/script/command-line-processing.php)）、`ffmpeg -i INPUT OUTPUT`（[FFmpeg](https://ffmpeg.org/ffmpeg.html)）。出力形式・コーデックは案件で指定 |
 | 市場・企業・金融 | 指数は既存のMSCI/S&P方法論、企業は対象の開示・一次データ、信用構造は[BIS](https://www.bis.org/)・[ECB](https://www.ecb.europa.eu/)の公式公開資料。時点依存の数値・データIDを共通台帳に固定しない |
 | 公開検索・GEO/AEO | [公開情報運用指針](https://zenn.dev/kafka2306/articles/6dd453d941b99f)。取得先と原文を分け、案件で必要な出典・データを保持する |
+
+### 制作APIの入出力
+
+GUIで保存したワークフローとAPI用の実行グラフを区別する。外部有料APIを呼ぶ操作は、対象案件で認可されたアカウント・費用・モデル・入力だけに限定する。
+
+| 操作 | 実行契約 |
+| --- | --- |
+| ComfyUIローカル実行 | API形式のグラフJSONを `POST /prompt` の `prompt` に渡す。返却された `prompt_id` で `GET /history/{prompt_id}` を取得し、出力のfilename/subfolder/typeで `GET /view` を呼ぶ。[公式ルート](https://github.com/Comfy-Org/docs/blob/main/ja/development/comfyui-server/comms_routes.mdx) · [公式例](https://github.com/Comfy-Org/docs/blob/main/ja/development/comfyui-server/api-examples.mdx) |
+| Tripo v3 | `POST /v3/files` で素材を登録、`POST /v3/generation/image-to-model` または `/v3/generation/multiview-to-model` で生成し、`GET /v3/tasks/{task_id}` で状態・成果URLを取得する。基点は `https://openapi.tripo3d.ai`、Bearer認証。HTTP成功とAPIの `code=0` を区別し、`status=success` の成果URLだけを利用する。[v3公式契約](https://developers.tripo3d.ai/en/docs/introduction) · [ライフサイクル](https://developers.tripo3d.ai/ja/docs/task-lifecycle) |
+| Tripo後処理 | 同じv3契約の `POST /v3/models/texture`、`/v3/models/convert`、`/v3/mesh/decimate`、`/v3/animations/rig`、`/v3/animations/retarget` を要件に応じて使う。対象のモデル・タスクIDを明示し、旧v2契約と混ぜない |
+
+ComfyUIの既存ローカルインスタンスへの投入例（`COMFY_URL` は認可された接続先、`workflow-api.json` はAPI用グラフ）：
+
+```sh
+jq '{prompt:.}' workflow-api.json |
+  curl --fail-with-body -H 'Content-Type: application/json' --data-binary @- "${COMFY_URL:?Set COMFY_URL}/prompt"
+```
+
+Tripoの既存タスク取得例（キーは利用環境の秘密管理から注入し、値を記録しない）：
+
+```sh
+curl --fail-with-body -H "Authorization: Bearer ${TRIPO_API_KEY:?Set TRIPO_API_KEY}" "https://openapi.tripo3d.ai/v3/tasks/${TASK_ID:?Set TASK_ID}"
+```
+
+契約を採用する案件では、実際に使用するモデル・ノード・API版・入力JSON・出力先を案件の正本に固定する。共通台帳は個別の生成設定を保持しない。
 
 ### 旧聖典の扱い
 
