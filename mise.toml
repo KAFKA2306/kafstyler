@@ -2,6 +2,7 @@
 node = "lts"
 
 [tasks.model-select]
+raw_args = true
 description = "Select models using an external deployment policy (--policy PATH)"
 run = "node .agents/select-models.mjs"
 
