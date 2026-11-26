@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: [mise.toml, .github/workflows/model-selection.yml]
+    paths: [mise.toml, .github/workflows/model-selection.yml, scripts/check-repo.py, index.md, "rules/**"]
 permissions:
   contents: write
 jobs:

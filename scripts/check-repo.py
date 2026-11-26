@@ -81,6 +81,9 @@ def main():
                     data = yaml.safe_load(match.group(1))
                     if not isinstance(data, dict):
                         errors.append(f"{display}:1:yaml:expected mapping")
+                    elif path.parent == root / "rules":
+                        if data.get("trigger") not in ("always_on", "model_decision", "glob", "manual"):
+                            errors.append(f"{display}:1:rule:invalid trigger")
                     elif path.name != "SKILL.md":
                         if not data.get("type") or not data.get("description") or not isinstance(data.get("tags"), list) or not data["tags"]:
                             errors.append(f"{display}:1:okf:missing type/description/nonempty tags")
