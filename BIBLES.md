@@ -53,7 +53,7 @@ verified:
 | **目的・合格条件・評価・文章**：何を解決するか、どう成果を確かめて説明するか | [使命・評価・執筆](bibles/mission-eval-writing.md) |
 | **知識・データ**：情報の意味、来歴、識別子、保存・検索・整形の仕様 | [知識とObsidian](bibles/knowledge-and-obsidian.md) |
 | **AIエージェントの実行・監督**：Skills、セッション、委譲、Orca、常駐と再開 | [AIエージェントとOrca](bibles/agents-and-orca.md) |
-| **実装基盤・3D制作**：Git・開発CLI・環境管理（mise）・HTTP実装（Hono）・インフラ、Unity・VRChat制作、Tripo・3Dモデル生成 | [開発基盤と3D](bibles/dev-infra-and-3d.md) |
+| **実装基盤・3D制作**：Git・開発CLI・環境管理（mise）・HTTP実装（Hono）・横断保守・インフラ、Unity・VRChat制作、Tripo・3Dモデル生成 | [開発基盤と3D](bibles/dev-infra-and-3d.md) |
 | **UI・画像ワークフロー**：画面の操作と表示、ComfyUIのワークフロー・テンプレート | [設計とUI](bibles/design-and-ui.md) |
 | **金融・投資**：市場、企業・指数、投資判断、信用リスク | [金融と市場](bibles/finance-and-markets.md) |
 
