@@ -1,11 +1,11 @@
 {
   "name": "kafstyler",
-  "version": "0.9.2",
-  "description": "実装・検証・継続運用を必要な手順だけで進める7スキル",
+  "version": "0.9.3",
+  "description": "判断原理と再利用可能な実行契約に基づき、実装・公開・継続運用を進める7スキル",
   "repository": "https://github.com/KAFKA2306/kafstyler",
   "skills": "./skills/",
   "interface": {
     "displayName": "Kafstyler",
-    "shortDescription": "実装・検証・継続運用の7スキル"
+    "shortDescription": "判断・実行・継続運用の7スキル"
   }
 }
