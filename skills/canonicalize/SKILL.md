@@ -25,19 +25,11 @@ MISSIONは目的、Issueは仕事、Gitは実装、公開先は成果の正本�
 
 ## Vaultとパスの単一正本
 
-`OBSIDIAN_VAULT_PATH` を唯一の正本とし、外部取得元とキャッシュを分離する。
+保管場所の正本を一つ指定し、外部取得元とキャッシュを分離する。実際のパスは利用環境で管理する。
 
-## dbtで分析データを作る
+## 文書形式を選ぶ
 
-既存dbt案件では上流のモデル・source・refを利用する。
-
-## OKFに沿って文書を更新する
-
-OKFを使う案件だけ公式Skillと文書形式に従って更新する。
-
-### 公式OKFスキルを使う
-
-[公式資料](../../bibles/knowledge-and-obsidian.md#open-knowledge-format-okf-v03)を参照する。
+案件が採用する公式の形式とSkillを使い、別の形式を一律に強制しない。
 
 ## 台帳とObsidian Vaultで文書を整理する
 

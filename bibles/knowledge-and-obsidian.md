@@ -170,21 +170,8 @@ flowchart TD
 
 [Obsidian公式のコミュニティプラグイン台帳](https://github.com/obsidianmd/obsidian-releases/blob/master/community-plugins.json)でプラグインIDと開発元を特定し、[登録・配布の仕様](https://github.com/obsidianmd/obsidian-releases#community-plugins)と[対応版の判定](https://docs.obsidian.md/Reference/Versions)に沿ってGitHub Releasesの配布物を選ぶ。[Obsidianのプラグインセキュリティ](https://obsidian.md/help/plugin-security)によれば、コミュニティプラグインはObsidianの権限を継承し、ファイルやネットワークへアクセスできる。公式ディレクトリへの登録は、個々の導入環境での動作・安全の保証ではない。
 
-2026年11月22日に各開発元のリリースとソースの `manifest.json` を照合した8候補。以下の版は調査時点の候補であり、将来の固定バージョンではない。
-
-| プラグイン（ID） | 調査時点の通常版候補 | 用途と採用判断の根拠 |
-| --- | --- | --- |
-| [Dataview](https://github.com/blacksmithgu/obsidian-dataview)（`dataview`） | [0.5.70](https://github.com/blacksmithgu/obsidian-dataview/releases/tag/0.5.70) | frontmatterやノートから一覧を生成する。まずObsidian標準のBasesで足りるか比べ、必要なクエリだけ導入する。DataviewJSの実行は通常のDQL検索と区別する。 |
-| [Omnisearch](https://github.com/scambier/obsidian-omnisearch)（`omnisearch`） | [1.32.0](https://github.com/scambier/obsidian-omnisearch/releases/tag/1.32.0) | 順位付けした検索・関連する文書の発見。[標準検索](https://obsidian.md/help/plugins/search)で見つからない実例がある場合に追加する。 |
-| [Calendar](https://github.com/liamcain/obsidian-calendar-plugin)（`calendar`） | [1.5.10](https://github.com/liamcain/obsidian-calendar-plugin/releases/tag/1.5.10) | デイリーノートへの日付別移動。2021年公開の通常版。日次ノート作成の正本設定を他プラグインと競合させない。 |
-| [Periodic Notes](https://github.com/liamcain/obsidian-periodic-notes)（`periodic-notes`） | [0.0.17](https://github.com/liamcain/obsidian-periodic-notes/releases/tag/0.0.17) | 週次・月次などの定期ノートを作成する。Calendarとの連携設定をそろえる。2021年の通常版で、保守状況と現行Obsidianでの動作を確かめる。 |
-| [Homepage](https://github.com/mirnovov/obsidian-homepage)（`homepage`） | [4.6.0](https://github.com/mirnovov/obsidian-homepage/releases/tag/4.6.0) | 起動時に正本の目次・ダッシュボードを開く。ノートの正本は通常のMarkdownに保持する。 |
-| [Recent Files](https://github.com/tgrosinger/recent-files-obsidian)（`recent-files-obsidian`） | [1.7.10](https://github.com/tgrosinger/recent-files-obsidian/releases/tag/1.7.10) | 最近開いたファイルへ再移動する。閲覧履歴は正本や変更履歴の代わりにならない。 |
-| [Templater](https://github.com/SilentVoid13/Templater)（`templater-obsidian`） | [2.27.0](https://github.com/SilentVoid13/Templater/releases/tag/2.27.0) | ノート作成時にプロパティや本文を生成する。[標準テンプレート](https://obsidian.md/help/plugins/templates)と比較し、任意のJavaScriptやシステムコマンドを実行するテンプレートは内容を確認してから使う。 |
-| [Linter](https://github.com/platers/obsidian-linter)（`obsidian-linter`） | [1.35.0](https://github.com/platers/obsidian-linter/releases/tag/1.35.0) | YAMLやMarkdownを整形する。保存時の自動実行や全件整形は、意図しない差分が出ないことを小さな対象で確かめてから有効にする。 |
-
-GitHubの `releases/latest` をそのまま安定版とみなさない。Calendarの最新表示 `2.0.0-beta.2` は `calendar-beta` という別IDであり、通常版 `calendar` ではない。Periodic Notesの最新表示 `1.0.0-beta.3` はベータ版で、`1.0.0` タグのソース側manifestも `0.0.17` のまま。Dataviewの `0.5.70` タグのソース側manifestは `0.5.68` のままなので、配布アセットの `manifest.json` とバージョンが一致するかは別途確認する。リリース名、`prerelease` フラグ、配布manifest、プラグインID、`minAppVersion`、利用中のObsidian本体の版を突き合わせる。
+候補は利用目的ごとに公式台帳から探す。標準機能で足りる場合は追加しない。リリース名、安定版・試験版、配布manifest、プラグインID、対応する本体の版を区別する。
 
 導入・更新では、公式台帳から開発元のGitHub Releaseへたどり、該当タグの `main.js`・`manifest.json`・提供されている `styles.css` を同じ版から `.obsidian/plugins/<plugin-id>/` に揃える。GitHubの配布アセットにSHA-256があればダウンロード物と照合し、値がなければ取得元・タグ・ローカルハッシュを記録して照合未完了と区別する。ダウンロード完了は動作確認完了ではない。
 
-Kafstylerの正本はMarkdown、YAML frontmatter、Git履歴とする。DataviewやHomepageの表示、CalendarやPeriodic Notesの生成入口、TemplaterやLinterの自動変更は正本を補助する機能であり、8プラグイン一式をKafstylerの必須依存関係にはしない。必要な候補は[canonicalizeのVault移行手順](../skills/canonicalize/SKILL.md#台帳とobsidian-vaultで文書を整理する)で採否を決め、再現できない表示や重複する機能は[decommission](../skills/decommission/SKILL.md)で整理する。
+Kafstylerの正本はMarkdown、YAML frontmatter、Git履歴とする。DataviewやHomepageの表示、CalendarやPeriodic Notesの生成入口、TemplaterやLinterの自動変更は正本を補助する機能であり、特定のプラグイン一式をKafstylerの必須依存関係にはしない。必要な候補は[canonicalizeのVault移行手順](../skills/canonicalize/SKILL.md#台帳とobsidian-vaultで文書を整理する)で採否を決め、再現できない表示や重複する機能は[decommission](../skills/decommission/SKILL.md)で整理する。

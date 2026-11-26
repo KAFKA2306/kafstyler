@@ -5,9 +5,11 @@ import {dirname,join} from 'node:path';
 import {fileURLToPath} from 'node:url';
 
 const root=join(dirname(fileURLToPath(import.meta.url)),'..');
-const cfg=JSON.parse(await readFile(join(root,'.agents/model-policy.json'),'utf8'));
 const argv=process.argv.slice(2);
 const arg=x=>argv.includes(x)?argv[argv.indexOf(x)+1]:null;
+const policy=arg('--policy');
+if(!policy)throw Error('Specify deployment policy with --policy PATH');
+const cfg=JSON.parse(await readFile(policy,'utf8'));
 const today=arg('--as-of')||new Date().toISOString().slice(0,10);
 const fail=(ok,message)=>{if(!ok)throw Error(message)};
 const age=s=>(Date.parse(today+'T00:00:00Z')-Date.parse(s+'T00:00:00Z'))/86400000;
@@ -74,7 +76,8 @@ async function skillNames(){
   return names;
 }
 async function main(){
-  const output=join(root,'.agents/model-selection.json');
+  const output=arg('--output');
+  if((argv.includes('--write')||arg('--resolve'))&&!output)throw Error('Specify deployment output with --output PATH');
   const selectedName=arg('--resolve');
   if(selectedName){
     const saved=JSON.parse(await readFile(output,'utf8'));
@@ -102,7 +105,7 @@ async function main(){
   const result=choose(data,names);
   const text=JSON.stringify(result,null,2)+'\n';
   if(argv.includes('--write')){
-    if(text!==(await readFile(output,'utf8')))await writeFile(output,text,'utf8');
+    await writeFile(output,text,'utf8');
   }else process.stdout.write(text);
 }
 await main();

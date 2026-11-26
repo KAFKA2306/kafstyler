@@ -19,7 +19,7 @@ AI・端末・案件が増えても仕事を重複させない。外部の標準
 
 ## 外部ツールで回す日常保守
 
-OS、rclone、Knowledge Compilerに差分取得とVault整形を任せる。WSL等では `OBSIDIAN_VAULT_PATH` を指定して [Vault保守](scripts/vault-maintenance.sh) を実行する。必要時だけ `KAFSTYLER_INGEST_SOURCE` を指定し、非Git Vaultは `KAFSTYLER_VAULT_MODE=plain` を明示する。
+OSと外部標準ツールに差分取得・整形を任せ、AIは判断が必要な差分だけを扱う。
 
 ## なぜこの7 Skillsなのか
 
@@ -96,61 +96,15 @@ Claude Codeは `claude plugin update kafstyler@kafka-agent-tools`、Codexは `co
 
 ## 成果から使い方を選ぶ
 
-### 開発・運用
-
-[agent-resources](https://github.com/KAFKA2306/agent-resources) · [design](https://github.com/KAFKA2306/design)
-
-### 記事・動画・音声
-
-[didactization](skills/didactization/SKILL.md)で知見を公開する。
-
-### VRChat・3D・画像制作
-
-[image2outfit](https://github.com/KAFKA2306/image2outfit) · [技術資料](bibles/dev-infra-and-3d.md)
-
-### ボードゲーム・ゲーム
-
-目的に必要な設計と実装を進める。
-
-### 企業・市場の調査
-
-[金融と市場](bibles/finance-and-markets.md)
-
-### 科学・製造の調査
-
-一次資料から知見を整理する。
-
-### Kaggle
-
-目的に沿って既存ツールとデータを利用する。
-
-### 暮らしと学習
-
-必要な知識と手順を整理する。
+対象分野に応じた一次資料は[BIBLES](BIBLES.md)から探す。個別案件の仕様や設定はその案件の正本で管理する。
 
 ## スキル
 
 [共通規約](AGENTS.md#スキルの役割)を参照する。
 
-## Unity・VRChatで制作する
-
-[開発基盤・3D](bibles/dev-infra-and-3d.md)を参照する。
-
 ## 外部スキルとテンプレート
 
 公式Skillと既存テンプレートを優先し、複製しない。
-
-### 成果物の根拠調査と推敲
-
-[didactization](skills/didactization/SKILL.md)
-
-### Googleのフロントエンド設計スキル
-
-[設計とUI](bibles/design-and-ui.md)
-
-### ComfyUIのワークフローテンプレート
-
-[開発基盤・3D](bibles/dev-infra-and-3d.md)
 
 ## ミッション・聖典・作業規約
 

@@ -2,5 +2,5 @@
 node = "lts"
 
 [tasks.model-select]
-description = "Select measured models (read-only unless --write is supplied)"
+description = "Select models using an external deployment policy (--policy PATH)"
 run = "node .agents/select-models.mjs"

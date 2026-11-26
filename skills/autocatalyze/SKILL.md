@@ -21,43 +21,15 @@ description: "案件の選定・実装・公開・継続を担う。"
 
 ## 常駐エージェントと定期実行
 
-既存のOS・イベント・Orcaの起動元を選び、二重起動を防ぐ。必要な入力・認可・出力先だけ設定する。
+既存のOS・イベント・外部実行基盤の起動元を選び、二重起動を防ぐ。必要な入力・認可・出力先だけ設定する。
 
 ## 外部ツールによるゼロトークン保守
 
-[Vault保守](../../scripts/vault-maintenance.sh)で `OBSIDIAN_VAULT_PATH` を指定して実行する。`KAFSTYLER_INGEST_SOURCE` を必要時に設定する。非Git Vaultは `KAFSTYLER_VAULT_MODE=plain` を明示する。rclone、Knowledge Compiler、OSに処理を任せる。
+決定的な差分取得・整形・同期は既存CLIに任せ、AIは判断が必要な入力だけ扱う。
 
 ## 外部Skillを優先して実行する
 
-必要な公式Skill、既存CLI・MCPを使う。Orcaでは `orca skills get <topic> --full` で実行版の手順を得る。外部手順を複製しない。
-
-## Orca機能を選んで使う
-
-単発は既存端末、定期はAutomations、外部受付はBots、複数担当の連絡はOrchestrationを使う。
-
-## Orcaで監督して実行する
-
-[接続手順](../../integrations/orca/README.md)を使い、同じmainの書き込みを直列化する。
-
-## OrcaのAutomationsとBotsを使う
-
-既存のworkspaceと起動経路を使い、必要なイベントだけ受け付ける。実行失敗を無変化に変えない。認可範囲を守る。
-
-## Orca Botの受付・進捗と判断待ち
-
-依頼を既存の担当に渡し、本人しか解決できない権限・判断だけを提示する。
-
-## Orcaの横断運用
-
-複数ホストでも正本と単一書き手を維持する。
-
-## Claude Codeの /loop 連携
-
-既存の定期・イベント経路がある場合はそちらを使う。
-
-## Claude Agent SDKでの実装
-
-既存のSDKと公式手順を使う。
+必要な公式Skill、既存CLI・MCPを使う。実行環境の版に対応する公式手順を参照し、複製しない。
 
 ## 実装と公開
 

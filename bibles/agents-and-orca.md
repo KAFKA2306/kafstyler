@@ -27,7 +27,7 @@ sources:
 | Claude APIを直接呼び、ツール処理をアプリ側で組み立てる | Client SDK |
 | Anthropicが運用するエージェントの実行基盤をAPIから使う | Claude Managed Agents |
 
-[プラグインの読み込み](https://code.claude.com/docs/en/agent-sdk/plugins)・[ツールの権限設定](https://code.claude.com/docs/en/agent-sdk/permissions)（公式仕様）。[導入と確認](../skills/autocatalyze/SKILL.md#claude-agent-sdkでの実装)
+[プラグインの読み込み](https://code.claude.com/docs/en/agent-sdk/plugins)・[ツールの権限設定](https://code.claude.com/docs/en/agent-sdk/permissions)（公式仕様）。[導入と確認](../skills/autocatalyze/SKILL.md#外部skillを優先して実行する)
 
 ### スキルの執筆
 
@@ -151,13 +151,13 @@ flowchart LR
     A -->|"結果・完了報告"| O
 ```
 
-[Orcaの実行手順](../skills/autocatalyze/SKILL.md#orcaで監督して実行する) · [Orcaから使う](../README.md#orca)
+[Orcaの実行手順](../skills/autocatalyze/SKILL.md#外部skillを優先して実行する) · [Orcaから使う](../README.md#orca)
 
 ### Orca Bots・tj-loopの監督構造とRexの比較
 
 **確定している公開契約。** [Orca Bots](https://orca.dev/docs/bots)は、Botごとに指定したホストでClaude Code・CodexなどのCLIを動かし、会話・GitHub・Slack・Linear・定時イベントから仕事を受け付ける。コード変更の標準経路は新しいGit worktreeのworkerとPRであり、Kafstylerの`main`一本・単一書き手と衝突する。[Orca Orchestration](https://orca.dev/docs/cli/orchestration)はTask・Dispatch・メッセージによる監督付き委譲を公開する。Botの記憶はホスト上のファイル、チャットはそのホストのOrcaストレージに保存されるが、外部の成果が確定した証拠ではない。[Bot security](https://orca.dev/docs/bots/security)
 
-**実装観察と未確認事項。** 2026年11月22日の@laisoによるOrca Bots実機報告には「起動したClaude/Codexプロセスを内部CLIとSQLiteでメッセージングして制御する」とある。ただしSQLiteのスキーマ、永続配送、プロセス消失後の再実行・トランザクション回復、将来の互換性は公開契約として確認できていない。内部DBを直接読み書きするKafstyler独自連携を作らない。「Electronの限界」も性能測定を伴わない見解として扱い、設計上の事実にしない。
+公開仕様にない内部DBを直接読み書きする独自連携は作らない。
 
 **長時間作業の監督原理。** [laiso/tj-loop](https://github.com/laiso/tj-loop)は作業担当と独立監督役を分け、[agent-sessions-supervisor](https://github.com/laiso/agent-sessions/blob/7bc74d7179de52cdbfe020700c434d60c5d68901/skills/agent-sessions-supervisor/SKILL.md)はHerdr・tmux・Orcaを共通の観測・連絡経路で扱う。前者は監督ループ、後者は既存ワーカーの観測と認可済みの連絡を担う。[^agent-sessions-supervisor] 同一案件に二つの監督ループを起動しない。
 
@@ -186,7 +186,7 @@ flowchart TD
     V --> C["canonicalize：確認済み成果を正本へ"]
 ```
 
-**Rexとの関係。** [Superlogical Rex](https://www.superlogical.com/rex/docs/installation)は独自の端末・マルチプレクサ、[CLI](https://www.superlogical.com/rex/docs/automate/cli)、[エージェント向けSkill](https://www.superlogical.com/rex/docs/automate/agent-skill)、継続セッションを提供する別の実行・監視候補。2026年11月23日時点でテスト提供段階で、Windowsクライアント・サーバーは登録したテスター向け。Orcaを置き換えると決めつけず、利用環境で「再起動後のセッション復元・通信・多重起動抑止・資源消費・`main`単一書き手との適合」を同条件で測ってから採否を決める。ターミナル機能の比較とBotの外部イベント受付の比較は分ける。
+[Superlogical Rex](https://www.superlogical.com/rex/docs/installation)も実行・監督基盤の候補。端末機能と外部イベント受付を分けて比較し、既存基盤で不足する機能がある場合だけ置換を考える。
 
 [Orca Botの接続手順](../integrations/orca/README.md) · [実行契約](../AGENTS.md#orcaなど外部実行環境との優先順位) · [継続作業の手順](../skills/autocatalyze/SKILL.md#常時稼働エージェントの中核)
 
@@ -222,7 +222,7 @@ flowchart TD
 
 **外部実践から採るのは原理だけ。** [Andy氏の実践記事（2026-11-17）](https://zenn.dev/andoshin11/articles/ba68b39ef9a8ce)はClaude Task Tools、Codex向けMCP、自作Plugin・iOS/Watchアプリで進捗・質問・次アクションを集約した自己報告であり、月約6,000セッションの数値はKafstylerの性能目標や独立検証結果ではない。私有のClaudeログ・Orca内部SQLiteへの解析依存や新しいPluginの導入は、標準の`Needs you`・Orchestration・Mobileで不足が実測されるまで行わない。司令塔・案件別・横断レビューの分業も、1件の受付で不足すると確認できたときだけ増やす。
 
-[運用手順](../skills/autocatalyze/SKILL.md#orca-botの受付進捗と判断待ち) · [共通規約](../AGENTS.md#orcaなど外部実行環境との優先順位)
+[運用手順](../skills/autocatalyze/SKILL.md#外部skillを優先して実行する) · [共通規約](../AGENTS.md#orcaなど外部実行環境との優先順位)
 
 ### Orcaを横断運用の実行基盤にする
 
@@ -238,7 +238,7 @@ Orcaが持つ画面・CLI・遠隔実行を`autocatalyze`の仕事に沿って�
 | [Remote Orca Servers](https://orca.dev/docs/ways-to-run)・[モバイル](https://orca.dev/docs/mobile) | 複数PCの実行状態と利用者の確認依頼を遠隔から見届ける。ホストの稼働、接続、認可を確認し、端末上で未実行の仕事を完了扱いしない。 |
 | [Usage & rate-limit tracking](https://orca.dev/docs/agents/usage-tracking)・[CLI agent launch](https://orca.dev/docs/cli/reference) | 各CLIの利用枠と実際に指定できるモデルを確認し、Kafstylerのモデル選定方針を利用可能な実行担当へ割り当てる。公開評価の候補とそのホストで使えるIDを分ける。 |
 
-[Orcaの実行手順](../skills/autocatalyze/SKILL.md#orcaで監督して実行する) · [成果までの運用設計](../skills/autocatalyze/SKILL.md#orcaの横断運用)
+[Orcaの実行手順](../skills/autocatalyze/SKILL.md#外部skillを優先して実行する) · [成果までの運用設計](../skills/autocatalyze/SKILL.md#外部skillを優先して実行する)
 
 
 ### Orcaを常駐・通信基盤として使う
@@ -268,7 +268,7 @@ flowchart LR
     A -->|"必要な結果だけ返す"| B
 ```
 
-[実行手順](../skills/autocatalyze/SKILL.md#orcaのautomationsとbotsを使う) · [共通規約](../AGENTS.md#orcaなど外部実行環境との優先順位)
+[実行手順](../skills/autocatalyze/SKILL.md#外部skillを優先して実行する) · [共通規約](../AGENTS.md#orcaなど外部実行環境との優先順位)
 
 ### Orcaの拡張を選ぶ
 
@@ -281,7 +281,7 @@ Orcaの拡張は**Plugins（画面・コマンド）**、**Skills（AIに操作�
 | [Orca MCP設定](https://orca.dev/docs/cli/skills#mcp-servers) | `Settings → Integrations → MCP`で外部ツールを接続する。GitHubなど既存の認可済みツールがあれば二重登録しない。 |
 | [Orca Bots](https://orca.dev/docs/bots) | GitHub等のイベントとAI担当を結び付けるが、Kafstylerの`main`一本規約に従い、標準の新規worktree付き書き込みフローはそのまま有効化しない。 |
 
-**公式Pluginカタログを基準に選ぶ。** 2026年11月22日、[公式カタログv2](https://github.com/stablyai/orca-plugins/blob/main/orca-catalog.json)の43件を版・実行権限まで照合した。`data`36件、`declarative`1件、`sandboxed-ui`6件、`trusted-worker`0件。マーケットの全掲載数は日々変わり、この43件とコミュニティ製を混同しない。[公式レビュー規約](https://github.com/stablyai/orca-plugins/blob/main/REVIEW_POLICY.md)は最低限の権限、公開ソース、版固定の検証を要求する。[Orca本体のプラグイン執筆ガイド](https://github.com/stablyai/orca/blob/main/docs/reference/plugin-authoring.md)は実行形式を説明する。掲載・インストール可能なことと安全性の保証を区別する。
+[公式カタログ](https://github.com/stablyai/orca-plugins)と[公式レビュー規約](https://github.com/stablyai/orca-plugins/blob/main/REVIEW_POLICY.md)を参照し、発行元・公開ソース・実行権限・対応版を基準に選ぶ。掲載は安全性の保証ではない。
 
 公式の実用候補は、[Excalidraw](https://orca.dev/plugins/stablyai/orca-plugins/orca-excalidraw)（構造図編集）、[Spreadsheet](https://orca.dev/plugins/stablyai/orca-plugins/orca-spreadsheet)（表計算編集）、[SQLite Browser](https://orca.dev/plugins/stablyai/orca-plugins/orca-sqlite-browser)（データベースの読み取り）、[Word Document Viewer](https://orca.dev/plugins/stablyai/orca-plugins/orca-docx)（Word文書の確認）、[Image Markup](https://orca.dev/plugins/stablyai/orca-plugins/orca-image-markup)（スクリーンショットへの注記）。このうち実際に扱うファイルがある機能だけ採用する。外部の読み書き、DB接続、GPU監視、Skill追跡などを理由に第三者プラグインを導入する前に、Orca本体のビューア、Resource Manager、Agent Dashboard、セッション履歴、CLIで同じ問いに答えられるか確かめる。
 
@@ -298,7 +298,7 @@ Orcaの拡張は**Plugins（画面・コマンド）**、**Skills（AIに操作�
 
 **権限と採否。** 上記コミュニティプラグインは公式掲載でもコードレビュー済みとは限らず、Full accessではユーザー権限でファイル・ネットワーク・プロセスにアクセスできる。自動インストールやフルアクセスを既定で有効にしない。採用する場合はソース、権限、変更履歴を確認し、既存`main`での起動・不要な作業場所の不作成・アンインストール後の復旧を実機で確かめる。競合を解決できない場合は、プラグインを増やさずOrcaの既存checkout選択で運用する。
 
-[Kafstylerの優先規約](../AGENTS.md#orcaなど外部実行環境との優先順位) · [Orca運用の手順](../skills/autocatalyze/SKILL.md#orcaで監督して実行する)
+[Kafstylerの優先規約](../AGENTS.md#orcaなど外部実行環境との優先順位) · [Orca運用の手順](../skills/autocatalyze/SKILL.md#外部skillを優先して実行する)
 
 ### プラグインの構成
 
@@ -359,7 +359,7 @@ Orcaの拡張は**Plugins（画面・コマンド）**、**Skills（AIに操作�
 
 **中核の設計資料。** [Anthropic・Effective harnesses for long-running agents](https://www.anthropic.com/research/effective-harnesses-for-long-running-agents) はセッションを越える復元、[Anthropic・Scaling Managed Agents with stable interfaces](https://www.anthropic.com/research/managed-agents) は状態と環境の分離、[Google SRE・Eliminating Toil](https://sre.google/workbook/eliminating-toil/) は不要な起動の削減に使う。[autocatalyze](../skills/autocatalyze/SKILL.md#常時稼働エージェントの中核) が専門工程を統括する。
 
-2026年11月18日に、常駐、定期・イベント起動、長時間実行、再開、記憶、権限、成果に具体的な設計判断がある公式英語資料を確認した。[Anthropic Engineering](https://www.anthropic.com/engineering)・[Claude Resources](https://claude.com/resources/articles)・[claude.dev](https://claude.dev/)・[OpenAI Engineering](https://openai.com/news/engineering/)・[OpenAI Developers](https://developers.openai.com/blog)の索引と、記事から参照された公式仕様を対象にした。翻訳版、重複URL、本文を確認できなかった資料は集計から外した。
+常駐、定期・イベント起動、長時間実行、再開、記憶、権限、成果に関する設計判断には公式一次資料を参照する。[Anthropic Engineering](https://www.anthropic.com/engineering)・[Claude Resources](https://claude.com/resources/articles)・[claude.dev](https://claude.dev/)・[OpenAI Engineering](https://openai.com/news/engineering/)・[OpenAI Developers](https://developers.openai.com/blog)の索引と、記事から参照された公式仕様を対象にした。翻訳版、重複URL、本文を確認できなかった資料は集計から外した。
 
 [Google SRE・Monitoring Distributed Systems](https://sre.google/sre-book/monitoring-distributed-systems/) は処理件数やプロセス稼働だけでなく利用時の症状を見て原因へ進む監視に使う。[Chenほか・Knowing When to Stop: The Evidence-Action Gap in Coding Agents](https://arxiv.org/abs/2610.31895)（2026年）は、十分な証拠がある障害では無益な再試行をやめ、障害内容・進捗・必要な外部支援・再開条件を渡す設計の根拠とする。回復可能な障害では早すぎる引き継ぎを避け、独立して進められる案件は続ける。
 
@@ -383,17 +383,6 @@ Orcaの拡張は**Plugins（画面・コマンド）**、**Skills（AIに操作�
 [vault-maintenance.sh](../scripts/vault-maintenance.sh)は上流CLIを呼ぶ薄い入口で、同期DB・モデル判断を内蔵しない。`vault-extract`は抽出であって知識の採否を決めない。Knowledge Compilerの任意Git同期フックは、Kafstylerの単一書き手・`main`運用と競合しない場合だけ使う。Agent Skillsの`SKILL.md`はAgent Skills仕様を優先し、OKFの概念文書と同一のfrontmatterを強制しない。
 
 [実行手順](../skills/autocatalyze/SKILL.md#外部ツールによるゼロトークン保守) · [正本管理](../skills/canonicalize/SKILL.md#vaultとパスの単一正本) · [旧経路の廃止](../skills/decommission/SKILL.md#外部実装への移管)
-
-### VRChatと小型判断モデルのローカル連携
-
-| 一次資料 | Kafstylerへの適用 |
-| --- | --- |
-| [VRC Friend Connect公式配布・データ保存先](https://booth.pm/ja/items/5098669) | `%APPDATA%\\VRC Friend Connect\\db\\db_1.1.sqlite` と旧版 `db.sqlite` が公式のSQLite保存先。フレンド情報はローカル保管。設定には認証情報が含まれるので読取・同期対象から除外する。 |
-| [SQLite URI filenames](https://www.sqlite.org/uri.html)・[WALの仕様](https://www.sqlite.org/wal.html) | `mode=ro&immutable=1` でアプリ側の書き込みとロックを避ける。未チェックポイントWALがあれば読み取りを中止し、古い状態を最新と判定しない。 |
-| [Windows tasklist](https://learn.microsoft.com/windows-server/administration/windows-commands/tasklist) | VRChat・SteamVR・VRC Friend Connectの稼働有無を確認し、稼働中や検知不能ならDBとモデルに触れない。 |
-| [Liquid AI d1-2B](https://huggingface.co/LiquidAI/d1-2B)・[公式GGUFとSystem One](https://huggingface.co/LiquidAI/d1-2B-GGUF) | 判断専用の約1.92B。llama.cpp v0.8.0以上の`/v1/systemone`で`choice`・`noul`・`score`を利用可能。常駐やGPU占有を前提とせず、静的ルールで判定不能な場合に限定し、ローカルで独立評価する。 |
-
-[読み取り専用スキーマ検査](../scripts/vrcfriend_offline.py)を先に動かす。アプリのDB内の行データやログ本文は読み込まない。どのテーブルが何を表すか確定した後、必要なデータ項目と保存先、プライバシー条件、実測結果を評価して次の連携を決める。VRChatの利用とフレンドの行動を変える自動操作は行わない。
 
 ### Anthropicの技術記事と事例
 

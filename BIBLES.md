@@ -6,9 +6,6 @@ tags:
   - kafstyler/reference
 aliases:
   - "聖典台帳"
-generated:
-  by: openai/chatgpt
-  at: "2026-11-22T03:16:36.100Z"
 sources:
   - id: okf-v03-spec
     resource: https://github.com/open-knowledge-format/open-knowledge-format/blob/527e81aff55992be21507e97004286789126f88c/SPEC.md
@@ -32,15 +29,6 @@ sources:
     resource: https://orca.dev/docs/remote-servers
   - id: orca-plugin-manifest
     resource: https://github.com/stablyai/orca/blob/main/docs/reference/plugin-manifest.md
-verified:
-  - by: openai/chatgpt
-    at: "2026-11-19T09:51:58Z"
-  - by: openai/chatgpt
-    at: "2026-11-19T10:14:33Z"
-  - by: openai/chatgpt
-    at: "2026-11-19T10:31:18Z"
-  - by: openai/chatgpt
-    at: "2026-11-19T10:48:56Z"
 ---
 # 聖典台帳
 
@@ -73,6 +61,6 @@ verified:
 
 ## 資料の見直し
 
-資料は歴史的な原典・参考情報であり、[共通規約](AGENTS.md#原則)に優先しない。資料にあるテスト・CI・評価手順を実行義務にしない。
+資料は案件を越えて利用できる判断原理と一次資料への入口に限定する。個別案件の調査結果、時点ごとの候補一覧、個人設定は各案件の正本に置く。資料は参考情報であり、[共通規約](AGENTS.md#原則)に優先しない。資料にあるテスト・CI・評価手順を実行義務にしない。
 
 根拠不足・リンク切れ・月次監査が生じたときだけ見直し、重複・旧版・用途を失った資料を退役する。日次の全分野巡回は行わず、変更がなければ無介入で終了する。
