@@ -4,3 +4,8 @@ node = "lts"
 [tasks.model-select]
 description = "Select measured models (read-only unless --write is supplied)"
 run = "node .agents/select-models.mjs"
+
+[tasks.check]
+description = "Validate repository Markdown and relative links"
+tools = { python = "3.13", uv = "0.10.0" }
+run = "uv run --no-project --no-python-downloads --python 3.13 --with PyYAML==6.0.3 python scripts/check-repo.py"
