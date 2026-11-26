@@ -36,6 +36,16 @@ tags:
 
 [データ設計](../skills/canonicalize/SKILL.md) · [自律開発](../skills/autocatalyze/SKILL.md)
 
+### 開発環境とHTTP実装の選定
+
+[mise・公式ドキュメント](https://mise.jdx.dev/) · [設定仕様](https://mise.jdx.dev/configuration.html) · [タスク実行](https://mise.jdx.dev/tasks/)：開発ツールの版、環境変数、実行タスクをプロジェクト単位で管理するOSS。複数言語・端末・CIで環境構築や実行入口が重複する場合の第一候補。採用時は `mise.toml` と必要な `mise.lock` をGitで管理し、既存の言語別依存ロック（例：`uv.lock`）は維持する。機密値をコミットせず、信頼できる設定・上流ツールのみを実行する。OSスケジューラーや既存の権限制御を置き換えない。実際の開発・CI入口で版と終了結果を照合し、置き換えが成立した設定・ラッパーだけ退役させる。
+
+[Hono・公式ドキュメント](https://hono.dev/docs/) · [Web Standards](https://hono.dev/docs/concepts/web-standard) · [HTTPの検証](https://hono.dev/docs/guides/testing)：標準のRequest/Responseを基礎とする複数ランタイム対応のOSS Webフレームワーク。TypeScriptでルーティングやミドルウェアが必要な新規HTTP APIの第一候補。静的サイト、標準APIだけで足りる処理、正常に稼働する既存実装には追加しない。ランタイム固有のアダプターやサービス依存は分離し、必要なHTTP契約を `app.request` と実際の公開入口で確認する。移行時は同一入力の応答・認証・エラー・保守負荷を現行方式と比較する。
+
+両候補とも採用は既存の正本・実行入口と両立し、実測で必要性を確認できた範囲に限る。保守活動・性能の優位性は案件ごとに上流の現況と比較結果で判断する。
+
+[自律開発](../skills/autocatalyze/SKILL.md#実装と検証) · [評価と比較](../skills/adjudicate/SKILL.md) · [旧経路の廃止](../skills/decommission/SKILL.md)
+
 ### uvの環境管理
 
 [Astral・uv](https://docs.astral.sh/uv/)（公式ドキュメント）。Pythonの環境と依存関係
