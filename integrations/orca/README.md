@@ -20,7 +20,7 @@ KafstylerのAGENTS.mdとMISSION.mdに従い、必要なSkillだけ使用する�
 
 ## 既存mainへ書き込む前の安全制御
 
-書き込みは[共通規約](../../AGENTS.md#gitの作業状態)に従う。[書き込みガード](../../scripts/orca-preflight.py)は `mise run orca-preflight --repo PATH` から実行する。ローカル状態の制御であり、別ホストとの排他を取得しない。
+書き込みは[共通規約](../../AGENTS.md#gitの作業状態)に従う。[書き込みガード](../../skills/autocatalyze/scripts/orca-preflight.py)は `mise run orca-preflight --repo PATH` から実行する。ローカル状態の制御であり、別ホストとの排他を取得しない。
 
 ## 監督付き委譲
 

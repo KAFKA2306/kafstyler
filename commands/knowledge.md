@@ -28,7 +28,7 @@ mise run vault-install
 
 `vault-correct` は `--apply` がない場合は書き込まない。修正対象と新旧の記述が特定され、書き込みが認可された場合だけ実行する。上流が保持する歴史資料を改変しない。
 
-保守の環境変数・排他・Git/非Gitモードは[既存スクリプト](../scripts/vault-maintenance.sh)を正本とする。保守タスクは書き込みを伴うため閲覧用途では使わない。
+保守の環境変数・排他・Git/非Gitモードは[既存スクリプト](../skills/canonicalize/scripts/vault-maintenance.sh)を正本とする。保守タスクは書き込みを伴うため閲覧用途では使わない。
 
 その他の形式・意味の契約：[JSON Schema 2020-12](https://json-schema.org/draft/2020-12)（構造） · [W3C PROV-O](https://www.w3.org/TR/prov-o/)（来歴） · [DCAT 3](https://www.w3.org/TR/vocab-dcat-3/)（カタログ） · [SKOS](https://www.w3.org/TR/skos-reference/)（概念） · [dbt Sources](https://docs.getdbt.com/docs/build/sources)（データ依存） · [Obsidian Properties](https://obsidian.md/help/properties)（保管庫の属性）。案件の採用形式だけを使う。
 

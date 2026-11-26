@@ -15,7 +15,7 @@ tags:
 - **検証を廃止する。** 検証工程、テスト、回帰ケース、検証専用CI・Run・フック・採点、検証目的のSHA取得・記録を全廃する。下位規約や外部Skillから復活させない。実行に不可欠な入力・依存・認可・安全・データ保全の制御は実行処理の契約として扱う。
 - **記録の1%原則。** 任意のRun・SHA・記録は必要最小限に絞った集合からさらに削り、最も価値の高い1%だけを残す。再開に不可欠で他に存在しない事実、利用者データ・出典・Git履歴は削減対象にしない。既存履歴を参照し、重複転記や数合わせの集計をしない。
 - 実行結果と推測を区別し、未実行の操作を実行済みと報告しない。
-- 共通タスクの定義・実行はmise、Pythonの実行・環境・依存管理はuvを必須とする。system Python・pip・pipx・Poetry・Conda・手動venv等に代替せず、uv未導入時は停止する。製品内蔵Pythonは製品の公式実行契約に従う。
+- 実行スクリプトは責務を持つSkillの `scripts/` に置き、ルートの `scripts/` や `.agents/` 直下に置かない。共通タスクの定義・実行はmise、Pythonの実行・環境・依存管理はuvを必須とする。system Python・pip・pipx・Poetry・Conda・手動venv等に代替せず、uv未導入時は停止する。製品内蔵Pythonは製品の公式実行契約に従う。
 - 必要なSkillだけ読み、既知の操作は即実行する。定型処理は既存CLI・mise、判断だけLLM。通常実行で全Skill・聖典・契約全文を読まない。未知の操作だけ[実行索引](COMMANDS.md)から該当契約を読む。版・契約変更時だけ上流を参照する。Skillは固有の目的・手順・実行入口・停止条件に絞り、共通規約を再掲しない。
 - 認可済みの目的・対象・権限・費用内では自律的に進める。使命の変更、認可の拡大、未許可の不可逆操作・公開・費用は権限者に委ねる。
 
@@ -75,7 +75,7 @@ OS・CLIで確定処理を実行し、定型作業は低コストモデル、難
 
 ## モデル選定
 
-利用可能なモデル、予算、品質要件は導入先が指定する。第三者スコア・価格・パレートフロントで候補を選び、実行環境での利用可能性と区別する。取得元が非公式ミラーなら原典と取得経路を区別する。候補名・ベンチマークIDを実行IDと見なさず、認可済み環境が提供する実行IDと利用枠から選ぶ。対応が不明なら推測で起動しない。[選定器](.agents/select-models.mjs)には利用先のJSON設定を `--policy PATH` で渡す。設定は `benchmark_source`（repository、url、pointer、max_source_age_days）、`benchmark`、`price`（input_weight、output_weight、max_usd）、`providers`、`quality_fraction`、`score_first` を持つ。結果は標準出力または `--write --output PATH` で利用先に保存する。`--resolve SKILL --output PATH` で保存結果を参照する。
+利用可能なモデル、予算、品質要件は導入先が指定する。第三者スコア・価格・パレートフロントで候補を選び、実行環境での利用可能性と区別する。取得元が非公式ミラーなら原典と取得経路を区別する。候補名・ベンチマークIDを実行IDと見なさず、認可済み環境が提供する実行IDと利用枠から選ぶ。対応が不明なら推測で起動しない。[選定器](skills/adjudicate/scripts/select-models.mjs)には利用先のJSON設定を `--policy PATH` で渡す。設定は `benchmark_source`（repository、url、pointer、max_source_age_days）、`benchmark`、`price`（input_weight、output_weight、max_usd）、`providers`、`quality_fraction`、`score_first` を持つ。結果は標準出力または `--write --output PATH` で利用先に保存する。`--resolve SKILL --output PATH` で保存結果を参照する。
 
 ## 文書の役割と構成
 

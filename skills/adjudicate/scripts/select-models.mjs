@@ -4,7 +4,7 @@ import {readFile,writeFile,readdir} from 'node:fs/promises';
 import {dirname,join} from 'node:path';
 import {fileURLToPath} from 'node:url';
 
-const root=join(dirname(fileURLToPath(import.meta.url)),'..');
+const root=join(dirname(fileURLToPath(import.meta.url)),'..','..','..');
 const argv=process.argv.slice(2);
 const arg=x=>argv.includes(x)?argv[argv.indexOf(x)+1]:null;
 const policy=arg('--policy');
