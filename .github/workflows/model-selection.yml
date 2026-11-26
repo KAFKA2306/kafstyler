@@ -3,10 +3,14 @@ on:
   schedule:
     - cron: '17 2 * * 3'
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [mise.toml, .github/workflows/model-selection.yml]
 permissions:
   contents: write
 jobs:
   refresh:
+    if: github.event_name != 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -18,3 +22,24 @@ jobs:
           if git diff --cached --quiet; then exit 0; fi
           git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'chore: refresh measured model selection'
           git push
+  verify-mise:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4
+      - run: mise run model-select --resolve autocatalyze
+      - run: mise run check
+      - name: Check failure propagation
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/invalid-repo"
+          printf '# No frontmatter\n' > "$RUNNER_TEMP/invalid-repo/invalid.md"
+          if mise run check --root "$RUNNER_TEMP/invalid-repo"; then
+            echo 'Expected invalid Markdown to fail' >&2
+            exit 1
+          fi
