@@ -24,12 +24,25 @@ exec 9>"$cache/vault-maintenance.lock"
 flock -n 9 || { echo "Another Vault maintenance run is active" >&2; exit 75; }
 
 git_root=''
-if git -C "$vault" rev-parse --show-toplevel >/dev/null 2>&1; then
-  git_root="$(git -C "$vault" rev-parse --show-toplevel)"
-  [[ "$git_root" == "$vault" ]] || { echo "Vault is inside another Git repository" >&2; exit 2; }
-  [[ "$(git -C "$vault" branch --show-current)" == main ]] || { echo "Vault Git branch must be main" >&2; exit 2; }
-  [[ -z "$(git -C "$vault" status --porcelain=v1 -uall)" ]] || { echo "Vault has pre-existing uncommitted changes" >&2; exit 2; }
-fi
+case "${KAFSTYLER_VAULT_MODE:-git}" in
+  git)
+    git_root="$(git -C "$vault" rev-parse --show-toplevel)"
+    [[ "$git_root" == "$vault" ]] || { echo "Vault is inside another Git repository" >&2; exit 2; }
+    git_branch="$(git -C "$vault" branch --show-current)"
+    [[ "$git_branch" == main ]] || { echo "Vault Git branch must be main" >&2; exit 2; }
+    git_status="$(git -C "$vault" status --porcelain=v1 -uall)"
+    [[ -z "$git_status" ]] || { echo "Vault has pre-existing uncommitted changes" >&2; exit 2; }
+    ;;
+  plain)
+    dir="$vault"
+    while :; do
+      [[ ! -e "$dir/.git" && ! -L "$dir/.git" ]] || { echo "Git metadata found: $dir/.git; use Git mode" >&2; exit 2; }
+      [[ "$dir" == / ]] && break
+      dir="$(dirname "$dir")"
+    done
+    ;;
+  *) echo "KAFSTYLER_VAULT_MODE must be git or plain" >&2; exit 2 ;;
+esac
 
 if [[ -n "${KAFSTYLER_INGEST_SOURCE:-}" ]]; then
   case "$KAFSTYLER_INGEST_SOURCE" in
@@ -40,6 +53,9 @@ if [[ -n "${KAFSTYLER_INGEST_SOURCE:-}" ]]; then
   command -v vault-extract >/dev/null || { echo "Install upstream Knowledge Compiler (vault-extract)" >&2; exit 2; }
   mkdir -p "$cache/inbox"
   rclone copy "$KAFSTYLER_INGEST_SOURCE" "$cache/inbox" --exclude ".git/**" --exclude ".obsidian/**"
+  file_list="$(mktemp "$cache/inputs.XXXXXXXX")"
+  trap 'rm -f -- "$file_list"' EXIT
+  find "$cache/inbox" -type f -print0 > "$file_list"
   declare -A source_stems=()
   while IFS= read -r -d "" file; do
     case "${file,,}" in
@@ -54,13 +70,13 @@ if [[ -n "${KAFSTYLER_INGEST_SOURCE:-}" ]]; then
         fi
         source_stems[$stem]="$file" ;;
     esac
-  done < <(find "$cache/inbox" -type f -print0)
+  done < "$file_list"
   while IFS= read -r -d "" file; do
     case "${file,,}" in
       *.pdf|*.pptx|*.docx|*.xlsx|*.xls|*.csv|*.html|*.htm|*.mhtml|*.md|*.txt)
         vault-extract "$file" --vault "$vault" ;;
     esac
-  done < <(find "$cache/inbox" -type f -print0)
+  done < "$file_list"
 fi
 
 vault-lint "$vault" --fix
@@ -68,8 +84,13 @@ vault-lint "$vault" --json
 
 if [[ -n "$git_root" ]]; then
   git -C "$vault" add -A
-  if ! git -C "$vault" diff --cached --quiet; then
+  if git -C "$vault" diff --cached --quiet; then
+    :
+  else
+    code=$?
+    [[ "$code" == 1 ]] || exit "$code"
     git -C "$vault" commit -m 'chore(vault): ingest and lint verified changes'
   fi
-  [[ -z "$(git -C "$vault" status --porcelain=v1 -uall)" ]] || { echo "Vault Git changes remain uncommitted" >&2; exit 1; }
+  git_status="$(git -C "$vault" status --porcelain=v1 -uall)"
+  [[ -z "$git_status" ]] || { echo "Vault Git changes remain uncommitted" >&2; exit 1; }
 fi

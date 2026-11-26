@@ -9,3 +9,8 @@ run = "node .agents/select-models.mjs"
 description = "Validate repository Markdown and relative links"
 tools = { python = "3.13", uv = "0.10.0" }
 run = "uv run --no-project --no-python-downloads --python 3.13 --with PyYAML==6.0.3 python scripts/check-repo.py"
+
+[tasks.state-check]
+description = "Validate handoff state JSON"
+tools = { python = "3.13" }
+run = "python scripts/validate-state.py"

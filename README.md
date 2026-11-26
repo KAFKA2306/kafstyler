@@ -47,7 +47,7 @@ flowchart LR
   auto --> frontier["必要な場合だけ高性能モデル"]
 ```
 
-WSL等のbash環境では、`OBSIDIAN_VAULT_PATH`に既存Vaultを設定して[`scripts/vault-maintenance.sh`](scripts/vault-maintenance.sh)を`--check`で検査する。`KAFSTYLER_INGEST_SOURCE`を指定した場合は`--apply`でrcloneから取得・抽出し、形式修復・検証する。Git管理Vaultはcleanな`main`でのみ実行し、検証済み差分をローカルコミットする。OSの定期登録・元データの認可・既存ジョブの切替は[実行手順](skills/autocatalyze/SKILL.md#外部ツールによるゼロトークン保守)に従う。実行環境を接続していない場合は自動稼働しない。
+WSL等のbash環境では、`OBSIDIAN_VAULT_PATH`に既存Vaultを設定して[`scripts/vault-maintenance.sh`](scripts/vault-maintenance.sh)を`--check`で検査する。`KAFSTYLER_INGEST_SOURCE`を指定した場合は`--apply`でrcloneから取得・抽出し、形式修復・検証する。`--apply`は既定でGit管理Vaultのcleanな`main`に限定し、検証済み差分をローカルコミットする。非Git Vaultには `KAFSTYLER_VAULT_MODE=plain` を明示する。OSの定期登録・元データの認可・既存ジョブの切替は[実行手順](skills/autocatalyze/SKILL.md#外部ツールによるゼロトークン保守)に従う。実行環境を接続していない場合は自動稼働しない。
 
 [原典](bibles/agents-and-orca.md#外部主導の差分取り込みとvault保守) · [単一正本](skills/canonicalize/SKILL.md#vaultとパスの単一正本) · [モデルの採否](skills/adjudicate/SKILL.md#低コスト常駐を評価する)
 
@@ -269,7 +269,7 @@ Claude Codeでは `/kafstyler:autocatalyze`、Codexでは `$autocatalyze`、Anti
 
 ### 作業中の版で試す
 
-`python3 scripts/check-repo.py` でMarkdownのYAMLと相対リンクを検査します（PyYAMLが必要）。Claude Codeは `claude plugin validate .`、Antigravity CLIは `agy plugin validate --json .` でプラグイン構造を検証します。Skill改訂時は[固定評価ケース](evals/cases.json)で無介入・停止を含む実行結果を比較し、各CLIで利用者の入口から動作を確認します。
+`mise run check` でMarkdownのYAMLと相対リンクを検査します。Claude Codeは `claude plugin validate .`、Antigravity CLIは `agy plugin validate --json .` でプラグイン構造を検証します。Skill改訂時は[1%原則](AGENTS.md#原則)に従い、変更に関係する利用入口だけ確認します。
 
 ## 成果から使い方を選ぶ
 

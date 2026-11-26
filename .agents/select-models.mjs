@@ -80,6 +80,9 @@ async function main(){
     const saved=JSON.parse(await readFile(output,'utf8'));
     fail(saved.status==='benchmark_selected_runtime_unverified'&&saved.skills[selectedName],
       'Selection unavailable');
+    fail(saved.source===cfg.benchmark_source.url,'Unexpected saved benchmark source');
+    const days=age(saved.updated_from_benchmark);
+    fail(valid(days)&&days>=0&&days<=cfg.benchmark_source.max_source_age_days,'Saved benchmark stale or undated');
     const m=saved.skills[selectedName];
     const useFallback=argv.includes('--fallback')||arg('--unavailable')===m.primary.provider;
     console.log(JSON.stringify({skill:selectedName,model:useFallback?m.fallback:m.primary,source_status:saved.status}));
@@ -99,7 +102,7 @@ async function main(){
   const result=choose(data,names);
   const text=JSON.stringify(result,null,2)+'\n';
   if(argv.includes('--write')){
-    if(text!==(await readFile(output,'utf8').catch(()=>null)))await writeFile(output,text,'utf8');
+    if(text!==(await readFile(output,'utf8')))await writeFile(output,text,'utf8');
   }else process.stdout.write(text);
 }
-main().catch(e=>{console.error('Model selector: '+e.message);process.exitCode=1;});
+await main();
