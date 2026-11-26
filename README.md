@@ -96,7 +96,7 @@ Claude Codeは `claude plugin update kafstyler@kafka-agent-tools`、Codexは `co
 
 ## 成果から使い方を選ぶ
 
-対象分野に応じた一次資料は[BIBLES](BIBLES.md)から探す。個別案件の仕様や設定はその案件の正本で管理する。
+判断原理は[BIBLES](BIBLES.md)、標準仕様・公式Skill・実行コマンドは[COMMANDS](COMMANDS.md)を使う。共通CLIタスクは `mise tasks` から選び `mise run TASK` で実行する。個別案件の仕様や設定はその案件の正本で管理する。
 
 ## スキル
 

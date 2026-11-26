@@ -4,3 +4,32 @@ node = "lts"
 [tasks.model-select]
 description = "Select models using an external deployment policy (--policy PATH)"
 run = "node .agents/select-models.mjs"
+
+[tasks.okf-scan]
+description = "Read an OKF bundle as JSON; set OKF_ROOT to the adopted upstream checkout"
+raw_args = true
+run = 'python3 "${OKF_ROOT:?Set OKF_ROOT to the adopted OKF checkout}/skills/okf-consume/scripts/scan.py" --json'
+
+[tasks.vault-init]
+description = "Initialize a Knowledge Compiler vault (--target PATH)"
+raw_args = true
+run = "vault-init"
+
+[tasks.vault-extract]
+description = "Extract an authorized source into a vault (SOURCE --vault PATH)"
+raw_args = true
+run = "vault-extract"
+
+[tasks.vault-query]
+description = "Search a vault (QUERY --vault PATH)"
+raw_args = true
+run = "vault-query"
+
+[tasks.vault-graph]
+description = "Open the local vault graph (VAULT_PATH)"
+raw_args = true
+run = "vault-graph"
+
+[tasks.vault-maintain]
+description = "Apply the existing vault ingestion and repair workflow; may commit changes"
+run = "bash scripts/vault-maintenance.sh --apply"
