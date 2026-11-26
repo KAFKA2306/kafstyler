@@ -1,5 +1,9 @@
 [tools]
 node = "lts"
+uv = "0.13.10"
+
+[env]
+KAFSTYLER_VAULT_PACKAGE = "knowledge-compiler[extract] @ git+https://github.com/GoogleCloudPlatform/knowledge-compiler.git@52e0f4bd2a01f2dec55c380d9ed4b42d38ace7fe"
 
 [tasks.model-select]
 raw_args = true
@@ -9,37 +13,83 @@ run = "node .agents/select-models.mjs"
 [tasks.okf-scan]
 description = "Read an OKF bundle as JSON; set OKF_ROOT to the adopted upstream checkout"
 raw_args = true
-run = 'python3 "${OKF_ROOT:?Set OKF_ROOT to the adopted OKF checkout}/skills/okf-consume/scripts/scan.py" --json'
+run = 'uv run --no-project --python 3.12 --with PyYAML==6.0.2 "${OKF_ROOT:?Set OKF_ROOT to the adopted OKF checkout}/skills/okf-consume/scripts/scan.py" --json'
 
 [tasks.vault-install]
 description = "Explicitly install the adopted Knowledge Compiler 1.3.1 revision using uv"
-run = "uv tool install 'knowledge-compiler[extract] @ git+https://github.com/GoogleCloudPlatform/knowledge-compiler.git@52e0f4bd2a01f2dec55c380d9ed4b42d38ace7fe'"
+run = 'uv tool install --python 3.12 "$KAFSTYLER_VAULT_PACKAGE"'
 
 [tasks.vault-correct]
 description = "Correct a specified vault fact; upstream is read-only without --apply"
 raw_args = true
-run = "vault-correct"
+run = 'uv tool run --python 3.12 --from "$KAFSTYLER_VAULT_PACKAGE" vault-correct'
 
 [tasks.vault-init]
 description = "Initialize a Knowledge Compiler vault (--target PATH)"
 raw_args = true
-run = "vault-init"
+run = 'uv tool run --python 3.12 --from "$KAFSTYLER_VAULT_PACKAGE" vault-init'
 
 [tasks.vault-extract]
 description = "Extract an authorized source into a vault (SOURCE --vault PATH)"
 raw_args = true
-run = "vault-extract"
+run = 'uv tool run --python 3.12 --from "$KAFSTYLER_VAULT_PACKAGE" vault-extract'
 
 [tasks.vault-query]
 description = "Search a vault (QUERY --vault PATH)"
 raw_args = true
-run = "vault-query"
+run = 'uv tool run --python 3.12 --from "$KAFSTYLER_VAULT_PACKAGE" vault-query'
 
 [tasks.vault-graph]
 description = "Open the local vault graph (VAULT_PATH)"
 raw_args = true
-run = "vault-graph"
+run = 'uv tool run --python 3.12 --from "$KAFSTYLER_VAULT_PACKAGE" vault-graph'
 
 [tasks.vault-maintain]
 description = "Apply the existing vault ingestion and repair workflow; may commit changes"
-run = "bash scripts/vault-maintenance.sh --apply"
+run = 'uv run --no-project --python 3.12 --with "$KAFSTYLER_VAULT_PACKAGE" bash scripts/vault-maintenance.sh --apply'
+
+[tasks.orca-preflight]
+description = "Read-only checkout guard before an authorized Orca write"
+raw_args = true
+run = "uv run --no-project --python 3.12 scripts/orca-preflight.py"
+
+[tasks.comfy-submit]
+description = "Submit an API-format workflow to an authorized ComfyUI endpoint"
+usage = '''
+arg "<workflow>" help="Path to the API-format workflow JSON"
+'''
+run = '''
+payload=$(jq -ce '{prompt: .}' "$usage_workflow") || exit $?
+curl --fail-with-body --silent --show-error -H 'Content-Type: application/json' --data-binary "$payload" "${COMFY_URL:?Set COMFY_URL}/prompt"
+'''
+
+[tasks.comfy-history]
+description = "Get the ComfyUI history for an existing prompt"
+usage = '''
+arg "<prompt_id>"
+'''
+run = '''
+curl --fail-with-body --silent --show-error "${COMFY_URL:?Set COMFY_URL}/history/$usage_prompt_id"
+'''
+
+[tasks.comfy-output]
+description = "Retrieve an existing ComfyUI output into an explicitly selected file"
+usage = '''
+arg "<filename>"
+arg "<subfolder>"
+arg "<type>"
+arg "<destination>"
+'''
+run = '''
+curl --fail --silent --show-error --get "${COMFY_URL:?Set COMFY_URL}/view" --data-urlencode "filename=$usage_filename" --data-urlencode "subfolder=$usage_subfolder" --data-urlencode "type=$usage_type" --output "$usage_destination"
+'''
+
+[tasks.tripo-task]
+description = "Read an existing Tripo v3 task; never create a paid generation"
+usage = '''
+arg "<task_id>"
+'''
+run = '''
+response=$(curl --fail-with-body --silent --show-error -H "Authorization: Bearer ${TRIPO_API_KEY:?Set TRIPO_API_KEY}" "https://openapi.tripo3d.ai/v3/tasks/$usage_task_id") || exit $?
+printf '%s\n' "$response" | jq -e 'if .code == 0 then . else error("Tripo API code " + (.code | tostring)) end'
+'''

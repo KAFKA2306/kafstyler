@@ -22,9 +22,9 @@ tags:
 
 **OKF v0.3**：[仕様](https://github.com/open-knowledge-format/open-knowledge-format/blob/527e81aff55992be21507e97004286789126f88c/SPEC.md) · [okf-generate](https://github.com/open-knowledge-format/open-knowledge-format/blob/527e81aff55992be21507e97004286789126f88c/skills/okf-generate/SKILL.md) · [okf-consume](https://github.com/open-knowledge-format/open-knowledge-format/blob/527e81aff55992be21507e97004286789126f88c/skills/okf-consume/SKILL.md)。生成・更新はgenerate、読取り・検索はconsumeを使う。本文の仕様を複製しない。導入先が採用版の公式Skillを配布する。
 
-CLI検索では、採用版の上流checkoutを `OKF_ROOT` に指定し、Python 3.9以上とPyYAMLを導入環境で用意し、同じ依存ロックを再利用する。初回導入時だけ上流を利用環境の外部資材ディレクトリへ取得し、`git -C "$OKF_ROOT" checkout --detach 527e81aff55992be21507e97004286789126f88c` で採用版を指定する。Kafstyler本体のブランチは変更しない。例：`mise run okf-scan ./vault --grep "topic"`。出力はJSON。入力はbundle rootと検索条件。
+CLI検索では、採用版の上流checkoutを `OKF_ROOT` に指定し、Python 3.12とPyYAML 6.0.2はmiseタスク内でuvが管理する。初回導入時だけ上流を利用環境の外部資材ディレクトリへ取得し、`git -C "$OKF_ROOT" checkout --detach 527e81aff55992be21507e97004286789126f88c` で採用版を指定する。Kafstyler本体のブランチは変更しない。例：`mise run okf-scan ./vault --grep "topic"`。出力はJSON。入力はbundle rootと検索条件。
 
-**Knowledge Compiler 1.3.1**：[採用版README](https://github.com/GoogleCloudPlatform/knowledge-compiler/blob/52e0f4bd2a01f2dec55c380d9ed4b42d38ace7fe/README.md) · [CLI安定性契約](https://github.com/GoogleCloudPlatform/knowledge-compiler/blob/52e0f4bd2a01f2dec55c380d9ed4b42d38ace7fe/STABILITY.md)。Python 3.10以上。必要な実行環境で導入する例：
+**Knowledge Compiler 1.3.1**：[採用版README](https://github.com/GoogleCloudPlatform/knowledge-compiler/blob/52e0f4bd2a01f2dec55c380d9ed4b42d38ace7fe/README.md) · [CLI安定性契約](https://github.com/GoogleCloudPlatform/knowledge-compiler/blob/52e0f4bd2a01f2dec55c380d9ed4b42d38ace7fe/STABILITY.md)。実行にはmiseが管理するuvとPython 3.12を使い、上流の採用コミットをmise.tomlに固定する。単体CLIをホストへ明示的に導入する場合だけ以下を実行する（通常のmiseタスクには別途インストール不要）：
 
 ```sh
 mise run vault-install
@@ -135,7 +135,7 @@ Orca標準の新規worktree・自動PRはKafstylerのmain一本と競合する�
 | Gitの作業状態 | `git status --porcelain=v1 -uall` / `git worktree list --porcelain` / `git branch --list`。必要な変更を `git add PATH` → `git commit -m MESSAGE` → `git push origin main`。非強制、単一書き手 |
 | GitHubの作業 | `gh issue view NUMBER --repo OWNER/REPO` / `gh issue comment NUMBER --body TEXT` / `gh issue close NUMBER`。Issueは既存の仕事と結果の入口 |
 | Python依存 | `uv sync --locked` / `uv run COMMAND` / `uv lock`（更新時のみ）/[uv](https://docs.astral.sh/uv/) |
-| Python整形・型 | `ruff format PATH`、[Ruff](https://docs.astral.sh/ruff/) · [ty](https://docs.astral.sh/ty/)。型解析・静的解析の専用検証工程は起動しない |
+| Python整形・型 | `uv run ruff format PATH`、[Ruff](https://docs.astral.sh/ruff/) · [ty](https://docs.astral.sh/ty/)。型解析・静的解析の専用検証工程は起動しない |
 | データ・ローカルDB | `sqlite3 -readonly DB "SELECT ..."` / `duckdb -c "SELECT ..."`（[SQLite CLI](https://sqlite.org/cli.html) · [DuckDB CLI](https://duckdb.org/docs/stable/clients/cli/overview)）。SQLは明示されたデータ契約に従う |
 | APIと構造データ | `curl --fail-with-body URL` / `jq FILTER FILE` / [OpenAPI](https://spec.openapis.org/oas/latest.html)。認証・書込みは対象サービスの認可範囲 |
 | 運用と同期 | `rclone copy SOURCE DEST`。削除を伴うsyncは既存の認可されたキャッシュ処理以外で無条件に使わない。[combine](https://rclone.org/combine/) · [XDG](https://specifications.freedesktop.org/basedir-spec/latest/) |
@@ -176,6 +176,8 @@ Orca標準の新規worktree・自動PRはKafstylerのmain一本と競合する�
 | 公開検索・GEO/AEO | [公開情報運用指針](https://zenn.dev/kafka2306/articles/6dd453d941b99f)。取得先と原文を分け、案件で必要な出典・データを保持する |
 
 ### 制作APIの入出力
+
+繰り返す操作はmiseで固定する。ComfyUIの投入は `mise run comfy-submit WORKFLOW.json`、履歴は `mise run comfy-history PROMPT_ID`、成果取得は `mise run comfy-output FILENAME SUBFOLDER TYPE DESTINATION`（ルート直下のSUBFOLDERは空文字）、Tripoの既存タスク照会は `mise run tripo-task TASK_ID`。秘密情報と接続先は利用環境から渡す。生成・ダウンロードは明示的な呼び出しに限る。
 
 GUIで保存したワークフローとAPI用の実行グラフを区別する。外部有料APIを呼ぶ操作は、対象案件で認可されたアカウント・費用・モデル・入力だけに限定する。
 
