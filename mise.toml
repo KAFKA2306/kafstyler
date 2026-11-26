@@ -3,6 +3,7 @@ node = "lts"
 uv = "0.13.10"
 
 [env]
+UV_MANAGED_PYTHON = "true"
 KAFSTYLER_VAULT_PACKAGE = "knowledge-compiler[extract] @ git+https://github.com/GoogleCloudPlatform/knowledge-compiler.git@52e0f4bd2a01f2dec55c380d9ed4b42d38ace7fe"
 
 [tasks.model-select]
@@ -46,7 +47,7 @@ run = 'uv tool run --python 3.12 --from "$KAFSTYLER_VAULT_PACKAGE" vault-graph'
 
 [tasks.vault-maintain]
 description = "Apply the existing vault ingestion and repair workflow; may commit changes"
-run = 'uv run --no-project --python 3.12 --with "$KAFSTYLER_VAULT_PACKAGE" bash scripts/vault-maintenance.sh --apply'
+run = "bash scripts/vault-maintenance.sh --apply"
 
 [tasks.orca-preflight]
 description = "Read-only checkout guard before an authorized Orca write"

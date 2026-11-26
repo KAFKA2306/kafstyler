@@ -10,7 +10,8 @@ fi
 : "${OBSIDIAN_VAULT_PATH:?Set OBSIDIAN_VAULT_PATH to the canonical Vault root}"
 [[ -d "$OBSIDIAN_VAULT_PATH" ]] || { echo "Vault directory does not exist" >&2; exit 2; }
 vault="$(cd "$OBSIDIAN_VAULT_PATH" && pwd -P)"
-command -v vault-lint >/dev/null || { echo "Install upstream Knowledge Compiler (vault-lint)" >&2; exit 2; }
+: "${KAFSTYLER_VAULT_PACKAGE:?Run via mise run vault-maintain}"
+command -v uv >/dev/null || { echo "uv is required; run mise install" >&2; exit 2; }
 
 command -v flock >/dev/null || { echo "flock is required for non-overlapping runs" >&2; exit 2; }
 cache_root="${XDG_CACHE_HOME:-$HOME/.cache}/kafstyler"
@@ -48,7 +49,6 @@ if [[ -n "${KAFSTYLER_INGEST_SOURCE:-}" ]]; then
       echo 'Ingest source must not point into the Vault or its cache' >&2; exit 2 ;;
   esac
   command -v rclone >/dev/null || { echo "Install rclone to ingest external sources" >&2; exit 2; }
-  command -v vault-extract >/dev/null || { echo "Install upstream Knowledge Compiler (vault-extract)" >&2; exit 2; }
   source_key="$(printf '%s' "$KAFSTYLER_INGEST_SOURCE" | sha256sum)"
   inbox="$cache/${source_key%% *}/inbox"
   mkdir -p "$inbox"
@@ -74,12 +74,12 @@ if [[ -n "${KAFSTYLER_INGEST_SOURCE:-}" ]]; then
   while IFS= read -r -d "" file; do
     case "${file,,}" in
       *.pdf|*.pptx|*.docx|*.xlsx|*.xls|*.csv|*.html|*.htm|*.mhtml|*.md|*.txt)
-        vault-extract "$file" --vault "$vault" ;;
+        uv tool run --managed-python --python 3.12 --from "$KAFSTYLER_VAULT_PACKAGE" vault-extract "$file" --vault "$vault" ;;
     esac
   done < "$file_list"
 fi
 
-vault-lint "$vault" --fix
+uv tool run --managed-python --python 3.12 --from "$KAFSTYLER_VAULT_PACKAGE" vault-lint "$vault" --fix
 
 if [[ -n "$git_root" ]]; then
   git -C "$vault" add -A

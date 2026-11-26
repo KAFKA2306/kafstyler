@@ -1,4 +1,4 @@
-#!/usr/bin/env -S uv run --no-project --python 3.12
+#!/usr/bin/env -S uv run --no-project --managed-python --python 3.12
 """Read-only Git checkout gate for Orca workers that write through Kafstyler."""
 
 import argparse
