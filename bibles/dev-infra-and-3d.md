@@ -20,9 +20,9 @@ tags:
 
 [Git・git-status](https://git-scm.com/docs/git-status)（公式リファレンス）。`git status --porcelain=v1 -uall` でステージ済み・未ステージ・未追跡の変更を確認する。出力が空ならGitが追跡する作業状態はクリーン。無視されたファイルは別途管理対象を判断する。
 
-[Git・git-commit](https://git-scm.com/docs/git-commit)（公式リファレンス）。検証済みの変更を説明可能な単位で履歴に記録する。[Anthropic・長時間稼働するエージェント](agents-and-orca.md#長時間稼働するエージェント) は、セッション終了時にコミットと進捗情報を残す運用の実験的根拠。
+[Git・git-commit](https://git-scm.com/docs/git-commit)（公式リファレンス）。変更を説明可能な単位で履歴に記録する。[Anthropic・長時間稼働するエージェント](agents-and-orca.md#長時間稼働するエージェント) は、セッション終了時にコミットと進捗情報を残す運用の実験的根拠。
 
-[共通規約](../AGENTS.md#gitの作業状態) · [自律開発](../skills/autocatalyze/SKILL.md#実装と検証) · [作業状態の引き継ぎ](../skills/canonicalize/SKILL.md)
+[共通規約](../AGENTS.md#gitの作業状態) · [自律開発](../skills/autocatalyze/SKILL.md#実装と公開) · [作業状態の引き継ぎ](../skills/canonicalize/SKILL.md)
 
 ### UNIX哲学
 
@@ -40,27 +40,26 @@ tags:
 
 [mise・公式ドキュメント](https://mise.jdx.dev/) · [設定仕様](https://mise.jdx.dev/configuration.html) · [タスク実行](https://mise.jdx.dev/tasks/)：開発ツールの版、環境変数、実行タスクをプロジェクト単位で管理するOSS。複数言語・端末・CIで環境構築や実行入口が重複する場合の第一候補。採用時は `mise.toml` と必要な `mise.lock` をGitで管理し、既存の言語別依存ロック（例：`uv.lock`）は維持する。機密値をコミットせず、信頼できる設定・上流ツールのみを実行する。OSスケジューラーや既存の権限制御を置き換えない。実際の開発・CI入口で版と終了結果を照合し、置き換えが成立した設定・ラッパーだけ退役させる。
 
-[Hono・公式ドキュメント](https://hono.dev/docs/) · [Web Standards](https://hono.dev/docs/concepts/web-standard) · [HTTPの検証](https://hono.dev/docs/guides/testing)：標準のRequest/Responseを基礎とする複数ランタイム対応のOSS Webフレームワーク。TypeScriptでルーティングやミドルウェアが必要な新規HTTP APIの第一候補。静的サイト、標準APIだけで足りる処理、正常に稼働する既存実装には追加しない。ランタイム固有のアダプターやサービス依存は分離し、必要なHTTP契約を `app.request` と実際の公開入口で確認する。移行時は同一入力の応答・認証・エラー・保守負荷を現行方式と比較する。
+[Hono・公式ドキュメント](https://hono.dev/docs/) · [Web Standards](https://hono.dev/docs/concepts/web-standard)：標準のRequest/Responseを基礎とする複数ランタイム対応のOSS Webフレームワーク。TypeScriptでルーティングやミドルウェアが必要な新規HTTP APIの第一候補。静的サイト、標準APIだけで足りる処理、正常に稼働する既存実装には追加しない。ランタイム固有のアダプターやサービス依存は分離し、必要なHTTP契約を `app.request` と実際の公開入口で確認する。移行時は同一入力の応答・認証・エラー・保守負荷を現行方式と比較する。
 
 両候補とも採用は既存の正本・実行入口と両立し、実測で必要性を確認できた範囲に限る。保守活動・性能の優位性は案件ごとに上流の現況と比較結果で判断する。
 
-[自律開発](../skills/autocatalyze/SKILL.md#実装と検証) · [評価と比較](../skills/adjudicate/SKILL.md) · [旧経路の廃止](../skills/decommission/SKILL.md)
+[自律開発](../skills/autocatalyze/SKILL.md#実装と公開) · [評価と比較](../skills/adjudicate/SKILL.md) · [旧経路の廃止](../skills/decommission/SKILL.md)
 
 ### 横断的な開発保守の選定
 
-miseを環境・タスクの共通入口とし、依存更新、検証の起動、機密検査、リリース、機密設定の暗号化は別の責務として扱う。既存の標準機能で十分なら追加しない。次の候補を案件ごとに評価する。
+miseを環境・タスクの共通入口とし、依存更新、機密保護、リリース、機密設定の暗号化は別の責務として扱う。既存の標準機能で十分なら追加しない。次の候補を案件ごとに評価する。
 
-| 責務・候補 | 採用条件と検証 |
+| 責務・候補 | 採用条件 |
 | --- | --- |
 | 依存更新：[Renovate](https://docs.renovatebot.com/)・[mise manager](https://docs.renovatebot.com/modules/manager/mise/) | 複数言語・CLI・Actionsの更新を横断できる候補。通常の更新ブランチ・PRと自動マージはmain一本・一書き手の規約に抵触するため現状では有効化しない。[自動マージの仕様](https://docs.renovatebot.com/key-concepts/automerge/)を踏まえ、認可済みの経路で更新・互換性検証・公開・復旧を一元化できる場合に限って採用する。 |
-| Gitフック：[Lefthook](https://lefthook.dev/usage/) | 既存の検証を呼び出すフック管理の候補。具体的な事故や重複があり、追加の承認障害を増やさない場合だけ採用する。フック内に検証ロジックを再実装せず既存タスクを呼ぶ。ローカルフックは未設定・スキップ・API経由の更新を防げないため、必要な保護は実際の書き込み経路でも確認する。 |
 | 機密検査：[Gitleaks](https://github.com/gitleaks/gitleaks) | 機密値を含みうるコード・設定・Git差分を機械的に検査する第一候補。既存のシークレット検出が不足する場合に導入し、対象範囲・終了コード・既知の検出例と誤検知を確認する。検出値をログへ出さず、実際の漏洩は失効・再発行を含めて対応する。 |
 | リリース：[Release Please](https://github.com/googleapis/release-please) | Conventional Commitsから版・変更履歴・GitHub Releaseを管理する候補。通常のリリースPRはmain一本運用と衝突するため現状では有効化しない。版管理が必要な配布物に限り、既存リリース経路との重複をなくし、規約に適合する方法で公開版と成果物を照合できる場合に採用する。 |
 | 機密設定：[SOPS](https://getsops.io/docs/)・[mise連携](https://mise.jdx.dev/environments/secrets/sops.html) | 暗号化した設定をGitで共有する具体的な必要がある場合に限る。既存の機密管理機能を優先し、復号鍵をGitに置かず、認可された実行先だけで復号する。鍵不足・復号失敗は明示して停止し、平文・ログへの漏洩を検査する。 |
 
-**環境・タスクの横断基盤はmiseを標準とする。** 新設・更新するツール版、環境設定、共通タスクは原則として既存の`mise.toml`に集約する（言語固有の依存ロック、OSのスケジューラー、ビルド固有の契約は別責務として維持）。既存のnvm・pyenv・asdf・direnv・just・Task・MakeやCI個別セットアップのうち、miseと重複する機能は移行候補とする。`mise install`と対象の`mise run`で通常入口・失敗時の終了結果を検証し、同等以上の結果と保守負担の純減が確認できた旧設定、ラッパー、手順を同じ移行サイクルで廃止する。固有機能・外部契約がある場合や検証できない場合は理由と再開条件を既存Issueに残し、先に削除しない。フック、暗号化、依存更新、リリースはmiseとは別責務であり、必要性がなければ追加しない。自動更新・検証・公開を有効化する前に、必要な権限、同時書き込み、失敗時の停止、通常入口での成果、重複起動の有無を確かめる。
+**環境・タスクの横断基盤はmiseを標準とする。** 新設・更新するツール版、環境設定、共通タスクは既存の`mise.toml`へ集約する。言語固有の依存ロック、OSスケジューラー、リリース、機密保護は別責務として維持する。重複するツールと経路を廃止し、実行に不可欠な権限・単一書き手・異常停止を守る。
 
-[自律開発](../skills/autocatalyze/SKILL.md#実装と検証) · [評価と比較](../skills/adjudicate/SKILL.md) · [旧経路の廃止](../skills/decommission/SKILL.md)
+[自律開発](../skills/autocatalyze/SKILL.md#実装と公開) · [評価と比較](../skills/adjudicate/SKILL.md) · [旧経路の廃止](../skills/decommission/SKILL.md)
 
 ### uvの環境管理
 

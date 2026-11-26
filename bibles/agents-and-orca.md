@@ -78,7 +78,7 @@ flowchart LR
 
 ローカルの `/ship` はPRの作成とレビュー、`/steward` は既存PRの監視・修正に使う。公式仕様では `/ship` がデフォルトブランチから別ブランチを作成する場合があり、ネイティブWindowsでは監視が開始されない。Kafstyler管轄では[main一本・単一書き手](../AGENTS.md#gitの作業状態)を優先し、PRを作るためだけにブランチや並行監視を増やさない。必要な場合は既存の認可済みレビュー入口を使う。監視が他者の変更やコメントを契機に実行するコードと認証情報の権限も確認する。
 
-独自のPR監督・再試行・承認機構は、上流機能で不足が実証されるまで追加しない。[外部機能の選定](../skills/autocatalyze/SKILL.md#外部skillを優先して実行する) · [独立した合否判定](../skills/adjudicate/SKILL.md#固定した評価で採否を決める)
+独自のPR監督・再試行・承認機構は、上流機能で不足が実証されるまで追加しない。[外部機能の選定](../skills/autocatalyze/SKILL.md#外部skillを優先して実行する)
 
 ### Claude Codeのフック
 
@@ -88,7 +88,7 @@ Anthropic・Hooks reference（公式リファレンス、2026年11月19日確認
 - ツール実行前の遮断は [PreToolUse](https://code.claude.com/docs/en/hooks#pretooluse-decision-control)。起動失敗やタイムアウト時も遮断する場合は [onFailureの適用条件](https://code.claude.com/docs/en/hooks#block-the-action-when-a-hook-fails) を参照する。
 - 応答終了時の自動チェックは [Stop](https://code.claude.com/docs/en/hooks#stop)。作業を続ける条件と、再実行を打ち切る条件を決める。
 
-[作業中の版で試す](../README.md)・[発火の確認](https://code.claude.com/docs/en/hooks#debug-hooks)
+[発火の確認](https://code.claude.com/docs/en/hooks#debug-hooks)
 
 [^anthropic-hooks]: Hooks referenceの「Configuration」「Hook events」「Debug hooks」。
 
@@ -114,7 +114,7 @@ Anthropic・Hooks reference（公式リファレンス、2026年11月19日確認
 - [Google・認証](https://antigravity.google/docs/install?tab=cli)、[モデルの選び方](https://antigravity.google/docs/models#gemini-4-neon)、[ヘッドレス実行](https://antigravity.google/docs/cli/headless/)（公式リファレンス）。実行ユーザーの認証、利用可能なモデルID、待ち時間、JSONと標準エラーでの結果判定を確かめる。
 - [Microsoft・PowerShellのGet-Command](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/get-command)、[WSLの相互運用設定](https://learn.microsoft.com/en-us/windows/wsl/wsl-config#interop-settings)（公式リファレンス）。PATHから解決したCLIを特定し、WSLでもWindows側のPATHが追加される設定を確認する。
 
-[配布版の導入](../README.md)・[ヘッドレスでレビューする](../skills/autocatalyze/SKILL.md#antigravity-cliでレビューする)
+[配布版の導入](../README.md)・[ヘッドレスでレビューする](../skills/autocatalyze/SKILL.md)
 
 ### 外部Agent Skillsを採用する
 
@@ -126,7 +126,7 @@ Anthropic・Hooks reference（公式リファレンス、2026年11月19日確認
 | [Anthropicの公式Pluginマーケット](https://github.com/anthropics/claude-plugins-official)・[Claude CodeのSkills](https://code.claude.com/docs/en/skills) | 対象機能に合う公式・公開配布Skillを見つけ、Claude Codeの標準Plugin/Skill導入と更新経路を使う。 |
 | [Agent Skills仕様](https://agentskills.io/specification) | 複数の実行環境に対応するSkillの形式・段階的読み込みを確認し、特定ベンダーへの過剰な依存を避ける。 |
 
-**選定の境界。** 「公式」でも権限や機能の適合は自動保証されない。インストール先、実際に使ったSkillの版と出典、許可された権限、成果の検証を分ける。既に目的を満たす機能の再調査はせず、上流が新機能を公開したときや現行の失敗・保守負担が判明したときだけ置換を検討する。Kafstylerの実装を減らせても、外部の変更が`main`一本・単一書き手・秘密情報・承認条件を破るなら採用しない。[実行手順](../skills/autocatalyze/SKILL.md#外部skillを優先して実行する)。
+**選定の境界。** 「公式」でも権限や機能の適合は自動保証されない。インストール先、実際に使ったSkillの版と出典、許可された権限、成果を分ける。既に目的を満たす機能の再調査はせず、上流が新機能を公開したときや現行の失敗・保守負担が判明したときだけ置換を検討する。Kafstylerの実装を減らせても、外部の変更が`main`一本・単一書き手・秘密情報・承認条件を破るなら採用しない。[実行手順](../skills/autocatalyze/SKILL.md#外部skillを優先して実行する)。
 
 ### Orcaでエージェントを監督する
 
@@ -137,7 +137,7 @@ Anthropic・Hooks reference（公式リファレンス、2026年11月19日確認
 | [CLI overview](https://orca.dev/docs/cli/overview) | `orca status --json`で接続を確認し、端末・作業場所をCLIで観測する。 |
 | [Skills registry & MCP](https://orca.dev/docs/cli/skills) | OrcaはClaude/Codex等のSkill配置を発見する。`skills/<name>/SKILL.md`を持つリポジトリからSkillsを導入できる。Orca固有の操作は実行版に合う`orca skills get <topic>`を参照し、Kafstylerの7 Skillsを複製しない。 |
 | [Orchestration](https://orca.dev/docs/cli/orchestration) | Run・Task・Dispatchとワーカーを使い、`taskId`・`dispatchId`を含む完了通知を照合する。ワーカーの終了だけでは公開成果の合格としない。 |
-| [Worktree checkpoints](https://orca.dev/docs/cli/worktree-checkpoints) | 作業コメントの更新前に`orca worktree current --json`を読む。長期の作業ID・確認済みコミット・再開位置は`canonicalize`が既存のIssueや実行履歴に置く。 |
+| [Worktree checkpoints](https://orca.dev/docs/cli/worktree-checkpoints) | 作業コメントの更新前に`orca worktree current --json`を読む。長期の作業ID・コミット・再開位置は`canonicalize`が既存のIssueや実行履歴に置く。 |
 | [Agent hooks & memory](https://orca.dev/docs/agents/hooks-memory) | `orca agent hooks status --json`でOrca管理の状態通知フックを調べ、必要なら`on`/`off`で切り替える。状態通知と実行許可を混同しない。承認エラーの解決に別の強制フックを足さない。 |
 | [Scheduled automations](https://orca.dev/docs/cli/automations) | 既存スケジューラーと実行元を照合し、同じ案件を二重起動しない。既存の作業場所を使う場合は`--workspace`を選ぶ。 |
 
@@ -146,7 +146,7 @@ Anthropic・Hooks reference（公式リファレンス、2026年11月19日確認
 ```mermaid
 flowchart LR
     O["Orca：Run・Task・Dispatch"] -->|"taskId・dispatchId・実行状態"| A["autocatalyze：実装・実物検証"]
-    A -->|"確認済みコミット・未完了"| C["canonicalize：正本と再開位置"]
+    A -->|"コミット・未完了"| C["canonicalize：正本と再開位置"]
     C -->|"引き継ぐ版・再開条件"| A
     A -->|"結果・完了報告"| O
 ```
@@ -264,7 +264,7 @@ flowchart LR
     C -->|"対象版・未処理・権限・再開条件"| A
     A -->|"調査・反証を委譲"| O["Orca Orchestration：Task・Dispatch・Message"]
     O -->|"成果候補・配送ID・実行ID"| A
-    A -->|"確認済みコミット・実物の結果"| C
+    A -->|"コミット・実物の結果"| C
     A -->|"必要な結果だけ返す"| B
 ```
 
@@ -344,7 +344,7 @@ Orcaの拡張は**Plugins（画面・コマンド）**、**Skills（AIに操作�
 
 ### 長時間稼働するエージェント
 
-[Anthropic・Effective harnesses for long-running agents](https://www.anthropic.com/research/effective-harnesses-for-long-running-agents)（公式技術記事）。Gitの履歴と進捗メモを残す。次のセッションでは両方を読み、[普段の操作で動作を確かめて](mission-eval-writing.md#claude-codeの検証)から作業を続ける。
+[Anthropic・Effective harnesses for long-running agents](https://www.anthropic.com/research/effective-harnesses-for-long-running-agents)（公式技術記事）。Gitの履歴と進捗メモを残す。次のセッションでは両方を読み、[普段の操作で動作を確かめて](mission-eval-writing.md)から作業を続ける。
 
 [自律開発](../skills/autocatalyze/SKILL.md) · [評価と比較](../skills/adjudicate/SKILL.md)
 
@@ -359,11 +359,11 @@ Orcaの拡張は**Plugins（画面・コマンド）**、**Skills（AIに操作�
 
 **中核の設計資料。** [Anthropic・Effective harnesses for long-running agents](https://www.anthropic.com/research/effective-harnesses-for-long-running-agents) はセッションを越える復元、[Anthropic・Scaling Managed Agents with stable interfaces](https://www.anthropic.com/research/managed-agents) は状態と環境の分離、[Google SRE・Eliminating Toil](https://sre.google/workbook/eliminating-toil/) は不要な起動の削減に使う。[autocatalyze](../skills/autocatalyze/SKILL.md#常時稼働エージェントの中核) が専門工程を統括する。
 
-2026年11月18日に、常駐、定期・イベント起動、長時間実行、再開、記憶、権限、成果の検証に具体的な設計判断がある公式英語資料を確認した。[Anthropic Engineering](https://www.anthropic.com/engineering)・[Claude Resources](https://claude.com/resources/articles)・[claude.dev](https://claude.dev/)・[OpenAI Engineering](https://openai.com/news/engineering/)・[OpenAI Developers](https://developers.openai.com/blog)の索引と、記事から参照された公式仕様を対象にした。翻訳版、重複URL、本文を確認できなかった資料は集計から外した。
+2026年11月18日に、常駐、定期・イベント起動、長時間実行、再開、記憶、権限、成果に具体的な設計判断がある公式英語資料を確認した。[Anthropic Engineering](https://www.anthropic.com/engineering)・[Claude Resources](https://claude.com/resources/articles)・[claude.dev](https://claude.dev/)・[OpenAI Engineering](https://openai.com/news/engineering/)・[OpenAI Developers](https://developers.openai.com/blog)の索引と、記事から参照された公式仕様を対象にした。翻訳版、重複URL、本文を確認できなかった資料は集計から外した。
 
 [Google SRE・Monitoring Distributed Systems](https://sre.google/sre-book/monitoring-distributed-systems/) は処理件数やプロセス稼働だけでなく利用時の症状を見て原因へ進む監視に使う。[Chenほか・Knowing When to Stop: The Evidence-Action Gap in Coding Agents](https://arxiv.org/abs/2610.31895)（2026年）は、十分な証拠がある障害では無益な再試行をやめ、障害内容・進捗・必要な外部支援・再開条件を渡す設計の根拠とする。回復可能な障害では早すぎる引き継ぎを避け、独立して進められる案件は続ける。
 
-[自律開発の実行手順](../skills/autocatalyze/SKILL.md#常駐エージェントと定期実行)・[再開の記録](../skills/canonicalize/SKILL.md#定期実行と再開の記録)・[運用での評価](../skills/adjudicate/SKILL.md#定期実行と再開の評価)・[長時間作業の引き継ぎ](#長時間稼働するエージェント)
+[自律開発の実行手順](../skills/autocatalyze/SKILL.md#常駐エージェントと定期実行)・[再開の記録](../skills/canonicalize/SKILL.md#定期実行と再開の記録)・[運用での評価](../skills/adjudicate/SKILL.md)・[長時間作業の引き継ぎ](#長時間稼働するエージェント)
 
 ### 外部主導の差分取り込みとVault保守
 
@@ -372,7 +372,7 @@ Orcaの拡張は**Plugins（画面・コマンド）**、**Skills（AIに操作�
 | 一次資料・実装 | Kafstylerへの適用 |
 | --- | --- |
 | [OKF v0.3仕様](https://github.com/open-knowledge-format/open-knowledge-format/blob/main/SPEC.md)・[公式Validator](https://github.com/open-knowledge-format/open-knowledge-format/blob/main/skills/okf-generate/scripts/validate.py) | 知識の構造とfrontmatter、予約ファイルの検証。意味の正しさとは分ける。 |
-| [Google Cloud Knowledge Compiler](https://github.com/GoogleCloudPlatform/knowledge-compiler)・[CLI安定性](https://github.com/GoogleCloudPlatform/knowledge-compiler/blob/main/STABILITY.md) | `vault-extract`のSHA-256キャッシュで既処理の入力を省き、`vault-lint --fix`で決定的な形式修復、`vault-lint --json`で検証する。`vault-correct`は事実訂正用なので無審査の一括処理に使わない。 |
+| [Google Cloud Knowledge Compiler](https://github.com/GoogleCloudPlatform/knowledge-compiler)・[CLI安定性](https://github.com/GoogleCloudPlatform/knowledge-compiler/blob/main/STABILITY.md) | `vault-extract`のSHA-256キャッシュで既処理の入力を省き、`vault-lint --fix`で決定的な形式修復を行う。`vault-correct`は事実訂正用なので無審査の一括処理に使わない。 |
 | [rclone copy](https://rclone.org/commands/rclone_copy/) | 登録済みの読取元からキャッシュへ更新分をコピー。`--dry-run`で事前確認し、`sync`による削除を日次取り込みへ混ぜない。 |
 | [rclone combine backend](https://rclone.org/combine/) | 複数の読み取り元を別名付きのサブフォルダとして一つの仮想remoteにまとめる。`KAFSTYLER_INGEST_SOURCE`にはそのremoteを渡し、実ファイルやVaultの正本を追加複製しない。抽出後の同名衝突は処理前に検出して停止する。 |
 | [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/latest/) | 一時入力は`XDG_CACHE_HOME`、正本は`OBSIDIAN_VAULT_PATH`。WindowsとWSLは同じ実体へ別の表記で到達する。 |
@@ -414,7 +414,7 @@ Orcaの拡張は**Plugins（画面・コマンド）**、**Skills（AIに操作�
 | [Building effective AI agents](https://www.anthropic.com/research/building-effective-agents)・[Building agents with the Claude Agent SDK](https://claude.com/resources/articles/building-agents-with-the-claude-agent-sdk) | 作業を観測して次の操作を選ぶ最小のループから始め、停止条件を決める。 |
 | [Harness design for long-running apps](https://www.anthropic.com/research/harness-design-long-running-apps)・[A harness for every task](https://claude.dev/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code/)・[Agent harness design: 3 patterns](https://claude.com/resources/articles/harnessing-claudes-intelligence) | 成果の条件を揃え、自己判定で失敗を見落とすときに独立した検証を使う。 |
 | [Long-running Claude for scientific computing](https://www.anthropic.com/research/long-running-claude)・[Formalizing Fermat's Last Theorem](https://www.anthropic.com/research/formalizing-fermats-last-theorem) | 長期案件を検証できる工程に分け、進捗と外部の判定結果を次の作業へ引き継ぐ。 |
-| [Building verification loops in Claude Code with skills](https://claude.com/resources/articles/building-verification-loops-in-claude-code-with-skills)・[Demystifying evals for AI agents](https://www.anthropic.com/research/demystifying-evals-for-ai-agents) | 手作業で行っている[確認](mission-eval-writing.md#claude-codeの検証)をスキルにする。成果は操作後に環境へ反映された結果で判定する。 |
+| [Building verification loops in Claude Code with skills](https://claude.com/resources/articles/building-verification-loops-in-claude-code-with-skills)・[Demystifying evals for AI agents](https://www.anthropic.com/research/demystifying-evals-for-ai-agents) | 手作業で行っている[確認](mission-eval-writing.md)をスキルにする。成果は操作後に環境へ反映された結果で判定する。 |
 | [Using a chaos loop to harden the Claude Docs launch](https://claude.dev/blog/chaos-loop-claude-docs-launch/) | 負荷をかけた環境で失敗を再現し、観測、変更、再実行を繰り返す。 |
 | [How we built our multi-agent research system](https://www.anthropic.com/research/multi-agent-research-system)・[Building a C compiler with parallel Claudes](https://www.anthropic.com/research/building-c-compiler)・[Safely scaling multi-agent teams with Claude Fable 5.2](https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2/) | 独立した仕事を並行に調べ、成果の統合と同一対象への書き込みを管理する。 |
 | [Measuring AI agent autonomy in practice](https://www.anthropic.com/research/measuring-agent-autonomy) | 稼働時間に加え、途中介入や自発停止が必要だった条件を評価する。 |

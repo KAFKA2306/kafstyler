@@ -12,7 +12,7 @@ tags:
 
 ### MISSIONとIssueによる案件選定
 
-使命から実行と検証をつなぐときは、**目的と成果の基準**、**個別作業の追跡**、**完成・不採用の判定**を分ける。
+使命と個別作業と成果の正本を分ける。
 
 | 一次資料 | Kafstylerでの採用判断 |
 | --- | --- |
@@ -37,15 +37,15 @@ Kafstylerでは3層の専用ディレクトリや第二の台帳は作らず、�
 flowchart LR
     C["Concept：目的・業務知識・受入条件"] -->|"canonicalize：正本へ記録"| D["Definition：仕様・コード・Gitの版"]
     D -->|"案件に必要な部分を抽出"| X["作業用コンテキスト"]
-    X -->|"autocatalyze：実装と検証"| R["実成果・確認結果"]
+    X -->|"autocatalyze：実装と公開"| R["実成果・確認結果"]
     D -->|"必要なときに提示"| F["Facade：README・図・報告"]
     F -->|"人が意図を照合"| C
     R -->|"adjudicate：目的との一致を判定"| C
 ```
 
-AIへは**対象のMISSION・Issue・関係する仕様やコード・検証結果だけ**を渡す。画面設計、API定義などの中間コンテキストが必要なら既存のDefinitionから抽出し、生成物に元の版を結び付ける。全リポジトリの恒常的な投入や、生成した要約を新しい正本にする運用は採用しない。意図との一致、利用者の入口での成果、必要な資料に到達するまでの読量で有効性を確かめる。
+AIへは**対象のMISSION・Issue・関係する仕様やコードだけ**を渡す。画面設計、API定義などの中間コンテキストが必要なら既存のDefinitionから抽出し、生成物に元の版を結び付ける。全リポジトリの恒常的な投入や、生成した要約を新しい正本にする運用は採用しない。
 
-[正本と案件の対応](../skills/canonicalize/SKILL.md#missionとissueの正本関係) · [自律開発と実入口での検証](../skills/autocatalyze/SKILL.md) · [共通規約](../AGENTS.md#missionとissueの運用)
+[正本と案件の対応](../skills/canonicalize/SKILL.md#missionとissueの正本関係) · [自律開発](../skills/autocatalyze/SKILL.md) · [共通規約](../AGENTS.md#missionとissueの運用)
 
 ### 問題の再定義と利用者の目的
 
@@ -75,15 +75,6 @@ AIへは**対象のMISSION・Issue・関係する仕様やコード・検証結�
 
 [概念再構築](../skills/reconceptualize/SKILL.md#自律的に問題を発見して再構築する) · [継続実行と案件選定](../skills/autocatalyze/SKILL.md#常時稼働エージェントの中核)
 
-### 評価指標のすり替えと独立した検証
-
-- [Google DeepMind・Specification gaming](https://deepmind.google/blog/specification-gaming-the-flip-side-of-ai-ingenuity/)（開発元の事例）。指標を満たしても本来の目的を達成しない問題を扱う。
-- [OpenAI・Evaluation best practices](https://developers.openai.com/api/docs/guides/evaluation-best-practices)（公式ガイド）。評価入力と実装を分離する。
-- [OpenAI・How we monitor internal coding agents for misalignment](https://openai.com/index/how-we-monitor-internal-coding-agents-misalignment/)（開発元の事例）。テスト操作や監視の限界を踏まえる。
-- [Center for Open Science・Preregistration](https://www.cos.io/initiatives/prereg)（研究手法の原典）。探索と確証の判定条件を区別する。
-
-[評価と比較](../skills/adjudicate/SKILL.md) · [反証レビュー](../skills/disprove/SKILL.md)
-
 ### 合成回答と人間の判断を区別する
 
 - [Maierほか・LLMs Reproduce Human Purchase Intent via Semantic Similarity Elicitation of Likert Ratings](https://arxiv.org/abs/2510.08338)（PyMC Labs・Colgate-Palmolive共同研究、arXiv v3、2025年）。LLMの自由記述を意味類似性で5段階の回答分布に変換するSSRを、57件の商品コンセプト調査・実回答者9,300人で比較した。商品間の購買意向平均の相関は、人間の回答者を二分した場合の相関の約90%に達したが、実際の購買の予測精度ではない。回答の変換に使う基準文は同じ57調査に合わせて調整されており、別の商品群で同じ精度になるかは確かめられていない。
@@ -111,32 +102,6 @@ AIへは**対象のMISSION・Issue・関係する仕様やコード・検証結�
 [Anthropic・Claude Codeの実践ガイド](https://code.claude.com/docs/en/best-practices)（公式ガイド）。依頼の範囲、検証、作業の進め方
 
 [目標設定](../skills/reconceptualize/SKILL.md) · [自律開発](../skills/autocatalyze/SKILL.md)
-
-### Claude Codeの検証
-
-[Addy Osmani・How the Claude Code team thinks about verification](https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/)（Claude Codeチームの公式技術記事、2026年11月16日公開、11月19日確認）。
-
-- 利用者の入口から実物を最後まで動かす。入力にかかわらず守る条件は性質ベースのテストで試し、挙動を保つ移行は旧版と新版に同じ入力を与えて比べる。
-- 実装前に、依頼と変更前の信頼できる版から、期待する結果と合格条件を決める。検証では対象の版を固定し、手間の少ない確認から始める。過去の障害に基づく検査は、変更内容に関係するものを選ぶ。観測した結果は次のレビューに引き継ぐ。
-- 必須にするチェックの候補は、合否の判定に使う前に実行結果を記録し、誤検知を調べる。実際の障害と安定していた変更で検証手順を試し、見逃しを再現できたら手順を直す。重複や不安定な判定も定期的に見直す。
-
-| スキル | 適用する工程 |
-| --- | --- |
-| [reconceptualize](../skills/reconceptualize/SKILL.md) | 作業前に入口、入力、最後に観測する結果を決める |
-| [didactization](../skills/didactization/SKILL.md#本文の推敲と提出前の確認) | 原意と出典を守り、読者の入口で推敲稿と教材の再現性を確かめる |
-| [canonicalize](../skills/canonicalize/SKILL.md#完了条件) | 読み書きの契約、旧データとの互換、再処理を確かめる |
-| [disprove](../skills/disprove/SKILL.md) | 対象版と判定基準を固定し、差分から過去の失敗を選ぶ |
-| [decommission](../skills/decommission/SKILL.md) | 削除前後に利用経路と、残した検査が拾う失敗を確かめる |
-| [adjudicate](../skills/adjudicate/SKILL.md#検証手順の評価) | 不変条件と旧版との比較を設計し、評価手順自体の精度も測る |
-| [autocatalyze](../skills/autocatalyze/SKILL.md#実装と検証) | 既存の検査を先に実行し、普段の入口から結果を読み戻す |
-
-### 成功基準と評価
-
-[Anthropic・成功基準と評価の設計](https://platform.claude.com/docs/en/test-and-evaluate/develop-tests)（公式ガイド）。成功条件、テストケース、採点方法
-
-[GOV.UK・利用者テスト](https://www.gov.uk/service-manual/user-research/using-moderated-usability-testing)（公式手引き）。文書、ツール、画面の用途が分かりづらいときは、普段の入口で初見の理解と作業の完了をそれぞれ確かめる。利用者には目標を伝え、手順は伏せる。評価では、対象の版、止まった箇所、観察した事実、利用者への影響、修正後の合格条件を返す。用途を確認できない場合は未確定とし、試せた範囲を伝える。
-
-[評価と比較](../skills/adjudicate/SKILL.md) · [反証レビュー](../skills/disprove/SKILL.md)
 
 ### imozの日本語編集
 

@@ -50,7 +50,7 @@ flowchart TD
     autocatalyze["autocatalyze：案件を起動・記録・再開"] -->|観測した検索失敗| reconceptualize["reconceptualize：検索失敗と古い正本を発見"]
     reconceptualize -->|質問・期待する答え| canonicalize["canonicalize：分類・正本・移行先を定義"]
     canonicalize -->|検索入口・変更前後の版| adjudicate["adjudicate：検索・出典・後継リンクを比較"]
-    adjudicate -->|後継が使えることを確認| decommission["decommission：旧文書・重複機能を退役"]
+    adjudicate -->|後継へ切替| decommission["decommission：旧文書・重複機能を退役"]
     decommission -->|整理結果・未完了の作業| autocatalyze
     canonicalize -.->|文面の改稿が必要| didactization["didactization：文言・見出しを整える"]
     didactization -.->|改稿結果| adjudicate
@@ -60,7 +60,7 @@ flowchart TD
 
 ### 互換を残さない移行
 
-新しい正本へ切り替える移行では、廃止する旧契約を明示し、旧形式の読み書き・別名・二重ジョブを無期限に維持しない。必要なデータと出典を移してから、通常の入口を確認して旧経路を削除する。公開URLの退役判断は[文書監査と移行](#文書監査と移行)に統合する。
+新しい正本へ切り替える移行では、廃止する旧契約を明示し、旧形式の読み書き・別名・二重ジョブを無期限に維持しない。必要なデータと出典を移してから、後継へ切り替えて旧経路を削除する。公開URLの退役判断は[文書監査と移行](#文書監査と移行)に統合する。
 
 | 一次資料 | 移行での判断 |
 | --- | --- |
@@ -126,12 +126,6 @@ flowchart TD
 
 [データ設計](../skills/canonicalize/SKILL.md)
 
-### dbtのデータテスト
-
-[dbt・データ品質テスト](https://docs.getdbt.com/docs/build/data-tests)と[`dbt build`](https://docs.getdbt.com/reference/commands/build)（公式ドキュメント）。モデルの生成と品質条件の検証を依存順に行う。
-
-[データ設計](../skills/canonicalize/SKILL.md) · [評価と比較](../skills/adjudicate/SKILL.md)
-
 ### 命名規則
 
 [Microsoft・General Naming Conventions](https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/general-naming-conventions)（公式ガイド）。.NETの指針から、意味が伝わる語を選び、よく知られた略語だけを使う原則を採用する。
@@ -172,7 +166,7 @@ flowchart TD
 [台帳とObsidian Vaultで文書を整理する](../skills/canonicalize/SKILL.md#台帳とobsidian-vaultで文書を整理する)
 
 
-### Obsidianコミュニティプラグインの選定と検証
+### Obsidianコミュニティプラグインの選定
 
 [Obsidian公式のコミュニティプラグイン台帳](https://github.com/obsidianmd/obsidian-releases/blob/master/community-plugins.json)でプラグインIDと開発元を特定し、[登録・配布の仕様](https://github.com/obsidianmd/obsidian-releases#community-plugins)と[対応版の判定](https://docs.obsidian.md/Reference/Versions)に沿ってGitHub Releasesの配布物を選ぶ。[Obsidianのプラグインセキュリティ](https://obsidian.md/help/plugin-security)によれば、コミュニティプラグインはObsidianの権限を継承し、ファイルやネットワークへアクセスできる。公式ディレクトリへの登録は、個々の導入環境での動作・安全の保証ではない。
 
@@ -191,6 +185,6 @@ flowchart TD
 
 GitHubの `releases/latest` をそのまま安定版とみなさない。Calendarの最新表示 `2.0.0-beta.2` は `calendar-beta` という別IDであり、通常版 `calendar` ではない。Periodic Notesの最新表示 `1.0.0-beta.3` はベータ版で、`1.0.0` タグのソース側manifestも `0.0.17` のまま。Dataviewの `0.5.70` タグのソース側manifestは `0.5.68` のままなので、配布アセットの `manifest.json` とバージョンが一致するかは別途確認する。リリース名、`prerelease` フラグ、配布manifest、プラグインID、`minAppVersion`、利用中のObsidian本体の版を突き合わせる。
 
-導入・更新では、公式台帳から開発元のGitHub Releaseへたどり、該当タグの `main.js`・`manifest.json`・提供されている `styles.css` を同じ版から `.obsidian/plugins/<plugin-id>/` に揃える。GitHubの配布アセットにSHA-256があればダウンロード物と照合し、値がなければ取得元・タグ・ローカルハッシュを記録して照合未完了と区別する。読み込まれたIDと版、起動、代表操作、生成ノート、既存ファイルへの差分を実際のVaultで確かめる。ダウンロード完了は動作確認完了ではない。
+導入・更新では、公式台帳から開発元のGitHub Releaseへたどり、該当タグの `main.js`・`manifest.json`・提供されている `styles.css` を同じ版から `.obsidian/plugins/<plugin-id>/` に揃える。GitHubの配布アセットにSHA-256があればダウンロード物と照合し、値がなければ取得元・タグ・ローカルハッシュを記録して照合未完了と区別する。ダウンロード完了は動作確認完了ではない。
 
 Kafstylerの正本はMarkdown、YAML frontmatter、Git履歴とする。DataviewやHomepageの表示、CalendarやPeriodic Notesの生成入口、TemplaterやLinterの自動変更は正本を補助する機能であり、8プラグイン一式をKafstylerの必須依存関係にはしない。必要な候補は[canonicalizeのVault移行手順](../skills/canonicalize/SKILL.md#台帳とobsidian-vaultで文書を整理する)で採否を決め、再現できない表示や重複する機能は[decommission](../skills/decommission/SKILL.md)で整理する。

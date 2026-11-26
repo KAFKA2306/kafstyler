@@ -40,12 +40,6 @@ tags:
 
 [目標設定](../skills/reconceptualize/SKILL.md) · [自律開発](../skills/autocatalyze/SKILL.md)
 
-### 自動テストの合格条件
-
-[Claude Codeにテストを全部任せるなら、先に「合格条件」を固定する](https://zenn.dev/kafka2306/articles/2026-08-15-hook-runner-is-not-policy)（記事）。[合格条件](mission-eval-writing.md#claude-codeの検証)を固定し、ローカル・Claude Code・CIで同じ検証コマンドを使う例。
-
-[評価と比較](../skills/adjudicate/SKILL.md) · [自律開発](../skills/autocatalyze/SKILL.md)
-
 ### 外部実装の互換性と判定根拠
 
 [OSSが動いた。でもその判定はまだ使えない。「動く」と「使ってよい」を4状態に分ける](https://zenn.dev/kafka2306/articles/2026-08-14-05-compatibility-is-not-validation)（記事）。動作・入力条件・証拠を別々に確かめ、判定に使える範囲を定める。
@@ -75,18 +69,6 @@ tags:
 [AI活用してそうな情報サイトのクオリティがすごい](https://zenn.dev/kafka2306/articles/1436dad81ab3ac)（記事）。調べたい項目から企業史、財務、IRなどの候補を探し、原典へたどる。
 
 [反証レビュー](../skills/disprove/SKILL.md)
-
-### 継続検証による技術監査
-
-[Adaptive Survivable Verification System (ASVS) に基づく技術監査フレームワーク](https://zenn.dev/kafka2306/articles/5c3c93f798da3f)（記事）。実行時の変化を観測し、検証で用いる証拠を定める。
-
-[評価と比較](../skills/adjudicate/SKILL.md) · [反証レビュー](../skills/disprove/SKILL.md)
-
-### 完了を裏づける証拠
-
-[AIの“やったふり”とハルシネーションを暴くゼロトラスト・コントラクト](https://zenn.dev/kafka2306/articles/77e6af7be1d527)（記事）。完了報告を実行結果や再現できる証拠と照らす。
-
-[評価と比較](../skills/adjudicate/SKILL.md) · [反証レビュー](../skills/disprove/SKILL.md)
 
 ### エージェント向けのフォルダ整理
 
