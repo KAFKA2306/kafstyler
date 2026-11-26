@@ -7,6 +7,16 @@ description: "複数の担当が同じ意味・正本・識別子・出典・版
 
 同じ意味の正本を二つ持たない。検索・判断・更新に必要な情報を保ち、派生物や要約を別の正本にしない。
 
+## 判断の根拠
+
+[MISSION](../../MISSION.md) を目的、[AGENTS.md](../../AGENTS.md) を共通規約とする。
+
+- [知識とデータ](../../bibles/knowledge-and-obsidian.md)：Ontology Development 101・SKOS・IOFで概念と識別を、PROV-O・DCATで来歴と配布形態を、KimballのGrainとStar schemaでデータの粒度を、Semantic Versioningで公開契約の互換性を定める。
+- [使命・評価・執筆](../../bibles/mission-eval-writing.md) のProject as Codeと[かふかの原典](../../bibles/kafka-zenn.md) のIssue駆動・ディレクトリ管理に基づき、意図・仕様・派生物・変更履歴を分け、正本と再開先を選ぶ。
+- [エージェント設計](../../bibles/agents-and-orca.md)：ハーネス・文脈・記憶の原理から引き継ぐ状態を選び、既存の正本に結ぶ。
+
+その他は [聖典台帳](../../BIBLES.md) の該当原典を適用条件と限界に応じて参照する。原典は共通規約を上書きしない。
+
 ## 設計と移行
 
 1. 答える問い、対象、粒度、管理者、実入力、読取・書込経路を特定する。エンティティのID、関係、属性、操作、単位、欠損の意味を定義し、既存語彙を優先する。
@@ -29,5 +39,3 @@ Concept（目的・要求・採用判断）、Definition（仕様・コード・
 - 研究・白書：主張を一次URL・引用箇所、数値を単位・測定条件・時点に結ぶ。観測、予測、仮説、未確認を区別して [didactization](../didactization/SKILL.md) へ渡す。
 
 返すものは正本・意味・ID・更新経路・移行対象・残す情報・再開先。追加記録は既存記録にない不可欠なものだけ。
-
-原典：[知識とデータ](../../bibles/knowledge-and-obsidian.md)。

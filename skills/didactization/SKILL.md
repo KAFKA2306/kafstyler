@@ -7,6 +7,16 @@ description: "研究・失敗・記事から再利用可能な原則を導き、
 
 独自知見の教材化と原意を守る文章編集を区別する。後者に新たな発見を要求しない。
 
+## 判断の根拠
+
+[MISSION](../../MISSION.md) を目的、[AGENTS.md](../../AGENTS.md) を共通規約とする。
+
+- [使命・評価・執筆](../../bibles/mission-eval-writing.md)：Schönの振り返りから経験の前提を抽出し、imozの文章編集ガイド、GOV.UKのcontent design、George Mason UniversityのWhite Papers、NISTの著者指針を文書の種類に応じて使う。
+- [知識とデータ](../../bibles/knowledge-and-obsidian.md)：Diátaxisで学習・実践・参照・理解の目的を区別し、PROV-Oの原理で知見の来歴を保持する。
+- [設計とUI](../../bibles/design-and-ui.md)：利用者の情報需要とNN/gの見出しによる情報探索の原理から構成を決める。
+
+その他は [聖典台帳](../../BIBLES.md) の該当原典を適用条件と限界に応じて参照する。原典は共通規約を上書きしない。
+
 ## 発見を汎用原則に変える
 
 1. 原資料、実際の観測、失敗、実験結果、訂正、反例から新しい知見を抽出する。対象・条件・出典を保ち、AIの着想と実測を混同しない。
@@ -28,4 +38,4 @@ description: "研究・失敗・記事から再利用可能な原則を導き、
 
 README・PR・UI・報告では、人の用事、解決の仕組み、最初の操作、実際の成果を示す。結果・推測・失敗・古い状態を分け、未実行を実績としない。Project as CodeのFacadeは仕様・データ・実装の参照を保持し独立した正本にしない。工程や依存を文章より短く説明できる場合のみMermaidを使う。
 
-完成稿、必要な根拠、適用条件、公開先を返す。原典：[使命・評価・執筆](../../bibles/mission-eval-writing.md)、[設計とUI](../../bibles/design-and-ui.md)。
+完成稿、必要な根拠、適用条件、公開先を返す。

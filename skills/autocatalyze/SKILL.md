@@ -7,6 +7,16 @@ description: "MISSIONから仕事を自律選定し実装・制作・公開ま�
 
 認可範囲で価値のある仕事を完了まで進める。計画やIssue起票だけを成果にしない。[共通規約](../../AGENTS.md) に従う。
 
+## 判断の根拠
+
+[MISSION](../../MISSION.md) を目的、[AGENTS.md](../../AGENTS.md) を共通規約とする。
+
+- [かふかの原典](../../bibles/kafka-zenn.md)：次に解くべき一件を選び、Issue駆動で引き継ぎ、Crash-Driven Developmentに従って失敗を隠さず止める。
+- [エージェント設計](../../bibles/agents-and-orca.md)：Anthropicの最小構成・委任範囲・状態継承、Erlang/OTPの監督原則、AWSの冪等性から、実行・監督・再開方法を選ぶ。
+- [開発の原理](../../bibles/dev-infra-and-3d.md)：UNIXの責務分離、DORAの主線統合、Google SREのToil削減を運用設計に用いる。
+
+その他は [聖典台帳](../../BIBLES.md) の該当原典を適用条件と限界に応じて参照する。原典は共通規約を上書きしない。
+
 ## 一件を成果まで進める
 
 1. MISSION、目的、既存Issue、実績、障害から仕事を選ぶ。未依頼の根本問題も [reconceptualize](../reconceptualize/SKILL.md) で扱う。重複案件を増やさず、価値の低い変更は選ばない。
@@ -29,4 +39,4 @@ description: "MISSIONから仕事を自律選定し実装・制作・公開ま�
 - Claude Code、Codex、Antigravity、公式Skill、tj-loop、agent-sessions：起動・再開・監督は [エージェント実行契約](../../commands/agents.md)。既存セッションIDを保持し別の仕組みを重ねない。
 - [知識取り込み・保守](../../commands/knowledge.md)、[開発・配布](../../commands/development.md)、[制作・公開](../../commands/production.md)。未認可の有料生成や公開は行わない。
 
-返すものは実際の成果と参照先、残る仕事、障害・再開条件。原典：[エージェント設計](../../bibles/agents-and-orca.md)、[開発の原理](../../bibles/dev-infra-and-3d.md)。
+返すものは実際の成果と参照先、残る仕事、障害・再開条件。
