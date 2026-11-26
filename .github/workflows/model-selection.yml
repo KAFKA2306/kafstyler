@@ -3,10 +3,14 @@ on:
   schedule:
     - cron: '17 2 * * 3'
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [mise.toml, .github/workflows/model-selection.yml]
 permissions:
   contents: write
 jobs:
   refresh:
+    if: github.event_name != 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,3 +24,40 @@ jobs:
           if git diff --cached --quiet; then exit 0; fi
           git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'chore: refresh measured model selection'
           git push
+  verify-mise:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+      - name: Capture shared input and old result
+        run: |
+          set -euo pipefail
+          node --input-type=module -e '
+            import {readFile,writeFile} from "node:fs/promises";
+            const cfg = JSON.parse(await readFile(".agents/model-policy.json", "utf8")).benchmark_source;
+            const get = async url => { const r = await fetch(url); if (!r.ok) throw Error("HTTP " + r.status); return r.json(); };
+            const pointer = await get(cfg.pointer);
+            if (!/^data\/\d{4}-\d{2}-\d{2}$/.test(pointer.path)) throw Error("Unexpected snapshot path");
+            await writeFile(process.env.RUNNER_TEMP + "/model-input.json", JSON.stringify(await get("https://raw.githubusercontent.com/" + cfg.repository + "/main/" + pointer.path + "/llms.json")));
+          '
+          date -u +%F > "$RUNNER_TEMP/as-of"
+          node .agents/select-models.mjs --fixture "$RUNNER_TEMP/model-input.json" --as-of "$(cat "$RUNNER_TEMP/as-of")" > "$RUNNER_TEMP/model-before.json"
+      - uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4
+        with:
+          cache: false
+      - name: Compare mise output and failure propagation
+        run: |
+          set -euo pipefail
+          mise run model-select --fixture "$RUNNER_TEMP/model-input.json" --as-of "$(cat "$RUNNER_TEMP/as-of")" --write
+          cmp "$RUNNER_TEMP/model-before.json" .agents/model-selection.json
+          if mise run model-select --resolve nonexistent-skill; then
+            echo "Expected failure was not propagated" >&2
+            exit 1
+          fi
