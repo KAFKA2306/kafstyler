@@ -96,7 +96,7 @@ Claude Codeは `claude plugin update kafstyler@kafka-agent-tools`、Codexは `co
 
 ## 成果から使い方を選ぶ
 
-判断原理は[BIBLES](BIBLES.md)、標準仕様・公式Skill・実行コマンドは[COMMANDS](COMMANDS.md)を使う。共通CLIタスクは `mise tasks` から選び `mise run TASK` で実行する。個別案件の仕様や設定はその案件の正本で管理する。
+必要なSkillだけ起動。既知の共通タスクはKafstylerの配置先で `mise run TASK ARGS`、未知なら `mise tasks`。不足する契約だけ[実行索引](COMMANDS.md)、判断根拠が必要なときだけ[BIBLES](BIBLES.md)を参照する。個別設定は案件の正本に置く。
 
 ## スキル
 
