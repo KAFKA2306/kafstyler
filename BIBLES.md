@@ -1,66 +1,28 @@
 ---
-type: "reference"
-description: "判断対象別の一次資料索引と、横断的な著者別出典を分離して管理する。"
+type: reference
+description: "製品・案件を越えて再利用できる判断原理の原典索引"
 tags:
   - kafstyler/canon
-  - kafstyler/reference
-aliases:
-  - "聖典台帳"
-sources:
-  - id: okf-v03-spec
-    resource: https://github.com/open-knowledge-format/open-knowledge-format/blob/527e81aff55992be21507e97004286789126f88c/SPEC.md
-  - id: anthropic-hooks
-    resource: https://code.claude.com/docs/en/hooks
-  - id: claude-code-goal
-    resource: https://code.claude.com/docs/en/goal
-  - id: claude-code-agent-view
-    resource: https://code.claude.com/docs/en/agent-view
-  - id: orca-automations
-    resource: https://orca.dev/docs/cli/automations
-  - id: orca-bot-connectors
-    resource: https://orca.dev/docs/bots/connectors
-  - id: orca-bot-security
-    resource: https://orca.dev/docs/bots/security
-  - id: orca-orchestration
-    resource: https://orca.dev/docs/cli/orchestration
-  - id: tj-loop-skill
-    resource: https://github.com/laiso/tj-loop/blob/8bc68994165cd2834bbbf3048fe3dd917b35c290/tj-loop/SKILL.md
-  - id: orca-remote-servers
-    resource: https://orca.dev/docs/remote-servers
-  - id: orca-plugin-manifest
-    resource: https://github.com/stablyai/orca/blob/main/docs/reference/plugin-manifest.md
 ---
 # 聖典台帳
 
-**分類の軸は「何について判断するか」。** 主題別の入口は一つだけ選び、必要な原典を読む。共通の[作業規約](AGENTS.md)と[使命](MISSION.md)はここへ複製しない。
+聖典は、特定製品・環境・時点を越えて判断に使える原典だけを収録する。一次資料であることに加え、何を判断できるか、どの条件で適用できるかが明確なものを残す。原典は[共通規約](AGENTS.md#原則)に優先しない。
 
-## 主題別の入口
-
-| 判断対象 | 一次資料の入口 |
+| 判断対象 | 原典 |
 | --- | --- |
-| **目的・選定・文章**：何を解決し、どう説明するか | [使命・評価・執筆](bibles/mission-eval-writing.md) |
-| **知識・データ**：情報の意味、来歴、識別子、保存・検索・整形の仕様 | [知識とObsidian](bibles/knowledge-and-obsidian.md) |
-| **AIエージェントの実行・監督**：Skills、セッション、委譲、Orca、常駐と再開 | [AIエージェントとOrca](bibles/agents-and-orca.md) |
-| **実装基盤・3D制作**：Git・開発CLI・環境管理（mise）・HTTP実装（Hono）・横断保守・インフラ、Unity・VRChat制作、Tripo・3Dモデル生成 | [開発基盤と3D](bibles/dev-infra-and-3d.md) |
-| **UI・画像ワークフロー**：画面の操作と表示、ComfyUIのワークフロー・テンプレート | [設計とUI](bibles/design-and-ui.md) |
-| **金融・投資**：市場、企業・指数、投資判断、信用リスク | [金融と市場](bibles/finance-and-markets.md) |
+| 問題・目的・意思決定・文章 | [使命・評価・執筆](bibles/mission-eval-writing.md) |
+| 意味・分類・来歴・正本 | [知識とデータ](bibles/knowledge-and-obsidian.md) |
+| 自律実行・監督・引き継ぎ | [エージェント設計](bibles/agents-and-orca.md) |
+| 開発・運用の構造 | [開発の原理](bibles/dev-infra-and-3d.md) |
+| 利用者の目的・情報設計 | [設計とUI](bibles/design-and-ui.md) |
+| 資産配分・リスク・信用 | [金融と市場](bibles/finance-and-markets.md) |
 
-## 出典別の補助索引
+[かふかの原典](bibles/kafka-zenn.md)は横断的な著者別索引とする。
 
-- [かふかのZenn](bibles/kafka-zenn.md)：本人の公開記事から原文や経緯を探すための横断索引。主題別の第7分野にはしない。記事の内容について判断するときは、上の該当分野を入口にする。
+## 採否の境界
 
-## 境界の決め方
-
-- **成果の良否を決める** → 使命・評価・執筆。**成果物の画面や操作を設計する** → 設計とUI。
-- **記録する情報の構造を決める** → 知識とObsidian。**その取り込みをエージェントが継続実行する仕組みを決める** → AIエージェントとOrca。
-- **AIワーカーの起動・監督を決める** → AIエージェントとOrca。**Git・OS・CLIや制作ツール自体の使い方を決める** → 開発基盤と3D。
-- **画像ワークフローやUIを設計する** → 設計とUI。**3Dアセットを生成・編集する** → 開発基盤と3D。
-- **金融上の意味や投資判断を決める** → 金融と市場。調査・記録・評価の共通手順は対応する主題へ振り分ける。
-
-一つの案件が複数の問いを含む場合は、問いを分けて各主題へ進む。資料を重複転記して第二の正本を作らず、必要な関連先だけ参照する。
-
-## 資料の見直し
-
-資料は案件を越えて利用できる判断原理と一次資料への入口に限定する。個別案件の調査結果、時点ごとの候補一覧、個人設定は各案件の正本に置く。資料は参考情報であり、[共通規約](AGENTS.md#原則)に優先しない。資料にあるテスト・CI・評価手順を実行義務にしない。
-
-根拠不足・リンク切れ・月次監査が生じたときだけ見直し、重複・旧版・用途を失った資料を退役する。日次の全分野巡回は行わず、変更がなければ無介入で終了する。
+- 採用：一般化可能な理論、研究結果、設計原則、方法論、製品に依存しない意味・来歴の標準。
+- 除外：製品マニュアル、CLI・API・設定仕様、導入・障害修復手順、製品発表、個別案件・時点依存の報告。必要時は利用先の正本や公式資料を直接参照する。
+- 事例研究は、事例自体ではなく、適用条件を伴う再利用可能な判断原理を説明する原典に限る。
+- 同じ原典を別分野に複製しない。外部原典の手順を一律の実行義務にしない。
+- 新規採用は既存の原理を補う場合に限り、重複・用途を失った資料は削除する。
