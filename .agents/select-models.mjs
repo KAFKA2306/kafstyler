@@ -50,15 +50,15 @@ function choose(data,names){
     ? b.score-a.score||a.price-b.price||a.id.localeCompare(b.id)
     : b.score/b.price-a.score/a.price||b.score-a.score||a.price-b.price||a.id.localeCompare(b.id);
   const result={schema_version:2,status:'benchmark_selected_runtime_unverified',
-    updated_from_benchmark:date,source:cfg.benchmark_source.url,pricing:cfg.price,skills:{}};
+    updated_from_benchmark:date,source:cfg.benchmark_source.url,retrieved_via:cfg.benchmark_source.pointer,pricing:cfg.price,skills:{}};
   for(const name of names.sort()){
     const audit=cfg.score_first.includes(name);
     const first=[...frontier].sort((a,b)=>rank(a,b,audit))[0];
     const backup=pool.filter(x=>x.provider!==first.provider).sort((a,b)=>rank(a,b,audit))[0];
     fail(backup,'Missing fallback for '+name);
     result.skills[name]={
-      primary:{name:first.name,provider:first.provider,score:first.score,price:first.price,model_id:null},
-      fallback:{name:backup.name,provider:backup.provider,score:backup.score,price:backup.price,model_id:null},
+      primary:{name:first.name,provider:first.provider,score:first.score,price:first.price,benchmark_slug:first.id,model_id:null},
+      fallback:{name:backup.name,provider:backup.provider,score:backup.score,price:backup.price,benchmark_slug:backup.id,model_id:null},
       fallback_reason:'provider weekly quota or service outage'
     };
   }
@@ -88,7 +88,7 @@ async function main(){
     fail(valid(days)&&days>=0&&days<=cfg.benchmark_source.max_source_age_days,'Saved benchmark stale or undated');
     const m=saved.skills[selectedName];
     const useFallback=argv.includes('--fallback')||arg('--unavailable')===m.primary.provider;
-    console.log(JSON.stringify({skill:selectedName,model:useFallback?m.fallback:m.primary,source_status:saved.status}));
+    console.log(JSON.stringify({skill:selectedName,model:useFallback?m.fallback:m.primary,source_status:saved.status,execution_ready:false}));
     return;
   }
   const names=await skillNames();

@@ -13,7 +13,10 @@ vault="$(cd "$OBSIDIAN_VAULT_PATH" && pwd -P)"
 command -v vault-lint >/dev/null || { echo "Install upstream Knowledge Compiler (vault-lint)" >&2; exit 2; }
 
 command -v flock >/dev/null || { echo "flock is required for non-overlapping runs" >&2; exit 2; }
-cache="${XDG_CACHE_HOME:-$HOME/.cache}/kafstyler"
+cache_root="${XDG_CACHE_HOME:-$HOME/.cache}/kafstyler"
+command -v sha256sum >/dev/null || { echo "sha256sum is required for cache isolation" >&2; exit 2; }
+vault_key="$(printf '%s' "$vault" | sha256sum)"
+cache="$cache_root/${vault_key%% *}"
 mkdir -p "$cache"
 exec 9>"$cache/vault-maintenance.lock"
 flock -n 9 || { echo "Another Vault maintenance run is active" >&2; exit 75; }
@@ -41,16 +44,18 @@ esac
 
 if [[ -n "${KAFSTYLER_INGEST_SOURCE:-}" ]]; then
   case "$KAFSTYLER_INGEST_SOURCE" in
-    "$vault"|"$vault"/*|"$cache"|"$cache"/*)
+    "$vault"|"$vault"/*|"$cache_root"|"$cache_root"/*)
       echo 'Ingest source must not point into the Vault or its cache' >&2; exit 2 ;;
   esac
   command -v rclone >/dev/null || { echo "Install rclone to ingest external sources" >&2; exit 2; }
   command -v vault-extract >/dev/null || { echo "Install upstream Knowledge Compiler (vault-extract)" >&2; exit 2; }
-  mkdir -p "$cache/inbox"
-  rclone copy "$KAFSTYLER_INGEST_SOURCE" "$cache/inbox" --exclude ".git/**" --exclude ".obsidian/**"
+  source_key="$(printf '%s' "$KAFSTYLER_INGEST_SOURCE" | sha256sum)"
+  inbox="$cache/${source_key%% *}/inbox"
+  mkdir -p "$inbox"
+  rclone sync "$KAFSTYLER_INGEST_SOURCE" "$inbox" --exclude ".git/**" --exclude ".obsidian/**"
   file_list="$(mktemp "$cache/inputs.XXXXXXXX")"
   trap 'rm -f -- "$file_list"' EXIT
-  find "$cache/inbox" -type f -print0 > "$file_list"
+  find "$inbox" -type f -print0 > "$file_list"
   declare -A source_stems=()
   while IFS= read -r -d "" file; do
     case "${file,,}" in

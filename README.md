@@ -32,14 +32,14 @@ OSと外部標準ツールに差分取得・整形を任せ、AIは判断が必�
 | [autocatalyze](skills/autocatalyze/SKILL.md) | 案件選定、実装、公開、継続 |
 | [reconceptualize](skills/reconceptualize/SKILL.md) | 目的と問題の再構築 |
 | [canonicalize](skills/canonicalize/SKILL.md) | 正本と意味の統一 |
-| [adjudicate](skills/adjudicate/SKILL.md) | 依頼された選択肢の比較と採否 |
-| [disprove](skills/disprove/SKILL.md) | 依頼された仮説・設計の反証 |
+| [adjudicate](skills/adjudicate/SKILL.md) | 案件の選択肢の比較と採否 |
+| [disprove](skills/disprove/SKILL.md) | 案件の仮説・設計の反証 |
 | [didactization](skills/didactization/SKILL.md) | 知見の教材化、文章編集 |
 | [decommission](skills/decommission/SKILL.md) | 不要な経路と仕組みの廃止 |
 
 ## 常時稼働エージェントの中核
 
-既存のスケジューラー、イベント、Orcaを利用し、変化のない仕事は起動しない。失敗は原因を示して即停止する。
+既存の起動基盤を使い、日常保守と探索・創作の起動条件は[共通規約](AGENTS.md#外部実装を利用する常駐差分保守)に従う。
 
 ## 大規模な開発を支える仕組み
 

@@ -20,7 +20,7 @@ KafstylerのAGENTS.mdとMISSION.mdに従い、必要なSkillだけ使用する�
 
 ## 既存mainへ書き込む前の安全制御
 
-他者の作業を破棄せず、単一書き手を守る。必要な場合は[書き込みガード](../../scripts/orca-preflight.py)を実行入口で使う。
+書き込みは[共通規約](../../AGENTS.md#gitの作業状態)に従う。[書き込みガード](../../scripts/orca-preflight.py)はローカル状態の制御であり、別ホストとの排他を取得しない。
 
 ## 監督付き委譲
 
