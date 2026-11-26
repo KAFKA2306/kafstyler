@@ -1,0 +1,6 @@
+[tools]
+node = "lts"
+
+[tasks.model-select]
+description = "Select measured models (read-only unless --write is supplied)"
+run = "node .agents/select-models.mjs"
