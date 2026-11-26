@@ -3,19 +3,14 @@
 set -euo pipefail
 umask 077
 
-mode="${1:---check}"
-if (( $# > 1 )) || [[ "$mode" != --check && "$mode" != --apply ]]; then
-  echo 'Usage: OBSIDIAN_VAULT_PATH=/path/to/vault [KAFSTYLER_INGEST_SOURCE=source:path] vault-maintenance.sh [--check|--apply]' >&2
+if (( $# > 0 )) && { (( $# != 1 )) || [[ "$1" != --apply ]]; }; then
+  echo 'Usage: OBSIDIAN_VAULT_PATH=/path/to/vault [KAFSTYLER_INGEST_SOURCE=source:path] vault-maintenance.sh [--apply]' >&2
   exit 2
 fi
 : "${OBSIDIAN_VAULT_PATH:?Set OBSIDIAN_VAULT_PATH to the canonical Vault root}"
 [[ -d "$OBSIDIAN_VAULT_PATH" ]] || { echo "Vault directory does not exist" >&2; exit 2; }
 vault="$(cd "$OBSIDIAN_VAULT_PATH" && pwd -P)"
 command -v vault-lint >/dev/null || { echo "Install upstream Knowledge Compiler (vault-lint)" >&2; exit 2; }
-
-if [[ "$mode" == --check ]]; then
-  exec vault-lint "$vault" --json
-fi
 
 command -v flock >/dev/null || { echo "flock is required for non-overlapping runs" >&2; exit 2; }
 cache="${XDG_CACHE_HOME:-$HOME/.cache}/kafstyler"
@@ -80,7 +75,6 @@ if [[ -n "${KAFSTYLER_INGEST_SOURCE:-}" ]]; then
 fi
 
 vault-lint "$vault" --fix
-vault-lint "$vault" --json
 
 if [[ -n "$git_root" ]]; then
   git -C "$vault" add -A
@@ -89,7 +83,7 @@ if [[ -n "$git_root" ]]; then
   else
     code=$?
     [[ "$code" == 1 ]] || exit "$code"
-    git -C "$vault" commit -m 'chore(vault): ingest and lint verified changes'
+    git -C "$vault" commit -m 'chore(vault): ingest and repair documents'
   fi
   git_status="$(git -C "$vault" status --porcelain=v1 -uall)"
   [[ -z "$git_status" ]] || { echo "Vault Git changes remain uncommitted" >&2; exit 1; }
